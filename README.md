@@ -1,5 +1,5 @@
 # RxSonosLib
-[![Travis Badge](https://api.travis-ci.org/stefanrenne/RxSonosLib.svg?branch=master)](https://travis-ci.org/stefanrenne/RxSSDP)
+[![Travis Badge](https://api.travis-ci.org/stefanrenne/RxSonosLib.svg?branch=master)](https://travis-ci.org/stefanrenne/RxSonosLib)
 <!--[![CocoaPods Version Badge](https://img.shields.io/cocoapods/v/RxSonosLib.svg)](https://cocoapods.org/pods/RxSonosLib)
 ![Supported Platforms Badge](https://img.shields.io/cocoapods/p/RxSonosLib.svg)
 [![Percentage Documented Badge](https://img.shields.io/cocoapods/metrics/doc-percent/RxSonosLib.svg)](http://cocoadocs.org/docsets/RxSonosLib)
