@@ -1,0 +1,48 @@
+PODS:
+  - AEXML (4.2.2)
+  - CocoaAsyncSocket (7.6.2)
+  - Mockingjay (2.0.1):
+    - Mockingjay/Core (= 2.0.1)
+    - Mockingjay/XCTest (= 2.0.1)
+  - Mockingjay/Core (2.0.1):
+    - URITemplate (~> 2.0)
+  - Mockingjay/XCTest (2.0.1):
+    - Mockingjay/Core
+  - NetUtils (4.0.2)
+  - ReachabilitySwift (4.1.0)
+  - RxBlocking (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxSSDP (4.0.1):
+    - CocoaAsyncSocket (~> 7.6)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
+  - URITemplate (2.0.3)
+
+DEPENDENCIES:
+  - AEXML
+  - Mockingjay
+  - NetUtils
+  - ReachabilitySwift
+  - RxBlocking
+  - RxCocoa
+  - RxSSDP (~> 4.0)
+  - RxSwift
+
+SPEC CHECKSUMS:
+  AEXML: 5ebafc1b75e0bcf0f1b09b8ca8fed2d5a199479b
+  CocoaAsyncSocket: 3541e024f48c54b251638ef72d51dd42808de932
+  Mockingjay: 11a621880d2887f1775bdcf824341eb68f218450
+  NetUtils: 3ae4058586b9574f8cbfa5b5d415a287f8179620
+  ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
+  RxBlocking: f6054985901412fc8c02daa84e92d4ba68c61389
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxSSDP: 7bdc3c03d3b8106fdd3ad10084bdad04cec900b2
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+  URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
+
+PODFILE CHECKSUM: bd1dbcb4aa877592111d5faa4d9000265a01480d
+
+COCOAPODS: 1.4.0

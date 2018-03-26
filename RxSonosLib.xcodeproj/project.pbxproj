@@ -1,0 +1,1251 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		283CC70EF03E1014C983387D /* Pods_RxSonosLibTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6804EA9B7CF2804460685682 /* Pods_RxSonosLibTests.framework */; };
+		8963F446AC256EDACB40B3C1 /* Pods_RxSonosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C32BC178A85F7172C04EA20 /* Pods_RxSonosLib.framework */; };
+		E2DE5E372104D8F1430E6BDB /* Pods_Demo_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C684C499ED266A1B223D44A /* Pods_Demo_App.framework */; };
+		F81A05BF2060284A00897738 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F46120481C61006A7B73 /* AppDelegate.swift */; };
+		F81A05C12060284A00897738 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F4A120482A46006A7B73 /* NavigationCoordinator.swift */; };
+		F81A05C22060284A00897738 /* GroupsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F49320482945006A7B73 /* GroupsCoordinator.swift */; };
+		F81A05C32060284A00897738 /* GroupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C7420578D8E00AE311E /* GroupCoordinator.swift */; };
+		F81A05C62060284A00897738 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C7020578D8200AE311E /* GroupViewController.swift */; };
+		F81A05C72060284A00897738 /* GroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8BF5C7120578D8200AE311E /* GroupViewController.xib */; };
+		F81A05C82060284A00897738 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F4AE20482DDE006A7B73 /* GroupsViewController.swift */; };
+		F81A05C92060284A00897738 /* GroupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F825F4AF20482DDE006A7B73 /* GroupsViewController.xib */; };
+		F81A05CC2060284A00897738 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F881C5822049CA1000E3F523 /* GroupViewModel.swift */; };
+		F81A05CD2060284A00897738 /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F881C5842049CCDC00E3F523 /* GroupsTableViewCell.swift */; };
+		F81A05CE2060284A00897738 /* GroupsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F881C5852049CCDC00E3F523 /* GroupsTableViewCell.xib */; };
+		F81A05CF2060284A00897738 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F4A620482BA9006A7B73 /* NavigationController.swift */; };
+		F81A05D02060285100897738 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F825F45F20481C61006A7B73 /* LaunchScreen.storyboard */; };
+		F81A05D12060285400897738 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F825F45E20481C61006A7B73 /* Assets.xcassets */; };
+		F81A05DE2060289A00897738 /* RxSonosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F81A05D72060289A00897738 /* RxSonosLib.framework */; };
+		F81A05DF2060289A00897738 /* RxSonosLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F81A05D72060289A00897738 /* RxSonosLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F81A05E4206028D600897738 /* String+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809DE88204999BA003A94A0 /* String+Regex.swift */; };
+		F81A05E5206028D600897738 /* Error+RxSonosLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809DE7D2048408A003A94A0 /* Error+RxSonosLib.swift */; };
+		F81A05E7206028D600897738 /* Data+Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C522056DF9E00AE311E /* Data+Convert.swift */; };
+		F81A05E8206028D600897738 /* AEXMLDocument+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C542056E37100AE311E /* AEXMLDocument+Create.swift */; };
+		F81A05E9206028D600897738 /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F49F204829F5006A7B73 /* BaseInteractor.swift */; };
+		F81A05EA206028D600897738 /* FakeSSDPRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F47E20482170006A7B73 /* FakeSSDPRepositoryImpl.swift */; };
+		F81A05EB206028D600897738 /* FakeGroupRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F881C57C2049BE4000E3F523 /* FakeGroupRepositoryImpl.swift */; };
+		F81A05EC206028D600897738 /* FakeRoomRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F881C57E2049C50900E3F523 /* FakeRoomRepositoryImpl.swift */; };
+		F81A05ED206028D600897738 /* SSDPDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F477204820BD006A7B73 /* SSDPDevice.swift */; };
+		F81A05EE206028D600897738 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809DE922049A1A0003A94A0 /* Room.swift */; };
+		F81A05EF206028D600897738 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809DE942049A1B0003A94A0 /* Group.swift */; };
+		F81A05F0206028D600897738 /* DeviceDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809DE962049A918003A94A0 /* DeviceDescription.swift */; };
+		F81A05F1206028D600897738 /* GetGroupsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F881C5802049C8E700E3F523 /* GetGroupsInteractor.swift */; };
+		F81A05F2206028D600897738 /* SonosInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8694B1E205BC8670027EBCF /* SonosInteractor.swift */; };
+		F81A05F3206028D600897738 /* RoomRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809DE8A2049A0E3003A94A0 /* RoomRepository.swift */; };
+		F81A05F4206028D600897738 /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809DE8C2049A0F5003A94A0 /* GroupRepository.swift */; };
+		F81A05F5206028D600897738 /* RoomRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809DE8E2049A11D003A94A0 /* RoomRepositoryImpl.swift */; };
+		F81A05F6206028D600897738 /* GroupRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809DE902049A138003A94A0 /* GroupRepositoryImpl.swift */; };
+		F81A05F7206028D600897738 /* RepositoryInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F47020481CC7006A7B73 /* RepositoryInjection.swift */; };
+		F81A05F8206028D600897738 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C592056FBEC00AE311E /* Network.swift */; };
+		F81A05F9206028D600897738 /* SoapNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C5D2056FC8200AE311E /* SoapNetwork.swift */; };
+		F81A05FA206028D600897738 /* SonosSoapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C652057047400AE311E /* SonosSoapService.swift */; };
+		F81A05FB206028D600897738 /* SoapSoapAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C67205704B100AE311E /* SoapSoapAction.swift */; };
+		F81A05FC206028D600897738 /* GetGroupsNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C5F205701CD00AE311E /* GetGroupsNetwork.swift */; };
+		F81A05FD206028D600897738 /* GetDeviceDescriptionNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C5A2056FBEC00AE311E /* GetDeviceDescriptionNetwork.swift */; };
+		F81A05FE206028D600897738 /* RxReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C562056E61000AE311E /* RxReachability.swift */; };
+		F81A05FF206028D600897738 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F818EA512056DD2C005D4F45 /* CacheManager.swift */; };
+		F81A061E206029AE00897738 /* RxSonosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F81A05D72060289A00897738 /* RxSonosLib.framework */; };
+		F81A062720602D7A00897738 /* GroupRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F56166205C3EE800E28533 /* GroupRepositoryTest.swift */; };
+		F81A062820602D7C00897738 /* RoomRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F56168205C3EE900E28533 /* RoomRepositoryTest.swift */; };
+		F81A062920602D7F00897738 /* SSDPRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F56167205C3EE800E28533 /* SSDPRepositoryTest.swift */; };
+		F81A062A20602DA500897738 /* Mockingjay+Soap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F56161205C3EE800E28533 /* Mockingjay+Soap.swift */; };
+		F81A062C206031F300897738 /* XMLTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81A062B206031F300897738 /* XMLTest.swift */; };
+		F81A062E206034FF00897738 /* RepositoryInjectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81A062D206034FF00897738 /* RepositoryInjectionTest.swift */; };
+		F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */; };
+		F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAE20616239004DB497 /* SonosInteractorTests.swift */; };
+		F8979942206939D1000CF52A /* NetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8979941206939D1000CF52A /* NetworkTest.swift */; };
+		F897994520693D95000CF52A /* MockNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897994420693D95000CF52A /* MockNetwork.swift */; };
+		F8979947206944A6000CF52A /* GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8979946206944A6000CF52A /* GroupTests.swift */; };
+		F89D94C920615994002B1383 /* CacheManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89D94C820615994002B1383 /* CacheManagerTests.swift */; };
+		F8B0057320612BB900991E64 /* StringRegexTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0057220612BB900991E64 /* StringRegexTest.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F81A05DC2060289A00897738 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F83FED0C1F97CD4B004DF663 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F81A05D62060289A00897738;
+			remoteInfo = RxSonosLib;
+		};
+		F81A061F206029AE00897738 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F83FED0C1F97CD4B004DF663 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F81A05D62060289A00897738;
+			remoteInfo = RxSonosLib;
+		};
+		F81A062520602D3000897738 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F83FED0C1F97CD4B004DF663 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F81A05A82060280A00897738;
+			remoteInfo = "Demo App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F81A05E32060289A00897738 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F81A05DF2060289A00897738 /* RxSonosLib.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0227FF3DA293D7BBFF6DBEAA /* Pods-RxSonosLib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSonosLib.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSonosLib/Pods-RxSonosLib.debug.xcconfig"; sourceTree = "<group>"; };
+		06359D402B46CE3A5C1C0C91 /* Pods-Demo App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo App/Pods-Demo App.debug.xcconfig"; sourceTree = "<group>"; };
+		0934A90BE0E32A61EB02E0E7 /* Pods-RxSonosLib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSonosLib.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSonosLib/Pods-RxSonosLib.release.xcconfig"; sourceTree = "<group>"; };
+		0B3953DBEDFFB898ADD6A395 /* Pods-RxSonosLibTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSonosLibTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSonosLibTests/Pods-RxSonosLibTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3C684C499ED266A1B223D44A /* Pods_Demo_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D5D218BCF0C0BBD25C06212 /* Pods-Demo App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo App/Pods-Demo App.release.xcconfig"; sourceTree = "<group>"; };
+		528D17599D7231DFC1F9E926 /* Pods-RxSonosLibTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSonosLibTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSonosLibTests/Pods-RxSonosLibTests.release.xcconfig"; sourceTree = "<group>"; };
+		6804EA9B7CF2804460685682 /* Pods_RxSonosLibTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSonosLibTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C32BC178A85F7172C04EA20 /* Pods_RxSonosLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSonosLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F809DE7D2048408A003A94A0 /* Error+RxSonosLib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+RxSonosLib.swift"; sourceTree = "<group>"; };
+		F809DE88204999BA003A94A0 /* String+Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Regex.swift"; sourceTree = "<group>"; };
+		F809DE8A2049A0E3003A94A0 /* RoomRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomRepository.swift; sourceTree = "<group>"; };
+		F809DE8C2049A0F5003A94A0 /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
+		F809DE8E2049A11D003A94A0 /* RoomRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomRepositoryImpl.swift; sourceTree = "<group>"; };
+		F809DE902049A138003A94A0 /* GroupRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepositoryImpl.swift; sourceTree = "<group>"; };
+		F809DE922049A1A0003A94A0 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		F809DE942049A1B0003A94A0 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		F809DE962049A918003A94A0 /* DeviceDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDescription.swift; sourceTree = "<group>"; };
+		F818EA512056DD2C005D4F45 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		F81A05A92060280A00897738 /* Demo App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F81A05D72060289A00897738 /* RxSonosLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSonosLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F81A06002060291D00897738 /* RxSonosLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RxSonosLib.h; path = RxSonosLib/Framework/RxSonosLib.h; sourceTree = SOURCE_ROOT; };
+		F81A06012060291D00897738 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RxSonosLib/Framework/Info.plist; sourceTree = SOURCE_ROOT; };
+		F81A0619206029AE00897738 /* RxSonosLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSonosLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F81A0624206029C300897738 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F81A062B206031F300897738 /* XMLTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLTest.swift; sourceTree = "<group>"; };
+		F81A062D206034FF00897738 /* RepositoryInjectionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryInjectionTest.swift; sourceTree = "<group>"; };
+		F825F45E20481C61006A7B73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F825F46020481C61006A7B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F825F46120481C61006A7B73 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F825F46F20481C71006A7B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F825F47020481CC7006A7B73 /* RepositoryInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryInjection.swift; sourceTree = "<group>"; };
+		F825F477204820BD006A7B73 /* SSDPDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSDPDevice.swift; sourceTree = "<group>"; };
+		F825F47E20482170006A7B73 /* FakeSSDPRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSSDPRepositoryImpl.swift; sourceTree = "<group>"; };
+		F825F49320482945006A7B73 /* GroupsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsCoordinator.swift; sourceTree = "<group>"; };
+		F825F49F204829F5006A7B73 /* BaseInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
+		F825F4A120482A46006A7B73 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
+		F825F4A620482BA9006A7B73 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		F825F4AE20482DDE006A7B73 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		F825F4AF20482DDE006A7B73 /* GroupsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupsViewController.xib; sourceTree = "<group>"; };
+		F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupsInteractorTests.swift; sourceTree = "<group>"; };
+		F827DAAE20616239004DB497 /* SonosInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosInteractorTests.swift; sourceTree = "<group>"; };
+		F8694B1E205BC8670027EBCF /* SonosInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosInteractor.swift; sourceTree = "<group>"; };
+		F881C57C2049BE4000E3F523 /* FakeGroupRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeGroupRepositoryImpl.swift; sourceTree = "<group>"; };
+		F881C57E2049C50900E3F523 /* FakeRoomRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRoomRepositoryImpl.swift; sourceTree = "<group>"; };
+		F881C5802049C8E700E3F523 /* GetGroupsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupsInteractor.swift; sourceTree = "<group>"; };
+		F881C5822049CA1000E3F523 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		F881C5842049CCDC00E3F523 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
+		F881C5852049CCDC00E3F523 /* GroupsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupsTableViewCell.xib; sourceTree = "<group>"; };
+		F8979941206939D1000CF52A /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
+		F897994420693D95000CF52A /* MockNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetwork.swift; sourceTree = "<group>"; };
+		F8979946206944A6000CF52A /* GroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTests.swift; sourceTree = "<group>"; };
+		F89D94C820615994002B1383 /* CacheManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManagerTests.swift; sourceTree = "<group>"; };
+		F8B0057220612BB900991E64 /* StringRegexTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRegexTest.swift; sourceTree = "<group>"; };
+		F8BF5C522056DF9E00AE311E /* Data+Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Convert.swift"; sourceTree = "<group>"; };
+		F8BF5C542056E37100AE311E /* AEXMLDocument+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AEXMLDocument+Create.swift"; sourceTree = "<group>"; };
+		F8BF5C562056E61000AE311E /* RxReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxReachability.swift; sourceTree = "<group>"; };
+		F8BF5C592056FBEC00AE311E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		F8BF5C5A2056FBEC00AE311E /* GetDeviceDescriptionNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDeviceDescriptionNetwork.swift; sourceTree = "<group>"; };
+		F8BF5C5D2056FC8200AE311E /* SoapNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoapNetwork.swift; sourceTree = "<group>"; };
+		F8BF5C5F205701CD00AE311E /* GetGroupsNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupsNetwork.swift; sourceTree = "<group>"; };
+		F8BF5C652057047400AE311E /* SonosSoapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosSoapService.swift; sourceTree = "<group>"; };
+		F8BF5C67205704B100AE311E /* SoapSoapAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoapSoapAction.swift; sourceTree = "<group>"; };
+		F8BF5C7020578D8200AE311E /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		F8BF5C7120578D8200AE311E /* GroupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupViewController.xib; sourceTree = "<group>"; };
+		F8BF5C7420578D8E00AE311E /* GroupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCoordinator.swift; sourceTree = "<group>"; };
+		F8F56161205C3EE800E28533 /* Mockingjay+Soap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mockingjay+Soap.swift"; sourceTree = "<group>"; };
+		F8F56166205C3EE800E28533 /* GroupRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupRepositoryTest.swift; sourceTree = "<group>"; };
+		F8F56167205C3EE800E28533 /* SSDPRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSDPRepositoryTest.swift; sourceTree = "<group>"; };
+		F8F56168205C3EE900E28533 /* RoomRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomRepositoryTest.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F81A05A62060280A00897738 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F81A05DE2060289A00897738 /* RxSonosLib.framework in Frameworks */,
+				E2DE5E372104D8F1430E6BDB /* Pods_Demo_App.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F81A05D32060289A00897738 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8963F446AC256EDACB40B3C1 /* Pods_RxSonosLib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F81A0616206029AE00897738 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F81A061E206029AE00897738 /* RxSonosLib.framework in Frameworks */,
+				283CC70EF03E1014C983387D /* Pods_RxSonosLibTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4109632DFB25F8AF474F8828 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0227FF3DA293D7BBFF6DBEAA /* Pods-RxSonosLib.debug.xcconfig */,
+				0934A90BE0E32A61EB02E0E7 /* Pods-RxSonosLib.release.xcconfig */,
+				0B3953DBEDFFB898ADD6A395 /* Pods-RxSonosLibTests.debug.xcconfig */,
+				528D17599D7231DFC1F9E926 /* Pods-RxSonosLibTests.release.xcconfig */,
+				06359D402B46CE3A5C1C0C91 /* Pods-Demo App.debug.xcconfig */,
+				3D5D218BCF0C0BBD25C06212 /* Pods-Demo App.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C74A7B14C4FEAB358FE6A2D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C32BC178A85F7172C04EA20 /* Pods_RxSonosLib.framework */,
+				6804EA9B7CF2804460685682 /* Pods_RxSonosLibTests.framework */,
+				3C684C499ED266A1B223D44A /* Pods_Demo_App.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F809DE87204999AC003A94A0 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				F809DE88204999BA003A94A0 /* String+Regex.swift */,
+				F809DE7D2048408A003A94A0 /* Error+RxSonosLib.swift */,
+				F8BF5C522056DF9E00AE311E /* Data+Convert.swift */,
+				F8BF5C542056E37100AE311E /* AEXMLDocument+Create.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		F825F41E2048178C006A7B73 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				F825F45D20481C61006A7B73 /* Common */,
+				F825F46420481C62006A7B73 /* Coordinator */,
+				F825F46620481C62006A7B73 /* Presentation */,
+			);
+			name = Demo;
+			path = RxSonosLib/Demo;
+			sourceTree = "<group>";
+		};
+		F825F44520481A59006A7B73 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F81A06012060291D00897738 /* Info.plist */,
+				F81A06002060291D00897738 /* RxSonosLib.h */,
+				F809DE87204999AC003A94A0 /* Categories */,
+				F825F496204829C3006A7B73 /* Base */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F825F44620481A73006A7B73 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				F8BF5C582056FBEC00AE311E /* Network */,
+				F8BF5C562056E61000AE311E /* RxReachability.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		F825F44720481A7D006A7B73 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				F818EA512056DD2C005D4F45 /* CacheManager.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		F825F44820481AAD006A7B73 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F825F47420482053006A7B73 /* Modal */,
+				F825F47320482050006A7B73 /* Interactors */,
+				F825F47220482043006A7B73 /* Repositories */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F825F44920481AB1006A7B73 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F825F4792048213F006A7B73 /* RepositoryImplementations */,
+				F825F47020481CC7006A7B73 /* RepositoryInjection.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F825F44B20481AFC006A7B73 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		F825F44C20481C1B006A7B73 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				F825F44D20481C1B006A7B73 /* Data */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		F825F44D20481C1B006A7B73 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F825F47B2048214E006A7B73 /* FakeRepositoryImplementations */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F825F45D20481C61006A7B73 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F825F45E20481C61006A7B73 /* Assets.xcassets */,
+				F825F45F20481C61006A7B73 /* LaunchScreen.storyboard */,
+				F825F46120481C61006A7B73 /* AppDelegate.swift */,
+				F825F46F20481C71006A7B73 /* Info.plist */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F825F46420481C62006A7B73 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F825F4A120482A46006A7B73 /* NavigationCoordinator.swift */,
+				F825F49320482945006A7B73 /* GroupsCoordinator.swift */,
+				F8BF5C7420578D8E00AE311E /* GroupCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		F825F46620481C62006A7B73 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F8BF5C6920578D0F00AE311E /* Group */,
+				F825F4A520482B82006A7B73 /* Groups */,
+				F825F4A420482B7B006A7B73 /* Navigation */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		F825F47220482043006A7B73 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				F809DE8A2049A0E3003A94A0 /* RoomRepository.swift */,
+				F809DE8C2049A0F5003A94A0 /* GroupRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		F825F47320482050006A7B73 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				F881C5802049C8E700E3F523 /* GetGroupsInteractor.swift */,
+				F8694B1E205BC8670027EBCF /* SonosInteractor.swift */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		F825F47420482053006A7B73 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				F825F477204820BD006A7B73 /* SSDPDevice.swift */,
+				F809DE922049A1A0003A94A0 /* Room.swift */,
+				F809DE942049A1B0003A94A0 /* Group.swift */,
+				F809DE962049A918003A94A0 /* DeviceDescription.swift */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		F825F4792048213F006A7B73 /* RepositoryImplementations */ = {
+			isa = PBXGroup;
+			children = (
+				F809DE8E2049A11D003A94A0 /* RoomRepositoryImpl.swift */,
+				F809DE902049A138003A94A0 /* GroupRepositoryImpl.swift */,
+			);
+			path = RepositoryImplementations;
+			sourceTree = "<group>";
+		};
+		F825F47B2048214E006A7B73 /* FakeRepositoryImplementations */ = {
+			isa = PBXGroup;
+			children = (
+				F825F47E20482170006A7B73 /* FakeSSDPRepositoryImpl.swift */,
+				F881C57C2049BE4000E3F523 /* FakeGroupRepositoryImpl.swift */,
+				F881C57E2049C50900E3F523 /* FakeRoomRepositoryImpl.swift */,
+			);
+			path = FakeRepositoryImplementations;
+			sourceTree = "<group>";
+		};
+		F825F496204829C3006A7B73 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F825F49F204829F5006A7B73 /* BaseInteractor.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		F825F4A420482B7B006A7B73 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				F825F4A620482BA9006A7B73 /* NavigationController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		F825F4A520482B82006A7B73 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				F825F4AE20482DDE006A7B73 /* GroupsViewController.swift */,
+				F825F4AF20482DDE006A7B73 /* GroupsViewController.xib */,
+				F881C5822049CA1000E3F523 /* GroupViewModel.swift */,
+				F881C5842049CCDC00E3F523 /* GroupsTableViewCell.swift */,
+				F881C5852049CCDC00E3F523 /* GroupsTableViewCell.xib */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		F83FED0B1F97CD4B004DF663 = {
+			isa = PBXGroup;
+			children = (
+				F825F41E2048178C006A7B73 /* Demo */,
+				F83FED161F97CD4B004DF663 /* RxSonosLib */,
+				F8F56153205C3EC500E28533 /* RxSonosLibTests */,
+				F83FED151F97CD4B004DF663 /* Products */,
+				4109632DFB25F8AF474F8828 /* Pods */,
+				C74A7B14C4FEAB358FE6A2D1 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F83FED151F97CD4B004DF663 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F81A05A92060280A00897738 /* Demo App.app */,
+				F81A05D72060289A00897738 /* RxSonosLib.framework */,
+				F81A0619206029AE00897738 /* RxSonosLibTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F83FED161F97CD4B004DF663 /* RxSonosLib */ = {
+			isa = PBXGroup;
+			children = (
+				F825F44520481A59006A7B73 /* Common */,
+				F825F44C20481C1B006A7B73 /* Mock */,
+				F825F44B20481AFC006A7B73 /* Coordinator */,
+				F825F44820481AAD006A7B73 /* Domain */,
+				F825F44920481AB1006A7B73 /* Data */,
+				F825F44620481A73006A7B73 /* Remote */,
+				F825F44720481A7D006A7B73 /* Cache */,
+			);
+			name = RxSonosLib;
+			path = RxSonosLib/Framework;
+			sourceTree = "<group>";
+		};
+		F897994320693D83000CF52A /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				F897994420693D95000CF52A /* MockNetwork.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		F8BF5C582056FBEC00AE311E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F8BF5C622057043D00AE311E /* Base */,
+				F8BF5C612057043200AE311E /* Soap */,
+				F8BF5C632057045000AE311E /* Rest */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F8BF5C612057043200AE311E /* Soap */ = {
+			isa = PBXGroup;
+			children = (
+				F8BF5C642057046000AE311E /* Calls */,
+				F8BF5C5F205701CD00AE311E /* GetGroupsNetwork.swift */,
+			);
+			path = Soap;
+			sourceTree = "<group>";
+		};
+		F8BF5C622057043D00AE311E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F8BF5C592056FBEC00AE311E /* Network.swift */,
+				F8BF5C5D2056FC8200AE311E /* SoapNetwork.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		F8BF5C632057045000AE311E /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				F8BF5C5A2056FBEC00AE311E /* GetDeviceDescriptionNetwork.swift */,
+			);
+			path = Rest;
+			sourceTree = "<group>";
+		};
+		F8BF5C642057046000AE311E /* Calls */ = {
+			isa = PBXGroup;
+			children = (
+				F8BF5C652057047400AE311E /* SonosSoapService.swift */,
+				F8BF5C67205704B100AE311E /* SoapSoapAction.swift */,
+			);
+			path = Calls;
+			sourceTree = "<group>";
+		};
+		F8BF5C6920578D0F00AE311E /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				F8BF5C7020578D8200AE311E /* GroupViewController.swift */,
+				F8BF5C7120578D8200AE311E /* GroupViewController.xib */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		F8F56153205C3EC500E28533 /* RxSonosLibTests */ = {
+			isa = PBXGroup;
+			children = (
+				F897994320693D83000CF52A /* Mock */,
+				F81A0624206029C300897738 /* Info.plist */,
+				F8F5615C205C3EE800E28533 /* Data */,
+				F8F56166205C3EE800E28533 /* GroupRepositoryTest.swift */,
+				F8F56168205C3EE900E28533 /* RoomRepositoryTest.swift */,
+				F8F56167205C3EE800E28533 /* SSDPRepositoryTest.swift */,
+				F81A062B206031F300897738 /* XMLTest.swift */,
+				F81A062D206034FF00897738 /* RepositoryInjectionTest.swift */,
+				F8B0057220612BB900991E64 /* StringRegexTest.swift */,
+				F89D94C820615994002B1383 /* CacheManagerTests.swift */,
+				F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */,
+				F827DAAE20616239004DB497 /* SonosInteractorTests.swift */,
+				F8979941206939D1000CF52A /* NetworkTest.swift */,
+				F8979946206944A6000CF52A /* GroupTests.swift */,
+			);
+			path = RxSonosLibTests;
+			sourceTree = "<group>";
+		};
+		F8F5615C205C3EE800E28533 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F8F56161205C3EE800E28533 /* Mockingjay+Soap.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		F81A05D42060289A00897738 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		F81A05A82060280A00897738 /* Demo App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F81A05BA2060280A00897738 /* Build configuration list for PBXNativeTarget "Demo App" */;
+			buildPhases = (
+				3E6955E32901EA0F684BC1D5 /* [CP] Check Pods Manifest.lock */,
+				F81A05A52060280A00897738 /* Sources */,
+				F81A05A62060280A00897738 /* Frameworks */,
+				F81A05A72060280A00897738 /* Resources */,
+				F81A05E32060289A00897738 /* Embed Frameworks */,
+				973A22BE45D89166C9AEDD35 /* [CP] Embed Pods Frameworks */,
+				21D462CF4BC77856B497E053 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F81A05DD2060289A00897738 /* PBXTargetDependency */,
+			);
+			name = "Demo App";
+			productName = "Demo App";
+			productReference = F81A05A92060280A00897738 /* Demo App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F81A05D62060289A00897738 /* RxSonosLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F81A05E02060289A00897738 /* Build configuration list for PBXNativeTarget "RxSonosLib" */;
+			buildPhases = (
+				A7F0EE6FA3ACAA6A14E923C6 /* [CP] Check Pods Manifest.lock */,
+				F81A05D22060289A00897738 /* Sources */,
+				F81A05D32060289A00897738 /* Frameworks */,
+				F81A05D42060289A00897738 /* Headers */,
+				F81A05D52060289A00897738 /* Resources */,
+				0C4D7BACFD065EC8A627D6D0 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RxSonosLib;
+			productName = RxSonosLib;
+			productReference = F81A05D72060289A00897738 /* RxSonosLib.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F81A0618206029AE00897738 /* RxSonosLibTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F81A0621206029AE00897738 /* Build configuration list for PBXNativeTarget "RxSonosLibTests" */;
+			buildPhases = (
+				79B0DDD39B6B7453D4DCC622 /* [CP] Check Pods Manifest.lock */,
+				F81A0615206029AE00897738 /* Sources */,
+				F81A0616206029AE00897738 /* Frameworks */,
+				F81A0617206029AE00897738 /* Resources */,
+				9D7BC8A6E6AD150B0FC2D01A /* [CP] Embed Pods Frameworks */,
+				206B38D57D8044F85D9D618D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F81A0620206029AE00897738 /* PBXTargetDependency */,
+				F81A062620602D3000897738 /* PBXTargetDependency */,
+			);
+			name = RxSonosLibTests;
+			productName = RxSonosLibTests;
+			productReference = F81A0619206029AE00897738 /* RxSonosLibTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F83FED0C1F97CD4B004DF663 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = Uberweb;
+				TargetAttributes = {
+					F81A05A82060280A00897738 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					F81A05D62060289A00897738 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					F81A0618206029AE00897738 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F83FED0F1F97CD4B004DF663 /* Build configuration list for PBXProject "RxSonosLib" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F83FED0B1F97CD4B004DF663;
+			productRefGroup = F83FED151F97CD4B004DF663 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F81A05A82060280A00897738 /* Demo App */,
+				F81A05D62060289A00897738 /* RxSonosLib */,
+				F81A0618206029AE00897738 /* RxSonosLibTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F81A05A72060280A00897738 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F81A05C92060284A00897738 /* GroupsViewController.xib in Resources */,
+				F81A05D02060285100897738 /* LaunchScreen.storyboard in Resources */,
+				F81A05CE2060284A00897738 /* GroupsTableViewCell.xib in Resources */,
+				F81A05C72060284A00897738 /* GroupViewController.xib in Resources */,
+				F81A05D12060285400897738 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F81A05D52060289A00897738 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F81A0617206029AE00897738 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0C4D7BACFD065EC8A627D6D0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxSonosLib/Pods-RxSonosLib-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		206B38D57D8044F85D9D618D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxSonosLibTests/Pods-RxSonosLibTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		21D462CF4BC77856B497E053 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Demo App/Pods-Demo App-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E6955E32901EA0F684BC1D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Demo App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79B0DDD39B6B7453D4DCC622 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RxSonosLibTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		973A22BE45D89166C9AEDD35 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Demo App/Pods-Demo App-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/AEXML/AEXML.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/NetUtils/NetUtils.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSSDP/RxSSDP.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEXML.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NetUtils.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSSDP.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Demo App/Pods-Demo App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D7BC8A6E6AD150B0FC2D01A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RxSonosLibTests/Pods-RxSonosLibTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Mockingjay/Mockingjay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+				"${BUILT_PRODUCTS_DIR}/URITemplate/URITemplate.framework",
+				"${BUILT_PRODUCTS_DIR}/AEXML/AEXML.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/NetUtils/NetUtils.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSSDP/RxSSDP.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mockingjay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URITemplate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEXML.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NetUtils.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSSDP.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxSonosLibTests/Pods-RxSonosLibTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7F0EE6FA3ACAA6A14E923C6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RxSonosLib-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F81A05A52060280A00897738 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F81A05C62060284A00897738 /* GroupViewController.swift in Sources */,
+				F81A05C82060284A00897738 /* GroupsViewController.swift in Sources */,
+				F81A05CC2060284A00897738 /* GroupViewModel.swift in Sources */,
+				F81A05BF2060284A00897738 /* AppDelegate.swift in Sources */,
+				F81A05CF2060284A00897738 /* NavigationController.swift in Sources */,
+				F81A05C32060284A00897738 /* GroupCoordinator.swift in Sources */,
+				F81A05C22060284A00897738 /* GroupsCoordinator.swift in Sources */,
+				F81A05C12060284A00897738 /* NavigationCoordinator.swift in Sources */,
+				F81A05CD2060284A00897738 /* GroupsTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F81A05D22060289A00897738 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F81A05EA206028D600897738 /* FakeSSDPRepositoryImpl.swift in Sources */,
+				F81A05ED206028D600897738 /* SSDPDevice.swift in Sources */,
+				F81A05E8206028D600897738 /* AEXMLDocument+Create.swift in Sources */,
+				F81A05F7206028D600897738 /* RepositoryInjection.swift in Sources */,
+				F81A05EF206028D600897738 /* Group.swift in Sources */,
+				F81A05F8206028D600897738 /* Network.swift in Sources */,
+				F81A05FC206028D600897738 /* GetGroupsNetwork.swift in Sources */,
+				F81A05FE206028D600897738 /* RxReachability.swift in Sources */,
+				F81A05E4206028D600897738 /* String+Regex.swift in Sources */,
+				F81A05E5206028D600897738 /* Error+RxSonosLib.swift in Sources */,
+				F81A05E7206028D600897738 /* Data+Convert.swift in Sources */,
+				F81A05F0206028D600897738 /* DeviceDescription.swift in Sources */,
+				F81A05FD206028D600897738 /* GetDeviceDescriptionNetwork.swift in Sources */,
+				F81A05F9206028D600897738 /* SoapNetwork.swift in Sources */,
+				F81A05F4206028D600897738 /* GroupRepository.swift in Sources */,
+				F81A05F1206028D600897738 /* GetGroupsInteractor.swift in Sources */,
+				F81A05EB206028D600897738 /* FakeGroupRepositoryImpl.swift in Sources */,
+				F81A05F2206028D600897738 /* SonosInteractor.swift in Sources */,
+				F81A05F3206028D600897738 /* RoomRepository.swift in Sources */,
+				F81A05FF206028D600897738 /* CacheManager.swift in Sources */,
+				F81A05F5206028D600897738 /* RoomRepositoryImpl.swift in Sources */,
+				F81A05E9206028D600897738 /* BaseInteractor.swift in Sources */,
+				F81A05FB206028D600897738 /* SoapSoapAction.swift in Sources */,
+				F81A05F6206028D600897738 /* GroupRepositoryImpl.swift in Sources */,
+				F81A05FA206028D600897738 /* SonosSoapService.swift in Sources */,
+				F81A05EC206028D600897738 /* FakeRoomRepositoryImpl.swift in Sources */,
+				F81A05EE206028D600897738 /* Room.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F81A0615206029AE00897738 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F89D94C920615994002B1383 /* CacheManagerTests.swift in Sources */,
+				F8979947206944A6000CF52A /* GroupTests.swift in Sources */,
+				F81A062920602D7F00897738 /* SSDPRepositoryTest.swift in Sources */,
+				F8B0057320612BB900991E64 /* StringRegexTest.swift in Sources */,
+				F897994520693D95000CF52A /* MockNetwork.swift in Sources */,
+				F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */,
+				F81A062820602D7C00897738 /* RoomRepositoryTest.swift in Sources */,
+				F81A062A20602DA500897738 /* Mockingjay+Soap.swift in Sources */,
+				F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */,
+				F81A062E206034FF00897738 /* RepositoryInjectionTest.swift in Sources */,
+				F81A062C206031F300897738 /* XMLTest.swift in Sources */,
+				F8979942206939D1000CF52A /* NetworkTest.swift in Sources */,
+				F81A062720602D7A00897738 /* GroupRepositoryTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F81A05DD2060289A00897738 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F81A05D62060289A00897738 /* RxSonosLib */;
+			targetProxy = F81A05DC2060289A00897738 /* PBXContainerItemProxy */;
+		};
+		F81A0620206029AE00897738 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F81A05D62060289A00897738 /* RxSonosLib */;
+			targetProxy = F81A061F206029AE00897738 /* PBXContainerItemProxy */;
+		};
+		F81A062620602D3000897738 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F81A05A82060280A00897738 /* Demo App */;
+			targetProxy = F81A062520602D3000897738 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F825F45F20481C61006A7B73 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F825F46020481C61006A7B73 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F81A05B82060280A00897738 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06359D402B46CE3A5C1C0C91 /* Pods-Demo App.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RxSonosLib/Demo/Common/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.uberweb.Demo-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F81A05B92060280A00897738 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D5D218BCF0C0BBD25C06212 /* Pods-Demo App.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RxSonosLib/Demo/Common/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.uberweb.Demo-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F81A05E12060289A00897738 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0227FF3DA293D7BBFF6DBEAA /* Pods-RxSonosLib.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = RxSonosLib/Framework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uberweb.RxSonosLib;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F81A05E22060289A00897738 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0934A90BE0E32A61EB02E0E7 /* Pods-RxSonosLib.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = RxSonosLib/Framework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uberweb.RxSonosLib;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F81A0622206029AE00897738 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B3953DBEDFFB898ADD6A395 /* Pods-RxSonosLibTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RxSonosLibTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uberweb.RxSonosLibTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F81A0623206029AE00897738 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 528D17599D7231DFC1F9E926 /* Pods-RxSonosLibTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RxSonosLibTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uberweb.RxSonosLibTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F83FED2F1F97CD4B004DF663 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		F83FED301F97CD4B004DF663 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F81A05BA2060280A00897738 /* Build configuration list for PBXNativeTarget "Demo App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F81A05B82060280A00897738 /* Debug */,
+				F81A05B92060280A00897738 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F81A05E02060289A00897738 /* Build configuration list for PBXNativeTarget "RxSonosLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F81A05E12060289A00897738 /* Debug */,
+				F81A05E22060289A00897738 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F81A0621206029AE00897738 /* Build configuration list for PBXNativeTarget "RxSonosLibTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F81A0622206029AE00897738 /* Debug */,
+				F81A0623206029AE00897738 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F83FED0F1F97CD4B004DF663 /* Build configuration list for PBXProject "RxSonosLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F83FED2F1F97CD4B004DF663 /* Debug */,
+				F83FED301F97CD4B004DF663 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F83FED0C1F97CD4B004DF663 /* Project object */;
+}

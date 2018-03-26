@@ -1,0 +1,14 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/AEXML" "${PODS_CONFIGURATION_BUILD_DIR}/CocoaAsyncSocket" "${PODS_CONFIGURATION_BUILD_DIR}/Mockingjay" "${PODS_CONFIGURATION_BUILD_DIR}/NetUtils" "${PODS_CONFIGURATION_BUILD_DIR}/ReachabilitySwift" "${PODS_CONFIGURATION_BUILD_DIR}/RxBlocking" "${PODS_CONFIGURATION_BUILD_DIR}/RxCocoa" "${PODS_CONFIGURATION_BUILD_DIR}/RxSSDP" "${PODS_CONFIGURATION_BUILD_DIR}/RxSwift" "${PODS_CONFIGURATION_BUILD_DIR}/URITemplate"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/AEXML/AEXML.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Mockingjay/Mockingjay.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/NetUtils/NetUtils.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/ReachabilitySwift/Reachability.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/RxBlocking/RxBlocking.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/RxCocoa/RxCocoa.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/RxSSDP/RxSSDP.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/RxSwift/RxSwift.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/URITemplate/URITemplate.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "AEXML" -framework "CocoaAsyncSocket" -framework "Mockingjay" -framework "NetUtils" -framework "Reachability" -framework "RxBlocking" -framework "RxCocoa" -framework "RxSSDP" -framework "RxSwift" -framework "URITemplate"
+OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods
+SWIFT_INCLUDE_PATHS[sdk=iphoneos*] = $(SRCROOT)/NetUtils/ifaddrs/iphoneos
+SWIFT_INCLUDE_PATHS[sdk=iphonesimulator*] = $(SRCROOT)/NetUtils/ifaddrs/iphonesimulator
+SWIFT_INCLUDE_PATHS[sdk=macosx*] = $(SRCROOT)/NetUtils/ifaddrs/macosx
