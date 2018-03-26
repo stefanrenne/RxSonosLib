@@ -31,4 +31,9 @@ open class RepositoryInjection {
         return shared.groupRepository
     }
     
+    internal lazy var transportRepository: TransportRepository = { return TransportRepositoryImpl() }()
+    static public func provideTransportRepository() -> TransportRepository {
+        return shared.transportRepository
+    }
+    
 }
