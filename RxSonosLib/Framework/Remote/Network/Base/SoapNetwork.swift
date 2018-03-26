@@ -18,7 +18,7 @@ class SoapNetwork: Network {
     init(room: Room, action: SoapSoapAction) {
         self.room = room
         self.call = action
-        super.init(cacheKey: nil)
+        super.init()
     }
     
     override func createRequest() -> URLRequest? {
@@ -47,6 +47,10 @@ class SoapNetwork: Network {
             .map(self.openEnvelope())
     }
     
+    override func executeRequest() -> Observable<Data> {
+        fatalError("Use executeSoapRequest() on subclasses of SoapNetwork")
+    }
+    
     internal func openEnvelope() -> ((Data) throws -> [String:String]) {
         return { data in
             let xml = AEXMLDocument.create(data)
@@ -54,7 +58,7 @@ class SoapNetwork: Network {
             
             var soapData: [String:String] = [:]
             element?.children.forEach({ (row) in
-                soapData[row.name] = row.string.validateXml()
+                soapData[row.name] = row.string
             })
             
             return soapData

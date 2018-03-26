@@ -33,7 +33,7 @@ extension String {
     }
     
     func validateXml() -> String {
-        let regex = try! NSRegularExpression(pattern: "(\")([A-Za-z0-9-]+=)", options: [])
+        let regex = try! NSRegularExpression(pattern: "(\")([A-Za-z0-9-:]+=)", options: [])
         return regex.stringByReplacingMatches(in: self, options: .withTransparentBounds, range: NSRange(location: 0, length: self.count), withTemplate: "$1 $2")
     }
     

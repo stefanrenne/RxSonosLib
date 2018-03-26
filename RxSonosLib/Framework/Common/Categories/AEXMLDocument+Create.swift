@@ -24,7 +24,7 @@ extension AEXMLDocument {
 fileprivate extension String {
     
     func removeXmlNamespace() -> String {
-        var string = self
+        var string = self.validateXml()
         if let regex1 = try? NSRegularExpression(pattern: "<([a-zA-Z]+:)", options:.caseInsensitive) {
             string = regex1.stringByReplacingMatches(in: string, options: [], range: NSRange(0..<string.count), withTemplate: "<")
         }
