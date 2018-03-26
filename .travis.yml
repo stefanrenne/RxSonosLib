@@ -11,7 +11,8 @@ env:
   - WORKSPACE=RxSonosLib.xcworkspace
   - SCHEME=RxSonosLib
   matrix:
-    - DESTINATION="OS=11.2,name=iPhone 8"
+    - DESTINATION="OS=10.2,name=iPhone SE"
+    - DESTINATION="OS=11.2,name=iPhone X"
 before_install:
   - pod repo update > /dev/null
 script:
