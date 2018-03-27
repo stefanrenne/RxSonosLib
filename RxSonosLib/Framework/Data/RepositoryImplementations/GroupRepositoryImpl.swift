@@ -20,6 +20,10 @@ class GroupRepositoryImpl: GroupRepository {
             .map(self.mapGroupDataToGroups(rooms: rooms))
     }
     
+}
+
+fileprivate extension GroupRepositoryImpl {
+    
     fileprivate func mapGroupDataToGroups(rooms: [Room]) -> (([String: String]) throws -> [Group]) {
         return { results in
             
@@ -57,5 +61,4 @@ class GroupRepositoryImpl: GroupRepository {
             return groups
         }
     }
-    
 }

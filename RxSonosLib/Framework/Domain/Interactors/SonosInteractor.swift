@@ -14,4 +14,8 @@ open class SonosInteractor {
         return GetGroupsInteractor(ssdpRepository: RepositoryInjection.provideSSDPRepository(), roomRepository: RepositoryInjection.provideRoomRepository(), groupRepository: RepositoryInjection.provideGroupRepository())
     }
     
+    static public func provideNowPlayingInteractor() -> GetNowPlayingInteractor {
+        return GetNowPlayingInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+    }
+    
 }

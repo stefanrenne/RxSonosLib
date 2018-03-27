@@ -1,9 +1,9 @@
 //
 //  String+Regex.swift
-//  Sonos Demo App
+//  RxSonosLib
 //
-//  Created by info@stefanrenne.nl on 17/11/16.
-//  Copyright © 2016 Stefan Renne. All rights reserved.
+//  Created by Stefan Renne on 27/03/2018.
+//  Copyright © 2016 Uberweb. All rights reserved.
 //
 
 import Foundation

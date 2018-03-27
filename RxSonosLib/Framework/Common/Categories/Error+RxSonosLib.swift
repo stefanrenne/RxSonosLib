@@ -24,4 +24,8 @@ extension NSError {
         return NSError(domain: sonosLibDomain, code: 40003, userInfo: nil)
     }
     
+    static func sonosLibInvalidImplementationError() -> Error {
+        return NSError(domain: sonosLibDomain, code: 40004, userInfo: nil)
+    }
+    
 }

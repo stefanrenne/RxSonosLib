@@ -1,5 +1,5 @@
 //
-//  TransportRepositoryImpl.swift
+//  GetTransportInfoNetwork.swift
 //  Demo App
 //
 //  Created by Stefan Renne on 26/03/2018.
@@ -9,8 +9,10 @@
 import Foundation
 import RxSwift
 
-public protocol TransportRepository {
+class GetTransportInfoNetwork: SoapNetwork {
     
-    func getNowPlaying(for room: Room) -> Observable<Track?>
+    init(room: Room) {
+        super.init(room: room, action: .TransportInfo)
+    }
     
 }

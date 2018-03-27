@@ -10,8 +10,8 @@ import Foundation
 
 
 enum SonosSoapService {
-    case Group
-//    case Alarm, Transport, GroupRenderingControl, ConnectionManager, Queue, Music, ContentDirectory, RenderingControl, DeviceProperties, SystemProperties, MusicProvider
+    case Group, Transport
+//    case Alarm, GroupRenderingControl, ConnectionManager, Queue, Music, ContentDirectory, RenderingControl, DeviceProperties, SystemProperties, MusicProvider
     
     var controllUrl: String {
         switch self {
@@ -19,8 +19,8 @@ enum SonosSoapService {
 //            return "/AlarmClock/Control"
 //        case .ConnectionManager:
 //            return "/MediaRenderer/ConnectionManager/Control"
-//        case .Transport:
-//            return "/MediaRenderer/AVTransport/Control"
+        case .Transport:
+            return "/MediaRenderer/AVTransport/Control"
 //        case .Queue:
 //            return "/MediaRenderer/Queue/Control"
 //        case .Music:
@@ -83,8 +83,8 @@ enum SonosSoapService {
         switch self {
 //        case .Alarm:
 //            return "urn:schemas-upnp-org:service:AlarmClock:1"
-//        case .Transport:
-//            return "urn:schemas-upnp-org:service:AVTransport:1"
+        case .Transport:
+            return "urn:schemas-upnp-org:service:AVTransport:1"
 //        case .Queue:
 //            return "urn:schemas-sonos-com:service:Queue:1"
 //        case .Music:

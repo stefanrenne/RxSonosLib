@@ -14,6 +14,5 @@ class GetGroupsNetwork: SoapNetwork {
     init(room: Room) {
         super.init(room: room, action: .State)
     }
-    
-    
+
 }

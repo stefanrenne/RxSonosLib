@@ -2,7 +2,7 @@
 //  StringRegexTest.swift
 //  RxSonosLibTests
 //
-//  Created by info@stefanrenne.nl on 17/11/16.
+//  Created by Stefan Renne on 27/03/2018.
 //  Copyright © 2018 Uberweb. All rights reserved.
 //
 

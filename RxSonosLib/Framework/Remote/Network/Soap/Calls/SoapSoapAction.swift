@@ -15,7 +15,7 @@ enum SoapSoapAction {
 //    case Play, Pause, Stop, Previous, Next
 //    case ChangeTrack(number: Int), SeekTime(time: String)
 //    case RemoveTrackFromQueue(number: Int), RemoveAllTracksFromQueue, AddTrackToQueueEnd(uri: String), AddTrackToQueuePlayNext(uri: String), SetQueue(uri: String), SetAVTransportURI(uri: String), BecomeCoordinatorOfStandaloneGroup
-//    case NowPlaying, TransportInfo, MediaInfo
+    case NowPlaying, TransportInfo, MediaInfo
     
     /* Music */
 //    case ListAvailableServices, GetSessionId(Int, String)
@@ -39,8 +39,10 @@ enum SoapSoapAction {
     
     var service: SonosSoapService {
         switch self {
-//    case .Play, .Pause, .Stop, .Previous, .Next, .ChangeTrack, .SeekTime, .AddTrackToQueueEnd, .AddTrackToQueuePlayNext, .RemoveTrackFromQueue, .NowPlaying, .TransportInfo, .MediaInfo, .RemoveAllTracksFromQueue, .SetQueue, .SetAVTransportURI, .BecomeCoordinatorOfStandaloneGroup:
-//            return .Transport
+//
+        case .NowPlaying, .TransportInfo, .MediaInfo:
+//        case .Play, .Pause, .Stop, .Previous, .Next, .ChangeTrack, .SeekTime, .AddTrackToQueueEnd, .AddTrackToQueuePlayNext, .RemoveTrackFromQueue, .RemoveAllTracksFromQueue, .SetQueue, .SetAVTransportURI, .BecomeCoordinatorOfStandaloneGroup:
+            return .Transport
 //        case .ListAvailableServices, .GetSessionId:
 //            return .Music
         case .State/*, .GroupAttributes*/:
@@ -75,12 +77,12 @@ enum SoapSoapAction {
 //            return "AddURIToQueue"
 //        case .RemoveTrackFromQueue:
 //            return "RemoveTrackFromQueue"
-//        case .NowPlaying:
-//            return "GetPositionInfo"
-//        case .TransportInfo:
-//            return "GetTransportInfo"
-//        case .MediaInfo:
-//            return "GetMediaInfo"
+        case .NowPlaying:
+            return "GetPositionInfo"
+        case .TransportInfo:
+            return "GetTransportInfo"
+        case .MediaInfo:
+            return "GetMediaInfo"
 //        case .RemoveAllTracksFromQueue:
 //            return "RemoveAllTracksFromQueue"
 //        case .SetQueue:
@@ -118,9 +120,9 @@ enum SoapSoapAction {
     
     var arguments: String? {
         switch self {
-        /*case .NowPlaying, .TransportInfo, .MediaInfo, .RemoveAllTracksFromQueue, .GetVolume, .GetMute, .BecomeCoordinatorOfStandaloneGroup:
+        case .NowPlaying, .TransportInfo, .MediaInfo/*, .RemoveAllTracksFromQueue, .GetVolume, .GetMute, .BecomeCoordinatorOfStandaloneGroup*/:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel>"
-        case .Play, .Pause, .Previous, .Next, .Stop:
+        /*case .Play, .Pause, .Previous, .Next, .Stop:
             return "<InstanceID>0</InstanceID><Speed>1</Speed>"
         case .ChangeTrack(let number):
             return "<InstanceID>0</InstanceID><Unit>TRACK_NR</Unit><Target>\(number)</Target>"

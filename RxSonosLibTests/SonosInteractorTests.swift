@@ -15,4 +15,8 @@ class SonosInteractorTests: XCTestCase {
         XCTAssertTrue(type(of: SonosInteractor.provideGroupsInteractor()) == GetGroupsInteractor.self)
     }
     
+    func testItCanProvideNowPlayingInteractor() {
+        XCTAssertTrue(type(of: SonosInteractor.provideNowPlayingInteractor()) == GetNowPlayingInteractor.self)
+    }
+    
 }
