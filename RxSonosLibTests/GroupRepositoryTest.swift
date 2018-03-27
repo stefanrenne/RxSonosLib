@@ -25,19 +25,21 @@ class GroupRepositoryTest: XCTestCase {
     
     func testItCanGetGroups() {
         
-        var response = "<ZoneGroups>"
-            response += "<ZoneGroup Coordinator=\"RINCON_000001\" ID=\"RINCON_000001:314\">"
-                response += "<ZoneGroupMember UUID=\"RINCON_000006\"/>"
-                response += "<ZoneGroupMember UUID=\"RINCON_000007\" Invisible=\"1\"/>"
-                response += "<ZoneGroupMember UUID=\"RINCON_000005\"/>"
-                response += "<ZoneGroupMember UUID=\"RINCON_000001\">"
-                    response += "<Satellite UUID=\"RINCON_000002\" Invisible=\"1\"/>"
-                    response += "<Satellite UUID=\"RINCON_000003\" Invisible=\"1\"/>"
-                    response += "<Satellite UUID=\"RINCON_000004\"/>"
-                response += "</ZoneGroupMember>"
-                response += "<ZoneGroupMember UUID=\"RINCON_000008\"/>"
-            response += "</ZoneGroup>"
-        response += "</ZoneGroups>"
+        var response = "<ZoneGroupState>"
+            response += "<ZoneGroups>".encodeString()
+                response += "<ZoneGroup Coordinator=\"RINCON_000001\" ID=\"RINCON_000001:314\">".encodeString()
+                    response += "<ZoneGroupMember UUID=\"RINCON_000006\"/>".encodeString()
+                    response += "<ZoneGroupMember UUID=\"RINCON_000007\" Invisible=\"1\"/>".encodeString()
+                    response += "<ZoneGroupMember UUID=\"RINCON_000005\"/>".encodeString()
+                    response += "<ZoneGroupMember UUID=\"RINCON_000001\">".encodeString()
+                        response += "<Satellite UUID=\"RINCON_000002\" Invisible=\"1\"/>".encodeString()
+                        response += "<Satellite UUID=\"RINCON_000003\" Invisible=\"1\"/>".encodeString()
+                        response += "<Satellite UUID=\"RINCON_000004\"/>".encodeString()
+                    response += "</ZoneGroupMember>".encodeString()
+                    response += "<ZoneGroupMember UUID=\"RINCON_000008\"/>".encodeString()
+                response += "</ZoneGroup>".encodeString()
+            response += "</ZoneGroups>".encodeString()
+        response += "</ZoneGroupState>"
         stub(soap(call: .State), soapXml(response))
         
         let groups = try! groupRepository
@@ -56,19 +58,21 @@ class GroupRepositoryTest: XCTestCase {
     
     func testItCanNotPerformTheRequestWhenThereAreNoRooms() {
         
-        var response = "<ZoneGroups>"
-            response += "<ZoneGroup Coordinator=\"RINCON_000001\" ID=\"RINCON_000001:314\">"
-                response += "<ZoneGroupMember UUID=\"RINCON_000006\"/>"
-                response += "<ZoneGroupMember UUID=\"RINCON_000007\" Invisible=\"1\"/>"
-                response += "<ZoneGroupMember UUID=\"RINCON_000005\"/>"
-                response += "<ZoneGroupMember UUID=\"RINCON_000001\">"
-                    response += "<Satellite UUID=\"RINCON_000002\" Invisible=\"1\"/>"
-                    response += "<Satellite UUID=\"RINCON_000003\" Invisible=\"1\"/>"
-                    response += "<Satellite UUID=\"RINCON_000004\" Invisible=\"1\"/>"
-                response += "</ZoneGroupMember>"
-                response += "<ZoneGroupMember UUID=\"RINCON_000008\"/>"
-            response += "</ZoneGroup>"
-        response += "</ZoneGroups>"
+        var response = "<ZoneGroupState>"
+            response += "<ZoneGroups>".encodeString()
+                response += "<ZoneGroup Coordinator=\"RINCON_000001\" ID=\"RINCON_000001:314\">".encodeString()
+                    response += "<ZoneGroupMember UUID=\"RINCON_000006\"/>".encodeString()
+                    response += "<ZoneGroupMember UUID=\"RINCON_000007\" Invisible=\"1\"/>".encodeString()
+                    response += "<ZoneGroupMember UUID=\"RINCON_000005\"/>".encodeString()
+                    response += "<ZoneGroupMember UUID=\"RINCON_000001\">".encodeString()
+                        response += "<Satellite UUID=\"RINCON_000002\" Invisible=\"1\"/>".encodeString()
+                        response += "<Satellite UUID=\"RINCON_000003\" Invisible=\"1\"/>".encodeString()
+                        response += "<Satellite UUID=\"RINCON_000004\" Invisible=\"1\"/>".encodeString()
+                    response += "</ZoneGroupMember>".encodeString()
+                    response += "<ZoneGroupMember UUID=\"RINCON_000008\"/>".encodeString()
+                response += "</ZoneGroup>".encodeString()
+            response += "</ZoneGroups>".encodeString()
+        response += "</ZoneGroupState>"
         stub(soap(call: .State), soapXml(response))
         
         let groups = try! groupRepository

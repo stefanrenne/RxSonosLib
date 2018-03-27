@@ -31,9 +31,7 @@ public func soapXml(_ response: String, status: Int = 200, headers: [String:Stri
         var content = "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\" s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">"
         content += "<s:Body>"
         content += "<u:\(action)Response xmlns:u=\"\(scheme)\">"
-        content += "<" + action.replacingOccurrences(of: "Get", with: "") + ">"
-        content += response.replacingOccurrences(of: "<", with: "&lt;").replacingOccurrences(of: ">", with: "&gt;").replacingOccurrences(of: "\"", with: "&quot;")
-        content += "</" + action.replacingOccurrences(of: "Get", with: "") + ">"
+        content += response
         content += "</u:\(action)Response>"
         content += "</s:Body>"
         content += "</s:Envelope>"
@@ -47,5 +45,11 @@ public func xml(_ response: String, status: Int = 200, headers: [String:String] 
     return { (request: URLRequest) in
         let xml = ("<?xml version=\"1.0\" encoding=\"UTF-8\"?><root xmlns=\"urn:schemas-upnp-org:device-1-0\">" + response + "</root>")
         return http(status, headers: headers, download: .content(xml.data(using: .utf8)!))(request)
+    }
+}
+
+extension String {
+    func encodeString() -> String {
+        return self.replacingOccurrences(of: "<", with: "&lt;").replacingOccurrences(of: ">", with: "&gt;").replacingOccurrences(of: "\"", with: "&quot;")
     }
 }
