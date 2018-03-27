@@ -14,13 +14,13 @@ extension String {
         
         var seconds = Int(components[components.count-1]) ?? 0
         
-        if components.count - 2 >= 0 {
-            let minutes = Int(components[components.count - 2]) ?? 0
+        if components.count - 2 >= 0,
+            let minutes = Int(components[components.count - 2]) {
             seconds += (minutes * 60)
         }
         
-        if components.count - 3 >= 0 {
-            let hours = Int(components[components.count - 3]) ?? 0
+        if components.count - 3 >= 0,
+            let hours = Int(components[components.count - 3]) {
             seconds += (hours * 60 * 60)
         }
         

@@ -30,14 +30,14 @@ open class Track {
     public let queueItem: Int
     
     /**
-     * Current track playing time, example: 0:01:30
+     * Current track playing time in seconds, example: 90 for 0:01:30
      */
-    public var time: String
+    public var time: Int
     
     /**
-     * Track duration time, example: 0:04:24
+     * Track duration time in seconds, example: 264 for 0:04:24
      */
-    public let duration: String
+    public let duration: Int
     
     /**
      * track url
@@ -64,7 +64,7 @@ open class Track {
      */
     public let imageUri: URL?
     
-    internal init(service: MusicService, queueItem: Int, state: TransportState = .StoppedStream, time: String = "0:00:00", duration: String = "0:00:00", uri: String, imageUri: URL? = nil, title: String, artist: String? = nil, album: String? = nil) {
+    internal init(service: MusicService, queueItem: Int, state: TransportState = .StoppedStream, time: Int = 0, duration: Int = 0, uri: String, imageUri: URL? = nil, title: String, artist: String? = nil, album: String? = nil) {
         self.service = service
         self.queueItem = queueItem
         self.state = state
@@ -94,8 +94,8 @@ extension Track {
         let trackMeta = nowPlaying["TrackMetaData"]?.mapMetaItem()
         let state = TransportState.map(string: transportInfo["CurrentTransportState"], for: .Spotify)
         
-        guard let time = nowPlaying["RelTime"],
-            let duration = nowPlaying["TrackDuration"],
+        guard let time = nowPlaying["RelTime"]?.timeToSeconds(),
+            let duration = nowPlaying["TrackDuration"]?.timeToSeconds(),
             let queueItemString = nowPlaying["Track"],
             let queueItem = Int(queueItemString),
             let uri = nowPlaying["TrackURI"],
