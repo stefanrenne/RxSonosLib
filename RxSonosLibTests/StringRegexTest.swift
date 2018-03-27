@@ -45,6 +45,28 @@ class StringRegexTest: XCTestCase {
         XCTAssertNil(ip)
     }
     
+    /* Music Services */
+    func testItCanGetAnDefaultMusicServiceForUnknownUrls() {
+        let url = "unknown"
+        XCTAssertEqual(url.musicServiceFromUrl(), MusicService.Unknown)
+    }
+    
+    func testItCanGetTheMusicServiceSpotifyFromAnUrl() {
+        let url = "x-sonos-spotify:spotify%3atrack%3a5HR4CYT5nPpFy8m9wJQgrr?sid=9&flags=0&sn=6"
+        XCTAssertEqual(url.musicServiceFromUrl(), MusicService.Spotify)
+    }
+    func testItCanGetTheMusicServiceTuneInFromAnUrl() {
+        let url1 = "x-rincon-mp3radio://vip-icecast.538.lw.triple-it.nl/RADIO538_MP3"
+        XCTAssertEqual(url1.musicServiceFromUrl(), MusicService.TuneIn)
+        
+        let url2 = "aac://http://19143.live.streamtheworld.com:80/SKYRADIOAAC_SC?TGT=TuneIn&DIST=TuneIn"
+        XCTAssertEqual(url2.musicServiceFromUrl(), MusicService.TuneIn)
+    }
+    func testItCanDetectTVFromAnUrl() {
+        let url = "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif"
+        XCTAssertEqual(url.musicServiceFromUrl(), MusicService.TV)
+    }
+    
     /* Namespace replace */
     func testItCanCleanupXmlStrings() {
         let str1 = "<GetHouseholdIDResponse param1=\"1\"param2=\"2\"param3=\"3\"><CurrentHouseholdID>SONOSID</CurrentHouseholdID></GetHouseholdIDResponse>"
