@@ -15,8 +15,14 @@ class GroupViewModel {
     fileprivate let group: Group
     init(group: Group) {
         self.group = group
+        self.nowPlayingInteractor = SonosInteractor.provideNowPlayingInteractor()
+            .get(values: GetNowPlayingValues(group: group))
     }
     
     var name: Variable<String> { return group.name }
     
+    lazy var nowPlayingInteractor: Observable<Track?> = {
+        return SonosInteractor.provideNowPlayingInteractor()
+        .get(values: GetNowPlayingValues(group: group))
+    }()
 }

@@ -11,7 +11,11 @@ import RxSwift
 import RxCocoa
 
 class GroupsTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet var groupTitleLabel: UILabel!
+    @IBOutlet var groupImageView: UIImageView!
+    @IBOutlet var groupDescriptionLabel: UILabel!
+    
     static let identifier = "cell"
     var disposeBag = DisposeBag()
     var model: GroupViewModel? {
@@ -26,12 +30,47 @@ class GroupsTableViewCell: UITableViewCell {
     }
     
     fileprivate func bindObservables() {
-        guard let model = self.model, let textLabel = self.textLabel else { return }
+        
+        self.resetTitle()
+        self.resetTrack()
+        
+        guard let model = self.model else { return }
         
         model.name
             .asObservable()
-            .bind(to: textLabel.rx.text)
+            .bind(to: groupTitleLabel.rx.text)
             .disposed(by: self.disposeBag)
+        
+        model.nowPlayingInteractor.subscribe(onNext: { [weak self] (track) in
+            guard let track = track else {
+                self?.resetTrack()
+                return
+            }
+            self?.bind(track: TrackViewModel(track: track))
+            
+        }, onError: { [weak self] (error) in
+            print(error.localizedDescription)
+            self?.resetTrack()
+        })
+        .disposed(by: self.disposeBag)
+    }
+    
+    fileprivate func bind(track: TrackViewModel) {
+        self.groupDescriptionLabel.text = track.description
+        self.groupImageView.image = nil
+        
+        track.image
+            .bind(to: groupImageView.rx.image)
+            .disposed(by: self.disposeBag)
+    }
+    
+    fileprivate func resetTitle() {
+        self.groupTitleLabel.text = nil
+    }
+    
+    fileprivate func resetTrack() {
+        self.groupDescriptionLabel.text = "-"
+        self.groupImageView.image = nil
     }
     
 }

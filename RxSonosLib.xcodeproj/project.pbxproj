@@ -67,6 +67,7 @@
 		F81A062E206034FF00897738 /* RepositoryInjectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81A062D206034FF00897738 /* RepositoryInjectionTest.swift */; };
 		F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */; };
 		F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAE20616239004DB497 /* SonosInteractorTests.swift */; };
+		F851ACD9206A63E8006FA0DC /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F851ACD8206A63E8006FA0DC /* TrackViewModel.swift */; };
 		F8726787206A3F3B00093FF1 /* TransportState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8726786206A3F3B00093FF1 /* TransportState.swift */; };
 		F8726789206A463B00093FF1 /* papa-roach-the-connection.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F8726788206A463B00093FF1 /* papa-roach-the-connection.jpg */; };
 		F872678C206A47F700093FF1 /* FakeTransportRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872678A206A47D800093FF1 /* FakeTransportRepositoryImpl.swift */; };
@@ -170,6 +171,7 @@
 		F825F4AF20482DDE006A7B73 /* GroupsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupsViewController.xib; sourceTree = "<group>"; };
 		F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupsInteractorTests.swift; sourceTree = "<group>"; };
 		F827DAAE20616239004DB497 /* SonosInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosInteractorTests.swift; sourceTree = "<group>"; };
+		F851ACD8206A63E8006FA0DC /* TrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModel.swift; sourceTree = "<group>"; };
 		F8694B1E205BC8670027EBCF /* SonosInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosInteractor.swift; sourceTree = "<group>"; };
 		F8726786206A3F3B00093FF1 /* TransportState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportState.swift; sourceTree = "<group>"; };
 		F8726788206A463B00093FF1 /* papa-roach-the-connection.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "papa-roach-the-connection.jpg"; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 				F881C5822049CA1000E3F523 /* GroupViewModel.swift */,
 				F881C5842049CCDC00E3F523 /* GroupsTableViewCell.swift */,
 				F881C5852049CCDC00E3F523 /* GroupsTableViewCell.xib */,
+				F851ACD8206A63E8006FA0DC /* TrackViewModel.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -935,6 +938,7 @@
 				F81A05BF2060284A00897738 /* AppDelegate.swift in Sources */,
 				F81A05CF2060284A00897738 /* NavigationController.swift in Sources */,
 				F81A05C32060284A00897738 /* GroupCoordinator.swift in Sources */,
+				F851ACD9206A63E8006FA0DC /* TrackViewModel.swift in Sources */,
 				F81A05C22060284A00897738 /* GroupsCoordinator.swift in Sources */,
 				F81A05C12060284A00897738 /* NavigationCoordinator.swift in Sources */,
 				F81A05CD2060284A00897738 /* GroupsTableViewCell.swift in Sources */,

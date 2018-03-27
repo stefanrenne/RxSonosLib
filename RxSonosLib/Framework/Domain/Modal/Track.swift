@@ -27,7 +27,7 @@ open class Track {
     /**
      * Number item in the queue
      */
-    public var queueItem: Int
+    public let queueItem: Int
     
     /**
      * Current track playing time, example: 0:01:30
@@ -52,18 +52,17 @@ open class Track {
     /**
      * track artist (optional)
      */
-    public var artist: String?
+    public let artist: String?
     
     /**
      * track album (optional)
      */
-    public var album: String?
+    public let album: String?
     
     /**
      * image url (optional)
      */
-    internal var imageUri: URL?
-    
+    public let imageUri: URL?
     
     internal init(service: MusicService, queueItem: Int, state: TransportState = .StoppedStream, time: String = "0:00:00", duration: String = "0:00:00", uri: String, imageUri: URL? = nil, title: String, artist: String? = nil, album: String? = nil) {
         self.service = service

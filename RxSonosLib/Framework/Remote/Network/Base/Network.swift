@@ -75,9 +75,6 @@ class Network {
             }
             
             if cachedData == nil || data.hexString != cachedData!.hexString {
-                
-                print(String(data: data, encoding: .utf8)!)
-                
                 observer.onNext(data)
                 CacheManager.shared.set(data, for: self.cacheKey)
             }
