@@ -79,6 +79,12 @@ open class Track {
     
 }
 
+extension Track: Equatable {
+    public static func ==(lhs: Track, rhs: Track) -> Bool {
+        return lhs.uri == rhs.uri && lhs.state == rhs.state
+    }
+}
+
 extension Track {
     class func map(room: URL, nowPlaying: [String: String], transportInfo: [String: String], mediaInfo: [String: String]) -> Track? {
         

@@ -32,7 +32,15 @@ open class GetNowPlayingInteractor: BaseInteractor<GetNowPlayingValues, Track?> 
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
         
-        return transportRepository
-            .getNowPlaying(for: masterRoom)
+        return createTimer(5)
+            .flatMap(self.mapToTrack(for: masterRoom))
+            .distinctUntilChanged({ $0 == $1 })
+    }
+    
+    fileprivate func mapToTrack(for masterRoom: Room) -> (() -> Observable<Track?>) {
+        return {
+            return self.transportRepository
+                .getNowPlaying(for: masterRoom)
+        }
     }
 }
