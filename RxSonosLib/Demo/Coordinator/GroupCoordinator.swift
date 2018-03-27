@@ -24,7 +24,7 @@ class GroupCoordinator {
     
     func setup() -> UIViewController {
         let viewController = GroupViewController()
-        viewController.group = self.group
+        viewController.model = GroupViewModel(group: self.group)
         viewController.router = self
         return viewController
     }
