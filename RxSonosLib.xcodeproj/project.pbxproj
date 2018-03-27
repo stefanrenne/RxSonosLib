@@ -68,6 +68,8 @@
 		F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */; };
 		F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAE20616239004DB497 /* SonosInteractorTests.swift */; };
 		F851ACD9206A63E8006FA0DC /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F851ACD8206A63E8006FA0DC /* TrackViewModel.swift */; };
+		F86B3440206A8EB900979A5F /* String+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B343F206A8EB900979A5F /* String+Time.swift */; };
+		F86B3442206A91DC00979A5F /* TimeConvertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B3441206A91DC00979A5F /* TimeConvertTests.swift */; };
 		F8726787206A3F3B00093FF1 /* TransportState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8726786206A3F3B00093FF1 /* TransportState.swift */; };
 		F8726789206A463B00093FF1 /* papa-roach-the-connection.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F8726788206A463B00093FF1 /* papa-roach-the-connection.jpg */; };
 		F872678C206A47F700093FF1 /* FakeTransportRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872678A206A47D800093FF1 /* FakeTransportRepositoryImpl.swift */; };
@@ -173,6 +175,8 @@
 		F827DAAE20616239004DB497 /* SonosInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosInteractorTests.swift; sourceTree = "<group>"; };
 		F851ACD8206A63E8006FA0DC /* TrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModel.swift; sourceTree = "<group>"; };
 		F8694B1E205BC8670027EBCF /* SonosInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosInteractor.swift; sourceTree = "<group>"; };
+		F86B343F206A8EB900979A5F /* String+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Time.swift"; sourceTree = "<group>"; };
+		F86B3441206A91DC00979A5F /* TimeConvertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConvertTests.swift; sourceTree = "<group>"; };
 		F8726786206A3F3B00093FF1 /* TransportState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportState.swift; sourceTree = "<group>"; };
 		F8726788206A463B00093FF1 /* papa-roach-the-connection.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "papa-roach-the-connection.jpg"; sourceTree = "<group>"; };
 		F872678A206A47D800093FF1 /* FakeTransportRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeTransportRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -272,6 +276,7 @@
 				F809DE7D2048408A003A94A0 /* Error+RxSonosLib.swift */,
 				F8BF5C522056DF9E00AE311E /* Data+Convert.swift */,
 				F8BF5C542056E37100AE311E /* AEXMLDocument+Create.swift */,
+				F86B343F206A8EB900979A5F /* String+Time.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -595,6 +600,7 @@
 				F8979946206944A6000CF52A /* GroupTests.swift */,
 				F800343E206967F000D7C0FB /* TransportRepositoryTest.swift */,
 				F872678D206A48D300093FF1 /* GetNowPlayingInteractorTests.swift */,
+				F86B3441206A91DC00979A5F /* TimeConvertTests.swift */,
 			);
 			path = RxSonosLibTests;
 			sourceTree = "<group>";
@@ -950,6 +956,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F81A05EA206028D600897738 /* FakeSSDPRepositoryImpl.swift in Sources */,
+				F86B3440206A8EB900979A5F /* String+Time.swift in Sources */,
 				F81A05ED206028D600897738 /* SSDPDevice.swift in Sources */,
 				F81A05E8206028D600897738 /* AEXMLDocument+Create.swift in Sources */,
 				F81A05F7206028D600897738 /* RepositoryInjection.swift in Sources */,
@@ -1001,6 +1008,7 @@
 				F8B0057320612BB900991E64 /* StringRegexTest.swift in Sources */,
 				F897994520693D95000CF52A /* MockNetwork.swift in Sources */,
 				F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */,
+				F86B3442206A91DC00979A5F /* TimeConvertTests.swift in Sources */,
 				F8726794206A4CE500093FF1 /* MusicServiceTests.swift in Sources */,
 				F81A062820602D7C00897738 /* RoomRepositoryTest.swift in Sources */,
 				F81A062A20602DA500897738 /* Mockingjay+Soap.swift in Sources */,
