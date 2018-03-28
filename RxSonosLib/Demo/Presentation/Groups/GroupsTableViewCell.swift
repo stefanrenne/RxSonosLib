@@ -42,22 +42,15 @@ class GroupsTableViewCell: UITableViewCell {
             .disposed(by: self.disposeBag)
         
         model.nowPlayingInteractor.subscribe(onNext: { [weak self] (track) in
-            guard let track = track else {
-                self?.resetTrack()
-                return
-            }
             self?.bind(track: TrackViewModel(track: track))
-            
-        }, onError: { [weak self] (error) in
+        }, onError: { (error) in
             print(error.localizedDescription)
-            self?.resetTrack()
         })
         .disposed(by: self.disposeBag)
     }
     
     fileprivate func bind(track: TrackViewModel) {
         self.groupDescriptionLabel.text = track.description
-        self.groupImageView.image = nil
         
         track.image
             .bind(to: groupImageView.rx.image)

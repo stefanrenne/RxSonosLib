@@ -21,7 +21,7 @@ class GroupViewModel {
     
     var name: Variable<String> { return group.name }
     
-    lazy var nowPlayingInteractor: Observable<Track?> = {
+    lazy var nowPlayingInteractor: Observable<Track> = {
         return SonosInteractor.provideNowPlayingInteractor()
         .get(values: GetNowPlayingValues(group: group))
     }()

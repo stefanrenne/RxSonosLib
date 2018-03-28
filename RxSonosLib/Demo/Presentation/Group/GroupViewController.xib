@@ -15,6 +15,9 @@
             <connections>
                 <outlet property="groupDescription" destination="2Av-ad-fuq" id="i4U-hj-Anh"/>
                 <outlet property="groupImageView" destination="yqQ-49-ufp" id="L31-dU-6n0"/>
+                <outlet property="progressTime" destination="rdG-bp-ml4" id="kiS-XQ-0WW"/>
+                <outlet property="progressView" destination="HOF-gU-ugu" id="WNf-0I-9lL"/>
+                <outlet property="remainingTime" destination="oHU-J0-iCP" id="gdc-wW-Kzt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -50,18 +53,47 @@
                     </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdG-bp-ml4">
+                    <rect key="frame" x="20" y="120" width="68" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="68" id="c4r-Nf-NSe"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHU-J0-iCP">
+                    <rect key="frame" x="287" y="120" width="68" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="68" id="TGE-xU-ZiX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HOF-gU-ugu">
+                    <rect key="frame" x="96" y="128" width="171" height="2"/>
+                </progressView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="rdG-bp-ml4" firstAttribute="top" secondItem="yqQ-49-ufp" secondAttribute="bottom" constant="20" id="5Jm-Jw-Tab"/>
+                <constraint firstItem="HOF-gU-ugu" firstAttribute="centerY" secondItem="rdG-bp-ml4" secondAttribute="centerY" id="7X6-WB-fsS"/>
                 <constraint firstItem="2Av-ad-fuq" firstAttribute="top" secondItem="yqQ-49-ufp" secondAttribute="top" id="Eyw-ae-lSg"/>
                 <constraint firstItem="yqQ-49-ufp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="GD9-4N-B5Z"/>
                 <constraint firstItem="2Av-ad-fuq" firstAttribute="bottom" secondItem="yqQ-49-ufp" secondAttribute="bottom" id="HIT-iD-Qhs"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oHU-J0-iCP" secondAttribute="trailing" constant="20" id="Ka3-A4-ERE"/>
+                <constraint firstItem="rdG-bp-ml4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Kpi-Vo-dNS"/>
+                <constraint firstItem="oHU-J0-iCP" firstAttribute="top" secondItem="2Av-ad-fuq" secondAttribute="bottom" constant="20" id="KvT-Yx-aAI"/>
                 <constraint firstItem="yqQ-49-ufp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="XWk-rf-bI1"/>
+                <constraint firstItem="HOF-gU-ugu" firstAttribute="leading" secondItem="rdG-bp-ml4" secondAttribute="trailing" constant="8" symbolic="YES" id="csG-Tj-1gq"/>
                 <constraint firstItem="yqQ-49-ufp" firstAttribute="width" secondItem="yqQ-49-ufp" secondAttribute="height" multiplier="1:1" id="o1X-zL-63z"/>
                 <constraint firstItem="2Av-ad-fuq" firstAttribute="leading" secondItem="yqQ-49-ufp" secondAttribute="trailing" constant="20" id="sZj-7a-gS1"/>
+                <constraint firstItem="oHU-J0-iCP" firstAttribute="leading" secondItem="HOF-gU-ugu" secondAttribute="trailing" constant="20" id="wuk-V4-n0e"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2Av-ad-fuq" secondAttribute="trailing" constant="20" id="zW8-gs-t2R"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
 </document>

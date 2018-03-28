@@ -17,8 +17,12 @@ class GroupViewController: UIViewController {
     
     @IBOutlet var groupImageView: UIImageView!
     @IBOutlet var groupDescription: UILabel!
+    @IBOutlet var progressView: UIProgressView!
+    @IBOutlet var progressTime: UILabel!
+    @IBOutlet var remainingTime: UILabel!
     
-    private let disposeBag = DisposeBag()
+    private let generalDisposeBag = DisposeBag()
+    private var trackDisposeBag = DisposeBag()
     private let getNowPlayingInteractor: GetNowPlayingInteractor = SonosInteractor.provideNowPlayingInteractor()
     internal var router: GroupRouter?
     
@@ -32,36 +36,49 @@ class GroupViewController: UIViewController {
         model.name
             .asObservable()
             .bind(to: self.navigationItem.rx.title)
-            .disposed(by: self.disposeBag)
+            .disposed(by: self.generalDisposeBag)
     }
     
     fileprivate func setupNowPlaying() {
+        self.resetTrack()
         
         model.nowPlayingInteractor.subscribe(onNext: { [weak self] (track) in
-            guard let track = track else {
-                self?.resetTrack()
-                return
-            }
             self?.bind(track: TrackViewModel(track: track))
-            
-            }, onError: { [weak self] (error) in
+            }, onError: { (error) in
                 print(error.localizedDescription)
-                self?.resetTrack()
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: self.generalDisposeBag)
     }
     
     fileprivate func bind(track: TrackViewModel) {
+        self.trackDisposeBag = DisposeBag()
         self.groupDescription.text = track.description
-        self.groupImageView.image = nil
+        
+        track
+            .progressTime
+            .bind(to: progressTime.rx.text)
+            .disposed(by: trackDisposeBag)
+        
+        track
+            .remainingTime
+            .bind(to: remainingTime.rx.text)
+            .disposed(by: trackDisposeBag)
+        
+        track
+            .trackProgress
+            .bind(to: progressView.rx.progress)
+            .disposed(by: trackDisposeBag)
         
         track.image
             .bind(to: groupImageView.rx.image)
-            .disposed(by: self.disposeBag)
+            .disposed(by: trackDisposeBag)
     }
     
     fileprivate func resetTrack() {
         self.groupDescription.text = "-"
+        self.progressTime.text = nil
+        self.remainingTime.text = nil
+        self.progressView.progress = 0
         self.groupImageView.image = nil
     }
 
