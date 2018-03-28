@@ -19,9 +19,9 @@ class TransportRepositoryTest: XCTestCase {
     
     func testItCantGetTheNowPlayingTrack() {
         
-        stub(soap(call: .TransportInfo), soapXml(""))
-        stub(soap(call: .MediaInfo), soapXml(""))
-        stub(soap(call: .NowPlaying), soapXml(""))
+        stub(soap(call: .transportInfo), soapXml(""))
+        stub(soap(call: .mediaInfo), soapXml(""))
+        stub(soap(call: .nowPlaying), soapXml(""))
         
         XCTAssertThrowsError(try transportRepository.getNowPlaying(for: randomRoom()).toBlocking().toArray()) { error in
             XCTAssertEqual(error.localizedDescription, NSError.sonosLibNoDataError().localizedDescription)
@@ -30,16 +30,16 @@ class TransportRepositoryTest: XCTestCase {
     
     func testItCanGetTheNowPlayingTrack() {
         
-        stub(soap(call: .TransportInfo), soapXml(getTransportInfoResponse()))
-        stub(soap(call: .MediaInfo), soapXml(getMediaInfoResponse()))
-        stub(soap(call: .NowPlaying), soapXml(getPositionInfoResponse()))
+        stub(soap(call: .transportInfo), soapXml(getTransportInfoResponse()))
+        stub(soap(call: .mediaInfo), soapXml(getMediaInfoResponse()))
+        stub(soap(call: .nowPlaying), soapXml(getPositionInfoResponse()))
         
         let track = try! transportRepository
             .getNowPlaying(for: randomRoom())
             .toBlocking()
             .first()!
         
-        XCTAssertEqual(track.service, .Spotify)
+        XCTAssertEqual(track.service, .spotify)
         XCTAssertEqual(track.queueItem, 7)
         XCTAssertEqual(track.time.value, 149)
         XCTAssertEqual(track.duration, 265)

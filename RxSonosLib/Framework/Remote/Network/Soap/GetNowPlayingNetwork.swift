@@ -12,7 +12,7 @@ import RxSwift
 class GetNowPlayingNetwork: SoapNetwork {
     
     init(room: Room) {
-        super.init(room: room, action: .NowPlaying)
+        super.init(room: room, action: .nowPlaying)
     }
     
 }

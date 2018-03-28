@@ -12,148 +12,148 @@ enum SoapSoapAction {
     
     
     /* Transport */
-//    case Play, Pause, Stop, Previous, Next
-//    case ChangeTrack(number: Int), SeekTime(time: String)
-//    case RemoveTrackFromQueue(number: Int), RemoveAllTracksFromQueue, AddTrackToQueueEnd(uri: String), AddTrackToQueuePlayNext(uri: String), SetQueue(uri: String), SetAVTransportURI(uri: String), BecomeCoordinatorOfStandaloneGroup
-    case NowPlaying, TransportInfo, MediaInfo
+//    case play, pause, stop, previous, next
+//    case changeTrack(number: Int), seekTime(time: String)
+//    case removeTrackFromQueue(number: Int), removeAllTracksFromQueue, addTrackToQueueEnd(uri: String), addTrackToQueuePlayNext(uri: String), setQueue(uri: String), setAVTransportURI(uri: String), becomeCoordinatorOfStandaloneGroup
+    case nowPlaying, transportInfo, mediaInfo
     
     /* Music */
-//    case ListAvailableServices, GetSessionId(Int, String)
+//    case listAvailableServices, getSessionId(Int, String)
     
     /* Group */
-    case State
-//    case GroupAttributes
+    case state
+//    case groupAttributes
     
     /* ContentDirectory */
-//    case Browse(filter: String, start: Int, count: Int, sort: String), Favorites, LocalFiles
+//    case browse(filter: String, start: Int, count: Int, sort: String), favorites, localFiles
     
     /* RenderingControl */
-//    case GetVolume, SetVolume(_: Int), GetMute, EnableMute, DisableMute
+//    case getVolume, setVolume(_: Int), getMute, enableMute, disableMute
     
     /* DeviceProperties */
-//    case GetHouseholdID, GetZoneInfo
+//    case getHouseholdID, getZoneInfo
     
     /* SystemProperties */
-//    case GetCustomerID, GetRoomSerial
+//    case getCustomerID, getRoomSerial
     
     
     var service: SonosSoapService {
         switch self {
 //
-        case .NowPlaying, .TransportInfo, .MediaInfo:
-//        case .Play, .Pause, .Stop, .Previous, .Next, .ChangeTrack, .SeekTime, .AddTrackToQueueEnd, .AddTrackToQueuePlayNext, .RemoveTrackFromQueue, .RemoveAllTracksFromQueue, .SetQueue, .SetAVTransportURI, .BecomeCoordinatorOfStandaloneGroup:
-            return .Transport
-//        case .ListAvailableServices, .GetSessionId:
-//            return .Music
-        case .State/*, .GroupAttributes*/:
-            return .Group
-//        case .Browse, .Favorites, .LocalFiles:
-//            return .ContentDirectory
-//        case .GetVolume, .SetVolume, .GetMute, .EnableMute, .DisableMute:
-//            return .RenderingControl
-//        case .GetHouseholdID, .GetZoneInfo:
-//            return .DeviceProperties
-//        case .GetCustomerID, .GetRoomSerial:
-//            return .SystemProperties
+        case .nowPlaying, .transportInfo, .mediaInfo:
+//        case .play, .pause, .stop, .previous, .next, .changeTrack, .seekTime, .addTrackToQueueEnd, .addTrackToQueuePlayNext, .removeTrackFromQueue, .removeAllTracksFromQueue, .setQueue, .setAVTransportURI, .becomeCoordinatorOfStandaloneGroup:
+            return .transport
+//        case .listAvailableServices, .getSessionId:
+//            return .music
+        case .state/*, .groupAttributes*/:
+            return .group
+//        case .browse, .favorites, .localFiles:
+//            return .contentDirectory
+//        case .getVolume, .setVolume, .getMute, .enableMute, .disableMute:
+//            return .renderingControl
+//        case .getHouseholdID, .getZoneInfo:
+//            return .deviceProperties
+//        case .getCustomerID, .getRoomSerial:
+//            return .systemProperties
         }
         
     }
     
     var action: String {
         switch self {
-//        case .Play:
+//        case .play:
 //            return "Play"
-//        case .Pause:
+//        case .pause:
 //            return "Pause"
-//        case .Stop:
+//        case .stop:
 //            return "Stop"
-//        case .Previous:
+//        case .previous:
 //            return "Previous"
-//        case .Next:
+//        case .next:
 //            return "Next"
-//        case .ChangeTrack, .SeekTime:
+//        case .changeTrack, .seekTime:
 //            return "Seek"
-//        case .AddTrackToQueueEnd, .AddTrackToQueuePlayNext:
+//        case .addTrackToQueueEnd, .addTrackToQueuePlayNext:
 //            return "AddURIToQueue"
-//        case .RemoveTrackFromQueue:
+//        case .removeTrackFromQueue:
 //            return "RemoveTrackFromQueue"
-        case .NowPlaying:
+        case .nowPlaying:
             return "GetPositionInfo"
-        case .TransportInfo:
+        case .transportInfo:
             return "GetTransportInfo"
-        case .MediaInfo:
+        case .mediaInfo:
             return "GetMediaInfo"
-//        case .RemoveAllTracksFromQueue:
+//        case .removeAllTracksFromQueue:
 //            return "RemoveAllTracksFromQueue"
-//        case .SetQueue:
+//        case .setQueue:
 //            return "SetAVTransportURI"
-//        case .SetAVTransportURI:
+//        case .setAVTransportURI:
 //            return "SetAVTransportURI"
-//        case .BecomeCoordinatorOfStandaloneGroup:
+//        case .becomeCoordinatorOfStandaloneGroup:
 //            return "BecomeCoordinatorOfStandaloneGroup"
-//        case .ListAvailableServices:
+//        case .listAvailableServices:
 //            return "ListAvailableServices"
-//        case .GetSessionId:
+//        case .getSessionId:
 //            return "GetSessionId"
-        case .State:
+        case .state:
             return "GetZoneGroupState"
-//        case .GroupAttributes:
+//        case .groupAttributes:
 //            return "GetZoneGroupAttributes"
-//        case .Browse, .Favorites, .LocalFiles:
+//        case .browse, .favorites, .localFiles:
 //            return "Browse"
-//        case .GetVolume:
+//        case .getVolume:
 //            return "GetVolume"
-//        case .SetVolume:
+//        case .setVolume:
 //            return "SetVolume"
-//        case .GetMute:
+//        case .getMute:
 //            return "GetMute"
-//        case .EnableMute, .DisableMute:
+//        case .enableMute, .disableMute:
 //            return "SetMute"
-//        case .GetHouseholdID:
+//        case .getHouseholdID:
 //            return "GetHouseholdID"
-//        case .GetZoneInfo:
+//        case .getZoneInfo:
 //            return "GetZoneInfo"
-//        case .GetCustomerID, .GetRoomSerial:
+//        case .getCustomerID, .getRoomSerial:
 //            return "GetString"
         }
     }
     
     var arguments: String? {
         switch self {
-        case .NowPlaying, .TransportInfo, .MediaInfo/*, .RemoveAllTracksFromQueue, .GetVolume, .GetMute, .BecomeCoordinatorOfStandaloneGroup*/:
+        case .nowPlaying, .transportInfo, .mediaInfo/*, .removeAllTracksFromQueue, .getVolume, .getMute, .becomeCoordinatorOfStandaloneGroup*/:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel>"
-        /*case .Play, .Pause, .Previous, .Next, .Stop:
+        /*case .play, .pause, .previous, .next, .stop:
             return "<InstanceID>0</InstanceID><Speed>1</Speed>"
-        case .ChangeTrack(let number):
+        case .changeTrack(let number):
             return "<InstanceID>0</InstanceID><Unit>TRACK_NR</Unit><Target>\(number)</Target>"
-        case .SeekTime(let time):
+        case .seekTime(let time):
             return "<InstanceID>0</InstanceID><Unit>REL_TIME</Unit><Target>\(time)</Target>"
-        case .RemoveTrackFromQueue(let number):
+        case .removeTrackFromQueue(let number):
             return "<InstanceID>0</InstanceID><ObjectID>Q:0/\(number)</ObjectID>"
-        case .AddTrackToQueueEnd(let uri):
+        case .addTrackToQueueEnd(let uri):
             return "<InstanceID>0</InstanceID><EnqueuedURI>\(uri)</EnqueuedURI><EnqueuedURIMetaData></EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>0</EnqueueAsNext>"
-        case .AddTrackToQueuePlayNext(let uri):
+        case .addTrackToQueuePlayNext(let uri):
             return "<InstanceID>0</InstanceID><EnqueuedURI>\(uri)</EnqueuedURI><EnqueuedURIMetaData></EnqueuedURIMetaData><DesiredFirstTrackNumberEnqueued>0</DesiredFirstTrackNumberEnqueued><EnqueueAsNext>1</EnqueueAsNext>"
-        case .SetQueue(let uri), .SetAVTransportURI(let uri):
+        case .setQueue(let uri), .setAVTransportURI(let uri):
             return "<InstanceID>0</InstanceID><CurrentURI>\(uri)</CurrentURI><CurrentURIMetaData></CurrentURIMetaData>"
-        case .Browse(let filter, let start, let count, let sort):
+        case .browse(let filter, let start, let count, let sort):
             return "<ObjectID>Q:0</ObjectID><BrowseFlag>BrowseDirectChildren</BrowseFlag><Filter>\(filter)</Filter><StartingIndex>\(start)</StartingIndex><RequestedCount>\(count)</RequestedCount><SortCriteria>\(sort)</SortCriteria>"
-        case .Favorites:
+        case .favorites:
             return "<ObjectID>FV:2</ObjectID><BrowseFlag>BrowseDirectChildren</BrowseFlag><Filter>dc:title,res,dc:creator,upnp:artist,upnp:album,upnp:albumArtURI</Filter><StartingIndex>0</StartingIndex><RequestedCount>100</RequestedCount><SortCriteria></SortCriteria>"
-        case .LocalFiles:
+        case .localFiles:
             return "<ObjectID>S:</ObjectID><BrowseFlag>BrowseDirectChildren</BrowseFlag><Filter>dc:title,res,dc:creator,upnp:artist,upnp:album,upnp:albumArtURI</Filter><StartingIndex>0</StartingIndex><RequestedCount>100</RequestedCount><SortCriteria></SortCriteria>"
-        case .SetVolume(let amount):
+        case .setVolume(let amount):
             let cleanAmount = max(min(amount, 100), 0)
             return "<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredVolume>\(cleanAmount)</DesiredVolume>"
-        case .EnableMute:
+        case .enableMute:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredMute>1</DesiredMute>"
-        case .DisableMute:
+        case .disableMute:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredMute>0</DesiredMute>"
-        case .GetCustomerID:
+        case .getCustomerID:
             return "<VariableName>R_CustomerID</VariableName>"
-        case .GetRoomSerial:
+        case .getRoomSerial:
             return "<VariableName>R_TrialZPSerial</VariableName>"
-        case .GetSessionId(let serviceId, let username):
+        case .getSessionId(let serviceId, let username):
             return "<ServiceId>\(serviceId)</ServiceId><Username>\(username)</Username>"*/
         default:
             return nil

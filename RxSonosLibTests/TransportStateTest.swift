@@ -12,22 +12,22 @@ import XCTest
 class TransportStateTest: XCTestCase {
     
     func testItCanParsUnknownString() {
-        XCTAssertEqual(TransportState.map(string: "randomstring"), TransportState.Stopped)
+        XCTAssertEqual(TransportState.map(string: "randomstring"), TransportState.stopped)
     }
     
     func testItCanParsePlayingString() {
-        XCTAssertEqual(TransportState.map(string: "PLAYING"), TransportState.Playing)
+        XCTAssertEqual(TransportState.map(string: "PLAYING"), TransportState.playing)
     }
     
     func testItCanParsePausedString() {
-        XCTAssertEqual(TransportState.map(string: "PAUSED_PLAYBACK"), TransportState.Paused)
+        XCTAssertEqual(TransportState.map(string: "PAUSED_PLAYBACK"), TransportState.paused)
     }
     
     func testItCanParseStoppedString() {
-        XCTAssertEqual(TransportState.map(string: "STOPPED"), TransportState.Stopped)
+        XCTAssertEqual(TransportState.map(string: "STOPPED"), TransportState.stopped)
     }
     
     func testItCanParseTransitioningString() {
-        XCTAssertEqual(TransportState.map(string: "TRANSITIONING"), TransportState.Transitioning)
+        XCTAssertEqual(TransportState.map(string: "TRANSITIONING"), TransportState.transitioning)
     }
 }

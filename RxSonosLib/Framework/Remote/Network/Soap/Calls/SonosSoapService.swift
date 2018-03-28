@@ -10,34 +10,34 @@ import Foundation
 
 
 enum SonosSoapService {
-    case Group, Transport
-//    case Alarm, GroupRenderingControl, ConnectionManager, Queue, Music, ContentDirectory, RenderingControl, DeviceProperties, SystemProperties, MusicProvider
+    case group, transport
+//    case alarm, groupRenderingControl, connectionManager, queue, music, contentDirectory, renderingControl, deviceProperties, systemProperties, musicProvider
     
     var controllUrl: String {
         switch self {
-//        case .Alarm:
+//        case .alarm:
 //            return "/AlarmClock/Control"
-//        case .ConnectionManager:
+//        case .connectionManager:
 //            return "/MediaRenderer/ConnectionManager/Control"
-        case .Transport:
+        case .transport:
             return "/MediaRenderer/AVTransport/Control"
-//        case .Queue:
+//        case .queue:
 //            return "/MediaRenderer/Queue/Control"
-//        case .Music:
+//        case .music:
 //            return "/MusicServices/Control"
-        case .Group:
+        case .group:
             return "/ZoneGroupTopology/Control"
-//        case .GroupRenderingControl:
+//        case .groupRenderingControl:
 //            return "/MediaRenderer/GroupRenderingControl/Control"
-//        case .ContentDirectory:
+//        case .contentDirectory:
 //            return "/MediaServer/ContentDirectory/Control"
-//        case .RenderingControl:
+//        case .renderingControl:
 //            return "/MediaRenderer/RenderingControl/Control"
-//        case .DeviceProperties:
+//        case .deviceProperties:
 //            return "/DeviceProperties/Control"
-//        case .SystemProperties:
+//        case .systemProperties:
 //            return "/SystemProperties/Control"
-//        case .MusicProvider:
+//        case .musicProvider:
 //            return ""
         }
     }
@@ -46,64 +46,64 @@ enum SonosSoapService {
         switch self {
             
             /* Subscribe Once */
-        case .Queue:
+        case .queue:
             return "/MediaRenderer/Queue/Event"
-        case .Music:
+        case .music:
             return "/MusicServices/Event"
             
             /* Subscribe per group */
         case .Transport:
             return "/MediaRenderer/AVTransport/Event"
-        case .SystemProperties:
+        case .systemProperties:
             return "/SystemProperties/Event"
-        case .Group:
+        case .group:
             return "/ZoneGroupTopology/Event"
-        case .GroupRenderingControl:
+        case .groupRenderingControl:
             return "/MediaRenderer/GroupRenderingControl/Event"
             
             /* Subscribe per Room */
-        case .ContentDirectory:
+        case .contentDirectory:
             return "/MediaServer/ContentDirectory/Event"
-        case .RenderingControl:
+        case .renderingControl:
             return "/MediaRenderer/RenderingControl/Event"
-        case .Alarm:
+        case .alarm:
             return "/AlarmClock/Event"
             
             /* Unused */
-        case .DeviceProperties:
+        case .deviceProperties:
             return "/DeviceProperties/Event"
-        case .ConnectionManager:
+        case .connectionManager:
             return "/MediaRenderer/ConnectionManager/Event"
-        case .MusicProvider:
+        case .musicProvider:
             return ""
         }
     }*/
     
     var schema: String {
         switch self {
-//        case .Alarm:
+//        case .alarm:
 //            return "urn:schemas-upnp-org:service:AlarmClock:1"
-        case .Transport:
+        case .transport:
             return "urn:schemas-upnp-org:service:AVTransport:1"
-//        case .Queue:
+//        case .queue:
 //            return "urn:schemas-sonos-com:service:Queue:1"
-//        case .Music:
+//        case .music:
 //            return "urn:schemas-upnp-org:service:MusicServices:1"
-        case .Group:
+        case .group:
             return "urn:schemas-upnp-org:service:ZoneGroupTopology:1"
-//        case .ContentDirectory:
+//        case .contentDirectory:
 //            return "urn:schemas-upnp-org:service:ContentDirectory:1"
-//        case .RenderingControl:
+//        case .renderingControl:
 //            return "urn:schemas-upnp-org:service:RenderingControl:1"
-//        case .GroupRenderingControl:
+//        case .groupRenderingControl:
 //            return "urn:schemas-upnp-org:service:GroupRenderingControl:1"
-//        case .DeviceProperties:
+//        case .deviceProperties:
 //            return "urn:schemas-upnp-org:service:DeviceProperties:1"
-//        case .SystemProperties:
+//        case .systemProperties:
 //            return "urn:schemas-upnp-org:service:SystemProperties:1"
-//        case .ConnectionManager:
+//        case .connectionManager:
 //            return "urn:schemas-upnp-org:service:ConnectionManager:1"
-//        case .MusicProvider:
+//        case .musicProvider:
 //            return "http://www.sonos.com/Services/1.1"
         }
     }

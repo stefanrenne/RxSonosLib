@@ -12,7 +12,7 @@ import RxSwift
 class GetMediaInfoNetwork: SoapNetwork {
     
     init(room: Room) {
-        super.init(room: room, action: .MediaInfo)
+        super.init(room: room, action: .mediaInfo)
     }
     
 }

@@ -12,7 +12,7 @@ import RxSwift
 class GetTransportInfoNetwork: SoapNetwork {
     
     init(room: Room) {
-        super.init(room: room, action: .TransportInfo)
+        super.init(room: room, action: .transportInfo)
     }
     
 }

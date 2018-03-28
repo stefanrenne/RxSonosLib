@@ -40,7 +40,7 @@ class GroupRepositoryTest: XCTestCase {
                 response += "</ZoneGroup>".encodeString()
             response += "</ZoneGroups>".encodeString()
         response += "</ZoneGroupState>"
-        stub(soap(call: .State), soapXml(response))
+        stub(soap(call: .state), soapXml(response))
         
         let groups = try! groupRepository
             .getGroups(for: self.getRooms())
@@ -73,7 +73,7 @@ class GroupRepositoryTest: XCTestCase {
                 response += "</ZoneGroup>".encodeString()
             response += "</ZoneGroups>".encodeString()
         response += "</ZoneGroupState>"
-        stub(soap(call: .State), soapXml(response))
+        stub(soap(call: .state), soapXml(response))
         
         let groups = try! groupRepository
             .getGroups(for: [])

@@ -10,7 +10,7 @@ import Foundation
 
 
 public enum TransportState: Int {
-    case Transitioning, Playing, Paused, Stopped
+    case transitioning, playing, paused, stopped
 }
 
 extension TransportState {
@@ -18,13 +18,13 @@ extension TransportState {
     static func map(string: String?) -> TransportState {
         switch string {
         case "TRANSITIONING"?:
-            return .Transitioning
+            return .transitioning
         case "PLAYING"?:
-            return .Playing
+            return .playing
         case "PAUSED_PLAYBACK"?:
-            return .Paused
+            return .paused
         default:
-            return .Stopped
+            return .stopped
         }
     }
 }

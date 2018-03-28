@@ -12,22 +12,22 @@ import XCTest
 class MusicServiceTests: XCTestCase {
     
     func testItCanParseUnkownMusicServices() {
-        XCTAssertEqual(MusicService.map(string: nil), MusicService.Unknown)
-        XCTAssertEqual(MusicService.map(string: ""), MusicService.Unknown)
-        XCTAssertEqual(MusicService.map(string: "random"), MusicService.Unknown)
+        XCTAssertEqual(MusicService.map(string: nil), MusicService.unknown)
+        XCTAssertEqual(MusicService.map(string: ""), MusicService.unknown)
+        XCTAssertEqual(MusicService.map(string: "random"), MusicService.unknown)
     }
     
     func testItCanParseSpotifyMusicServices() {
-        XCTAssertEqual(MusicService.map(string: "x-sonos-spotify"), MusicService.Spotify)
+        XCTAssertEqual(MusicService.map(string: "x-sonos-spotify"), MusicService.spotify)
     }
     
     func testItCanParseTuneInMusicServices() {
-        XCTAssertEqual(MusicService.map(string: "x-rincon-mp3radio"), MusicService.TuneIn)
-        XCTAssertEqual(MusicService.map(string: "aac"), MusicService.TuneIn)
+        XCTAssertEqual(MusicService.map(string: "x-rincon-mp3radio"), MusicService.tuneIn)
+        XCTAssertEqual(MusicService.map(string: "aac"), MusicService.tuneIn)
     }
     
     func testItCanParseTVMusicServices() {
-        XCTAssertEqual(MusicService.map(string: "x-sonos-htastream"), MusicService.TV)
+        XCTAssertEqual(MusicService.map(string: "x-sonos-htastream"), MusicService.tv)
     }
     
 }

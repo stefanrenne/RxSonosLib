@@ -21,7 +21,7 @@ class GetTransportStateInteractorTests: XCTestCase {
             .toBlocking(
             ).first()!
         
-        XCTAssertEqual(state, TransportState.Paused)
+        XCTAssertEqual(state, TransportState.paused)
     }
     
 }

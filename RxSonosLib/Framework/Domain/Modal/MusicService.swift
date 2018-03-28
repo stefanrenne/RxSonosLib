@@ -9,7 +9,7 @@
 import Foundation
 
 public enum MusicService {
-    case Spotify, TuneIn, TV, Unknown
+    case spotify, tuneIn, tv, unknown
 }
 
 extension MusicService {
@@ -17,13 +17,13 @@ extension MusicService {
     static func map(string: String?) -> MusicService {
         switch string {
         case "x-sonos-spotify"?:
-            return .Spotify
+            return .spotify
         case "x-rincon-mp3radio"?, "aac"?:
-            return .TuneIn
+            return .tuneIn
         case "x-sonos-htastream"?:
-            return .TV
+            return .tv
         default:
-            return .Unknown
+            return .unknown
         }
     }
 }

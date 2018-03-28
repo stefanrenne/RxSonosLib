@@ -21,7 +21,7 @@ class GetNowPlayingInteractorTests: XCTestCase {
             .toBlocking(
             ).first()!
         
-        XCTAssertEqual(track.service, .Spotify)
+        XCTAssertEqual(track.service, .spotify)
         XCTAssertEqual(track.queueItem, 7)
         XCTAssertEqual(track.time.value, 149)
         XCTAssertEqual(track.duration, 265)

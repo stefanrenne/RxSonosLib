@@ -84,7 +84,7 @@ extension Track {
     class func map(room: URL, nowPlaying: [String: String], mediaInfo: [String: String]) -> Track? {
         
         switch (nowPlaying["TrackURI"]?.musicServiceFromUrl()) {
-            case .some(.Spotify):
+            case .some(.spotify):
                 return Track.mapSpotify(room: room, nowPlaying: nowPlaying, mediaInfo: mediaInfo)
             default: break
         }
@@ -106,7 +106,7 @@ extension Track {
                 return nil
         }
         
-        return Track(service: .Spotify, queueItem: queueItem, time: time, duration: duration, uri: uri, imageUri: imageUri, title: title, artist: artist, album: album)
+        return Track(service: .spotify, queueItem: queueItem, time: time, duration: duration, uri: uri, imageUri: imageUri, title: title, artist: artist, album: album)
         
     }
 }
