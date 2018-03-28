@@ -68,6 +68,8 @@
 		F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */; };
 		F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAE20616239004DB497 /* SonosInteractorTests.swift */; };
 		F851ACD9206A63E8006FA0DC /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F851ACD8206A63E8006FA0DC /* TrackViewModel.swift */; };
+		F8627F43206BFD5200571085 /* GetTransportStateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8627F42206BFD5200571085 /* GetTransportStateInteractor.swift */; };
+		F8627F45206BFFE500571085 /* GetTransportStateInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8627F44206BFFE500571085 /* GetTransportStateInteractorTests.swift */; };
 		F86B3440206A8EB900979A5F /* String+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B343F206A8EB900979A5F /* String+Time.swift */; };
 		F86B3442206A91DC00979A5F /* TimeConvertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B3441206A91DC00979A5F /* TimeConvertTests.swift */; };
 		F8726787206A3F3B00093FF1 /* TransportState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8726786206A3F3B00093FF1 /* TransportState.swift */; };
@@ -174,6 +176,8 @@
 		F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupsInteractorTests.swift; sourceTree = "<group>"; };
 		F827DAAE20616239004DB497 /* SonosInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosInteractorTests.swift; sourceTree = "<group>"; };
 		F851ACD8206A63E8006FA0DC /* TrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModel.swift; sourceTree = "<group>"; };
+		F8627F42206BFD5200571085 /* GetTransportStateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTransportStateInteractor.swift; sourceTree = "<group>"; };
+		F8627F44206BFFE500571085 /* GetTransportStateInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTransportStateInteractorTests.swift; sourceTree = "<group>"; };
 		F8694B1E205BC8670027EBCF /* SonosInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosInteractor.swift; sourceTree = "<group>"; };
 		F86B343F206A8EB900979A5F /* String+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Time.swift"; sourceTree = "<group>"; };
 		F86B3441206A91DC00979A5F /* TimeConvertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConvertTests.swift; sourceTree = "<group>"; };
@@ -409,6 +413,7 @@
 				F881C5802049C8E700E3F523 /* GetGroupsInteractor.swift */,
 				F8694B1E205BC8670027EBCF /* SonosInteractor.swift */,
 				F87DC3B020696E7E0089F882 /* GetNowPlayingInteractor.swift */,
+				F8627F42206BFD5200571085 /* GetTransportStateInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -601,6 +606,7 @@
 				F800343E206967F000D7C0FB /* TransportRepositoryTest.swift */,
 				F872678D206A48D300093FF1 /* GetNowPlayingInteractorTests.swift */,
 				F86B3441206A91DC00979A5F /* TimeConvertTests.swift */,
+				F8627F44206BFFE500571085 /* GetTransportStateInteractorTests.swift */,
 			);
 			path = RxSonosLibTests;
 			sourceTree = "<group>";
@@ -955,6 +961,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8627F43206BFD5200571085 /* GetTransportStateInteractor.swift in Sources */,
 				F81A05EA206028D600897738 /* FakeSSDPRepositoryImpl.swift in Sources */,
 				F86B3440206A8EB900979A5F /* String+Time.swift in Sources */,
 				F81A05ED206028D600897738 /* SSDPDevice.swift in Sources */,
@@ -1006,6 +1013,7 @@
 				F81A062920602D7F00897738 /* SSDPRepositoryTest.swift in Sources */,
 				F800343F206967F000D7C0FB /* TransportRepositoryTest.swift in Sources */,
 				F8B0057320612BB900991E64 /* StringRegexTest.swift in Sources */,
+				F8627F45206BFFE500571085 /* GetTransportStateInteractorTests.swift in Sources */,
 				F897994520693D95000CF52A /* MockNetwork.swift in Sources */,
 				F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */,
 				F86B3442206A91DC00979A5F /* TimeConvertTests.swift in Sources */,

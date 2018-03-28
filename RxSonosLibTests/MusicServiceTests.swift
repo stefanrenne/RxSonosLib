@@ -30,11 +30,4 @@ class MusicServiceTests: XCTestCase {
         XCTAssertEqual(MusicService.map(string: "x-sonos-htastream"), MusicService.TV)
     }
     
-    func testItCanDetectStreamingServices() {
-        XCTAssertEqual(MusicService.TuneIn.isStreamService, true)
-        XCTAssertEqual(MusicService.TV.isStreamService, true)
-        XCTAssertEqual(MusicService.Spotify.isStreamService, false)
-        XCTAssertEqual(MusicService.Unknown.isStreamService, false)
-    }
-    
 }

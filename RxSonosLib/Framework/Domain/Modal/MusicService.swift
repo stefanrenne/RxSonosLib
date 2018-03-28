@@ -10,15 +10,6 @@ import Foundation
 
 public enum MusicService {
     case Spotify, TuneIn, TV, Unknown
-    
-    public var isStreamService: Bool {
-        switch self {
-        case .TuneIn, .TV:
-            return true
-        default:
-            return false
-        }
-    }
 }
 
 extension MusicService {

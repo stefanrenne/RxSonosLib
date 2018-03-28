@@ -9,22 +9,22 @@
 import Foundation
 
 
-public enum TransportState {
-    case Transitioning, PausedQueue, PlayingQueue, StoppedStream, PlayingStream
+public enum TransportState: Int {
+    case Transitioning, Playing, Paused, Stopped
 }
 
 extension TransportState {
     
-    static func map(string: String?, for service: MusicService) -> TransportState {
+    static func map(string: String?) -> TransportState {
         switch string {
         case "TRANSITIONING"?:
             return .Transitioning
         case "PLAYING"?:
-            return (service.isStreamService) ? .PlayingStream : .PlayingQueue
+            return .Playing
         case "PAUSED_PLAYBACK"?:
-            return .PausedQueue
+            return .Paused
         default:
-            return .StoppedStream
+            return .Stopped
         }
     }
 }

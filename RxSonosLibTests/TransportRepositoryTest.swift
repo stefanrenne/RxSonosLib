@@ -41,7 +41,6 @@ class TransportRepositoryTest: XCTestCase {
         
         XCTAssertEqual(track.service, .Spotify)
         XCTAssertEqual(track.queueItem, 7)
-        XCTAssertEqual(track.state, .PausedQueue)
         XCTAssertEqual(track.time.value, 149)
         XCTAssertEqual(track.duration, 265)
         XCTAssertEqual(track.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")

@@ -21,11 +21,6 @@ open class Track {
     public let service: MusicService
     
     /**
-     * State of the current track
-     */
-    public var state: TransportState
-    
-    /**
      * Number item in the queue
      */
     public let queueItem: Int
@@ -65,12 +60,9 @@ open class Track {
      */
     public let imageUri: URL?
     
-    private let disposeBag = DisposeBag()
-    
-    internal init(service: MusicService, queueItem: Int, state: TransportState = .StoppedStream, time: Int = 0, duration: Int = 0, uri: String, imageUri: URL? = nil, title: String, artist: String? = nil, album: String? = nil) {
+    internal init(service: MusicService, queueItem: Int, time: Int = 0, duration: Int = 0, uri: String, imageUri: URL? = nil, title: String, artist: String? = nil, album: String? = nil) {
         self.service = service
         self.queueItem = queueItem
-        self.state = state
         self.time = Variable(time)
         self.duration = duration
         self.uri = uri
@@ -78,51 +70,29 @@ open class Track {
         self.title = title
         self.artist = artist
         self.album = album
-        
-        self.startDurationTimer()
-    }
-    
-    fileprivate func startDurationTimer() {
-        guard duration > 0 && state == .PlayingQueue else { return }
-        
-        self.timeTick()
-        
-        Observable<Int>
-            .interval(1, scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] (_) in
-                self?.timeTick()
-            })
-            .disposed(by: self.disposeBag)
-    }
-    
-    fileprivate func timeTick() {
-        let newValue = self.time.value.advanced(by: 1)
-        guard newValue <= self.duration else { return }
-        self.time.value = newValue
     }
     
 }
 
 extension Track: Equatable {
     public static func ==(lhs: Track, rhs: Track) -> Bool {
-        return lhs.uri == rhs.uri && lhs.state == rhs.state
+        return lhs.uri == rhs.uri
     }
 }
 
 extension Track {
-    class func map(room: URL, nowPlaying: [String: String], transportInfo: [String: String], mediaInfo: [String: String]) -> Track? {
+    class func map(room: URL, nowPlaying: [String: String], mediaInfo: [String: String]) -> Track? {
         
         switch (nowPlaying["TrackURI"]?.musicServiceFromUrl()) {
             case .some(.Spotify):
-                return Track.mapSpotify(room: room, nowPlaying: nowPlaying, transportInfo: transportInfo, mediaInfo: mediaInfo)
+                return Track.mapSpotify(room: room, nowPlaying: nowPlaying, mediaInfo: mediaInfo)
             default: break
         }
         return nil
     }
     
-    class func mapSpotify(room: URL, nowPlaying: [String: String], transportInfo: [String: String], mediaInfo: [String: String]) -> Track? {
+    class func mapSpotify(room: URL, nowPlaying: [String: String], mediaInfo: [String: String]) -> Track? {
         let trackMeta = nowPlaying["TrackMetaData"]?.mapMetaItem()
-        let state = TransportState.map(string: transportInfo["CurrentTransportState"], for: .Spotify)
         
         guard let time = nowPlaying["RelTime"]?.timeToSeconds(),
             let duration = nowPlaying["TrackDuration"]?.timeToSeconds(),
@@ -136,7 +106,7 @@ extension Track {
                 return nil
         }
         
-        return Track(service: .Spotify, queueItem: queueItem, state: state, time: time, duration: duration, uri: uri, imageUri: imageUri, title: title, artist: artist, album: album)
+        return Track(service: .Spotify, queueItem: queueItem, time: time, duration: duration, uri: uri, imageUri: imageUri, title: title, artist: artist, album: album)
         
     }
 }

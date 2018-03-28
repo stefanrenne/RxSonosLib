@@ -13,4 +13,6 @@ public protocol TransportRepository {
     
     func getNowPlaying(for room: Room) -> Observable<Track>
     
+    func getTransportState(for room: Room) -> Observable<TransportState>
+    
 }

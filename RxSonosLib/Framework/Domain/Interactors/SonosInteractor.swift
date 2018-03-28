@@ -18,4 +18,8 @@ open class SonosInteractor {
         return GetNowPlayingInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
     }
     
+    static public func provideTransportStateInteractor() -> GetTransportStateInteractor {
+        return GetTransportStateInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+    }
+    
 }

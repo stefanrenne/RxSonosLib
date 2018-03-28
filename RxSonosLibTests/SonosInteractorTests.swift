@@ -19,4 +19,8 @@ class SonosInteractorTests: XCTestCase {
         XCTAssertTrue(type(of: SonosInteractor.provideNowPlayingInteractor()) == GetNowPlayingInteractor.self)
     }
     
+    func testItCanProvideTransportStateInteractor() {
+        XCTAssertTrue(type(of: SonosInteractor.provideTransportStateInteractor()) == GetTransportStateInteractor.self)
+    }
+    
 }
