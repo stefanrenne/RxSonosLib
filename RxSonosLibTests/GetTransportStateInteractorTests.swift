@@ -24,6 +24,14 @@ class GetTransportStateInteractorTests: XCTestCase {
         XCTAssertEqual(state, TransportState.paused)
     }
     
+    func testItCantGetTheCurrentStateWithAGroup() {
+        let interactor = GetTransportStateInteractor(transportRepository: transportRepository)
+        
+        XCTAssertThrowsError(try interactor.get().toBlocking().toArray()) { error in
+            XCTAssertEqual(error.localizedDescription, NSError.sonosLibInvalidImplementationError().localizedDescription)
+        }
+    }
+    
 }
 
 fileprivate extension GetTransportStateInteractorTests {

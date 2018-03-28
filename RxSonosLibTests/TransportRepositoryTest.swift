@@ -30,7 +30,6 @@ class TransportRepositoryTest: XCTestCase {
     
     func testItCanGetTheNowPlayingTrack() {
         
-        stub(soap(call: .transportInfo), soapXml(getTransportInfoResponse()))
         stub(soap(call: .mediaInfo), soapXml(getMediaInfoResponse()))
         stub(soap(call: .nowPlaying), soapXml(getPositionInfoResponse()))
         
@@ -48,6 +47,19 @@ class TransportRepositoryTest: XCTestCase {
         XCTAssertEqual(track.title, "Before I Die")
         XCTAssertEqual(track.artist, "Papa Roach")
         XCTAssertEqual(track.album, "The Connection")
+        
+    }
+    
+    func testItCanGetTheTransportState() {
+        
+        stub(soap(call: .transportInfo), soapXml(getTransportInfoResponse()))
+        
+        let state = try! transportRepository
+            .getTransportState(for: randomRoom())
+            .toBlocking()
+            .first()!
+        
+        XCTAssertEqual(state, .paused)
         
     }
 }
