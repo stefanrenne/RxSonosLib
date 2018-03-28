@@ -21,16 +21,16 @@ class GetNowPlayingInteractorTests: XCTestCase {
             .toBlocking(
             ).first()!
         
-        XCTAssertEqual(track?.service, .Spotify)
-        XCTAssertEqual(track?.queueItem, 7)
-        XCTAssertEqual(track?.state, .PlayingQueue)
-        XCTAssertEqual(track?.time, "0:02:29")
-        XCTAssertEqual(track?.duration, "0:04:25")
-        XCTAssertEqual(track?.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
-        XCTAssertEqual(track?.imageUri!.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
-        XCTAssertEqual(track?.title, "Before I Die")
-        XCTAssertEqual(track?.artist, "Papa Roach")
-        XCTAssertEqual(track?.album, "The Connection")
+        XCTAssertEqual(track.service, .Spotify)
+        XCTAssertEqual(track.queueItem, 7)
+        XCTAssertEqual(track.state, .PausedQueue)
+        XCTAssertEqual(track.time.value, 149)
+        XCTAssertEqual(track.duration, 265)
+        XCTAssertEqual(track.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
+        XCTAssertEqual(track.imageUri!.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
+        XCTAssertEqual(track.title, "Before I Die")
+        XCTAssertEqual(track.artist, "Papa Roach")
+        XCTAssertEqual(track.album, "The Connection")
     }
     
     func testItCantGetTheCurrentTrackWithAGroup() {
