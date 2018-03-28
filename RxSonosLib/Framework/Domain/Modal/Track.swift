@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 
 /**
@@ -32,7 +33,7 @@ open class Track {
     /**
      * Current track playing time in seconds, example: 90 for 0:01:30
      */
-    public var time: Int
+    public var time: Variable<Int>
     
     /**
      * Track duration time in seconds, example: 264 for 0:04:24
@@ -64,17 +65,40 @@ open class Track {
      */
     public let imageUri: URL?
     
+    private let disposeBag = DisposeBag()
+    
     internal init(service: MusicService, queueItem: Int, state: TransportState = .StoppedStream, time: Int = 0, duration: Int = 0, uri: String, imageUri: URL? = nil, title: String, artist: String? = nil, album: String? = nil) {
         self.service = service
         self.queueItem = queueItem
         self.state = state
-        self.time = time
+        self.time = Variable(time)
         self.duration = duration
         self.uri = uri
         self.imageUri = imageUri
         self.title = title
         self.artist = artist
         self.album = album
+        
+        self.startDurationTimer()
+    }
+    
+    fileprivate func startDurationTimer() {
+        guard duration > 0 && state == .PlayingQueue else { return }
+        
+        self.timeTick()
+        
+        Observable<Int>
+            .interval(1, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (_) in
+                self?.timeTick()
+            })
+            .disposed(by: self.disposeBag)
+    }
+    
+    fileprivate func timeTick() {
+        let newValue = self.time.value.advanced(by: 1)
+        guard newValue <= self.duration else { return }
+        self.time.value = newValue
     }
     
 }
