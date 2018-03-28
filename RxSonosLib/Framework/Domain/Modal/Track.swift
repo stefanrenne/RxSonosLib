@@ -28,7 +28,7 @@ open class Track {
     /**
      * Current track playing time in seconds, example: 90 for 0:01:30
      */
-    public var time: Variable<Int>
+    public var time: Int
     
     /**
      * Track duration time in seconds, example: 264 for 0:04:24
@@ -63,7 +63,7 @@ open class Track {
     internal init(service: MusicService, queueItem: Int, time: Int = 0, duration: Int = 0, uri: String, imageUri: URL? = nil, title: String, artist: String? = nil, album: String? = nil) {
         self.service = service
         self.queueItem = queueItem
-        self.time = Variable(time)
+        self.time = time
         self.duration = duration
         self.uri = uri
         self.imageUri = imageUri

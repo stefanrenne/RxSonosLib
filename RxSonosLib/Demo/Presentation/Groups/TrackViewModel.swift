@@ -44,38 +44,4 @@ class TrackViewModel {
             return Disposables.create()
         })
     }()
-    
-    lazy var progressTime: Observable<String?> = {
-        guard track.duration > 0 else { return Observable.just(nil) }
-        return track.time.asObservable().map({ $0.toTimeString() })
-    }()
-    
-    lazy var remainingTime: Observable<String?> = {
-        guard track.duration > 0 else { return Observable.just(nil) }
-        return track.time.asObservable().map({
-            let remainingTime = self.track.duration - $0
-            guard remainingTime > 0 else { return "0:00" }
-            return "-" + remainingTime.toTimeString()
-        })
-    }()
-    
-    lazy var trackProgress: Observable<Float> = {
-        return track.time.asObservable().map({ Float($0) / Float(self.track.duration) })
-    }()
-}
-
-fileprivate extension Int {
-    func toTimeString() -> String {
-        var totalSeconds = self
-        let totalHours = totalSeconds / (60 * 60)
-        totalSeconds -= totalHours * 60 * 60
-        let totalMinutes = totalSeconds / 60
-        totalSeconds -= totalMinutes * 60
-        
-        if totalHours > 0 {
-            return "\(totalHours):" + String(format: "%02d", totalMinutes) + ":" + String(format: "%02d", totalSeconds)
-        } else {
-            return "\(totalMinutes):" + String(format: "%02d", totalSeconds)
-        }
-    }
 }

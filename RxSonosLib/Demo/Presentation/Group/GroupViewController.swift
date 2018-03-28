@@ -21,14 +21,13 @@ class GroupViewController: UIViewController {
     @IBOutlet var progressTime: UILabel!
     @IBOutlet var remainingTime: UILabel!
     
-    private let generalDisposeBag = DisposeBag()
-    private var trackDisposeBag = DisposeBag()
-    private let getNowPlayingInteractor: GetNowPlayingInteractor = SonosInteractor.provideNowPlayingInteractor()
+    private let disposeBag = DisposeBag()
     internal var router: GroupRouter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupName()
+        self.setupTransportState()
         self.setupNowPlaying()
     }
     
@@ -36,42 +35,48 @@ class GroupViewController: UIViewController {
         model.name
             .asObservable()
             .bind(to: self.navigationItem.rx.title)
-            .disposed(by: self.generalDisposeBag)
+            .disposed(by: disposeBag)
     }
     
     fileprivate func setupNowPlaying() {
         self.resetTrack()
         
-        model.nowPlayingInteractor.subscribe(onNext: { [weak self] (track) in
+        model.nowPlayingInteractor
+            .subscribe(onNext: { [weak self] (track) in
             self?.bind(track: TrackViewModel(track: track))
-            }, onError: { (error) in
-                print(error.localizedDescription)
-            })
-            .disposed(by: self.generalDisposeBag)
+        }, onError: { (error) in
+            print(error.localizedDescription)
+        })
+        .disposed(by: disposeBag)
+    }
+    
+    fileprivate func setupTransportState() {
+        model.transportStateInteractor.subscribe(onNext: { (state) in
+            print(state.rawValue)
+        }, onError: { (error) in
+            print(error.localizedDescription)
+        })
+        .disposed(by: disposeBag)
+        
+        model.progressTime
+            .bind(to: progressTime.rx.text)
+            .disposed(by: disposeBag)
+        
+        model.remainingTime
+            .bind(to: remainingTime.rx.text)
+            .disposed(by: disposeBag)
+        
+        model.trackProgress
+            .bind(to: progressView.rx.progress)
+            .disposed(by: disposeBag)
     }
     
     fileprivate func bind(track: TrackViewModel) {
-        self.trackDisposeBag = DisposeBag()
         self.groupDescription.text = track.description
-        
-        track
-            .progressTime
-            .bind(to: progressTime.rx.text)
-            .disposed(by: trackDisposeBag)
-        
-        track
-            .remainingTime
-            .bind(to: remainingTime.rx.text)
-            .disposed(by: trackDisposeBag)
-        
-        track
-            .trackProgress
-            .bind(to: progressView.rx.progress)
-            .disposed(by: trackDisposeBag)
         
         track.image
             .bind(to: groupImageView.rx.image)
-            .disposed(by: trackDisposeBag)
+            .disposed(by: disposeBag)
     }
     
     fileprivate func resetTrack() {
