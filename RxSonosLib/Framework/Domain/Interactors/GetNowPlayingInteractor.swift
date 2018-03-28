@@ -18,7 +18,7 @@ open class GetNowPlayingValues: RequestValues {
     }
 }
 
-open class GetNowPlayingInteractor: BaseInteractor<GetNowPlayingValues, Track?>  {
+open class GetNowPlayingInteractor: BaseInteractor<GetNowPlayingValues, Track>  {
     
     let transportRepository: TransportRepository
     
@@ -26,21 +26,22 @@ open class GetNowPlayingInteractor: BaseInteractor<GetNowPlayingValues, Track?> 
         self.transportRepository = transportRepository
     }
     
-    override func buildInteractorObservable(requestValues: GetNowPlayingValues?) -> Observable<Track?> {
+    override func buildInteractorObservable(requestValues: GetNowPlayingValues?) -> Observable<Track> {
         
         guard let masterRoom = requestValues?.group.master else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
         
-        return createTimer(5)
+        return createTimer(2)
             .flatMap(self.mapToTrack(for: masterRoom))
             .distinctUntilChanged({ $0 == $1 })
     }
     
-    fileprivate func mapToTrack(for masterRoom: Room) -> (() -> Observable<Track?>) {
+    fileprivate func mapToTrack(for masterRoom: Room) -> (() -> Observable<Track>) {
         return {
             return self.transportRepository
                 .getNowPlaying(for: masterRoom)
         }
     }
 }
+

@@ -11,7 +11,7 @@ import RxSwift
 
 class TransportRepositoryImpl: TransportRepository {
     
-    func getNowPlaying(for room: Room) -> Observable<Track?> {
+    func getNowPlaying(for room: Room) -> Observable<Track> {
         
         let nowPlayingNetwork = GetNowPlayingNetwork(room: room).executeSoapRequest()
         let tansportInfoNetwork = GetTransportInfoNetwork(room: room).executeSoapRequest()
@@ -23,7 +23,7 @@ class TransportRepositoryImpl: TransportRepository {
 }
 
 fileprivate extension TransportRepositoryImpl {
-    fileprivate func mapDataToNowPlaying(for room: Room) -> (([String: String], [String: String], [String: String]) throws -> Track?) {
+    fileprivate func mapDataToNowPlaying(for room: Room) -> (([String: String], [String: String], [String: String]) throws -> Track) {
         return { nowPlayingResult, transportInfoResult, mediaInfoResult in
             guard let track = Track.map(room: room.ip, nowPlaying: nowPlayingResult, transportInfo: transportInfoResult, mediaInfo: mediaInfoResult) else {
                     #if DEBUG
