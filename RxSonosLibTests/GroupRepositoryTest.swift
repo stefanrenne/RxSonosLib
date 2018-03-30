@@ -97,7 +97,7 @@ fileprivate extension GroupRepositoryTest {
     }
     fileprivate func mapSSDPToRooms() -> (([SSDPResponse]) throws -> Observable<[Room]>) {
         return { ssdpDevices in
-            let collection = ssdpDevices.flatMap(self.mapSSDPToRoom())
+            let collection = ssdpDevices.compactMap(self.mapSSDPToRoom())
             return Observable.zip(collection)
         }
     }

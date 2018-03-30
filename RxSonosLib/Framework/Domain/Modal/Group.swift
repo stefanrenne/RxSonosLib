@@ -17,14 +17,14 @@ open class Group {
     /// Only some requests are also processed by slave rooms, as example volume controll requests
     public var slaves: [Room] {
         willSet {
-            name.value = (newValue.count > 0) ? "\(master.name) +\(newValue.count)" : master.name
+            name.onNext((newValue.count > 0) ? "\(master.name) +\(newValue.count)" : master.name)
         }
     }
     
-    public let name: Variable<String>
+    public let name: BehaviorSubject<String>
     
     init(master: Room, slaves: [Room]) {
-        self.name = Variable((slaves.count > 0) ? "\(master.name) +\(slaves.count)" : master.name)
+        self.name = BehaviorSubject(value: (slaves.count > 0) ? "\(master.name) +\(slaves.count)" : master.name)
         self.master = master
         self.slaves = slaves
     }

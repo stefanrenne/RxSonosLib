@@ -23,7 +23,7 @@ class GetNowPlayingInteractorTests: XCTestCase {
         
         XCTAssertEqual(track.service, .spotify)
         XCTAssertEqual(track.queueItem, 7)
-        XCTAssertEqual(track.time.value, 149)
+        XCTAssertEqual(track.time, 149)
         XCTAssertEqual(track.duration, 265)
         XCTAssertEqual(track.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
         XCTAssertEqual(track.imageUri!.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")

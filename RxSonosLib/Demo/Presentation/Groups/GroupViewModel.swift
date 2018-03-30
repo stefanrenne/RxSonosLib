@@ -13,7 +13,7 @@ import RxSonosLib
 class GroupViewModel {
     
     fileprivate let group: Group
-    fileprivate var time: Variable<Int> = Variable(0)
+    fileprivate var time: BehaviorSubject<Int> = BehaviorSubject(value: 0)
     fileprivate var duration: Int = 0
     fileprivate var disposeBag = DisposeBag()
     
@@ -21,13 +21,13 @@ class GroupViewModel {
         self.group = group
     }
     
-    var name: Variable<String> { return group.name }
+    var name: BehaviorSubject<String> { return group.name }
     
     lazy var nowPlayingInteractor: Observable<Track> = {
         return SonosInteractor.provideNowPlayingInteractor()
             .get(values: GetNowPlayingValues(group: group))
             .do(onNext: { [weak self] (track) in
-                self?.time.value = track.time
+                self?.time.onNext(track.time)
                 self?.duration = track.duration
             })
     }()
@@ -78,7 +78,7 @@ fileprivate extension GroupViewModel {
     }
     
     func resetTime() {
-        self.time.value = 0
+        self.time.onNext(0)
     }
     
     func stopTimer() {
@@ -86,9 +86,9 @@ fileprivate extension GroupViewModel {
     }
     
     func timeTick() {
-        let newValue = self.time.value.advanced(by: 1)
+        let newValue = try! self.time.value().advanced(by: 1)
         guard newValue <= self.duration else { return }
-        self.time.value = newValue
+        self.time.onNext(newValue)
     }
 }
 
