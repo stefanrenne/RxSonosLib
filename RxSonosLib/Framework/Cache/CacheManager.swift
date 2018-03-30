@@ -23,7 +23,8 @@ class CacheManager {
     func set(_ data: Data, for key: String?) {
         guard let key = key,
             let url = self.urlForKey(key) else { return }
-        try? data.write(to: url)
+        
+        FileManager.default.createFile(atPath: url.path, contents: data, attributes: nil)
     }
     
     func get(for key: String?) -> Data? {
