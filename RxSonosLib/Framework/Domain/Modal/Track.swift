@@ -86,6 +86,8 @@ extension Track {
         switch (positionInfo["TrackURI"]?.musicServiceFromUrl()) {
             case .some(.spotify):
                 return Track.mapSpotify(room: room, positionInfo: positionInfo, mediaInfo: mediaInfo)
+            case .some(.tv):
+                return Track.mapTV(room: room, positionInfo: positionInfo, mediaInfo: mediaInfo)
             default: break
         }
         return nil
@@ -107,6 +109,15 @@ extension Track {
         }
         
         return Track(service: .spotify, queueItem: queueItem, time: time, duration: duration, uri: uri, imageUri: imageUri, title: title, artist: artist, album: album)
+    }
+    
+    class func mapTV(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) -> Track? {
+        guard let queueItemString = positionInfo["Track"],
+              let queueItem = Int(queueItemString),
+              let uri = positionInfo["TrackURI"] else {
+                return nil
+        }
         
+        return Track(service: .tv, queueItem: queueItem, uri: uri, title: "TV")
     }
 }
