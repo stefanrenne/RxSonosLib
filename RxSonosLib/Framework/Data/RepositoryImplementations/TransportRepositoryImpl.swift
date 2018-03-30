@@ -13,10 +13,10 @@ class TransportRepositoryImpl: TransportRepository {
     
     func getNowPlaying(for room: Room) -> Observable<Track> {
         
-        let nowPlayingNetwork = GetNowPlayingNetwork(room: room).executeSoapRequest()
+        let positionInfoNetwork = GetPositionInfoNetwork(room: room).executeSoapRequest()
         let mediaInfoNetwork = GetMediaInfoNetwork(room: room).executeSoapRequest()
         
-        return Observable.zip(nowPlayingNetwork, mediaInfoNetwork, resultSelector: self.mapDataToNowPlaying(for: room))
+        return Observable.zip(positionInfoNetwork, mediaInfoNetwork, resultSelector: self.mapDataToNowPlaying(for: room))
     }
     
     func getTransportState(for room: Room) -> Observable<TransportState> {
@@ -29,10 +29,10 @@ class TransportRepositoryImpl: TransportRepository {
 
 fileprivate extension TransportRepositoryImpl {
     fileprivate func mapDataToNowPlaying(for room: Room) -> (([String: String], [String: String]) throws -> Track) {
-        return { nowPlayingResult, mediaInfoResult in
-            guard let track = Track.map(room: room.ip, nowPlaying: nowPlayingResult, mediaInfo: mediaInfoResult) else {
+        return { positionInfoResult, mediaInfoResult in
+            guard let track = Track.map(room: room.ip, positionInfo: positionInfoResult, mediaInfo: mediaInfoResult) else {
                     #if DEBUG
-                        print(nowPlayingResult)
+                        print(positionInfoResult)
                     #endif
                     throw NSError.sonosLibNoDataError()
             }

@@ -1,5 +1,5 @@
 //
-//  GetNowPlayingNetwork.swift
+//  GetPositionInfoNetwork.swift
 //  RxSonosLib
 //
 //  Created by Stefan Renne on 26/03/2018.
@@ -9,10 +9,10 @@
 import Foundation
 import RxSwift
 
-class GetNowPlayingNetwork: SoapNetwork {
+class GetPositionInfoNetwork: SoapNetwork {
     
     init(room: Room) {
-        super.init(room: room, action: .nowPlaying)
+        super.init(room: room, action: .positionInfo)
     }
     
 }

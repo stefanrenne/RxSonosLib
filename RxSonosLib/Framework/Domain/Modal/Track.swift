@@ -81,24 +81,24 @@ extension Track: Equatable {
 }
 
 extension Track {
-    class func map(room: URL, nowPlaying: [String: String], mediaInfo: [String: String]) -> Track? {
+    class func map(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) -> Track? {
         
-        switch (nowPlaying["TrackURI"]?.musicServiceFromUrl()) {
+        switch (positionInfo["TrackURI"]?.musicServiceFromUrl()) {
             case .some(.spotify):
-                return Track.mapSpotify(room: room, nowPlaying: nowPlaying, mediaInfo: mediaInfo)
+                return Track.mapSpotify(room: room, positionInfo: positionInfo, mediaInfo: mediaInfo)
             default: break
         }
         return nil
     }
     
-    class func mapSpotify(room: URL, nowPlaying: [String: String], mediaInfo: [String: String]) -> Track? {
-        let trackMeta = nowPlaying["TrackMetaData"]?.mapMetaItem()
+    class func mapSpotify(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) -> Track? {
+        let trackMeta = positionInfo["TrackMetaData"]?.mapMetaItem()
         
-        guard let time = nowPlaying["RelTime"]?.timeToSeconds(),
-            let duration = nowPlaying["TrackDuration"]?.timeToSeconds(),
-            let queueItemString = nowPlaying["Track"],
+        guard let time = positionInfo["RelTime"]?.timeToSeconds(),
+            let duration = positionInfo["TrackDuration"]?.timeToSeconds(),
+            let queueItemString = positionInfo["Track"],
             let queueItem = Int(queueItemString),
-            let uri = nowPlaying["TrackURI"],
+            let uri = positionInfo["TrackURI"],
             let title = trackMeta?["title"],
             let artist = trackMeta?["creator"],
             let album = trackMeta?["album"],

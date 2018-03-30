@@ -14,7 +14,7 @@
 		F80034372069662900D7C0FB /* TransportRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80034322069644B00D7C0FB /* TransportRepositoryImpl.swift */; };
 		F800343D206967D000D7C0FB /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = F800343C206967D000D7C0FB /* Track.swift */; };
 		F800343F206967F000D7C0FB /* TransportRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F800343E206967F000D7C0FB /* TransportRepositoryTest.swift */; };
-		F8003441206969DF00D7C0FB /* GetNowPlayingNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8003440206969DF00D7C0FB /* GetNowPlayingNetwork.swift */; };
+		F8003441206969DF00D7C0FB /* GetPositionInfoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8003440206969DF00D7C0FB /* GetPositionInfoNetwork.swift */; };
 		F81A05BF2060284A00897738 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F46120481C61006A7B73 /* AppDelegate.swift */; };
 		F81A05C12060284A00897738 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F4A120482A46006A7B73 /* NavigationCoordinator.swift */; };
 		F81A05C22060284A00897738 /* GroupsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F49320482945006A7B73 /* GroupsCoordinator.swift */; };
@@ -140,7 +140,7 @@
 		F80034322069644B00D7C0FB /* TransportRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportRepositoryImpl.swift; sourceTree = "<group>"; };
 		F800343C206967D000D7C0FB /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		F800343E206967F000D7C0FB /* TransportRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportRepositoryTest.swift; sourceTree = "<group>"; };
-		F8003440206969DF00D7C0FB /* GetNowPlayingNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNowPlayingNetwork.swift; sourceTree = "<group>"; };
+		F8003440206969DF00D7C0FB /* GetPositionInfoNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPositionInfoNetwork.swift; sourceTree = "<group>"; };
 		F809DE7D2048408A003A94A0 /* Error+RxSonosLib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+RxSonosLib.swift"; sourceTree = "<group>"; };
 		F809DE88204999BA003A94A0 /* String+Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Regex.swift"; sourceTree = "<group>"; };
 		F809DE8A2049A0E3003A94A0 /* RoomRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomRepository.swift; sourceTree = "<group>"; };
@@ -539,7 +539,7 @@
 			children = (
 				F8BF5C642057046000AE311E /* Calls */,
 				F8BF5C5F205701CD00AE311E /* GetGroupsNetwork.swift */,
-				F8003440206969DF00D7C0FB /* GetNowPlayingNetwork.swift */,
+				F8003440206969DF00D7C0FB /* GetPositionInfoNetwork.swift */,
 				F87DC3B3206974490089F882 /* GetTransportInfoNetwork.swift */,
 				F87DC3B52069745A0089F882 /* GetMediaInfoNetwork.swift */,
 			);
@@ -968,7 +968,7 @@
 				F81A05F8206028D600897738 /* Network.swift in Sources */,
 				F87DC3B8206974920089F882 /* GetTransportInfoNetwork.swift in Sources */,
 				F81A05FC206028D600897738 /* GetGroupsNetwork.swift in Sources */,
-				F8003441206969DF00D7C0FB /* GetNowPlayingNetwork.swift in Sources */,
+				F8003441206969DF00D7C0FB /* GetPositionInfoNetwork.swift in Sources */,
 				F872678C206A47F700093FF1 /* FakeTransportRepositoryImpl.swift in Sources */,
 				F87DC3B7206974900089F882 /* GetMediaInfoNetwork.swift in Sources */,
 				F81A05E4206028D600897738 /* String+Regex.swift in Sources */,

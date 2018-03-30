@@ -15,7 +15,7 @@ enum SoapSoapAction {
 //    case play, pause, stop, previous, next
 //    case changeTrack(number: Int), seekTime(time: String)
 //    case removeTrackFromQueue(number: Int), removeAllTracksFromQueue, addTrackToQueueEnd(uri: String), addTrackToQueuePlayNext(uri: String), setQueue(uri: String), setAVTransportURI(uri: String), becomeCoordinatorOfStandaloneGroup
-    case nowPlaying, transportInfo, mediaInfo
+    case positionInfo, transportInfo, mediaInfo
     
     /* Music */
 //    case listAvailableServices, getSessionId(Int, String)
@@ -40,7 +40,7 @@ enum SoapSoapAction {
     var service: SonosSoapService {
         switch self {
 //
-        case .nowPlaying, .transportInfo, .mediaInfo:
+        case .positionInfo, .transportInfo, .mediaInfo:
 //        case .play, .pause, .stop, .previous, .next, .changeTrack, .seekTime, .addTrackToQueueEnd, .addTrackToQueuePlayNext, .removeTrackFromQueue, .removeAllTracksFromQueue, .setQueue, .setAVTransportURI, .becomeCoordinatorOfStandaloneGroup:
             return .transport
 //        case .listAvailableServices, .getSessionId:
@@ -77,7 +77,7 @@ enum SoapSoapAction {
 //            return "AddURIToQueue"
 //        case .removeTrackFromQueue:
 //            return "RemoveTrackFromQueue"
-        case .nowPlaying:
+        case .positionInfo:
             return "GetPositionInfo"
         case .transportInfo:
             return "GetTransportInfo"
@@ -120,7 +120,7 @@ enum SoapSoapAction {
     
     var arguments: String? {
         switch self {
-        case .nowPlaying, .transportInfo, .mediaInfo/*, .removeAllTracksFromQueue, .getVolume, .getMute, .becomeCoordinatorOfStandaloneGroup*/:
+        case .positionInfo, .transportInfo, .mediaInfo/*, .removeAllTracksFromQueue, .getVolume, .getMute, .becomeCoordinatorOfStandaloneGroup*/:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel>"
         /*case .play, .pause, .previous, .next, .stop:
             return "<InstanceID>0</InstanceID><Speed>1</Speed>"
