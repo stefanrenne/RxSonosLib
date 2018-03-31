@@ -57,10 +57,10 @@ class StringRegexTest: XCTestCase {
     }
     func testItCanGetTheMusicServiceTuneInFromAnUrl() {
         let url1 = "x-rincon-mp3radio://vip-icecast.538.lw.triple-it.nl/RADIO538_MP3"
-        XCTAssertEqual(url1.musicServiceFromUrl(), MusicService.tuneIn)
+        XCTAssertEqual(url1.musicServiceFromUrl(), MusicService.tunein)
         
         let url2 = "aac://http://19143.live.streamtheworld.com:80/SKYRADIOAAC_SC?TGT=TuneIn&DIST=TuneIn"
-        XCTAssertEqual(url2.musicServiceFromUrl(), MusicService.tuneIn)
+        XCTAssertEqual(url2.musicServiceFromUrl(), MusicService.tunein)
     }
     func testItCanDetectTVFromAnUrl() {
         let url = "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif"

@@ -22,8 +22,8 @@ class MusicServiceTests: XCTestCase {
     }
     
     func testItCanParseTuneInMusicServices() {
-        XCTAssertEqual(MusicService.map(string: "x-rincon-mp3radio"), MusicService.tuneIn)
-        XCTAssertEqual(MusicService.map(string: "aac"), MusicService.tuneIn)
+        XCTAssertEqual(MusicService.map(string: "x-rincon-mp3radio"), MusicService.tunein)
+        XCTAssertEqual(MusicService.map(string: "aac"), MusicService.tunein)
     }
     
     func testItCanParseTVMusicServices() {

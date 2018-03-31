@@ -20,7 +20,7 @@ class CacheManager {
         return self.documentPath?.appendingPathComponent(key.cleanKey)
     }
     
-    func set(_ data: Data, for key: String?) {
+    func set(_ data: Data?, for key: String?) {
         guard let key = key,
             let url = self.urlForKey(key) else { return }
         

@@ -9,7 +9,7 @@
 import Foundation
 
 public enum MusicService {
-    case spotify, tuneIn, tv, unknown
+    case spotify, tunein, tv, unknown
 }
 
 extension MusicService {
@@ -19,7 +19,7 @@ extension MusicService {
         case "x-sonos-spotify"?:
             return .spotify
         case "x-rincon-mp3radio"?, "aac"?:
-            return .tuneIn
+            return .tunein
         case "x-sonos-htastream"?:
             return .tv
         default:

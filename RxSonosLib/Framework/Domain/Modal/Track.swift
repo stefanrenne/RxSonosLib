@@ -86,6 +86,8 @@ extension Track {
         switch (positionInfo["TrackURI"]?.musicServiceFromUrl()) {
             case .some(.spotify):
                 return Track.mapSpotify(room: room, positionInfo: positionInfo, mediaInfo: mediaInfo)
+            case .some(.tunein):
+                return Track.mapTunein(room: room, positionInfo: positionInfo, mediaInfo: mediaInfo)
             case .some(.tv):
                 return Track.mapTV(room: room, positionInfo: positionInfo, mediaInfo: mediaInfo)
             default: break
@@ -119,5 +121,22 @@ extension Track {
         }
         
         return Track(service: .tv, queueItem: queueItem, uri: uri, title: "TV")
+    }
+    
+    class func mapTunein(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) -> Track? {
+        let currentURIMetaData = mediaInfo["CurrentURIMetaData"]?.mapMetaItem()
+        
+        guard let time = positionInfo["RelTime"]?.timeToSeconds(),
+                let duration = positionInfo["TrackDuration"]?.timeToSeconds(),
+                let queueItemString = positionInfo["Track"],
+                let queueItem = Int(queueItemString),
+                let uri = positionInfo["TrackURI"],
+                let streamUri = mediaInfo["CurrentURI"],
+                let title = currentURIMetaData?["title"],
+                let imageUri = URL(string: room.absoluteString + "/getaa?s=1&u=" + streamUri) else {
+                return nil
+        }
+        
+        return Track(service: .tunein, queueItem: queueItem, time: time, duration: duration, uri: uri, imageUri: imageUri, title: title)
     }
 }
