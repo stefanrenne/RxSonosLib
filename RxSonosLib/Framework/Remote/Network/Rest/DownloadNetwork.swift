@@ -1,20 +1,20 @@
 //
-//  GetDeviceDescriptionNetwork.swift
+//  DownloadNetwork.swift
 //  RxSonosLib
 //
-//  Created by Stefan Renne on 12/03/2018.
+//  Created by Stefan Renne on 31/03/2018.
 //  Copyright © 2018 Uberweb. All rights reserved.
 //
 
 import Foundation
 
-class GetDeviceDescriptionNetwork: Network {
+class DownloadNetwork: Network {
     
     let location: URL
     
-    init(location: URL, usn: String) {
+    init(location: URL, cacheKey: String? = nil) {
         self.location = location
-        super.init(cacheKey: usn)
+        super.init(cacheKey: cacheKey)
     }
     
     override func createRequest() -> URLRequest? {

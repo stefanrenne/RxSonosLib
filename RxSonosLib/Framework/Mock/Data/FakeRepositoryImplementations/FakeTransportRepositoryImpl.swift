@@ -20,4 +20,8 @@ class FakeTransportRepositoryImpl: TransportRepository {
         return Observable.just(TransportState.paused)
     }
     
+    func getImage(for track: Track) -> Observable<UIImage?> {
+        return Observable.just(UIImage(named: "papa-roach-the-connection.jpg"))
+    }
+    
 }

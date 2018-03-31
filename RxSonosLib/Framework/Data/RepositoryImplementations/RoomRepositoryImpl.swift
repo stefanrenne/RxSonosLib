@@ -16,7 +16,7 @@ class RoomRepositoryImpl: RoomRepository {
         guard device.isSonosDevice else { return nil }
         
         let locationUrl = device.ip.appendingPathComponent(device.location)
-        return GetDeviceDescriptionNetwork(location: locationUrl, usn: device.usn)
+        return DownloadNetwork(location: locationUrl, cacheKey: device.usn)
             .executeRequest()
             .map(self.mapDataToRoom(device: device))
     }

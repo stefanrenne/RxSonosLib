@@ -8,7 +8,6 @@
 
 import Foundation
 import RxSwift
-import RxSSDP
 
 open class GetNowPlayingValues: RequestValues {
     let group: Group

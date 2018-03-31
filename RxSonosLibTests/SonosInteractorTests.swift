@@ -23,4 +23,8 @@ class SonosInteractorTests: XCTestCase {
         XCTAssertTrue(type(of: SonosInteractor.provideTransportStateInteractor()) == GetTransportStateInteractor.self)
     }
     
+    func testItCanProvideTrackImageInteractor() {
+        XCTAssertTrue(type(of: SonosInteractor.provideTrackImageInteractor()) == GetTrackImageInteractor.self)
+    }
+    
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2018 Uberweb. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import RxSwift
 
 public protocol TransportRepository {
@@ -14,5 +14,7 @@ public protocol TransportRepository {
     func getNowPlaying(for room: Room) -> Observable<Track>
     
     func getTransportState(for room: Room) -> Observable<TransportState>
+    
+    func getImage(for track: Track) -> Observable<UIImage?>
     
 }

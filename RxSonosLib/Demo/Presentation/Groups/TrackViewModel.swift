@@ -28,21 +28,7 @@ class TrackViewModel {
     }()
     
     lazy var image: Observable<UIImage?> = {
-        guard let url = track.imageUri else { return Observable.just(nil) }
-        
-        return Observable<UIImage?>.create({ (observer) -> Disposable in
-            let task = URLSession.shared.dataTask(with: URLRequest(url: url), completionHandler: { (data, response, error) in
-                if let data = data,
-                    let image = UIImage(data: data) {
-                    observer.onNext(image)
-                    observer.onCompleted()
-                } else if let error = error {
-                    observer.onError(error)
-                }
-            })
-            task.resume()
-            
-            return Disposables.create()
-        })
+        return SonosInteractor.provideTrackImageInteractor()
+            .get(values: GetTrackImageValues(track: self.track))
     }()
 }

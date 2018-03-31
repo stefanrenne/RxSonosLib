@@ -22,4 +22,8 @@ open class SonosInteractor {
         return GetTransportStateInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
     }
     
+    static public func provideTrackImageInteractor() -> GetTrackImageInteractor {
+        return GetTrackImageInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+    }
+    
 }

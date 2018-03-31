@@ -57,8 +57,11 @@ open class Track {
     
     /**
      * image url (optional)
+     * can be downloaded with:
+     *      SonosInteractor.provideTrackImageInteractor()
+     *      .get(values: GetTrackImageValues(track: Track))
      */
-    public let imageUri: URL?
+    internal let imageUri: URL?
     
     internal init(service: MusicService, queueItem: Int, time: Int = 0, duration: Int = 0, uri: String, imageUri: URL? = nil, title: String, artist: String? = nil, album: String? = nil) {
         self.service = service

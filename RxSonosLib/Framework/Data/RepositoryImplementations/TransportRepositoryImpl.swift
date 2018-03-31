@@ -25,6 +25,12 @@ class TransportRepositoryImpl: TransportRepository {
             .map(mapTransportDataToState())
     }
     
+    func getImage(for track: Track) -> Observable<UIImage?> {
+        guard let imageUri = track.imageUri else { return Observable<UIImage?>.just(nil) }
+        return DownloadNetwork(location: imageUri, cacheKey: track.uri)
+            .executeRequest()
+            .map(mapDataToImage())
+    }
 }
 
 fileprivate extension TransportRepositoryImpl {
@@ -44,6 +50,12 @@ fileprivate extension TransportRepositoryImpl {
     fileprivate func mapTransportDataToState() -> (([String: String]) -> TransportState) {
         return { data in
             return TransportState.map(string: data["CurrentTransportState"])
+        }
+    }
+    
+    fileprivate func mapDataToImage() -> ((Data) -> UIImage?) {
+        return { data in
+            return UIImage(data: data)
         }
     }
 }

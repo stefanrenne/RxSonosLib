@@ -55,7 +55,6 @@
 		F81A05FA206028D600897738 /* SonosSoapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C652057047400AE311E /* SonosSoapService.swift */; };
 		F81A05FB206028D600897738 /* SoapSoapAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C67205704B100AE311E /* SoapSoapAction.swift */; };
 		F81A05FC206028D600897738 /* GetGroupsNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C5F205701CD00AE311E /* GetGroupsNetwork.swift */; };
-		F81A05FD206028D600897738 /* GetDeviceDescriptionNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C5A2056FBEC00AE311E /* GetDeviceDescriptionNetwork.swift */; };
 		F81A05FF206028D600897738 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F818EA512056DD2C005D4F45 /* CacheManager.swift */; };
 		F81A061E206029AE00897738 /* RxSonosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F81A05D72060289A00897738 /* RxSonosLib.framework */; };
 		F81A062720602D7A00897738 /* GroupRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F56166205C3EE800E28533 /* GroupRepositoryTest.swift */; };
@@ -72,11 +71,15 @@
 		F86B3440206A8EB900979A5F /* String+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B343F206A8EB900979A5F /* String+Time.swift */; };
 		F86B3442206A91DC00979A5F /* TimeConvertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B3441206A91DC00979A5F /* TimeConvertTests.swift */; };
 		F8726787206A3F3B00093FF1 /* TransportState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8726786206A3F3B00093FF1 /* TransportState.swift */; };
-		F8726789206A463B00093FF1 /* papa-roach-the-connection.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F8726788206A463B00093FF1 /* papa-roach-the-connection.jpg */; };
 		F872678C206A47F700093FF1 /* FakeTransportRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872678A206A47D800093FF1 /* FakeTransportRepositoryImpl.swift */; };
 		F872678E206A48D300093FF1 /* GetNowPlayingInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872678D206A48D300093FF1 /* GetNowPlayingInteractorTests.swift */; };
 		F8726790206A4B7700093FF1 /* TransportStateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872678F206A4B7700093FF1 /* TransportStateTest.swift */; };
 		F8726794206A4CE500093FF1 /* MusicServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8726793206A4CE400093FF1 /* MusicServiceTests.swift */; };
+		F87C0CBB206F88CE00098D07 /* papa-roach-the-connection.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F87C0CBA206F88CE00098D07 /* papa-roach-the-connection.jpg */; };
+		F87C0CBD206F88F600098D07 /* DownloadNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87C0CBC206F88F600098D07 /* DownloadNetwork.swift */; };
+		F87C0CBF206F8AE800098D07 /* GetTrackImageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87C0CBE206F8AE800098D07 /* GetTrackImageInteractor.swift */; };
+		F87C0CC1206F8C5D00098D07 /* GetTrackImageInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87C0CC0206F8C5D00098D07 /* GetTrackImageInteractorTests.swift */; };
+		F87C0CC2206F8FD300098D07 /* papa-roach-the-connection.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F87C0CBA206F88CE00098D07 /* papa-roach-the-connection.jpg */; };
 		F87DC3B220696E870089F882 /* GetNowPlayingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B020696E7E0089F882 /* GetNowPlayingInteractor.swift */; };
 		F87DC3B7206974900089F882 /* GetMediaInfoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B52069745A0089F882 /* GetMediaInfoNetwork.swift */; };
 		F87DC3B8206974920089F882 /* GetTransportInfoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B3206974490089F882 /* GetTransportInfoNetwork.swift */; };
@@ -181,11 +184,14 @@
 		F86B343F206A8EB900979A5F /* String+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Time.swift"; sourceTree = "<group>"; };
 		F86B3441206A91DC00979A5F /* TimeConvertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConvertTests.swift; sourceTree = "<group>"; };
 		F8726786206A3F3B00093FF1 /* TransportState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportState.swift; sourceTree = "<group>"; };
-		F8726788206A463B00093FF1 /* papa-roach-the-connection.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "papa-roach-the-connection.jpg"; sourceTree = "<group>"; };
 		F872678A206A47D800093FF1 /* FakeTransportRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeTransportRepositoryImpl.swift; sourceTree = "<group>"; };
 		F872678D206A48D300093FF1 /* GetNowPlayingInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNowPlayingInteractorTests.swift; sourceTree = "<group>"; };
 		F872678F206A4B7700093FF1 /* TransportStateTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportStateTest.swift; sourceTree = "<group>"; };
 		F8726793206A4CE400093FF1 /* MusicServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicServiceTests.swift; sourceTree = "<group>"; };
+		F87C0CBA206F88CE00098D07 /* papa-roach-the-connection.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "papa-roach-the-connection.jpg"; sourceTree = "<group>"; };
+		F87C0CBC206F88F600098D07 /* DownloadNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadNetwork.swift; sourceTree = "<group>"; };
+		F87C0CBE206F8AE800098D07 /* GetTrackImageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTrackImageInteractor.swift; sourceTree = "<group>"; };
+		F87C0CC0206F8C5D00098D07 /* GetTrackImageInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTrackImageInteractorTests.swift; sourceTree = "<group>"; };
 		F87DC3B020696E7E0089F882 /* GetNowPlayingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNowPlayingInteractor.swift; sourceTree = "<group>"; };
 		F87DC3B3206974490089F882 /* GetTransportInfoNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTransportInfoNetwork.swift; sourceTree = "<group>"; };
 		F87DC3B52069745A0089F882 /* GetMediaInfoNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMediaInfoNetwork.swift; sourceTree = "<group>"; };
@@ -204,7 +210,6 @@
 		F8BF5C522056DF9E00AE311E /* Data+Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Convert.swift"; sourceTree = "<group>"; };
 		F8BF5C542056E37100AE311E /* AEXMLDocument+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AEXMLDocument+Create.swift"; sourceTree = "<group>"; };
 		F8BF5C592056FBEC00AE311E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		F8BF5C5A2056FBEC00AE311E /* GetDeviceDescriptionNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDeviceDescriptionNetwork.swift; sourceTree = "<group>"; };
 		F8BF5C5D2056FC8200AE311E /* SoapNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoapNetwork.swift; sourceTree = "<group>"; };
 		F8BF5C5F205701CD00AE311E /* GetGroupsNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupsNetwork.swift; sourceTree = "<group>"; };
 		F8BF5C652057047400AE311E /* SonosSoapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosSoapService.swift; sourceTree = "<group>"; };
@@ -358,6 +363,7 @@
 		F825F44D20481C1B006A7B73 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F87C0CB9206F88B400098D07 /* Helpers */,
 				F825F47B2048214E006A7B73 /* FakeRepositoryImplementations */,
 			);
 			path = Data;
@@ -411,6 +417,7 @@
 				F8694B1E205BC8670027EBCF /* SonosInteractor.swift */,
 				F87DC3B020696E7E0089F882 /* GetNowPlayingInteractor.swift */,
 				F8627F42206BFD5200571085 /* GetTransportStateInteractor.swift */,
+				F87C0CBE206F8AE800098D07 /* GetTrackImageInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -516,6 +523,14 @@
 			path = RxSonosLib/Framework;
 			sourceTree = "<group>";
 		};
+		F87C0CB9206F88B400098D07 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F87C0CBA206F88CE00098D07 /* papa-roach-the-connection.jpg */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		F897994320693D83000CF52A /* Mock */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,7 +573,7 @@
 		F8BF5C632057045000AE311E /* Rest */ = {
 			isa = PBXGroup;
 			children = (
-				F8BF5C5A2056FBEC00AE311E /* GetDeviceDescriptionNetwork.swift */,
+				F87C0CBC206F88F600098D07 /* DownloadNetwork.swift */,
 			);
 			path = Rest;
 			sourceTree = "<group>";
@@ -604,6 +619,7 @@
 				F872678D206A48D300093FF1 /* GetNowPlayingInteractorTests.swift */,
 				F86B3441206A91DC00979A5F /* TimeConvertTests.swift */,
 				F8627F44206BFFE500571085 /* GetTransportStateInteractorTests.swift */,
+				F87C0CC0206F8C5D00098D07 /* GetTrackImageInteractorTests.swift */,
 			);
 			path = RxSonosLibTests;
 			sourceTree = "<group>";
@@ -611,7 +627,6 @@
 		F8F5615C205C3EE800E28533 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				F8726788206A463B00093FF1 /* papa-roach-the-connection.jpg */,
 				F8F56161205C3EE800E28533 /* Mockingjay+Soap.swift */,
 			);
 			path = Data;
@@ -755,6 +770,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F87C0CBB206F88CE00098D07 /* papa-roach-the-connection.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,7 +778,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8726789206A463B00093FF1 /* papa-roach-the-connection.jpg in Resources */,
+				F87C0CC2206F8FD300098D07 /* papa-roach-the-connection.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -961,6 +977,7 @@
 				F8627F43206BFD5200571085 /* GetTransportStateInteractor.swift in Sources */,
 				F81A05EA206028D600897738 /* FakeSSDPRepositoryImpl.swift in Sources */,
 				F86B3440206A8EB900979A5F /* String+Time.swift in Sources */,
+				F87C0CBF206F8AE800098D07 /* GetTrackImageInteractor.swift in Sources */,
 				F81A05ED206028D600897738 /* SSDPDevice.swift in Sources */,
 				F81A05E8206028D600897738 /* AEXMLDocument+Create.swift in Sources */,
 				F81A05F7206028D600897738 /* RepositoryInjection.swift in Sources */,
@@ -975,7 +992,6 @@
 				F81A05E5206028D600897738 /* Error+RxSonosLib.swift in Sources */,
 				F81A05E7206028D600897738 /* Data+Convert.swift in Sources */,
 				F81A05F0206028D600897738 /* DeviceDescription.swift in Sources */,
-				F81A05FD206028D600897738 /* GetDeviceDescriptionNetwork.swift in Sources */,
 				F80034362069662500D7C0FB /* TransportRepository.swift in Sources */,
 				F81A05F9206028D600897738 /* SoapNetwork.swift in Sources */,
 				F81A05F4206028D600897738 /* GroupRepository.swift in Sources */,
@@ -990,6 +1006,7 @@
 				F8726787206A3F3B00093FF1 /* TransportState.swift in Sources */,
 				F81A05FB206028D600897738 /* SoapSoapAction.swift in Sources */,
 				F87DC3B220696E870089F882 /* GetNowPlayingInteractor.swift in Sources */,
+				F87C0CBD206F88F600098D07 /* DownloadNetwork.swift in Sources */,
 				F81A05F6206028D600897738 /* GroupRepositoryImpl.swift in Sources */,
 				F81A05FA206028D600897738 /* SonosSoapService.swift in Sources */,
 				F80034372069662900D7C0FB /* TransportRepositoryImpl.swift in Sources */,
@@ -1006,6 +1023,7 @@
 				F89D94C920615994002B1383 /* CacheManagerTests.swift in Sources */,
 				F8726790206A4B7700093FF1 /* TransportStateTest.swift in Sources */,
 				F8979947206944A6000CF52A /* GroupTests.swift in Sources */,
+				F87C0CC1206F8C5D00098D07 /* GetTrackImageInteractorTests.swift in Sources */,
 				F81A062920602D7F00897738 /* SSDPRepositoryTest.swift in Sources */,
 				F800343F206967F000D7C0FB /* TransportRepositoryTest.swift in Sources */,
 				F8B0057320612BB900991E64 /* StringRegexTest.swift in Sources */,

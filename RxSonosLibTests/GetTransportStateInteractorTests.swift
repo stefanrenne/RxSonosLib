@@ -24,7 +24,7 @@ class GetTransportStateInteractorTests: XCTestCase {
         XCTAssertEqual(state, TransportState.paused)
     }
     
-    func testItCantGetTheCurrentStateWithAGroup() {
+    func testItCantGetTheCurrentStateWithoutAGroup() {
         let interactor = GetTransportStateInteractor(transportRepository: transportRepository)
         
         XCTAssertThrowsError(try interactor.get().toBlocking().toArray()) { error in
