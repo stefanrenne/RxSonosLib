@@ -1,0 +1,7 @@
+plugins:
+  tailor:
+    enabled: true
+exclude_patterns:
+- "Pods/"
+- "RxSonosLibTests/"
+- "RxSonosLib/Demo/"
