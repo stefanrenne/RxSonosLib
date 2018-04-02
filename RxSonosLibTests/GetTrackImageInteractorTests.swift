@@ -17,11 +17,12 @@ class GetTrackImageInteractorTests: XCTestCase {
     
     func testItCanGetTheCurrentImage() {
         let interactor = GetTrackImageInteractor(transportRepository: transportRepository)
-        let image = try! interactor.get(values: GetTrackImageValues(track: firstTrack()))
+        let imageData = try! interactor.get(values: GetTrackImageValues(track: firstTrack()))
             .toBlocking(
             ).first()!
         
-        XCTAssertEqual(image, UIImage(named: "papa-roach-the-connection.jpg"))
+        let expectedData = UIImagePNGRepresentation(UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!)
+        XCTAssertEqual(imageData, expectedData)
     }
     
     func testItCantGetTheCurrentImageWithoutATrack() {

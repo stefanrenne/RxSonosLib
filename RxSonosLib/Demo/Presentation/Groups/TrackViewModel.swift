@@ -30,5 +30,9 @@ class TrackViewModel {
     lazy var image: Observable<UIImage?> = {
         return SonosInteractor.provideTrackImageInteractor()
             .get(values: GetTrackImageValues(track: self.track))
+            .map({ (data) -> UIImage? in
+                guard let data = data else { return nil }
+                return UIImage(data: data)
+            })
     }()
 }
