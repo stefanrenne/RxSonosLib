@@ -26,39 +26,56 @@ fileprivate extension GroupRepositoryImpl {
     
     fileprivate func mapGroupDataToGroups(rooms: [Room]) -> (([String: String]) throws -> [Group]) {
         return { results in
-            
-            var groups = [Group]()
-            
             let xml = AEXMLDocument.create(results["ZoneGroupState"])
+            return xml?["ZoneGroups"].children.compactMap(self.mapZoneToGroup(rooms: rooms)) ?? []
+        }
+    }
+    
+    fileprivate func mapZoneToGroup(rooms: [Room]) -> ((AEXMLElement) -> Group?) {
+        return { zone in
+            guard let coordinatorUuid = zone.attributes["Coordinator"],
+                let coordinator = rooms.filter({ $0.uuid == coordinatorUuid }).first else {
+                    return nil
+            }
             
-            xml?["ZoneGroups"].children.forEach({ (zone) in
-                
-                if let coordinatorUuid = zone.attributes["Coordinator"],
-                    let coordinator = rooms.filter({ $0.uuid == coordinatorUuid }).first {
-                    var slaves = [Room]()
-                    
-                    zone["ZoneGroupMember"].all?.forEach({ (member) in
-                        if let roomUuid = member.attributes["UUID"], roomUuid != coordinatorUuid,
-                            member.attributes["Invisible"] == nil,
-                            let slave = rooms.filter({ $0.uuid == roomUuid }).first {
-                            slaves.append(slave)
-                        }
-                        
-                        let satellites = member["Satellite"].all ?? []
-                        for satellite in satellites {
-                            if let satelliteUuid = satellite.attributes["UUID"],
-                                satelliteUuid != coordinatorUuid,
-                                satellite.attributes["Invisible"] == nil,
-                                let satellite = rooms.filter({ $0.uuid == satelliteUuid }).first {
-                                slaves.append(satellite)
-                            }
-                        }
-                    })
-                    groups.append(Group(master: coordinator, slaves: slaves))
+            let slaves: [Room] = zone["ZoneGroupMember"]
+                .all?
+                .map(self.mapMembersToSlaves(coordinatorUuid: coordinatorUuid))
+                .reduce([], +)
+                .compactMap(self.mapUuidToRoom(rooms: rooms)) ?? []
+            return Group(master: coordinator, slaves: slaves)
+        }
+    }
+    
+    fileprivate func mapMembersToSlaves(coordinatorUuid: String) -> (((AEXMLElement)) -> [String]) {
+        return { member in
+            var slaves = [String]()
+            if let roomUuid = member.attributes["UUID"], roomUuid != coordinatorUuid,
+                member.attributes["Invisible"] == nil {
+                slaves.append(roomUuid)
+            }
+            
+            if let satelliteSlaves = member["Satellite"].all?.compactMap(self.mapSatelliteToSlave(coordinatorUuid: coordinatorUuid)) {
+                slaves += satelliteSlaves
+            }
+            return slaves
+        }
+    }
+    
+    fileprivate func mapSatelliteToSlave(coordinatorUuid: String) -> (((AEXMLElement)) -> String?) {
+        return { satellite in
+            guard let satelliteUuid = satellite.attributes["UUID"],
+                satelliteUuid != coordinatorUuid,
+                satellite.attributes["Invisible"] == nil else {
+                    return nil
                 }
-            })
-            
-            return groups
+            return satelliteUuid
+        }
+    }
+    
+    fileprivate func mapUuidToRoom(rooms: [Room]) -> (((String)) -> Room?) {
+        return { uuid in
+            return rooms.filter({ $0.uuid == uuid }).first
         }
     }
 }
