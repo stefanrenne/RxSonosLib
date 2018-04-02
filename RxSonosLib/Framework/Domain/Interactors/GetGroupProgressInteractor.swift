@@ -1,15 +1,15 @@
 //
-//  GetNowPlayingInteractor.swift
-//  Demo App
+//  GetGroupProgressInteractor.swift
+//  RxSonosLib
 //
-//  Created by Stefan Renne on 26/03/2018.
+//  Created by Stefan Renne on 01/04/2018.
 //  Copyright © 2018 Uberweb. All rights reserved.
 //
 
 import Foundation
 import RxSwift
 
-open class GetNowPlayingValues: RequestValues {
+open class GetGroupProgressValues: RequestValues {
     let group: Group
     
     public init(group: Group) {
@@ -17,7 +17,7 @@ open class GetNowPlayingValues: RequestValues {
     }
 }
 
-open class GetNowPlayingInteractor: BaseInteractor<GetNowPlayingValues, Track>  {
+open class GetGroupProgressInteractor: BaseInteractor<GetGroupProgressValues, GroupProgress> {
     
     let transportRepository: TransportRepository
     
@@ -25,22 +25,21 @@ open class GetNowPlayingInteractor: BaseInteractor<GetNowPlayingValues, Track>  
         self.transportRepository = transportRepository
     }
     
-    override func buildInteractorObservable(requestValues: GetNowPlayingValues?) -> Observable<Track> {
+    override func buildInteractorObservable(requestValues: GetGroupProgressValues?) -> Observable<GroupProgress> {
         
         guard let masterRoom = requestValues?.group.master else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
         
-        return createTimer(4)
-            .flatMap(self.mapToTrack(for: masterRoom))
+        return createTimer(1)
+            .flatMap(self.mapToProgress(for: masterRoom))
             .distinctUntilChanged({ $0 == $1 })
     }
     
-    fileprivate func mapToTrack(for masterRoom: Room) -> (() -> Observable<Track>) {
+    fileprivate func mapToProgress(for masterRoom: Room) -> (() -> Observable<GroupProgress>) {
         return {
             return self.transportRepository
-                .getNowPlaying(for: masterRoom)
+                .getNowPlayingProgress(for: masterRoom)
         }
     }
 }
-

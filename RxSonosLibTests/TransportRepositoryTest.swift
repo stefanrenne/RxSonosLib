@@ -40,7 +40,6 @@ class TransportRepositoryTest: XCTestCase {
         
         XCTAssertEqual(track.service, .spotify)
         XCTAssertEqual(track.queueItem, 7)
-        XCTAssertEqual(track.time, 149)
         XCTAssertEqual(track.duration, 265)
         XCTAssertEqual(track.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
         XCTAssertEqual(track.imageUri!.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
@@ -61,7 +60,6 @@ class TransportRepositoryTest: XCTestCase {
         
         XCTAssertEqual(track.service, .tv)
         XCTAssertEqual(track.queueItem, 1)
-        XCTAssertEqual(track.time, 0)
         XCTAssertEqual(track.duration, 0)
         XCTAssertEqual(track.uri, "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif")
         XCTAssertNil(track.imageUri)
@@ -82,7 +80,6 @@ class TransportRepositoryTest: XCTestCase {
         
         XCTAssertEqual(track.service, .tunein)
         XCTAssertEqual(track.queueItem, 1)
-        XCTAssertEqual(track.time, 114)
         XCTAssertEqual(track.duration, 0)
         XCTAssertEqual(track.uri, "x-rincon-mp3radio://http://20863.live.streamtheworld.com:80/RADIO538.mp3?tdtok=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImZTeXA4In0.eyJpc3MiOiJ0aXNydiIsInN1YiI6IjIxMDY0IiwiaWF0IjoxNTIyNDQzMDQ5LCJ0ZC1yZWciOmZhbHNlfQ.kvTa2wxGb7-Rs7TjFjeRmPlzrkMnZGwDyBdyrru0Wbs")
         XCTAssertEqual(track.imageUri!.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonosapi-stream:s6712?sid=254&flags=32")
@@ -107,7 +104,7 @@ class TransportRepositoryTest: XCTestCase {
         let data = UIImageJPEGRepresentation(UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!, 1.0)!
         stub(everything, http(download: .content(data)))
         
-        let track = Track(service: .spotify, queueItem: 7, time: 149, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: URL(string: "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1"), title: "Before I Die", artist: "Papa Roach", album: "The Connection")
+        let track = Track(service: .spotify, queueItem: 7, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: URL(string: "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1"), title: "Before I Die", artist: "Papa Roach", album: "The Connection")
         
         let image = try! transportRepository
             .getImage(for: track)
@@ -121,7 +118,7 @@ class TransportRepositoryTest: XCTestCase {
         let data = UIImageJPEGRepresentation(UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!, 1.0)!
         stub(everything, http(download: .content(data)))
 
-        let track = Track(service: .spotify, queueItem: 7, time: 149, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: nil, title: "Before I Die", artist: "Papa Roach", album: "The Connection")
+        let track = Track(service: .spotify, queueItem: 7, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: nil, title: "Before I Die", artist: "Papa Roach", album: "The Connection")
         
         let image = try! transportRepository
             .getImage(for: track)
@@ -129,6 +126,23 @@ class TransportRepositoryTest: XCTestCase {
             .first()!
         
         XCTAssertNil(image)
+    }
+    
+    func testItCanGetTheCurrentGroupProgress() {
+        
+        stub(soap(call: .positionInfo), soapXml(getSpotifyPositionInfoResponse()))
+        
+        let progress = try! transportRepository
+            .getNowPlayingProgress(for: randomRoom())
+            .toBlocking()
+            .first()!
+        
+        XCTAssertEqual(progress.time, 149)
+        XCTAssertEqual(progress.timeString, "2:29")
+        XCTAssertEqual(progress.duration, 265)
+        XCTAssertEqual(progress.durationString, "4:25")
+        XCTAssertEqual(progress.progress, 0.56)
+        XCTAssertEqual(progress.remainingTimeString, "-1:56")
     }
 }
 

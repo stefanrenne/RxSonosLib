@@ -9,18 +9,18 @@
 import Foundation
 
 extension String {
-    func timeToSeconds() -> Int {
+    func timeToSeconds() -> UInt {
         let components = self.split(separator: ":")
         
-        var seconds = Int(components[components.count-1]) ?? 0
+        var seconds = UInt(components[components.count-1]) ?? 0
         
         if components.count - 2 >= 0,
-            let minutes = Int(components[components.count - 2]) {
+            let minutes = UInt(components[components.count - 2]) {
             seconds += (minutes * 60)
         }
         
         if components.count - 3 >= 0,
-            let hours = Int(components[components.count - 3]) {
+            let hours = UInt(components[components.count - 3]) {
             seconds += (hours * 60 * 60)
         }
         

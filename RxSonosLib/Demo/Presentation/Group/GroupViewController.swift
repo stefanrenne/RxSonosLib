@@ -28,6 +28,7 @@ class GroupViewController: UIViewController {
         super.viewDidLoad()
         self.setupName()
         self.setupTransportState()
+        self.setupGroupProgress()
         self.setupNowPlaying()
     }
     
@@ -51,24 +52,25 @@ class GroupViewController: UIViewController {
     }
     
     fileprivate func setupTransportState() {
-        model.transportStateInteractor.subscribe(onNext: { (state) in
+        model.transportStateInteractor
+            .subscribe(onNext: { (state) in
             print(state.rawValue)
         }, onError: { (error) in
             print(error.localizedDescription)
         })
         .disposed(by: disposeBag)
-        
-        model.progressTime
-            .bind(to: progressTime.rx.text)
-            .disposed(by: disposeBag)
-        
-        model.remainingTime
-            .bind(to: remainingTime.rx.text)
-            .disposed(by: disposeBag)
-        
-        model.trackProgress
-            .bind(to: progressView.rx.progress)
-            .disposed(by: disposeBag)
+    }
+    
+    fileprivate func setupGroupProgress() {
+        model.groupProgressInteractor
+            .subscribe(onNext: { [weak self] (progress) in
+            self?.progressTime.text = progress.durationString
+            self?.remainingTime.text = progress.remainingTimeString
+            self?.progressView.progress = progress.progress
+        }, onError: { (error) in
+            print(error.localizedDescription)
+        })
+        .disposed(by: disposeBag)
     }
     
     fileprivate func bind(track: TrackViewModel) {

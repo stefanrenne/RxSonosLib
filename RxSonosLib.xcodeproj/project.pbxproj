@@ -63,6 +63,10 @@
 		F81A062A20602DA500897738 /* Mockingjay+Soap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F56161205C3EE800E28533 /* Mockingjay+Soap.swift */; };
 		F81A062C206031F300897738 /* XMLTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81A062B206031F300897738 /* XMLTest.swift */; };
 		F81A062E206034FF00897738 /* RepositoryInjectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81A062D206034FF00897738 /* RepositoryInjectionTest.swift */; };
+		F81E339A207135B2002E22A8 /* GroupProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E3399207135B2002E22A8 /* GroupProgress.swift */; };
+		F81E339C20713924002E22A8 /* GetGroupProgressInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E339B20713924002E22A8 /* GetGroupProgressInteractor.swift */; };
+		F81E339E2072163E002E22A8 /* GetGroupProgressInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E339D2072163E002E22A8 /* GetGroupProgressInteractorTests.swift */; };
+		F81E33A020721CEF002E22A8 /* GroupProgressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E339F20721CEF002E22A8 /* GroupProgressTests.swift */; };
 		F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */; };
 		F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAE20616239004DB497 /* SonosInteractorTests.swift */; };
 		F851ACD9206A63E8006FA0DC /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F851ACD8206A63E8006FA0DC /* TrackViewModel.swift */; };
@@ -162,6 +166,10 @@
 		F81A0624206029C300897738 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F81A062B206031F300897738 /* XMLTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLTest.swift; sourceTree = "<group>"; };
 		F81A062D206034FF00897738 /* RepositoryInjectionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryInjectionTest.swift; sourceTree = "<group>"; };
+		F81E3399207135B2002E22A8 /* GroupProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupProgress.swift; sourceTree = "<group>"; };
+		F81E339B20713924002E22A8 /* GetGroupProgressInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupProgressInteractor.swift; sourceTree = "<group>"; };
+		F81E339D2072163E002E22A8 /* GetGroupProgressInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupProgressInteractorTests.swift; sourceTree = "<group>"; };
+		F81E339F20721CEF002E22A8 /* GroupProgressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupProgressTests.swift; sourceTree = "<group>"; };
 		F825F45E20481C61006A7B73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F825F46020481C61006A7B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F825F46120481C61006A7B73 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -418,6 +426,7 @@
 				F87DC3B020696E7E0089F882 /* GetNowPlayingInteractor.swift */,
 				F8627F42206BFD5200571085 /* GetTransportStateInteractor.swift */,
 				F87C0CBE206F8AE800098D07 /* GetTrackImageInteractor.swift */,
+				F81E339B20713924002E22A8 /* GetGroupProgressInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -432,6 +441,7 @@
 				F800343C206967D000D7C0FB /* Track.swift */,
 				F87DC3B9206A2FE80089F882 /* MusicService.swift */,
 				F8726786206A3F3B00093FF1 /* TransportState.swift */,
+				F81E3399207135B2002E22A8 /* GroupProgress.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -620,6 +630,8 @@
 				F86B3441206A91DC00979A5F /* TimeConvertTests.swift */,
 				F8627F44206BFFE500571085 /* GetTransportStateInteractorTests.swift */,
 				F87C0CC0206F8C5D00098D07 /* GetTrackImageInteractorTests.swift */,
+				F81E339D2072163E002E22A8 /* GetGroupProgressInteractorTests.swift */,
+				F81E339F20721CEF002E22A8 /* GroupProgressTests.swift */,
 			);
 			path = RxSonosLibTests;
 			sourceTree = "<group>";
@@ -877,8 +889,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/AEXML/AEXML.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
-				"${BUILT_PRODUCTS_DIR}/NetUtils/NetUtils.framework",
-				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSSDP/RxSSDP.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -887,8 +897,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEXML.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NetUtils.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSSDP.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -909,8 +917,6 @@
 				"${BUILT_PRODUCTS_DIR}/URITemplate/URITemplate.framework",
 				"${BUILT_PRODUCTS_DIR}/AEXML/AEXML.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
-				"${BUILT_PRODUCTS_DIR}/NetUtils/NetUtils.framework",
-				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSSDP/RxSSDP.framework",
 			);
@@ -922,8 +928,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URITemplate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEXML.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NetUtils.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSSDP.framework",
 			);
@@ -977,9 +981,11 @@
 				F8627F43206BFD5200571085 /* GetTransportStateInteractor.swift in Sources */,
 				F81A05EA206028D600897738 /* FakeSSDPRepositoryImpl.swift in Sources */,
 				F86B3440206A8EB900979A5F /* String+Time.swift in Sources */,
+				F81E339C20713924002E22A8 /* GetGroupProgressInteractor.swift in Sources */,
 				F87C0CBF206F8AE800098D07 /* GetTrackImageInteractor.swift in Sources */,
 				F81A05ED206028D600897738 /* SSDPDevice.swift in Sources */,
 				F81A05E8206028D600897738 /* AEXMLDocument+Create.swift in Sources */,
+				F81E339A207135B2002E22A8 /* GroupProgress.swift in Sources */,
 				F81A05F7206028D600897738 /* RepositoryInjection.swift in Sources */,
 				F81A05EF206028D600897738 /* Group.swift in Sources */,
 				F81A05F8206028D600897738 /* Network.swift in Sources */,
@@ -1020,6 +1026,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F81E33A020721CEF002E22A8 /* GroupProgressTests.swift in Sources */,
 				F89D94C920615994002B1383 /* CacheManagerTests.swift in Sources */,
 				F8726790206A4B7700093FF1 /* TransportStateTest.swift in Sources */,
 				F8979947206944A6000CF52A /* GroupTests.swift in Sources */,
@@ -1030,6 +1037,7 @@
 				F8627F45206BFFE500571085 /* GetTransportStateInteractorTests.swift in Sources */,
 				F897994520693D95000CF52A /* MockNetwork.swift in Sources */,
 				F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */,
+				F81E339E2072163E002E22A8 /* GetGroupProgressInteractorTests.swift in Sources */,
 				F86B3442206A91DC00979A5F /* TimeConvertTests.swift in Sources */,
 				F8726794206A4CE500093FF1 /* MusicServiceTests.swift in Sources */,
 				F81A062820602D7C00897738 /* RoomRepositoryTest.swift in Sources */,

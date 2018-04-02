@@ -26,14 +26,9 @@ open class Track {
     public let queueItem: Int
     
     /**
-     * Current track playing time in seconds, example: 90 for 0:01:30
-     */
-    public var time: Int
-    
-    /**
      * Track duration time in seconds, example: 264 for 0:04:24
      */
-    public let duration: Int
+    public let duration: UInt
     
     /**
      * track url
@@ -63,10 +58,9 @@ open class Track {
      */
     internal let imageUri: URL?
     
-    internal init(service: MusicService, queueItem: Int, time: Int = 0, duration: Int = 0, uri: String, imageUri: URL? = nil, title: String, artist: String? = nil, album: String? = nil) {
+    internal init(service: MusicService, queueItem: Int, duration: UInt = 0, uri: String, imageUri: URL? = nil, title: String, artist: String? = nil, album: String? = nil) {
         self.service = service
         self.queueItem = queueItem
-        self.time = time
         self.duration = duration
         self.uri = uri
         self.imageUri = imageUri
@@ -101,19 +95,18 @@ extension Track {
     class func mapSpotify(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) -> Track? {
         let trackMeta = positionInfo["TrackMetaData"]?.mapMetaItem()
         
-        guard let time = positionInfo["RelTime"]?.timeToSeconds(),
-            let duration = positionInfo["TrackDuration"]?.timeToSeconds(),
-            let queueItemString = positionInfo["Track"],
-            let queueItem = Int(queueItemString),
-            let uri = positionInfo["TrackURI"],
-            let title = trackMeta?["title"],
-            let artist = trackMeta?["creator"],
-            let album = trackMeta?["album"],
-            let imageUri = URL(string: room.absoluteString + "/getaa?s=1&u=" + uri) else {
+        guard let duration = positionInfo["TrackDuration"]?.timeToSeconds(),
+              let queueItemString = positionInfo["Track"],
+              let queueItem = Int(queueItemString),
+              let uri = positionInfo["TrackURI"],
+              let title = trackMeta?["title"],
+              let artist = trackMeta?["creator"],
+              let album = trackMeta?["album"],
+              let imageUri = URL(string: room.absoluteString + "/getaa?s=1&u=" + uri) else {
                 return nil
         }
         
-        return Track(service: .spotify, queueItem: queueItem, time: time, duration: duration, uri: uri, imageUri: imageUri, title: title, artist: artist, album: album)
+        return Track(service: .spotify, queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, title: title, artist: artist, album: album)
     }
     
     class func mapTV(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) -> Track? {
@@ -129,17 +122,16 @@ extension Track {
     class func mapTunein(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) -> Track? {
         let currentURIMetaData = mediaInfo["CurrentURIMetaData"]?.mapMetaItem()
         
-        guard let time = positionInfo["RelTime"]?.timeToSeconds(),
-                let duration = positionInfo["TrackDuration"]?.timeToSeconds(),
-                let queueItemString = positionInfo["Track"],
-                let queueItem = Int(queueItemString),
-                let uri = positionInfo["TrackURI"],
-                let streamUri = mediaInfo["CurrentURI"],
-                let title = currentURIMetaData?["title"],
-                let imageUri = URL(string: room.absoluteString + "/getaa?s=1&u=" + streamUri) else {
+        guard let duration = positionInfo["TrackDuration"]?.timeToSeconds(),
+              let queueItemString = positionInfo["Track"],
+              let queueItem = Int(queueItemString),
+              let uri = positionInfo["TrackURI"],
+              let streamUri = mediaInfo["CurrentURI"],
+              let title = currentURIMetaData?["title"],
+              let imageUri = URL(string: room.absoluteString + "/getaa?s=1&u=" + streamUri) else {
                 return nil
         }
         
-        return Track(service: .tunein, queueItem: queueItem, time: time, duration: duration, uri: uri, imageUri: imageUri, title: title)
+        return Track(service: .tunein, queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, title: title)
     }
 }

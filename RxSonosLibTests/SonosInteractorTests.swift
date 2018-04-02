@@ -27,4 +27,8 @@ class SonosInteractorTests: XCTestCase {
         XCTAssertTrue(type(of: SonosInteractor.provideTrackImageInteractor()) == GetTrackImageInteractor.self)
     }
     
+    func testItCanProvideGroupProgressInteractor() {
+        XCTAssertTrue(type(of: SonosInteractor.provideGroupProgressInteractor()) == GetGroupProgressInteractor.self)
+    }
+    
 }

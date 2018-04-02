@@ -19,6 +19,12 @@ class TransportRepositoryImpl: TransportRepository {
         return Observable.zip(positionInfoNetwork, mediaInfoNetwork, resultSelector: self.mapDataToNowPlaying(for: room))
     }
     
+    func getNowPlayingProgress(for room: Room) -> Observable<GroupProgress> {
+        return GetPositionInfoNetwork(room: room)
+            .executeSoapRequest()
+            .map(self.mapPositionInfoDataToProgress())
+    }
+    
     func getTransportState(for room: Room) -> Observable<TransportState> {
         return GetTransportInfoNetwork(room: room)
             .executeSoapRequest()
@@ -50,6 +56,12 @@ fileprivate extension TransportRepositoryImpl {
     fileprivate func mapTransportDataToState() -> (([String: String]) -> TransportState) {
         return { data in
             return TransportState.map(string: data["CurrentTransportState"])
+        }
+    }
+    
+    fileprivate func mapPositionInfoDataToProgress() -> (([String: String]) -> GroupProgress) {
+        return { data in
+            return GroupProgress.map(positionInfo: data)
         }
     }
     

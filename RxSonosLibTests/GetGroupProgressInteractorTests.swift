@@ -1,38 +1,36 @@
 //
-//  GetNowPlayingInteractorTests.swift
+//  GetGroupProgressInteractorTests.swift
 //  RxSonosLibTests
 //
-//  Created by Stefan Renne on 27/03/2018.
+//  Created by Stefan Renne on 02/04/2018.
 //  Copyright © 2018 Uberweb. All rights reserved.
 //
 
 import XCTest
-@testable import RxSonosLib
 import RxSwift
 import RxBlocking
+@testable import RxSonosLib
 
-class GetNowPlayingInteractorTests: XCTestCase {
+class GetGroupProgressInteractorTests: XCTestCase {
     
     let transportRepository: TransportRepository = FakeTransportRepositoryImpl()
     
-    func testItCanGetTheCurrentTrack() {
-        let interactor = GetNowPlayingInteractor(transportRepository: transportRepository)
-        let track = try! interactor.get(values: GetNowPlayingValues(group: firstGroup()))
+    func testItCanGetTheCurrentProgress() {
+        let interactor = GetGroupProgressInteractor(transportRepository: transportRepository)
+        let progress = try! interactor.get(values: GetGroupProgressValues(group: firstGroup()))
             .toBlocking(
             ).first()!
         
-        XCTAssertEqual(track.service, .spotify)
-        XCTAssertEqual(track.queueItem, 7)
-        XCTAssertEqual(track.duration, 265)
-        XCTAssertEqual(track.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
-        XCTAssertEqual(track.imageUri!.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
-        XCTAssertEqual(track.title, "Before I Die")
-        XCTAssertEqual(track.artist, "Papa Roach")
-        XCTAssertEqual(track.album, "The Connection")
+        XCTAssertEqual(progress.time, 30)
+        XCTAssertEqual(progress.timeString, "0:30")
+        XCTAssertEqual(progress.duration, 60)
+        XCTAssertEqual(progress.durationString, "1:00")
+        XCTAssertEqual(progress.progress, 0.5)
+        XCTAssertEqual(progress.remainingTimeString, "-0:30")
     }
     
-    func testItCantGetTheCurrentTrackWithAGroup() {
-        let interactor = GetNowPlayingInteractor(transportRepository: transportRepository)
+    func testItCantGetTheCurrentProgressWithoutAGroup() {
+        let interactor = GetGroupProgressInteractor(transportRepository: transportRepository)
         
         XCTAssertThrowsError(try interactor.get().toBlocking().toArray()) { error in
             XCTAssertEqual(error.localizedDescription, NSError.sonosLibInvalidImplementationError().localizedDescription)
@@ -41,7 +39,7 @@ class GetNowPlayingInteractorTests: XCTestCase {
     
 }
 
-fileprivate extension GetNowPlayingInteractorTests {
+extension GetGroupProgressInteractorTests {
     
     func firstGroup() -> Group {
         return Group(master: firstRoom(), slaves: [])

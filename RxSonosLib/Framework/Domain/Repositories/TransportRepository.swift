@@ -13,6 +13,8 @@ public protocol TransportRepository {
     
     func getNowPlaying(for room: Room) -> Observable<Track>
     
+    func getNowPlayingProgress(for room: Room) -> Observable<GroupProgress>
+    
     func getTransportState(for room: Room) -> Observable<TransportState>
     
     func getImage(for track: Track) -> Observable<UIImage?>
