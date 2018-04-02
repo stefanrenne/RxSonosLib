@@ -8,14 +8,9 @@ env:
   - LANG=en_US.UTF-8
   - WORKSPACE=RxSonosLib.xcworkspace
   - SCHEME=RxSonosLib
-  - CC_TEST_REPORTER_ID=5332094259e2b828a20d61a227b30295e535380c07b6ab5f097b59e80b9c9c73
   matrix:
     - DESTINATION="OS=10.2,name=iPhone SE"
     - DESTINATION="OS=11.2,name=iPhone X"
-before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
 before_install:
   - pod repo update > /dev/null
 script:
@@ -24,5 +19,3 @@ script:
   - xcodebuild -showsdks
   - xcodebuild clean -workspace "$WORKSPACE" -scheme "$SCHEME" | xcpretty
   - xcodebuild test -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" | xcpretty
-after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
