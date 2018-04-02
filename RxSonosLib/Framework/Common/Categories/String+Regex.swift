@@ -1,9 +1,9 @@
 //
 //  String+Regex.swift
-//  Sonos Demo App
+//  RxSonosLib
 //
-//  Created by info@stefanrenne.nl on 17/11/16.
-//  Copyright © 2016 Stefan Renne. All rights reserved.
+//  Created by Stefan Renne on 27/03/2018.
+//  Copyright © 2016 Uberweb. All rights reserved.
 //
 
 import Foundation
@@ -32,8 +32,19 @@ extension String {
         return matches?.resultForString(self, index: 1)
     }
     
+    
+    func musicServiceFromUrl() -> MusicService {
+        
+        let pattern = "([a-zA-Z0-9-]+):"
+        let matches = self.match(with: pattern)
+        
+        let service = matches?.resultForString(self, index: 1)
+        
+        return MusicService.map(string: service)
+    }
+    
     func validateXml() -> String {
-        let regex = try! NSRegularExpression(pattern: "(\")([A-Za-z0-9-]+=)", options: [])
+        let regex = try! NSRegularExpression(pattern: "(\")([A-Za-z0-9-:]+=)", options: [])
         return regex.stringByReplacingMatches(in: self, options: .withTransparentBounds, range: NSRange(location: 0, length: self.count), withTemplate: "$1 $2")
     }
     

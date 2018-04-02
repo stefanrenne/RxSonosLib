@@ -12,8 +12,7 @@ import RxSwift
 class GetGroupsNetwork: SoapNetwork {
     
     init(room: Room) {
-        super.init(room: room, action: .State)
+        super.init(room: room, action: .state)
     }
-    
-    
+
 }

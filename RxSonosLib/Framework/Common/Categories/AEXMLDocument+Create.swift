@@ -19,12 +19,29 @@ extension AEXMLDocument {
         guard let cleanString = string?.removeXmlNamespace() else { return nil }
         return try? AEXMLDocument(xml: cleanString)
     }
+    
+    func mapMetaItems() -> [String:String] {
+        var data = [String:String]()
+        self["DIDL-Lite"]["item"].children.forEach { (row) in
+            data[row.name] = row.string
+            row.attributes.forEach({ (key, value) in
+                data["\(row.name)\(key)"] = value
+            })
+        }
+        return data
+    }
+}
+
+extension String {
+    func mapMetaItem() -> [String:String]? {
+        return AEXMLDocument.create(self)?.mapMetaItems()
+    }
 }
 
 fileprivate extension String {
     
     func removeXmlNamespace() -> String {
-        var string = self
+        var string = self.validateXml()
         if let regex1 = try? NSRegularExpression(pattern: "<([a-zA-Z]+:)", options:.caseInsensitive) {
             string = regex1.stringByReplacingMatches(in: string, options: [], range: NSRange(0..<string.count), withTemplate: "<")
         }

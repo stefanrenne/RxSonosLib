@@ -52,7 +52,7 @@ class Network {
     }
     
     func shouldPerformRequest(hasCache: Bool) -> Bool {
-        return RxReachability.hasInternet
+        return true
     }
     
     func handleCompletion(observer: AnyObserver<Data>, cachedData: Data?) -> ((Data?, URLResponse?, Error?) -> Void) {

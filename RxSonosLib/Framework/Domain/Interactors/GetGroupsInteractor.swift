@@ -30,7 +30,7 @@ open class GetGroupsInteractor: BaseInteractor<GetGroupsValues, [Group]> {
         return ssdpRepository
             .scan(broadcastAddresses: ["239.255.255.250", "255.255.255.255"], searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1", maxTimeSpan: 3, maxCount: 100)
             .flatMap(mapSSDPToRooms())
-            .flatMap(addTimer())
+            .flatMap(addTimer(5))
             .flatMap(mapRoomsToGroups())
             .distinctUntilChanged({ $0 == $1 })
     }
@@ -38,7 +38,7 @@ open class GetGroupsInteractor: BaseInteractor<GetGroupsValues, [Group]> {
     /* Rooms */
     fileprivate func mapSSDPToRooms() -> (([SSDPResponse]) throws -> Observable<[Room]>) {
         return { ssdpDevices in
-            let collection = ssdpDevices.flatMap(self.mapSSDPToRoom())
+            let collection = ssdpDevices.compactMap(self.mapSSDPToRoom())
             return Observable.zip(collection)
         }
     }
@@ -54,25 +54,6 @@ open class GetGroupsInteractor: BaseInteractor<GetGroupsValues, [Group]> {
     fileprivate func mapRoomsToGroups() -> (([Room]) throws -> Observable<[Group]>) {
         return { rooms in
             return self.groupRepository.getGroups(for: rooms)
-        }
-    }
-    
-    /* Change Timer */
-    fileprivate func addTimer() -> (([Room]) throws -> Observable<[Room]>) {
-        return { rooms in
-            return Observable<[Room]>.create({ (observer) -> Disposable in
-                
-                observer.onNext(rooms)
-                
-                let interval = Observable<Int>
-                    .interval(5, scheduler: MainScheduler.instance)
-                    .subscribe(onNext: { (_) in
-                        observer.onNext(rooms)
-                    })
-                
-                return Disposables.create([interval])
-                
-            })
         }
     }
 }

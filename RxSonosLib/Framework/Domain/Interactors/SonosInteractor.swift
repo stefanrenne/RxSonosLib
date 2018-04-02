@@ -14,4 +14,20 @@ open class SonosInteractor {
         return GetGroupsInteractor(ssdpRepository: RepositoryInjection.provideSSDPRepository(), roomRepository: RepositoryInjection.provideRoomRepository(), groupRepository: RepositoryInjection.provideGroupRepository())
     }
     
+    static public func provideNowPlayingInteractor() -> GetNowPlayingInteractor {
+        return GetNowPlayingInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+    }
+    
+    static public func provideTransportStateInteractor() -> GetTransportStateInteractor {
+        return GetTransportStateInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+    }
+    
+    static public func provideTrackImageInteractor() -> GetTrackImageInteractor {
+        return GetTrackImageInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+    }
+    
+    static public func provideGroupProgressInteractor() -> GetGroupProgressInteractor {
+        return GetGroupProgressInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+    }
+    
 }
