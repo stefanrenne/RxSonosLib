@@ -17,6 +17,8 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 before_install:
+  - gem install activesupport -N
+  - gem install slather --no-rdoc
   - pod repo update > /dev/null
 script:
   - set -o pipefail
