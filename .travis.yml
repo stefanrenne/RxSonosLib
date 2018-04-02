@@ -12,10 +12,10 @@ env:
   matrix:
     - DESTINATION="OS=10.2,name=iPhone SE"
     - DESTINATION="OS=11.2,name=iPhone X"
-  before_script:
-    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-darwin-amd64 > ./cc-test-reporter
-    - chmod +x ./cc-test-reporter
-    - ./cc-test-reporter before-build
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-darwin-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 before_install:
   - pod repo update > /dev/null
 script:
