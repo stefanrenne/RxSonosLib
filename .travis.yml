@@ -25,4 +25,6 @@ script:
   - xcodebuild clean -workspace "$WORKSPACE" -scheme "$SCHEME" | xcpretty
   - xcodebuild test -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" | xcpretty
 after_script:
+  - slather
+  - bash <(curl -s https://codecov.io/bash) -f xml_report/cobertura.xml -X coveragepy -X gcov -X xcode
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
