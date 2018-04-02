@@ -36,9 +36,6 @@
 		F81A05E7206028D600897738 /* Data+Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C522056DF9E00AE311E /* Data+Convert.swift */; };
 		F81A05E8206028D600897738 /* AEXMLDocument+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C542056E37100AE311E /* AEXMLDocument+Create.swift */; };
 		F81A05E9206028D600897738 /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F49F204829F5006A7B73 /* BaseInteractor.swift */; };
-		F81A05EA206028D600897738 /* FakeSSDPRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F47E20482170006A7B73 /* FakeSSDPRepositoryImpl.swift */; };
-		F81A05EB206028D600897738 /* FakeGroupRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F881C57C2049BE4000E3F523 /* FakeGroupRepositoryImpl.swift */; };
-		F81A05EC206028D600897738 /* FakeRoomRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F881C57E2049C50900E3F523 /* FakeRoomRepositoryImpl.swift */; };
 		F81A05ED206028D600897738 /* SSDPDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F477204820BD006A7B73 /* SSDPDevice.swift */; };
 		F81A05EE206028D600897738 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809DE922049A1A0003A94A0 /* Room.swift */; };
 		F81A05EF206028D600897738 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809DE942049A1B0003A94A0 /* Group.swift */; };
@@ -60,13 +57,18 @@
 		F81A062720602D7A00897738 /* GroupRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F56166205C3EE800E28533 /* GroupRepositoryTest.swift */; };
 		F81A062820602D7C00897738 /* RoomRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F56168205C3EE900E28533 /* RoomRepositoryTest.swift */; };
 		F81A062920602D7F00897738 /* SSDPRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F56167205C3EE800E28533 /* SSDPRepositoryTest.swift */; };
-		F81A062A20602DA500897738 /* Mockingjay+Soap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F56161205C3EE800E28533 /* Mockingjay+Soap.swift */; };
 		F81A062C206031F300897738 /* XMLTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81A062B206031F300897738 /* XMLTest.swift */; };
 		F81A062E206034FF00897738 /* RepositoryInjectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81A062D206034FF00897738 /* RepositoryInjectionTest.swift */; };
 		F81E339A207135B2002E22A8 /* GroupProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E3399207135B2002E22A8 /* GroupProgress.swift */; };
 		F81E339C20713924002E22A8 /* GetGroupProgressInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E339B20713924002E22A8 /* GetGroupProgressInteractor.swift */; };
 		F81E339E2072163E002E22A8 /* GetGroupProgressInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E339D2072163E002E22A8 /* GetGroupProgressInteractorTests.swift */; };
 		F81E33A020721CEF002E22A8 /* GroupProgressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E339F20721CEF002E22A8 /* GroupProgressTests.swift */; };
+		F81E33A92072247D002E22A8 /* papa-roach-the-connection.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F81E33A32072247C002E22A8 /* papa-roach-the-connection.jpg */; };
+		F81E33AA2072247D002E22A8 /* FakeSSDPRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E33A52072247C002E22A8 /* FakeSSDPRepositoryImpl.swift */; };
+		F81E33AB2072247D002E22A8 /* FakeRoomRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E33A62072247C002E22A8 /* FakeRoomRepositoryImpl.swift */; };
+		F81E33AC2072247D002E22A8 /* FakeGroupRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E33A72072247C002E22A8 /* FakeGroupRepositoryImpl.swift */; };
+		F81E33AD2072247D002E22A8 /* FakeTransportRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E33A82072247C002E22A8 /* FakeTransportRepositoryImpl.swift */; };
+		F81E33AF2072250A002E22A8 /* Mockingjay+Soap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E33AE2072250A002E22A8 /* Mockingjay+Soap.swift */; };
 		F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */; };
 		F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAE20616239004DB497 /* SonosInteractorTests.swift */; };
 		F851ACD9206A63E8006FA0DC /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F851ACD8206A63E8006FA0DC /* TrackViewModel.swift */; };
@@ -75,15 +77,12 @@
 		F86B3440206A8EB900979A5F /* String+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B343F206A8EB900979A5F /* String+Time.swift */; };
 		F86B3442206A91DC00979A5F /* TimeConvertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B3441206A91DC00979A5F /* TimeConvertTests.swift */; };
 		F8726787206A3F3B00093FF1 /* TransportState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8726786206A3F3B00093FF1 /* TransportState.swift */; };
-		F872678C206A47F700093FF1 /* FakeTransportRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872678A206A47D800093FF1 /* FakeTransportRepositoryImpl.swift */; };
 		F872678E206A48D300093FF1 /* GetNowPlayingInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872678D206A48D300093FF1 /* GetNowPlayingInteractorTests.swift */; };
 		F8726790206A4B7700093FF1 /* TransportStateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872678F206A4B7700093FF1 /* TransportStateTest.swift */; };
 		F8726794206A4CE500093FF1 /* MusicServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8726793206A4CE400093FF1 /* MusicServiceTests.swift */; };
-		F87C0CBB206F88CE00098D07 /* papa-roach-the-connection.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F87C0CBA206F88CE00098D07 /* papa-roach-the-connection.jpg */; };
 		F87C0CBD206F88F600098D07 /* DownloadNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87C0CBC206F88F600098D07 /* DownloadNetwork.swift */; };
 		F87C0CBF206F8AE800098D07 /* GetTrackImageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87C0CBE206F8AE800098D07 /* GetTrackImageInteractor.swift */; };
 		F87C0CC1206F8C5D00098D07 /* GetTrackImageInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87C0CC0206F8C5D00098D07 /* GetTrackImageInteractorTests.swift */; };
-		F87C0CC2206F8FD300098D07 /* papa-roach-the-connection.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F87C0CBA206F88CE00098D07 /* papa-roach-the-connection.jpg */; };
 		F87DC3B220696E870089F882 /* GetNowPlayingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B020696E7E0089F882 /* GetNowPlayingInteractor.swift */; };
 		F87DC3B7206974900089F882 /* GetMediaInfoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B52069745A0089F882 /* GetMediaInfoNetwork.swift */; };
 		F87DC3B8206974920089F882 /* GetTransportInfoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B3206974490089F882 /* GetTransportInfoNetwork.swift */; };
@@ -170,13 +169,18 @@
 		F81E339B20713924002E22A8 /* GetGroupProgressInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupProgressInteractor.swift; sourceTree = "<group>"; };
 		F81E339D2072163E002E22A8 /* GetGroupProgressInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupProgressInteractorTests.swift; sourceTree = "<group>"; };
 		F81E339F20721CEF002E22A8 /* GroupProgressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupProgressTests.swift; sourceTree = "<group>"; };
+		F81E33A32072247C002E22A8 /* papa-roach-the-connection.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "papa-roach-the-connection.jpg"; sourceTree = "<group>"; };
+		F81E33A52072247C002E22A8 /* FakeSSDPRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeSSDPRepositoryImpl.swift; sourceTree = "<group>"; };
+		F81E33A62072247C002E22A8 /* FakeRoomRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeRoomRepositoryImpl.swift; sourceTree = "<group>"; };
+		F81E33A72072247C002E22A8 /* FakeGroupRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeGroupRepositoryImpl.swift; sourceTree = "<group>"; };
+		F81E33A82072247C002E22A8 /* FakeTransportRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeTransportRepositoryImpl.swift; sourceTree = "<group>"; };
+		F81E33AE2072250A002E22A8 /* Mockingjay+Soap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mockingjay+Soap.swift"; sourceTree = "<group>"; };
 		F825F45E20481C61006A7B73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F825F46020481C61006A7B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F825F46120481C61006A7B73 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F825F46F20481C71006A7B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F825F47020481CC7006A7B73 /* RepositoryInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryInjection.swift; sourceTree = "<group>"; };
 		F825F477204820BD006A7B73 /* SSDPDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSDPDevice.swift; sourceTree = "<group>"; };
-		F825F47E20482170006A7B73 /* FakeSSDPRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSSDPRepositoryImpl.swift; sourceTree = "<group>"; };
 		F825F49320482945006A7B73 /* GroupsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsCoordinator.swift; sourceTree = "<group>"; };
 		F825F49F204829F5006A7B73 /* BaseInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
 		F825F4A120482A46006A7B73 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
@@ -192,11 +196,9 @@
 		F86B343F206A8EB900979A5F /* String+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Time.swift"; sourceTree = "<group>"; };
 		F86B3441206A91DC00979A5F /* TimeConvertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConvertTests.swift; sourceTree = "<group>"; };
 		F8726786206A3F3B00093FF1 /* TransportState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportState.swift; sourceTree = "<group>"; };
-		F872678A206A47D800093FF1 /* FakeTransportRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeTransportRepositoryImpl.swift; sourceTree = "<group>"; };
 		F872678D206A48D300093FF1 /* GetNowPlayingInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNowPlayingInteractorTests.swift; sourceTree = "<group>"; };
 		F872678F206A4B7700093FF1 /* TransportStateTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportStateTest.swift; sourceTree = "<group>"; };
 		F8726793206A4CE400093FF1 /* MusicServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicServiceTests.swift; sourceTree = "<group>"; };
-		F87C0CBA206F88CE00098D07 /* papa-roach-the-connection.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "papa-roach-the-connection.jpg"; sourceTree = "<group>"; };
 		F87C0CBC206F88F600098D07 /* DownloadNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadNetwork.swift; sourceTree = "<group>"; };
 		F87C0CBE206F8AE800098D07 /* GetTrackImageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTrackImageInteractor.swift; sourceTree = "<group>"; };
 		F87C0CC0206F8C5D00098D07 /* GetTrackImageInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTrackImageInteractorTests.swift; sourceTree = "<group>"; };
@@ -204,8 +206,6 @@
 		F87DC3B3206974490089F882 /* GetTransportInfoNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTransportInfoNetwork.swift; sourceTree = "<group>"; };
 		F87DC3B52069745A0089F882 /* GetMediaInfoNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMediaInfoNetwork.swift; sourceTree = "<group>"; };
 		F87DC3B9206A2FE80089F882 /* MusicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicService.swift; sourceTree = "<group>"; };
-		F881C57C2049BE4000E3F523 /* FakeGroupRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeGroupRepositoryImpl.swift; sourceTree = "<group>"; };
-		F881C57E2049C50900E3F523 /* FakeRoomRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRoomRepositoryImpl.swift; sourceTree = "<group>"; };
 		F881C5802049C8E700E3F523 /* GetGroupsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupsInteractor.swift; sourceTree = "<group>"; };
 		F881C5822049CA1000E3F523 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
 		F881C5842049CCDC00E3F523 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
@@ -225,7 +225,6 @@
 		F8BF5C7020578D8200AE311E /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		F8BF5C7120578D8200AE311E /* GroupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupViewController.xib; sourceTree = "<group>"; };
 		F8BF5C7420578D8E00AE311E /* GroupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCoordinator.swift; sourceTree = "<group>"; };
-		F8F56161205C3EE800E28533 /* Mockingjay+Soap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mockingjay+Soap.swift"; sourceTree = "<group>"; };
 		F8F56166205C3EE800E28533 /* GroupRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupRepositoryTest.swift; sourceTree = "<group>"; };
 		F8F56167205C3EE800E28533 /* SSDPRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSDPRepositoryTest.swift; sourceTree = "<group>"; };
 		F8F56168205C3EE900E28533 /* RoomRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomRepositoryTest.swift; sourceTree = "<group>"; };
@@ -296,6 +295,106 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		F81E33A12072247C002E22A8 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F81E33A22072247C002E22A8 /* Helpers */,
+				F81E33A42072247C002E22A8 /* FakeRepositoryImplementations */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F81E33A22072247C002E22A8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F81E33A32072247C002E22A8 /* papa-roach-the-connection.jpg */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F81E33A42072247C002E22A8 /* FakeRepositoryImplementations */ = {
+			isa = PBXGroup;
+			children = (
+				F81E33A52072247C002E22A8 /* FakeSSDPRepositoryImpl.swift */,
+				F81E33A62072247C002E22A8 /* FakeRoomRepositoryImpl.swift */,
+				F81E33A72072247C002E22A8 /* FakeGroupRepositoryImpl.swift */,
+				F81E33A82072247C002E22A8 /* FakeTransportRepositoryImpl.swift */,
+			);
+			path = FakeRepositoryImplementations;
+			sourceTree = "<group>";
+		};
+		F81E33B02072251A002E22A8 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F81E33B720722595002E22A8 /* Repositories */,
+				F81E33B32072253B002E22A8 /* Interactors */,
+				F81E33B12072252A002E22A8 /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F81E33B12072252A002E22A8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F81E339F20721CEF002E22A8 /* GroupProgressTests.swift */,
+				F8726793206A4CE400093FF1 /* MusicServiceTests.swift */,
+				F872678F206A4B7700093FF1 /* TransportStateTest.swift */,
+				F8979946206944A6000CF52A /* GroupTests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F81E33B32072253B002E22A8 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				F827DAAE20616239004DB497 /* SonosInteractorTests.swift */,
+				F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */,
+				F872678D206A48D300093FF1 /* GetNowPlayingInteractorTests.swift */,
+				F8627F44206BFFE500571085 /* GetTransportStateInteractorTests.swift */,
+				F87C0CC0206F8C5D00098D07 /* GetTrackImageInteractorTests.swift */,
+				F81E339D2072163E002E22A8 /* GetGroupProgressInteractorTests.swift */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		F81E33B420722547002E22A8 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F81A062D206034FF00897738 /* RepositoryInjectionTest.swift */,
+				F81A062B206031F300897738 /* XMLTest.swift */,
+				F8B0057220612BB900991E64 /* StringRegexTest.swift */,
+				F86B3441206A91DC00979A5F /* TimeConvertTests.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F81E33B52072254B002E22A8 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				F8979941206939D1000CF52A /* NetworkTest.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		F81E33B62072254F002E22A8 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				F89D94C820615994002B1383 /* CacheManagerTests.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		F81E33B720722595002E22A8 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				F8F56166205C3EE800E28533 /* GroupRepositoryTest.swift */,
+				F800343E206967F000D7C0FB /* TransportRepositoryTest.swift */,
+				F8F56168205C3EE900E28533 /* RoomRepositoryTest.swift */,
+				F8F56167205C3EE800E28533 /* SSDPRepositoryTest.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		F825F41E2048178C006A7B73 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,30 +448,6 @@
 			children = (
 				F825F4792048213F006A7B73 /* RepositoryImplementations */,
 				F825F47020481CC7006A7B73 /* RepositoryInjection.swift */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		F825F44B20481AFC006A7B73 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		F825F44C20481C1B006A7B73 /* Mock */ = {
-			isa = PBXGroup;
-			children = (
-				F825F44D20481C1B006A7B73 /* Data */,
-			);
-			path = Mock;
-			sourceTree = "<group>";
-		};
-		F825F44D20481C1B006A7B73 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				F87C0CB9206F88B400098D07 /* Helpers */,
-				F825F47B2048214E006A7B73 /* FakeRepositoryImplementations */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -456,17 +531,6 @@
 			path = RepositoryImplementations;
 			sourceTree = "<group>";
 		};
-		F825F47B2048214E006A7B73 /* FakeRepositoryImplementations */ = {
-			isa = PBXGroup;
-			children = (
-				F825F47E20482170006A7B73 /* FakeSSDPRepositoryImpl.swift */,
-				F881C57C2049BE4000E3F523 /* FakeGroupRepositoryImpl.swift */,
-				F881C57E2049C50900E3F523 /* FakeRoomRepositoryImpl.swift */,
-				F872678A206A47D800093FF1 /* FakeTransportRepositoryImpl.swift */,
-			);
-			path = FakeRepositoryImplementations;
-			sourceTree = "<group>";
-		};
 		F825F496204829C3006A7B73 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,8 +586,6 @@
 			isa = PBXGroup;
 			children = (
 				F825F44520481A59006A7B73 /* Common */,
-				F825F44C20481C1B006A7B73 /* Mock */,
-				F825F44B20481AFC006A7B73 /* Coordinator */,
 				F825F44820481AAD006A7B73 /* Domain */,
 				F825F44920481AB1006A7B73 /* Data */,
 				F825F44620481A73006A7B73 /* Remote */,
@@ -533,18 +595,12 @@
 			path = RxSonosLib/Framework;
 			sourceTree = "<group>";
 		};
-		F87C0CB9206F88B400098D07 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				F87C0CBA206F88CE00098D07 /* papa-roach-the-connection.jpg */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		F897994320693D83000CF52A /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				F81E33A12072247C002E22A8 /* Data */,
 				F897994420693D95000CF52A /* MockNetwork.swift */,
+				F81E33AE2072250A002E22A8 /* Mockingjay+Soap.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -609,39 +665,14 @@
 		F8F56153205C3EC500E28533 /* RxSonosLibTests */ = {
 			isa = PBXGroup;
 			children = (
+				F81E33B62072254F002E22A8 /* Cache */,
+				F81E33B52072254B002E22A8 /* Remote */,
+				F81E33B420722547002E22A8 /* Data */,
+				F81E33B02072251A002E22A8 /* Domain */,
 				F897994320693D83000CF52A /* Mock */,
 				F81A0624206029C300897738 /* Info.plist */,
-				F8F5615C205C3EE800E28533 /* Data */,
-				F8F56166205C3EE800E28533 /* GroupRepositoryTest.swift */,
-				F8F56168205C3EE900E28533 /* RoomRepositoryTest.swift */,
-				F8F56167205C3EE800E28533 /* SSDPRepositoryTest.swift */,
-				F81A062B206031F300897738 /* XMLTest.swift */,
-				F81A062D206034FF00897738 /* RepositoryInjectionTest.swift */,
-				F8726793206A4CE400093FF1 /* MusicServiceTests.swift */,
-				F8B0057220612BB900991E64 /* StringRegexTest.swift */,
-				F89D94C820615994002B1383 /* CacheManagerTests.swift */,
-				F872678F206A4B7700093FF1 /* TransportStateTest.swift */,
-				F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */,
-				F827DAAE20616239004DB497 /* SonosInteractorTests.swift */,
-				F8979941206939D1000CF52A /* NetworkTest.swift */,
-				F8979946206944A6000CF52A /* GroupTests.swift */,
-				F800343E206967F000D7C0FB /* TransportRepositoryTest.swift */,
-				F872678D206A48D300093FF1 /* GetNowPlayingInteractorTests.swift */,
-				F86B3441206A91DC00979A5F /* TimeConvertTests.swift */,
-				F8627F44206BFFE500571085 /* GetTransportStateInteractorTests.swift */,
-				F87C0CC0206F8C5D00098D07 /* GetTrackImageInteractorTests.swift */,
-				F81E339D2072163E002E22A8 /* GetGroupProgressInteractorTests.swift */,
-				F81E339F20721CEF002E22A8 /* GroupProgressTests.swift */,
 			);
 			path = RxSonosLibTests;
-			sourceTree = "<group>";
-		};
-		F8F5615C205C3EE800E28533 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				F8F56161205C3EE800E28533 /* Mockingjay+Soap.swift */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -782,7 +813,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F87C0CBB206F88CE00098D07 /* papa-roach-the-connection.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,7 +820,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F87C0CC2206F8FD300098D07 /* papa-roach-the-connection.jpg in Resources */,
+				F81E33A92072247D002E22A8 /* papa-roach-the-connection.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -979,7 +1009,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8627F43206BFD5200571085 /* GetTransportStateInteractor.swift in Sources */,
-				F81A05EA206028D600897738 /* FakeSSDPRepositoryImpl.swift in Sources */,
 				F86B3440206A8EB900979A5F /* String+Time.swift in Sources */,
 				F81E339C20713924002E22A8 /* GetGroupProgressInteractor.swift in Sources */,
 				F87C0CBF206F8AE800098D07 /* GetTrackImageInteractor.swift in Sources */,
@@ -992,7 +1021,6 @@
 				F87DC3B8206974920089F882 /* GetTransportInfoNetwork.swift in Sources */,
 				F81A05FC206028D600897738 /* GetGroupsNetwork.swift in Sources */,
 				F8003441206969DF00D7C0FB /* GetPositionInfoNetwork.swift in Sources */,
-				F872678C206A47F700093FF1 /* FakeTransportRepositoryImpl.swift in Sources */,
 				F87DC3B7206974900089F882 /* GetMediaInfoNetwork.swift in Sources */,
 				F81A05E4206028D600897738 /* String+Regex.swift in Sources */,
 				F81A05E5206028D600897738 /* Error+RxSonosLib.swift in Sources */,
@@ -1003,7 +1031,6 @@
 				F81A05F4206028D600897738 /* GroupRepository.swift in Sources */,
 				F87DC3BA206A2FE80089F882 /* MusicService.swift in Sources */,
 				F81A05F1206028D600897738 /* GetGroupsInteractor.swift in Sources */,
-				F81A05EB206028D600897738 /* FakeGroupRepositoryImpl.swift in Sources */,
 				F81A05F2206028D600897738 /* SonosInteractor.swift in Sources */,
 				F81A05F3206028D600897738 /* RoomRepository.swift in Sources */,
 				F81A05FF206028D600897738 /* CacheManager.swift in Sources */,
@@ -1016,7 +1043,6 @@
 				F81A05F6206028D600897738 /* GroupRepositoryImpl.swift in Sources */,
 				F81A05FA206028D600897738 /* SonosSoapService.swift in Sources */,
 				F80034372069662900D7C0FB /* TransportRepositoryImpl.swift in Sources */,
-				F81A05EC206028D600897738 /* FakeRoomRepositoryImpl.swift in Sources */,
 				F800343D206967D000D7C0FB /* Track.swift in Sources */,
 				F81A05EE206028D600897738 /* Room.swift in Sources */,
 			);
@@ -1031,17 +1057,21 @@
 				F8726790206A4B7700093FF1 /* TransportStateTest.swift in Sources */,
 				F8979947206944A6000CF52A /* GroupTests.swift in Sources */,
 				F87C0CC1206F8C5D00098D07 /* GetTrackImageInteractorTests.swift in Sources */,
+				F81E33AB2072247D002E22A8 /* FakeRoomRepositoryImpl.swift in Sources */,
 				F81A062920602D7F00897738 /* SSDPRepositoryTest.swift in Sources */,
 				F800343F206967F000D7C0FB /* TransportRepositoryTest.swift in Sources */,
 				F8B0057320612BB900991E64 /* StringRegexTest.swift in Sources */,
 				F8627F45206BFFE500571085 /* GetTransportStateInteractorTests.swift in Sources */,
 				F897994520693D95000CF52A /* MockNetwork.swift in Sources */,
 				F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */,
+				F81E33AA2072247D002E22A8 /* FakeSSDPRepositoryImpl.swift in Sources */,
 				F81E339E2072163E002E22A8 /* GetGroupProgressInteractorTests.swift in Sources */,
+				F81E33AF2072250A002E22A8 /* Mockingjay+Soap.swift in Sources */,
 				F86B3442206A91DC00979A5F /* TimeConvertTests.swift in Sources */,
 				F8726794206A4CE500093FF1 /* MusicServiceTests.swift in Sources */,
+				F81E33AD2072247D002E22A8 /* FakeTransportRepositoryImpl.swift in Sources */,
+				F81E33AC2072247D002E22A8 /* FakeGroupRepositoryImpl.swift in Sources */,
 				F81A062820602D7C00897738 /* RoomRepositoryTest.swift in Sources */,
-				F81A062A20602DA500897738 /* Mockingjay+Soap.swift in Sources */,
 				F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */,
 				F872678E206A48D300093FF1 /* GetNowPlayingInteractorTests.swift in Sources */,
 				F81A062E206034FF00897738 /* RepositoryInjectionTest.swift in Sources */,

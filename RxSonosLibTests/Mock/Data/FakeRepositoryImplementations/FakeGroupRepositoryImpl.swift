@@ -7,6 +7,7 @@
 //
 
 import Foundation
+@testable import RxSonosLib
 import RxSwift
 
 class FakeGroupRepositoryImpl: GroupRepository {
