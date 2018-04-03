@@ -12,34 +12,20 @@ import Foundation
 extension String {
     
     func extractUUID() -> String? {
-        let pattern = "uuid:([a-zA-Z0-9_]+)"
-        let matches = self.match(with: pattern)
-        
-        return matches?.resultForString(self, index: 1)
+        return self.match(with: "uuid:([a-zA-Z0-9_]+)")?.resultForString(self, index: 1)
     }
     
     func baseUrl() -> String? {
-        let pattern = "(https?://[0-9:.]+)"
-        let matches = self.match(with: pattern)
-        
-        return matches?.resultForString(self, index: 1)
+        return self.match(with: "(https?://[0-9:.]+)")?.resultForString(self, index: 1)
     }
     
     func urlSuffix() -> String? {
-        let pattern = "^https?://[0-9:.]+(.*)$"
-        let matches = self.match(with: pattern)
-        
-        return matches?.resultForString(self, index: 1)
+        return self.match(with: "^https?://[0-9:.]+(.*)$")?.resultForString(self, index: 1)
     }
     
     
     func musicServiceFromUrl() -> MusicService {
-        
-        let pattern = "([a-zA-Z0-9-]+):"
-        let matches = self.match(with: pattern)
-        
-        let service = matches?.resultForString(self, index: 1)
-        
+        let service = self.match(with: "([a-zA-Z0-9-]+):")?.resultForString(self, index: 1)
         return MusicService.map(string: service)
     }
     
