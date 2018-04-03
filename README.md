@@ -1,11 +1,12 @@
 # RxSonosLib
+[![Swift 4.1](https://img.shields.io/badge/swift-4.1-orange.svg?style=flat)](https://swift.org)
 [![Travis Badge](https://api.travis-ci.org/stefanrenne/RxSonosLib.svg?branch=master)](https://travis-ci.org/stefanrenne/RxSonosLib)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/445e34c7de447fb011ec/test_coverage)](https://codeclimate.com/github/stefanrenne/RxSonosLib/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/445e34c7de447fb011ec/maintainability)](https://codeclimate.com/github/stefanrenne/RxSonosLib/maintainability)
-<!--[![CocoaPods Version Badge](https://img.shields.io/cocoapods/v/RxSonosLib.svg)](https://cocoapods.org/pods/RxSonosLib)
-![Supported Platforms Badge](https://img.shields.io/cocoapods/p/RxSonosLib.svg)
-[![Percentage Documented Badge](https://img.shields.io/cocoapods/metrics/doc-percent/RxSonosLib.svg)](http://cocoadocs.org/docsets/RxSonosLib)
-[![License Badge](https://img.shields.io/cocoapods/l/RxSonosLib.svg)](LICENSE)-->
+[![CocoaPods Version Badge](https://img.shields.io/cocoapods/v/RxSonosLib.svg)](https://cocoapods.org/pods/RxSonosLib)
+[![License Badge](https://img.shields.io/cocoapods/l/RxSonosLib.svg)](LICENSE)
+[![Platform](https://img.shields.io/cocoapods/p/RxSonosLib.svg?style=flat)](http://cocoapods.org/pods/RxSonosLib)
+
 
 Swift library that simplifies interacting with Sonos Devices
 
@@ -27,12 +28,12 @@ Platform:
 
 
 - [x] support iOS
-- [ ] support MacOS
-- [ ] support tvOS
+- [x] support MacOS
+- [x] support tvOS
 - [ ] support Linux
 
 
-This library requires Swift 4 & RxSwift.
+This library requires Swift 4.1 & RxSwift.
 
 ## Background Info
 The first version of this project started as a way to understand Sonos better. This version is here to help me improve my RxSwift knowledge.
@@ -103,10 +104,6 @@ Clone the repository, open `RxSonosLib.xcworkspace` and build the demo project
 
 ## Development Info
 Please document code changes in unit tests and make sure all tests are green.
-
-## Cocoapods
-
-When v1.0 is released
 
 ## License
 This project is released under the [Apache-2.0 license](LICENSE.txt).
