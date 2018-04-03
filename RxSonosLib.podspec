@@ -15,5 +15,5 @@ Pod::Spec.new do |spec|
   spec.dependency             'RxSwift', '~> 4.1'
   spec.dependency             'RxCocoa', '~> 4.1'
   spec.dependency             'RxSSDP', '~> 4.1'
-  spec.dependency             'AEXML', '~> 4.3'
+  spec.dependency             'AEXML', '~> 4.2'
 end

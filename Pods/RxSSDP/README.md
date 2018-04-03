@@ -1,4 +1,10 @@
 # RxSSDP
+
+[![Swift 4.1](https://img.shields.io/badge/swift-4.1-orange.svg?style=flat)](https://swift.org)
+[![Version](https://img.shields.io/cocoapods/v/RxSSDP.svg?style=flat)](http://cocoapods.org/pods/RxSSDP)
+[![License](https://img.shields.io/cocoapods/l/RxSSDP.svg?style=flat)](http://cocoapods.org/pods/RxSSDP)
+[![Platform](https://img.shields.io/cocoapods/p/RxSSDP.svg?style=flat)](http://cocoapods.org/pods/RxSSDP)
+
 An Reactive SSDP client with buffering written in Swift, based on [SwiftSSDPClient](https://github.com/mhmiles/SwiftSSDPClient)
 
 ## How to
