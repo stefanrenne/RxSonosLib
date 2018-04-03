@@ -4,7 +4,6 @@ xcodeproj: RxSonosLib.xcodeproj
 workspace: RxSonosLib.xcworkspace
 scheme: RxSonosLib
 source_directory: RxSonosLib/Framework
-output_directory: xml_report
 ignore:
 - Pods/*
 - RxSonosLibTests/*

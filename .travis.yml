@@ -10,7 +10,6 @@ env:
   - SCHEME=RxSonosLib
   - CC_TEST_REPORTER_ID=5332094259e2b828a20d61a227b30295e535380c07b6ab5f097b59e80b9c9c73
   matrix:
-    - DESTINATION="OS=10.2,name=iPhone SE"
     - DESTINATION="OS=11.2,name=iPhone X"
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-darwin-amd64 > ./cc-test-reporter
@@ -28,4 +27,4 @@ script:
   - xcodebuild test -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" | xcpretty
 after_script:
   - slather
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT --coverage-input-type "cobertura" --prefix "xml_report"
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
