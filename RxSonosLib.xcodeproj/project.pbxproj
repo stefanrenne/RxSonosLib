@@ -91,8 +91,19 @@
 		F8860E7E2074D89300BF6A7E /* SpotifyTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E7D2074D89300BF6A7E /* SpotifyTrack.swift */; };
 		F8860E802074D8A800BF6A7E /* TuneinTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E7F2074D8A800BF6A7E /* TuneinTrack.swift */; };
 		F8860E822074D8BE00BF6A7E /* TVTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E812074D8BE00BF6A7E /* TVTrack.swift */; };
-		F8860E852074F6BC00BF6A7E /* TrackFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E842074F6BC00BF6A7E /* TrackFactory.swift */; };
+		F8860E852074F6BC00BF6A7E /* NowPlayingTrackFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E842074F6BC00BF6A7E /* NowPlayingTrackFactory.swift */; };
 		F8860E872074FF7600BF6A7E /* TrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E862074FF7600BF6A7E /* TrackTests.swift */; };
+		F8860E892075067800BF6A7E /* GetQueueNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E882075067800BF6A7E /* GetQueueNetwork.swift */; };
+		F8860E8B207506BE00BF6A7E /* ContentDirectoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E8A207506BE00BF6A7E /* ContentDirectoryRepository.swift */; };
+		F8860E8D2075071F00BF6A7E /* ContentDirectoryRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E8C2075071F00BF6A7E /* ContentDirectoryRepositoryImpl.swift */; };
+		F8860E8F207507F500BF6A7E /* GetGroupQueueInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E8E207507F500BF6A7E /* GetGroupQueueInteractor.swift */; };
+		F8860E9120750B9300BF6A7E /* ContentDirectoryRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E9020750B9300BF6A7E /* ContentDirectoryRepositoryTests.swift */; };
+		F8860E9320750F6600BF6A7E /* QueueTrackFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E9220750F6600BF6A7E /* QueueTrackFactory.swift */; };
+		F8860E95207514BE00BF6A7E /* FakeContentDirectoryRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E94207514BE00BF6A7E /* FakeContentDirectoryRepositoryImpl.swift */; };
+		F8860E972075157400BF6A7E /* GetGroupQueueInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E962075157400BF6A7E /* GetGroupQueueInteractorTests.swift */; };
+		F8860E9C207516F400BF6A7E /* QueueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E98207516F000BF6A7E /* QueueTableViewCell.swift */; };
+		F8860E9D207516FC00BF6A7E /* QueueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8860E99207516F000BF6A7E /* QueueTableViewCell.xib */; };
+		F8860EA02075189D00BF6A7E /* QueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E9E2075189A00BF6A7E /* QueueViewModel.swift */; };
 		F8979942206939D1000CF52A /* NetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8979941206939D1000CF52A /* NetworkTest.swift */; };
 		F897994520693D95000CF52A /* MockNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897994420693D95000CF52A /* MockNetwork.swift */; };
 		F8979947206944A6000CF52A /* GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8979946206944A6000CF52A /* GroupTests.swift */; };
@@ -220,8 +231,19 @@
 		F8860E7D2074D89300BF6A7E /* SpotifyTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyTrack.swift; sourceTree = "<group>"; };
 		F8860E7F2074D8A800BF6A7E /* TuneinTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuneinTrack.swift; sourceTree = "<group>"; };
 		F8860E812074D8BE00BF6A7E /* TVTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTrack.swift; sourceTree = "<group>"; };
-		F8860E842074F6BC00BF6A7E /* TrackFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackFactory.swift; sourceTree = "<group>"; };
+		F8860E842074F6BC00BF6A7E /* NowPlayingTrackFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingTrackFactory.swift; sourceTree = "<group>"; };
 		F8860E862074FF7600BF6A7E /* TrackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTests.swift; sourceTree = "<group>"; };
+		F8860E882075067800BF6A7E /* GetQueueNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQueueNetwork.swift; sourceTree = "<group>"; };
+		F8860E8A207506BE00BF6A7E /* ContentDirectoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDirectoryRepository.swift; sourceTree = "<group>"; };
+		F8860E8C2075071F00BF6A7E /* ContentDirectoryRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDirectoryRepositoryImpl.swift; sourceTree = "<group>"; };
+		F8860E8E207507F500BF6A7E /* GetGroupQueueInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupQueueInteractor.swift; sourceTree = "<group>"; };
+		F8860E9020750B9300BF6A7E /* ContentDirectoryRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDirectoryRepositoryTests.swift; sourceTree = "<group>"; };
+		F8860E9220750F6600BF6A7E /* QueueTrackFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTrackFactory.swift; sourceTree = "<group>"; };
+		F8860E94207514BE00BF6A7E /* FakeContentDirectoryRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeContentDirectoryRepositoryImpl.swift; sourceTree = "<group>"; };
+		F8860E962075157400BF6A7E /* GetGroupQueueInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupQueueInteractorTests.swift; sourceTree = "<group>"; };
+		F8860E98207516F000BF6A7E /* QueueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTableViewCell.swift; sourceTree = "<group>"; };
+		F8860E99207516F000BF6A7E /* QueueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueueTableViewCell.xib; sourceTree = "<group>"; };
+		F8860E9E2075189A00BF6A7E /* QueueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueViewModel.swift; sourceTree = "<group>"; };
 		F8979941206939D1000CF52A /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
 		F897994420693D95000CF52A /* MockNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetwork.swift; sourceTree = "<group>"; };
 		F8979946206944A6000CF52A /* GroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTests.swift; sourceTree = "<group>"; };
@@ -332,6 +354,7 @@
 				F81E33A62072247C002E22A8 /* FakeRoomRepositoryImpl.swift */,
 				F81E33A72072247C002E22A8 /* FakeGroupRepositoryImpl.swift */,
 				F81E33A82072247C002E22A8 /* FakeTransportRepositoryImpl.swift */,
+				F8860E94207514BE00BF6A7E /* FakeContentDirectoryRepositoryImpl.swift */,
 			);
 			path = FakeRepositoryImplementations;
 			sourceTree = "<group>";
@@ -367,6 +390,7 @@
 				F8627F44206BFFE500571085 /* GetTransportStateInteractorTests.swift */,
 				F87C0CC0206F8C5D00098D07 /* GetTrackImageInteractorTests.swift */,
 				F81E339D2072163E002E22A8 /* GetGroupProgressInteractorTests.swift */,
+				F8860E962075157400BF6A7E /* GetGroupQueueInteractorTests.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -405,6 +429,7 @@
 				F800343E206967F000D7C0FB /* TransportRepositoryTest.swift */,
 				F8F56168205C3EE900E28533 /* RoomRepositoryTest.swift */,
 				F8F56167205C3EE800E28533 /* SSDPRepositoryTest.swift */,
+				F8860E9020750B9300BF6A7E /* ContentDirectoryRepositoryTests.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -504,6 +529,7 @@
 				F809DE8A2049A0E3003A94A0 /* RoomRepository.swift */,
 				F809DE8C2049A0F5003A94A0 /* GroupRepository.swift */,
 				F80034302069644300D7C0FB /* TransportRepository.swift */,
+				F8860E8A207506BE00BF6A7E /* ContentDirectoryRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -517,6 +543,7 @@
 				F8627F42206BFD5200571085 /* GetTransportStateInteractor.swift */,
 				F87C0CBE206F8AE800098D07 /* GetTrackImageInteractor.swift */,
 				F81E339B20713924002E22A8 /* GetGroupProgressInteractor.swift */,
+				F8860E8E207507F500BF6A7E /* GetGroupQueueInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -545,6 +572,7 @@
 				F809DE8E2049A11D003A94A0 /* RoomRepositoryImpl.swift */,
 				F809DE902049A138003A94A0 /* GroupRepositoryImpl.swift */,
 				F80034322069644B00D7C0FB /* TransportRepositoryImpl.swift */,
+				F8860E8C2075071F00BF6A7E /* ContentDirectoryRepositoryImpl.swift */,
 			);
 			path = RepositoryImplementations;
 			sourceTree = "<group>";
@@ -616,7 +644,8 @@
 		F8860E832074F6B000BF6A7E /* Factory */ = {
 			isa = PBXGroup;
 			children = (
-				F8860E842074F6BC00BF6A7E /* TrackFactory.swift */,
+				F8860E842074F6BC00BF6A7E /* NowPlayingTrackFactory.swift */,
+				F8860E9220750F6600BF6A7E /* QueueTrackFactory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -649,6 +678,7 @@
 				F8003440206969DF00D7C0FB /* GetPositionInfoNetwork.swift */,
 				F87DC3B3206974490089F882 /* GetTransportInfoNetwork.swift */,
 				F87DC3B52069745A0089F882 /* GetMediaInfoNetwork.swift */,
+				F8860E882075067800BF6A7E /* GetQueueNetwork.swift */,
 			);
 			path = Soap;
 			sourceTree = "<group>";
@@ -684,6 +714,9 @@
 			children = (
 				F8BF5C7020578D8200AE311E /* GroupViewController.swift */,
 				F8BF5C7120578D8200AE311E /* GroupViewController.xib */,
+				F8860E98207516F000BF6A7E /* QueueTableViewCell.swift */,
+				F8860E99207516F000BF6A7E /* QueueTableViewCell.xib */,
+				F8860E9E2075189A00BF6A7E /* QueueViewModel.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -830,6 +863,7 @@
 				F81A05C92060284A00897738 /* GroupsViewController.xib in Resources */,
 				F81A05D02060285100897738 /* LaunchScreen.storyboard in Resources */,
 				F81A05CE2060284A00897738 /* GroupsTableViewCell.xib in Resources */,
+				F8860E9D207516FC00BF6A7E /* QueueTableViewCell.xib in Resources */,
 				F81A05C72060284A00897738 /* GroupViewController.xib in Resources */,
 				F81A05D12060285400897738 /* Assets.xcassets in Resources */,
 			);
@@ -1025,8 +1059,10 @@
 				F81A05C32060284A00897738 /* GroupCoordinator.swift in Sources */,
 				F851ACD9206A63E8006FA0DC /* TrackViewModel.swift in Sources */,
 				F81A05C22060284A00897738 /* GroupsCoordinator.swift in Sources */,
+				F8860EA02075189D00BF6A7E /* QueueViewModel.swift in Sources */,
 				F81A05C12060284A00897738 /* NavigationCoordinator.swift in Sources */,
 				F81A05CD2060284A00897738 /* GroupsTableViewCell.swift in Sources */,
+				F8860E9C207516F400BF6A7E /* QueueTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1045,6 +1081,7 @@
 				F8860E822074D8BE00BF6A7E /* TVTrack.swift in Sources */,
 				F81A05F7206028D600897738 /* RepositoryInjection.swift in Sources */,
 				F8860E7E2074D89300BF6A7E /* SpotifyTrack.swift in Sources */,
+				F8860E8F207507F500BF6A7E /* GetGroupQueueInteractor.swift in Sources */,
 				F81A05EF206028D600897738 /* Group.swift in Sources */,
 				F81A05F8206028D600897738 /* Network.swift in Sources */,
 				F87DC3B8206974920089F882 /* GetTransportInfoNetwork.swift in Sources */,
@@ -1052,12 +1089,15 @@
 				F81A05FC206028D600897738 /* GetGroupsNetwork.swift in Sources */,
 				F8003441206969DF00D7C0FB /* GetPositionInfoNetwork.swift in Sources */,
 				F87DC3B7206974900089F882 /* GetMediaInfoNetwork.swift in Sources */,
+				F8860E9320750F6600BF6A7E /* QueueTrackFactory.swift in Sources */,
 				F81A05E4206028D600897738 /* String+Regex.swift in Sources */,
 				F81A05E5206028D600897738 /* Error+RxSonosLib.swift in Sources */,
 				F81A05E7206028D600897738 /* Data+Convert.swift in Sources */,
 				F81A05F0206028D600897738 /* DeviceDescription.swift in Sources */,
-				F8860E852074F6BC00BF6A7E /* TrackFactory.swift in Sources */,
+				F8860E8D2075071F00BF6A7E /* ContentDirectoryRepositoryImpl.swift in Sources */,
+				F8860E852074F6BC00BF6A7E /* NowPlayingTrackFactory.swift in Sources */,
 				F80034362069662500D7C0FB /* TransportRepository.swift in Sources */,
+				F8860E892075067800BF6A7E /* GetQueueNetwork.swift in Sources */,
 				F81A05F9206028D600897738 /* SoapNetwork.swift in Sources */,
 				F81A05F4206028D600897738 /* GroupRepository.swift in Sources */,
 				F87DC3BA206A2FE80089F882 /* MusicService.swift in Sources */,
@@ -1071,6 +1111,7 @@
 				F81A05FB206028D600897738 /* SoapSoapAction.swift in Sources */,
 				F87DC3B220696E870089F882 /* GetNowPlayingInteractor.swift in Sources */,
 				F87C0CBD206F88F600098D07 /* DownloadNetwork.swift in Sources */,
+				F8860E8B207506BE00BF6A7E /* ContentDirectoryRepository.swift in Sources */,
 				F81A05F6206028D600897738 /* GroupRepositoryImpl.swift in Sources */,
 				F81A05FA206028D600897738 /* SonosSoapService.swift in Sources */,
 				F80034372069662900D7C0FB /* TransportRepositoryImpl.swift in Sources */,
@@ -1088,6 +1129,7 @@
 				F8726790206A4B7700093FF1 /* TransportStateTest.swift in Sources */,
 				F8979947206944A6000CF52A /* GroupTests.swift in Sources */,
 				F87C0CC1206F8C5D00098D07 /* GetTrackImageInteractorTests.swift in Sources */,
+				F8860E972075157400BF6A7E /* GetGroupQueueInteractorTests.swift in Sources */,
 				F81E33AB2072247D002E22A8 /* FakeRoomRepositoryImpl.swift in Sources */,
 				F81A062920602D7F00897738 /* SSDPRepositoryTest.swift in Sources */,
 				F800343F206967F000D7C0FB /* TransportRepositoryTest.swift in Sources */,
@@ -1106,9 +1148,11 @@
 				F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */,
 				F8860E872074FF7600BF6A7E /* TrackTests.swift in Sources */,
 				F872678E206A48D300093FF1 /* GetNowPlayingInteractorTests.swift in Sources */,
+				F8860E9120750B9300BF6A7E /* ContentDirectoryRepositoryTests.swift in Sources */,
 				F81A062E206034FF00897738 /* RepositoryInjectionTest.swift in Sources */,
 				F81A062C206031F300897738 /* XMLTest.swift in Sources */,
 				F8979942206939D1000CF52A /* NetworkTest.swift in Sources */,
+				F8860E95207514BE00BF6A7E /* FakeContentDirectoryRepositoryImpl.swift in Sources */,
 				F81A062720602D7A00897738 /* GroupRepositoryTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,10 +19,13 @@ Features:
 - [x] see what track is currently playing (supports Spotify, Tunein & TV)
 - [x] see the image of the current track
 - [x] see the progress of the current track
+- [x] see what what tracks are in the queue
+- [ ] add tracks to the queue
+- [ ] remove tracks from the queue
+- [ ] see the current volume
+- [ ] change the current volume
 - [ ] play/pause/stop current track
-- [ ] see what what tracks are in the queue
 - [ ] previous/next queue track
-- [ ] remove tracks from queue
 
 Platform:
 
@@ -90,7 +93,15 @@ let interactor: GetGroupProgressInteractor = SonosInteractor
 	.get(values: GetGroupProgressValues(track: <#T##Group#>))
 ```
 
-### 5) Get the image for a Sonos Track
+### 5) Get the queue for a Sonos Group
+
+```
+let interactor: GetGroupQueueInteractor = SonosInteractor
+	.provideGroupQueueInteractor()
+	.get(values: GetGroupQueueValues(group: <#T##Group#>))
+```
+
+### 6) Get the image for a Sonos Track
 
 ```
 let interactor: GetTrackImageInteractor = SonosInteractor

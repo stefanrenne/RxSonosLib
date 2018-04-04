@@ -1,5 +1,5 @@
 //
-//  TrackFactory.swift
+//  NowPlayingTrackFactory.swift
 //  RxSonosLib
 //
 //  Created by Stefan Renne on 04/04/2018.
@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct TrackFactory {
+struct NowPlayingTrackFactory {
     
     static func create(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) -> Track? {
         switch positionInfo["TrackURI"]?.musicServiceFromUrl() {
             case .some(.spotify):
-                return TrackFactory.createSpotifyTrack(room: room, positionInfo: positionInfo, mediaInfo: mediaInfo)
+                return NowPlayingTrackFactory.createSpotifyTrack(room: room, positionInfo: positionInfo, mediaInfo: mediaInfo)
             case .some(.tunein):
-                return TrackFactory.createTuneinTrack(room: room, positionInfo: positionInfo, mediaInfo: mediaInfo)
+                return NowPlayingTrackFactory.createTuneinTrack(room: room, positionInfo: positionInfo, mediaInfo: mediaInfo)
             case .some(.tv):
-                return TrackFactory.createTVTrack(room: room, positionInfo: positionInfo, mediaInfo: mediaInfo)
+                return NowPlayingTrackFactory.createTVTrack(room: room, positionInfo: positionInfo, mediaInfo: mediaInfo)
             default:
                 return nil
         }

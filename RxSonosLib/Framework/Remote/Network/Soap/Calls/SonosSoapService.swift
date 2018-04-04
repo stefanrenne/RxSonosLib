@@ -10,8 +10,8 @@ import Foundation
 
 
 enum SonosSoapService {
-    case group, transport
-//    case alarm, groupRenderingControl, connectionManager, queue, music, contentDirectory, renderingControl, deviceProperties, systemProperties, musicProvider
+    case group, transport, contentDirectory
+//    case alarm, groupRenderingControl, connectionManager, queue, music, renderingControl, deviceProperties, systemProperties, musicProvider
     
     var controllUrl: String {
         switch self {
@@ -29,8 +29,8 @@ enum SonosSoapService {
             return "/ZoneGroupTopology/Control"
 //        case .groupRenderingControl:
 //            return "/MediaRenderer/GroupRenderingControl/Control"
-//        case .contentDirectory:
-//            return "/MediaServer/ContentDirectory/Control"
+        case .contentDirectory:
+            return "/MediaServer/ContentDirectory/Control"
 //        case .renderingControl:
 //            return "/MediaRenderer/RenderingControl/Control"
 //        case .deviceProperties:
@@ -91,8 +91,8 @@ enum SonosSoapService {
 //            return "urn:schemas-upnp-org:service:MusicServices:1"
         case .group:
             return "urn:schemas-upnp-org:service:ZoneGroupTopology:1"
-//        case .contentDirectory:
-//            return "urn:schemas-upnp-org:service:ContentDirectory:1"
+        case .contentDirectory:
+            return "urn:schemas-upnp-org:service:ContentDirectory:1"
 //        case .renderingControl:
 //            return "urn:schemas-upnp-org:service:RenderingControl:1"
 //        case .groupRenderingControl:

@@ -40,4 +40,11 @@ class RepositoryInjectionTest: XCTestCase {
         XCTAssertTrue(type(of: RepositoryInjection.provideTransportRepository()) == FakeTransportRepositoryImpl.self)
     }
     
+    func testItCanProvideTheContentDirectoryRepository() {
+        XCTAssertTrue(type(of: RepositoryInjection.provideContentDirectoryRepository()) == ContentDirectoryRepositoryImpl.self)
+        
+        RepositoryInjection.shared.contentDirectoryRepository = FakeContentDirectoryRepositoryImpl()
+        XCTAssertTrue(type(of: RepositoryInjection.provideContentDirectoryRepository()) == FakeContentDirectoryRepositoryImpl.self)
+    }
+    
 }

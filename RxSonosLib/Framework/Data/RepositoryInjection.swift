@@ -36,4 +36,9 @@ open class RepositoryInjection {
         return shared.transportRepository
     }
     
+    internal lazy var contentDirectoryRepository: ContentDirectoryRepository = { return ContentDirectoryRepositoryImpl() }()
+    static public func provideContentDirectoryRepository() -> ContentDirectoryRepository {
+        return shared.contentDirectoryRepository
+    }
+    
 }

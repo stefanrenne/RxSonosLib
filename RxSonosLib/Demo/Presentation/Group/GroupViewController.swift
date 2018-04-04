@@ -15,6 +15,7 @@ class GroupViewController: UIViewController {
     
     var model: GroupViewModel!
     
+    @IBOutlet var queueTableView: UITableView!
     @IBOutlet var groupImageView: UIImageView!
     @IBOutlet var groupDescription: UILabel!
     @IBOutlet var progressView: UIProgressView!
@@ -29,6 +30,8 @@ class GroupViewController: UIViewController {
         self.setupName()
         self.setupTransportState()
         self.setupGroupProgress()
+        self.setupQueueTableViewItems()
+        self.setupQueueCellTapHandling()
         self.setupNowPlaying()
     }
     
@@ -64,13 +67,29 @@ class GroupViewController: UIViewController {
     fileprivate func setupGroupProgress() {
         model.groupProgressInteractor
             .subscribe(onNext: { [weak self] (progress) in
-            self?.progressTime.text = progress.durationString
+            self?.progressTime.text = progress.timeString
             self?.remainingTime.text = progress.remainingTimeString
             self?.progressView.progress = progress.progress
         }, onError: { (error) in
             print(error.localizedDescription)
         })
         .disposed(by: disposeBag)
+    }
+    
+    fileprivate func setupQueueTableViewItems() {
+        
+        queueTableView.register(UINib(nibName: String(describing: QueueTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: QueueTableViewCell.identifier)
+        
+         model
+            .queueInteractor
+            .bind(to: queueTableView.rx.items(cellIdentifier: QueueTableViewCell.identifier, cellType: QueueTableViewCell.self)) { (row, track, cell) in
+                cell.model = QueueViewModel(track: track)
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    fileprivate func setupQueueCellTapHandling() {
+        
     }
     
     fileprivate func bind(track: TrackViewModel) {

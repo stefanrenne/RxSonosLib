@@ -30,4 +30,8 @@ open class SonosInteractor {
         return GetGroupProgressInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
     }
     
+    static public func provideGroupQueueInteractor() -> GetGroupQueueInteractor {
+        return GetGroupQueueInteractor(contentDirectoryRepository: RepositoryInjection.provideContentDirectoryRepository())
+    }
+    
 }

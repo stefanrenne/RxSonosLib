@@ -35,4 +35,9 @@ class GroupViewModel {
         return SonosInteractor.provideGroupProgressInteractor()
             .get(values: GetGroupProgressValues(group: group))
     }()
+    
+    lazy var queueInteractor: Observable<[Track]> = {
+        return SonosInteractor.provideGroupQueueInteractor()
+            .get(values: GetGroupQueueValues(group: group))
+    }()
 }
