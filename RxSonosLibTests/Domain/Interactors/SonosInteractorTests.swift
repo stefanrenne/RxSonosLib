@@ -11,24 +11,28 @@ import XCTest
 
 class SonosInteractorTests: XCTestCase {
     
-    func testItCanProvideGroupsInteractor() {
+    func testItCanProvideTheGroupsInteractor() {
         XCTAssertTrue(type(of: SonosInteractor.provideGroupsInteractor()) == GetGroupsInteractor.self)
     }
     
-    func testItCanProvideNowPlayingInteractor() {
+    func testItCanProvideTheNowPlayingInteractor() {
         XCTAssertTrue(type(of: SonosInteractor.provideNowPlayingInteractor()) == GetNowPlayingInteractor.self)
     }
     
-    func testItCanProvideTransportStateInteractor() {
+    func testItCanProvideTheTransportStateInteractor() {
         XCTAssertTrue(type(of: SonosInteractor.provideTransportStateInteractor()) == GetTransportStateInteractor.self)
     }
     
-    func testItCanProvideTrackImageInteractor() {
+    func testItCanProvideTheTrackImageInteractor() {
         XCTAssertTrue(type(of: SonosInteractor.provideTrackImageInteractor()) == GetTrackImageInteractor.self)
     }
     
-    func testItCanProvideGroupProgressInteractor() {
+    func testItCanProvideTheGroupProgressInteractor() {
         XCTAssertTrue(type(of: SonosInteractor.provideGroupProgressInteractor()) == GetGroupProgressInteractor.self)
+    }
+    
+    func testItCanProvideTheGroupQueueInteractor() {
+        XCTAssertTrue(type(of: SonosInteractor.provideGroupQueueInteractor()) == GetGroupQueueInteractor.self)
     }
     
 }

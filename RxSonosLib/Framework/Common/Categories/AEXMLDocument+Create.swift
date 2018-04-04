@@ -20,20 +20,23 @@ extension AEXMLDocument {
         return try? AEXMLDocument(xml: cleanString)
     }
     
-    func mapMetaItems() -> [String:String] {
-        var data = [String:String]()
-        self["DIDL-Lite"]["item"].children.forEach { (row) in
-            data[row.name] = row.string
-            row.attributes.forEach({ (key, value) in
-                data["\(row.name)\(key)"] = value
+    func mapMetaItems() -> [[String:String]] {
+        return self["DIDL-Lite"].children.map { (item) -> [String: String] in
+            return item.children.reduce(into: [String:String](), { (dict, row) in
+                dict[row.name] = row.string
+                row.attributes.forEach({ (key, value) in
+                    dict["\(row.name)\(key)"] = value
+                })
             })
         }
-        return data
     }
 }
 
 extension String {
     func mapMetaItem() -> [String:String]? {
+        return AEXMLDocument.create(self)?.mapMetaItems().first
+    }
+    func mapMetaItems() -> [[String:String]]? {
         return AEXMLDocument.create(self)?.mapMetaItems()
     }
 }

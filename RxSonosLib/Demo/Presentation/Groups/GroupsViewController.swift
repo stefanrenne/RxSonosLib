@@ -23,13 +23,14 @@ class GroupsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        table.register(UINib(nibName: String(describing: GroupsTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: GroupsTableViewCell.identifier)
         self.setupTableViewItems()
         self.setupCellTapHandling()
         self.startLoading()
     }
     
     func setupTableViewItems() {
+        table.register(UINib(nibName: String(describing: GroupsTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: GroupsTableViewCell.identifier)
+        
         print("groups: loading")
         getGroupsInteractor
             .get()
