@@ -29,7 +29,8 @@ enum SoapSoapAction {
 //    case favorites, localFiles
     
     /* RenderingControl */
-//    case getVolume, setVolume(_: Int), getMute, enableMute, disableMute
+    case getVolume
+//    case setVolume(_: Int), getMute, enableMute, disableMute
     
     /* DeviceProperties */
 //    case getHouseholdID, getZoneInfo
@@ -51,8 +52,9 @@ enum SoapSoapAction {
         //        case .favorites, .localFiles
         case .browse:
             return .contentDirectory
-//        case .getVolume, .setVolume, .getMute, .enableMute, .disableMute:
-//            return .renderingControl
+        case .getVolume:
+//        case .setVolume, .getMute, .enableMute, .disableMute:
+            return .renderingControl
 //        case .getHouseholdID, .getZoneInfo:
 //            return .deviceProperties
 //        case .getCustomerID, .getRoomSerial:
@@ -104,8 +106,8 @@ enum SoapSoapAction {
 //        case .favorites, .localFiles:
         case .browse:
             return "Browse"
-//        case .getVolume:
-//            return "GetVolume"
+        case .getVolume:
+            return "GetVolume"
 //        case .setVolume:
 //            return "SetVolume"
 //        case .getMute:
@@ -123,7 +125,8 @@ enum SoapSoapAction {
     
     var arguments: String? {
         switch self {
-        case .positionInfo, .transportInfo, .mediaInfo/*, .removeAllTracksFromQueue, .getVolume, .getMute, .becomeCoordinatorOfStandaloneGroup*/:
+        /*, .removeAllTracksFromQueue, .getMute, .becomeCoordinatorOfStandaloneGroup*/
+        case .positionInfo, .transportInfo, .mediaInfo, .getVolume:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel>"
         /*case .play, .pause, .previous, .next, .stop:
             return "<InstanceID>0</InstanceID><Speed>1</Speed>"

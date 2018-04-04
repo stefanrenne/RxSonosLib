@@ -47,4 +47,11 @@ class RepositoryInjectionTest: XCTestCase {
         XCTAssertTrue(type(of: RepositoryInjection.provideContentDirectoryRepository()) == FakeContentDirectoryRepositoryImpl.self)
     }
     
+    func testItCanProvideTheRenderingControlRepository() {
+        XCTAssertTrue(type(of: RepositoryInjection.provideRenderingControlRepository()) == RenderingControlRepositoryImpl.self)
+        
+        RepositoryInjection.shared.renderingControlRepository = FakeRenderingControlRepositoryImpl()
+        XCTAssertTrue(type(of: RepositoryInjection.provideRenderingControlRepository()) == FakeRenderingControlRepositoryImpl.self)
+    }
+    
 }

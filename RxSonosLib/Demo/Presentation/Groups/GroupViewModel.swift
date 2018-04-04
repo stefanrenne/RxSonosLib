@@ -40,4 +40,10 @@ class GroupViewModel {
         return SonosInteractor.provideGroupQueueInteractor()
             .get(values: GetGroupQueueValues(group: group))
     }()
+    
+    lazy var volumeInteractor: Observable<Int> = {
+        return SonosInteractor.provideVolumeInteractor()
+            .get(values: GetVolumeValues(group: group))
+    }()
+    
 }

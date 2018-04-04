@@ -71,6 +71,13 @@
 		F81E33AF2072250A002E22A8 /* Mockingjay+Soap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E33AE2072250A002E22A8 /* Mockingjay+Soap.swift */; };
 		F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */; };
 		F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAE20616239004DB497 /* SonosInteractorTests.swift */; };
+		F83D21022075403C001ABC9D /* RenderingControlRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D21012075403C001ABC9D /* RenderingControlRepository.swift */; };
+		F83D2104207540A6001ABC9D /* RenderingControlRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D2103207540A6001ABC9D /* RenderingControlRepositoryImpl.swift */; };
+		F83D2106207541EE001ABC9D /* GetVolumeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D2105207541EE001ABC9D /* GetVolumeNetwork.swift */; };
+		F83D21082075446E001ABC9D /* GetVolumeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D21072075446E001ABC9D /* GetVolumeInteractor.swift */; };
+		F83D210A20754BE7001ABC9D /* FakeRenderingControlRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D210920754BE7001ABC9D /* FakeRenderingControlRepositoryImpl.swift */; };
+		F83D210C20754C44001ABC9D /* RenderingControlRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D210B20754C44001ABC9D /* RenderingControlRepositoryTests.swift */; };
+		F83D210E20754F9C001ABC9D /* GetVolumeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D210D20754F9C001ABC9D /* GetVolumeInteractorTests.swift */; };
 		F851ACD9206A63E8006FA0DC /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F851ACD8206A63E8006FA0DC /* TrackViewModel.swift */; };
 		F8627F43206BFD5200571085 /* GetTransportStateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8627F42206BFD5200571085 /* GetTransportStateInteractor.swift */; };
 		F8627F45206BFFE500571085 /* GetTransportStateInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8627F44206BFFE500571085 /* GetTransportStateInteractorTests.swift */; };
@@ -206,6 +213,13 @@
 		F825F4AF20482DDE006A7B73 /* GroupsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupsViewController.xib; sourceTree = "<group>"; };
 		F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupsInteractorTests.swift; sourceTree = "<group>"; };
 		F827DAAE20616239004DB497 /* SonosInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosInteractorTests.swift; sourceTree = "<group>"; };
+		F83D21012075403C001ABC9D /* RenderingControlRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingControlRepository.swift; sourceTree = "<group>"; };
+		F83D2103207540A6001ABC9D /* RenderingControlRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingControlRepositoryImpl.swift; sourceTree = "<group>"; };
+		F83D2105207541EE001ABC9D /* GetVolumeNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVolumeNetwork.swift; sourceTree = "<group>"; };
+		F83D21072075446E001ABC9D /* GetVolumeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVolumeInteractor.swift; sourceTree = "<group>"; };
+		F83D210920754BE7001ABC9D /* FakeRenderingControlRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRenderingControlRepositoryImpl.swift; sourceTree = "<group>"; };
+		F83D210B20754C44001ABC9D /* RenderingControlRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingControlRepositoryTests.swift; sourceTree = "<group>"; };
+		F83D210D20754F9C001ABC9D /* GetVolumeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVolumeInteractorTests.swift; sourceTree = "<group>"; };
 		F851ACD8206A63E8006FA0DC /* TrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModel.swift; sourceTree = "<group>"; };
 		F8627F42206BFD5200571085 /* GetTransportStateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTransportStateInteractor.swift; sourceTree = "<group>"; };
 		F8627F44206BFFE500571085 /* GetTransportStateInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTransportStateInteractorTests.swift; sourceTree = "<group>"; };
@@ -355,6 +369,7 @@
 				F81E33A72072247C002E22A8 /* FakeGroupRepositoryImpl.swift */,
 				F81E33A82072247C002E22A8 /* FakeTransportRepositoryImpl.swift */,
 				F8860E94207514BE00BF6A7E /* FakeContentDirectoryRepositoryImpl.swift */,
+				F83D210920754BE7001ABC9D /* FakeRenderingControlRepositoryImpl.swift */,
 			);
 			path = FakeRepositoryImplementations;
 			sourceTree = "<group>";
@@ -391,6 +406,7 @@
 				F87C0CC0206F8C5D00098D07 /* GetTrackImageInteractorTests.swift */,
 				F81E339D2072163E002E22A8 /* GetGroupProgressInteractorTests.swift */,
 				F8860E962075157400BF6A7E /* GetGroupQueueInteractorTests.swift */,
+				F83D210D20754F9C001ABC9D /* GetVolumeInteractorTests.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -430,6 +446,7 @@
 				F8F56168205C3EE900E28533 /* RoomRepositoryTest.swift */,
 				F8F56167205C3EE800E28533 /* SSDPRepositoryTest.swift */,
 				F8860E9020750B9300BF6A7E /* ContentDirectoryRepositoryTests.swift */,
+				F83D210B20754C44001ABC9D /* RenderingControlRepositoryTests.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -530,6 +547,7 @@
 				F809DE8C2049A0F5003A94A0 /* GroupRepository.swift */,
 				F80034302069644300D7C0FB /* TransportRepository.swift */,
 				F8860E8A207506BE00BF6A7E /* ContentDirectoryRepository.swift */,
+				F83D21012075403C001ABC9D /* RenderingControlRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -544,6 +562,7 @@
 				F87C0CBE206F8AE800098D07 /* GetTrackImageInteractor.swift */,
 				F81E339B20713924002E22A8 /* GetGroupProgressInteractor.swift */,
 				F8860E8E207507F500BF6A7E /* GetGroupQueueInteractor.swift */,
+				F83D21072075446E001ABC9D /* GetVolumeInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -573,6 +592,7 @@
 				F809DE902049A138003A94A0 /* GroupRepositoryImpl.swift */,
 				F80034322069644B00D7C0FB /* TransportRepositoryImpl.swift */,
 				F8860E8C2075071F00BF6A7E /* ContentDirectoryRepositoryImpl.swift */,
+				F83D2103207540A6001ABC9D /* RenderingControlRepositoryImpl.swift */,
 			);
 			path = RepositoryImplementations;
 			sourceTree = "<group>";
@@ -679,6 +699,7 @@
 				F87DC3B3206974490089F882 /* GetTransportInfoNetwork.swift */,
 				F87DC3B52069745A0089F882 /* GetMediaInfoNetwork.swift */,
 				F8860E882075067800BF6A7E /* GetQueueNetwork.swift */,
+				F83D2105207541EE001ABC9D /* GetVolumeNetwork.swift */,
 			);
 			path = Soap;
 			sourceTree = "<group>";
@@ -1074,6 +1095,7 @@
 				F86B3440206A8EB900979A5F /* String+Time.swift in Sources */,
 				F81E339C20713924002E22A8 /* GetGroupProgressInteractor.swift in Sources */,
 				F87C0CBF206F8AE800098D07 /* GetTrackImageInteractor.swift in Sources */,
+				F83D21022075403C001ABC9D /* RenderingControlRepository.swift in Sources */,
 				F8860E802074D8A800BF6A7E /* TuneinTrack.swift in Sources */,
 				F81A05ED206028D600897738 /* SSDPDevice.swift in Sources */,
 				F81A05E8206028D600897738 /* AEXMLDocument+Create.swift in Sources */,
@@ -1095,6 +1117,7 @@
 				F81A05E7206028D600897738 /* Data+Convert.swift in Sources */,
 				F81A05F0206028D600897738 /* DeviceDescription.swift in Sources */,
 				F8860E8D2075071F00BF6A7E /* ContentDirectoryRepositoryImpl.swift in Sources */,
+				F83D2104207540A6001ABC9D /* RenderingControlRepositoryImpl.swift in Sources */,
 				F8860E852074F6BC00BF6A7E /* NowPlayingTrackFactory.swift in Sources */,
 				F80034362069662500D7C0FB /* TransportRepository.swift in Sources */,
 				F8860E892075067800BF6A7E /* GetQueueNetwork.swift in Sources */,
@@ -1105,6 +1128,7 @@
 				F81A05F2206028D600897738 /* SonosInteractor.swift in Sources */,
 				F81A05F3206028D600897738 /* RoomRepository.swift in Sources */,
 				F81A05FF206028D600897738 /* CacheManager.swift in Sources */,
+				F83D2106207541EE001ABC9D /* GetVolumeNetwork.swift in Sources */,
 				F81A05F5206028D600897738 /* RoomRepositoryImpl.swift in Sources */,
 				F81A05E9206028D600897738 /* BaseInteractor.swift in Sources */,
 				F8726787206A3F3B00093FF1 /* TransportState.swift in Sources */,
@@ -1117,6 +1141,7 @@
 				F80034372069662900D7C0FB /* TransportRepositoryImpl.swift in Sources */,
 				F800343D206967D000D7C0FB /* Track.swift in Sources */,
 				F81A05EE206028D600897738 /* Room.swift in Sources */,
+				F83D21082075446E001ABC9D /* GetVolumeInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1127,7 +1152,9 @@
 				F81E33A020721CEF002E22A8 /* GroupProgressTests.swift in Sources */,
 				F89D94C920615994002B1383 /* CacheManagerTests.swift in Sources */,
 				F8726790206A4B7700093FF1 /* TransportStateTest.swift in Sources */,
+				F83D210A20754BE7001ABC9D /* FakeRenderingControlRepositoryImpl.swift in Sources */,
 				F8979947206944A6000CF52A /* GroupTests.swift in Sources */,
+				F83D210E20754F9C001ABC9D /* GetVolumeInteractorTests.swift in Sources */,
 				F87C0CC1206F8C5D00098D07 /* GetTrackImageInteractorTests.swift in Sources */,
 				F8860E972075157400BF6A7E /* GetGroupQueueInteractorTests.swift in Sources */,
 				F81E33AB2072247D002E22A8 /* FakeRoomRepositoryImpl.swift in Sources */,
@@ -1141,6 +1168,7 @@
 				F81E339E2072163E002E22A8 /* GetGroupProgressInteractorTests.swift in Sources */,
 				F81E33AF2072250A002E22A8 /* Mockingjay+Soap.swift in Sources */,
 				F86B3442206A91DC00979A5F /* TimeConvertTests.swift in Sources */,
+				F83D210C20754C44001ABC9D /* RenderingControlRepositoryTests.swift in Sources */,
 				F8726794206A4CE500093FF1 /* MusicServiceTests.swift in Sources */,
 				F81E33AD2072247D002E22A8 /* FakeTransportRepositoryImpl.swift in Sources */,
 				F81E33AC2072247D002E22A8 /* FakeGroupRepositoryImpl.swift in Sources */,

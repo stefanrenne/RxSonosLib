@@ -21,6 +21,7 @@ class GroupViewController: UIViewController {
     @IBOutlet var progressView: UIProgressView!
     @IBOutlet var progressTime: UILabel!
     @IBOutlet var remainingTime: UILabel!
+    @IBOutlet var volumeSlider: UISlider!
     
     private let disposeBag = DisposeBag()
     internal var router: GroupRouter?
@@ -33,6 +34,10 @@ class GroupViewController: UIViewController {
         self.setupQueueTableViewItems()
         self.setupQueueCellTapHandling()
         self.setupNowPlaying()
+        self.setupVolumeHandler()
+    }
+    
+    @IBAction func volumeAction(_ sender: UISlider) {
     }
     
     fileprivate func setupName() {
@@ -48,6 +53,18 @@ class GroupViewController: UIViewController {
         model.nowPlayingInteractor
             .subscribe(onNext: { [weak self] (track) in
             self?.bind(track: TrackViewModel(track: track))
+        }, onError: { (error) in
+            print(error.localizedDescription)
+        })
+        .disposed(by: disposeBag)
+    }
+    
+    fileprivate func setupVolumeHandler() {
+        model.volumeInteractor.subscribe(onNext: { [weak self] (volume) in
+            let isFocused = self?.volumeSlider.isFocused ?? false
+            if !isFocused {
+                self?.volumeSlider.value = Float(volume) / 100.0
+            }
         }, onError: { (error) in
             print(error.localizedDescription)
         })

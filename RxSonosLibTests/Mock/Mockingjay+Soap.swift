@@ -11,9 +11,13 @@ import Mockingjay
 @testable import RxSonosLib
 
 
-public func soap(call: SoapSoapAction) -> (_ request: URLRequest) -> Bool {
+public func soap(room: Room? = nil, call: SoapSoapAction) -> (_ request: URLRequest) -> Bool {
     return { (request: URLRequest) in
-        if request.allHTTPHeaderFields?["SOAPACTION"]?.replacingOccurrences(of: "\"", with: "") == call.soapAction {
+        
+        let ipMatch = (room != nil) ? request.url?.absoluteString.baseUrl() == room?.ip.absoluteString : true
+        let soapActionMatch = request.allHTTPHeaderFields?["SOAPACTION"]?.replacingOccurrences(of: "\"", with: "") == call.soapAction
+        
+        if soapActionMatch && ipMatch {
             return Mockingjay.uri(call.service.controllUrl)(request)
         }
         

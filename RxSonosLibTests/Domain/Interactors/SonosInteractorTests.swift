@@ -35,4 +35,8 @@ class SonosInteractorTests: XCTestCase {
         XCTAssertTrue(type(of: SonosInteractor.provideGroupQueueInteractor()) == GetGroupQueueInteractor.self)
     }
     
+    func testItCanProvideTheVolumeInteractor() {
+        XCTAssertTrue(type(of: SonosInteractor.provideVolumeInteractor()) == GetVolumeInteractor.self)
+    }
+    
 }
