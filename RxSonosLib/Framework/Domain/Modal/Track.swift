@@ -41,6 +41,11 @@ open class Track {
     public let title: String
     
     /**
+     * track subtitle
+     */
+    public let subtitle: String?
+    
+    /**
      * track artist (optional)
      */
     public let artist: String?
@@ -58,13 +63,14 @@ open class Track {
      */
     internal let imageUri: URL?
     
-    internal init(service: MusicService, queueItem: Int, duration: UInt = 0, uri: String, imageUri: URL? = nil, title: String, artist: String? = nil, album: String? = nil) {
+    internal init(service: MusicService, queueItem: Int, duration: UInt = 0, uri: String, imageUri: URL? = nil, title: String, subtitle: String? = nil, artist: String? = nil, album: String? = nil) {
         self.service = service
         self.queueItem = queueItem
         self.duration = duration
         self.uri = uri
         self.imageUri = imageUri
         self.title = title
+        self.subtitle = subtitle
         self.artist = artist
         self.album = album
     }
@@ -120,7 +126,9 @@ extension Track {
     }
     
     class func mapTunein(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) -> Track? {
+        let trackMeta = positionInfo["TrackMetaData"]?.mapMetaItem()
         let currentURIMetaData = mediaInfo["CurrentURIMetaData"]?.mapMetaItem()
+        let subtitle = trackMeta?["streamContent"]?.nilIfEmpty()
         
         guard let duration = positionInfo["TrackDuration"]?.timeToSeconds(),
               let queueItemString = positionInfo["Track"],
@@ -132,6 +140,6 @@ extension Track {
                 return nil
         }
         
-        return Track(service: .tunein, queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, title: title)
+        return Track(service: .tunein, queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, title: title, subtitle: subtitle)
     }
 }

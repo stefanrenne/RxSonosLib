@@ -87,6 +87,7 @@
 		F87DC3B7206974900089F882 /* GetMediaInfoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B52069745A0089F882 /* GetMediaInfoNetwork.swift */; };
 		F87DC3B8206974920089F882 /* GetTransportInfoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B3206974490089F882 /* GetTransportInfoNetwork.swift */; };
 		F87DC3BA206A2FE80089F882 /* MusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B9206A2FE80089F882 /* MusicService.swift */; };
+		F8860E7C2074D74100BF6A7E /* String+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E7B2074D74100BF6A7E /* String+Empty.swift */; };
 		F8979942206939D1000CF52A /* NetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8979941206939D1000CF52A /* NetworkTest.swift */; };
 		F897994520693D95000CF52A /* MockNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897994420693D95000CF52A /* MockNetwork.swift */; };
 		F8979947206944A6000CF52A /* GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8979946206944A6000CF52A /* GroupTests.swift */; };
@@ -210,6 +211,7 @@
 		F881C5822049CA1000E3F523 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
 		F881C5842049CCDC00E3F523 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		F881C5852049CCDC00E3F523 /* GroupsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupsTableViewCell.xib; sourceTree = "<group>"; };
+		F8860E7B2074D74100BF6A7E /* String+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Empty.swift"; sourceTree = "<group>"; };
 		F8979941206939D1000CF52A /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
 		F897994420693D95000CF52A /* MockNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetwork.swift; sourceTree = "<group>"; };
 		F8979946206944A6000CF52A /* GroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTests.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				F8BF5C522056DF9E00AE311E /* Data+Convert.swift */,
 				F8BF5C542056E37100AE311E /* AEXMLDocument+Create.swift */,
 				F86B343F206A8EB900979A5F /* String+Time.swift */,
+				F8860E7B2074D74100BF6A7E /* String+Empty.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1019,6 +1022,7 @@
 				F81A05EF206028D600897738 /* Group.swift in Sources */,
 				F81A05F8206028D600897738 /* Network.swift in Sources */,
 				F87DC3B8206974920089F882 /* GetTransportInfoNetwork.swift in Sources */,
+				F8860E7C2074D74100BF6A7E /* String+Empty.swift in Sources */,
 				F81A05FC206028D600897738 /* GetGroupsNetwork.swift in Sources */,
 				F8003441206969DF00D7C0FB /* GetPositionInfoNetwork.swift in Sources */,
 				F87DC3B7206974900089F882 /* GetMediaInfoNetwork.swift in Sources */,
