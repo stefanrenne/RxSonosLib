@@ -67,7 +67,7 @@ class GroupViewController: UIViewController {
     fileprivate func setupGroupProgress() {
         model.groupProgressInteractor
             .subscribe(onNext: { [weak self] (progress) in
-            self?.progressTime.text = progress.durationString
+            self?.progressTime.text = progress.timeString
             self?.remainingTime.text = progress.remainingTimeString
             self?.progressView.progress = progress.progress
         }, onError: { (error) in
