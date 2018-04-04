@@ -17,14 +17,8 @@ class TrackViewModel {
     }
     
     lazy var description: String = {
-        var description = track.title
-        if let artist = track.artist {
-            description += "\n" + artist
-            if let album = track.album {
-                description += "\n" + album
-            }
-        }
-        return description
+        return Array(track.description().values)
+            .joined(separator: "\n")
     }()
     
     lazy var image: Observable<UIImage?> = {

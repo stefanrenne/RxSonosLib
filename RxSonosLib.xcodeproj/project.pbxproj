@@ -87,6 +87,12 @@
 		F87DC3B7206974900089F882 /* GetMediaInfoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B52069745A0089F882 /* GetMediaInfoNetwork.swift */; };
 		F87DC3B8206974920089F882 /* GetTransportInfoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B3206974490089F882 /* GetTransportInfoNetwork.swift */; };
 		F87DC3BA206A2FE80089F882 /* MusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B9206A2FE80089F882 /* MusicService.swift */; };
+		F8860E7C2074D74100BF6A7E /* String+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E7B2074D74100BF6A7E /* String+Empty.swift */; };
+		F8860E7E2074D89300BF6A7E /* SpotifyTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E7D2074D89300BF6A7E /* SpotifyTrack.swift */; };
+		F8860E802074D8A800BF6A7E /* TuneinTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E7F2074D8A800BF6A7E /* TuneinTrack.swift */; };
+		F8860E822074D8BE00BF6A7E /* TVTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E812074D8BE00BF6A7E /* TVTrack.swift */; };
+		F8860E852074F6BC00BF6A7E /* TrackFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E842074F6BC00BF6A7E /* TrackFactory.swift */; };
+		F8860E872074FF7600BF6A7E /* TrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E862074FF7600BF6A7E /* TrackTests.swift */; };
 		F8979942206939D1000CF52A /* NetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8979941206939D1000CF52A /* NetworkTest.swift */; };
 		F897994520693D95000CF52A /* MockNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897994420693D95000CF52A /* MockNetwork.swift */; };
 		F8979947206944A6000CF52A /* GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8979946206944A6000CF52A /* GroupTests.swift */; };
@@ -210,6 +216,12 @@
 		F881C5822049CA1000E3F523 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
 		F881C5842049CCDC00E3F523 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		F881C5852049CCDC00E3F523 /* GroupsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupsTableViewCell.xib; sourceTree = "<group>"; };
+		F8860E7B2074D74100BF6A7E /* String+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Empty.swift"; sourceTree = "<group>"; };
+		F8860E7D2074D89300BF6A7E /* SpotifyTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyTrack.swift; sourceTree = "<group>"; };
+		F8860E7F2074D8A800BF6A7E /* TuneinTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuneinTrack.swift; sourceTree = "<group>"; };
+		F8860E812074D8BE00BF6A7E /* TVTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTrack.swift; sourceTree = "<group>"; };
+		F8860E842074F6BC00BF6A7E /* TrackFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackFactory.swift; sourceTree = "<group>"; };
+		F8860E862074FF7600BF6A7E /* TrackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTests.swift; sourceTree = "<group>"; };
 		F8979941206939D1000CF52A /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
 		F897994420693D95000CF52A /* MockNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetwork.swift; sourceTree = "<group>"; };
 		F8979946206944A6000CF52A /* GroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTests.swift; sourceTree = "<group>"; };
@@ -291,6 +303,7 @@
 				F8BF5C522056DF9E00AE311E /* Data+Convert.swift */,
 				F8BF5C542056E37100AE311E /* AEXMLDocument+Create.swift */,
 				F86B343F206A8EB900979A5F /* String+Time.swift */,
+				F8860E7B2074D74100BF6A7E /* String+Empty.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -340,6 +353,7 @@
 				F8726793206A4CE400093FF1 /* MusicServiceTests.swift */,
 				F872678F206A4B7700093FF1 /* TransportStateTest.swift */,
 				F8979946206944A6000CF52A /* GroupTests.swift */,
+				F8860E862074FF7600BF6A7E /* TrackTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -436,6 +450,7 @@
 		F825F44820481AAD006A7B73 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F8860E832074F6B000BF6A7E /* Factory */,
 				F825F47420482053006A7B73 /* Modal */,
 				F825F47320482050006A7B73 /* Interactors */,
 				F825F47220482043006A7B73 /* Repositories */,
@@ -517,6 +532,9 @@
 				F87DC3B9206A2FE80089F882 /* MusicService.swift */,
 				F8726786206A3F3B00093FF1 /* TransportState.swift */,
 				F81E3399207135B2002E22A8 /* GroupProgress.swift */,
+				F8860E7D2074D89300BF6A7E /* SpotifyTrack.swift */,
+				F8860E7F2074D8A800BF6A7E /* TuneinTrack.swift */,
+				F8860E812074D8BE00BF6A7E /* TVTrack.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -593,6 +611,14 @@
 			);
 			name = RxSonosLib;
 			path = RxSonosLib/Framework;
+			sourceTree = "<group>";
+		};
+		F8860E832074F6B000BF6A7E /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				F8860E842074F6BC00BF6A7E /* TrackFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		F897994320693D83000CF52A /* Mock */ = {
@@ -1012,13 +1038,17 @@
 				F86B3440206A8EB900979A5F /* String+Time.swift in Sources */,
 				F81E339C20713924002E22A8 /* GetGroupProgressInteractor.swift in Sources */,
 				F87C0CBF206F8AE800098D07 /* GetTrackImageInteractor.swift in Sources */,
+				F8860E802074D8A800BF6A7E /* TuneinTrack.swift in Sources */,
 				F81A05ED206028D600897738 /* SSDPDevice.swift in Sources */,
 				F81A05E8206028D600897738 /* AEXMLDocument+Create.swift in Sources */,
 				F81E339A207135B2002E22A8 /* GroupProgress.swift in Sources */,
+				F8860E822074D8BE00BF6A7E /* TVTrack.swift in Sources */,
 				F81A05F7206028D600897738 /* RepositoryInjection.swift in Sources */,
+				F8860E7E2074D89300BF6A7E /* SpotifyTrack.swift in Sources */,
 				F81A05EF206028D600897738 /* Group.swift in Sources */,
 				F81A05F8206028D600897738 /* Network.swift in Sources */,
 				F87DC3B8206974920089F882 /* GetTransportInfoNetwork.swift in Sources */,
+				F8860E7C2074D74100BF6A7E /* String+Empty.swift in Sources */,
 				F81A05FC206028D600897738 /* GetGroupsNetwork.swift in Sources */,
 				F8003441206969DF00D7C0FB /* GetPositionInfoNetwork.swift in Sources */,
 				F87DC3B7206974900089F882 /* GetMediaInfoNetwork.swift in Sources */,
@@ -1026,6 +1056,7 @@
 				F81A05E5206028D600897738 /* Error+RxSonosLib.swift in Sources */,
 				F81A05E7206028D600897738 /* Data+Convert.swift in Sources */,
 				F81A05F0206028D600897738 /* DeviceDescription.swift in Sources */,
+				F8860E852074F6BC00BF6A7E /* TrackFactory.swift in Sources */,
 				F80034362069662500D7C0FB /* TransportRepository.swift in Sources */,
 				F81A05F9206028D600897738 /* SoapNetwork.swift in Sources */,
 				F81A05F4206028D600897738 /* GroupRepository.swift in Sources */,
@@ -1073,6 +1104,7 @@
 				F81E33AC2072247D002E22A8 /* FakeGroupRepositoryImpl.swift in Sources */,
 				F81A062820602D7C00897738 /* RoomRepositoryTest.swift in Sources */,
 				F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */,
+				F8860E872074FF7600BF6A7E /* TrackTests.swift in Sources */,
 				F872678E206A48D300093FF1 /* GetNowPlayingInteractorTests.swift in Sources */,
 				F81A062E206034FF00897738 /* RepositoryInjectionTest.swift in Sources */,
 				F81A062C206031F300897738 /* XMLTest.swift in Sources */,

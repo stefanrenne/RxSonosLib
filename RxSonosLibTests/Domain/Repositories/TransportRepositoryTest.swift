@@ -36,16 +36,17 @@ class TransportRepositoryTest: XCTestCase {
         let track = try! transportRepository
             .getNowPlaying(for: randomRoom())
             .toBlocking()
-            .first()!
+            .first()! as! SpotifyTrack
         
         XCTAssertEqual(track.service, .spotify)
         XCTAssertEqual(track.queueItem, 7)
         XCTAssertEqual(track.duration, 265)
         XCTAssertEqual(track.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
-        XCTAssertEqual(track.imageUri!.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
+        XCTAssertEqual(track.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
         XCTAssertEqual(track.title, "Before I Die")
         XCTAssertEqual(track.artist, "Papa Roach")
         XCTAssertEqual(track.album, "The Connection")
+        XCTAssertEqual(track.description(), [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
     }
     
     func testItCanGetTVNowPlayingTrack() {
@@ -56,16 +57,14 @@ class TransportRepositoryTest: XCTestCase {
         let track = try! transportRepository
             .getNowPlaying(for: randomRoom())
             .toBlocking()
-            .first()!
+            .first()! as! TVTrack
         
         XCTAssertEqual(track.service, .tv)
         XCTAssertEqual(track.queueItem, 1)
         XCTAssertEqual(track.duration, 0)
         XCTAssertEqual(track.uri, "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif")
-        XCTAssertNil(track.imageUri)
         XCTAssertEqual(track.title, "TV")
-        XCTAssertNil(track.artist)
-        XCTAssertNil(track.album)
+        XCTAssertEqual(track.description(), [TrackDescription.title: "TV"])
     }
     
     func testItCanGetTuneinNowPlayingTrack() {
@@ -76,16 +75,16 @@ class TransportRepositoryTest: XCTestCase {
         let track = try! transportRepository
             .getNowPlaying(for: randomRoom())
             .toBlocking()
-            .first()!
+            .first()! as! TuneinTrack
         
         XCTAssertEqual(track.service, .tunein)
         XCTAssertEqual(track.queueItem, 1)
         XCTAssertEqual(track.duration, 0)
         XCTAssertEqual(track.uri, "x-rincon-mp3radio://http://20863.live.streamtheworld.com:80/RADIO538.mp3?tdtok=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImZTeXA4In0.eyJpc3MiOiJ0aXNydiIsInN1YiI6IjIxMDY0IiwiaWF0IjoxNTIyNDQzMDQ5LCJ0ZC1yZWciOmZhbHNlfQ.kvTa2wxGb7-Rs7TjFjeRmPlzrkMnZGwDyBdyrru0Wbs")
-        XCTAssertEqual(track.imageUri!.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonosapi-stream:s6712?sid=254&flags=32")
+        XCTAssertEqual(track.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonosapi-stream:s6712?sid=254&flags=32")
         XCTAssertEqual(track.title, "538")
-        XCTAssertNil(track.artist)
-        XCTAssertNil(track.album)
+        XCTAssertEqual(track.information, "DUA LIPA - IDGAF")
+        XCTAssertEqual(track.description(), [TrackDescription.title: "538", TrackDescription.information: "DUA LIPA - IDGAF"])
     }
     
     func testItCanGetTheTransportState() {
@@ -104,7 +103,7 @@ class TransportRepositoryTest: XCTestCase {
         let data = UIImagePNGRepresentation(UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!)!
         stub(everything, http(download: .content(data)))
         
-        let track = Track(service: .spotify, queueItem: 7, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: URL(string: "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1"), title: "Before I Die", artist: "Papa Roach", album: "The Connection")
+        let track = SpotifyTrack(queueItem: 7, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: URL(string: "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")!, title: "Before I Die", artist: "Papa Roach", album: "The Connection")
         
         let imageData = try! transportRepository
             .getImage(for: track)
@@ -119,7 +118,7 @@ class TransportRepositoryTest: XCTestCase {
         let data = UIImageJPEGRepresentation(UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!, 1.0)!
         stub(everything, http(download: .content(data)))
 
-        let track = Track(service: .spotify, queueItem: 7, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: nil, title: "Before I Die", artist: "Papa Roach", album: "The Connection")
+        let track = TVTrack(queueItem: 1, uri: "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif")
         
         let image = try! transportRepository
             .getImage(for: track)
@@ -182,7 +181,7 @@ fileprivate extension TransportRepositoryTest {
     }
     
     func getTuneinPositionInfoResponse() -> String {
-        return "<Track>1</Track><TrackDuration>0:00:00</TrackDuration><TrackMetaData>&lt;DIDL-Lite xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:upnp=&quot;urn:schemas-upnp-org:metadata-1-0/upnp/&quot; xmlns:r=&quot;urn:schemas-rinconnetworks-com:metadata-1-0/&quot; xmlns=&quot;urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/&quot;&gt;&lt;item id=&quot;-1&quot; parentID=&quot;-1&quot; restricted=&quot;true&quot;&gt;&lt;res protocolInfo=&quot;x-rincon-mp3radio:*:*:*&quot;&gt;x-rincon-mp3radio://http://20863.live.streamtheworld.com:80/RADIO538.mp3?tdtok=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImZTeXA4In0.eyJpc3MiOiJ0aXNydiIsInN1YiI6IjIxMDY0IiwiaWF0IjoxNTIyNDQzMDQ5LCJ0ZC1yZWciOmZhbHNlfQ.kvTa2wxGb7-Rs7TjFjeRmPlzrkMnZGwDyBdyrru0Wbs&lt;/res&gt;&lt;r:streamContent&gt;&lt;/r:streamContent&gt;&lt;dc:title&gt;RADIO538.mp3?tdtok=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImZTeXA4In0.eyJpc3MiOiJ0aXNydiIsInN1YiI6IjIxMDY0IiwiaWF0IjoxNTIyNDQzMDQ5LCJ0ZC1yZWciOmZhbHNlfQ.kvTa2wxGb7-Rs7TjFjeRmPlzrkMnZGwDyBdyrru0Wbs&lt;/dc:title&gt;&lt;upnp:class&gt;object.item&lt;/upnp:class&gt;&lt;/item&gt;&lt;/DIDL-Lite&gt;</TrackMetaData><TrackURI>x-rincon-mp3radio://http://20863.live.streamtheworld.com:80/RADIO538.mp3?tdtok=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImZTeXA4In0.eyJpc3MiOiJ0aXNydiIsInN1YiI6IjIxMDY0IiwiaWF0IjoxNTIyNDQzMDQ5LCJ0ZC1yZWciOmZhbHNlfQ.kvTa2wxGb7-Rs7TjFjeRmPlzrkMnZGwDyBdyrru0Wbs</TrackURI><RelTime>0:01:54</RelTime><AbsTime>NOT_IMPLEMENTED</AbsTime><RelCount>2147483647</RelCount><AbsCount>2147483647</AbsCount>"
+        return "<Track>1</Track><TrackDuration>0:00:00</TrackDuration><TrackMetaData>&lt;DIDL-Lite xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:upnp=&quot;urn:schemas-upnp-org:metadata-1-0/upnp/&quot; xmlns:r=&quot;urn:schemas-rinconnetworks-com:metadata-1-0/&quot; xmlns=&quot;urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/&quot;&gt;&lt;item id=&quot;-1&quot; parentID=&quot;-1&quot; restricted=&quot;true&quot;&gt;&lt;res protocolInfo=&quot;x-rincon-mp3radio:*:*:*&quot;&gt;x-rincon-mp3radio://http://20863.live.streamtheworld.com:80/RADIO538.mp3?tdtok=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImZTeXA4In0.eyJpc3MiOiJ0aXNydiIsInN1YiI6IjIxMDY0IiwiaWF0IjoxNTIyNDQzMDQ5LCJ0ZC1yZWciOmZhbHNlfQ.kvTa2wxGb7-Rs7TjFjeRmPlzrkMnZGwDyBdyrru0Wbs&lt;/res&gt;&lt;r:streamContent&gt;DUA LIPA - IDGAF&lt;/r:streamContent&gt;&lt;dc:title&gt;RADIO538.mp3?tdtok=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImZTeXA4In0.eyJpc3MiOiJ0aXNydiIsInN1YiI6IjIxMDY0IiwiaWF0IjoxNTIyNDQzMDQ5LCJ0ZC1yZWciOmZhbHNlfQ.kvTa2wxGb7-Rs7TjFjeRmPlzrkMnZGwDyBdyrru0Wbs&lt;/dc:title&gt;&lt;upnp:class&gt;object.item&lt;/upnp:class&gt;&lt;/item&gt;&lt;/DIDL-Lite&gt;</TrackMetaData><TrackURI>x-rincon-mp3radio://http://20863.live.streamtheworld.com:80/RADIO538.mp3?tdtok=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImZTeXA4In0.eyJpc3MiOiJ0aXNydiIsInN1YiI6IjIxMDY0IiwiaWF0IjoxNTIyNDQzMDQ5LCJ0ZC1yZWciOmZhbHNlfQ.kvTa2wxGb7-Rs7TjFjeRmPlzrkMnZGwDyBdyrru0Wbs</TrackURI><RelTime>0:01:54</RelTime><AbsTime>NOT_IMPLEMENTED</AbsTime><RelCount>2147483647</RelCount><AbsCount>2147483647</AbsCount>"
     }
     
 }
