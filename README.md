@@ -12,28 +12,25 @@ Swift library that simplifies interacting with Sonos Devices
 
 Features:
 
-- [x] Find Sonos devices on the current network
-- [x] map SSDP devices into Sonos Rooms
-- [x] map Sonos Rooms into Sonos Groups
-- [x] automatically scan for group changes every 5 seconds
-- [x] see what track is currently playing (supports Spotify, Tunein & TV)
-- [x] see the image of the current track
-- [x] see the progress of the current track
-- [x] see what what tracks are in the queue
-- [ ] add tracks to the queue
-- [ ] remove tracks from the queue
-- [ ] see the current volume
-- [ ] change the current volume
-- [ ] play/pause/stop current track
-- [ ] previous/next queue track
+- [x] GET SSDP devices on the current network
+- [x] MAP SSDP devices into Sonos Rooms
+- [x] MAP Sonos Rooms into Sonos Groups + renew
+- [x] GET now playing track per room (supports Spotify, Tunein & TV) + renew
+- [x] DOWNLOAD track image
+- [x] GET group progress + renew
+- [x] GET group queue
+- [ ] ADD tracks to the group queue
+- [ ] DELETE tracks from the group queue
+- [ ] SET previous/next group queue track
+- [ ] SET play/pause/stop current track
+- [x] GET group volume
+- [x] SET group volume
 
 Platform:
 
-
-- [x] support iOS
-- [x] support MacOS
-- [x] support tvOS
-- [ ] support Linux
+- [x] iOS
+- [x] MacOS
+- [x] tvOS
 
 
 This library requires Swift 4.1 & RxSwift.
