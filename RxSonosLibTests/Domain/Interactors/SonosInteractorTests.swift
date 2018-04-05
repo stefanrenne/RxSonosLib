@@ -35,8 +35,12 @@ class SonosInteractorTests: XCTestCase {
         XCTAssertTrue(type(of: SonosInteractor.provideGroupQueueInteractor()) == GetGroupQueueInteractor.self)
     }
     
-    func testItCanProvideTheVolumeInteractor() {
-        XCTAssertTrue(type(of: SonosInteractor.provideVolumeInteractor()) == GetVolumeInteractor.self)
+    func testItCanProvideTheGetVolumeInteractor() {
+        XCTAssertTrue(type(of: SonosInteractor.provideGetVolumeInteractor()) == GetVolumeInteractor.self)
+    }
+    
+    func testItCanProvideTheSetVolumeInteractor() {
+        XCTAssertTrue(type(of: SonosInteractor.provideSetVolumeInteractor()) == SetVolumeInteractor.self)
     }
     
 }

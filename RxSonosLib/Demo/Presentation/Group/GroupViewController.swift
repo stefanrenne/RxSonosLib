@@ -61,12 +61,27 @@ class GroupViewController: UIViewController {
     
     fileprivate func setupVolumeHandler() {
         model.volumeInteractor.subscribe(onNext: { [weak self] (volume) in
-            let isFocused = self?.volumeSlider.isFocused ?? false
+            let isFocused = self?.volumeSlider.isTouchInside ?? false
             if !isFocused {
                 self?.volumeSlider.value = Float(volume) / 100.0
             }
         }, onError: { (error) in
             print(error.localizedDescription)
+        })
+        .disposed(by: disposeBag)
+        
+        volumeSlider
+            .rx
+            .value
+            .throttle(0.5, scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] (newVolume) in
+                guard let strongSelf = self, strongSelf.volumeSlider.isTouchInside else { return }
+                SonosInteractor
+                .provideSetVolumeInteractor()
+                    .get(values: SetVolumeValues(group: strongSelf.model.group, volume: Int(newVolume * 100.0)))
+                    .subscribe()
+                    .disposed(by: strongSelf.disposeBag)
         })
         .disposed(by: disposeBag)
     }

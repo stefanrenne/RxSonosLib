@@ -115,6 +115,8 @@
 		F897994520693D95000CF52A /* MockNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897994420693D95000CF52A /* MockNetwork.swift */; };
 		F8979947206944A6000CF52A /* GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8979946206944A6000CF52A /* GroupTests.swift */; };
 		F89807E420760D6E00AF5ECB /* SetVolumeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89807E320760D6E00AF5ECB /* SetVolumeNetwork.swift */; };
+		F89807E620762FE400AF5ECB /* SetVolumeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89807E520762FE400AF5ECB /* SetVolumeInteractor.swift */; };
+		F89807E82076318200AF5ECB /* SetVolumeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89807E72076318200AF5ECB /* SetVolumeInteractorTests.swift */; };
 		F89D94C920615994002B1383 /* CacheManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89D94C820615994002B1383 /* CacheManagerTests.swift */; };
 		F8B0057320612BB900991E64 /* StringRegexTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0057220612BB900991E64 /* StringRegexTest.swift */; };
 /* End PBXBuildFile section */
@@ -263,6 +265,8 @@
 		F897994420693D95000CF52A /* MockNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetwork.swift; sourceTree = "<group>"; };
 		F8979946206944A6000CF52A /* GroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTests.swift; sourceTree = "<group>"; };
 		F89807E320760D6E00AF5ECB /* SetVolumeNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetVolumeNetwork.swift; sourceTree = "<group>"; };
+		F89807E520762FE400AF5ECB /* SetVolumeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetVolumeInteractor.swift; sourceTree = "<group>"; };
+		F89807E72076318200AF5ECB /* SetVolumeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetVolumeInteractorTests.swift; sourceTree = "<group>"; };
 		F89D94C820615994002B1383 /* CacheManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManagerTests.swift; sourceTree = "<group>"; };
 		F8B0057220612BB900991E64 /* StringRegexTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRegexTest.swift; sourceTree = "<group>"; };
 		F8BF5C522056DF9E00AE311E /* Data+Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Convert.swift"; sourceTree = "<group>"; };
@@ -409,6 +413,7 @@
 				F81E339D2072163E002E22A8 /* GetGroupProgressInteractorTests.swift */,
 				F8860E962075157400BF6A7E /* GetGroupQueueInteractorTests.swift */,
 				F83D210D20754F9C001ABC9D /* GetVolumeInteractorTests.swift */,
+				F89807E72076318200AF5ECB /* SetVolumeInteractorTests.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -565,6 +570,7 @@
 				F81E339B20713924002E22A8 /* GetGroupProgressInteractor.swift */,
 				F8860E8E207507F500BF6A7E /* GetGroupQueueInteractor.swift */,
 				F83D21072075446E001ABC9D /* GetVolumeInteractor.swift */,
+				F89807E520762FE400AF5ECB /* SetVolumeInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -1110,6 +1116,7 @@
 				F81A05EF206028D600897738 /* Group.swift in Sources */,
 				F81A05F8206028D600897738 /* Network.swift in Sources */,
 				F89807E420760D6E00AF5ECB /* SetVolumeNetwork.swift in Sources */,
+				F89807E620762FE400AF5ECB /* SetVolumeInteractor.swift in Sources */,
 				F87DC3B8206974920089F882 /* GetTransportInfoNetwork.swift in Sources */,
 				F8860E7C2074D74100BF6A7E /* String+Empty.swift in Sources */,
 				F81A05FC206028D600897738 /* GetGroupsNetwork.swift in Sources */,
@@ -1182,6 +1189,7 @@
 				F872678E206A48D300093FF1 /* GetNowPlayingInteractorTests.swift in Sources */,
 				F8860E9120750B9300BF6A7E /* ContentDirectoryRepositoryTests.swift in Sources */,
 				F81A062E206034FF00897738 /* RepositoryInjectionTest.swift in Sources */,
+				F89807E82076318200AF5ECB /* SetVolumeInteractorTests.swift in Sources */,
 				F81A062C206031F300897738 /* XMLTest.swift in Sources */,
 				F8979942206939D1000CF52A /* NetworkTest.swift in Sources */,
 				F8860E95207514BE00BF6A7E /* FakeContentDirectoryRepositoryImpl.swift in Sources */,
