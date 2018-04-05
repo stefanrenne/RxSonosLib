@@ -41,4 +41,9 @@ open class RepositoryInjection {
         return shared.contentDirectoryRepository
     }
     
+    internal lazy var renderingControlRepository: RenderingControlRepository = { return RenderingControlRepositoryImpl() }()
+    static public func provideRenderingControlRepository() -> RenderingControlRepository {
+        return shared.renderingControlRepository
+    }
+    
 }

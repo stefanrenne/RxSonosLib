@@ -29,7 +29,8 @@ enum SoapSoapAction {
 //    case favorites, localFiles
     
     /* RenderingControl */
-//    case getVolume, setVolume(_: Int), getMute, enableMute, disableMute
+    case getVolume, setVolume(Int)
+//    case getMute, enableMute, disableMute
     
     /* DeviceProperties */
 //    case getHouseholdID, getZoneInfo
@@ -51,8 +52,9 @@ enum SoapSoapAction {
         //        case .favorites, .localFiles
         case .browse:
             return .contentDirectory
-//        case .getVolume, .setVolume, .getMute, .enableMute, .disableMute:
-//            return .renderingControl
+        case .getVolume, .setVolume:
+//        case .getMute, .enableMute, .disableMute:
+            return .renderingControl
 //        case .getHouseholdID, .getZoneInfo:
 //            return .deviceProperties
 //        case .getCustomerID, .getRoomSerial:
@@ -104,10 +106,10 @@ enum SoapSoapAction {
 //        case .favorites, .localFiles:
         case .browse:
             return "Browse"
-//        case .getVolume:
-//            return "GetVolume"
-//        case .setVolume:
-//            return "SetVolume"
+        case .getVolume:
+            return "GetVolume"
+        case .setVolume:
+            return "SetVolume"
 //        case .getMute:
 //            return "GetMute"
 //        case .enableMute, .disableMute:
@@ -123,7 +125,8 @@ enum SoapSoapAction {
     
     var arguments: String? {
         switch self {
-        case .positionInfo, .transportInfo, .mediaInfo/*, .removeAllTracksFromQueue, .getVolume, .getMute, .becomeCoordinatorOfStandaloneGroup*/:
+        /*, .removeAllTracksFromQueue, .getMute, .becomeCoordinatorOfStandaloneGroup*/
+        case .positionInfo, .transportInfo, .mediaInfo, .getVolume:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel>"
         /*case .play, .pause, .previous, .next, .stop:
             return "<InstanceID>0</InstanceID><Speed>1</Speed>"
@@ -144,11 +147,11 @@ enum SoapSoapAction {
         /*case .favorites:
             return "<ObjectID>FV:2</ObjectID><BrowseFlag>BrowseDirectChildren</BrowseFlag><Filter>dc:title,res,dc:creator,upnp:artist,upnp:album,upnp:albumArtURI</Filter><StartingIndex>0</StartingIndex><RequestedCount>100</RequestedCount><SortCriteria></SortCriteria>"
         case .localFiles:
-            return "<ObjectID>S:</ObjectID><BrowseFlag>BrowseDirectChildren</BrowseFlag><Filter>dc:title,res,dc:creator,upnp:artist,upnp:album,upnp:albumArtURI</Filter><StartingIndex>0</StartingIndex><RequestedCount>100</RequestedCount><SortCriteria></SortCriteria>"
+            return "<ObjectID>S:</ObjectID><BrowseFlag>BrowseDirectChildren</BrowseFlag><Filter>dc:title,res,dc:creator,upnp:artist,upnp:album,upnp:albumArtURI</Filter><StartingIndex>0</StartingIndex><RequestedCount>100</RequestedCount><SortCriteria></SortCriteria>"*/
         case .setVolume(let amount):
             let cleanAmount = max(min(amount, 100), 0)
             return "<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredVolume>\(cleanAmount)</DesiredVolume>"
-        case .enableMute:
+        /*case .enableMute:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredMute>1</DesiredMute>"
         case .disableMute:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredMute>0</DesiredMute>"

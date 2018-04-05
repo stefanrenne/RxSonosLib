@@ -12,7 +12,7 @@ import RxSonosLib
 
 class GroupViewModel {
     
-    fileprivate let group: Group
+    let group: Group
     fileprivate var disposeBag = DisposeBag()
     
     init(group: Group) {
@@ -40,4 +40,10 @@ class GroupViewModel {
         return SonosInteractor.provideGroupQueueInteractor()
             .get(values: GetGroupQueueValues(group: group))
     }()
+    
+    lazy var volumeInteractor: Observable<Int> = {
+        return SonosInteractor.provideGetVolumeInteractor()
+            .get(values: GetVolumeValues(group: group))
+    }()
+    
 }

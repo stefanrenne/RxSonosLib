@@ -21,6 +21,7 @@ class GroupViewController: UIViewController {
     @IBOutlet var progressView: UIProgressView!
     @IBOutlet var progressTime: UILabel!
     @IBOutlet var remainingTime: UILabel!
+    @IBOutlet var volumeSlider: UISlider!
     
     private let disposeBag = DisposeBag()
     internal var router: GroupRouter?
@@ -33,6 +34,7 @@ class GroupViewController: UIViewController {
         self.setupQueueTableViewItems()
         self.setupQueueCellTapHandling()
         self.setupNowPlaying()
+        self.setupVolumeHandler()
     }
     
     fileprivate func setupName() {
@@ -52,6 +54,35 @@ class GroupViewController: UIViewController {
             print(error.localizedDescription)
         })
         .disposed(by: disposeBag)
+    }
+    
+    fileprivate func setupVolumeHandler() {
+        model
+            .volumeInteractor
+            .filter({ _ in return !self.volumeSlider.isTouchInside })
+            .subscribe(onNext: { [weak self] (volume) in
+                self?.volumeSlider.value = Float(volume) / 100.0
+            }, onError: { (error) in
+                print(error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
+        
+        volumeSlider
+            .rx
+            .value
+            .throttle(0.5, scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .filter({ _ in return self.volumeSlider.isTouchInside })
+            .flatMap({ [weak self] (newVolume) -> Observable<Void> in
+                guard let strongSelf = self else { return Observable.just(()) }
+                return SonosInteractor
+                    .provideSetVolumeInteractor()
+                    .get(values: SetVolumeValues(group: strongSelf.model.group, volume: Int(newVolume * 100.0)))
+            })
+            .subscribe(onError: { (error) in
+                print(error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
     }
     
     fileprivate func setupTransportState() {

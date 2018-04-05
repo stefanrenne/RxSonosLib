@@ -34,4 +34,12 @@ open class SonosInteractor {
         return GetGroupQueueInteractor(contentDirectoryRepository: RepositoryInjection.provideContentDirectoryRepository())
     }
     
+    static public func provideGetVolumeInteractor() -> GetVolumeInteractor {
+        return GetVolumeInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
+    }
+    
+    static public func provideSetVolumeInteractor() -> SetVolumeInteractor {
+        return SetVolumeInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
+    }
+    
 }

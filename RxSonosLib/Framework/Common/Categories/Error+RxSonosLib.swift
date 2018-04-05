@@ -8,24 +8,28 @@
 
 import Foundation
 
-fileprivate let sonosLibDomain = "RxSonosLib"
-
-extension NSError {
+public extension NSError {
     
+    public static var sonosLibDomain: String { return "RxSonosLib" }
+    
+    public static var sonosLibNoDataErrorCode: Int { return 4001 }
     static func sonosLibNoDataError() -> Error {
-        return NSError(domain: sonosLibDomain, code: 40001, userInfo: nil)
+        return NSError(domain: sonosLibDomain, code: sonosLibNoDataErrorCode, userInfo: nil)
     }
     
+    public static var sonosLibInvalidDataErrorCode: Int { return 4002 }
     static func sonosLibInvalidDataError() -> Error {
-        return NSError(domain: sonosLibDomain, code: 40002, userInfo: nil)
+        return NSError(domain: sonosLibDomain, code: sonosLibInvalidDataErrorCode, userInfo: nil)
     }
     
+    public static var sonosLibUnknownUrlErrorCode: Int { return 4003 }
     static func sonosLibUnknownUrlError() -> Error {
-        return NSError(domain: sonosLibDomain, code: 40003, userInfo: nil)
+        return NSError(domain: sonosLibDomain, code: sonosLibUnknownUrlErrorCode, userInfo: nil)
     }
     
+    public static var sonosLibInvalidImplementationErrorCode: Int { return 4004 }
     static func sonosLibInvalidImplementationError() -> Error {
-        return NSError(domain: sonosLibDomain, code: 40004, userInfo: nil)
+        return NSError(domain: sonosLibDomain, code: sonosLibInvalidImplementationErrorCode, userInfo: nil)
     }
     
 }
