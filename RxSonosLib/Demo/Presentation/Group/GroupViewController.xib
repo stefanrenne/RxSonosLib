@@ -158,9 +158,6 @@
                     <subviews>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fWs-TZ-xCU">
                             <rect key="frame" x="106" y="0.0" width="163" height="31"/>
-                            <connections>
-                                <action selector="volumeAction:" destination="-1" eventType="valueChanged" id="BTV-TS-tHS"/>
-                            </connections>
                         </slider>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q31-F1-sx5">
                             <rect key="frame" x="20" y="0.0" width="68" height="30"/>
@@ -192,13 +189,13 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrk-Zc-htJ" userLabel="Line">
-                    <rect key="frame" x="20" y="298" width="335" height="1"/>
+                    <rect key="frame" x="20" y="298" width="355" height="1"/>
                     <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="4b1-C4-DHj"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="guZ-BV-aDS">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="guZ-BV-aDS">
                     <rect key="frame" x="0.0" y="299" width="375" height="368"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
@@ -207,7 +204,7 @@
             <constraints>
                 <constraint firstItem="oOc-Wt-lnm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2ul-Z3-h0B"/>
                 <constraint firstItem="nrk-Zc-htJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="3b1-88-Xd0"/>
-                <constraint firstAttribute="trailing" secondItem="nrk-Zc-htJ" secondAttribute="trailing" constant="20" id="7TJ-cu-c2z"/>
+                <constraint firstAttribute="trailing" secondItem="nrk-Zc-htJ" secondAttribute="trailing" id="7TJ-cu-c2z"/>
                 <constraint firstItem="tZ9-sH-zG7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="IZ6-eF-Ygg"/>
                 <constraint firstItem="guZ-BV-aDS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="P90-A0-JxE"/>
                 <constraint firstItem="q5j-X2-2as" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="VXr-gs-chS"/>

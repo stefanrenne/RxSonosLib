@@ -22,6 +22,7 @@ class GroupsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Groups"
         
         self.setupTableViewItems()
         self.setupCellTapHandling()
