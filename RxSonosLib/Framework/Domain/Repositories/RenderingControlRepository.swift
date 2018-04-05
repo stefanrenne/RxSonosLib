@@ -15,4 +15,8 @@ public protocol RenderingControlRepository {
     
     func getVolume(for group: Group) -> Observable<Int>
     
+    func set(volume: Int, for room: Room) -> Observable<Void>
+    
+    func set(volume: Int, for group: Group) -> Observable<Void>
+    
 }

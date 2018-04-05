@@ -20,4 +20,12 @@ class FakeRenderingControlRepositoryImpl: RenderingControlRepository {
         return Observable.just(70)
     }
     
+    func set(volume: Int, for room: Room) -> Observable<Void> {
+        return Observable.just(())
+    }
+    
+    func set(volume: Int, for group: Group) -> Observable<Void> {
+        return Observable.just(())
+    }
+    
 }

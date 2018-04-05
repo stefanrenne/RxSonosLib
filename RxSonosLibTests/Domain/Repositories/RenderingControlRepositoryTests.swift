@@ -57,6 +57,16 @@ class RenderingControlRepositoryTests: XCTestCase {
         XCTAssertEqual(volume, 40)
     }
     
+    func testItCanSetTheGroupVolume() {
+        
+        stub(soap(call: .setVolume(0)), soapXml(""))
+        
+        XCTAssertNoThrow(try renderingControlRepository
+            .set(volume: 30, for: firstGroup())
+            .toBlocking()
+            .toArray())
+    }
+    
 }
 
 extension RenderingControlRepositoryTests {

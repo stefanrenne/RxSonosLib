@@ -22,9 +22,26 @@ class RenderingControlRepositoryImpl: RenderingControlRepository {
         return Observable.zip(roomObservables, self.zipRoomVolumes())
     }
     
+    func set(volume: Int, for room: Room) -> Observable<Void> {
+        return SetVolumeNetwork(room: room, volume: volume)
+            .executeSoapRequest()
+            .map(mapToVoid())
+    }
+    
+    func set(volume: Int, for group: Group) -> Observable<Void> {
+        let roomObservables = ([group.master] + group.slaves).map({ set(volume: volume, for: $0) })
+        return Observable.zip(roomObservables).map(mapToVoid())
+    }
+    
 }
 
 extension RenderingControlRepositoryImpl {
+    fileprivate func mapToVoid() -> ((Any) -> Void) {
+        return { _ in
+            return ()
+        }
+    }
+    
     fileprivate func mapDataToVolume() -> (([String: String]) -> Int) {
         return { data in
             guard let volumeString = data["CurrentVolume"],

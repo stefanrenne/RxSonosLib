@@ -73,4 +73,9 @@ class StringRegexTest: XCTestCase {
         XCTAssertEqual(str1.validateXml(), "<GetHouseholdIDResponse param1=\"1\" param2=\"2\" param3=\"3\"><CurrentHouseholdID>SONOSID</CurrentHouseholdID></GetHouseholdIDResponse>")
     }
     
+    /* Clear Empty String */
+    func testItCanClearAnEmptyString() {
+        XCTAssertNil("".nilIfEmpty())
+    }
+    
 }

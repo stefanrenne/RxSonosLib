@@ -114,6 +114,7 @@
 		F8979942206939D1000CF52A /* NetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8979941206939D1000CF52A /* NetworkTest.swift */; };
 		F897994520693D95000CF52A /* MockNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897994420693D95000CF52A /* MockNetwork.swift */; };
 		F8979947206944A6000CF52A /* GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8979946206944A6000CF52A /* GroupTests.swift */; };
+		F89807E420760D6E00AF5ECB /* SetVolumeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89807E320760D6E00AF5ECB /* SetVolumeNetwork.swift */; };
 		F89D94C920615994002B1383 /* CacheManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89D94C820615994002B1383 /* CacheManagerTests.swift */; };
 		F8B0057320612BB900991E64 /* StringRegexTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0057220612BB900991E64 /* StringRegexTest.swift */; };
 /* End PBXBuildFile section */
@@ -261,6 +262,7 @@
 		F8979941206939D1000CF52A /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
 		F897994420693D95000CF52A /* MockNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetwork.swift; sourceTree = "<group>"; };
 		F8979946206944A6000CF52A /* GroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTests.swift; sourceTree = "<group>"; };
+		F89807E320760D6E00AF5ECB /* SetVolumeNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetVolumeNetwork.swift; sourceTree = "<group>"; };
 		F89D94C820615994002B1383 /* CacheManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManagerTests.swift; sourceTree = "<group>"; };
 		F8B0057220612BB900991E64 /* StringRegexTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRegexTest.swift; sourceTree = "<group>"; };
 		F8BF5C522056DF9E00AE311E /* Data+Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Convert.swift"; sourceTree = "<group>"; };
@@ -700,6 +702,7 @@
 				F87DC3B52069745A0089F882 /* GetMediaInfoNetwork.swift */,
 				F8860E882075067800BF6A7E /* GetQueueNetwork.swift */,
 				F83D2105207541EE001ABC9D /* GetVolumeNetwork.swift */,
+				F89807E320760D6E00AF5ECB /* SetVolumeNetwork.swift */,
 			);
 			path = Soap;
 			sourceTree = "<group>";
@@ -1106,6 +1109,7 @@
 				F8860E8F207507F500BF6A7E /* GetGroupQueueInteractor.swift in Sources */,
 				F81A05EF206028D600897738 /* Group.swift in Sources */,
 				F81A05F8206028D600897738 /* Network.swift in Sources */,
+				F89807E420760D6E00AF5ECB /* SetVolumeNetwork.swift in Sources */,
 				F87DC3B8206974920089F882 /* GetTransportInfoNetwork.swift in Sources */,
 				F8860E7C2074D74100BF6A7E /* String+Empty.swift in Sources */,
 				F81A05FC206028D600897738 /* GetGroupsNetwork.swift in Sources */,

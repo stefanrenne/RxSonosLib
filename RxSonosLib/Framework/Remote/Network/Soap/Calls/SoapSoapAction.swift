@@ -29,8 +29,8 @@ enum SoapSoapAction {
 //    case favorites, localFiles
     
     /* RenderingControl */
-    case getVolume
-//    case setVolume(_: Int), getMute, enableMute, disableMute
+    case getVolume, setVolume(Int)
+//    case getMute, enableMute, disableMute
     
     /* DeviceProperties */
 //    case getHouseholdID, getZoneInfo
@@ -52,8 +52,8 @@ enum SoapSoapAction {
         //        case .favorites, .localFiles
         case .browse:
             return .contentDirectory
-        case .getVolume:
-//        case .setVolume, .getMute, .enableMute, .disableMute:
+        case .getVolume, .setVolume:
+//        case .getMute, .enableMute, .disableMute:
             return .renderingControl
 //        case .getHouseholdID, .getZoneInfo:
 //            return .deviceProperties
@@ -108,8 +108,8 @@ enum SoapSoapAction {
             return "Browse"
         case .getVolume:
             return "GetVolume"
-//        case .setVolume:
-//            return "SetVolume"
+        case .setVolume:
+            return "SetVolume"
 //        case .getMute:
 //            return "GetMute"
 //        case .enableMute, .disableMute:
@@ -147,11 +147,11 @@ enum SoapSoapAction {
         /*case .favorites:
             return "<ObjectID>FV:2</ObjectID><BrowseFlag>BrowseDirectChildren</BrowseFlag><Filter>dc:title,res,dc:creator,upnp:artist,upnp:album,upnp:albumArtURI</Filter><StartingIndex>0</StartingIndex><RequestedCount>100</RequestedCount><SortCriteria></SortCriteria>"
         case .localFiles:
-            return "<ObjectID>S:</ObjectID><BrowseFlag>BrowseDirectChildren</BrowseFlag><Filter>dc:title,res,dc:creator,upnp:artist,upnp:album,upnp:albumArtURI</Filter><StartingIndex>0</StartingIndex><RequestedCount>100</RequestedCount><SortCriteria></SortCriteria>"
+            return "<ObjectID>S:</ObjectID><BrowseFlag>BrowseDirectChildren</BrowseFlag><Filter>dc:title,res,dc:creator,upnp:artist,upnp:album,upnp:albumArtURI</Filter><StartingIndex>0</StartingIndex><RequestedCount>100</RequestedCount><SortCriteria></SortCriteria>"*/
         case .setVolume(let amount):
             let cleanAmount = max(min(amount, 100), 0)
             return "<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredVolume>\(cleanAmount)</DesiredVolume>"
-        case .enableMute:
+        /*case .enableMute:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredMute>1</DesiredMute>"
         case .disableMute:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredMute>0</DesiredMute>"
