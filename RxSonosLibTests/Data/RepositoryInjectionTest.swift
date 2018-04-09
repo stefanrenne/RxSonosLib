@@ -12,6 +12,10 @@ import RxSSDP
 
 class RepositoryInjectionTest: XCTestCase {
     
+    override func setUp() {
+        super.setUp()
+    }
+    
     func testItCanProvideTheSSDPRepository() {
         XCTAssertTrue(type(of: RepositoryInjection.provideSSDPRepository()) == SSDPRepositoryImpl.self)
         

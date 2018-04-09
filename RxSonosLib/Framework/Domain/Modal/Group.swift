@@ -15,18 +15,19 @@ open class Group {
     public let master: Room
     
     /// Only some requests are also processed by slave rooms, as example volume controll requests
-    public var slaves: [Room] {
-        willSet {
-            name.onNext((newValue.count > 0) ? "\(master.name) +\(newValue.count)" : master.name)
-        }
-    }
+    public let slaves: [Room]
     
-    public let name: BehaviorSubject<String>
+    /// Name of the group
+    public let name: String
     
     init(master: Room, slaves: [Room]) {
-        self.name = BehaviorSubject(value: (slaves.count > 0) ? "\(master.name) +\(slaves.count)" : master.name)
         self.master = master
         self.slaves = slaves
+        self.name = (slaves.count > 0) ? "\(master.name) +\(slaves.count)" : master.name
+    }
+    
+    public func getTrack() -> Observable<Track> {
+        return SonosInteractor.getTrack(self)
     }
     
 }

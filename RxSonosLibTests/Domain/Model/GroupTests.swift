@@ -12,6 +12,27 @@ import RxSSDP
 
 class GroupTests: XCTestCase {
     
+    override func setUp() {
+        RepositoryInjection.shared.contentDirectoryRepository = FakeContentDirectoryRepositoryImpl()
+        RepositoryInjection.shared.groupRepository = FakeGroupRepositoryImpl()
+        RepositoryInjection.shared.renderingControlRepository = FakeRenderingControlRepositoryImpl()
+        RepositoryInjection.shared.roomRepository = FakeRoomRepositoryImpl()
+        RepositoryInjection.shared.ssdpRepository = FakeSSDPRepositoryImpl()
+        RepositoryInjection.shared.transportRepository = FakeTransportRepositoryImpl()
+        _ = SonosInteractor.shared
+        super.setUp()
+    }
+    
+    override func tearDown() {
+        RepositoryInjection.shared.contentDirectoryRepository = ContentDirectoryRepositoryImpl()
+        RepositoryInjection.shared.groupRepository = GroupRepositoryImpl()
+        RepositoryInjection.shared.renderingControlRepository = RenderingControlRepositoryImpl()
+        RepositoryInjection.shared.roomRepository = RoomRepositoryImpl()
+        RepositoryInjection.shared.ssdpRepository = SSDPRepositoryImpl()
+        RepositoryInjection.shared.transportRepository = TransportRepositoryImpl()
+        super.tearDown()
+    }
+    
     func testItCanCompareGroupsOnMaster() {
         let group1 = Group(master: firstRoom(), slaves: [])
         let group2 = Group(master: firstRoom(), slaves: [])
@@ -47,19 +68,32 @@ class GroupTests: XCTestCase {
         XCTAssertNotEqual(group1, group2)
     }
     
-    func testItCanSetTheGroupName() {
+    func testItCanGetTheGroupName() {
         let group = Group(master: firstRoom(), slaves: [thirthRoom(), secondRoom()])
-        let nameObservable = group.name.asObservable()
-        XCTAssertEqual(try! nameObservable.toBlocking().first(), "Living +2")
+        XCTAssertEqual(group.name, "Living +2")
     }
     
-    func testItCanChangeTheGroupNames() {
+    func testItCanGetTheGroupNameWhenThereAreNoSlaved() {
         let group = Group(master: firstRoom(), slaves: [])
-        let nameObservable = group.name.asObservable()
-        XCTAssertEqual(try! nameObservable.toBlocking().first(), "Living")
+        XCTAssertEqual(group.name, "Living")
+    }
+    
+    func testItCanGetTheActiveTrack() {
+        let group = Group(master: firstRoom(), slaves: [])
+        let track = try! group
+            .getTrack()
+            .toBlocking()
+            .first()! as! SpotifyTrack
         
-        group.slaves = [thirthRoom(), secondRoom()]
-        XCTAssertEqual(try! nameObservable.toBlocking().first(), "Living +2")
+        XCTAssertEqual(track.service, .spotify)
+        XCTAssertEqual(track.queueItem, 7)
+        XCTAssertEqual(track.duration, 265)
+        XCTAssertEqual(track.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
+        XCTAssertEqual(track.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
+        XCTAssertEqual(track.title, "Before I Die")
+        XCTAssertEqual(track.artist, "Papa Roach")
+        XCTAssertEqual(track.album, "The Connection")
+        XCTAssertEqual(track.description(), [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
     }
     
 }

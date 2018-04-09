@@ -19,6 +19,30 @@ public enum TrackDescription: String {
     case information = "INFORMATION"
 }
 
+extension TrackDescription: Comparable {
+    
+    private var intValue: Int {
+        switch self {
+        case .title:
+            return 1
+        case .information:
+            return 2
+        case .artist:
+            return 3
+        case .album:
+            return 4
+        }
+    }
+    
+    public static func < (lhs: TrackDescription, rhs: TrackDescription) -> Bool {
+        return lhs.intValue < rhs.intValue
+    }
+    
+    public static func ==(lhs: TrackDescription, rhs: TrackDescription) -> Bool {
+        return lhs.intValue == rhs.intValue
+    }
+}
+
 /**
  * Some `Track`'s have an image, these tracks response to the `TrackImage` protocol
  */
@@ -68,6 +92,21 @@ open class Track {
      */
     public func description() -> [TrackDescription: String] {
         return [TrackDescription.title: self.title]
+    }
+    
+    public func description(filterd: [TrackDescription]) -> [String] {
+        return self.description()
+            .compactMap({ (key, value) -> String? in
+                if filterd.contains(key) {
+                    return nil
+                }
+                return value
+            })
+            .sorted(by: { $0 < $1 })
+    }
+    
+    public func getImage() -> Observable<Data?> {
+        return SonosInteractor.getTrackImage(self)
     }
     
     init(service: MusicService, queueItem: Int, duration: UInt, uri: String, title: String) {

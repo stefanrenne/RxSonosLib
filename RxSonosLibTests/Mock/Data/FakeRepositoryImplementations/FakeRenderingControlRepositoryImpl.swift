@@ -12,6 +12,7 @@ import RxSwift
 
 class FakeRenderingControlRepositoryImpl: RenderingControlRepository {
     
+    
     func getVolume(for room: Room) -> Observable<Int> {
         return Observable.just(30)
     }
@@ -24,7 +25,9 @@ class FakeRenderingControlRepositoryImpl: RenderingControlRepository {
         return Observable.just(())
     }
     
+    var lastVolume: Int?
     func set(volume: Int, for group: Group) -> Observable<Void> {
+        self.lastVolume = volume
         return Observable.just(())
     }
     

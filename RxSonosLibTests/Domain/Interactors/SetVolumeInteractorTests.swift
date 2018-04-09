@@ -13,15 +13,18 @@ import RxBlocking
 
 class SetVolumeInteractorTests: XCTestCase {
     
-    let renderingControlRepository: RenderingControlRepository = FakeRenderingControlRepositoryImpl()
+    let renderingControlRepository: FakeRenderingControlRepositoryImpl = FakeRenderingControlRepositoryImpl()
     
     func testItCanSetTheCurrentVolume() {
+        XCTAssertNil(renderingControlRepository.lastVolume)
         let interactor = SetVolumeInteractor(renderingControlRepository: renderingControlRepository)
         
         XCTAssertNoThrow(try interactor
             .get(values: SetVolumeValues(group: firstGroup(), volume: 40))
             .toBlocking()
             .toArray())
+        
+        XCTAssertEqual(renderingControlRepository.lastVolume, 40)
     }
     
     func testItCantSetTheCurrentVolumeWithoutVolumeValues() {

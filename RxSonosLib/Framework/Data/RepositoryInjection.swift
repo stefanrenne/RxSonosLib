@@ -10,7 +10,7 @@ import Foundation
 import RxSSDP
 
 open class RepositoryInjection {
-    static let shared: RepositoryInjection = RepositoryInjection()
+    internal static let shared: RepositoryInjection = RepositoryInjection()
     
     init() {
         CacheManager.shared.deleteAll()
@@ -21,27 +21,27 @@ open class RepositoryInjection {
         return shared.ssdpRepository
     }
     
-    internal lazy var roomRepository: RoomRepository = { return RoomRepositoryImpl() }()
+    internal var roomRepository: RoomRepository = RoomRepositoryImpl()
     static public func provideRoomRepository() -> RoomRepository {
         return shared.roomRepository
     }
     
-    internal lazy var groupRepository: GroupRepository = { return GroupRepositoryImpl() }()
+    internal var groupRepository: GroupRepository = GroupRepositoryImpl()
     static public func provideGroupRepository() -> GroupRepository {
         return shared.groupRepository
     }
     
-    internal lazy var transportRepository: TransportRepository = { return TransportRepositoryImpl() }()
+    internal var transportRepository: TransportRepository = TransportRepositoryImpl()
     static public func provideTransportRepository() -> TransportRepository {
         return shared.transportRepository
     }
     
-    internal lazy var contentDirectoryRepository: ContentDirectoryRepository = { return ContentDirectoryRepositoryImpl() }()
+    internal var contentDirectoryRepository: ContentDirectoryRepository = ContentDirectoryRepositoryImpl()
     static public func provideContentDirectoryRepository() -> ContentDirectoryRepository {
         return shared.contentDirectoryRepository
     }
     
-    internal lazy var renderingControlRepository: RenderingControlRepository = { return RenderingControlRepositoryImpl() }()
+    internal var renderingControlRepository: RenderingControlRepository = RenderingControlRepositoryImpl()
     static public func provideRenderingControlRepository() -> RenderingControlRepository {
         return shared.renderingControlRepository
     }

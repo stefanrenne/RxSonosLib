@@ -12,9 +12,14 @@ import RxSwift
 
 class FakeGroupRepositoryImpl: GroupRepository {
     
+    var returnNoGroups = false
     func getGroups(for rooms: [Room]) -> Observable<[Group]> {
-        let groups = rooms.filter({ !$0.hasProxy }).map({ Group(master: $0, slaves: []) })
-        return Observable<[Group]>.just(groups)
+        if returnNoGroups {
+            return Observable<[Group]>.just([])
+        } else {
+            let groups = rooms.filter({ !$0.hasProxy }).map({ Group(master: $0, slaves: []) })
+            return Observable<[Group]>.just(groups)
+        }
     }
     
 }

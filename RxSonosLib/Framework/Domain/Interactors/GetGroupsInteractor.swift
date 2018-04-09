@@ -30,7 +30,7 @@ open class GetGroupsInteractor: BaseInteractor<GetGroupsValues, [Group]> {
         return ssdpRepository
             .scan(broadcastAddresses: ["239.255.255.250", "255.255.255.255"], searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1", maxTimeSpan: 3, maxCount: 100)
             .flatMap(mapSSDPToRooms())
-            .flatMap(addTimer(5))
+            .flatMap(addTimer(6))
             .flatMap(mapRoomsToGroups())
             .distinctUntilChanged({ $0 == $1 })
     }

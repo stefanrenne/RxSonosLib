@@ -32,4 +32,9 @@ public extension NSError {
         return NSError(domain: sonosLibDomain, code: sonosLibInvalidImplementationErrorCode, userInfo: nil)
     }
     
+    public static var sonosLibNoGroupErrorCode: Int { return 4005 }
+    static func sonosLibNoGroupError() -> Error {
+        return NSError(domain: sonosLibDomain, code: sonosLibNoGroupErrorCode, userInfo: nil)
+    }
+    
 }
