@@ -38,13 +38,22 @@ open class SonosInteractor {
             .asObserver()
     }
     
-    static public func getActiveTransportState() -> Observable<TransportState> {
-        return SonosInteractor
+    static public func getActiveTransportState() -> Observable<(TransportState, MusicService)> {
+        let stateObservable = SonosInteractor
             .getActiveGroup()
             .flatMap(ignoreNil())
             .flatMap { (group) -> Observable<TransportState> in
                 return SonosInteractor.getTransportState(group)
             }
+        
+        let serviceObservable = getActiveTrack()
+            .map({ (track) -> MusicService in
+                guard let service = track?.service else { return MusicService.unknown }
+                return service
+            })
+            .distinctUntilChanged()
+        
+        return Observable.combineLatest(stateObservable, serviceObservable, resultSelector: ({ ($0, $1) }))
     }
     
     static public func getActiveTrackImage() -> Observable<Data?> {

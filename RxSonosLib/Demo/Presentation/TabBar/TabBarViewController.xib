@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TabBarViewController" customModule="Demo_App" customModuleProvider="target">
             <connections>
+                <outlet property="actionButton" destination="BSX-wW-8vn" id="MYe-TG-UaC"/>
                 <outlet property="compactNowPlayingView" destination="RCM-Qm-GeD" id="Crf-cO-FfV"/>
                 <outlet property="contentView" destination="4rI-hG-bG7" id="hkt-Ok-oty"/>
                 <outlet property="fullNowPlayingView" destination="cpb-Ck-vGD" id="4QE-YW-jH0"/>

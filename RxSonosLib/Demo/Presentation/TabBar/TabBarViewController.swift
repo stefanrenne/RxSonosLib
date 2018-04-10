@@ -23,6 +23,7 @@ class TabBarViewController: UIViewController {
     @IBOutlet var nowPlayingTitleLabel: UILabel!
     @IBOutlet var nowPlayingDescriptionLabel: UILabel!
     @IBOutlet var tabBar: UITabBar!
+    @IBOutlet var actionButton: UIButton!
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -102,14 +103,20 @@ class TabBarViewController: UIViewController {
     }
     
     fileprivate func setupTransportStateObservable() {
-        /*SonosInteractor
+        SonosInteractor
             .getActiveTransportState()
-            .subscribe(onNext: { [weak self] (state) in
-                print(state.rawValue)
-            }, onError: { [weak self] (error) in
-                print(error.localizedDescription)
+            .subscribe(onNext: { [weak self] (state, service) in
+                switch state {
+                case .paused, .stopped:
+                    self?.actionButton.setImage(UIImage(named: "icon_play_large"), for: .normal)
+                case .transitioning:
+                    self?.actionButton.setImage(UIImage(named: "icon_stop_large"), for: .normal)
+                case .playing:
+                    let imageName = service.isStreamingService ? "icon_stop_large" : "icon_pause_large"
+                    self?.actionButton.setImage(UIImage(named: imageName), for: .normal)
+                }
             })
-            .disposed(by: disposeBag)*/
+            .disposed(by: disposeBag)
     }
 
 }

@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NowPlayingViewController" customModule="Demo_App" customModuleProvider="target">
             <connections>
+                <outlet property="actionButton" destination="lmW-uW-ClL" id="yHn-jw-VRz"/>
                 <outlet property="groupImageView" destination="yqQ-49-ufp" id="L31-dU-6n0"/>
                 <outlet property="groupNameLabel" destination="TQh-g2-wDa" id="KYe-Nv-ljK"/>
                 <outlet property="groupTrackDescription" destination="cEo-0s-MgY" id="NPv-bL-xqH"/>

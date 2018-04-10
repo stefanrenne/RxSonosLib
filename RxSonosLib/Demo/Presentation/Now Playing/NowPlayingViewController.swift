@@ -21,9 +21,9 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet var progressTime: UILabel!
     @IBOutlet var remainingTime: UILabel!
     @IBOutlet var volumeSlider: UISlider!
+    @IBOutlet var actionButton: UIButton!
     
     private let disposeBag = DisposeBag()
-    private var groupDisposeBag = DisposeBag()
     internal var router: NowPlayingRouter?
     
     override func viewDidLoad() {
@@ -60,7 +60,7 @@ class NowPlayingViewController: UIViewController {
                 self?.groupTrackTitle.text = viewModel.trackTitle
                 self?.groupTrackDescription.attributedText = viewModel.trackDescription
             })
-            .disposed(by: groupDisposeBag)
+            .disposed(by: disposeBag)
     }
     
     fileprivate func setupVolumeObservables() {
@@ -70,7 +70,7 @@ class NowPlayingViewController: UIViewController {
             .subscribe(onNext: { [weak self] (volume) in
                 self?.volumeSlider.value = Float(volume) / 100.0
             })
-            .disposed(by: groupDisposeBag)
+            .disposed(by: disposeBag)
         
         volumeSlider
             .rx
@@ -85,18 +85,24 @@ class NowPlayingViewController: UIViewController {
             .subscribe(onError: { (error) in
                 print(error.localizedDescription)
             })
-            .disposed(by: groupDisposeBag)
+            .disposed(by: disposeBag)
     }
     
     fileprivate func setupTransportStateObservable() {
-        /*SonosInteractor
+        SonosInteractor
          .getActiveTransportState()
-         .subscribe(onNext: { [weak self] (state) in
-             print(state.rawValue)
-         }, onError: { [weak self] (error) in
-             print(error.localizedDescription)
+         .subscribe(onNext: { [weak self] (state, service) in
+            switch state {
+                case .paused, .stopped:
+                    self?.actionButton.setImage(UIImage(named: "icon_play_large"), for: .normal)
+                case .transitioning:
+                    self?.actionButton.setImage(UIImage(named: "icon_stop_large"), for: .normal)
+                case .playing:
+                    let imageName = service.isStreamingService ? "icon_stop_large" : "icon_pause_large"
+                    self?.actionButton.setImage(UIImage(named: imageName), for: .normal)
+            }
          })
-         .disposed(by: disposeBag)*/
+         .disposed(by: disposeBag)
     }
     
     fileprivate func setupGroupProgressObservable() {
@@ -107,7 +113,7 @@ class NowPlayingViewController: UIViewController {
                 self?.remainingTime.text = progress.remainingTimeString
                 self?.progressView.progress = progress.progress
             })
-            .disposed(by: groupDisposeBag)
+            .disposed(by: disposeBag)
     }
     
     fileprivate func setupImageObservable() {
@@ -119,7 +125,7 @@ class NowPlayingViewController: UIViewController {
                 return image
             })
             .bind(to: groupImageView.rx.image)
-            .disposed(by: groupDisposeBag)
+            .disposed(by: disposeBag)
     }
     
     fileprivate func resetTrack() {

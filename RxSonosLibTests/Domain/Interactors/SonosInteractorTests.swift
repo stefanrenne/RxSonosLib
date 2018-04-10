@@ -77,12 +77,13 @@ class SonosInteractorTests: XCTestCase {
     }
     
     func testItCanProvideTheTransportStateObservable() {
-        let state = try! SonosInteractor
+        let (state, service) = try! SonosInteractor
             .getActiveTransportState()
             .toBlocking()
             .first()!
         
         XCTAssertEqual(state, TransportState.paused)
+        XCTAssertEqual(service, MusicService.spotify)
     }
     
     func testItCanProvideTheTrackImageObservable() {
