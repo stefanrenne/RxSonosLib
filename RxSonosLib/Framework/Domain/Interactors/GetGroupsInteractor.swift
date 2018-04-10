@@ -10,16 +10,16 @@ import Foundation
 import RxSwift
 import RxSSDP
 
-open class GetGroupsValues: RequestValues {
+class GetGroupsValues: RequestValues {
 }
 
-open class GetGroupsInteractor: BaseInteractor<GetGroupsValues, [Group]> {
+class GetGroupsInteractor: BaseInteractor<GetGroupsValues, [Group]> {
     
     let ssdpRepository: SSDPRepository
     let roomRepository: RoomRepository
     let groupRepository: GroupRepository
     
-    public init(ssdpRepository: SSDPRepository, roomRepository: RoomRepository, groupRepository: GroupRepository) {
+    init(ssdpRepository: SSDPRepository, roomRepository: RoomRepository, groupRepository: GroupRepository) {
         self.ssdpRepository = ssdpRepository
         self.roomRepository = roomRepository
         self.groupRepository = groupRepository

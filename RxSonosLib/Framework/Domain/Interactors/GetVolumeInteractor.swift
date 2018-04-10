@@ -9,19 +9,19 @@
 import Foundation
 import RxSwift
 
-open class GetVolumeValues: RequestValues {
+class GetVolumeValues: RequestValues {
     let group: Group
     
-    public init(group: Group) {
+    init(group: Group) {
         self.group = group
     }
 }
 
-open class GetVolumeInteractor: BaseInteractor<GetVolumeValues, Int> {
+class GetVolumeInteractor: BaseInteractor<GetVolumeValues, Int> {
     
     let renderingControlRepository: RenderingControlRepository
     
-    public init(renderingControlRepository: RenderingControlRepository) {
+    init(renderingControlRepository: RenderingControlRepository) {
         self.renderingControlRepository = renderingControlRepository
     }
     

@@ -9,19 +9,19 @@
 import Foundation
 import RxSwift
 
-open class GetNowPlayingValues: RequestValues {
+class GetNowPlayingValues: RequestValues {
     let group: Group
     
-    public init(group: Group) {
+    init(group: Group) {
         self.group = group
     }
 }
 
-open class GetNowPlayingInteractor: BaseInteractor<GetNowPlayingValues, Track>  {
+class GetNowPlayingInteractor: BaseInteractor<GetNowPlayingValues, Track>  {
     
     let transportRepository: TransportRepository
     
-    public init(transportRepository: TransportRepository) {
+    init(transportRepository: TransportRepository) {
         self.transportRepository = transportRepository
     }
     
