@@ -23,9 +23,12 @@ class TransportRepositoryTest: XCTestCase {
         stub(soap(call: .mediaInfo), soapXml(""))
         stub(soap(call: .positionInfo), soapXml(""))
         
-        XCTAssertThrowsError(try transportRepository.getNowPlaying(for: randomRoom()).toBlocking().toArray()) { error in
-            XCTAssertEqual(error.localizedDescription, NSError.sonosLibNoDataError().localizedDescription)
-        }
+        let track = try! transportRepository
+            .getNowPlaying(for: randomRoom())
+            .toBlocking()
+            .first()!
+        
+        XCTAssertNil(track)
     }
     
     func testItCanGetSpotifyNowPlayingTrack() {

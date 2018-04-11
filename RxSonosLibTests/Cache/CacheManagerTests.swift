@@ -30,7 +30,11 @@ class CacheManagerTests: XCTestCase {
         XCTAssertNil(object1)
         
         CacheManager.shared.set(data, for: key)
-        let object2: String? = String(data: CacheManager.shared.get(for: key)!, encoding: .utf8)
+        
+        let cachedData: Data? = CacheManager.shared.get(for: key)
+        XCTAssertNotNil(cachedData)
+        
+        let object2: String? = String(data: cachedData!, encoding: .utf8)
         XCTAssertEqual(object2, "random")
         
     }

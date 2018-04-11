@@ -35,6 +35,11 @@ class TabBarViewController: UIViewController {
         self.setupTransportStateObservable()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tabBar.invalidateIntrinsicContentSize()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         router?.continueToNowPlaying()
@@ -64,9 +69,11 @@ class TabBarViewController: UIViewController {
         tabBar
             .rx
             .didSelectItem
+            .do(onNext: { [weak self] (_) in
+                self?.nowPlayingAction(collapse: true)
+            })
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] (item) in
-                self?.nowPlayingAction(collapse: true)
                 switch item.tag {
                     case 1: self?.router?.continueToMySonos(); break
                     case 2: self?.router?.continueToBrowse(); break

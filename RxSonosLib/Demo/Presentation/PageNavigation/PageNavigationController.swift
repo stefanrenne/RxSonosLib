@@ -20,7 +20,7 @@ class PageNavigationController: UINavigationController {
         self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)]
 
         self.navigationBar.setBackgroundImage(UIColor.clear.as1ptImage(), for: .default)
-        self.navigationBar.shadowImage = UIColor.black.as1ptImage()
+        self.navigationBar.shadowImage = UIColor(red: 0.78, green: 0.78, blue: 0.78, alpha: 1.0).as1ptImage()
     }
 
 }

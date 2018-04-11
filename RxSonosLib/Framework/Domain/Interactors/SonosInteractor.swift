@@ -21,6 +21,13 @@ open class SonosInteractor {
         self.observerActiveTrack()
     }
     
+    static public func setActive(group: Group) {
+        let all = try! shared.allGroups.value()
+        if all.contains(group) {
+            shared.setActive(group: group)
+        }
+    }
+    
     static public func getActiveGroup() -> Observable<Group?> {
         return shared
             .activeGroup
@@ -48,8 +55,7 @@ open class SonosInteractor {
         
         let serviceObservable = getActiveTrack()
             .map({ (track) -> MusicService in
-                guard let service = track?.service else { return MusicService.unknown }
-                return service
+                return track?.service ?? MusicService.unknown
             })
             .distinctUntilChanged()
         
@@ -109,7 +115,7 @@ open class SonosInteractor {
     }
     
     /* Group */
-    static public func getTrack(_ group: Group) -> Observable<Track> {
+    static public func getTrack(_ group: Group) -> Observable<Track?> {
         return GetNowPlayingInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: GetNowPlayingValues(group: group))
     }
@@ -165,10 +171,9 @@ extension SonosInteractor {
         activeGroup
             .asObserver()
             .flatMap(ignoreNil())
-            .flatMap({ (group) -> Observable<Track> in
+            .flatMap({ (group) -> Observable<Track?> in
                 return SonosInteractor.getTrack(group)
             })
-            .map({ $0 })
             .subscribe(self.activeTrack)
             .disposed(by: disposebag)
     }

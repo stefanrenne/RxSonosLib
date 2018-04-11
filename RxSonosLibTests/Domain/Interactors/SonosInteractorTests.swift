@@ -16,12 +16,14 @@ class SonosInteractorTests: XCTestCase {
     
     override func setUp() {
         RepositoryInjection.shared.contentDirectoryRepository = FakeContentDirectoryRepositoryImpl()
-        RepositoryInjection.shared.groupRepository = FakeGroupRepositoryImpl()
+        let groupRepository = FakeGroupRepositoryImpl()
+        RepositoryInjection.shared.groupRepository = groupRepository
         RepositoryInjection.shared.renderingControlRepository = FakeRenderingControlRepositoryImpl()
         RepositoryInjection.shared.roomRepository = FakeRoomRepositoryImpl()
         RepositoryInjection.shared.ssdpRepository = FakeSSDPRepositoryImpl()
         RepositoryInjection.shared.transportRepository = FakeTransportRepositoryImpl()
-        _ = SonosInteractor.shared
+        SonosInteractor.shared.allGroups.onNext(groupRepository.allGroups)
+        SonosInteractor.shared.activeGroup.onNext(groupRepository.allGroups.first)
         super.setUp()
     }
     
@@ -158,17 +160,43 @@ class SonosInteractorTests: XCTestCase {
         XCTAssertEqual(mock.lastVolume, 20)
     }
     
-    func testItCantSetTheVolumeWhenThereAreNoGroups() {
-        let mock = RepositoryInjection.shared.groupRepository as! FakeGroupRepositoryImpl
-        mock.returnNoGroups = true
-        SonosInteractor.shared.allGroups.onNext([])
+    func testItCanSetTheActiveGroup() {
+        let allGroups = try! SonosInteractor.shared.allGroups.value()
         
-        XCTAssertThrowsError(try SonosInteractor
-            .setActiveGroup(volume: 30)
-            .toBlocking()
-            .toArray()) { error in
-            XCTAssertEqual(error.localizedDescription, NSError.sonosLibNoGroupError().localizedDescription)
-        }
+        SonosInteractor.setActive(group: allGroups.first!)
+        let activeGroup1 = try! SonosInteractor.shared.activeGroup.value()
+        XCTAssertEqual(activeGroup1, allGroups.first)
+        
+        SonosInteractor.setActive(group: allGroups.last!)
+        let activeGroup2 = try! SonosInteractor.shared.activeGroup.value()
+        XCTAssertEqual(activeGroup2, allGroups.last)
     }
     
+    func testItCantSetTheActiveGroupIfItDoesntExists() {
+        let allGroups = try! SonosInteractor.shared.allGroups.value()
+        
+        SonosInteractor.setActive(group: allGroups.first!)
+        let activeGroup1 = try! SonosInteractor.shared.activeGroup.value()
+        XCTAssertEqual(activeGroup1, allGroups.first)
+        
+        SonosInteractor.setActive(group: firstGroup())
+        let activeGroup2 = try! SonosInteractor.shared.activeGroup.value()
+        XCTAssertEqual(activeGroup2, allGroups.first)
+    }
+    
+}
+
+fileprivate extension SonosInteractorTests {
+    
+    func firstGroup() -> Group {
+        return Group(master: firstRoom(), slaves: [])
+    }
+    
+    func firstRoom() -> Room {
+        let device = SSDPDevice(ip: URL(string: "http://192.168.3.14:1400")!, usn: "uuid:RINCON_000001::urn:schemas-upnp-org:device:ZonePlayer:1", server: "Linux UPnP/1.0 Sonos/34.7-34220 (ZPS9)", ext: "", st: "urn:schemas-upnp-org:device:ZonePlayer:1", location: "/xml/device_description.xml", cacheControl: "max-age = 1800", uuid: "RINCON_000001", wifiMode: "0", variant: "0", household: "SONOS_HOUSEHOLD_1", bootseq: "81", proxy: nil)
+        
+        let description = DeviceDescription(name: "Living", modalNumber: "S9", modalName: "Sonos PLAYBAR", modalIcon: "/img/icon-S9.png", serialNumber: "00-00-00-00-00-01:A", softwareVersion: "34.7-34220", hardwareVersion: "1.8.3.7-2")
+        
+        return Room(ssdpDevice: device, deviceDescription: description)
+    }
 }

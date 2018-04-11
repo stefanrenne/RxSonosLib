@@ -10,7 +10,7 @@ import UIKit
 import RxSonosLib
 
 protocol RoomsRouter {
-    func continueToGroup(_ group: Group)
+    func continueToNowPlaying()
 }
 
 class RoomsCoordinator: BaseCoordinator {
@@ -36,8 +36,8 @@ class RoomsCoordinator: BaseCoordinator {
 
 extension RoomsCoordinator: RoomsRouter {
     
-    func continueToGroup(_ group: Group) {
-//        NowPlayingCoordinator(navigationController: navigationController, group: group).start()
+    func continueToNowPlaying() {
+        self.tabbarRouter.continueToNowPlaying()
     }
     
 }

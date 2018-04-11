@@ -65,6 +65,7 @@ SonosInteractor
 
 **Active group**
 
+- `static public func setActive(group: Group)`
 - `static public func getActiveGroup() -> Observable<Group?> `
 - `static public func getActiveTrack() -> Observable<Track?>`
 - `static public func getActiveTransportState() -> Observable<(TransportState, MusicService)>`  
@@ -76,7 +77,7 @@ SonosInteractor
 
 **Group specific functions**
 
-- `static public func getTrack(_ group: Group) -> Observable<Track>`
+- `static public func getTrack(_ group: Group) -> Observable<Track?>`
 - `static public func getTransportState(_ group: Group) -> Observable<TransportState>`
 
 **Track specific functions**
@@ -85,7 +86,7 @@ SonosInteractor
 
 ### Group: All Observers
 
-- `func getTrack() -> Observable<Track>`
+- `func getTrack() -> Observable<Track?>`
 
 ### Track: All Observers
 

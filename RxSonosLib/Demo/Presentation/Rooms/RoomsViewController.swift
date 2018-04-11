@@ -42,7 +42,8 @@ class RoomsViewController: UIViewController {
             .rx
             .modelSelected(Group.self)
             .subscribe(onNext: { [weak self] (group) in
-                self?.router?.continueToGroup(group)
+                SonosInteractor.setActive(group: group)
+                self?.router?.continueToNowPlaying()
             })
             .disposed(by: self.disposeBag)
     }

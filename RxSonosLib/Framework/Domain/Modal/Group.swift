@@ -20,13 +20,17 @@ open class Group {
     /// Name of the group
     public let name: String
     
+    /// All Room names in this group
+    public let names: [String]
+    
     init(master: Room, slaves: [Room]) {
         self.master = master
         self.slaves = slaves
         self.name = (slaves.count > 0) ? "\(master.name) +\(slaves.count)" : master.name
+        self.names = [master.name] + slaves.map({ $0.name })
     }
     
-    public func getTrack() -> Observable<Track> {
+    public func getTrack() -> Observable<Track?> {
         return SonosInteractor.getTrack(self)
     }
     

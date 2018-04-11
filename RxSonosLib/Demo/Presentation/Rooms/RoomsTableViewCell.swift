@@ -16,12 +16,20 @@ class RoomsTableViewCell: UITableViewCell {
     @IBOutlet var groupTitleLabel: UILabel!
     @IBOutlet var groupImageView: UIImageView!
     @IBOutlet var groupDescriptionLabel: UILabel!
+    @IBOutlet var innerBackgroundView: UIView!
+    @IBOutlet var groupButton: UIButton!
     
     static let identifier = "cell"
     var disposeBag = DisposeBag()
     var group: Group! {
         didSet {
-            self.groupTitleLabel.text = self.group?.name
+            self.groupButton.layer.cornerRadius = 5
+            self.innerBackgroundView.layer.cornerRadius = 10
+            self.innerBackgroundView.layer.borderWidth = 1
+            self.innerBackgroundView.layer.borderColor = UIColor.black.cgColor
+            self.groupImageView.layer.borderWidth = 1
+            self.groupImageView.layer.borderColor = UIColor(red: 0.925, green: 0.925, blue: 0.925, alpha: 1.0).cgColor
+            self.groupTitleLabel.text = self.group?.names.joined(separator: "\n")
             self.bindTrackObservable()
         }
     }
@@ -35,8 +43,7 @@ class RoomsTableViewCell: UITableViewCell {
         group
             .getTrack()
             .subscribe(onNext: { [weak self] (track) in
-                let viewModel = TrackViewModel(track: track)
-                self?.bind(viewModel: viewModel)
+                self?.bind(track: track)
             }, onError: { [weak self] (error) in
                 self?.groupDescriptionLabel.text = nil
                 self?.groupImageView.image = nil
@@ -44,7 +51,13 @@ class RoomsTableViewCell: UITableViewCell {
             .disposed(by: disposeBag)
     }
     
-    fileprivate func bind(viewModel: TrackViewModel) {
+    fileprivate func bind(track: Track?) {
+        guard let track = track else {
+            self.groupDescriptionLabel.text = "[No Track]"
+            groupImageView.image = nil
+            return
+        }
+        let viewModel = TrackViewModel(track: track)
         self.groupDescriptionLabel.attributedText = viewModel.trackDescription
         
         viewModel
