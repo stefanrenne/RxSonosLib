@@ -28,9 +28,9 @@ class GetGroupsInteractor: BaseInteractor<GetGroupsValues, [Group]> {
     override func buildInteractorObservable(requestValues: GetGroupsValues?) -> Observable<[Group]> {
         
         return ssdpRepository
-            .scan(broadcastAddresses: ["239.255.255.250", "255.255.255.255"], searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1", maxTimeSpan: 3, maxCount: 100)
+            .scan(broadcastAddresses: ["239.255.255.250", "255.255.255.255"], searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1", maxTimeSpan: SonosSettings.shared.searchNetworkForDevices, maxCount: 100)
             .flatMap(mapSSDPToRooms())
-            .flatMap(addTimer(6))
+            .flatMap(addTimer(SonosSettings.shared.renewGroupsTimer))
             .flatMap(mapRoomsToGroups())
             .distinctUntilChanged({ $0 == $1 })
     }

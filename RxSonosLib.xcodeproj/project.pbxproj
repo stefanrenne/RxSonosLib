@@ -142,6 +142,7 @@
 		F8CA230A207BD5C1009F15AE /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA2308207BD5C1009F15AE /* LoadingViewController.swift */; };
 		F8CA230B207BD5C1009F15AE /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8CA2309207BD5C1009F15AE /* LoadingViewController.xib */; };
 		F8CA230D207BE257009F15AE /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA230C207BE257009F15AE /* BaseCoordinator.swift */; };
+		F8D0BB8C207E5B5A00BBEFB8 /* SonosSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D0BB8A207E5AB000BBEFB8 /* SonosSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -325,6 +326,7 @@
 		F8CA2308207BD5C1009F15AE /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		F8CA2309207BD5C1009F15AE /* LoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
 		F8CA230C207BE257009F15AE /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		F8D0BB8A207E5AB000BBEFB8 /* SonosSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosSettings.swift; sourceTree = "<group>"; };
 		F8F56166205C3EE800E28533 /* GroupRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupRepositoryTest.swift; sourceTree = "<group>"; };
 		F8F56167205C3EE800E28533 /* SSDPRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSDPRepositoryTest.swift; sourceTree = "<group>"; };
 		F8F56168205C3EE900E28533 /* RoomRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomRepositoryTest.swift; sourceTree = "<group>"; };
@@ -578,6 +580,7 @@
 				F81A06002060291D00897738 /* RxSonosLib.h */,
 				F809DE87204999AC003A94A0 /* Categories */,
 				F825F496204829C3006A7B73 /* Base */,
+				F8D0BB8A207E5AB000BBEFB8 /* SonosSettings.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1264,6 +1267,7 @@
 				F81A05ED206028D600897738 /* SSDPDevice.swift in Sources */,
 				F81A05E8206028D600897738 /* AEXMLDocument+Create.swift in Sources */,
 				F81E339A207135B2002E22A8 /* GroupProgress.swift in Sources */,
+				F8D0BB8C207E5B5A00BBEFB8 /* SonosSettings.swift in Sources */,
 				F8860E822074D8BE00BF6A7E /* TVTrack.swift in Sources */,
 				F81A05F7206028D600897738 /* RepositoryInjection.swift in Sources */,
 				F8860E7E2074D89300BF6A7E /* SpotifyTrack.swift in Sources */,

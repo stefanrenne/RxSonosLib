@@ -31,7 +31,7 @@ class GetGroupProgressInteractor: BaseInteractor<GetGroupProgressValues, GroupPr
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
         
-        return createTimer(1)
+        return createTimer(SonosSettings.shared.renewGroupTrackProgressTimer)
             .flatMap(self.mapToProgress(for: masterRoom))
             .distinctUntilChanged({ $0 == $1 })
     }

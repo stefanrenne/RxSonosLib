@@ -40,7 +40,8 @@ The first version of this project started as a way to understand Sonos better. T
 
 ## Usage
 
-Inspect `SonosInteractor` this class is your entry to the library.
+Inspect [SonosInteractor.swift](RxSonosLib/Framework/Domain/Interactors/SonosInteractor.swift) this class is your entry to the library.
+
 The models `Group` & `Track` also contains functions to generate new Observables.
 
 Example:
@@ -91,6 +92,10 @@ SonosInteractor
 ### Track: All Observers
 
 - `func getImage() -> Observable<Data?>`
+
+### Modify settings
+    
+Inspect [SonosSettings.swift](RxSonosLib/Framework/Common/SonosSettings.swift), this class contains all customizable settings.
     
 #### More demos?
 

@@ -31,7 +31,7 @@ class GetTransportStateInteractor: BaseInteractor<GetTransportStateValues, Trans
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
         
-        return createTimer(2)
+        return createTimer(SonosSettings.shared.renewGroupTransportStateTimer)
             .flatMap(self.mapToTransportState(for: masterRoom))
             .distinctUntilChanged({ $0.rawValue == $1.rawValue })
     }
