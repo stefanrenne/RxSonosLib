@@ -13,6 +13,10 @@ import RxSwift
  * In `SonosSettings` all general settings are saved, make sure to change these values before the first call on `SonosInteractor` is performed.
  */
 open class SonosSettings {
+    
+    /**
+     * singleton variable to access all RxSonosLib settings
+     */
     public static let shared = SonosSettings()
     
     /**
