@@ -12,8 +12,7 @@ class CacheManager {
     static let shared = CacheManager()
     
     fileprivate var documentPath: URL? {
-        guard let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return nil }
-        return URL(fileURLWithPath: path)
+        return URL(fileURLWithPath: NSTemporaryDirectory())
     }
     
     fileprivate func urlForKey(_ key: String) -> URL? {

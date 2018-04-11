@@ -26,4 +26,13 @@ extension MusicService {
             return .unknown
         }
     }
+    
+    public var isStreamingService: Bool {
+        switch self {
+        case .tunein, .tv:
+            return true
+        default:
+            return false
+        }
+    }
 }

@@ -9,19 +9,19 @@
 import Foundation
 import RxSwift
 
-open class GetTrackImageValues: RequestValues {
+class GetTrackImageValues: RequestValues {
     let track: Track
     
-    public init(track: Track) {
+    init(track: Track) {
         self.track = track
     }
 }
 
-open class GetTrackImageInteractor: BaseInteractor<GetTrackImageValues, Data?>  {
+class GetTrackImageInteractor: BaseInteractor<GetTrackImageValues, Data?>  {
     
     let transportRepository: TransportRepository
     
-    public init(transportRepository: TransportRepository) {
+    init(transportRepository: TransportRepository) {
         self.transportRepository = transportRepository
     }
     

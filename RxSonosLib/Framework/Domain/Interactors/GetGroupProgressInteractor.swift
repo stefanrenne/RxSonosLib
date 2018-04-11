@@ -9,19 +9,19 @@
 import Foundation
 import RxSwift
 
-open class GetGroupProgressValues: RequestValues {
+class GetGroupProgressValues: RequestValues {
     let group: Group
     
-    public init(group: Group) {
+    init(group: Group) {
         self.group = group
     }
 }
 
-open class GetGroupProgressInteractor: BaseInteractor<GetGroupProgressValues, GroupProgress> {
+class GetGroupProgressInteractor: BaseInteractor<GetGroupProgressValues, GroupProgress> {
     
     let transportRepository: TransportRepository
     
-    public init(transportRepository: TransportRepository) {
+    init(transportRepository: TransportRepository) {
         self.transportRepository = transportRepository
     }
     

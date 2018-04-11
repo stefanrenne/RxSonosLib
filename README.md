@@ -40,12 +40,14 @@ The first version of this project started as a way to understand Sonos better. T
 
 ## Usage
 
-Get the required interactor and subscribe for changes, example:
+Inspect `SonosInteractor` this class is your entry to the library.
+The models `Group` & `Track` also contains functions to generate new Observables.
+
+Example:
 
 ```
 SonosInteractor
-.provideGroupsInteractor()
-.get()
+.getAllGroups()
 .subscribe(onNext: { (groups) in
 	print("groups: onNext")
 }, onError: { (error) in
@@ -55,58 +57,42 @@ SonosInteractor
 }).disposed(by: disposeBag)
 ```
 
-## All Interactors
+### SonosInteractor: All Observers
 
-### 1) Find all Sonos groups
+**Groups**
 
+- `static public func getAllGroups() -> Observable<[Group]>`
 
-```
-let interactor: GetGroupsInteractor = SonosInteractor
-	.provideGroupsInteractor()
-	.get()
-```
+**Active group**
 
-### 2) Get the current track for a Sonos group
+- `static public func setActive(group: Group)`
+- `static public func getActiveGroup() -> Observable<Group?> `
+- `static public func getActiveTrack() -> Observable<Track?>`
+- `static public func getActiveTransportState() -> Observable<(TransportState, MusicService)>`  
+- `static public func getActiveTrackImage() -> Observable<Data?>`  
+- `static public func getActiveGroupProgress() -> Observable<GroupProgress>`  
+- `static public func getActiveGroupQueue() -> Observable<[Track]>`      
+- `static public func getActiveGroupVolume() -> Observable<Int>`  
+- `static public func setActiveGroup(volume: Int) -> Observable<Void>`
 
-```
-let interactor: GetNowPlayingInteractor
-	.provideNowPlayingInteractor()
-   .get(values: GetNowPlayingValues(group: <#T##Group#>))
-```
+**Group specific functions**
 
-### 3) Get the current state for a Sonos group (playing, paused, stopped, etc)
+- `static public func getTrack(_ group: Group) -> Observable<Track?>`
+- `static public func getTransportState(_ group: Group) -> Observable<TransportState>`
 
-```
-let interactor: GetTransportStateInteractor = SonosInteractor
-	.provideTransportStateInteractor()
-	.get(values: GetTransportStateValues(group: <#T##Group#>))
-```
+**Track specific functions**
 
-### 4) Get the progressed time for a Sonos Group
+- `static public func getTrackImage(_ track: Track) -> Observable<Data?>`
 
-```
-let interactor: GetGroupProgressInteractor = SonosInteractor
-	.provideGroupProgressInteractor()
-	.get(values: GetGroupProgressValues(track: <#T##Group#>))
-```
+### Group: All Observers
 
-### 5) Get the queue for a Sonos Group
+- `func getTrack() -> Observable<Track?>`
 
-```
-let interactor: GetGroupQueueInteractor = SonosInteractor
-	.provideGroupQueueInteractor()
-	.get(values: GetGroupQueueValues(group: <#T##Group#>))
-```
+### Track: All Observers
 
-### 6) Get the image for a Sonos Track
-
-```
-let interactor: GetTrackImageInteractor = SonosInteractor
-	.provideTrackImageInteractor()
-	.get(values: GetTrackImageValues(track: <#T##Track#>))
-```
+- `func getImage() -> Observable<Data?>`
     
-### More demos?
+#### More demos?
 
 Clone the repository, open `RxSonosLib.xcworkspace` and build the demo project
 

@@ -9,23 +9,23 @@
 import Foundation
 import RxSwift
 
-open class GetNowPlayingValues: RequestValues {
+class GetNowPlayingValues: RequestValues {
     let group: Group
     
-    public init(group: Group) {
+    init(group: Group) {
         self.group = group
     }
 }
 
-open class GetNowPlayingInteractor: BaseInteractor<GetNowPlayingValues, Track>  {
+class GetNowPlayingInteractor: BaseInteractor<GetNowPlayingValues, Track?>  {
     
     let transportRepository: TransportRepository
     
-    public init(transportRepository: TransportRepository) {
+    init(transportRepository: TransportRepository) {
         self.transportRepository = transportRepository
     }
     
-    override func buildInteractorObservable(requestValues: GetNowPlayingValues?) -> Observable<Track> {
+    override func buildInteractorObservable(requestValues: GetNowPlayingValues?) -> Observable<Track?> {
         
         guard let masterRoom = requestValues?.group.master else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())
@@ -36,7 +36,7 @@ open class GetNowPlayingInteractor: BaseInteractor<GetNowPlayingValues, Track>  
             .distinctUntilChanged({ $0 == $1 })
     }
     
-    fileprivate func mapToTrack(for masterRoom: Room) -> (() -> Observable<Track>) {
+    fileprivate func mapToTrack(for masterRoom: Room) -> (() -> Observable<Track?>) {
         return {
             return self.transportRepository
                 .getNowPlaying(for: masterRoom)
