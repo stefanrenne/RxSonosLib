@@ -31,7 +31,7 @@ class GetVolumeInteractor: BaseInteractor<GetVolumeValues, Int> {
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
         
-        return createTimer(1)
+        return createTimer(SonosSettings.shared.renewGroupVolumeTimer)
             .flatMap(self.mapToVolume(for: group))
             .distinctUntilChanged({ $0 == $1 })
     }

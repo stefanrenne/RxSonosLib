@@ -31,7 +31,7 @@ class GetNowPlayingInteractor: BaseInteractor<GetNowPlayingValues, Track?>  {
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
         
-        return createTimer(4)
+        return createTimer(SonosSettings.shared.renewNowPlayingTimer)
             .flatMap(self.mapToTrack(for: masterRoom))
             .distinctUntilChanged({ $0 == $1 })
     }

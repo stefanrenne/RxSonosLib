@@ -31,7 +31,7 @@ class GetGroupQueueInteractor: BaseInteractor<GetGroupQueueValues, [Track]> {
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
         
-        return createTimer(2)
+        return createTimer(SonosSettings.shared.renewGroupQueueTimer)
             .flatMap(self.mapToQueue(for: masterRoom))
             .distinctUntilChanged({ $0 == $1 })
     }
