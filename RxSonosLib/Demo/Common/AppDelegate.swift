@@ -15,9 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-//        RepositoryInjection.shared.ssdpRepository = FakeSSDPRepositoryImpl()
-//        RepositoryInjection.shared.roomRepository = FakeRoomRepositoryImpl()
-//        RepositoryInjection.shared.groupRepository = FakeGroupRepositoryImpl()
+        application.statusBarStyle = .lightContent
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = NavigationCoordinator().setup()

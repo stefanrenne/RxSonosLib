@@ -8,24 +8,14 @@
 
 import UIKit
 
-class NavigationCoordinator {
+class NavigationCoordinator: BaseCoordinator {
     
-    fileprivate weak var navigationController: UINavigationController?
-    init(navigationController: UINavigationController? = nil) {
-        self.navigationController = navigationController
-    }
-    
-    func setup() -> UIViewController {
+    override func setup() -> UIViewController {
         let navigationController = NavigationController()
         
-        GroupsCoordinator(navigationController: navigationController).start()
+        LoadingCoordinator(navigationController: navigationController).start()
         
         return navigationController
-    }
-
-    func start() {
-        let viewController = self.setup()
-        self.navigationController?.visibleViewController?.show(viewController, sender: self)
     }
     
 }

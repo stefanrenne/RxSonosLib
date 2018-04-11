@@ -12,6 +12,10 @@ import RxSSDP
 
 class RepositoryInjectionTest: XCTestCase {
     
+    override func setUp() {
+        super.setUp()
+    }
+    
     func testItCanProvideTheSSDPRepository() {
         XCTAssertTrue(type(of: RepositoryInjection.provideSSDPRepository()) == SSDPRepositoryImpl.self)
         
@@ -38,6 +42,20 @@ class RepositoryInjectionTest: XCTestCase {
         
         RepositoryInjection.shared.transportRepository = FakeTransportRepositoryImpl()
         XCTAssertTrue(type(of: RepositoryInjection.provideTransportRepository()) == FakeTransportRepositoryImpl.self)
+    }
+    
+    func testItCanProvideTheContentDirectoryRepository() {
+        XCTAssertTrue(type(of: RepositoryInjection.provideContentDirectoryRepository()) == ContentDirectoryRepositoryImpl.self)
+        
+        RepositoryInjection.shared.contentDirectoryRepository = FakeContentDirectoryRepositoryImpl()
+        XCTAssertTrue(type(of: RepositoryInjection.provideContentDirectoryRepository()) == FakeContentDirectoryRepositoryImpl.self)
+    }
+    
+    func testItCanProvideTheRenderingControlRepository() {
+        XCTAssertTrue(type(of: RepositoryInjection.provideRenderingControlRepository()) == RenderingControlRepositoryImpl.self)
+        
+        RepositoryInjection.shared.renderingControlRepository = FakeRenderingControlRepositoryImpl()
+        XCTAssertTrue(type(of: RepositoryInjection.provideRenderingControlRepository()) == FakeRenderingControlRepositoryImpl.self)
     }
     
 }

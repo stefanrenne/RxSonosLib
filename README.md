@@ -1,50 +1,54 @@
 # RxSonosLib
+[![Swift 4.1](https://img.shields.io/badge/swift-4.1-orange.svg?style=flat)](https://swift.org)
 [![Travis Badge](https://api.travis-ci.org/stefanrenne/RxSonosLib.svg?branch=master)](https://travis-ci.org/stefanrenne/RxSonosLib)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/445e34c7de447fb011ec/test_coverage)](https://codeclimate.com/github/stefanrenne/RxSonosLib/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/445e34c7de447fb011ec/maintainability)](https://codeclimate.com/github/stefanrenne/RxSonosLib/maintainability)
-<!--[![CocoaPods Version Badge](https://img.shields.io/cocoapods/v/RxSonosLib.svg)](https://cocoapods.org/pods/RxSonosLib)
-![Supported Platforms Badge](https://img.shields.io/cocoapods/p/RxSonosLib.svg)
-[![Percentage Documented Badge](https://img.shields.io/cocoapods/metrics/doc-percent/RxSonosLib.svg)](http://cocoadocs.org/docsets/RxSonosLib)
-[![License Badge](https://img.shields.io/cocoapods/l/RxSonosLib.svg)](LICENSE)-->
+[![CocoaPods Version Badge](https://img.shields.io/cocoapods/v/RxSonosLib.svg)](https://cocoapods.org/pods/RxSonosLib)
+[![License Badge](https://img.shields.io/cocoapods/l/RxSonosLib.svg)](LICENSE)
+[![Platform](https://img.shields.io/cocoapods/p/RxSonosLib.svg?style=flat)](http://cocoapods.org/pods/RxSonosLib)
+
 
 Swift library that simplifies interacting with Sonos Devices
 
 Features:
 
-- [x] Find Sonos devices on the current network
-- [x] map SSDP devices into Sonos Rooms
-- [x] map Sonos Rooms into Sonos Groups
-- [x] automatically scan for group changes every 5 seconds
-- [x] see what track is currently playing (supports Spotify, Tunein & TV)
-- [x] see the image of the current track
-- [x] see the progress of the current track
-- [ ] play/pause/stop current track
-- [ ] see what what tracks are in the queue
-- [ ] previous/next queue track
-- [ ] remove tracks from queue
+- [x] GET SSDP devices on the current network
+- [x] MAP SSDP devices into Sonos Rooms
+- [x] MAP Sonos Rooms into Sonos Groups + renew
+- [x] GET now playing track per room (supports Spotify, Tunein & TV) + renew
+- [x] DOWNLOAD track image
+- [x] GET group progress + renew
+- [x] GET group queue
+- [ ] ADD tracks to the group queue
+- [ ] DELETE tracks from the group queue
+- [ ] SET previous/next group queue track
+- [ ] SET play/pause/stop current track
+- [x] GET group volume
+- [x] SET group volume
 
 Platform:
 
-
-- [x] support iOS
-- [ ] support MacOS
-- [ ] support tvOS
-- [ ] support Linux
+- [x] iOS
+- [x] MacOS
+- [x] tvOS
 
 
-This library requires Swift 4 & RxSwift.
+This library requires Swift 4.1 & RxSwift.
 
 ## Background Info
 The first version of this project started as a way to understand Sonos better. This version is here to help me improve my RxSwift knowledge.
 
 ## Usage
 
-Get the required interactor and subscribe for changes, example:
+Inspect [SonosInteractor.swift](RxSonosLib/Framework/Domain/Interactors/SonosInteractor.swift) this class is your entry to the library.
+
+The models `Group` & `Track` also contains functions to generate new Observables.
+
+Example:
 
 ```
 SonosInteractor
-.provideGroupsInteractor()
-.get()
+.getAllGroups()
 .subscribe(onNext: { (groups) in
 	print("groups: onNext")
 }, onError: { (error) in
@@ -54,59 +58,51 @@ SonosInteractor
 }).disposed(by: disposeBag)
 ```
 
-## All Interactors
+### SonosInteractor: All Observers
 
-### 1) Find all Sonos groups
+**Groups**
 
+- `static public func getAllGroups() -> Observable<[Group]>`
 
-```
-let interactor: GetGroupsInteractor = SonosInteractor
-	.provideGroupsInteractor()
-	.get()
-```
+**Active group**
 
-### 2) Get the current track for a Sonos group
+- `static public func setActive(group: Group)`
+- `static public func getActiveGroup() -> Observable<Group?> `
+- `static public func getActiveTrack() -> Observable<Track?>`
+- `static public func getActiveTransportState() -> Observable<(TransportState, MusicService)>`  
+- `static public func getActiveTrackImage() -> Observable<Data?>`  
+- `static public func getActiveGroupProgress() -> Observable<GroupProgress>`  
+- `static public func getActiveGroupQueue() -> Observable<[Track]>`      
+- `static public func getActiveGroupVolume() -> Observable<Int>`  
+- `static public func setActiveGroup(volume: Int) -> Observable<Void>`
 
-```
-let interactor: GetNowPlayingInteractor
-	.provideNowPlayingInteractor()
-   .get(values: GetNowPlayingValues(group: <#T##Group#>))
-```
+**Group specific functions**
 
-### 3) Get the current state for a Sonos group (playing, paused, stopped, etc)
+- `static public func getTrack(_ group: Group) -> Observable<Track?>`
+- `static public func getTransportState(_ group: Group) -> Observable<TransportState>`
 
-```
-let interactor: GetTransportStateInteractor = SonosInteractor
-	.provideTransportStateInteractor()
-	.get(values: GetTransportStateValues(group: <#T##Group#>))
-```
+**Track specific functions**
 
-### 4) Get the progressed time for a Sonos Group
+- `static public func getTrackImage(_ track: Track) -> Observable<Data?>`
 
-```
-let interactor: GetGroupProgressInteractor = SonosInteractor
-	.provideGroupProgressInteractor()
-	.get(values: GetGroupProgressValues(track: <#T##Group#>))
-```
+### Group: All Observers
 
-### 5) Get the image for a Sonos Track
+- `func getTrack() -> Observable<Track?>`
 
-```
-let interactor: GetTrackImageInteractor = SonosInteractor
-	.provideTrackImageInteractor()
-	.get(values: GetTrackImageValues(track: <#T##Track#>))
-```
+### Track: All Observers
+
+- `func getImage() -> Observable<Data?>`
+
+### Modify settings
     
-### More demos?
+Inspect [SonosSettings.swift](RxSonosLib/Framework/Common/SonosSettings.swift), this class contains all customizable settings.
+    
+#### More demos?
 
 Clone the repository, open `RxSonosLib.xcworkspace` and build the demo project
 
 ## Development Info
 Please document code changes in unit tests and make sure all tests are green.
-
-## Cocoapods
-
-When v1.0 is released
 
 ## License
 This project is released under the [Apache-2.0 license](LICENSE.txt).

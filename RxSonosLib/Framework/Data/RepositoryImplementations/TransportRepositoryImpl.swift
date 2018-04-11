@@ -11,7 +11,7 @@ import RxSwift
 
 class TransportRepositoryImpl: TransportRepository {
     
-    func getNowPlaying(for room: Room) -> Observable<Track> {
+    func getNowPlaying(for room: Room) -> Observable<Track?> {
         
         let positionInfoNetwork = GetPositionInfoNetwork(room: room).executeSoapRequest()
         let mediaInfoNetwork = GetMediaInfoNetwork(room: room).executeSoapRequest()
@@ -32,7 +32,7 @@ class TransportRepositoryImpl: TransportRepository {
     }
     
     func getImage(for track: Track) -> Observable<Data?> {
-        guard let imageUri = track.imageUri else { return Observable<Data?>.just(nil) }
+        guard let imageUri = (track as? TrackImage)?.imageUri else { return Observable<Data?>.just(nil) }
         return DownloadNetwork(location: imageUri, cacheKey: track.uri)
             .executeRequest()
             .map({ $0 })
@@ -40,13 +40,10 @@ class TransportRepositoryImpl: TransportRepository {
 }
 
 fileprivate extension TransportRepositoryImpl {
-    fileprivate func mapDataToNowPlaying(for room: Room) -> (([String: String], [String: String]) throws -> Track) {
+    fileprivate func mapDataToNowPlaying(for room: Room) -> (([String: String], [String: String]) throws -> Track?) {
         return { positionInfoResult, mediaInfoResult in
-            guard let track = Track.map(room: room.ip, positionInfo: positionInfoResult, mediaInfo: mediaInfoResult) else {
-                    #if DEBUG
-                        print(positionInfoResult)
-                    #endif
-                    throw NSError.sonosLibNoDataError()
+            guard let track = NowPlayingTrackFactory.create(room: room.ip, positionInfo: positionInfoResult, mediaInfo: mediaInfoResult) else {
+                    return nil
             }
             
             return track

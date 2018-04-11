@@ -9,19 +9,19 @@
 import Foundation
 import RxSwift
 
-open class GetGroupProgressValues: RequestValues {
+class GetGroupProgressValues: RequestValues {
     let group: Group
     
-    public init(group: Group) {
+    init(group: Group) {
         self.group = group
     }
 }
 
-open class GetGroupProgressInteractor: BaseInteractor<GetGroupProgressValues, GroupProgress> {
+class GetGroupProgressInteractor: BaseInteractor<GetGroupProgressValues, GroupProgress> {
     
     let transportRepository: TransportRepository
     
-    public init(transportRepository: TransportRepository) {
+    init(transportRepository: TransportRepository) {
         self.transportRepository = transportRepository
     }
     
@@ -31,7 +31,7 @@ open class GetGroupProgressInteractor: BaseInteractor<GetGroupProgressValues, Gr
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
         
-        return createTimer(1)
+        return createTimer(SonosSettings.shared.renewGroupTrackProgressTimer)
             .flatMap(self.mapToProgress(for: masterRoom))
             .distinctUntilChanged({ $0 == $1 })
     }

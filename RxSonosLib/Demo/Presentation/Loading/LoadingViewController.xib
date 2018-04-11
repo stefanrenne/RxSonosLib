@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingViewController" customModule="Demo_App" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="175-L2-wAm">
+                    <rect key="frame" x="0.0" y="268" width="375" height="132"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Hay-DB-EpG">
+                            <rect key="frame" x="178" y="74" width="20" height="20"/>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching on your wifi for devices..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0l-bx-fFq">
+                            <rect key="frame" x="0.0" y="114" width="375" height="18"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SONOS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMF-Fb-GOb">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="45"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="l0l-bx-fFq" secondAttribute="trailing" id="07b-l2-8UM"/>
+                        <constraint firstItem="Hay-DB-EpG" firstAttribute="top" secondItem="dMF-Fb-GOb" secondAttribute="bottom" constant="20" id="GKM-Hp-ZI0"/>
+                        <constraint firstItem="Hay-DB-EpG" firstAttribute="centerX" secondItem="175-L2-wAm" secondAttribute="centerX" id="NNa-R3-cQm"/>
+                        <constraint firstItem="l0l-bx-fFq" firstAttribute="leading" secondItem="175-L2-wAm" secondAttribute="leading" id="Wu4-ai-xcM"/>
+                        <constraint firstItem="dMF-Fb-GOb" firstAttribute="leading" secondItem="175-L2-wAm" secondAttribute="leading" id="be1-vV-jT7"/>
+                        <constraint firstItem="l0l-bx-fFq" firstAttribute="top" secondItem="Hay-DB-EpG" secondAttribute="bottom" constant="20" id="glF-mU-BId"/>
+                        <constraint firstItem="dMF-Fb-GOb" firstAttribute="top" secondItem="175-L2-wAm" secondAttribute="top" id="ilz-J9-jkL"/>
+                        <constraint firstAttribute="bottom" secondItem="l0l-bx-fFq" secondAttribute="bottom" id="ml4-Yy-Buu"/>
+                        <constraint firstAttribute="trailing" secondItem="dMF-Fb-GOb" secondAttribute="trailing" id="vui-Zj-b9S"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="175-L2-wAm" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="0j8-we-9rg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="175-L2-wAm" secondAttribute="trailing" id="j2S-15-evY"/>
+                <constraint firstItem="175-L2-wAm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zzo-ld-eoR"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>

@@ -19,16 +19,17 @@ class GetNowPlayingInteractorTests: XCTestCase {
         let interactor = GetNowPlayingInteractor(transportRepository: transportRepository)
         let track = try! interactor.get(values: GetNowPlayingValues(group: firstGroup()))
             .toBlocking(
-            ).first()!
+            ).first()! as! SpotifyTrack
         
         XCTAssertEqual(track.service, .spotify)
         XCTAssertEqual(track.queueItem, 7)
         XCTAssertEqual(track.duration, 265)
         XCTAssertEqual(track.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
-        XCTAssertEqual(track.imageUri!.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
+        XCTAssertEqual(track.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
         XCTAssertEqual(track.title, "Before I Die")
         XCTAssertEqual(track.artist, "Papa Roach")
         XCTAssertEqual(track.album, "The Connection")
+        XCTAssertEqual(track.description(), [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
     }
     
     func testItCantGetTheCurrentTrackWithAGroup() {

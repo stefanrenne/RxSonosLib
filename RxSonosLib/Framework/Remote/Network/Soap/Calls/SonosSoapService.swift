@@ -10,8 +10,8 @@ import Foundation
 
 
 enum SonosSoapService {
-    case group, transport
-//    case alarm, groupRenderingControl, connectionManager, queue, music, contentDirectory, renderingControl, deviceProperties, systemProperties, musicProvider
+    case group, transport, contentDirectory, renderingControl
+//    case alarm, groupRenderingControl, connectionManager, queue, music, deviceProperties, systemProperties, musicProvider
     
     var controllUrl: String {
         switch self {
@@ -29,10 +29,10 @@ enum SonosSoapService {
             return "/ZoneGroupTopology/Control"
 //        case .groupRenderingControl:
 //            return "/MediaRenderer/GroupRenderingControl/Control"
-//        case .contentDirectory:
-//            return "/MediaServer/ContentDirectory/Control"
-//        case .renderingControl:
-//            return "/MediaRenderer/RenderingControl/Control"
+        case .contentDirectory:
+            return "/MediaServer/ContentDirectory/Control"
+        case .renderingControl:
+            return "/MediaRenderer/RenderingControl/Control"
 //        case .deviceProperties:
 //            return "/DeviceProperties/Control"
 //        case .systemProperties:
@@ -80,7 +80,7 @@ enum SonosSoapService {
     }*/
     
     var schema: String {
-        switch self {
+        switch self { 
 //        case .alarm:
 //            return "urn:schemas-upnp-org:service:AlarmClock:1"
         case .transport:
@@ -91,10 +91,10 @@ enum SonosSoapService {
 //            return "urn:schemas-upnp-org:service:MusicServices:1"
         case .group:
             return "urn:schemas-upnp-org:service:ZoneGroupTopology:1"
-//        case .contentDirectory:
-//            return "urn:schemas-upnp-org:service:ContentDirectory:1"
-//        case .renderingControl:
-//            return "urn:schemas-upnp-org:service:RenderingControl:1"
+        case .contentDirectory:
+            return "urn:schemas-upnp-org:service:ContentDirectory:1"
+        case .renderingControl:
+            return "urn:schemas-upnp-org:service:RenderingControl:1"
 //        case .groupRenderingControl:
 //            return "urn:schemas-upnp-org:service:GroupRenderingControl:1"
 //        case .deviceProperties:

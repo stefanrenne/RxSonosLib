@@ -10,21 +10,21 @@ inhibit_all_warnings!
 target 'RxSonosLib' do
   use_frameworks!
 
-  pod 'RxSwift'
-  pod 'RxCocoa'
-  pod 'RxSSDP', '~> 4.0'
-  pod 'AEXML'
+  pod 'RxSwift', '~> 4.1'
+  pod 'RxCocoa', '~> 4.1'
+  pod 'RxSSDP', '~> 4.1'
+  pod 'AEXML', '~> 4.2'
 
   target 'RxSonosLibTests' do
     inherit! :search_paths
-    pod 'Mockingjay'
-    pod 'RxBlocking'
+    pod 'Mockingjay', '~> 2.0'
+    pod 'RxBlocking', '~> 4.1'
   end
 
 end
 
 target 'Demo App' do
   use_frameworks!
-  pod 'RxSwift'
-  pod 'RxCocoa'
+  pod 'RxSwift', '~> 4.1'
+  pod 'RxCocoa', '~> 4.1'
 end

@@ -12,9 +12,8 @@ import RxSwift
 
 class FakeTransportRepositoryImpl: TransportRepository {
     
-    func getNowPlaying(for room: Room) -> Observable<Track> {
-        
-        return Observable.just(Track(service: .spotify, queueItem: 7, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: URL(string: "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1"), title: "Before I Die", artist: "Papa Roach", album: "The Connection"))
+    func getNowPlaying(for room: Room) -> Observable<Track?> {
+        return Observable.just(SpotifyTrack(queueItem: 7, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: URL(string: "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")!, title: "Before I Die", artist: "Papa Roach", album: "The Connection"))
     }
     
     func getNowPlayingProgress(for room: Room) -> Observable<GroupProgress> {
