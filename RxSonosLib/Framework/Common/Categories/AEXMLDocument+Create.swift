@@ -44,14 +44,14 @@ extension String {
 fileprivate extension String {
     
     func removeXmlNamespace() -> String {
-        var string = self.validateXml()
-        if let regex1 = try? NSRegularExpression(pattern: "<([a-zA-Z]+:)", options:.caseInsensitive) {
-            string = regex1.stringByReplacingMatches(in: string, options: [], range: NSRange(0..<string.count), withTemplate: "<")
+        return self.validateXml().replace(pattern: "<([a-zA-Z]+:)", with: "<").replace(pattern: "</([a-zA-Z]+:)", with: "</")
+    }
+    
+    fileprivate func replace(pattern: String, with template: String) -> String {
+        guard let regex = try? NSRegularExpression(pattern: pattern, options:.caseInsensitive) else {
+            return self
         }
-        if let regex2 = try? NSRegularExpression(pattern: "</([a-zA-Z]+:)", options:.caseInsensitive) {
-            string = regex2.stringByReplacingMatches(in: string, options: [], range: NSRange(0..<string.count), withTemplate: "</")
-        }
-        return string
+        return regex.stringByReplacingMatches(in: self, options: [], range: NSRange(0..<self.count), withTemplate: template)
     }
     
 }
