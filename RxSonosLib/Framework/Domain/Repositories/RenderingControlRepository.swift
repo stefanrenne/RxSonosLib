@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-public protocol RenderingControlRepository {
+protocol RenderingControlRepository {
     
     func getVolume(for room: Room) -> Observable<Int>
     
@@ -18,5 +18,11 @@ public protocol RenderingControlRepository {
     func set(volume: Int, for room: Room) -> Observable<Void>
     
     func set(volume: Int, for group: Group) -> Observable<Void>
+    
+    func setPlay(group: Group) -> Observable<Void>
+    
+    func setPause(group: Group) -> Observable<Void>
+    
+    func setStop(group: Group) -> Observable<Void>
     
 }

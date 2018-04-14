@@ -12,10 +12,10 @@ enum SoapSoapAction {
     
     
     /* Transport */
-//    case play, pause, stop, previous, next
+//    case previous, next
 //    case changeTrack(number: Int), seekTime(time: String)
 //    case removeTrackFromQueue(number: Int), removeAllTracksFromQueue, addTrackToQueueEnd(uri: String), addTrackToQueuePlayNext(uri: String), setQueue(uri: String), setAVTransportURI(uri: String), becomeCoordinatorOfStandaloneGroup
-    case positionInfo, transportInfo, mediaInfo
+    case play, pause, stop, positionInfo, transportInfo, mediaInfo
     
     /* Music */
 //    case listAvailableServices, getSessionId(Int, String)
@@ -42,8 +42,8 @@ enum SoapSoapAction {
     var service: SonosSoapService {
         switch self {
 //
-        case .positionInfo, .transportInfo, .mediaInfo:
-//        case .play, .pause, .stop, .previous, .next, .changeTrack, .seekTime, .addTrackToQueueEnd, .addTrackToQueuePlayNext, .removeTrackFromQueue, .removeAllTracksFromQueue, .setQueue, .setAVTransportURI, .becomeCoordinatorOfStandaloneGroup:
+        case .play, .pause, .stop, .positionInfo, .transportInfo, .mediaInfo:
+//        case .previous, .next, .changeTrack, .seekTime, .addTrackToQueueEnd, .addTrackToQueuePlayNext, .removeTrackFromQueue, .removeAllTracksFromQueue, .setQueue, .setAVTransportURI, .becomeCoordinatorOfStandaloneGroup:
             return .transport
 //        case .listAvailableServices, .getSessionId:
 //            return .music
@@ -65,12 +65,12 @@ enum SoapSoapAction {
     
     var action: String {
         switch self {
-//        case .play:
-//            return "Play"
-//        case .pause:
-//            return "Pause"
-//        case .stop:
-//            return "Stop"
+        case .play:
+            return "Play"
+        case .pause:
+            return "Pause"
+        case .stop:
+            return "Stop"
 //        case .previous:
 //            return "Previous"
 //        case .next:
@@ -128,9 +128,9 @@ enum SoapSoapAction {
         /*, .removeAllTracksFromQueue, .getMute, .becomeCoordinatorOfStandaloneGroup*/
         case .positionInfo, .transportInfo, .mediaInfo, .getVolume:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel>"
-        /*case .play, .pause, .previous, .next, .stop:
+        case .play, .pause, .stop /*, .previous, .next*/:
             return "<InstanceID>0</InstanceID><Speed>1</Speed>"
-        case .changeTrack(let number):
+        /*case .changeTrack(let number):
             return "<InstanceID>0</InstanceID><Unit>TRACK_NR</Unit><Target>\(number)</Target>"
         case .seekTime(let time):
             return "<InstanceID>0</InstanceID><Unit>REL_TIME</Unit><Target>\(time)</Target>"

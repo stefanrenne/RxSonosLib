@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-public protocol GroupRepository {
+protocol GroupRepository {
     
     func getGroups(for rooms: [Room]) -> Observable<[Group]>
     

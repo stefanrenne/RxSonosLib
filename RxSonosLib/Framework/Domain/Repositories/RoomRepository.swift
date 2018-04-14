@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-public protocol RoomRepository {
+protocol RoomRepository {
     
     func getRoom(device: SSDPDevice) -> Observable<Room>?
     
