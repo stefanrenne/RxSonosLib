@@ -12,29 +12,12 @@ import RxSwift
 import RxSSDP
 
 class FakeSSDPRepositoryImpl: SSDPRepository {
-    
-    func scan(searchTarget: String) -> Observable<SSDPResponse> {
-        return Observable.just(self.dummyDevices().first!)
-    }
-    
-    func scan(broadcastAddress: String, searchTarget: String) -> Observable<SSDPResponse> {
-        return scan(searchTarget: broadcastAddress)
-    }
-    
-    func scan(broadcastAddress: String,  maxTimeSpan: RxTimeInterval, maxCount: Int) -> Observable<[SSDPResponse]> {
+    func scan(broadcastAddress: String, searchTarget: String) -> Observable<[SSDPResponse]> {
         return Observable.just(self.dummyDevices())
     }
     
-    func scan(broadcastAddresses: [String], maxTimeSpan: RxTimeInterval, maxCount: Int) -> Observable<[SSDPResponse]> {
-        return scan(broadcastAddress: broadcastAddresses.first!,  maxTimeSpan: maxTimeSpan, maxCount: maxCount)
-    }
-    
-    func scan(broadcastAddress: String, searchTarget: String, maxTimeSpan: RxTimeInterval, maxCount: Int) -> Observable<[SSDPResponse]> {
-        return scan(broadcastAddresses: [broadcastAddress], maxTimeSpan: maxTimeSpan, maxCount: maxCount)
-    }
-    
-    func scan(broadcastAddresses: [String], searchTarget: String, maxTimeSpan: RxTimeInterval, maxCount: Int) -> Observable<[SSDPResponse]> {
-        return scan(broadcastAddress: broadcastAddresses.first!, searchTarget: searchTarget, maxTimeSpan: maxTimeSpan, maxCount: maxCount)
+    func scan(broadcastAddresses: [String], searchTarget: String) -> Observable<[SSDPResponse]> {
+        return Observable.just(self.dummyDevices())
     }
     
 }

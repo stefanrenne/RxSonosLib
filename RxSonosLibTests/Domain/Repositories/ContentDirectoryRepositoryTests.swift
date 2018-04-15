@@ -39,8 +39,8 @@ class ContentDirectoryRepositoryTests: XCTestCase {
         XCTAssertEqual(track1.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a0Vh1sTeybmGy8Kxl2vw0Ye?sid=9&flags=8224&sn=1")
         XCTAssertEqual(track1.title, "Time Is Running Out - (Live) Explicit Version")
         XCTAssertEqual(track1.artist, "Papa Roach")
-        XCTAssertEqual(track1.album, "Time For Annihilation: On the Record&On the Road")
-        XCTAssertEqual(track1.description(), [TrackDescription.title: "Time Is Running Out - (Live) Explicit Version", TrackDescription.artist: "Papa Roach", TrackDescription.album: "Time For Annihilation: On the Record&On the Road"])
+        XCTAssertEqual(track1.album, "Time For Annihilation: On the Record & On the Road")
+        XCTAssertEqual(track1.description(), [TrackDescription.title: "Time Is Running Out - (Live) Explicit Version", TrackDescription.artist: "Papa Roach", TrackDescription.album: "Time For Annihilation: On the Record & On the Road"])
         
         let track2 = queue[1] as! SpotifyTrack
         XCTAssertEqual(track2.service, .spotify)

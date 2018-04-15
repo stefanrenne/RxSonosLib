@@ -32,16 +32,14 @@ open class BaseInteractor<T: RequestValues, U>: Interactor {
                 .observeOn(MainScheduler.instance)
     }
     
-    internal func createTimer(_ period: RxTimeInterval) -> Observable<Void> {
-        return Observable<Void>.create({ (observer) -> Disposable in
+    internal func createTimer(_ period: RxTimeInterval) -> Observable<Int> {
+        return Observable<Int>.create({ (observer) -> Disposable in
             
-            observer.onNext(())
+            observer.onNext(0)
             
             let interval = Observable<Int>
                 .interval(period, scheduler: MainScheduler.instance)
-                .subscribe(onNext: { (_) in
-                    observer.onNext(())
-                })
+                .subscribe(observer)
             
             return Disposables.create([interval])
         })
@@ -49,7 +47,7 @@ open class BaseInteractor<T: RequestValues, U>: Interactor {
     
     internal func addTimer<T>(_ period: RxTimeInterval) -> (([T]) throws -> Observable<[T]>) {
         return { object in
-            return self.createTimer(period).map({ return object })
+            return self.createTimer(period).map({ _ in return object })
         }
     }
     

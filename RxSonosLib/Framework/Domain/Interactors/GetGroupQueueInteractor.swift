@@ -36,8 +36,8 @@ class GetGroupQueueInteractor: BaseInteractor<GetGroupQueueValues, [Track]> {
             .distinctUntilChanged({ $0 == $1 })
     }
     
-    fileprivate func mapToQueue(for masterRoom: Room) -> (() -> Observable<[Track]>) {
-        return {
+    fileprivate func mapToQueue(for masterRoom: Room) -> ((Int) -> Observable<[Track]>) {
+        return { _ in
             return self.contentDirectoryRepository
                 .getQueue(for: masterRoom)
         }

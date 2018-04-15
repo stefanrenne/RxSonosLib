@@ -36,8 +36,8 @@ class GetNowPlayingInteractor: BaseInteractor<GetNowPlayingValues, Track?>  {
             .distinctUntilChanged({ $0 == $1 })
     }
     
-    fileprivate func mapToTrack(for masterRoom: Room) -> (() -> Observable<Track?>) {
-        return {
+    fileprivate func mapToTrack(for masterRoom: Room) -> ((Int) -> Observable<Track?>) {
+        return { _ in
             return self.transportRepository
                 .getNowPlaying(for: masterRoom)
         }

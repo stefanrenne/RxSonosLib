@@ -7,8 +7,14 @@
 //
 
 import Foundation
+import RxSSDP
+
+enum CacheKey: String {
+    case ssdpCacheKey
+}
 
 class CacheManager {
+    
     static let shared = CacheManager()
     
     fileprivate var documentPath: URL? {
@@ -26,6 +32,11 @@ class CacheManager {
         FileManager.default.createFile(atPath: url.path, contents: data, attributes: nil)
     }
     
+    func set<T>(object: T, for key: String?) {
+        let data = NSKeyedArchiver.archivedData(withRootObject: object)
+        set(data, for: key)
+    }
+    
     func get(for key: String?) -> Data? {
         guard let key = key,
             let url = self.urlForKey(key),
@@ -33,13 +44,26 @@ class CacheManager {
         return try? Data(contentsOf: url)
     }
     
+    func getObject<T>(for key: String?) -> T? {
+        guard let data: Data = get(for: key),
+            let object: T = NSKeyedUnarchiver.unarchiveObject(with: data) as? T else { return nil }
+        return object
+    }
+    
     func deleteAll() {
+        let exclude = self.longCache()
         guard let documentPath = documentPath,
             let result = try? FileManager.default.contentsOfDirectory(at: documentPath, includingPropertiesForKeys: nil) else { return }
         
         result.forEach { (url) in
-            try? FileManager.default.removeItem(at: url)
+            if !exclude.contains(url.lastPathComponent) {
+                try? FileManager.default.removeItem(at: url)
+            }
         }
+    }
+    
+    func longCache() -> [String] {
+        return [CacheKey.ssdpCacheKey.rawValue]
     }
     
 }
