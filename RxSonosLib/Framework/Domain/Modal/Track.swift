@@ -105,16 +105,20 @@ open class Track {
             .sorted(by: { $0 < $1 })
     }
     
-    public func getImage() -> Observable<Data?> {
-        return SonosInteractor.getTrackImage(self)
-    }
-    
     init(service: MusicService, queueItem: Int, duration: UInt, uri: String, title: String) {
         self.service = service
         self.queueItem = queueItem
         self.duration = duration
         self.uri = uri
         self.title = title
+    }
+    
+}
+
+extension Track {
+    
+    public func getImage() -> Observable<Data?> {
+        return SonosInteractor.getTrackImage(self)
     }
     
 }

@@ -58,38 +58,46 @@ SonosInteractor
 }).disposed(by: disposeBag)
 ```
 
-### SonosInteractor: All Observers
+### SonosInteractor Observers
 
 **Groups**
 
-- `static public func getAllGroups() -> Observable<[Group]>`
+- `static func getAllGroups() -> Observable<[Group]>`
 
 **Active group**
 
-- `static public func setActive(group: Group)`
-- `static public func getActiveGroup() -> Observable<Group?> `
-- `static public func getActiveTrack() -> Observable<Track?>`
-- `static public func getActiveTransportState() -> Observable<(TransportState, MusicService)>`  
-- `static public func getActiveTrackImage() -> Observable<Data?>`  
-- `static public func getActiveGroupProgress() -> Observable<GroupProgress>`  
-- `static public func getActiveGroupQueue() -> Observable<[Track]>`      
-- `static public func getActiveGroupVolume() -> Observable<Int>`  
-- `static public func setActiveGroup(volume: Int) -> Observable<Void>`
+- `static func setActive(group: Group)`
+- `static func getActiveGroup() -> Observable<Group?> `
+- `static func getActiveTrack() -> Observable<Track?>`
+- `static func getActiveTransportState() -> Observable<(TransportState, MusicService)>`  
+- `static func setActiveTransport(state: TransportState) -> Observable<Void>`
+- `static func getActiveTrackImage() -> Observable<Data?>`  
+- `static func getActiveGroupProgress() -> Observable<GroupProgress>`  
+- `static func getActiveGroupQueue() -> Observable<[Track]>`      
+- `static func getActiveGroupVolume() -> Observable<Int>`  
+- `static func setActiveGroup(volume: Int) -> Observable<Void>`
 
 **Group specific functions**
 
-- `static public func getTrack(_ group: Group) -> Observable<Track?>`
-- `static public func getTransportState(_ group: Group) -> Observable<TransportState>`
+- `static func getTrack(_ group: Group) -> Observable<Track?>`
+- `static func getTransportState(_ group: Group) -> Observable<TransportState>`
+- `static func setTransport(state: TransportState, for group: Group) -> Observable<Void>`
+- `static func getVolume(_ group: Group) -> Observable<Int>`
+- `static func set(volume: Int, for group: Group) -> Observable<Void>`
 
 **Track specific functions**
 
-- `static public func getTrackImage(_ track: Track) -> Observable<Data?>`
+- `static func getTrackImage(_ track: Track) -> Observable<Data?>`
 
-### Group: All Observers
+### Group object Observers
 
 - `func getTrack() -> Observable<Track?>`
+- `func getTransportState() -> Observable<(TransportState, MusicService)> `
+- `func set(state: TransportState) -> Observable<Void>`
+- `func getVolume() -> Observable<Int>`
+- `func set(volume: Int) -> Observable<Void>`
 
-### Track: All Observers
+### Track object Observers
 
 - `func getImage() -> Observable<Data?>`
 

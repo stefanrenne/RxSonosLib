@@ -30,10 +30,28 @@ open class Group {
         self.names = [master.name] + slaves.map({ $0.name })
     }
     
+}
+
+extension Group {
     public func getTrack() -> Observable<Track?> {
         return SonosInteractor.getTrack(self)
     }
     
+    public func getTransportState() -> Observable<(TransportState, MusicService)> {
+        return SonosInteractor.getTransportState(self)
+    }
+    
+    public func set(transportState: TransportState) -> Observable<Void> {
+        return SonosInteractor.setTransport(state: transportState, for: self)
+    }
+    
+    public func getVolume() -> Observable<Int> {
+        return SonosInteractor.getVolume(self)
+    }
+    
+    public func set(volume: Int) -> Observable<Void> {
+        return SonosInteractor.set(volume: volume, for: self)
+    }
 }
 
 extension Group: Equatable {

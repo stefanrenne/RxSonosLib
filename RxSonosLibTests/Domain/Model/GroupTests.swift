@@ -96,6 +96,40 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(track.description(), [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
     }
     
+    func testItCanGetTheTransportState() {
+        let group = Group(master: firstRoom(), slaves: [])
+        let result = try! group.getTransportState().toBlocking().first()!
+        XCTAssertEqual(result.0, TransportState.paused)
+        XCTAssertEqual(result.1, MusicService.spotify)
+    }
+    
+    func testItCanSetTheTransportState() {
+        let mock = RepositoryInjection.shared.renderingControlRepository as! FakeRenderingControlRepositoryImpl
+        let group = Group(master: firstRoom(), slaves: [])
+        let newState = try! group.set(transportState: .playing)
+            .map({ return mock.activeState })
+            .toBlocking()
+            .first()!
+        XCTAssertEqual(newState, TransportState.playing)
+        
+    }
+    
+    func testItCanGetTheVolume() {
+        let group = Group(master: firstRoom(), slaves: [])
+        let volume = try! group.getVolume().toBlocking().first()!
+        XCTAssertEqual(volume, 70)
+    }
+    
+    func testItCanSetTheVolume() {
+        let mock = RepositoryInjection.shared.renderingControlRepository as! FakeRenderingControlRepositoryImpl
+        let group = Group(master: firstRoom(), slaves: [])
+        let newVolume = try! group.set(volume: 22)
+            .map({ return mock.lastVolume })
+            .toBlocking()
+            .first()!
+        XCTAssertEqual(newVolume, 22)
+    }
+    
 }
 
 fileprivate extension GroupTests {

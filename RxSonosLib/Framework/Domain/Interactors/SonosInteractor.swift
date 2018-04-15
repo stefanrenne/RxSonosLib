@@ -46,26 +46,19 @@ open class SonosInteractor {
     }
     
     static public func getActiveTransportState() -> Observable<(TransportState, MusicService)> {
-        let stateObservable = SonosInteractor
+        return SonosInteractor
             .getActiveGroup()
             .flatMap(ignoreNil())
-            .flatMap { (group) -> Observable<TransportState> in
+            .flatMap { (group) -> Observable<(TransportState, MusicService)> in
                 return SonosInteractor.getTransportState(group)
             }
-        
-        let serviceObservable = getActiveTrack()
-            .map({ (track) -> MusicService in
-                return track?.service ?? MusicService.unknown
-            })
-            .distinctUntilChanged()
-        
-        return Observable.combineLatest(stateObservable, serviceObservable, resultSelector: ({ ($0, $1) }))
     }
     
     static public func setActiveTransport(state: TransportState) -> Observable<Void> {
         return SonosInteractor
             .getActiveGroup()
-            .flatMap(ignoreNil())
+            .take(1)
+            .map(requiresGroup())
             .flatMap { (group) -> Observable<Void> in
                 return SonosInteractor.setTransport(state: state, for: group)
         }
@@ -105,8 +98,7 @@ open class SonosInteractor {
             .getActiveGroup()
             .flatMap(ignoreNil())
             .flatMap { (group) -> Observable<Int> in
-                return GetVolumeInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
-                    .get(values: GetVolumeValues(group: group))
+                return SonosInteractor.getVolume(group)
             }
     }
     
@@ -114,12 +106,9 @@ open class SonosInteractor {
         return SonosInteractor
             .getActiveGroup()
             .take(1)
-            .flatMap { (optionalGroup) -> Observable<Void> in
-                guard let group = optionalGroup else {
-                    throw NSError.sonosLibNoGroupError()
-                }
-                return SetVolumeInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
-                    .get(values: SetVolumeValues(group: group, volume: volume))
+            .map(requiresGroup())
+            .flatMap { (group) -> Observable<Void> in
+                SonosInteractor.set(volume: volume, for: group)
             }
     }
     
@@ -129,15 +118,34 @@ open class SonosInteractor {
             .get(values: GetNowPlayingValues(group: group))
     }
     
-    
-    static public func getTransportState(_ group: Group) -> Observable<TransportState> {
-        return GetTransportStateInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+    static public func getTransportState(_ group: Group) -> Observable<(TransportState, MusicService)> {
+        let stateObservable = GetTransportStateInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: GetTransportStateValues(group: group))
+        
+        let serviceObservable = SonosInteractor
+            .getTrack(group)
+            .map({ (track) -> MusicService in
+                return track?.service ?? MusicService.unknown
+            })
+            .distinctUntilChanged()
+        
+        return Observable.combineLatest(stateObservable, serviceObservable, resultSelector: ({ ($0, $1) }))
+        
     }
     
     static public func setTransport(state: TransportState, for group: Group) -> Observable<Void> {
         return SetTransportStateInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
             .get(values: SetTransportStateValues(group: group, state: state))
+    }
+    
+    static public func getVolume(_ group: Group) -> Observable<Int> {
+        return GetVolumeInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
+            .get(values: GetVolumeValues(group: group))
+    }
+    
+    static public func set(volume: Int, for group: Group) -> Observable<Void> {
+        return SetVolumeInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
+            .get(values: SetVolumeValues(group: group, volume: volume))
     }
     
     /* Track */
@@ -202,5 +210,14 @@ extension SonosInteractor {
 fileprivate func ignoreNil<T>() -> ((T?) -> Observable<T>) {
     return { object in
         return object.map(Observable.just) ?? Observable.empty()
+    }
+}
+
+fileprivate func requiresGroup() -> ((Group?) throws -> Group) {
+    return { optionalGroup in
+        guard let group = optionalGroup else {
+            throw NSError.sonosLibNoGroupError()
+        }
+        return group
     }
 }
