@@ -36,8 +36,8 @@ class GetGroupProgressInteractor: BaseInteractor<GetGroupProgressValues, GroupPr
             .distinctUntilChanged({ $0 == $1 })
     }
     
-    fileprivate func mapToProgress(for masterRoom: Room) -> (() -> Observable<GroupProgress>) {
-        return {
+    fileprivate func mapToProgress(for masterRoom: Room) -> ((Int) -> Observable<GroupProgress>) {
+        return { _ in
             return self.transportRepository
                 .getNowPlayingProgress(for: masterRoom)
         }

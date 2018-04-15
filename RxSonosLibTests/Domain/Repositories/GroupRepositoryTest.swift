@@ -90,7 +90,7 @@ fileprivate extension GroupRepositoryTest {
     /* Rooms */
     fileprivate func getRooms() -> [Room] {
         return try! ssdpRepository
-            .scan(broadcastAddresses: ["239.255.255.250", "255.255.255.255"], searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1", maxTimeSpan: 3, maxCount: 100)
+            .scan(broadcastAddresses: ["239.255.255.250", "255.255.255.255"], searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
             .flatMap(mapSSDPToRooms())
             .toBlocking()
             .single()

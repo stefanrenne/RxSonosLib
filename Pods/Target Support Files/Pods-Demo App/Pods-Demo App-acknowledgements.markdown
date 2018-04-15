@@ -27,7 +27,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## AEXML
 
-Copyright (c) 2014-2017 Marko Tadić <tadija@me.com> http://tadija.net
+Copyright (c) 2014-2018 Marko Tadić <tadija@me.com> http://tadija.net
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

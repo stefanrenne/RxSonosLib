@@ -36,8 +36,8 @@ class GetTransportStateInteractor: BaseInteractor<GetTransportStateValues, Trans
             .distinctUntilChanged({ $0.rawValue == $1.rawValue })
     }
     
-    fileprivate func mapToTransportState(for masterRoom: Room) -> (() -> Observable<TransportState>) {
-        return {
+    fileprivate func mapToTransportState(for masterRoom: Room) -> ((Int) -> Observable<TransportState>) {
+        return { _ in
             return self.transportRepository
                 .getTransportState(for: masterRoom)
         }

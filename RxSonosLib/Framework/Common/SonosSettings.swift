@@ -20,6 +20,12 @@ open class SonosSettings {
     public static let shared = SonosSettings()
     
     /**
+     * The number of seconds to wait before the new set of network rooms is retrieved using SSDP
+     * The result will only be onNext'd on the Observer if it is different from the previous result
+     */
+    public var renewNetworkDevicesTimer: RxTimeInterval = 10
+    
+    /**
      * The maximum ammount of seconds to wait for network devices to respond to an m-search.
      * A higher value could lead to more waitin time when starting your app.
      * A lower value could lead into sonos devices not being discoverd.
