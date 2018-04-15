@@ -22,7 +22,7 @@ Features:
 - [ ] ADD tracks to the group queue
 - [ ] DELETE tracks from the group queue
 - [ ] SET previous/next group queue track
-- [ ] SET play/pause/stop current track
+- [x] SET play/pause/stop current track
 - [x] GET group volume
 - [x] SET group volume
 

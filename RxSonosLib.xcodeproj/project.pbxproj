@@ -143,6 +143,7 @@
 		F8B0D8A9208258660072BAE0 /* SetPauseNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8A8208258660072BAE0 /* SetPauseNetwork.swift */; };
 		F8B0D8AB2082586F0072BAE0 /* SetStopNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8AA2082586F0072BAE0 /* SetStopNetwork.swift */; };
 		F8B0D8AD20825AAC0072BAE0 /* SetTransportStateInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8AC20825AAC0072BAE0 /* SetTransportStateInteractorTests.swift */; };
+		F8B0D8AF2083482A0072BAE0 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8AE2083482A0072BAE0 /* ActionButton.swift */; };
 		F8CA2306207BD502009F15AE /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA2305207BD502009F15AE /* LoadingCoordinator.swift */; };
 		F8CA230A207BD5C1009F15AE /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA2308207BD5C1009F15AE /* LoadingViewController.swift */; };
 		F8CA230B207BD5C1009F15AE /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8CA2309207BD5C1009F15AE /* LoadingViewController.xib */; };
@@ -322,6 +323,7 @@
 		F8B0D8A8208258660072BAE0 /* SetPauseNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPauseNetwork.swift; sourceTree = "<group>"; };
 		F8B0D8AA2082586F0072BAE0 /* SetStopNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStopNetwork.swift; sourceTree = "<group>"; };
 		F8B0D8AC20825AAC0072BAE0 /* SetTransportStateInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTransportStateInteractorTests.swift; sourceTree = "<group>"; };
+		F8B0D8AE2083482A0072BAE0 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		F8BF5C522056DF9E00AE311E /* Data+Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Convert.swift"; sourceTree = "<group>"; };
 		F8BF5C542056E37100AE311E /* AEXMLDocument+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AEXMLDocument+Create.swift"; sourceTree = "<group>"; };
 		F8BF5C592056FBEC00AE311E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -640,6 +642,7 @@
 				F825F46120481C61006A7B73 /* AppDelegate.swift */,
 				F825F46F20481C71006A7B73 /* Info.plist */,
 				F8CA230C207BE257009F15AE /* BaseCoordinator.swift */,
+				F8B0D8AE2083482A0072BAE0 /* ActionButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1266,6 +1269,7 @@
 				F81A05CD2060284A00897738 /* RoomsTableViewCell.swift in Sources */,
 				F81DAE9C207CD47A006B4C17 /* MoreCoordinator.swift in Sources */,
 				F8860E9C207516F400BF6A7E /* QueueTableViewCell.swift in Sources */,
+				F8B0D8AF2083482A0072BAE0 /* ActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

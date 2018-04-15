@@ -23,7 +23,7 @@ class TabBarViewController: UIViewController {
     @IBOutlet var nowPlayingTitleLabel: UILabel!
     @IBOutlet var nowPlayingDescriptionLabel: UILabel!
     @IBOutlet var tabBar: UITabBar!
-    @IBOutlet var actionButton: UIButton!
+    @IBOutlet var actionButton: ActionButton!
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -112,16 +112,18 @@ class TabBarViewController: UIViewController {
     fileprivate func setupTransportStateObservable() {
         SonosInteractor
             .getActiveTransportState()
-            .subscribe(onNext: { [weak self] (state, service) in
-                switch state {
-                case .paused, .stopped:
-                    self?.actionButton.setImage(UIImage(named: "icon_play_large"), for: .normal)
-                case .transitioning:
-                    self?.actionButton.setImage(UIImage(named: "icon_stop_large"), for: .normal)
-                case .playing:
-                    let imageName = service.isStreamingService ? "icon_stop_large" : "icon_pause_large"
-                    self?.actionButton.setImage(UIImage(named: imageName), for: .normal)
-                }
+            .subscribe(self.actionButton.data)
+            .disposed(by: disposeBag)
+        
+        actionButton
+            .data
+            .filter({ _ in return self.actionButton.isTouchInside })
+            .flatMap({ (newState, _) -> Observable<Void> in
+                return SonosInteractor
+                    .setActiveTransport(state: newState)
+            })
+            .subscribe(onError: { (error) in
+                print(error.localizedDescription)
             })
             .disposed(by: disposeBag)
     }
