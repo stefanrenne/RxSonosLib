@@ -13,30 +13,15 @@ open class SSDPRepositoryImpl: SSDPRepository {
     
     public init() { }
     
-    public func scan(searchTarget: String) -> Observable<SSDPResponse> {
-        return scan(broadcastAddress: "239.255.255.250", searchTarget: searchTarget)
-    }
-    
-    public func scan(broadcastAddress: String, searchTarget: String) -> Observable<SSDPResponse> {
+    public func scan(broadcastAddress: String, searchTarget: String) -> Observable<[SSDPResponse]> {
         return RxSSDPClient(broadcastAddress: broadcastAddress, searchTarget: searchTarget)
             .discover()
+            .buffer(timeSpan: SSDPSettings.shared.maxBufferTime, count: SSDPSettings.shared.maxBufferdItems, scheduler: SSDPSettings.shared.scheduler)
+            .take(1)
     }
     
-    public func scan(broadcastAddress: String,  maxTimeSpan: RxTimeInterval, maxCount: Int) -> Observable<[SSDPResponse]> {
-        return scan(broadcastAddress: broadcastAddress, searchTarget: "239.255.255.250", maxTimeSpan: maxTimeSpan, maxCount: maxCount)
-    }
-    
-    public func scan(broadcastAddresses: [String], maxTimeSpan: RxTimeInterval, maxCount: Int) -> Observable<[SSDPResponse]> {
-        return scan(broadcastAddresses: broadcastAddresses, searchTarget: "239.255.255.250", maxTimeSpan: maxTimeSpan, maxCount: maxCount)
-    }
-    
-    public func scan(broadcastAddress: String, searchTarget: String, maxTimeSpan: RxTimeInterval, maxCount: Int) -> Observable<[SSDPResponse]> {
-        return scan(broadcastAddress: broadcastAddress, searchTarget: searchTarget)
-        .buffer(timeSpan: maxTimeSpan, count: maxCount, scheduler: SerialDispatchQueueScheduler(qos: .userInitiated))
-    }
-    
-    public func scan(broadcastAddresses: [String], searchTarget: String, maxTimeSpan: RxTimeInterval, maxCount: Int) -> Observable<[SSDPResponse]> {
-        let collection = broadcastAddresses.map({ self.scan(broadcastAddress: $0, searchTarget: searchTarget, maxTimeSpan: maxTimeSpan, maxCount: maxCount) })
+    public func scan(broadcastAddresses: [String], searchTarget: String) -> Observable<[SSDPResponse]> {
+        let collection = broadcastAddresses.map({ self.scan(broadcastAddress: $0, searchTarget: searchTarget) })
         return Observable.zip(collection, self.zipSSDPResponses())
     }
 }

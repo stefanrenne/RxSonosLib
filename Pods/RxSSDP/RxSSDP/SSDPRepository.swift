@@ -11,11 +11,8 @@ import RxSwift
 
 public protocol SSDPRepository {
     
-    func scan(searchTarget: String) -> Observable<SSDPResponse>
-    func scan(broadcastAddress: String, searchTarget: String) -> Observable<SSDPResponse>
-    func scan(broadcastAddress: String,  maxTimeSpan: RxTimeInterval, maxCount: Int) -> Observable<[SSDPResponse]>
-    func scan(broadcastAddresses: [String], maxTimeSpan: RxTimeInterval, maxCount: Int) -> Observable<[SSDPResponse]>
-    func scan(broadcastAddress: String, searchTarget: String, maxTimeSpan: RxTimeInterval, maxCount: Int) -> Observable<[SSDPResponse]>
-    func scan(broadcastAddresses: [String], searchTarget: String, maxTimeSpan: RxTimeInterval, maxCount: Int) -> Observable<[SSDPResponse]>
+    func scan(broadcastAddress: String, searchTarget: String) -> Observable<[SSDPResponse]>
+    
+    func scan(broadcastAddresses: [String], searchTarget: String) -> Observable<[SSDPResponse]>
     
 }

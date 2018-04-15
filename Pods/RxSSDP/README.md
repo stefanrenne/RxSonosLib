@@ -7,7 +7,7 @@
 
 An Reactive SSDP client with buffering written in Swift, based on [SwiftSSDPClient](https://github.com/mhmiles/SwiftSSDPClient)
 
-## How to
+## Usage
 
 1) Implement the repository
 
@@ -18,10 +18,15 @@ let repository: SSDPRepository = SSDPRepositoryImpl()
 2) Scan the network
 
 ```
-repository.scan(broadcastAddress: "255.255.255.255", searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1", maxTimeSpan: 3, maxCount: 100)
+repository.scan(broadcastAddress: "255.255.255.255", searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
 ```
 
 3) Subscribe for changes
+
+
+## Modify settings
+    
+Inspect [SSDPSettings.swift](RxSSDP/SSDPSettings.swift), this class contains all customizable settings.
 
 ## Cocoapods
 
