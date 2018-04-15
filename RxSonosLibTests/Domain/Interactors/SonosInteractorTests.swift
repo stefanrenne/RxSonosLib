@@ -15,15 +15,7 @@ import RxBlocking
 class SonosInteractorTests: XCTestCase {
     
     override func setUp() {
-        RepositoryInjection.shared.contentDirectoryRepository = FakeContentDirectoryRepositoryImpl()
-        let groupRepository = FakeGroupRepositoryImpl()
-        RepositoryInjection.shared.groupRepository = groupRepository
-        RepositoryInjection.shared.renderingControlRepository = FakeRenderingControlRepositoryImpl()
-        RepositoryInjection.shared.roomRepository = FakeRoomRepositoryImpl()
-        RepositoryInjection.shared.ssdpRepository = FakeSSDPRepositoryImpl()
-        RepositoryInjection.shared.transportRepository = FakeTransportRepositoryImpl()
-        SonosInteractor.shared.allGroups.onNext(groupRepository.allGroups)
-        SonosInteractor.shared.activeGroup.onNext(groupRepository.allGroups.first)
+        self.reset()
         super.setUp()
     }
     
@@ -38,6 +30,9 @@ class SonosInteractorTests: XCTestCase {
     }
     
     func testItCanProvideTheGroupsObservable() {
+        
+        reset()
+        
         let groups = try! SonosInteractor
             .getAllGroups()
             .toBlocking()
@@ -62,6 +57,9 @@ class SonosInteractorTests: XCTestCase {
     }
     
     func testItCanProvideTheNowPlayingObservable() {
+        
+        reset()
+        
         let track = try! SonosInteractor
             .getActiveTrack()
             .toBlocking()
@@ -79,6 +77,9 @@ class SonosInteractorTests: XCTestCase {
     }
     
     func testItCanProvideTheTransportStateObservable() {
+        
+        reset()
+        
         let (state, service) = try! SonosInteractor
             .getActiveTransportState()
             .toBlocking()
@@ -89,6 +90,9 @@ class SonosInteractorTests: XCTestCase {
     }
     
     func testItCanProvideTheTrackImageObservable() {
+        
+        reset()
+        
         let imageData = try! SonosInteractor
             .getActiveTrackImage()
             .toBlocking()
@@ -99,6 +103,9 @@ class SonosInteractorTests: XCTestCase {
     }
     
     func testItCanProvideTheGroupProgressObservable() {
+        
+        reset()
+        
         let progress = try! SonosInteractor
             .getActiveGroupProgress()
             .toBlocking()
@@ -109,6 +116,9 @@ class SonosInteractorTests: XCTestCase {
     }
     
     func testItCanProvideTheGroupQueueObservable() {
+        
+        reset()
+        
         let queue = try! SonosInteractor
             .getActiveGroupQueue()
             .toBlocking()
@@ -140,6 +150,9 @@ class SonosInteractorTests: XCTestCase {
     }
     
     func testItCanProvideTheGetVolumeObservable() {
+        
+        reset()
+        
         let volume = try! SonosInteractor
             .getActiveGroupVolume()
             .toBlocking()
@@ -149,30 +162,48 @@ class SonosInteractorTests: XCTestCase {
     }
     
     func testItCanProvideTheSetVolumeObservable() {
+        
+        reset()
+        
         let mock = RepositoryInjection.shared.renderingControlRepository as! FakeRenderingControlRepositoryImpl
         XCTAssertNil(mock.lastVolume)
         
-        XCTAssertNoThrow(try SonosInteractor
+        let newVolume1 = try! SonosInteractor
             .setActiveGroup(volume: 20)
+            .map({ return mock.lastVolume })
             .toBlocking()
-            .toArray())
+            .first()!
         
-        XCTAssertEqual(mock.lastVolume, 20)
+        XCTAssertEqual(newVolume1, 20)
     }
     
-    func testItCanSetTheActiveGroup() {
-        let allGroups = try! SonosInteractor.shared.allGroups.value()
+    func testItCanSetTheTransportStateObservable() {
         
-        SonosInteractor.setActive(group: allGroups.first!)
-        let activeGroup1 = try! SonosInteractor.shared.activeGroup.value()
-        XCTAssertEqual(activeGroup1, allGroups.first)
+        reset()
         
-        SonosInteractor.setActive(group: allGroups.last!)
-        let activeGroup2 = try! SonosInteractor.shared.activeGroup.value()
-        XCTAssertEqual(activeGroup2, allGroups.last)
+        let mock = RepositoryInjection.shared.renderingControlRepository as! FakeRenderingControlRepositoryImpl
+        
+        let newState1 = try! SonosInteractor
+            .setActiveTransport(state: TransportState.paused)
+            .map({ return mock.activeState })
+            .toBlocking()
+            .first()!
+        
+        XCTAssertEqual(newState1, TransportState.paused)
+        
+        let newState2 = try! SonosInteractor
+            .setActiveTransport(state: TransportState.stopped)
+            .map({ return mock.activeState })
+            .toBlocking()
+            .first()!
+        
+        XCTAssertEqual(newState2, TransportState.stopped)
     }
     
     func testItCantSetTheActiveGroupIfItDoesntExists() {
+        
+        reset()
+        
         let allGroups = try! SonosInteractor.shared.allGroups.value()
         
         SonosInteractor.setActive(group: allGroups.first!)
@@ -184,9 +215,36 @@ class SonosInteractorTests: XCTestCase {
         XCTAssertEqual(activeGroup2, allGroups.first)
     }
     
+    func testItCanSetTheActiveGroup() {
+        
+        reset()
+        
+        let allGroups = try! SonosInteractor.shared.allGroups.value()
+        
+        SonosInteractor.setActive(group: allGroups.first!)
+        let activeGroup1 = try! SonosInteractor.shared.activeGroup.value()
+        XCTAssertEqual(activeGroup1, allGroups.first)
+        
+        SonosInteractor.setActive(group: allGroups.last!)
+        let activeGroup2 = try! SonosInteractor.shared.activeGroup.value()
+        XCTAssertEqual(activeGroup2, allGroups.last)
+    }
+    
 }
 
 fileprivate extension SonosInteractorTests {
+    
+    func reset() {
+        RepositoryInjection.shared.contentDirectoryRepository = FakeContentDirectoryRepositoryImpl()
+        let groupRepository = FakeGroupRepositoryImpl()
+        RepositoryInjection.shared.groupRepository = groupRepository
+        RepositoryInjection.shared.renderingControlRepository = FakeRenderingControlRepositoryImpl()
+        RepositoryInjection.shared.roomRepository = FakeRoomRepositoryImpl()
+        RepositoryInjection.shared.ssdpRepository = FakeSSDPRepositoryImpl()
+        RepositoryInjection.shared.transportRepository = FakeTransportRepositoryImpl()
+        SonosInteractor.shared.allGroups.onNext(groupRepository.allGroups)
+        SonosInteractor.shared.activeGroup.onNext(groupRepository.allGroups.first)
+    }
     
     func firstGroup() -> Group {
         return Group(master: firstRoom(), slaves: [])

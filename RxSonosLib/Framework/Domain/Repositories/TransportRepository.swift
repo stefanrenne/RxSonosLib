@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-public protocol TransportRepository {
+protocol TransportRepository {
     
     func getNowPlaying(for room: Room) -> Observable<Track?>
     

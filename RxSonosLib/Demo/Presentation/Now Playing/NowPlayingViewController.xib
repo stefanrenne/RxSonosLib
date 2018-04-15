@@ -148,7 +148,7 @@
                                 <action selector="previousAction:" destination="-1" eventType="touchUpInside" id="lSE-4e-xr0"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmW-uW-ClL">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmW-uW-ClL" customClass="ActionButton" customModule="Demo_App" customModuleProvider="target">
                             <rect key="frame" x="167" y="19.5" width="40" height="40"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -157,9 +157,6 @@
                             </constraints>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" image="icon_play_large"/>
-                            <connections>
-                                <action selector="playAction:" destination="-1" eventType="touchUpInside" id="TWx-Zz-OAO"/>
-                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jyl-qF-r6J">
                             <rect key="frame" x="247" y="19.5" width="40" height="40"/>

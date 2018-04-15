@@ -67,6 +67,36 @@ class RenderingControlRepositoryTests: XCTestCase {
             .toArray())
     }
     
+    func testItCanPlayTheActiveGroupTrack() {
+        
+        stub(soap(call: .play), soapXml(""))
+        
+        XCTAssertNoThrow(try renderingControlRepository
+            .setPlay(group: firstGroup())
+            .toBlocking()
+            .toArray())
+    }
+    
+    func testItCanPauseTheActiveGroupTrack() {
+        
+        stub(soap(call: .pause), soapXml(""))
+        
+        XCTAssertNoThrow(try renderingControlRepository
+            .setPause(group: firstGroup())
+            .toBlocking()
+            .toArray())
+    }
+    
+    func testItCanStopTheActiveGroupTrack() {
+        
+        stub(soap(call: .stop), soapXml(""))
+        
+        XCTAssertNoThrow(try renderingControlRepository
+            .setStop(group: firstGroup())
+            .toBlocking()
+            .toArray())
+    }
+    
 }
 
 extension RenderingControlRepositoryTests {

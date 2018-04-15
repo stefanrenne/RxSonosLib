@@ -9,7 +9,7 @@
 import Foundation
 import RxSSDP
 
-open class RepositoryInjection {
+class RepositoryInjection {
     internal static let shared: RepositoryInjection = RepositoryInjection()
     
     init() {

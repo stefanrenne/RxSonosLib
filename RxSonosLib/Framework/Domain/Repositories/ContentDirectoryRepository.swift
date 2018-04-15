@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-public protocol ContentDirectoryRepository {
+protocol ContentDirectoryRepository {
     
     func getQueue(for room: Room) -> Observable<[Track]>
     

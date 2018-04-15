@@ -33,6 +33,24 @@ class RenderingControlRepositoryImpl: RenderingControlRepository {
         return Observable.zip(roomObservables).map(mapToVoid())
     }
     
+    func setPlay(group: Group) -> Observable<Void> {
+        return SetPlayNetwork(room: group.master)
+            .executeSoapRequest()
+            .map(mapToVoid())
+    }
+    
+    func setPause(group: Group) -> Observable<Void> {
+        return SetPauseNetwork(room: group.master)
+            .executeSoapRequest()
+            .map(mapToVoid())
+    }
+    
+    func setStop(group: Group) -> Observable<Void> {
+        return SetStopNetwork(room: group.master)
+            .executeSoapRequest()
+            .map(mapToVoid())
+    }
+    
 }
 
 extension RenderingControlRepositoryImpl {

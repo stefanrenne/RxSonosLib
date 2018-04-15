@@ -62,6 +62,15 @@ open class SonosInteractor {
         return Observable.combineLatest(stateObservable, serviceObservable, resultSelector: ({ ($0, $1) }))
     }
     
+    static public func setActiveTransport(state: TransportState) -> Observable<Void> {
+        return SonosInteractor
+            .getActiveGroup()
+            .flatMap(ignoreNil())
+            .flatMap { (group) -> Observable<Void> in
+                return SonosInteractor.setTransport(state: state, for: group)
+        }
+    }
+    
     static public func getActiveTrackImage() -> Observable<Data?> {
         return SonosInteractor
             .getActiveTrack()
@@ -124,6 +133,11 @@ open class SonosInteractor {
     static public func getTransportState(_ group: Group) -> Observable<TransportState> {
         return GetTransportStateInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: GetTransportStateValues(group: group))
+    }
+    
+    static public func setTransport(state: TransportState, for group: Group) -> Observable<Void> {
+        return SetTransportStateInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
+            .get(values: SetTransportStateValues(group: group, state: state))
     }
     
     /* Track */
