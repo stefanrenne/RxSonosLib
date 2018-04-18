@@ -24,7 +24,7 @@ class TransportRepositoryTest: XCTestCase {
         stub(soap(call: .positionInfo), soapXml(""))
         
         let track = try! transportRepository
-            .getNowPlaying(for: randomRoom())
+            .getNowPlaying(for: firstRoom())
             .toBlocking()
             .first()!
         
@@ -37,7 +37,7 @@ class TransportRepositoryTest: XCTestCase {
         stub(soap(call: .positionInfo), soapXml(getSpotifyPositionInfoResponse()))
         
         let track = try! transportRepository
-            .getNowPlaying(for: randomRoom())
+            .getNowPlaying(for: firstRoom())
             .toBlocking()
             .first()! as! SpotifyTrack
         
@@ -58,7 +58,7 @@ class TransportRepositoryTest: XCTestCase {
         stub(soap(call: .positionInfo), soapXml(getTVPositionInfoResponse()))
         
         let track = try! transportRepository
-            .getNowPlaying(for: randomRoom())
+            .getNowPlaying(for: firstRoom())
             .toBlocking()
             .first()! as! TVTrack
         
@@ -76,7 +76,7 @@ class TransportRepositoryTest: XCTestCase {
         stub(soap(call: .positionInfo), soapXml(getTuneinPositionInfoResponse()))
         
         let track = try! transportRepository
-            .getNowPlaying(for: randomRoom())
+            .getNowPlaying(for: firstRoom())
             .toBlocking()
             .first()! as! TuneinTrack
         
@@ -95,7 +95,7 @@ class TransportRepositoryTest: XCTestCase {
         stub(soap(call: .transportInfo), soapXml(getTransportInfoResponse()))
         
         let state = try! transportRepository
-            .getTransportState(for: randomRoom())
+            .getTransportState(for: firstRoom())
             .toBlocking()
             .first()!
         
@@ -136,7 +136,7 @@ class TransportRepositoryTest: XCTestCase {
         stub(soap(call: .positionInfo), soapXml(getSpotifyPositionInfoResponse()))
         
         let progress = try! transportRepository
-            .getNowPlayingProgress(for: randomRoom())
+            .getNowPlayingProgress(for: firstRoom())
             .toBlocking()
             .first()!
         
@@ -152,7 +152,7 @@ class TransportRepositoryTest: XCTestCase {
         stub(soap(call: .next), soapXml(""))
         
         XCTAssertNoThrow(try transportRepository
-            .setNextTrack(for: randomRoom())
+            .setNextTrack(for: firstRoom())
             .toBlocking()
             .toArray())
     }
@@ -161,21 +161,13 @@ class TransportRepositoryTest: XCTestCase {
         stub(soap(call: .previous), soapXml(""))
         
         XCTAssertNoThrow(try transportRepository
-            .setPreviousTrack(for: randomRoom())
+            .setPreviousTrack(for: firstRoom())
             .toBlocking()
             .toArray())
     }
 }
 
 fileprivate extension TransportRepositoryTest {
-    
-    func randomRoom() -> Room {
-        let device = SSDPDevice(ip: URL(string: "http://192.168.3.14:1400")!, usn: "uuid:RINCON_000001::urn:schemas-upnp-org:device:ZonePlayer:1", server: "Linux UPnP/1.0 Sonos/34.7-34220 (ZPS9)", ext: "", st: "urn:schemas-upnp-org:device:ZonePlayer:1", location: "/xml/device_description.xml", cacheControl: "max-age = 1800", uuid: "RINCON_000001", wifiMode: "0", variant: "0", household: "SONOS_HOUSEHOLD_1", bootseq: "81", proxy: nil)
-        
-        let description = DeviceDescription(name: "Living", modalNumber: "S9", modalName: "Sonos PLAYBAR", modalIcon: "/img/icon-S9.png", serialNumber: "00-00-00-00-00-01:A", softwareVersion: "34.7-34220", hardwareVersion: "1.8.3.7-2")
-        
-        return Room(ssdpDevice: device, deviceDescription: description)
-    }
     
     func getTransportInfoResponse() -> String {
         return "<CurrentTransportState>PAUSED_PLAYBACK</CurrentTransportState><CurrentTransportStatus>OK</CurrentTransportStatus><CurrentSpeed>1</CurrentSpeed>"

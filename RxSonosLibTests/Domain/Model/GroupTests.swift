@@ -48,28 +48,28 @@ class GroupTests: XCTestCase {
     }
     
     func testItCanCompareGroupsWithDifferentOrderSlaves() {
-        let group1 = Group(master: firstRoom(), slaves: [secondRoom(), thirthRoom()])
-        let group2 = Group(master: firstRoom(), slaves: [thirthRoom(), secondRoom()])
+        let group1 = Group(master: firstRoom(), slaves: [secondRoom(), thirdRoom()])
+        let group2 = Group(master: firstRoom(), slaves: [thirdRoom(), secondRoom()])
         
         XCTAssertEqual(group1, group2)
     }
     
     func testItCanCompareDifferentGroupsOnSlaves() {
         let group1 = Group(master: firstRoom(), slaves: [secondRoom()])
-        let group2 = Group(master: firstRoom(), slaves: [thirthRoom()])
+        let group2 = Group(master: firstRoom(), slaves: [thirdRoom()])
         
         XCTAssertNotEqual(group1, group2)
     }
     
     func testItCanCompareDifferentGroupsOnMultipleSlaves() {
-        let group1 = Group(master: firstRoom(), slaves: [thirthRoom(), secondRoom()])
-        let group2 = Group(master: firstRoom(), slaves: [thirthRoom()])
+        let group1 = Group(master: firstRoom(), slaves: [thirdRoom(), secondRoom()])
+        let group2 = Group(master: firstRoom(), slaves: [thirdRoom()])
         
         XCTAssertNotEqual(group1, group2)
     }
     
     func testItCanGetTheGroupName() {
-        let group = Group(master: firstRoom(), slaves: [thirthRoom(), secondRoom()])
+        let group = Group(master: firstRoom(), slaves: [thirdRoom(), secondRoom()])
         XCTAssertEqual(group.name, "Living +2")
     }
     
