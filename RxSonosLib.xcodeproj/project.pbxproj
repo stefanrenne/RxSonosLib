@@ -143,6 +143,7 @@
 		F8A64DF82087F56F003F777E /* SetPreviousNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A64DF72087F56F003F777E /* SetPreviousNetwork.swift */; };
 		F8A64DFA2087F9A9003F777E /* SetPreviousInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A64DF92087F9A9003F777E /* SetPreviousInteractorTests.swift */; };
 		F8A64DFC2087F9B5003F777E /* SetNextInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A64DFB2087F9B5003F777E /* SetNextInteractorTests.swift */; };
+		F8A64DFF2087FD07003F777E /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A64DFE2087FD07003F777E /* TestHelpers.swift */; };
 		F8B0057320612BB900991E64 /* StringRegexTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0057220612BB900991E64 /* StringRegexTest.swift */; };
 		F8B0D8A52082562A0072BAE0 /* SetTransportStateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8A42082562A0072BAE0 /* SetTransportStateInteractor.swift */; };
 		F8B0D8A72082585C0072BAE0 /* SetPlayNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8A62082585C0072BAE0 /* SetPlayNetwork.swift */; };
@@ -329,6 +330,7 @@
 		F8A64DF72087F56F003F777E /* SetPreviousNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPreviousNetwork.swift; sourceTree = "<group>"; };
 		F8A64DF92087F9A9003F777E /* SetPreviousInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPreviousInteractorTests.swift; sourceTree = "<group>"; };
 		F8A64DFB2087F9B5003F777E /* SetNextInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNextInteractorTests.swift; sourceTree = "<group>"; };
+		F8A64DFE2087FD07003F777E /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		F8B0057220612BB900991E64 /* StringRegexTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRegexTest.swift; sourceTree = "<group>"; };
 		F8B0D8A42082562A0072BAE0 /* SetTransportStateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTransportStateInteractor.swift; sourceTree = "<group>"; };
 		F8B0D8A62082585C0072BAE0 /* SetPlayNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPlayNetwork.swift; sourceTree = "<group>"; };
@@ -849,6 +851,14 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		F8A64DFD2087FCF8003F777E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F8A64DFE2087FD07003F777E /* TestHelpers.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		F8BF5C582056FBEC00AE311E /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -926,6 +936,7 @@
 		F8F56153205C3EC500E28533 /* RxSonosLibTests */ = {
 			isa = PBXGroup;
 			children = (
+				F8A64DFD2087FCF8003F777E /* Common */,
 				F81E33B62072254F002E22A8 /* Cache */,
 				F81E33B52072254B002E22A8 /* Remote */,
 				F81E33B420722547002E22A8 /* Data */,
@@ -1372,6 +1383,7 @@
 				F8B0D8AD20825AAC0072BAE0 /* SetTransportStateInteractorTests.swift in Sources */,
 				F83D210E20754F9C001ABC9D /* GetVolumeInteractorTests.swift in Sources */,
 				F87C0CC1206F8C5D00098D07 /* GetTrackImageInteractorTests.swift in Sources */,
+				F8A64DFF2087FD07003F777E /* TestHelpers.swift in Sources */,
 				F8860E972075157400BF6A7E /* GetGroupQueueInteractorTests.swift in Sources */,
 				F81E33AB2072247D002E22A8 /* FakeRoomRepositoryImpl.swift in Sources */,
 				F81A062920602D7F00897738 /* SSDPRepositoryTest.swift in Sources */,
