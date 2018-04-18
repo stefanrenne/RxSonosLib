@@ -151,8 +151,22 @@ class NowPlayingViewController: UIViewController {
     }
     
     @IBAction func previousAction(_ sender: UIButton) {
+        SonosInteractor
+            .setActivePreviousTrack()
+            .take(1)
+            .subscribe(onError: { (error) in
+                print(error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
     }
     
     @IBAction func nextAction(_ sender: UIButton) {
+        SonosInteractor
+            .setActiveNextTrack()
+            .take(1)
+            .subscribe(onError: { (error) in
+                print(error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
     }
 }
