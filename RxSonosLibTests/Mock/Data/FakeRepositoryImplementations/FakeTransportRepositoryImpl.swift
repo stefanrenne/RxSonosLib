@@ -30,4 +30,16 @@ class FakeTransportRepositoryImpl: TransportRepository {
         return Observable.just(data)
     }
     
+    var nextTrackCounter = 0
+    func setNextTrack(for room: Room) -> Observable<Void> {
+        nextTrackCounter += 1
+        return Observable.just(())
+    }
+    
+    var previousTrackCounter = 0
+    func setPreviousTrack(for room: Room) -> Observable<Void> {
+        previousTrackCounter += 1
+        return Observable.just(())
+    }
+    
 }

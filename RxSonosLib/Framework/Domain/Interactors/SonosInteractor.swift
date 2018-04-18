@@ -61,7 +61,27 @@ open class SonosInteractor {
             .map(requiresGroup())
             .flatMap { (group) -> Observable<Void> in
                 return SonosInteractor.setTransport(state: state, for: group)
-        }
+            }
+    }
+    
+    static public func setActiveNextTrack() -> Observable<Void> {
+        return SonosInteractor
+            .getActiveGroup()
+            .take(1)
+            .map(requiresGroup())
+            .flatMap { (group) -> Observable<Void> in
+                return SonosInteractor.setNextTrack(group)
+            }
+    }
+    
+    static public func setActivePreviousTrack() -> Observable<Void> {
+        return SonosInteractor
+            .getActiveGroup()
+            .take(1)
+            .map(requiresGroup())
+            .flatMap { (group) -> Observable<Void> in
+                return SonosInteractor.setPreviousTrack(group)
+            }
     }
     
     static public func getActiveTrackImage() -> Observable<Data?> {
@@ -136,6 +156,16 @@ open class SonosInteractor {
     static public func setTransport(state: TransportState, for group: Group) -> Observable<Void> {
         return SetTransportStateInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
             .get(values: SetTransportStateValues(group: group, state: state))
+    }
+    
+    static public func setNextTrack(_ group: Group) -> Observable<Void> {
+        return SetNextTrackInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+            .get(values: SetNextTrackValues(group: group))
+    }
+    
+    static public func setPreviousTrack(_ group: Group) -> Observable<Void> {
+        return SetPreviousTrackInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+            .get(values: SetPreviousTrackValues(group: group))
     }
     
     static public func getVolume(_ group: Group) -> Observable<Int> {

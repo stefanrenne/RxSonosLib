@@ -21,7 +21,7 @@ Features:
 - [x] GET group queue
 - [ ] ADD tracks to the group queue
 - [ ] DELETE tracks from the group queue
-- [ ] SET previous/next group queue track
+- [x] SET previous/next group queue track
 - [x] SET play/pause/stop current track
 - [x] GET group volume
 - [x] SET group volume
@@ -76,6 +76,8 @@ SonosInteractor
 - `static func getActiveGroupQueue() -> Observable<[Track]>`      
 - `static func getActiveGroupVolume() -> Observable<Int>`  
 - `static func setActiveGroup(volume: Int) -> Observable<Void>`
+- `static func setActiveNextTrack() -> Observable<Void>`
+- `static func setActivePreviousTrack() -> Observable<Void>`
 
 **Group specific functions**
 
@@ -84,6 +86,8 @@ SonosInteractor
 - `static func setTransport(state: TransportState, for group: Group) -> Observable<Void>`
 - `static func getVolume(_ group: Group) -> Observable<Int>`
 - `static func set(volume: Int, for group: Group) -> Observable<Void>`
+- `static func setNextTrack(_ group: Group) -> Observable<Void>`
+- `static func setPreviousTrack(_ group: Group) -> Observable<Void>`
 
 **Track specific functions**
 
@@ -96,6 +100,8 @@ SonosInteractor
 - `func set(state: TransportState) -> Observable<Void>`
 - `func getVolume() -> Observable<Int>`
 - `func set(volume: Int) -> Observable<Void>`
+- `func setNextTrack() -> Observable<Void>`
+- `func setPreviousTrack() -> Observable<Void>`
 
 ### Track object Observers
 

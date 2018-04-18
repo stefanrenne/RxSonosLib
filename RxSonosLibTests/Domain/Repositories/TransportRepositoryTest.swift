@@ -147,6 +147,24 @@ class TransportRepositoryTest: XCTestCase {
         XCTAssertEqual(progress.progress, 0.56)
         XCTAssertEqual(progress.remainingTimeString, "-1:56")
     }
+    
+    func testItCanSetTheNextTrack() {
+        stub(soap(call: .next), soapXml(""))
+        
+        XCTAssertNoThrow(try transportRepository
+            .setNextTrack(for: randomRoom())
+            .toBlocking()
+            .toArray())
+    }
+    
+    func testItCanSetThePreviousTrack() {
+        stub(soap(call: .previous), soapXml(""))
+        
+        XCTAssertNoThrow(try transportRepository
+            .setPreviousTrack(for: randomRoom())
+            .toBlocking()
+            .toArray())
+    }
 }
 
 fileprivate extension TransportRepositoryTest {

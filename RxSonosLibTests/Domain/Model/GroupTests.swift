@@ -130,6 +130,32 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(newVolume, 22)
     }
     
+    func testItCanSetTheNextTrack() {
+        let mock = RepositoryInjection.shared.transportRepository as! FakeTransportRepositoryImpl
+        mock.nextTrackCounter = 0
+        
+        let group = Group(master: firstRoom(), slaves: [])
+        let counter = try! group
+            .setNextTrack()
+            .map({ return mock.nextTrackCounter })
+            .toBlocking()
+            .first()!
+        XCTAssertEqual(counter, 1)
+    }
+    
+    func testItCanSetThePreviousTrack() {
+        let mock = RepositoryInjection.shared.transportRepository as! FakeTransportRepositoryImpl
+        mock.previousTrackCounter = 0
+        
+        let group = Group(master: firstRoom(), slaves: [])
+        let counter = try! group
+            .setPreviousTrack()
+            .map({ return mock.previousTrackCounter })
+            .toBlocking()
+            .first()!
+        XCTAssertEqual(counter, 1)
+    }
+    
 }
 
 fileprivate extension GroupTests {

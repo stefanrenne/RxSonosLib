@@ -230,6 +230,42 @@ class SonosInteractorTests: XCTestCase {
         XCTAssertEqual(activeGroup2, allGroups.last)
     }
     
+    func testItCanSetTheActiveNextTrack() {
+        
+        reset()
+        
+        let mock = RepositoryInjection.shared.transportRepository as! FakeTransportRepositoryImpl
+        mock.nextTrackCounter = 0
+        mock.previousTrackCounter = 0
+        
+        let newNextTrackCounter = try! SonosInteractor
+            .setActiveNextTrack()
+            .map({ return mock.nextTrackCounter })
+            .toBlocking()
+            .first()!
+        
+        XCTAssertEqual(newNextTrackCounter, 1)
+        XCTAssertEqual(mock.previousTrackCounter, 0)
+    }
+    
+    func testItCanSetTheActivePreviousTrack() {
+        
+        reset()
+        
+        let mock = RepositoryInjection.shared.transportRepository as! FakeTransportRepositoryImpl
+        mock.nextTrackCounter = 0
+        mock.previousTrackCounter = 0
+        
+        let newPreviousTrackCounter = try! SonosInteractor
+            .setActivePreviousTrack()
+            .map({ return mock.previousTrackCounter })
+            .toBlocking()
+            .first()!
+        
+        XCTAssertEqual(newPreviousTrackCounter, 1)
+        XCTAssertEqual(mock.nextTrackCounter, 0)
+    }
+    
 }
 
 fileprivate extension SonosInteractorTests {
