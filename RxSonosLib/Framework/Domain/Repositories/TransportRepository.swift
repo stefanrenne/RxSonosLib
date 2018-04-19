@@ -19,4 +19,8 @@ protocol TransportRepository {
     
     func getImage(for track: Track) -> Observable<Data?>
     
+    func setNextTrack(for room: Room) -> Observable<Void>
+    
+    func setPreviousTrack(for room: Room) -> Observable<Void>
+    
 }

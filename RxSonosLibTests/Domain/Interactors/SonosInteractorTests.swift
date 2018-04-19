@@ -230,6 +230,42 @@ class SonosInteractorTests: XCTestCase {
         XCTAssertEqual(activeGroup2, allGroups.last)
     }
     
+    func testItCanSetTheActiveNextTrack() {
+        
+        reset()
+        
+        let mock = RepositoryInjection.shared.transportRepository as! FakeTransportRepositoryImpl
+        mock.nextTrackCounter = 0
+        mock.previousTrackCounter = 0
+        
+        let newNextTrackCounter = try! SonosInteractor
+            .setActiveNextTrack()
+            .map({ return mock.nextTrackCounter })
+            .toBlocking()
+            .first()!
+        
+        XCTAssertEqual(newNextTrackCounter, 1)
+        XCTAssertEqual(mock.previousTrackCounter, 0)
+    }
+    
+    func testItCanSetTheActivePreviousTrack() {
+        
+        reset()
+        
+        let mock = RepositoryInjection.shared.transportRepository as! FakeTransportRepositoryImpl
+        mock.nextTrackCounter = 0
+        mock.previousTrackCounter = 0
+        
+        let newPreviousTrackCounter = try! SonosInteractor
+            .setActivePreviousTrack()
+            .map({ return mock.previousTrackCounter })
+            .toBlocking()
+            .first()!
+        
+        XCTAssertEqual(newPreviousTrackCounter, 1)
+        XCTAssertEqual(mock.nextTrackCounter, 0)
+    }
+    
 }
 
 fileprivate extension SonosInteractorTests {
@@ -244,17 +280,5 @@ fileprivate extension SonosInteractorTests {
         RepositoryInjection.shared.transportRepository = FakeTransportRepositoryImpl()
         SonosInteractor.shared.allGroups.onNext(groupRepository.allGroups)
         SonosInteractor.shared.activeGroup.onNext(groupRepository.allGroups.first)
-    }
-    
-    func firstGroup() -> Group {
-        return Group(master: firstRoom(), slaves: [])
-    }
-    
-    func firstRoom() -> Room {
-        let device = SSDPDevice(ip: URL(string: "http://192.168.3.14:1400")!, usn: "uuid:RINCON_000001::urn:schemas-upnp-org:device:ZonePlayer:1", server: "Linux UPnP/1.0 Sonos/34.7-34220 (ZPS9)", ext: "", st: "urn:schemas-upnp-org:device:ZonePlayer:1", location: "/xml/device_description.xml", cacheControl: "max-age = 1800", uuid: "RINCON_000001", wifiMode: "0", variant: "0", household: "SONOS_HOUSEHOLD_1", bootseq: "81", proxy: nil)
-        
-        let description = DeviceDescription(name: "Living", modalNumber: "S9", modalName: "Sonos PLAYBAR", modalIcon: "/img/icon-S9.png", serialNumber: "00-00-00-00-00-01:A", softwareVersion: "34.7-34220", hardwareVersion: "1.8.3.7-2")
-        
-        return Room(ssdpDevice: device, deviceDescription: description)
     }
 }

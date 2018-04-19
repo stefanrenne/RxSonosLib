@@ -52,6 +52,14 @@ extension Group {
     public func set(volume: Int) -> Observable<Void> {
         return SonosInteractor.set(volume: volume, for: self)
     }
+    
+    public func setNextTrack() -> Observable<Void> {
+        return SonosInteractor.setNextTrack(self)
+    }
+    
+    public func setPreviousTrack() -> Observable<Void> {
+        return SonosInteractor.setPreviousTrack(self)
+    }
 }
 
 extension Group: Equatable {
