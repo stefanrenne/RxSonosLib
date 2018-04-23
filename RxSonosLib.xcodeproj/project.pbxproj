@@ -156,6 +156,12 @@
 		F8CA230B207BD5C1009F15AE /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8CA2309207BD5C1009F15AE /* LoadingViewController.xib */; };
 		F8CA230D207BE257009F15AE /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA230C207BE257009F15AE /* BaseCoordinator.swift */; };
 		F8D0BB8C207E5B5A00BBEFB8 /* SonosSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D0BB8A207E5AB000BBEFB8 /* SonosSettings.swift */; };
+		F8DE4763208A328F008F50FA /* SetMuteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DE4762208A328F008F50FA /* SetMuteInteractor.swift */; };
+		F8DE4765208A3297008F50FA /* GetMuteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DE4764208A3297008F50FA /* GetMuteInteractor.swift */; };
+		F8DE4767208A35F2008F50FA /* Rx+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DE4766208A35F2008F50FA /* Rx+Helpers.swift */; };
+		F8DE4769208B3CCF008F50FA /* RoomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DE4768208B3CCF008F50FA /* RoomTests.swift */; };
+		F8F0FA56208A1A0C00C2E0D0 /* SetMuteNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0FA55208A1A0C00C2E0D0 /* SetMuteNetwork.swift */; };
+		F8F0FA58208A1A1300C2E0D0 /* GetMuteNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F0FA57208A1A1300C2E0D0 /* GetMuteNetwork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -353,6 +359,12 @@
 		F8CA2309207BD5C1009F15AE /* LoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
 		F8CA230C207BE257009F15AE /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		F8D0BB8A207E5AB000BBEFB8 /* SonosSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosSettings.swift; sourceTree = "<group>"; };
+		F8DE4762208A328F008F50FA /* SetMuteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMuteInteractor.swift; sourceTree = "<group>"; };
+		F8DE4764208A3297008F50FA /* GetMuteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMuteInteractor.swift; sourceTree = "<group>"; };
+		F8DE4766208A35F2008F50FA /* Rx+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Helpers.swift"; sourceTree = "<group>"; };
+		F8DE4768208B3CCF008F50FA /* RoomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTests.swift; sourceTree = "<group>"; };
+		F8F0FA55208A1A0C00C2E0D0 /* SetMuteNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMuteNetwork.swift; sourceTree = "<group>"; };
+		F8F0FA57208A1A1300C2E0D0 /* GetMuteNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMuteNetwork.swift; sourceTree = "<group>"; };
 		F8F56166205C3EE800E28533 /* GroupRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupRepositoryTest.swift; sourceTree = "<group>"; };
 		F8F56167205C3EE800E28533 /* SSDPRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSDPRepositoryTest.swift; sourceTree = "<group>"; };
 		F8F56168205C3EE900E28533 /* RoomRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomRepositoryTest.swift; sourceTree = "<group>"; };
@@ -420,6 +432,7 @@
 				F8BF5C542056E37100AE311E /* AEXMLDocument+Create.swift */,
 				F86B343F206A8EB900979A5F /* String+Time.swift */,
 				F8860E7B2074D74100BF6A7E /* String+Empty.swift */,
+				F8DE4766208A35F2008F50FA /* Rx+Helpers.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -527,6 +540,7 @@
 				F872678F206A4B7700093FF1 /* TransportStateTest.swift */,
 				F8979946206944A6000CF52A /* GroupTests.swift */,
 				F8860E862074FF7600BF6A7E /* TrackTests.swift */,
+				F8DE4768208B3CCF008F50FA /* RoomTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -726,6 +740,8 @@
 				F8B0D8A42082562A0072BAE0 /* SetTransportStateInteractor.swift */,
 				F8A64DF12087F432003F777E /* SetNextTrackInteractor.swift */,
 				F8A64DF32087F43D003F777E /* SetPreviousTrackInteractor.swift */,
+				F8DE4762208A328F008F50FA /* SetMuteInteractor.swift */,
+				F8DE4764208A3297008F50FA /* GetMuteInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -885,6 +901,8 @@
 				F8B0D8AA2082586F0072BAE0 /* SetStopNetwork.swift */,
 				F8A64DF52087F565003F777E /* SetNextNetwork.swift */,
 				F8A64DF72087F56F003F777E /* SetPreviousNetwork.swift */,
+				F8F0FA55208A1A0C00C2E0D0 /* SetMuteNetwork.swift */,
+				F8F0FA57208A1A1300C2E0D0 /* GetMuteNetwork.swift */,
 			);
 			path = Soap;
 			sourceTree = "<group>";
@@ -1318,6 +1336,7 @@
 				F8D0BB8C207E5B5A00BBEFB8 /* SonosSettings.swift in Sources */,
 				F8860E822074D8BE00BF6A7E /* TVTrack.swift in Sources */,
 				F81A05F7206028D600897738 /* RepositoryInjection.swift in Sources */,
+				F8F0FA56208A1A0C00C2E0D0 /* SetMuteNetwork.swift in Sources */,
 				F8860E7E2074D89300BF6A7E /* SpotifyTrack.swift in Sources */,
 				F8A64DF22087F432003F777E /* SetNextTrackInteractor.swift in Sources */,
 				F8B0D8A9208258660072BAE0 /* SetPauseNetwork.swift in Sources */,
@@ -1325,6 +1344,7 @@
 				F81A05EF206028D600897738 /* Group.swift in Sources */,
 				F81A05F8206028D600897738 /* Network.swift in Sources */,
 				F89807E420760D6E00AF5ECB /* SetVolumeNetwork.swift in Sources */,
+				F8F0FA58208A1A1300C2E0D0 /* GetMuteNetwork.swift in Sources */,
 				F89807E620762FE400AF5ECB /* SetVolumeInteractor.swift in Sources */,
 				F87DC3B8206974920089F882 /* GetTransportInfoNetwork.swift in Sources */,
 				F8A64DF62087F565003F777E /* SetNextNetwork.swift in Sources */,
@@ -1354,14 +1374,17 @@
 				F83D2106207541EE001ABC9D /* GetVolumeNetwork.swift in Sources */,
 				F8B0D8A52082562A0072BAE0 /* SetTransportStateInteractor.swift in Sources */,
 				F81A05F5206028D600897738 /* RoomRepositoryImpl.swift in Sources */,
+				F8DE4765208A3297008F50FA /* GetMuteInteractor.swift in Sources */,
 				F8B0D8A72082585C0072BAE0 /* SetPlayNetwork.swift in Sources */,
 				F81A05E9206028D600897738 /* BaseInteractor.swift in Sources */,
+				F8DE4763208A328F008F50FA /* SetMuteInteractor.swift in Sources */,
 				F8726787206A3F3B00093FF1 /* TransportState.swift in Sources */,
 				F81A05FB206028D600897738 /* SoapSoapAction.swift in Sources */,
 				F87DC3B220696E870089F882 /* GetNowPlayingInteractor.swift in Sources */,
 				F8B0D8AB2082586F0072BAE0 /* SetStopNetwork.swift in Sources */,
 				F87C0CBD206F88F600098D07 /* DownloadNetwork.swift in Sources */,
 				F8860E8B207506BE00BF6A7E /* ContentDirectoryRepository.swift in Sources */,
+				F8DE4767208A35F2008F50FA /* Rx+Helpers.swift in Sources */,
 				F81A05F6206028D600897738 /* GroupRepositoryImpl.swift in Sources */,
 				F81A05FA206028D600897738 /* SonosSoapService.swift in Sources */,
 				F80034372069662900D7C0FB /* TransportRepositoryImpl.swift in Sources */,
@@ -1401,6 +1424,7 @@
 				F86B3442206A91DC00979A5F /* TimeConvertTests.swift in Sources */,
 				F83D210C20754C44001ABC9D /* RenderingControlRepositoryTests.swift in Sources */,
 				F8726794206A4CE500093FF1 /* MusicServiceTests.swift in Sources */,
+				F8DE4769208B3CCF008F50FA /* RoomTests.swift in Sources */,
 				F81E33AD2072247D002E22A8 /* FakeTransportRepositoryImpl.swift in Sources */,
 				F81E33AC2072247D002E22A8 /* FakeGroupRepositoryImpl.swift in Sources */,
 				F81A062820602D7C00897738 /* RoomRepositoryTest.swift in Sources */,

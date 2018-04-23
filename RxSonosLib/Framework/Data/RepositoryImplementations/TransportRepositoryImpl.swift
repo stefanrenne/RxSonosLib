@@ -41,23 +41,17 @@ class TransportRepositoryImpl: TransportRepository {
     func setNextTrack(for room: Room) -> Observable<Void> {
         return SetNextNetwork(room: room)
             .executeSoapRequest()
-            .map(mapToVoid())
+            .toVoid()
     }
     
     func setPreviousTrack(for room: Room) -> Observable<Void> {
         return SetPreviousNetwork(room: room)
             .executeSoapRequest()
-            .map(mapToVoid())
+            .toVoid()
     }
 }
 
 fileprivate extension TransportRepositoryImpl {
-    fileprivate func mapToVoid() -> ((Any) -> Void) {
-        return { _ in
-            return ()
-        }
-    }
-    
     fileprivate func mapDataToNowPlaying(for room: Room) -> (([String: String], [String: String]) throws -> Track?) {
         return { positionInfoResult, mediaInfoResult in
             guard let track = NowPlayingTrackFactory.create(room: room.ip, positionInfo: positionInfoResult, mediaInfo: mediaInfoResult) else {

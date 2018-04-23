@@ -49,17 +49,20 @@ open class SonosInteractor {
         return SonosInteractor
             .getActiveGroup()
             .flatMap(ignoreNil())
-            .flatMap { (group) -> Observable<(TransportState, MusicService)> in
+            .flatMap({ (group) -> Observable<(TransportState, MusicService)> in
                 return SonosInteractor.getTransportState(group)
-            }
+            })
+            .distinctUntilChanged({ (lhs, rhs) -> Bool in
+                return lhs.0 == rhs.0 && lhs.1 == rhs.1
+            })
     }
     
-    static public func setActiveTransport(state: TransportState) -> Observable<Void> {
+    static public func setActiveTransport(state: TransportState) -> Observable<TransportState> {
         return SonosInteractor
             .getActiveGroup()
             .take(1)
             .map(requiresGroup())
-            .flatMap { (group) -> Observable<Void> in
+            .flatMap { (group) -> Observable<TransportState> in
                 return SonosInteractor.setTransport(state: state, for: group)
             }
     }
@@ -88,48 +91,72 @@ open class SonosInteractor {
         return SonosInteractor
             .getActiveTrack()
             .flatMap(ignoreNil())
-            .flatMap { (track) -> Observable<Data?> in
+            .flatMap({ (track) -> Observable<Data?> in
                 return SonosInteractor.getTrackImage(track)
-            }
+            })
+            .distinctUntilChanged()
     }
     
     static public func getActiveGroupProgress() -> Observable<GroupProgress> {
         return SonosInteractor
             .getActiveGroup()
             .flatMap(ignoreNil())
-            .flatMap { (group) -> Observable<GroupProgress> in
+            .flatMap({ (group) -> Observable<GroupProgress> in
                 return GetGroupProgressInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
                     .get(values: GetGroupProgressValues(group: group))
-            }
+            })
+            .distinctUntilChanged()
     }
     
     static public func getActiveGroupQueue() -> Observable<[Track]> {
         return SonosInteractor
             .getActiveGroup()
             .flatMap(ignoreNil())
-            .flatMap { (group) -> Observable<[Track]> in
+            .flatMap({ (group) -> Observable<[Track]> in
                 return GetGroupQueueInteractor(contentDirectoryRepository: RepositoryInjection.provideContentDirectoryRepository())
                     .get(values: GetGroupQueueValues(group: group))
-            }
+            })
+            .distinctUntilChanged()
     }
         
     static public func getActiveGroupVolume() -> Observable<Int> {
         return SonosInteractor
             .getActiveGroup()
             .flatMap(ignoreNil())
-            .flatMap { (group) -> Observable<Int> in
+            .flatMap({ (group) -> Observable<Int> in
                 return SonosInteractor.getVolume(group)
-            }
+            })
+            .distinctUntilChanged()
     }
     
-    static public func setActiveGroup(volume: Int) -> Observable<Void> {
+    static public func setActiveGroup(volume: Int) -> Observable<Int> {
         return SonosInteractor
             .getActiveGroup()
             .take(1)
             .map(requiresGroup())
-            .flatMap { (group) -> Observable<Void> in
+            .flatMap { (group) -> Observable<Int> in
                 SonosInteractor.set(volume: volume, for: group)
             }
+    }
+    
+    static public func setActive(mute enabled: Bool) -> Observable<Bool> {
+        return SonosInteractor
+            .getActiveGroup()
+            .take(1)
+            .map(requiresGroup())
+            .flatMap { (group) -> Observable<Bool> in
+                return group.set(mute: enabled)
+        }
+    }
+    
+    static public func getActiveMute() -> Observable<Bool> {
+        return SonosInteractor
+            .getActiveGroup()
+            .flatMap(ignoreNil())
+            .flatMap({ (group) -> Observable<Bool> in
+                return group.getMute()
+            })
+            .distinctUntilChanged()
     }
     
     /* Group */
@@ -150,12 +177,12 @@ open class SonosInteractor {
             .distinctUntilChanged()
         
         return Observable.combineLatest(stateObservable, serviceObservable, resultSelector: ({ ($0, $1) }))
-        
     }
     
-    static public func setTransport(state: TransportState, for group: Group) -> Observable<Void> {
+    static public func setTransport(state: TransportState, for group: Group) -> Observable<TransportState> {
         return SetTransportStateInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
             .get(values: SetTransportStateValues(group: group, state: state))
+            .map({ _ in return state })
     }
     
     static public func setNextTrack(_ group: Group) -> Observable<Void> {
@@ -173,9 +200,22 @@ open class SonosInteractor {
             .get(values: GetVolumeValues(group: group))
     }
     
-    static public func set(volume: Int, for group: Group) -> Observable<Void> {
+    static public func set(volume: Int, for group: Group) -> Observable<Int> {
         return SetVolumeInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
             .get(values: SetVolumeValues(group: group, volume: volume))
+            .map({ _ in return volume })
+    }
+    
+    /* Room */
+    static public func getMute(for room: Room) -> Observable<Bool> {
+        return GetMuteInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
+            .get(values: GetMuteValues(room: room))
+    }
+    
+    static public func set(mute enabled: Bool, for room: Room) -> Observable<Bool> {
+        return SetMuteInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
+            .get(values: SetMuteValues(room: room, enabled: enabled))
+            .map({ _ in return enabled })
     }
     
     /* Track */
