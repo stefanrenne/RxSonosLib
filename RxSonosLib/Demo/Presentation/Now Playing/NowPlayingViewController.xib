@@ -18,6 +18,7 @@
                 <outlet property="groupNameLabel" destination="TQh-g2-wDa" id="KYe-Nv-ljK"/>
                 <outlet property="groupTrackDescription" destination="cEo-0s-MgY" id="NPv-bL-xqH"/>
                 <outlet property="groupTrackTitle" destination="2CJ-ll-aAb" id="8wV-Vv-kgs"/>
+                <outlet property="muteButton" destination="Q31-F1-sx5" id="nrk-dt-fA8"/>
                 <outlet property="progressTime" destination="rdG-bp-ml4" id="kiS-XQ-0WW"/>
                 <outlet property="progressView" destination="HOF-gU-ugu" id="WNf-0I-9lL"/>
                 <outlet property="remainingTime" destination="oHU-J0-iCP" id="gdc-wW-Kzt"/>
@@ -199,9 +200,6 @@
                             </constraints>
                             <state key="normal" image="icon_volume"/>
                             <state key="selected" image="icon_mute"/>
-                            <connections>
-                                <action selector="muteAction:" destination="-1" eventType="touchUpInside" id="qUT-ql-LpM"/>
-                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9y-Ds-O6X">
                             <rect key="frame" x="325" y="0.0" width="30" height="30"/>
