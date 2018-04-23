@@ -25,4 +25,8 @@ protocol RenderingControlRepository {
     
     func setStop(group: Group) -> Observable<Void>
     
+    func setMute(room: Room, enabled: Bool) -> Observable<Void>
+    
+    func getMute(room: Room) -> Observable<Bool>
+    
 }

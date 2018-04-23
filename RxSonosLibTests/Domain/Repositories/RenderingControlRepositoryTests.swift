@@ -97,4 +97,57 @@ class RenderingControlRepositoryTests: XCTestCase {
             .toArray())
     }
     
+    func testItCanMuteTheARoom() {
+        
+        stub(soap(call: .setMute(true)), soapXml(""))
+        
+        XCTAssertNoThrow(try renderingControlRepository
+            .setMute(room: firstRoom(), enabled: true)
+            .toBlocking()
+            .toArray())
+    }
+    
+    func testItCanUnMuteTheARoom() {
+        
+        stub(soap(call: .setMute(false)), soapXml(""))
+        
+        XCTAssertNoThrow(try renderingControlRepository
+            .setMute(room: firstRoom(), enabled: false)
+            .toBlocking()
+            .toArray())
+    }
+    
+    func testItCantGetTheMuteStateOfARoom() {
+        
+        stub(soap(call: .getMute), soapXml(""))
+        
+        XCTAssertThrowsError(try renderingControlRepository.getMute(room: firstRoom()).toBlocking().toArray()) { error in
+            XCTAssertEqual(error.localizedDescription, NSError.sonosLibNoDataError().localizedDescription)
+        }
+    }
+    
+    func testItCanGetUnMutedStateOfARoom() {
+        
+        stub(soap(call: .getMute), soapXml("<CurrentMute>0</CurrentMute>"))
+        
+        let mute = try! renderingControlRepository
+            .getMute(room: firstRoom())
+            .toBlocking()
+            .first()!
+        
+        XCTAssertFalse(mute)
+    }
+    
+    func testItCanGetMutedStateOfARoom() {
+        
+        stub(soap(call: .getMute), soapXml("<CurrentMute>1</CurrentMute>"))
+        
+        let mute = try! renderingControlRepository
+            .getMute(room: firstRoom())
+            .toBlocking()
+            .first()!
+        
+        XCTAssertTrue(mute)
+    }
+    
 }

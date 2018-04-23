@@ -68,4 +68,10 @@ open class SonosSettings {
      */
     public var renewGroupVolumeTimer: RxTimeInterval = 1
     
+    /**
+     * The number of seconds to wait before the new mute state is retrieved
+     * The result will only be onNext'd on the Observer if it is different from the previous result
+     */
+    public var renewRoomMuteTimer: RxTimeInterval = 2
+    
 }

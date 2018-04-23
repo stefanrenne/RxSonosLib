@@ -46,4 +46,16 @@ class FakeRenderingControlRepositoryImpl: RenderingControlRepository {
         return Observable.just(())
     }
     
+    var numberSetMuteCalls = 0
+    func setMute(room: Room, enabled: Bool) -> Observable<Void> {
+        numberSetMuteCalls += 1
+        return Observable.just(())
+    }
+    
+    var numberGetMuteCalls = 0
+    func getMute(room: Room) -> Observable<Bool> {
+        numberGetMuteCalls += 1
+        return Observable.just(true)
+    }
+    
 }

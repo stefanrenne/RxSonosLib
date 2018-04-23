@@ -21,6 +21,7 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet var progressTime: UILabel!
     @IBOutlet var remainingTime: UILabel!
     @IBOutlet var volumeSlider: UISlider!
+    @IBOutlet var muteButton: UIButton!
     @IBOutlet var actionButton: ActionButton!
     
     private let disposeBag = DisposeBag()
@@ -31,6 +32,7 @@ class NowPlayingViewController: UIViewController {
         self.setupActiveGroupObservable()
         self.setupNowPlayingObservable()
         self.setupVolumeObservables()
+        self.setupMuteObservable()
         self.setupTransportStateObservable()
         self.setupGroupProgressObservable()
         self.setupImageObservable()
@@ -78,9 +80,35 @@ class NowPlayingViewController: UIViewController {
             .throttle(0.5, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .filter({ _ in return self.volumeSlider.isTouchInside })
-            .flatMap({ (newVolume) -> Observable<Void> in
+            .flatMap({ (newVolume) -> Observable<Int> in
                 return SonosInteractor
                     .setActiveGroup(volume: Int(newVolume * 100.0))
+            })
+            .subscribe(onError: { (error) in
+                print(error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    fileprivate func setupMuteObservable() {
+        SonosInteractor
+            .getActiveMute()
+            .subscribe(onNext: { [weak self] (muted) in
+                self?.muteButton.isSelected = muted
+            })
+            .disposed(by: disposeBag)
+        
+        muteButton
+            .rx
+            .controlEvent(UIControlEvents.touchUpInside)
+            .filter({ _ in return self.muteButton.isTouchInside })
+            .map({ (_) -> Bool in
+                return !self.muteButton.isSelected
+            })
+            .flatMap({ [weak self] (isMuted) -> Observable<Bool> in
+                self?.muteButton.isSelected = isMuted
+                return SonosInteractor
+                    .setActive(mute: isMuted)
             })
             .subscribe(onError: { (error) in
                 print(error.localizedDescription)
@@ -97,7 +125,7 @@ class NowPlayingViewController: UIViewController {
         actionButton
             .data
             .filter({ _ in return self.actionButton.isTouchInside })
-            .flatMap({ (newState, _) -> Observable<Void> in
+            .flatMap({ (newState, _) -> Observable<TransportState> in
                 return SonosInteractor
                     .setActiveTransport(state: newState)
             })
@@ -141,9 +169,6 @@ class NowPlayingViewController: UIViewController {
     
     @IBAction func closeAction(_ sender: UIButton) {
         router?.close()
-    }
-    
-    @IBAction func muteAction(_ sender: UIButton) {
     }
     
     @IBAction func queueAction(_ sender: UIButton) {

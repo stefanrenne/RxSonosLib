@@ -170,7 +170,7 @@ class SonosInteractorTests: XCTestCase {
         
         let newVolume1 = try! SonosInteractor
             .setActiveGroup(volume: 20)
-            .map({ return mock.lastVolume })
+            .map({ _ in return mock.lastVolume })
             .toBlocking()
             .first()!
         
@@ -185,7 +185,7 @@ class SonosInteractorTests: XCTestCase {
         
         let newState1 = try! SonosInteractor
             .setActiveTransport(state: TransportState.paused)
-            .map({ return mock.activeState })
+            .map({ _ in return mock.activeState })
             .toBlocking()
             .first()!
         
@@ -193,7 +193,7 @@ class SonosInteractorTests: XCTestCase {
         
         let newState2 = try! SonosInteractor
             .setActiveTransport(state: TransportState.stopped)
-            .map({ return mock.activeState })
+            .map({ _ in return mock.activeState })
             .toBlocking()
             .first()!
         

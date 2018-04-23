@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 open class Room {
     
@@ -24,6 +25,16 @@ open class Room {
         self.deviceDescription = deviceDescription
     }
     
+}
+
+extension Room {
+    public func getMute() -> Observable<Bool> {
+        return SonosInteractor.getMute(for: self)
+    }
+    
+    public func set(mute enabled: Bool) -> Observable<Bool> {
+        return SonosInteractor.set(mute: enabled, for: self)
+    }
 }
 
 extension Room: Equatable {

@@ -107,7 +107,7 @@ class GroupTests: XCTestCase {
         let mock = RepositoryInjection.shared.renderingControlRepository as! FakeRenderingControlRepositoryImpl
         let group = Group(master: firstRoom(), slaves: [])
         let newState = try! group.set(transportState: .playing)
-            .map({ return mock.activeState })
+            .map({ _ in return mock.activeState })
             .toBlocking()
             .first()!
         XCTAssertEqual(newState, TransportState.playing)
@@ -124,7 +124,7 @@ class GroupTests: XCTestCase {
         let mock = RepositoryInjection.shared.renderingControlRepository as! FakeRenderingControlRepositoryImpl
         let group = Group(master: firstRoom(), slaves: [])
         let newVolume = try! group.set(volume: 22)
-            .map({ return mock.lastVolume })
+            .map({ _ in return mock.lastVolume })
             .toBlocking()
             .first()!
         XCTAssertEqual(newVolume, 22)
@@ -154,6 +154,39 @@ class GroupTests: XCTestCase {
             .toBlocking()
             .first()!
         XCTAssertEqual(counter, 1)
+    }
+    
+    func testItCanGetTheMute() {
+        let mock = RepositoryInjection.shared.renderingControlRepository as! FakeRenderingControlRepositoryImpl
+        mock.numberSetMuteCalls = 0
+        mock.numberGetMuteCalls = 0
+        
+        let group = Group(master: firstRoom(), slaves: [secondRoom()])
+        let muted = try! group
+            .getMute()
+            .toBlocking()
+            .first()!
+        
+        XCTAssertTrue(muted)
+        XCTAssertEqual(mock.numberSetMuteCalls, 0)
+        XCTAssertEqual(mock.numberGetMuteCalls, 1)
+    }
+    
+    func testItSanGetTheMute() {
+        let mock = RepositoryInjection.shared.renderingControlRepository as! FakeRenderingControlRepositoryImpl
+        mock.numberSetMuteCalls = 0
+        mock.numberGetMuteCalls = 0
+        
+        let group = Group(master: firstRoom(), slaves: [secondRoom()])
+        let counter = try! group
+            .set(mute: true)
+            .map({ _ in
+                return mock.numberSetMuteCalls
+            })
+            .toBlocking()
+            .first()!
+        XCTAssertEqual(counter, 2)
+        XCTAssertEqual(mock.numberGetMuteCalls, 0)
     }
     
 }

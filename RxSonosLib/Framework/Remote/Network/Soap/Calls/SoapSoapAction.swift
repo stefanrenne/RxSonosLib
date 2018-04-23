@@ -28,8 +28,7 @@ enum SoapSoapAction {
 //    case favorites, localFiles
     
     /* RenderingControl */
-    case getVolume, setVolume(Int)
-//    case getMute, enableMute, disableMute
+    case getVolume, setVolume(Int), getMute, setMute(Bool)
     
     /* DeviceProperties */
 //    case getHouseholdID, getZoneInfo
@@ -51,8 +50,7 @@ enum SoapSoapAction {
         //        case .favorites, .localFiles
         case .browse:
             return .contentDirectory
-        case .getVolume, .setVolume:
-//        case .getMute, .enableMute, .disableMute:
+        case .getVolume, .setVolume, .getMute, .setMute:
             return .renderingControl
 //        case .getHouseholdID, .getZoneInfo:
 //            return .deviceProperties
@@ -109,10 +107,10 @@ enum SoapSoapAction {
             return "GetVolume"
         case .setVolume:
             return "SetVolume"
-//        case .getMute:
-//            return "GetMute"
-//        case .enableMute, .disableMute:
-//            return "SetMute"
+        case .getMute:
+            return "GetMute"
+        case .setMute:
+            return "SetMute"
 //        case .getHouseholdID:
 //            return "GetHouseholdID"
 //        case .getZoneInfo:
@@ -124,8 +122,8 @@ enum SoapSoapAction {
     
     var arguments: String? {
         switch self {
-        /*, .removeAllTracksFromQueue, .getMute, .becomeCoordinatorOfStandaloneGroup*/
-        case .positionInfo, .transportInfo, .mediaInfo, .getVolume:
+        /*, .removeAllTracksFromQueue, .becomeCoordinatorOfStandaloneGroup*/
+        case .positionInfo, .transportInfo, .mediaInfo, .getVolume, .getMute:
             return "<InstanceID>0</InstanceID><Channel>Master</Channel>"
         case .play, .pause, .stop, .previous, .next:
             return "<InstanceID>0</InstanceID><Speed>1</Speed>"
@@ -150,11 +148,9 @@ enum SoapSoapAction {
         case .setVolume(let amount):
             let cleanAmount = max(min(amount, 100), 0)
             return "<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredVolume>\(cleanAmount)</DesiredVolume>"
-        /*case .enableMute:
-            return "<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredMute>1</DesiredMute>"
-        case .disableMute:
-            return "<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredMute>0</DesiredMute>"
-        case .getCustomerID:
+        case .setMute(let enable):
+            return "<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredMute>\(enable ? 1: 0)</DesiredMute>"
+        /*case .getCustomerID:
             return "<VariableName>R_CustomerID</VariableName>"
         case .getRoomSerial:
             return "<VariableName>R_TrialZPSerial</VariableName>"

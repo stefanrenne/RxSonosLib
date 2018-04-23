@@ -25,41 +25,47 @@ class RenderingControlRepositoryImpl: RenderingControlRepository {
     func set(volume: Int, for room: Room) -> Observable<Void> {
         return SetVolumeNetwork(room: room, volume: volume)
             .executeSoapRequest()
-            .map(mapToVoid())
+            .toVoid()
     }
     
     func set(volume: Int, for group: Group) -> Observable<Void> {
         let roomObservables = ([group.master] + group.slaves).map({ set(volume: volume, for: $0) })
-        return Observable.zip(roomObservables).map(mapToVoid())
+        return Observable.zip(roomObservables).toVoid()
     }
     
     func setPlay(group: Group) -> Observable<Void> {
         return SetPlayNetwork(room: group.master)
             .executeSoapRequest()
-            .map(mapToVoid())
+            .toVoid()
     }
     
     func setPause(group: Group) -> Observable<Void> {
         return SetPauseNetwork(room: group.master)
             .executeSoapRequest()
-            .map(mapToVoid())
+            .toVoid()
     }
     
     func setStop(group: Group) -> Observable<Void> {
         return SetStopNetwork(room: group.master)
             .executeSoapRequest()
-            .map(mapToVoid())
+            .toVoid()
+    }
+    
+    func setMute(room: Room, enabled: Bool) -> Observable<Void> {
+        return SetMuteNetwork(room: room, enabled: enabled)
+            .executeSoapRequest()
+            .toVoid()
+    }
+    
+    func getMute(room: Room) -> Observable<Bool> {
+        return GetMuteNetwork(room: room)
+            .executeSoapRequest()
+            .map(self.mapDataToMute())
     }
     
 }
 
 extension RenderingControlRepositoryImpl {
-    fileprivate func mapToVoid() -> ((Any) -> Void) {
-        return { _ in
-            return ()
-        }
-    }
-    
     fileprivate func mapDataToVolume() -> (([String: String]) -> Int) {
         return { data in
             guard let volumeString = data["CurrentVolume"],
@@ -80,5 +86,16 @@ extension RenderingControlRepositoryImpl {
         return { volumes in
             return volumes.reduce(0, +) / volumes.count
         }
+    }
+    
+    fileprivate func mapDataToMute() -> (([String: String]) throws -> Bool) {
+        return { data in
+            guard let muteString = data["CurrentMute"],
+                  let mute = Int(muteString) else {
+                    throw NSError.sonosLibNoDataError()
+            }
+            return (mute == 1)
+        }
+        
     }
 }
