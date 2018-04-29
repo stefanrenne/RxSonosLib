@@ -40,7 +40,8 @@ class RoomsTableViewCell: UITableViewCell {
     }
     
     fileprivate func bindTrackObservable() {
-        group
+        Observable
+            .just(group)
             .getTrack()
             .subscribe(onNext: { [weak self] (track) in
                 self?.bind(track: track)

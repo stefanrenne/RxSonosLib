@@ -30,7 +30,8 @@ class QueueViewController: UIViewController {
         tableView.register(UINib(nibName: String(describing: QueueTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: QueueTableViewCell.identifier)
         
         SonosInteractor
-            .getActiveGroupQueue()
+            .getActiveGroup()
+            .getQueue()
             .do(onNext: { [weak self] (tracks) in
                 self?.queueLabel.text = "\(tracks.count) tracks"
             })

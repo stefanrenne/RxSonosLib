@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-extension Observable {
+extension ObservableType {
     func toVoid() -> Observable<Void> {
         return self.map { (_) -> Void in
             return ()

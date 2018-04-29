@@ -21,7 +21,8 @@ class TrackViewModel {
     }()
     
     lazy var image: Observable<UIImage?> = {
-       return track
+       return Observable
+            .just(track)
             .getImage()
             .catchErrorJustReturn(nil)
             .map({ (data) -> UIImage? in

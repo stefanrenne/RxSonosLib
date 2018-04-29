@@ -37,7 +37,8 @@ class SonosInteractorWithoutGroupsTests: XCTestCase {
     
     func testItCantSetTheVolumeWhenThereAreNoGroups() {
         XCTAssertThrowsError(try SonosInteractor
-            .setActiveGroup(volume: 30)
+            .getActiveGroup()
+            .set(volume: 30)
             .toBlocking()
             .toArray()) { error in
                 XCTAssertEqual(error.localizedDescription, NSError.sonosLibNoGroupError().localizedDescription)

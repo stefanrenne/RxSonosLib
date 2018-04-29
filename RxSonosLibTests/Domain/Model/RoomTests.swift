@@ -40,7 +40,8 @@ class RoomTests: XCTestCase {
         mock.numberGetMuteCalls = 0
         
         let room = firstRoom()
-        let muted = try! room
+        let muted = try! Observable
+            .just(room)
             .getMute()
             .toBlocking()
             .first()!
@@ -56,7 +57,8 @@ class RoomTests: XCTestCase {
         mock.numberGetMuteCalls = 0
         
         let room = firstRoom()
-        let counter = try! room
+        let counter = try! Observable
+            .just(room)
             .set(mute: true)
             .map({ _ in
                 return mock.numberSetMuteCalls

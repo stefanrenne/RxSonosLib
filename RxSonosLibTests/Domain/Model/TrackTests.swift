@@ -8,6 +8,7 @@
 
 import XCTest
 import RxSSDP
+import RxSwift
 @testable import RxSonosLib
 
 class TrackTests: XCTestCase {
@@ -72,13 +73,20 @@ class TrackTests: XCTestCase {
     }
     
     func testItCanGetTheTrackImage() {
-        let imageData = try! firstSpotifyTrack()
+        let imageData = try! Observable
+            .just(firstSpotifyTrack())
             .getImage()
             .toBlocking()
             .first()!
         
         let expectedData = UIImagePNGRepresentation(UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!)
         XCTAssertEqual(imageData, expectedData)
+    }
+    
+    func testItCantGetTheTrackImageWhenThereIsNoTrack() {
+        XCTAssertThrowsError(try Observable<Track?>.just(nil).requiresTrack().getImage().toBlocking().toArray()) { error in
+            XCTAssertEqual(error.localizedDescription, NSError.sonosLibNoTrackError().localizedDescription)
+        }
     }
     
 }
