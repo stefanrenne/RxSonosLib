@@ -42,70 +42,107 @@ The first version of this project started as a way to understand Sonos better. T
 
 Inspect [SonosInteractor.swift](RxSonosLib/Framework/Domain/Interactors/SonosInteractor.swift) this class is your entry to the library.
 
-The models `Group` & `Track` also contains functions to generate new Observables.
+From here, continue by chaining observerable functions specified in the matching models [Group.swift](RxSonosLib/Framework/Domain/Modal/Group.swift), [Room.swift](RxSonosLib/Framework/Domain/Modal/Room.swift) & [Track.swift](RxSonosLib/Framework/Domain/Modal/Track.swift)
 
 Example:
 
 ```
 SonosInteractor
-.getAllGroups()
-.subscribe(onNext: { (groups) in
-	print("groups: onNext")
+.getActiveGroup()
+.getQueue()
+.subscribe(onNext: { (queue) in
+	print("queue: onNext")
 }, onError: { (error) in
-	print("groups: \(error.localizedDescription)")
+	print("queue: \(error.localizedDescription)")
 }, onCompleted: {
-	print("groups: onCompleted")
+	print("queue: onCompleted")
 }).disposed(by: disposeBag)
 ```
 
-### SonosInteractor Observers
+### Framework entry point
 
-**Groups**
+Start with a static function in the SonosInteractor
 
-- `static func getAllGroups() -> Observable<[Group]>`
+```
+open class SonosInteractor {
 
-**Active group**
+   static func setActive(group: Group)
 
-- `static func setActive(group: Group)`
-- `static func getActiveGroup() -> Observable<Group?> `
-- `static func getActiveTrack() -> Observable<Track?>`
-- `static func getActiveTransportState() -> Observable<(TransportState, MusicService)>`  
-- `static func setActiveTransport(state: TransportState) -> Observable<Void>`
-- `static func getActiveTrackImage() -> Observable<Data?>`  
-- `static func getActiveGroupProgress() -> Observable<GroupProgress>`  
-- `static func getActiveGroupQueue() -> Observable<[Track]>`      
-- `static func getActiveGroupVolume() -> Observable<Int>`  
-- `static func setActiveGroup(volume: Int) -> Observable<Void>`
-- `static func setActiveNextTrack() -> Observable<Void>`
-- `static func setActivePreviousTrack() -> Observable<Void>`
+   static func getActiveGroup() -> Observable<Group>
 
-**Group specific functions**
+	static func getAllGroups() -> Observable<[Group]>
+}
+```
 
-- `static func getTrack(_ group: Group) -> Observable<Track?>`
-- `static func getTransportState(_ group: Group) -> Observable<TransportState>`
-- `static func setTransport(state: TransportState, for group: Group) -> Observable<Void>`
-- `static func getVolume(_ group: Group) -> Observable<Int>`
-- `static func set(volume: Int, for group: Group) -> Observable<Void>`
-- `static func setNextTrack(_ group: Group) -> Observable<Void>`
-- `static func setPreviousTrack(_ group: Group) -> Observable<Void>`
+### Observable chain methods
 
-**Track specific functions**
+The continue with one or multiple chain methods.
 
-- `static func getTrackImage(_ track: Track) -> Observable<Data?>`
+**Methods for an Observable Group:**
 
-### Group object Observers
+```
+extension ObservableType where E == Group {
 
-- `func getTrack() -> Observable<Track?>`
-- `func getTransportState() -> Observable<(TransportState, MusicService)> `
-- `func set(state: TransportState) -> Observable<Void>`
-- `func getVolume() -> Observable<Int>`
-- `func set(volume: Int) -> Observable<Void>`
-- `func setNextTrack() -> Observable<Void>`
-- `func setPreviousTrack() -> Observable<Void>`
+    func getRooms() -> Observable<[Room]>
 
-### Track object Observers
+    func getTrack() -> Observable<Track?>
 
-- `func getImage() -> Observable<Data?>`
+    func getImage() -> Observable<Data?>
+
+    func getProgress() -> Observable<GroupProgress>
+
+    func getQueue() -> Observable<[Track]>
+
+    func getTransportState() -> Observable<(TransportState, MusicService)>
+
+    func set(transportState: TransportState) -> Observable<TransportState>
+
+    func getVolume() -> Observable<Int>
+
+    func set(volume: Int) -> Observable<Int>
+
+    func setNextTrack() -> Observable<Swift.Void>
+
+    func setPreviousTrack() -> Observable<Swift.Void>
+
+    func getMute() -> Observable<[Bool]>
+
+    func set(mute enabled: Bool) -> Observable<[Bool]>
+}
+```
+
+**Methods for an Observable Track:**
+
+```
+extension ObservableType where E == Track {
+
+    func getImage() -> Observable<Data?>
+}
+```
+
+**Methods for an Observable array with Room's:**
+
+```
+extension ObservableType where E == [Room] {
+
+    func getMute() -> Observable<[Bool]>
+
+    func set(mute enabled: Bool) -> Observable<[Bool]>
+}
+
+```
+
+**Methods for an Observable Room:**
+
+```
+extension ObservableType where E == Room {
+
+    func getMute() -> Observable<Bool>
+
+    func set(mute enabled: Bool) -> Observable<Bool>
+}
+```
+
 
 ### Modify settings
     
@@ -113,7 +150,7 @@ Inspect [SonosSettings.swift](RxSonosLib/Framework/Common/SonosSettings.swift), 
     
 #### More demos?
 
-Clone the repository, open `RxSonosLib.xcworkspace` and build the demo project
+Clone the repository, open `xcworkspace` and build the demo project
 
 ## Development Info
 Please document code changes in unit tests and make sure all tests are green.
