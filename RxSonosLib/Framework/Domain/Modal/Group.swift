@@ -66,17 +66,6 @@ extension Group {
     }
 }
 
-extension ObservableType where E == Group? {
-    internal func requiresGroup() -> Observable<Group> {
-        return self.map({ (optionalGroup) -> Group in
-            guard let group = optionalGroup else {
-                throw NSError.sonosLibNoGroupError()
-            }
-            return group
-        })
-    }
-}
-
 extension ObservableType where E == Group {
     public func getRooms() -> Observable<[Room]> {
         return
@@ -87,16 +76,27 @@ extension ObservableType where E == Group {
             .distinctUntilChanged()
     }
     
-    public func getTrack() -> Observable<Track> {
+    public func getTrack() -> Observable<Track?> {
         return
             self
             .flatMap({ (group) -> Observable<Track?> in
                 return group
                     .activeTrack
                     .asObserver()
-                    .skip(1)
             })
-            .requiresTrack()
+            .distinctUntilChanged()
+    }
+    
+    public func getImage() -> Observable<Data?> {
+        return
+            self
+            .getTrack()
+            .flatMap(ignoreNil())
+            .flatMap({ (track) -> Observable<Data?> in
+                return Observable
+                    .just(track)
+                    .getImage()
+            })
             .distinctUntilChanged()
     }
     

@@ -20,6 +20,10 @@ extension XCTestCase {
         return Group(master: firstRoom(), slaves: [secondRoom()])
     }
     
+    func thirdGroup() -> Group {
+        return Group(master: thirdRoom(), slaves: [])
+    }
+    
     /* Rooms */
     func firstRoom() -> Room {        
         return Room(ssdpDevice: firstDevice(), deviceDescription: firstDescription())

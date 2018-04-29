@@ -83,12 +83,6 @@ class TrackTests: XCTestCase {
         XCTAssertEqual(imageData, expectedData)
     }
     
-    func testItCantGetTheTrackImageWhenThereIsNoTrack() {
-        XCTAssertThrowsError(try Observable<Track?>.just(nil).requiresTrack().getImage().toBlocking().toArray()) { error in
-            XCTAssertEqual(error.localizedDescription, NSError.sonosLibNoTrackError().localizedDescription)
-        }
-    }
-    
 }
 
 fileprivate extension TrackTests {

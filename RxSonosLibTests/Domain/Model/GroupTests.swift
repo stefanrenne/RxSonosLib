@@ -83,6 +83,7 @@ class GroupTests: XCTestCase {
         let group = Observable.just(firstGroup())
         let track = try! group
             .getTrack()
+            .skip(1)
             .toBlocking()
             .first()! as! SpotifyTrack
         
@@ -95,6 +96,17 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(track.artist, "Papa Roach")
         XCTAssertEqual(track.album, "The Connection")
         XCTAssertEqual(track.description(), [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
+    }
+    
+    func testItCanGetTheImage() {
+        let group = Observable.just(firstGroup())
+        let imageData = try! group
+            .getImage()
+            .toBlocking()
+            .first()!
+        
+        let expectedData = UIImagePNGRepresentation(UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!)
+        XCTAssertEqual(imageData, expectedData)
     }
     
     func testItCanGetTheTransportState() {
@@ -169,8 +181,8 @@ class GroupTests: XCTestCase {
             .first()!
         
         XCTAssertEqual(muted, [true, true])
-        XCTAssertEqual(mock.numberSetMuteCalls, 0)
         XCTAssertEqual(mock.numberGetMuteCalls, 2)
+        XCTAssertEqual(mock.numberSetMuteCalls, 0)
     }
     
     func testItCanSetTheMute() {

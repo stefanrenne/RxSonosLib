@@ -100,10 +100,12 @@ class TabBarViewController: UIViewController {
             .getActiveGroup()
             .getTrack()
             .subscribe(onNext: { [weak self] (track) in
+                guard let track = track else {
+                    self?.nowPlayingTitleLabel.text = nil
+                    return
+                }
                 let viewModel = TrackViewModel(track: track)
                 self?.nowPlayingTitleLabel.attributedText = viewModel.trackGroupDescription
-            }, onError: { [weak self] (_) in
-                self?.nowPlayingTitleLabel.text = nil
             })
             .disposed(by: disposeBag)
     }

@@ -45,9 +45,6 @@ class RoomsTableViewCell: UITableViewCell {
             .getTrack()
             .subscribe(onNext: { [weak self] (track) in
                 self?.bind(track: track)
-            }, onError: { [weak self] (error) in
-                self?.groupDescriptionLabel.text = nil
-                self?.groupImageView.image = nil
             })
             .disposed(by: disposeBag)
     }
@@ -55,7 +52,7 @@ class RoomsTableViewCell: UITableViewCell {
     fileprivate func bind(track: Track?) {
         guard let track = track else {
             self.groupDescriptionLabel.text = "[No Track]"
-            groupImageView.image = nil
+            self.groupImageView.image = nil
             return
         }
         let viewModel = TrackViewModel(track: track)

@@ -15,4 +15,11 @@ extension ObservableType {
             return ()
         }
     }
+
+}
+
+func ignoreNil<T>() -> ((T?) -> Observable<T>) {
+    return { object in
+        return object.map(Observable.just) ?? Observable.empty()
+    }
 }

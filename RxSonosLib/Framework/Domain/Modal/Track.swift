@@ -121,17 +121,6 @@ extension Track: Equatable {
     }
 }
 
-extension ObservableType where E == Track? {
-    public func requiresTrack() -> Observable<Track> {
-        return self.map({ (optionalTrack) -> Track in
-            guard let track = optionalTrack else {
-                throw NSError.sonosLibNoTrackError()
-            }
-            return track
-        })
-    }
-}
-
 extension ObservableType where E == Track {
     public func getImage() -> Observable<Data?> {
         return

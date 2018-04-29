@@ -30,7 +30,7 @@ open class SonosInteractor {
         return shared
             .activeGroup
             .asObserver()
-            .requiresGroup()
+            .flatMap(ignoreNil())
     }
     
     static public func getAllGroups() -> Observable<[Group]> {

@@ -54,12 +54,14 @@ class NowPlayingViewController: UIViewController {
             .getActiveGroup()
             .getTrack()
             .subscribe(onNext: { [weak self] (track) in
+                guard let track = track else {
+                    self?.groupTrackTitle.text = nil
+                    self?.groupTrackDescription.text = nil
+                    return
+                }
                 let viewModel = TrackViewModel(track: track)
                 self?.groupTrackTitle.text = viewModel.trackTitle
                 self?.groupTrackDescription.attributedText = viewModel.trackDescription
-            }, onError: { [weak self] (_) in
-                self?.groupTrackTitle.text = nil
-                self?.groupTrackDescription.text = nil
             })
             .disposed(by: disposeBag)
     }
@@ -156,7 +158,6 @@ class NowPlayingViewController: UIViewController {
     fileprivate func setupImageObservable() {
         SonosInteractor
             .getActiveGroup()
-            .getTrack()
             .getImage()
             .catchErrorJustReturn(nil)
             .map({ (data) -> UIImage? in

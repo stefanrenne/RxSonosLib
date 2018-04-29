@@ -56,6 +56,36 @@ class SonosInteractorTests: XCTestCase {
         XCTAssertEqual(groups[4].slaves.count, 0)
     }
     
+    func testItCanAutomaticallySetTheActiveGroupToTheFirstFoundGroup() {
+        
+        reset()
+        SonosInteractor.shared.activeGroup.onNext(nil)
+        SonosInteractor.shared.allGroups.onNext([firstGroup(), secondGroup()])
+        
+        XCTAssertEqual(try! SonosInteractor.shared.activeGroup.value()!, firstGroup())
+    }
+    
+    func testItCanAutomaticallySetTheActiveGroupWhenTheOldOneDoesntExist() {
+        
+        reset()
+        SonosInteractor.shared.activeGroup.onNext(firstGroup())
+        SonosInteractor.shared.allGroups.onNext([thirdGroup()])
+        
+        XCTAssertEqual(try! SonosInteractor.shared.activeGroup.value()!, thirdGroup())
+    }
+    
+    func testItCanGetTheActiveGroup() {
+        
+        reset()
+        SonosInteractor.shared.allGroups.onNext([firstGroup(), secondGroup()])
+        SonosInteractor.shared.activeGroup.onNext(firstGroup())
+        
+        XCTAssertEqual(try! SonosInteractor.getActiveGroup().toBlocking().first(), firstGroup())
+        
+        SonosInteractor.shared.activeGroup.onNext(secondGroup())
+        XCTAssertEqual(try! SonosInteractor.getActiveGroup().toBlocking().first(), secondGroup())
+    }
+    
     func testItCanSetTheActiveGroup() {
         
         reset()
