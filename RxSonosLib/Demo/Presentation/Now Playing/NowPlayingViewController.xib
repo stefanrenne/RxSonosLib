@@ -66,10 +66,13 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="yqQ-49-ufp" firstAttribute="leading" secondItem="tZ9-sH-zG7" secondAttribute="leading" constant="20" id="KuD-xy-RQt"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yqQ-49-ufp" secondAttribute="trailing" constant="20" id="Drs-Jh-Dr2"/>
+                        <constraint firstItem="yqQ-49-ufp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tZ9-sH-zG7" secondAttribute="leading" constant="20" id="KuD-xy-RQt"/>
                         <constraint firstAttribute="bottom" secondItem="yqQ-49-ufp" secondAttribute="bottom" id="XZh-Jx-bEq"/>
-                        <constraint firstAttribute="trailing" secondItem="yqQ-49-ufp" secondAttribute="trailing" constant="20" id="bTa-bh-nWB"/>
+                        <constraint firstAttribute="trailing" secondItem="yqQ-49-ufp" secondAttribute="trailing" priority="750" constant="20" id="bTa-bh-nWB"/>
+                        <constraint firstItem="yqQ-49-ufp" firstAttribute="centerX" secondItem="tZ9-sH-zG7" secondAttribute="centerX" id="dGY-DV-ulJ"/>
                         <constraint firstItem="yqQ-49-ufp" firstAttribute="top" secondItem="tZ9-sH-zG7" secondAttribute="top" id="fd6-I1-crN"/>
+                        <constraint firstItem="yqQ-49-ufp" firstAttribute="leading" secondItem="tZ9-sH-zG7" secondAttribute="leading" priority="750" constant="20" id="gc2-fe-zx2"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q5j-X2-2as" userLabel="Group Progress View">
@@ -77,17 +80,26 @@
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdG-bp-ml4">
                             <rect key="frame" x="20" y="7" width="54" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18" id="OFe-B0-hjf"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                             <color key="textColor" red="0.5490196078431373" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HOF-gU-ugu">
                             <rect key="frame" x="20" y="0.0" width="335" height="2"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="2" id="xsz-0O-IVB"/>
+                            </constraints>
                             <color key="progressTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="trackTintColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </progressView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHU-J0-iCP">
                             <rect key="frame" x="301" y="7" width="54" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18" id="fhT-Gr-taw"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                             <color key="textColor" red="0.54901960780000003" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -111,12 +123,18 @@
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2CJ-ll-aAb">
                             <rect key="frame" x="20" y="0.0" width="335" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="D4D-9p-cWg"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEo-0s-MgY">
                             <rect key="frame" x="20" y="29" width="335" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="GNd-vE-NXe"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                             <color key="textColor" red="0.54117647059999996" green="0.5450980392" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -154,7 +172,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="lmW-uW-ClL" secondAttribute="height" multiplier="1:1" id="5Uh-HQ-Ve3"/>
-                                <constraint firstAttribute="width" constant="40" id="vTv-Px-MlF"/>
+                                <constraint firstAttribute="height" constant="40" id="Dmm-Ie-waP"/>
                             </constraints>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" image="icon_play_large"/>
@@ -177,6 +195,8 @@
                     <constraints>
                         <constraint firstItem="Jyl-qF-r6J" firstAttribute="centerY" secondItem="oOc-Wt-lnm" secondAttribute="centerY" id="4Mi-KO-yqO"/>
                         <constraint firstItem="lmW-uW-ClL" firstAttribute="centerX" secondItem="oOc-Wt-lnm" secondAttribute="centerX" id="4zb-zs-DEy"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="8Fp-4Z-qXz"/>
+                        <constraint firstAttribute="height" priority="750" constant="79" id="EGA-zo-2fD"/>
                         <constraint firstItem="lmW-uW-ClL" firstAttribute="centerY" secondItem="oOc-Wt-lnm" secondAttribute="centerY" id="F2r-d5-gmt"/>
                         <constraint firstItem="rTu-XZ-ILC" firstAttribute="centerY" secondItem="oOc-Wt-lnm" secondAttribute="centerY" id="F3w-aA-Wb7"/>
                         <constraint firstItem="Jyl-qF-r6J" firstAttribute="leading" secondItem="lmW-uW-ClL" secondAttribute="trailing" constant="40" id="FdR-Hd-U3e"/>

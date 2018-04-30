@@ -27,13 +27,53 @@ open class Room {
     
 }
 
-extension Room {
+extension ObservableType where E == [Room] {
+    public func getMute() -> Observable<[Bool]> {
+        return
+            self
+            .foreachRoom(perform: { (room) -> Observable<Bool> in
+                return Observable.just(room).getMute()
+            })
+    }
+    
+    public func set(mute enabled: Bool) -> Observable<[Bool]> {
+        return
+            self
+            .take(1)
+            .foreachRoom(perform: { (room) -> Observable<Bool> in
+                return SonosInteractor.set(mute: enabled, for: room)
+            })
+    }
+    
+    internal func foreachRoom<T>(perform: @escaping ((_: Room) -> (Observable<T>))) -> Observable<[T]> {
+        return
+            self
+            .flatMap({ (rooms) -> Observable<[T]> in
+                let collection = rooms.map({ (room) -> Observable<T> in
+                    return perform(room)
+                })
+                return Observable.zip(collection)
+            })
+    }
+    
+}
+
+extension ObservableType where E == Room {
     public func getMute() -> Observable<Bool> {
-        return SonosInteractor.getMute(for: self)
+        return
+            self
+            .flatMap({ (room) -> Observable<Bool> in
+                return SonosInteractor.getMute(for: room)
+            })
     }
     
     public func set(mute enabled: Bool) -> Observable<Bool> {
-        return SonosInteractor.set(mute: enabled, for: self)
+        return
+            self
+            .take(1)
+            .flatMap({ (room) -> Observable<Bool> in
+                return SonosInteractor.set(mute: enabled, for: room)
+            })
     }
 }
 

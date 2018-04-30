@@ -115,16 +115,19 @@ open class Track {
     
 }
 
-extension Track {
-    
-    public func getImage() -> Observable<Data?> {
-        return SonosInteractor.getTrackImage(self)
-    }
-    
-}
-
 extension Track: Equatable {
     public static func ==(lhs: Track, rhs: Track) -> Bool {
         return lhs.uri == rhs.uri
     }
+}
+
+extension ObservableType where E == Track {
+    public func getImage() -> Observable<Data?> {
+        return
+            self
+            .flatMap({ (track) -> Observable<Data?> in
+                return SonosInteractor.getTrackImage(track)
+            })
+    }
+    
 }

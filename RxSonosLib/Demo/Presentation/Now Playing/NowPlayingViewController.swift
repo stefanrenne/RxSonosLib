@@ -42,7 +42,7 @@ class NowPlayingViewController: UIViewController {
         SonosInteractor
             .getActiveGroup()
             .subscribe(onNext: { [weak self] (group) in
-                self?.groupNameLabel.text = group?.name
+                self?.groupNameLabel.text = group.name
             })
             .disposed(by: disposeBag)
     }
@@ -51,7 +51,8 @@ class NowPlayingViewController: UIViewController {
         self.resetTrack()
         
         SonosInteractor
-            .getActiveTrack()
+            .getActiveGroup()
+            .getTrack()
             .subscribe(onNext: { [weak self] (track) in
                 guard let track = track else {
                     self?.groupTrackTitle.text = nil
@@ -67,7 +68,8 @@ class NowPlayingViewController: UIViewController {
     
     fileprivate func setupVolumeObservables() {
         SonosInteractor
-            .getActiveGroupVolume()
+            .getActiveGroup()
+            .getVolume()
             .filter({ _ in return !self.volumeSlider.isTouchInside })
             .subscribe(onNext: { [weak self] (volume) in
                 self?.volumeSlider.value = Float(volume) / 100.0
@@ -82,7 +84,8 @@ class NowPlayingViewController: UIViewController {
             .filter({ _ in return self.volumeSlider.isTouchInside })
             .flatMap({ (newVolume) -> Observable<Int> in
                 return SonosInteractor
-                    .setActiveGroup(volume: Int(newVolume * 100.0))
+                    .getActiveGroup()
+                    .set(volume: Int(newVolume * 100.0))
             })
             .subscribe(onError: { (error) in
                 print(error.localizedDescription)
@@ -92,9 +95,10 @@ class NowPlayingViewController: UIViewController {
     
     fileprivate func setupMuteObservable() {
         SonosInteractor
-            .getActiveMute()
+            .getActiveGroup()
+            .getMute()
             .subscribe(onNext: { [weak self] (muted) in
-                self?.muteButton.isSelected = muted
+                self?.muteButton.isSelected = muted.first!
             })
             .disposed(by: disposeBag)
         
@@ -105,10 +109,11 @@ class NowPlayingViewController: UIViewController {
             .map({ (_) -> Bool in
                 return !self.muteButton.isSelected
             })
-            .flatMap({ [weak self] (isMuted) -> Observable<Bool> in
+            .flatMap({ [weak self] (isMuted) -> Observable<[Bool]> in
                 self?.muteButton.isSelected = isMuted
                 return SonosInteractor
-                    .setActive(mute: isMuted)
+                    .getActiveGroup()
+                    .set(mute: isMuted)
             })
             .subscribe(onError: { (error) in
                 print(error.localizedDescription)
@@ -118,16 +123,19 @@ class NowPlayingViewController: UIViewController {
     
     fileprivate func setupTransportStateObservable() {
         SonosInteractor
-         .getActiveTransportState()
+         .getActiveGroup()
+         .getTransportState()
          .subscribe(self.actionButton.data)
          .disposed(by: disposeBag)
         
         actionButton
             .data
             .filter({ _ in return self.actionButton.isTouchInside })
-            .flatMap({ (newState, _) -> Observable<TransportState> in
+            .flatMap({ (arg) -> Observable<TransportState> in
+                let (newState, _) = arg
                 return SonosInteractor
-                    .setActiveTransport(state: newState)
+                    .getActiveGroup()
+                    .set(transportState: newState)
             })
             .subscribe(onError: { (error) in
                 print(error.localizedDescription)
@@ -137,7 +145,8 @@ class NowPlayingViewController: UIViewController {
     
     fileprivate func setupGroupProgressObservable() {
         SonosInteractor
-            .getActiveGroupProgress()
+            .getActiveGroup()
+            .getProgress()
             .subscribe(onNext: { [weak self] (progress) in
                 self?.progressTime.text = progress.timeString
                 self?.remainingTime.text = progress.remainingTimeString
@@ -148,7 +157,8 @@ class NowPlayingViewController: UIViewController {
     
     fileprivate func setupImageObservable() {
         SonosInteractor
-            .getActiveTrackImage()
+            .getActiveGroup()
+            .getImage()
             .catchErrorJustReturn(nil)
             .map({ (data) -> UIImage? in
                 guard let data = data, let image = UIImage(data: data) else { return nil }
@@ -177,8 +187,8 @@ class NowPlayingViewController: UIViewController {
     
     @IBAction func previousAction(_ sender: UIButton) {
         SonosInteractor
-            .setActivePreviousTrack()
-            .take(1)
+            .getActiveGroup()
+            .setPreviousTrack()
             .subscribe(onError: { (error) in
                 print(error.localizedDescription)
             })
@@ -187,8 +197,8 @@ class NowPlayingViewController: UIViewController {
     
     @IBAction func nextAction(_ sender: UIButton) {
         SonosInteractor
-            .setActiveNextTrack()
-            .take(1)
+            .getActiveGroup()
+            .setNextTrack()
             .subscribe(onError: { (error) in
                 print(error.localizedDescription)
             })

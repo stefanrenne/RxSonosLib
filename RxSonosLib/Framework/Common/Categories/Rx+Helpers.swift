@@ -9,10 +9,17 @@
 import Foundation
 import RxSwift
 
-extension Observable {
+extension ObservableType {
     func toVoid() -> Observable<Void> {
         return self.map { (_) -> Void in
             return ()
         }
+    }
+
+}
+
+func ignoreNil<T>() -> ((T?) -> Observable<T>) {
+    return { object in
+        return object.map(Observable.just) ?? Observable.empty()
     }
 }

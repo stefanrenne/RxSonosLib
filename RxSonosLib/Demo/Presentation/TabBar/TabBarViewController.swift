@@ -90,14 +90,15 @@ class TabBarViewController: UIViewController {
         SonosInteractor
             .getActiveGroup()
             .subscribe(onNext: { [weak self] (group) in
-                self?.nowPlayingDescriptionLabel.text = group?.name
+                self?.nowPlayingDescriptionLabel.text = group.name
             })
             .disposed(by: disposeBag)
     }
     
     fileprivate func setupNowPlayingObservable() {
         SonosInteractor
-            .getActiveTrack()
+            .getActiveGroup()
+            .getTrack()
             .subscribe(onNext: { [weak self] (track) in
                 guard let track = track else {
                     self?.nowPlayingTitleLabel.text = nil
@@ -111,16 +112,18 @@ class TabBarViewController: UIViewController {
     
     fileprivate func setupTransportStateObservable() {
         SonosInteractor
-            .getActiveTransportState()
+            .getActiveGroup()
+            .getTransportState()
             .subscribe(self.actionButton.data)
             .disposed(by: disposeBag)
         
         actionButton
             .data
             .filter({ _ in return self.actionButton.isTouchInside })
-            .flatMap({ (newState, _) -> Observable<TransportState> in
+            .flatMap({ (data) -> Observable<TransportState> in
                 return SonosInteractor
-                    .setActiveTransport(state: newState)
+                    .getActiveGroup()
+                    .set(transportState: data.0)
             })
             .subscribe(onError: { (error) in
                 print(error.localizedDescription)

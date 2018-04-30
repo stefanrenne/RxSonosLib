@@ -8,6 +8,7 @@
 
 import XCTest
 import RxSSDP
+import RxSwift
 @testable import RxSonosLib
 
 class TrackTests: XCTestCase {
@@ -72,7 +73,8 @@ class TrackTests: XCTestCase {
     }
     
     func testItCanGetTheTrackImage() {
-        let imageData = try! firstSpotifyTrack()
+        let imageData = try! Observable
+            .just(firstSpotifyTrack())
             .getImage()
             .toBlocking()
             .first()!
