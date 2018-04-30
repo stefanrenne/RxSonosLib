@@ -24,9 +24,9 @@ extension String {
     }
     
     
-    func musicServiceFromUrl() -> MusicService {
+    func musicServiceFromUrl() -> MusicServiceType {
         let service = self.match(with: "([a-zA-Z0-9-]+):")?.resultForString(self, index: 1)
-        return MusicService.map(string: service)
+        return MusicServiceType.map(string: service)
     }
     
     func validateXml() -> String {

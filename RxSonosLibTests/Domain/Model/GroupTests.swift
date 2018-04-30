@@ -113,7 +113,7 @@ class GroupTests: XCTestCase {
         let group = Observable.just(firstGroup())
         let result = try! group.getTransportState().toBlocking().first()!
         XCTAssertEqual(result.0, TransportState.paused)
-        XCTAssertEqual(result.1, MusicService.spotify)
+        XCTAssertEqual(result.1, MusicServiceType.spotify)
     }
     
     func testItCanSetTheTransportState() {

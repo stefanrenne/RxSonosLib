@@ -46,25 +46,25 @@ class StringRegexTest: XCTestCase {
     }
     
     /* Music Services */
-    func testItCanGetAnDefaultMusicServiceForUnknownUrls() {
+    func testItCanGetAnDefaultMusicServiceTypeForUnknownUrls() {
         let url = "unknown"
-        XCTAssertEqual(url.musicServiceFromUrl(), MusicService.unknown)
+        XCTAssertEqual(url.musicServiceFromUrl(), MusicServiceType.unknown)
     }
     
-    func testItCanGetTheMusicServiceSpotifyFromAnUrl() {
+    func testItCanGetTheMusicServiceTypeSpotifyFromAnUrl() {
         let url = "x-sonos-spotify:spotify%3atrack%3a5HR4CYT5nPpFy8m9wJQgrr?sid=9&flags=0&sn=6"
-        XCTAssertEqual(url.musicServiceFromUrl(), MusicService.spotify)
+        XCTAssertEqual(url.musicServiceFromUrl(), MusicServiceType.spotify)
     }
-    func testItCanGetTheMusicServiceTuneInFromAnUrl() {
+    func testItCanGetTheMusicServiceTypeTuneInFromAnUrl() {
         let url1 = "x-rincon-mp3radio://vip-icecast.538.lw.triple-it.nl/RADIO538_MP3"
-        XCTAssertEqual(url1.musicServiceFromUrl(), MusicService.tunein)
+        XCTAssertEqual(url1.musicServiceFromUrl(), MusicServiceType.tunein)
         
         let url2 = "aac://http://19143.live.streamtheworld.com:80/SKYRADIOAAC_SC?TGT=TuneIn&DIST=TuneIn"
-        XCTAssertEqual(url2.musicServiceFromUrl(), MusicService.tunein)
+        XCTAssertEqual(url2.musicServiceFromUrl(), MusicServiceType.tunein)
     }
     func testItCanDetectTVFromAnUrl() {
         let url = "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif"
-        XCTAssertEqual(url.musicServiceFromUrl(), MusicService.tv)
+        XCTAssertEqual(url.musicServiceFromUrl(), MusicServiceType.tv)
     }
     
     /* Namespace replace */

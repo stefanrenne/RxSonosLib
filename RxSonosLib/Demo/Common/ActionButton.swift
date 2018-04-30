@@ -12,7 +12,7 @@ import RxSonosLib
 
 @IBDesignable class ActionButton: UIButton {
     
-    let data: BehaviorSubject<(TransportState, MusicService)> = BehaviorSubject(value: (.transitioning, .unknown))
+    let data: BehaviorSubject<(TransportState, MusicServiceType)> = BehaviorSubject(value: (.transitioning, .unknown))
     private let disposeBag = DisposeBag()
     
     override init(frame: CGRect) {
@@ -43,7 +43,7 @@ import RxSonosLib
             .rx
             .controlEvent(UIControlEvents.touchUpInside)
             .map({ [weak self] _ in
-                guard let data = try self?.data.value() else { return (TransportState.transitioning, MusicService.unknown) }
+                guard let data = try self?.data.value() else { return (TransportState.transitioning, MusicServiceType.unknown) }
                 let state = data.0
                 let service = data.1
                 let newState = state.actionState(for: service)
