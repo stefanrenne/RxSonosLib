@@ -11,11 +11,13 @@ import RxSwift
 
 open class SonosInteractor {
     internal static let shared: SonosInteractor = SonosInteractor()
+    internal let allRooms: BehaviorSubject<[Room]> = BehaviorSubject(value: [])
     internal let allGroups: BehaviorSubject<[Group]> = BehaviorSubject(value: [])
     internal let activeGroup: BehaviorSubject<Group?> = BehaviorSubject(value: nil)
     internal let disposebag = DisposeBag()
     
     init() {
+        self.observerRooms()
         self.observerGroups()
     }
     
@@ -119,9 +121,16 @@ extension SonosInteractor {
         return try! self.activeGroup.value()
     }
     
-    private func observerGroups() {
-        GetGroupsInteractor(ssdpRepository: RepositoryInjection.provideSSDPRepository(), roomRepository: RepositoryInjection.provideRoomRepository(), groupRepository: RepositoryInjection.provideGroupRepository())
+    private func observerRooms() {
+        GetRoomsInteractor(ssdpRepository: RepositoryInjection.provideSSDPRepository(), roomRepository: RepositoryInjection.provideRoomRepository())
             .get()
+            .subscribe(self.allRooms)
+            .disposed(by: disposebag)
+    }
+    
+    private func observerGroups() {
+        GetGroupsInteractor(groupRepository: RepositoryInjection.provideGroupRepository())
+            .get(values: GetGroupsValues(rooms: self.allRooms.asObserver()))
             .subscribe(self.allGroups)
             .disposed(by: disposebag)
         

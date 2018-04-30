@@ -150,6 +150,7 @@
 		F8B0D8AB2082586F0072BAE0 /* SetStopNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8AA2082586F0072BAE0 /* SetStopNetwork.swift */; };
 		F8B0D8AD20825AAC0072BAE0 /* SetTransportStateInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8AC20825AAC0072BAE0 /* SetTransportStateInteractorTests.swift */; };
 		F8B0D8AF2083482A0072BAE0 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8AE2083482A0072BAE0 /* ActionButton.swift */; };
+		F8B947032096F5D3004F1A33 /* GetRoomsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B947022096F5D3004F1A33 /* GetRoomsInteractor.swift */; };
 		F8CA2306207BD502009F15AE /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA2305207BD502009F15AE /* LoadingCoordinator.swift */; };
 		F8CA230A207BD5C1009F15AE /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA2308207BD5C1009F15AE /* LoadingViewController.swift */; };
 		F8CA230B207BD5C1009F15AE /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8CA2309207BD5C1009F15AE /* LoadingViewController.xib */; };
@@ -342,6 +343,7 @@
 		F8B0D8AA2082586F0072BAE0 /* SetStopNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStopNetwork.swift; sourceTree = "<group>"; };
 		F8B0D8AC20825AAC0072BAE0 /* SetTransportStateInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTransportStateInteractorTests.swift; sourceTree = "<group>"; };
 		F8B0D8AE2083482A0072BAE0 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		F8B947022096F5D3004F1A33 /* GetRoomsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRoomsInteractor.swift; sourceTree = "<group>"; };
 		F8BF5C522056DF9E00AE311E /* Data+Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Convert.swift"; sourceTree = "<group>"; };
 		F8BF5C542056E37100AE311E /* AEXMLDocument+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AEXMLDocument+Create.swift"; sourceTree = "<group>"; };
 		F8BF5C592056FBEC00AE311E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -739,6 +741,7 @@
 				F8A64DF32087F43D003F777E /* SetPreviousTrackInteractor.swift */,
 				F8DE4762208A328F008F50FA /* SetMuteInteractor.swift */,
 				F8DE4764208A3297008F50FA /* GetMuteInteractor.swift */,
+				F8B947022096F5D3004F1A33 /* GetRoomsInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -1379,6 +1382,7 @@
 				F81A05FB206028D600897738 /* SoapSoapAction.swift in Sources */,
 				F87DC3B220696E870089F882 /* GetNowPlayingInteractor.swift in Sources */,
 				F8B0D8AB2082586F0072BAE0 /* SetStopNetwork.swift in Sources */,
+				F8B947032096F5D3004F1A33 /* GetRoomsInteractor.swift in Sources */,
 				F87C0CBD206F88F600098D07 /* DownloadNetwork.swift in Sources */,
 				F8860E8B207506BE00BF6A7E /* ContentDirectoryRepository.swift in Sources */,
 				F8DE4767208A35F2008F50FA /* Rx+Helpers.swift in Sources */,

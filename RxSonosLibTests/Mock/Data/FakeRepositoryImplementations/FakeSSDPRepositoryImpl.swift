@@ -13,18 +13,18 @@ import RxSSDP
 
 class FakeSSDPRepositoryImpl: SSDPRepository {
     func scan(broadcastAddress: String, searchTarget: String) -> Observable<[SSDPResponse]> {
-        return Observable.just(self.dummyDevices())
+        return Observable.just(FakeSSDPRepositoryImpl.dummyDevices())
     }
     
     func scan(broadcastAddresses: [String], searchTarget: String) -> Observable<[SSDPResponse]> {
-        return Observable.just(self.dummyDevices())
+        return Observable.just(FakeSSDPRepositoryImpl.dummyDevices())
     }
     
 }
 
 extension FakeSSDPRepositoryImpl {
     
-    fileprivate func dummyDevices() -> [SSDPResponse] {
+    static func dummyDevices() -> [SSDPResponse] {
         
         var devices = [SSDPResponse]()
         

@@ -19,9 +19,10 @@ class GetGroupsInteractorTests: XCTestCase {
     let groupRepository: GroupRepository = FakeGroupRepositoryImpl()
     
     func testItCanGetGroups() {
-        let interactor = GetGroupsInteractor(ssdpRepository: ssdpRepository, roomRepository: roomRepository, groupRepository: groupRepository)
+        let rooms = Observable.just(FakeRoomRepositoryImpl.dummyDevices())
+        let interactor = GetGroupsInteractor(groupRepository: groupRepository)
         
-        let groups = try! interactor.get()
+        let groups = try! interactor.get(values: GetGroupsValues(rooms: rooms))
             .toBlocking()
             .first()!
         
@@ -43,4 +44,12 @@ class GetGroupsInteractorTests: XCTestCase {
         XCTAssertEqual(groups[4].slaves.count, 0)
     }
     
+    func testItCantGetGroupsWithoutAnRoomObsercable() {
+        let interactor = GetGroupsInteractor(groupRepository: groupRepository)
+        
+        XCTAssertThrowsError(try interactor.get().toBlocking().toArray()) { error in
+            XCTAssertEqual(error.localizedDescription, NSError.sonosLibInvalidImplementationError().localizedDescription)
+        }
+        
+    }
 }

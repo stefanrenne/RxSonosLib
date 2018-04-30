@@ -13,16 +13,24 @@ import RxSwift
 class FakeRoomRepositoryImpl: RoomRepository {
     
     func getRoom(device: SSDPDevice) -> Observable<Room>? {
-        let description = self.getDescription(for: device)
+        let description = FakeRoomRepositoryImpl.getDescription(for: device)
         let room = Room(ssdpDevice: device, deviceDescription: description)
         return Observable.just(room)
     }
     
 }
 
-fileprivate extension FakeRoomRepositoryImpl {
+extension FakeRoomRepositoryImpl {
+        
+    static func dummyDevices() -> [Room] {
+        return FakeSSDPRepositoryImpl.dummyDevices().map({ (response) -> Room in
+            let device = SSDPDevice.map(response)!
+            let description = FakeRoomRepositoryImpl.getDescription(for: device)
+            return Room(ssdpDevice: device, deviceDescription: description)
+        })
+    }
     
-    func getDescription(for device: SSDPDevice) -> DeviceDescription {
+    static func getDescription(for device: SSDPDevice) -> DeviceDescription {
         switch device.ip.absoluteString {
             
             /*
