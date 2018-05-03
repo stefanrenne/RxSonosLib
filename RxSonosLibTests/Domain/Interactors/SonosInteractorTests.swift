@@ -92,4 +92,19 @@ class SonosInteractorTests: XCTestCase {
         XCTAssertEqual(try! SonosInteractor.shared.activeGroup.value()!, secondGroup())   
     }
     
+    func testItCanGetAllMusicServices() {
+        
+        resetToFakeRepositories()
+        let musicServicesRepository = RepositoryInjection.shared.musicServicesRepository as! FakeMusicServicesRepositoryImpl
+        XCTAssertEqual(musicServicesRepository.getMusicServicesCount, 0)
+        
+        let musicServices = try! SonosInteractor
+            .getAllMusicServices()
+            .toBlocking()
+            .first()!
+        XCTAssertEqual(musicServices.count, 4)
+        XCTAssertEqual(musicServicesRepository.getMusicServicesCount, 1)
+        
+    }
+    
 }
