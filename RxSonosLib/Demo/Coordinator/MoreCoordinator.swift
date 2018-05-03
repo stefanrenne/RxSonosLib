@@ -10,19 +10,20 @@ import UIKit
 import RxSonosLib
 
 protocol MoreRouter {
-    
+    func didSelect(type: MoreType)
 }
 
-class MoreCoordinator: BaseCoordinator {
+class MoreCoordinator: Coordinator {
     
-    private let tabbarRouter: TabBarRouter
-    init(navigationController: UINavigationController?, tabbarRouter: TabBarRouter) {
-        self.tabbarRouter = tabbarRouter
-        super.init(navigationController: navigationController)
+    private let masterRouter: MasterRouter
+    private weak var navigationController: UINavigationController?
+    init(navigationController: UINavigationController?, masterRouter: MasterRouter) {
+        self.navigationController = navigationController
+        self.masterRouter = masterRouter
     }
     
     private let viewController = MoreViewController()
-    override func setup() -> UIViewController {
+    func setup() -> UIViewController {
         viewController.router = self
         return viewController
     }
@@ -35,5 +36,12 @@ class MoreCoordinator: BaseCoordinator {
 }
 
 extension MoreCoordinator: MoreRouter {
+    
+    func didSelect(type: MoreType) {
+        switch type {
+        case .musicservices:
+            MusicServicesCoordinator(masterRouter: self.masterRouter).start()
+        }
+    }
     
 }

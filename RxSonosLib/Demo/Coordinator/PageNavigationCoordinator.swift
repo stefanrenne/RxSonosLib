@@ -16,16 +16,15 @@ protocol PageNavigationRouter {
     func continueToMore()
 }
 
-class PageNavigationCoordinator: BaseCoordinator {
+class PageNavigationCoordinator: Coordinator {
     
-    private let tabbarRouter: TabBarRouter
-    init(navigationController: UINavigationController? = nil, tabbarRouter: TabBarRouter) {
-        self.tabbarRouter = tabbarRouter
-        super.init(navigationController: navigationController)
+    private let masterRouter: MasterRouter
+    init(masterRouter: MasterRouter) {
+        self.masterRouter = masterRouter
     }
     
     private let viewController = PageNavigationController()
-    override func setup() -> UIViewController {
+    func setup() -> UIViewController {
         return viewController
     }
     
@@ -34,22 +33,22 @@ class PageNavigationCoordinator: BaseCoordinator {
 extension PageNavigationCoordinator: PageNavigationRouter {
     
     func continueToMySonos() {
-        MySonosCoordinator(navigationController: self.viewController, tabbarRouter: self.tabbarRouter).start()
+        MySonosCoordinator(navigationController: self.viewController, masterRouter: self.masterRouter).start()
     }
     
     func continueToBrowse() {
-        BrowseCoordinator(navigationController: self.viewController, tabbarRouter: self.tabbarRouter).start()
+        BrowseCoordinator(navigationController: self.viewController, masterRouter: self.masterRouter).start()
     }
     
     func continueToRooms() {
-        RoomsCoordinator(navigationController: self.viewController, tabbarRouter: self.tabbarRouter).start()
+        RoomsCoordinator(navigationController: self.viewController, masterRouter: self.masterRouter).start()
     }
     
     func continueToSearch() {
-        SearchCoordinator(navigationController: self.viewController, tabbarRouter: self.tabbarRouter).start()
+        SearchCoordinator(navigationController: self.viewController, masterRouter: self.masterRouter).start()
     }
     
     func continueToMore() {
-        MoreCoordinator(navigationController: self.viewController, tabbarRouter: self.tabbarRouter).start()
+        MoreCoordinator(navigationController: self.viewController, masterRouter: self.masterRouter).start()
     }
 }

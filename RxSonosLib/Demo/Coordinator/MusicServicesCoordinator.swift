@@ -1,27 +1,28 @@
 //
-//  QueueCoordinator.swift
+//  MusicServicesCoordinator.swift
 //  Demo App
 //
-//  Created by Stefan Renne on 05/04/2018.
+//  Created by Stefan Renne on 30/04/2018.
 //  Copyright © 2018 Uberweb. All rights reserved.
 //
 
 import UIKit
 import RxSonosLib
 
-protocol QueueRouter {
-    func close()
+protocol MusicServicesRouter {
+    func didClose()
+    func didSelect(service: MusicService)
 }
 
-class QueueCoordinator: Coordinator {
+class MusicServicesCoordinator: Coordinator {
     
     private let masterRouter: MasterRouter
     init(masterRouter: MasterRouter) {
         self.masterRouter = masterRouter
     }
     
+    private let viewController = MusicServicesViewController()
     func setup() -> UIViewController {
-        let viewController = QueueViewController()
         viewController.router = self
         return viewController
     }
@@ -30,11 +31,16 @@ class QueueCoordinator: Coordinator {
         let viewController = self.setup()
         masterRouter.present(viewController)
     }
-    
 }
 
-extension QueueCoordinator: QueueRouter {
-    func close() {
+extension MusicServicesCoordinator: MusicServicesRouter {
+    
+    func didClose() {
         masterRouter.dismiss()
     }
+
+    func didSelect(service: MusicService) {
+        
+    }
+    
 }

@@ -12,9 +12,11 @@ import RxSonosLib
 
 class MusicServiceViewModel {
     
-    let service: MusicService
+    private let service: MusicService
     
     init(service: MusicService) {
         self.service = service
     }
+    
+    var name: String { return service.name }
 }

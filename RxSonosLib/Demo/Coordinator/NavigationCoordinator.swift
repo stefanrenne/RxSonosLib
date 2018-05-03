@@ -8,9 +8,14 @@
 
 import UIKit
 
-class NavigationCoordinator: BaseCoordinator {
+class NavigationCoordinator: Coordinator {
     
-    override func setup() -> UIViewController {
+    private weak var navigationController: UINavigationController?
+    init(navigationController: UINavigationController? = nil) {
+        self.navigationController = navigationController
+    }
+    
+    func setup() -> UIViewController {
         let navigationController = NavigationController()
         
         LoadingCoordinator(navigationController: navigationController).start()

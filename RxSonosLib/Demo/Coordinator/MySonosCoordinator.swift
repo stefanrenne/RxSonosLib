@@ -13,16 +13,17 @@ protocol MySonosRouter {
     
 }
 
-class MySonosCoordinator: BaseCoordinator {
+class MySonosCoordinator: Coordinator {
     
-    private let tabbarRouter: TabBarRouter
-    init(navigationController: UINavigationController?, tabbarRouter: TabBarRouter) {
-        self.tabbarRouter = tabbarRouter
-        super.init(navigationController: navigationController)
+    private let masterRouter: MasterRouter
+    private weak var navigationController: UINavigationController?
+    init(navigationController: UINavigationController?, masterRouter: MasterRouter) {
+        self.navigationController = navigationController
+        self.masterRouter = masterRouter
     }
     
     private let viewController = MySonosViewController()
-    override func setup() -> UIViewController {
+    func setup() -> UIViewController {
         viewController.router = self
         return viewController
     }

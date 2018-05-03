@@ -14,16 +14,15 @@ protocol NowPlayingRouter {
     func continueToQueue()
 }
 
-class NowPlayingCoordinator: BaseCoordinator {
+class NowPlayingCoordinator: Coordinator {
     
-    private let tabBarRouter: TabBarRouter
-    init(navigationController: UINavigationController? = nil, tabBarRouter: TabBarRouter) {
-        self.tabBarRouter = tabBarRouter
-        super.init(navigationController: navigationController)
+    private let masterRouter: MasterRouter
+    init(masterRouter: MasterRouter) {
+        self.masterRouter = masterRouter
     }
     
     private let viewController = NowPlayingViewController()
-    override func setup() -> UIViewController {
+    func setup() -> UIViewController {
         viewController.router = self
         return viewController
     }
@@ -32,11 +31,11 @@ class NowPlayingCoordinator: BaseCoordinator {
 extension NowPlayingCoordinator: NowPlayingRouter {
     
     func close() {
-        tabBarRouter.closeNowPlaying()
+        masterRouter.closeNowPlaying()
     }
     
     func continueToQueue() {
-        tabBarRouter.continueToQueue()
+        QueueCoordinator(masterRouter: masterRouter).start()
     }
     
 }

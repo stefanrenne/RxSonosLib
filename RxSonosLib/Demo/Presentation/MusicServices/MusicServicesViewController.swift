@@ -14,15 +14,19 @@ import RxCocoa
 class MusicServicesViewController: UIViewController {
     
     internal var router: MusicServicesRouter!
+    @IBOutlet var navigationBar: UINavigationBar!
+    @IBOutlet var navigationItemDone: UIBarButtonItem!
     @IBOutlet var table: UITableView!
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Musicservices"
+        navigationBar.topItem?.title = "Musicservices"
         
+        self.setupNavigationBar()
         self.setupTableViewItems()
         self.setupCellTapHandling()
+        self.setupCloseButton()
     }
     
     func setupTableViewItems() {
@@ -30,11 +34,6 @@ class MusicServicesViewController: UIViewController {
         
         SonosInteractor
             .getAllMusicServices()
-            .do(onNext: { (services) in
-              print(services)
-            }, onError: { (error) in
-                print(error.localizedDescription)
-            })
             .bind(to: table.rx.items(cellIdentifier: MusicServicesTableViewCell.identifier, cellType: MusicServicesTableViewCell.self)) { (row, service, cell) in
                 cell.model = MusicServiceViewModel(service: service)
             }
@@ -49,6 +48,16 @@ class MusicServicesViewController: UIViewController {
                 self?.router.didSelect(service: service)
             })
             .disposed(by: disposeBag)
+    }
+    
+    func setupNavigationBar() {
+        navigationBar.styleWhite()
+    }
+    
+    func setupCloseButton() {
+        navigationItemDone.rx.tap.subscribe(onNext: { [weak self] (_) in
+            self?.router.didClose()
+        }).disposed(by: disposeBag)
     }
 
 }
