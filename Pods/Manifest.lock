@@ -27,6 +27,17 @@ DEPENDENCIES:
   - RxSSDP (~> 4.1)
   - RxSwift (~> 4.1)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AEXML
+    - CocoaAsyncSocket
+    - Mockingjay
+    - RxBlocking
+    - RxCocoa
+    - RxSSDP
+    - RxSwift
+    - URITemplate
+
 SPEC CHECKSUMS:
   AEXML: bae92c01e0da64132fd72f748721cda07466032b
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
@@ -39,4 +50,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: f9315be339de2b974d2747cec51e07f0b89b0ddf
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

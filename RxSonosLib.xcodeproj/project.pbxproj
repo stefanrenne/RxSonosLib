@@ -1047,7 +1047,6 @@
 				F81A05A72060280A00897738 /* Resources */,
 				F81A05E32060289A00897738 /* Embed Frameworks */,
 				973A22BE45D89166C9AEDD35 /* [CP] Embed Pods Frameworks */,
-				21D462CF4BC77856B497E053 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1068,7 +1067,6 @@
 				F81A05D32060289A00897738 /* Frameworks */,
 				F81A05D42060289A00897738 /* Headers */,
 				F81A05D52060289A00897738 /* Resources */,
-				0C4D7BACFD065EC8A627D6D0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1088,7 +1086,6 @@
 				F81A0616206029AE00897738 /* Frameworks */,
 				F81A0617206029AE00897738 /* Resources */,
 				9D7BC8A6E6AD150B0FC2D01A /* [CP] Embed Pods Frameworks */,
-				206B38D57D8044F85D9D618D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1187,51 +1184,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0C4D7BACFD065EC8A627D6D0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxSonosLib/Pods-RxSonosLib-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		206B38D57D8044F85D9D618D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxSonosLibTests/Pods-RxSonosLibTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		21D462CF4BC77856B497E053 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Demo App/Pods-Demo App-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3E6955E32901EA0F684BC1D5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
