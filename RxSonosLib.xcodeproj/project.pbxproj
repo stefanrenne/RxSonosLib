@@ -143,6 +143,7 @@
 		F8A64DFA2087F9A9003F777E /* SetPreviousInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A64DF92087F9A9003F777E /* SetPreviousInteractorTests.swift */; };
 		F8A64DFC2087F9B5003F777E /* SetNextInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A64DFB2087F9B5003F777E /* SetNextInteractorTests.swift */; };
 		F8A64DFF2087FD07003F777E /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A64DFE2087FD07003F777E /* TestHelpers.swift */; };
+		F8AA1226209B39320047EF7B /* QueueTrackFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AA1225209B39320047EF7B /* QueueTrackFactoryTests.swift */; };
 		F8B0057320612BB900991E64 /* StringRegexTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0057220612BB900991E64 /* StringRegexTest.swift */; };
 		F8B0D8A52082562A0072BAE0 /* SetTransportStateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8A42082562A0072BAE0 /* SetTransportStateInteractor.swift */; };
 		F8B0D8A72082585C0072BAE0 /* SetPlayNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8A62082585C0072BAE0 /* SetPlayNetwork.swift */; };
@@ -353,6 +354,7 @@
 		F8A64DF92087F9A9003F777E /* SetPreviousInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPreviousInteractorTests.swift; sourceTree = "<group>"; };
 		F8A64DFB2087F9B5003F777E /* SetNextInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNextInteractorTests.swift; sourceTree = "<group>"; };
 		F8A64DFE2087FD07003F777E /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
+		F8AA1225209B39320047EF7B /* QueueTrackFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTrackFactoryTests.swift; sourceTree = "<group>"; };
 		F8B0057220612BB900991E64 /* StringRegexTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRegexTest.swift; sourceTree = "<group>"; };
 		F8B0D8A42082562A0072BAE0 /* SetTransportStateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTransportStateInteractor.swift; sourceTree = "<group>"; };
 		F8B0D8A62082585C0072BAE0 /* SetPlayNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPlayNetwork.swift; sourceTree = "<group>"; };
@@ -563,6 +565,7 @@
 		F81E33B02072251A002E22A8 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F8AA1224209B39230047EF7B /* Factory */,
 				F81E33B720722595002E22A8 /* Repositories */,
 				F81E33B32072253B002E22A8 /* Interactors */,
 				F81E33B12072252A002E22A8 /* Model */,
@@ -919,6 +922,14 @@
 				F8A64DFE2087FD07003F777E /* TestHelpers.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		F8AA1224209B39230047EF7B /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				F8AA1225209B39320047EF7B /* QueueTrackFactoryTests.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		F8B9471920979A7E004F1A33 /* MusicServices */ = {
@@ -1424,6 +1435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8AA1226209B39320047EF7B /* QueueTrackFactoryTests.swift in Sources */,
 				F81E33A020721CEF002E22A8 /* GroupProgressTests.swift in Sources */,
 				F8B315C1209A018A0000335D /* MusicServicesRepositoryTests.swift in Sources */,
 				F89D94C920615994002B1383 /* CacheManagerTests.swift in Sources */,
