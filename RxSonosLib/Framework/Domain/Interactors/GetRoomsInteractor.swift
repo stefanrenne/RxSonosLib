@@ -12,7 +12,7 @@ import RxSSDP
 
 class GetRoomsValues: RequestValues { }
 
-class GetRoomsInteractor: BaseInteractor<GetRoomsValues, [Room]> {
+class GetRoomsInteractor<T: GetRoomsValues>: Interactor {
     
     private let ssdpRepository: SSDPRepository
     private let roomRepository: RoomRepository
@@ -24,7 +24,7 @@ class GetRoomsInteractor: BaseInteractor<GetRoomsValues, [Room]> {
         SSDPSettings.shared.maxBufferTime = SonosSettings.shared.searchNetworkForDevices
     }
     
-    override func buildInteractorObservable(requestValues: GetRoomsValues?) -> Observable<[Room]> {
+    func buildInteractorObservable(requestValues: GetRoomsValues?) -> Observable<[Room]> {
         
         return searchNetworkForDevices()
             .distinctUntilChanged({ $0 == $1 })

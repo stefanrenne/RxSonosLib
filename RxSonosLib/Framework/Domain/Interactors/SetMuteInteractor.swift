@@ -19,7 +19,7 @@ class SetMuteValues: RequestValues {
     }
 }
 
-class SetMuteInteractor: BaseInteractor<SetMuteValues, Void> {
+class SetMuteInteractor<T: SetMuteValues>: Interactor {
     
     let renderingControlRepository: RenderingControlRepository
     
@@ -27,7 +27,7 @@ class SetMuteInteractor: BaseInteractor<SetMuteValues, Void> {
         self.renderingControlRepository = renderingControlRepository
     }
     
-    override func buildInteractorObservable(requestValues: SetMuteValues?) -> Observable<Void> {
+    func buildInteractorObservable(requestValues: SetMuteValues?) -> Observable<Void> {
         
         guard let room = requestValues?.room,
               let enabled = requestValues?.enabled else {

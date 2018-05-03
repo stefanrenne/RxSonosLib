@@ -17,7 +17,7 @@ class GetMusicServicesValues: RequestValues {
     }
 }
 
-class GetMusicServicesInteractor: BaseInteractor<GetMusicServicesValues, [MusicService]>  {
+class GetMusicServicesInteractor<T: GetMusicServicesValues>: Interactor {
     
     let musicServicesRepository: MusicServicesRepository
     
@@ -25,7 +25,7 @@ class GetMusicServicesInteractor: BaseInteractor<GetMusicServicesValues, [MusicS
         self.musicServicesRepository = musicServicesRepository
     }
     
-    override func buildInteractorObservable(requestValues: GetMusicServicesValues?) -> Observable<[MusicService]> {
+    func buildInteractorObservable(requestValues: GetMusicServicesValues?) -> Observable<[MusicService]> {
         
         guard let room = requestValues?.room else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())

@@ -17,7 +17,7 @@ class GetTrackImageValues: RequestValues {
     }
 }
 
-class GetTrackImageInteractor: BaseInteractor<GetTrackImageValues, Data?>  {
+class GetTrackImageInteractor<T: GetTrackImageValues>: Interactor {
     
     let transportRepository: TransportRepository
     
@@ -25,7 +25,7 @@ class GetTrackImageInteractor: BaseInteractor<GetTrackImageValues, Data?>  {
         self.transportRepository = transportRepository
     }
     
-    override func buildInteractorObservable(requestValues: GetTrackImageValues?) -> Observable<Data?> {
+    func buildInteractorObservable(requestValues: GetTrackImageValues?) -> Observable<Data?> {
         
         guard let track = requestValues?.track else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())

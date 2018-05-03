@@ -17,7 +17,7 @@ class GetNowPlayingValues: RequestValues {
     }
 }
 
-class GetNowPlayingInteractor: BaseInteractor<GetNowPlayingValues, Track?>  {
+class GetNowPlayingInteractor<T: GetNowPlayingValues>: Interactor {
     
     let transportRepository: TransportRepository
     
@@ -25,7 +25,7 @@ class GetNowPlayingInteractor: BaseInteractor<GetNowPlayingValues, Track?>  {
         self.transportRepository = transportRepository
     }
     
-    override func buildInteractorObservable(requestValues: GetNowPlayingValues?) -> Observable<Track?> {
+    func buildInteractorObservable(requestValues: GetNowPlayingValues?) -> Observable<Track?> {
         
         guard let masterRoom = requestValues?.group.master else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())

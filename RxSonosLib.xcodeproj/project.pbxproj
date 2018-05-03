@@ -37,7 +37,7 @@
 		F81A05E5206028D600897738 /* Error+RxSonosLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809DE7D2048408A003A94A0 /* Error+RxSonosLib.swift */; };
 		F81A05E7206028D600897738 /* Data+Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C522056DF9E00AE311E /* Data+Convert.swift */; };
 		F81A05E8206028D600897738 /* AEXMLDocument+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C542056E37100AE311E /* AEXMLDocument+Create.swift */; };
-		F81A05E9206028D600897738 /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F49F204829F5006A7B73 /* BaseInteractor.swift */; };
+		F81A05E9206028D600897738 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F49F204829F5006A7B73 /* Interactor.swift */; };
 		F81A05ED206028D600897738 /* SSDPDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F477204820BD006A7B73 /* SSDPDevice.swift */; };
 		F81A05EE206028D600897738 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809DE922049A1A0003A94A0 /* Room.swift */; };
 		F81A05EF206028D600897738 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809DE942049A1B0003A94A0 /* Group.swift */; };
@@ -171,7 +171,7 @@
 		F8CA2306207BD502009F15AE /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA2305207BD502009F15AE /* LoadingCoordinator.swift */; };
 		F8CA230A207BD5C1009F15AE /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA2308207BD5C1009F15AE /* LoadingViewController.swift */; };
 		F8CA230B207BD5C1009F15AE /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8CA2309207BD5C1009F15AE /* LoadingViewController.xib */; };
-		F8CA230D207BE257009F15AE /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA230C207BE257009F15AE /* BaseCoordinator.swift */; };
+		F8CA230D207BE257009F15AE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA230C207BE257009F15AE /* Coordinator.swift */; };
 		F8D0BB8C207E5B5A00BBEFB8 /* SonosSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D0BB8A207E5AB000BBEFB8 /* SonosSettings.swift */; };
 		F8DE4763208A328F008F50FA /* SetMuteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DE4762208A328F008F50FA /* SetMuteInteractor.swift */; };
 		F8DE4765208A3297008F50FA /* GetMuteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DE4764208A3297008F50FA /* GetMuteInteractor.swift */; };
@@ -286,7 +286,7 @@
 		F825F47020481CC7006A7B73 /* RepositoryInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryInjection.swift; sourceTree = "<group>"; };
 		F825F477204820BD006A7B73 /* SSDPDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSDPDevice.swift; sourceTree = "<group>"; };
 		F825F49320482945006A7B73 /* RoomsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsCoordinator.swift; sourceTree = "<group>"; };
-		F825F49F204829F5006A7B73 /* BaseInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
+		F825F49F204829F5006A7B73 /* Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		F825F4A120482A46006A7B73 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
 		F825F4A620482BA9006A7B73 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		F825F4AE20482DDE006A7B73 /* RoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
@@ -391,7 +391,7 @@
 		F8CA2305207BD502009F15AE /* LoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCoordinator.swift; sourceTree = "<group>"; };
 		F8CA2308207BD5C1009F15AE /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		F8CA2309207BD5C1009F15AE /* LoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
-		F8CA230C207BE257009F15AE /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		F8CA230C207BE257009F15AE /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		F8D0BB8A207E5AB000BBEFB8 /* SonosSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosSettings.swift; sourceTree = "<group>"; };
 		F8DE4762208A328F008F50FA /* SetMuteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMuteInteractor.swift; sourceTree = "<group>"; };
 		F8DE4764208A3297008F50FA /* GetMuteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMuteInteractor.swift; sourceTree = "<group>"; };
@@ -661,7 +661,7 @@
 				F81A06012060291D00897738 /* Info.plist */,
 				F81A06002060291D00897738 /* RxSonosLib.h */,
 				F809DE87204999AC003A94A0 /* Categories */,
-				F825F496204829C3006A7B73 /* Base */,
+				F825F496204829C3006A7B73 /* Protocol */,
 				F8D0BB8A207E5AB000BBEFB8 /* SonosSettings.swift */,
 			);
 			path = Common;
@@ -710,7 +710,7 @@
 				F825F45F20481C61006A7B73 /* LaunchScreen.storyboard */,
 				F825F46120481C61006A7B73 /* AppDelegate.swift */,
 				F825F46F20481C71006A7B73 /* Info.plist */,
-				F8CA230C207BE257009F15AE /* BaseCoordinator.swift */,
+				F8CA230C207BE257009F15AE /* Coordinator.swift */,
 				F8B0D8AE2083482A0072BAE0 /* ActionButton.swift */,
 			);
 			path = Common;
@@ -822,12 +822,12 @@
 			path = RepositoryImplementations;
 			sourceTree = "<group>";
 		};
-		F825F496204829C3006A7B73 /* Base */ = {
+		F825F496204829C3006A7B73 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				F825F49F204829F5006A7B73 /* BaseInteractor.swift */,
+				F825F49F204829F5006A7B73 /* Interactor.swift */,
 			);
-			path = Base;
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		F825F4A420482B7B006A7B73 /* Navigation */ = {
@@ -1367,7 +1367,7 @@
 				F81DAE96207CD45E006B4C17 /* MySonosCoordinator.swift in Sources */,
 				F81DAE80207CD16D006B4C17 /* PageNavigationController.swift in Sources */,
 				F8CA2306207BD502009F15AE /* LoadingCoordinator.swift in Sources */,
-				F8CA230D207BE257009F15AE /* BaseCoordinator.swift in Sources */,
+				F8CA230D207BE257009F15AE /* Coordinator.swift in Sources */,
 				F81A05BF2060284A00897738 /* AppDelegate.swift in Sources */,
 				F81A05CF2060284A00897738 /* NavigationController.swift in Sources */,
 				F81DAE9A207CD473006B4C17 /* SearchCoordinator.swift in Sources */,
@@ -1448,7 +1448,7 @@
 				F81A05F5206028D600897738 /* RoomRepositoryImpl.swift in Sources */,
 				F8DE4765208A3297008F50FA /* GetMuteInteractor.swift in Sources */,
 				F8B0D8A72082585C0072BAE0 /* SetPlayNetwork.swift in Sources */,
-				F81A05E9206028D600897738 /* BaseInteractor.swift in Sources */,
+				F81A05E9206028D600897738 /* Interactor.swift in Sources */,
 				F8DE4763208A328F008F50FA /* SetMuteInteractor.swift in Sources */,
 				F8B9470A2097923E004F1A33 /* MusicService.swift in Sources */,
 				F8726787206A3F3B00093FF1 /* TransportState.swift in Sources */,

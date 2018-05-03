@@ -17,7 +17,8 @@ class GetVolumeValues: RequestValues {
     }
 }
 
-class GetVolumeInteractor: BaseInteractor<GetVolumeValues, Int> {
+
+class GetVolumeInteractor<T: GetVolumeValues>: Interactor {
     
     let renderingControlRepository: RenderingControlRepository
     
@@ -25,7 +26,7 @@ class GetVolumeInteractor: BaseInteractor<GetVolumeValues, Int> {
         self.renderingControlRepository = renderingControlRepository
     }
     
-    override func buildInteractorObservable(requestValues: GetVolumeValues?) -> Observable<Int> {
+    func buildInteractorObservable(requestValues: GetVolumeValues?) -> Observable<Int> {
         
         guard let group = requestValues?.group else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())

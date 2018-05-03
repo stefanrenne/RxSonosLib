@@ -19,7 +19,7 @@ class GetGroupsValues: RequestValues {
     
 }
 
-class GetGroupsInteractor: BaseInteractor<GetGroupsValues, [Group]> {
+class GetGroupsInteractor<T: GetGroupsValues>: Interactor {
     
     private let groupRepository: GroupRepository
     
@@ -29,7 +29,7 @@ class GetGroupsInteractor: BaseInteractor<GetGroupsValues, [Group]> {
         SSDPSettings.shared.maxBufferTime = SonosSettings.shared.searchNetworkForDevices
     }
     
-    override func buildInteractorObservable(requestValues: GetGroupsValues?) -> Observable<[Group]> {
+    func buildInteractorObservable(requestValues: GetGroupsValues?) -> Observable<[Group]> {
         guard let roomObservable = requestValues?.rooms else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }

@@ -17,7 +17,7 @@ class GetTransportStateValues: RequestValues {
     }
 }
 
-class GetTransportStateInteractor: BaseInteractor<GetTransportStateValues, TransportState>  {
+class GetTransportStateInteractor<T: GetTransportStateValues>: Interactor {
     
     let transportRepository: TransportRepository
     
@@ -25,7 +25,7 @@ class GetTransportStateInteractor: BaseInteractor<GetTransportStateValues, Trans
         self.transportRepository = transportRepository
     }
     
-    override func buildInteractorObservable(requestValues: GetTransportStateValues?) -> Observable<TransportState> {
+    func buildInteractorObservable(requestValues: GetTransportStateValues?) -> Observable<TransportState> {
         
         guard let masterRoom = requestValues?.group.master else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())

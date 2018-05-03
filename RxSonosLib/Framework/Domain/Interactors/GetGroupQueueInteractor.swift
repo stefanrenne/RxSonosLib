@@ -17,7 +17,7 @@ class GetGroupQueueValues: RequestValues {
     }
 }
 
-class GetGroupQueueInteractor: BaseInteractor<GetGroupQueueValues, [Track]> {
+class GetGroupQueueInteractor<T: GetGroupQueueValues>: Interactor {
     
     let contentDirectoryRepository: ContentDirectoryRepository
     
@@ -25,7 +25,7 @@ class GetGroupQueueInteractor: BaseInteractor<GetGroupQueueValues, [Track]> {
         self.contentDirectoryRepository = contentDirectoryRepository
     }
     
-    override func buildInteractorObservable(requestValues: GetGroupQueueValues?) -> Observable<[Track]> {
+    func buildInteractorObservable(requestValues: GetGroupQueueValues?) -> Observable<[Track]> {
         
         guard let masterRoom = requestValues?.group.master else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())
