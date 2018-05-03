@@ -23,20 +23,20 @@ open class SonosSettings {
      * The number of seconds to wait before the new set of network rooms is retrieved using SSDP
      * The result will only be onNext'd on the Observer if it is different from the previous result
      */
-    public var renewNetworkDevicesTimer: RxTimeInterval = 10
+    public var renewNetworkDevicesTimer: RxTimeInterval = 30
     
     /**
      * The maximum ammount of seconds to wait for network devices to respond to an m-search.
      * A higher value could lead to more waitin time when starting your app.
      * A lower value could lead into sonos devices not being discoverd.
      */
-    public var searchNetworkForDevices: RxTimeInterval = 3
+    public var searchNetworkForDevices: RxTimeInterval = 4
     
     /**
      * The number of seconds to wait before the new set of grouped rooms is retrieved
      * The result will only be onNext'd on the Observer if it is different from the previous result
      */
-    public var renewGroupsTimer: RxTimeInterval = 6
+    public var renewGroupsTimer: RxTimeInterval = 4
     
     /**
      * The number of seconds to wait before the new active track is retrieved

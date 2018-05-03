@@ -142,7 +142,7 @@ extension SonosInteractor {
     
     private func observerGroups() {
         GetGroupsInteractor(groupRepository: RepositoryInjection.provideGroupRepository())
-            .get(values: GetGroupsValues(rooms: self.allRooms.asObserver()))
+            .get(values: GetGroupsValues(rooms: self.allRooms))
             .subscribe(self.allGroups)
             .disposed(by: disposebag)
         
