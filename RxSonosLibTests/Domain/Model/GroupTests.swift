@@ -159,10 +159,6 @@ class GroupTests: XCTestCase {
     }
     
     func testItCanGetTheMute() {
-        let mock = RepositoryInjection.shared.renderingControlRepository as! FakeRenderingControlRepositoryImpl
-        mock.numberSetMuteCalls = 0
-        mock.numberGetMuteCalls = 0
-        
         let group = Observable.just(secondGroup())
         let muted = try! group
             .getMute()
@@ -170,8 +166,6 @@ class GroupTests: XCTestCase {
             .first()!
         
         XCTAssertEqual(muted, [true, true])
-        XCTAssertEqual(mock.numberGetMuteCalls, 2)
-        XCTAssertEqual(mock.numberSetMuteCalls, 0)
     }
     
     func testItCanSetTheMute() {

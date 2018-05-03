@@ -46,12 +46,17 @@ fileprivate extension MusicServicesRepositoryImpl {
                   let typeString = element.attributes["ContainerType"],
                   let type = ContainerType(rawValue: typeString),
                   let policyString = element["Policy"].attributes["Auth"],
-                  let policy = AuthenticationPolicy(rawValue: policyString),
-                  let presentationMapVersionString = element["Presentation"]["PresentationMap"].attributes["Version"],
-                  let presentationMapVersion = Int(presentationMapVersionString),
-                  let presentationMapUriString = element["Presentation"]["PresentationMap"].attributes["Uri"],
-                  let presentationMapUri = URL(string: presentationMapUriString) else {
+                  let policy = AuthenticationPolicy(rawValue: policyString) else {
                 return nil
+            }
+            
+            
+            var presentationMap: Presentation?
+            if let presentationMapVersionString = element["Presentation"]["PresentationMap"].attributes["Version"],
+                let presentationMapVersion = Int(presentationMapVersionString),
+                let presentationMapUriString = element["Presentation"]["PresentationMap"].attributes["Uri"],
+                let presentationMapUri = URL(string: presentationMapUriString) {
+                presentationMap = Presentation(uri: presentationMapUri, version: presentationMapVersion)
             }
             
             var strings: Presentation?
@@ -62,7 +67,6 @@ fileprivate extension MusicServicesRepositoryImpl {
                 strings = Presentation(uri: presentationStringsUri, version: presentationStringsVersion)
             }
             
-            let presentationMap = Presentation(uri: presentationMapUri, version: presentationMapVersion)
             let service = MusicService(id: id, name: name, uri: secureUri, type: type, policy: policy, map: presentationMap, strings: strings)
             
             guard allowedServices.contains("\(service.externalId)") else {

@@ -36,7 +36,7 @@ open class MusicService {
     public let uri: URL
     public let type: ContainerType
     public let policy: AuthenticationPolicy
-    public let map: Presentation
+    public let map: Presentation?
     public let strings: Presentation?
     
     /* Sonos Magic id */
@@ -44,7 +44,7 @@ open class MusicService {
         return id*256+7
     }
     
-    init(id: Int, name: String, uri: URL, type: ContainerType, policy: AuthenticationPolicy, map: Presentation, strings: Presentation?) {
+    init(id: Int, name: String, uri: URL, type: ContainerType, policy: AuthenticationPolicy, map: Presentation?, strings: Presentation?) {
         self.id = id
         self.name = name
         self.uri = uri
