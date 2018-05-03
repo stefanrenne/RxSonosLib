@@ -40,7 +40,6 @@ fileprivate extension MusicServicesRepositoryImpl {
         return { element in
             guard let idString = element.attributes["Id"],
                   let id = Int(idString),
-                  allowedServices.contains("\(id*256+7)"),
                   let name = element.attributes["Name"],
                   let secureUriString = element.attributes["SecureUri"],
                   let secureUri = URL(string: secureUriString),
@@ -64,8 +63,13 @@ fileprivate extension MusicServicesRepositoryImpl {
             }
             
             let presentationMap = Presentation(uri: presentationMapUri, version: presentationMapVersion)
+            let service = MusicService(id: id, name: name, uri: secureUri, type: type, policy: policy, map: presentationMap, strings: strings)
             
-            return MusicService(id: id, name: name, uri: secureUri, type: type, policy: policy, map: presentationMap, strings: strings)
+            guard allowedServices.contains("\(service.externalId)") else {
+                return nil
+            }
+            return service
+            
         }
     }
 }

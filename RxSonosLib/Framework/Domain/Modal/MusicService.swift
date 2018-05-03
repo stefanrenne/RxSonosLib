@@ -39,6 +39,11 @@ open class MusicService {
     public let map: Presentation
     public let strings: Presentation?
     
+    /* Sonos Magic id */
+    var externalId: Int {
+        return id*256+7
+    }
+    
     init(id: Int, name: String, uri: URL, type: ContainerType, policy: AuthenticationPolicy, map: Presentation, strings: Presentation?) {
         self.id = id
         self.name = name
