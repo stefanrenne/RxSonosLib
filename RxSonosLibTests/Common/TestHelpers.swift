@@ -7,9 +7,34 @@
 //
 
 import XCTest
+import RxSSDP
 @testable import RxSonosLib
 
 extension XCTestCase {
+    
+    /* Reset Repositories */
+    func resetToFakeRepositories() {
+        RepositoryInjection.shared.contentDirectoryRepository = FakeContentDirectoryRepositoryImpl()
+        let groupRepository = FakeGroupRepositoryImpl()
+        RepositoryInjection.shared.groupRepository = groupRepository
+        RepositoryInjection.shared.renderingControlRepository = FakeRenderingControlRepositoryImpl()
+        RepositoryInjection.shared.roomRepository = FakeRoomRepositoryImpl()
+        RepositoryInjection.shared.ssdpRepository = FakeSSDPRepositoryImpl()
+        RepositoryInjection.shared.transportRepository = FakeTransportRepositoryImpl()
+        RepositoryInjection.shared.musicServicesRepository = FakeMusicServicesRepositoryImpl()
+        SonosInteractor.shared.allGroups.onNext(groupRepository.allGroups)
+        SonosInteractor.shared.activeGroup.onNext(groupRepository.allGroups.first)
+    }
+    
+    func resetToRealRepositories() {
+        RepositoryInjection.shared.contentDirectoryRepository = ContentDirectoryRepositoryImpl()
+        RepositoryInjection.shared.groupRepository = GroupRepositoryImpl()
+        RepositoryInjection.shared.renderingControlRepository = RenderingControlRepositoryImpl()
+        RepositoryInjection.shared.roomRepository = RoomRepositoryImpl()
+        RepositoryInjection.shared.ssdpRepository = SSDPRepositoryImpl()
+        RepositoryInjection.shared.transportRepository = TransportRepositoryImpl()
+        RepositoryInjection.shared.musicServicesRepository = MusicServicesRepositoryImpl()
+    }
     
     /* Groups */
     func firstGroup() -> Group {

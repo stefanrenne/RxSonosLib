@@ -24,7 +24,7 @@ open class Group {
     
     /// All Room names in this group
     public lazy var names: [String] = {
-        return self.rooms.map({ $0.name })
+        return Array(Set(self.rooms.map({ $0.name })))
     }()
     
     /// All Rooms in this group

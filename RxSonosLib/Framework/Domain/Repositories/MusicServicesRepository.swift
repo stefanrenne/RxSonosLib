@@ -11,6 +11,6 @@ import RxSwift
 
 protocol MusicServicesRepository {
     
-    func getMusicServices() -> Observable<[MusicService]>
+    func getMusicServices(for room: Room) -> Observable<[MusicService]>
     
 }

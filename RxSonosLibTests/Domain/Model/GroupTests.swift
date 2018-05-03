@@ -14,23 +14,12 @@ import RxSwift
 class GroupTests: XCTestCase {
     
     override func setUp() {
-        RepositoryInjection.shared.contentDirectoryRepository = FakeContentDirectoryRepositoryImpl()
-        RepositoryInjection.shared.groupRepository = FakeGroupRepositoryImpl()
-        RepositoryInjection.shared.renderingControlRepository = FakeRenderingControlRepositoryImpl()
-        RepositoryInjection.shared.roomRepository = FakeRoomRepositoryImpl()
-        RepositoryInjection.shared.ssdpRepository = FakeSSDPRepositoryImpl()
-        RepositoryInjection.shared.transportRepository = FakeTransportRepositoryImpl()
-        _ = SonosInteractor.shared
+        resetToFakeRepositories()
         super.setUp()
     }
     
     override func tearDown() {
-        RepositoryInjection.shared.contentDirectoryRepository = ContentDirectoryRepositoryImpl()
-        RepositoryInjection.shared.groupRepository = GroupRepositoryImpl()
-        RepositoryInjection.shared.renderingControlRepository = RenderingControlRepositoryImpl()
-        RepositoryInjection.shared.roomRepository = RoomRepositoryImpl()
-        RepositoryInjection.shared.ssdpRepository = SSDPRepositoryImpl()
-        RepositoryInjection.shared.transportRepository = TransportRepositoryImpl()
+        resetToRealRepositories()
         super.tearDown()
     }
     
@@ -244,6 +233,10 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(track2.artist, "Nothing More")
         XCTAssertEqual(track2.album, "Nothing More")
         XCTAssertEqual(track2.description(), [TrackDescription.title: "Christ Copyright", TrackDescription.artist: "Nothing More", TrackDescription.album: "Nothing More"])
+    }
+    
+    func testItCanGetTheNames() {
+        XCTAssertEqual(secondGroup().names, ["Living"])
     }
     
     

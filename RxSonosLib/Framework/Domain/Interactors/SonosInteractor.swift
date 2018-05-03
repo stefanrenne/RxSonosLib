@@ -39,6 +39,18 @@ open class SonosInteractor {
         return shared.allGroups.asObserver()
     }
     
+    static public func getAllMusicServices() -> Observable<[MusicService]> {
+        return shared
+            .allRooms
+            .asObserver()
+            .filter({ $0.count > 0 })
+            .take(1)
+            .flatMap { (rooms) -> Observable<[MusicService]> in
+                return GetMusicServicesInteractor(musicServicesRepository: RepositoryInjection.provideMusicServicesRepository())
+                    .get(values: GetMusicServicesValues(room: rooms.first))
+        }   
+    }
+    
     /* Group */
     static public func getTrack(_ group: Group) -> Observable<Track?> {
         return GetNowPlayingInteractor(transportRepository: RepositoryInjection.provideTransportRepository())

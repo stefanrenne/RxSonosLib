@@ -13,9 +13,9 @@ import AEXML
 class SoapNetwork: Network {
     
     let room: Room
-    let call: SoapSoapAction
+    let call: SoapAction
     
-    init(room: Room, action: SoapSoapAction) {
+    init(room: Room, action: SoapAction) {
         self.room = room
         self.call = action
         super.init()

@@ -1,5 +1,5 @@
 //
-//  SoapSoapAction.swift
+//  SoapAction.swift
 //  RxSonosLib
 //
 //  Created by Stefan Renne on 12/03/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SoapSoapAction {
+enum SoapAction {
     
     
     /* Transport */
@@ -17,7 +17,8 @@ enum SoapSoapAction {
     case play, pause, stop, previous, next, positionInfo, transportInfo, mediaInfo
     
     /* Music */
-//    case listAvailableServices, getSessionId(Int, String)
+    case listAvailableServices
+//    case getSessionId(Int, String)
     
     /* Group */
     case state
@@ -43,8 +44,8 @@ enum SoapSoapAction {
         case .play, .pause, .stop, .positionInfo, .transportInfo, .mediaInfo, .previous, .next:
 //        case .changeTrack, .seekTime, .addTrackToQueueEnd, .addTrackToQueuePlayNext, .removeTrackFromQueue, .removeAllTracksFromQueue, .setQueue, .setAVTransportURI, .becomeCoordinatorOfStandaloneGroup:
             return .transport
-//        case .listAvailableServices, .getSessionId:
-//            return .music
+        case .listAvailableServices/*, .getSessionId*/:
+            return .music
         case .state/*, .groupAttributes*/:
             return .group
         //        case .favorites, .localFiles
@@ -92,8 +93,8 @@ enum SoapSoapAction {
 //            return "SetAVTransportURI"
 //        case .becomeCoordinatorOfStandaloneGroup:
 //            return "BecomeCoordinatorOfStandaloneGroup"
-//        case .listAvailableServices:
-//            return "ListAvailableServices"
+        case .listAvailableServices:
+            return "ListAvailableServices"
 //        case .getSessionId:
 //            return "GetSessionId"
         case .state:

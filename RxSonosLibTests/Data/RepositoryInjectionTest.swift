@@ -58,4 +58,11 @@ class RepositoryInjectionTest: XCTestCase {
         XCTAssertTrue(type(of: RepositoryInjection.provideRenderingControlRepository()) == FakeRenderingControlRepositoryImpl.self)
     }
     
+    func testItCanProvideTheMusicServicesRepository() {
+        XCTAssertTrue(type(of: RepositoryInjection.provideMusicServicesRepository()) == MusicServicesRepositoryImpl.self)
+        
+        RepositoryInjection.shared.musicServicesRepository = FakeMusicServicesRepositoryImpl()
+        XCTAssertTrue(type(of: RepositoryInjection.provideMusicServicesRepository()) == FakeMusicServicesRepositoryImpl.self)
+    }
+    
 }
