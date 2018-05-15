@@ -65,7 +65,7 @@ open class Track {
     /**
      * Type of track, example: spotify, tunein, tv
      */
-    public let service: MusicServiceType
+    public let service: MusicService
     
     /**
      * Number item in the queue
@@ -105,7 +105,7 @@ open class Track {
             .sorted(by: { $0 < $1 })
     }
     
-    init(service: MusicServiceType, queueItem: Int, duration: UInt, uri: String, title: String) {
+    init(service: MusicService, queueItem: Int, duration: UInt, uri: String, title: String) {
         self.service = service
         self.queueItem = queueItem
         self.duration = duration

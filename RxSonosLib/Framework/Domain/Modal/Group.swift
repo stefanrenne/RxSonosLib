@@ -118,10 +118,10 @@ extension ObservableType where E == Group {
             .distinctUntilChanged()
     }
     
-    public func getTransportState() -> Observable<(TransportState, MusicServiceType)> {
+    public func getTransportState() -> Observable<(TransportState, MusicService)> {
         return
             self
-            .flatMap({ (group) -> Observable<(TransportState, MusicServiceType)> in
+            .flatMap({ (group) -> Observable<(TransportState, MusicService)> in
                 return SonosInteractor.getTransportState(group)
             })
             .distinctUntilChanged({ (lhs, rhs) -> Bool in

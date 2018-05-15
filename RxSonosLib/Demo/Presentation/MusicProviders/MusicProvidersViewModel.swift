@@ -1,5 +1,5 @@
 //
-//  MusicServicesViewModel.swift
+//  MusicProvidersViewModel.swift
 //  RxSonosLib
 //
 //  Created by Stefan Renne on 30/04/2018.
@@ -10,11 +10,11 @@ import UIKit
 import RxSwift
 import RxSonosLib
 
-class MusicServiceViewModel {
+class MusicProviderViewModel {
     
-    private let service: MusicService
+    private let service: MusicProvider
     
-    init(service: MusicService) {
+    init(service: MusicProvider) {
         self.service = service
     }
     

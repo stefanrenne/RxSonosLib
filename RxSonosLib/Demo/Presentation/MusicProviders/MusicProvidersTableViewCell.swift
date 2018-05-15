@@ -1,5 +1,5 @@
 //
-//  MusicServicesTableViewCell.swift
+//  MusicProvidersTableViewCell.swift
 //  RxSonosLib
 //
 //  Created by Stefan Renne on 30/04/2018.
@@ -9,14 +9,14 @@
 import UIKit
 import RxSwift
 
-class MusicServicesTableViewCell: UITableViewCell {
+class MusicProvidersTableViewCell: UITableViewCell {
 
     static let identifier = "cell"
     @IBOutlet var icon: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     var disposeBag = DisposeBag()
-    var model: MusicServiceViewModel? {
+    var model: MusicProviderViewModel? {
         didSet {
             titleLabel.text = model?.name
         }

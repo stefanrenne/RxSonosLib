@@ -1,5 +1,5 @@
 //
-//  MusicServicesViewController.swift
+//  MusicProvidersViewController.swift
 //  Demo App
 //
 //  Created by Stefan Renne on 10/04/2018.
@@ -11,9 +11,9 @@ import RxSonosLib
 import RxSwift
 import RxCocoa
 
-class MusicServicesViewController: UIViewController {
+class MusicProvidersViewController: UIViewController {
     
-    internal var router: MusicServicesRouter!
+    internal var router: MusicProvidersRouter!
     @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var navigationItemDone: UIBarButtonItem!
     @IBOutlet var table: UITableView!
@@ -21,7 +21,7 @@ class MusicServicesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.topItem?.title = "Musicservices"
+        navigationBar.topItem?.title = "MusicProviders"
         
         self.setupNavigationBar()
         self.setupTableViewItems()
@@ -30,12 +30,12 @@ class MusicServicesViewController: UIViewController {
     }
     
     func setupTableViewItems() {
-        table.register(UINib(nibName: String(describing: MusicServicesTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: MusicServicesTableViewCell.identifier)
+        table.register(UINib(nibName: String(describing: MusicProvidersTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: MusicProvidersTableViewCell.identifier)
         
         SonosInteractor
-            .getAllMusicServices()
-            .bind(to: table.rx.items(cellIdentifier: MusicServicesTableViewCell.identifier, cellType: MusicServicesTableViewCell.self)) { (row, service, cell) in
-                cell.model = MusicServiceViewModel(service: service)
+            .getAllMusicProviders()
+            .bind(to: table.rx.items(cellIdentifier: MusicProvidersTableViewCell.identifier, cellType: MusicProvidersTableViewCell.self)) { (row, service, cell) in
+                cell.model = MusicProviderViewModel(service: service)
             }
             .disposed(by: disposeBag)
     }
@@ -43,7 +43,7 @@ class MusicServicesViewController: UIViewController {
     func setupCellTapHandling() {
         table
             .rx
-            .modelSelected(MusicService.self)
+            .modelSelected(MusicProvider.self)
             .subscribe(onNext: { [weak self] (service) in
                 self?.router.didSelect(service: service)
             })

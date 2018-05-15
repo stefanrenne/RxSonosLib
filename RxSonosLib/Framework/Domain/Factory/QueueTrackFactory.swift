@@ -12,8 +12,10 @@ struct QueueTrackFactory {
     
     static func create(room: URL, queueItem: Int, data: [String: String]) -> Track? {
         
-        switch data["res"]?.musicServiceFromUrl() {
-        case .some(.spotify):
+        guard let url = data["res"] else { return nil }
+        
+        switch MusicService.map(url: url).sid {
+        case .some(9): //spotify
             return QueueTrackFactory.createSpotifyTrack(room: room, queueItem: queueItem, data: data)
         default:
             return nil

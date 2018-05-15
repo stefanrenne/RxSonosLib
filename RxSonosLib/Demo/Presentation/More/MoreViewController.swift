@@ -28,7 +28,7 @@ class MoreViewController: UIViewController {
         table.register(UINib(nibName: String(describing: MoreTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: MoreTableViewCell.identifier)
         
         var moreItems = [MoreType]()
-        moreItems.append(.musicservices)
+        moreItems.append(.musicproviders)
         
         Observable
             .just(moreItems)

@@ -12,21 +12,15 @@ import Foundation
 extension String {
     
     func extractUUID() -> String? {
-        return self.match(with: "uuid:([a-zA-Z0-9_]+)")?.resultForString(self, index: 1)
+        return self.match(with: "uuid:([a-zA-Z0-9_]+)")?.first
     }
     
     func baseUrl() -> String? {
-        return self.match(with: "(https?://[0-9:.]+)")?.resultForString(self, index: 1)
+        return self.match(with: "(https?://[0-9:.]+)")?.first
     }
     
     func urlSuffix() -> String? {
-        return self.match(with: "^https?://[0-9:.]+(.*)$")?.resultForString(self, index: 1)
-    }
-    
-    
-    func musicServiceFromUrl() -> MusicServiceType {
-        let service = self.match(with: "([a-zA-Z0-9-]+):")?.resultForString(self, index: 1)
-        return MusicServiceType.map(string: service)
+        return self.match(with: "^https?://[0-9:.]+(.*)$")?.first
     }
     
     func validateXml() -> String {
@@ -34,18 +28,36 @@ extension String {
         return regex.stringByReplacingMatches(in: self, options: .withTransparentBounds, range: NSRange(location: 0, length: self.count), withTemplate: "$1 $2")
     }
     
-    func match(with pattern: String) -> NSTextCheckingResult? {
-        return matches(with: pattern).first
+    func match(with pattern: String) -> [String]? {
+        let regex = try! NSRegularExpression(pattern: pattern, options: [])
+        return regex.matches(in: self, options: [], range: NSRange(location: 0, length: self.count)).first?.toArray(for: self)
     }
     
-    func matches(with pattern: String) -> [NSTextCheckingResult] {
-        let regex = try! NSRegularExpression(pattern: pattern, options: [])
-        return regex.matches(in: self, options: [], range: NSRange(location: 0, length: self.count))
+    var int: Int? {
+        return Int(self)
+    }
+}
+
+extension Array where Element == URLQueryItem {
+    subscript(key: String) -> String? {
+        get {
+            return filter({ $0.name == key }).first?.value
+        }
     }
 }
 
 extension NSTextCheckingResult {
-    func resultForString(_ string: String, index: Int) -> String? {
+    func toArray(for string: String) -> [String] {
+        var result = [String]()
+        for index in 1..<self.numberOfRanges {
+            if let value = self.substring(for: string, index: index) {
+                result.append(value)
+            }
+        }
+        return result
+    }
+    
+    func substring(for string: String, index: Int) -> String? {
         guard index < self.numberOfRanges,
             let swiftRange = self.range(at: index).toRange(for: string) else {
             return nil

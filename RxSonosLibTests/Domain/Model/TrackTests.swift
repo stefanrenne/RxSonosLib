@@ -24,8 +24,8 @@ class TrackTests: XCTestCase {
     }
     
     func testItCanInitATrack() {
-        let track = Track(service: .spotify, queueItem: 1, duration: 10, uri: "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif", title: "test")
-        XCTAssertEqual(track.service, .spotify)
+        let track = Track(service: .musicProvider(sid: 9, flags: nil, sn: nil), queueItem: 1, duration: 10, uri: "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif", title: "test")
+        XCTAssertEqual(track.service.sid, 9)
         XCTAssertEqual(track.duration, 10)
         XCTAssertEqual(track.queueItem, 1)
         XCTAssertEqual(track.uri, "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif")

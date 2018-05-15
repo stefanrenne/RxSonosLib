@@ -41,7 +41,7 @@ class TransportRepositoryTest: XCTestCase {
             .toBlocking()
             .first()! as! SpotifyTrack
         
-        XCTAssertEqual(track.service, .spotify)
+        XCTAssertEqual(track.service.sid, 9)
         XCTAssertEqual(track.queueItem, 7)
         XCTAssertEqual(track.duration, 265)
         XCTAssertEqual(track.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
@@ -80,7 +80,7 @@ class TransportRepositoryTest: XCTestCase {
             .toBlocking()
             .first()! as! TuneinTrack
         
-        XCTAssertEqual(track.service, .tunein)
+        XCTAssertEqual(track.service.sid, 254)
         XCTAssertEqual(track.queueItem, 1)
         XCTAssertEqual(track.duration, 0)
         XCTAssertEqual(track.uri, "x-rincon-mp3radio://http://20863.live.streamtheworld.com:80/RADIO538.mp3?tdtok=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImZTeXA4In0.eyJpc3MiOiJ0aXNydiIsInN1YiI6IjIxMDY0IiwiaWF0IjoxNTIyNDQzMDQ5LCJ0ZC1yZWciOmZhbHNlfQ.kvTa2wxGb7-Rs7TjFjeRmPlzrkMnZGwDyBdyrru0Wbs")

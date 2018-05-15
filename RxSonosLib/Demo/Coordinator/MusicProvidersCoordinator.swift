@@ -1,5 +1,5 @@
 //
-//  MusicServicesCoordinator.swift
+//  MusicProvidersCoordinator.swift
 //  Demo App
 //
 //  Created by Stefan Renne on 30/04/2018.
@@ -9,19 +9,19 @@
 import UIKit
 import RxSonosLib
 
-protocol MusicServicesRouter {
+protocol MusicProvidersRouter {
     func didClose()
-    func didSelect(service: MusicService)
+    func didSelect(service: MusicProvider)
 }
 
-class MusicServicesCoordinator: Coordinator {
+class MusicProvidersCoordinator: Coordinator {
     
     private let masterRouter: MasterRouter
     init(masterRouter: MasterRouter) {
         self.masterRouter = masterRouter
     }
     
-    private let viewController = MusicServicesViewController()
+    private let viewController = MusicProvidersViewController()
     func setup() -> UIViewController {
         viewController.router = self
         return viewController
@@ -33,13 +33,13 @@ class MusicServicesCoordinator: Coordinator {
     }
 }
 
-extension MusicServicesCoordinator: MusicServicesRouter {
+extension MusicProvidersCoordinator: MusicProvidersRouter {
     
     func didClose() {
         masterRouter.dismiss()
     }
 
-    func didSelect(service: MusicService) {
+    func didSelect(service: MusicProvider) {
         
     }
     

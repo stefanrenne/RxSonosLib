@@ -1,5 +1,5 @@
 //
-//  MusicServicesRepository.swift
+//  MusicProvidersRepository.swift
 //  RxSonosLib
 //
 //  Created by Stefan Renne on 30/04/2018.
@@ -9,8 +9,8 @@
 import Foundation
 import RxSwift
 
-protocol MusicServicesRepository {
+protocol MusicProvidersRepository {
     
-    func getMusicServices(for room: Room) -> Observable<[MusicService]>
+    func getMusicProviders(for room: Room) -> Observable<[MusicProvider]>
     
 }

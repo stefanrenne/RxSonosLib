@@ -2,56 +2,74 @@
 //  MusicService.swift
 //  RxSonosLib
 //
-//  Created by Stefan Renne on 30/04/2018.
+//  Created by Stefan Renne on 27/03/2018.
 //  Copyright © 2018 Uberweb. All rights reserved.
 //
 
 import Foundation
 
-public enum ContainerType: String {
-    case musicService = "MService"
-    case soundLab = "SoundLab"
+public enum MusicService {
+    case musicProvider(sid: Int, flags: Int?, sn: Int?)
+    case tv
+    case unknown
 }
 
-public enum AuthenticationPolicy: String {
-    case anonymous = "Anonymous"
-    case appLink = "AppLink"
-    case userId = "UserId"
-    case deviceLink = "DeviceLink"
-}
-
-open class Presentation {
-    public let uri: URL
-    public let version: Int
-    
-    init(uri: URL, version: Int) {
-        self.uri = uri
-        self.version = version
+extension MusicService {
+    public var isStreamingService: Bool {
+        switch self {
+        case .tv:
+            return true
+        default:
+            return false
+        }
     }
 }
 
-open class MusicService {
-    public let id: Int
-    public let name: String
-    public let uri: URL
-    public let type: ContainerType
-    public let policy: AuthenticationPolicy
-    public let map: Presentation?
-    public let strings: Presentation?
+extension MusicService: Equatable {
     
-    /* Sonos Magic id */
-    var externalId: Int {
-        return id*256+7
+    private var rawValue: Int {
+        switch self {
+        case .musicProvider(let sid, _, _):
+            return sid
+        case .tv:
+            return 9999
+        case .unknown:
+            return 0
+        }
     }
     
-    init(id: Int, name: String, uri: URL, type: ContainerType, policy: AuthenticationPolicy, map: Presentation?, strings: Presentation?) {
-        self.id = id
-        self.name = name
-        self.uri = uri
-        self.type = type
-        self.policy = policy
-        self.map = map
-        self.strings = strings
+    public static func ==(lhs: MusicService, rhs: MusicService) -> Bool {
+        return lhs.rawValue == rhs.rawValue
+    }
+}
+
+
+extension MusicService {
+    
+    var sid: Int? {
+        switch self {
+        case .musicProvider(let sid, _, _):
+            return sid
+        default:
+            return nil
+        }
     }
     
+    static func map(url: String) -> MusicService {
+        
+        let urlComponents = URLComponents(string: url)
+        if let sid = urlComponents?.queryItems?["sid"]?.int {
+            let flags = urlComponents?.queryItems?["flags"]?.int
+            let sn = urlComponents?.queryItems?["sn"]?.int
+            return MusicService.musicProvider(sid: sid, flags: flags, sn: sn)
+        }
+        
+        let service = url.match(with: "([a-zA-Z0-9-]+):")?.first
+        switch service {
+        case .some("x-sonos-htastream"):
+            return .tv
+        default:
+            return .unknown
+        }
+    }
 }

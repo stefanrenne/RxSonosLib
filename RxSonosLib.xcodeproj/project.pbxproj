@@ -102,14 +102,14 @@
 		F8726787206A3F3B00093FF1 /* TransportState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8726786206A3F3B00093FF1 /* TransportState.swift */; };
 		F872678E206A48D300093FF1 /* GetNowPlayingInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872678D206A48D300093FF1 /* GetNowPlayingInteractorTests.swift */; };
 		F8726790206A4B7700093FF1 /* TransportStateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F872678F206A4B7700093FF1 /* TransportStateTest.swift */; };
-		F8726794206A4CE500093FF1 /* MusicServiceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8726793206A4CE400093FF1 /* MusicServiceTypeTests.swift */; };
+		F8726794206A4CE500093FF1 /* MusicServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8726793206A4CE400093FF1 /* MusicServiceTests.swift */; };
 		F87C0CBD206F88F600098D07 /* DownloadNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87C0CBC206F88F600098D07 /* DownloadNetwork.swift */; };
 		F87C0CBF206F8AE800098D07 /* GetTrackImageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87C0CBE206F8AE800098D07 /* GetTrackImageInteractor.swift */; };
 		F87C0CC1206F8C5D00098D07 /* GetTrackImageInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87C0CC0206F8C5D00098D07 /* GetTrackImageInteractorTests.swift */; };
 		F87DC3B220696E870089F882 /* GetNowPlayingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B020696E7E0089F882 /* GetNowPlayingInteractor.swift */; };
 		F87DC3B7206974900089F882 /* GetMediaInfoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B52069745A0089F882 /* GetMediaInfoNetwork.swift */; };
 		F87DC3B8206974920089F882 /* GetTransportInfoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B3206974490089F882 /* GetTransportInfoNetwork.swift */; };
-		F87DC3BA206A2FE80089F882 /* MusicServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B9206A2FE80089F882 /* MusicServiceType.swift */; };
+		F87DC3BA206A2FE80089F882 /* MusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B9206A2FE80089F882 /* MusicService.swift */; };
 		F8860E7C2074D74100BF6A7E /* String+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E7B2074D74100BF6A7E /* String+Empty.swift */; };
 		F8860E7E2074D89300BF6A7E /* SpotifyTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E7D2074D89300BF6A7E /* SpotifyTrack.swift */; };
 		F8860E802074D8A800BF6A7E /* TuneinTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E7F2074D8A800BF6A7E /* TuneinTrack.swift */; };
@@ -151,24 +151,24 @@
 		F8B0D8AB2082586F0072BAE0 /* SetStopNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8AA2082586F0072BAE0 /* SetStopNetwork.swift */; };
 		F8B0D8AD20825AAC0072BAE0 /* SetTransportStateInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8AC20825AAC0072BAE0 /* SetTransportStateInteractorTests.swift */; };
 		F8B0D8AF2083482A0072BAE0 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8AE2083482A0072BAE0 /* ActionButton.swift */; };
-		F8B315C1209A018A0000335D /* MusicServicesRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B315C0209A018A0000335D /* MusicServicesRepositoryTests.swift */; };
-		F8B315C3209A20510000335D /* FakeMusicServicesRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B315C2209A20510000335D /* FakeMusicServicesRepositoryImpl.swift */; };
-		F8B315C7209A22BB0000335D /* GetMusicServicesInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B315C6209A22BB0000335D /* GetMusicServicesInteractorTests.swift */; };
+		F8B315C1209A018A0000335D /* MusicProvidersRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B315C0209A018A0000335D /* MusicProvidersRepositoryTests.swift */; };
+		F8B315C3209A20510000335D /* FakeMusicProvidersRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B315C2209A20510000335D /* FakeMusicProvidersRepositoryImpl.swift */; };
+		F8B315C7209A22BB0000335D /* GetMusicProvidersInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B315C6209A22BB0000335D /* GetMusicProvidersInteractorTests.swift */; };
 		F8B947032096F5D3004F1A33 /* GetRoomsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B947022096F5D3004F1A33 /* GetRoomsInteractor.swift */; };
-		F8B947062097910B004F1A33 /* MusicServicesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B947052097910B004F1A33 /* MusicServicesRepository.swift */; };
-		F8B9470820979113004F1A33 /* MusicServicesRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9470720979113004F1A33 /* MusicServicesRepositoryImpl.swift */; };
-		F8B9470A2097923E004F1A33 /* MusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B947092097923E004F1A33 /* MusicService.swift */; };
+		F8B947062097910B004F1A33 /* MusicProvidersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B947052097910B004F1A33 /* MusicProvidersRepository.swift */; };
+		F8B9470820979113004F1A33 /* MusicProvidersRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9470720979113004F1A33 /* MusicProvidersRepositoryImpl.swift */; };
+		F8B9470A2097923E004F1A33 /* MusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B947092097923E004F1A33 /* MusicProvider.swift */; };
 		F8B9470C20979309004F1A33 /* GetAvailableServicesNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9470B20979309004F1A33 /* GetAvailableServicesNetwork.swift */; };
-		F8B9470E209794C3004F1A33 /* GetMusicServicesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9470D209794C3004F1A33 /* GetMusicServicesInteractor.swift */; };
+		F8B9470E209794C3004F1A33 /* GetMusicProvidersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9470D209794C3004F1A33 /* GetMusicProvidersInteractor.swift */; };
 		F8B947162097992D004F1A33 /* MoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B947132097989A004F1A33 /* MoreViewModel.swift */; };
 		F8B9471720979936004F1A33 /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B94710209796FE004F1A33 /* MoreTableViewCell.xib */; };
 		F8B947182097993A004F1A33 /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9470F209796FE004F1A33 /* MoreTableViewCell.swift */; };
-		F8B9471B20979A95004F1A33 /* MusicServicesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9471A20979A95004F1A33 /* MusicServicesCoordinator.swift */; };
-		F8B9472320979C44004F1A33 /* MusicServicesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B9471E20979C44004F1A33 /* MusicServicesTableViewCell.xib */; };
-		F8B9472420979C44004F1A33 /* MusicServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9471F20979C44004F1A33 /* MusicServicesViewController.swift */; };
-		F8B9472520979C44004F1A33 /* MusicServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9472020979C44004F1A33 /* MusicServicesTableViewCell.swift */; };
-		F8B9472620979C44004F1A33 /* MusicServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9472120979C44004F1A33 /* MusicServiceViewModel.swift */; };
-		F8B9472720979C44004F1A33 /* MusicServicesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B9472220979C44004F1A33 /* MusicServicesViewController.xib */; };
+		F8B9471B20979A95004F1A33 /* MusicProvidersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9471A20979A95004F1A33 /* MusicProvidersCoordinator.swift */; };
+		F8B9472320979C44004F1A33 /* MusicProvidersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B9471E20979C44004F1A33 /* MusicProvidersTableViewCell.xib */; };
+		F8B9472420979C44004F1A33 /* MusicProvidersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9471F20979C44004F1A33 /* MusicProvidersViewController.swift */; };
+		F8B9472520979C44004F1A33 /* MusicProvidersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9472020979C44004F1A33 /* MusicProvidersTableViewCell.swift */; };
+		F8B9472620979C44004F1A33 /* MusicProvidersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9472120979C44004F1A33 /* MusicProvidersViewModel.swift */; };
+		F8B9472720979C44004F1A33 /* MusicProvidersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B9472220979C44004F1A33 /* MusicProvidersViewController.xib */; };
 		F8CA2306207BD502009F15AE /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA2305207BD502009F15AE /* LoadingCoordinator.swift */; };
 		F8CA230A207BD5C1009F15AE /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA2308207BD5C1009F15AE /* LoadingViewController.swift */; };
 		F8CA230B207BD5C1009F15AE /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8CA2309207BD5C1009F15AE /* LoadingViewController.xib */; };
@@ -310,14 +310,14 @@
 		F8726786206A3F3B00093FF1 /* TransportState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportState.swift; sourceTree = "<group>"; };
 		F872678D206A48D300093FF1 /* GetNowPlayingInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNowPlayingInteractorTests.swift; sourceTree = "<group>"; };
 		F872678F206A4B7700093FF1 /* TransportStateTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportStateTest.swift; sourceTree = "<group>"; };
-		F8726793206A4CE400093FF1 /* MusicServiceTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicServiceTypeTests.swift; sourceTree = "<group>"; };
+		F8726793206A4CE400093FF1 /* MusicServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicServiceTests.swift; sourceTree = "<group>"; };
 		F87C0CBC206F88F600098D07 /* DownloadNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadNetwork.swift; sourceTree = "<group>"; };
 		F87C0CBE206F8AE800098D07 /* GetTrackImageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTrackImageInteractor.swift; sourceTree = "<group>"; };
 		F87C0CC0206F8C5D00098D07 /* GetTrackImageInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTrackImageInteractorTests.swift; sourceTree = "<group>"; };
 		F87DC3B020696E7E0089F882 /* GetNowPlayingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNowPlayingInteractor.swift; sourceTree = "<group>"; };
 		F87DC3B3206974490089F882 /* GetTransportInfoNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTransportInfoNetwork.swift; sourceTree = "<group>"; };
 		F87DC3B52069745A0089F882 /* GetMediaInfoNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMediaInfoNetwork.swift; sourceTree = "<group>"; };
-		F87DC3B9206A2FE80089F882 /* MusicServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicServiceType.swift; sourceTree = "<group>"; };
+		F87DC3B9206A2FE80089F882 /* MusicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicService.swift; sourceTree = "<group>"; };
 		F881C5802049C8E700E3F523 /* GetGroupsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupsInteractor.swift; sourceTree = "<group>"; };
 		F881C5842049CCDC00E3F523 /* RoomsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsTableViewCell.swift; sourceTree = "<group>"; };
 		F881C5852049CCDC00E3F523 /* RoomsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoomsTableViewCell.xib; sourceTree = "<group>"; };
@@ -362,24 +362,24 @@
 		F8B0D8AA2082586F0072BAE0 /* SetStopNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStopNetwork.swift; sourceTree = "<group>"; };
 		F8B0D8AC20825AAC0072BAE0 /* SetTransportStateInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTransportStateInteractorTests.swift; sourceTree = "<group>"; };
 		F8B0D8AE2083482A0072BAE0 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
-		F8B315C0209A018A0000335D /* MusicServicesRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicServicesRepositoryTests.swift; sourceTree = "<group>"; };
-		F8B315C2209A20510000335D /* FakeMusicServicesRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMusicServicesRepositoryImpl.swift; sourceTree = "<group>"; };
-		F8B315C6209A22BB0000335D /* GetMusicServicesInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMusicServicesInteractorTests.swift; sourceTree = "<group>"; };
+		F8B315C0209A018A0000335D /* MusicProvidersRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicProvidersRepositoryTests.swift; sourceTree = "<group>"; };
+		F8B315C2209A20510000335D /* FakeMusicProvidersRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMusicProvidersRepositoryImpl.swift; sourceTree = "<group>"; };
+		F8B315C6209A22BB0000335D /* GetMusicProvidersInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMusicProvidersInteractorTests.swift; sourceTree = "<group>"; };
 		F8B947022096F5D3004F1A33 /* GetRoomsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRoomsInteractor.swift; sourceTree = "<group>"; };
-		F8B947052097910B004F1A33 /* MusicServicesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicServicesRepository.swift; sourceTree = "<group>"; };
-		F8B9470720979113004F1A33 /* MusicServicesRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicServicesRepositoryImpl.swift; sourceTree = "<group>"; };
-		F8B947092097923E004F1A33 /* MusicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicService.swift; sourceTree = "<group>"; };
+		F8B947052097910B004F1A33 /* MusicProvidersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicProvidersRepository.swift; sourceTree = "<group>"; };
+		F8B9470720979113004F1A33 /* MusicProvidersRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicProvidersRepositoryImpl.swift; sourceTree = "<group>"; };
+		F8B947092097923E004F1A33 /* MusicProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicProvider.swift; sourceTree = "<group>"; };
 		F8B9470B20979309004F1A33 /* GetAvailableServicesNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAvailableServicesNetwork.swift; sourceTree = "<group>"; };
-		F8B9470D209794C3004F1A33 /* GetMusicServicesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMusicServicesInteractor.swift; sourceTree = "<group>"; };
+		F8B9470D209794C3004F1A33 /* GetMusicProvidersInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMusicProvidersInteractor.swift; sourceTree = "<group>"; };
 		F8B9470F209796FE004F1A33 /* MoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
 		F8B94710209796FE004F1A33 /* MoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreTableViewCell.xib; sourceTree = "<group>"; };
 		F8B947132097989A004F1A33 /* MoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewModel.swift; sourceTree = "<group>"; };
-		F8B9471A20979A95004F1A33 /* MusicServicesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicServicesCoordinator.swift; sourceTree = "<group>"; };
-		F8B9471E20979C44004F1A33 /* MusicServicesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicServicesTableViewCell.xib; sourceTree = "<group>"; };
-		F8B9471F20979C44004F1A33 /* MusicServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicServicesViewController.swift; sourceTree = "<group>"; };
-		F8B9472020979C44004F1A33 /* MusicServicesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicServicesTableViewCell.swift; sourceTree = "<group>"; };
-		F8B9472120979C44004F1A33 /* MusicServiceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicServiceViewModel.swift; sourceTree = "<group>"; };
-		F8B9472220979C44004F1A33 /* MusicServicesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicServicesViewController.xib; sourceTree = "<group>"; };
+		F8B9471A20979A95004F1A33 /* MusicProvidersCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicProvidersCoordinator.swift; sourceTree = "<group>"; };
+		F8B9471E20979C44004F1A33 /* MusicProvidersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicProvidersTableViewCell.xib; sourceTree = "<group>"; };
+		F8B9471F20979C44004F1A33 /* MusicProvidersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicProvidersViewController.swift; sourceTree = "<group>"; };
+		F8B9472020979C44004F1A33 /* MusicProvidersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicProvidersTableViewCell.swift; sourceTree = "<group>"; };
+		F8B9472120979C44004F1A33 /* MusicProvidersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicProvidersViewModel.swift; sourceTree = "<group>"; };
+		F8B9472220979C44004F1A33 /* MusicProvidersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicProvidersViewController.xib; sourceTree = "<group>"; };
 		F8BF5C522056DF9E00AE311E /* Data+Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Convert.swift"; sourceTree = "<group>"; };
 		F8BF5C542056E37100AE311E /* AEXMLDocument+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AEXMLDocument+Create.swift"; sourceTree = "<group>"; };
 		F8BF5C592056FBEC00AE311E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -557,7 +557,7 @@
 				F81E33A82072247C002E22A8 /* FakeTransportRepositoryImpl.swift */,
 				F8860E94207514BE00BF6A7E /* FakeContentDirectoryRepositoryImpl.swift */,
 				F83D210920754BE7001ABC9D /* FakeRenderingControlRepositoryImpl.swift */,
-				F8B315C2209A20510000335D /* FakeMusicServicesRepositoryImpl.swift */,
+				F8B315C2209A20510000335D /* FakeMusicProvidersRepositoryImpl.swift */,
 			);
 			path = FakeRepositoryImplementations;
 			sourceTree = "<group>";
@@ -577,7 +577,7 @@
 			isa = PBXGroup;
 			children = (
 				F81E339F20721CEF002E22A8 /* GroupProgressTests.swift */,
-				F8726793206A4CE400093FF1 /* MusicServiceTypeTests.swift */,
+				F8726793206A4CE400093FF1 /* MusicServiceTests.swift */,
 				F872678F206A4B7700093FF1 /* TransportStateTest.swift */,
 				F8979946206944A6000CF52A /* GroupTests.swift */,
 				F8860E862074FF7600BF6A7E /* TrackTests.swift */,
@@ -601,7 +601,7 @@
 				F8B0D8AC20825AAC0072BAE0 /* SetTransportStateInteractorTests.swift */,
 				F8A64DF92087F9A9003F777E /* SetPreviousInteractorTests.swift */,
 				F8A64DFB2087F9B5003F777E /* SetNextInteractorTests.swift */,
-				F8B315C6209A22BB0000335D /* GetMusicServicesInteractorTests.swift */,
+				F8B315C6209A22BB0000335D /* GetMusicProvidersInteractorTests.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -642,7 +642,7 @@
 				F8F56167205C3EE800E28533 /* SSDPRepositoryTest.swift */,
 				F8860E9020750B9300BF6A7E /* ContentDirectoryRepositoryTests.swift */,
 				F83D210B20754C44001ABC9D /* RenderingControlRepositoryTests.swift */,
-				F8B315C0209A018A0000335D /* MusicServicesRepositoryTests.swift */,
+				F8B315C0209A018A0000335D /* MusicProvidersRepositoryTests.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -733,7 +733,7 @@
 				F81DAE97207CD468006B4C17 /* BrowseCoordinator.swift */,
 				F81DAE99207CD473006B4C17 /* SearchCoordinator.swift */,
 				F81DAE9B207CD47A006B4C17 /* MoreCoordinator.swift */,
-				F8B9471A20979A95004F1A33 /* MusicServicesCoordinator.swift */,
+				F8B9471A20979A95004F1A33 /* MusicProvidersCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -741,7 +741,7 @@
 		F825F46620481C62006A7B73 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				F8B9471920979A7E004F1A33 /* MusicServices */,
+				F8B9471920979A7E004F1A33 /* MusicProviders */,
 				F81DAE90207CD447006B4C17 /* More */,
 				F81DAE8B207CD43A006B4C17 /* Search */,
 				F81DAE86207CD42A006B4C17 /* Browse */,
@@ -765,7 +765,7 @@
 				F80034302069644300D7C0FB /* TransportRepository.swift */,
 				F8860E8A207506BE00BF6A7E /* ContentDirectoryRepository.swift */,
 				F83D21012075403C001ABC9D /* RenderingControlRepository.swift */,
-				F8B947052097910B004F1A33 /* MusicServicesRepository.swift */,
+				F8B947052097910B004F1A33 /* MusicProvidersRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -788,7 +788,7 @@
 				F8DE4762208A328F008F50FA /* SetMuteInteractor.swift */,
 				F8DE4764208A3297008F50FA /* GetMuteInteractor.swift */,
 				F8B947022096F5D3004F1A33 /* GetRoomsInteractor.swift */,
-				F8B9470D209794C3004F1A33 /* GetMusicServicesInteractor.swift */,
+				F8B9470D209794C3004F1A33 /* GetMusicProvidersInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -801,13 +801,13 @@
 				F809DE942049A1B0003A94A0 /* Group.swift */,
 				F809DE962049A918003A94A0 /* DeviceDescription.swift */,
 				F800343C206967D000D7C0FB /* Track.swift */,
-				F87DC3B9206A2FE80089F882 /* MusicServiceType.swift */,
+				F87DC3B9206A2FE80089F882 /* MusicService.swift */,
 				F8726786206A3F3B00093FF1 /* TransportState.swift */,
 				F81E3399207135B2002E22A8 /* GroupProgress.swift */,
 				F8860E7D2074D89300BF6A7E /* SpotifyTrack.swift */,
 				F8860E7F2074D8A800BF6A7E /* TuneinTrack.swift */,
 				F8860E812074D8BE00BF6A7E /* TVTrack.swift */,
-				F8B947092097923E004F1A33 /* MusicService.swift */,
+				F8B947092097923E004F1A33 /* MusicProvider.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -820,7 +820,7 @@
 				F80034322069644B00D7C0FB /* TransportRepositoryImpl.swift */,
 				F8860E8C2075071F00BF6A7E /* ContentDirectoryRepositoryImpl.swift */,
 				F83D2103207540A6001ABC9D /* RenderingControlRepositoryImpl.swift */,
-				F8B9470720979113004F1A33 /* MusicServicesRepositoryImpl.swift */,
+				F8B9470720979113004F1A33 /* MusicProvidersRepositoryImpl.swift */,
 			);
 			path = RepositoryImplementations;
 			sourceTree = "<group>";
@@ -932,16 +932,16 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
-		F8B9471920979A7E004F1A33 /* MusicServices */ = {
+		F8B9471920979A7E004F1A33 /* MusicProviders */ = {
 			isa = PBXGroup;
 			children = (
-				F8B9472020979C44004F1A33 /* MusicServicesTableViewCell.swift */,
-				F8B9471E20979C44004F1A33 /* MusicServicesTableViewCell.xib */,
-				F8B9471F20979C44004F1A33 /* MusicServicesViewController.swift */,
-				F8B9472220979C44004F1A33 /* MusicServicesViewController.xib */,
-				F8B9472120979C44004F1A33 /* MusicServiceViewModel.swift */,
+				F8B9472020979C44004F1A33 /* MusicProvidersTableViewCell.swift */,
+				F8B9471E20979C44004F1A33 /* MusicProvidersTableViewCell.xib */,
+				F8B9471F20979C44004F1A33 /* MusicProvidersViewController.swift */,
+				F8B9472220979C44004F1A33 /* MusicProvidersViewController.xib */,
+				F8B9472120979C44004F1A33 /* MusicProvidersViewModel.swift */,
 			);
-			path = MusicServices;
+			path = MusicProviders;
 			sourceTree = "<group>";
 		};
 		F8BF5C582056FBEC00AE311E /* Network */ = {
@@ -1161,8 +1161,8 @@
 				F81DAE8A207CD436006B4C17 /* BrowseViewController.xib in Resources */,
 				F8CA230B207BD5C1009F15AE /* LoadingViewController.xib in Resources */,
 				F8B9471720979936004F1A33 /* MoreTableViewCell.xib in Resources */,
-				F8B9472320979C44004F1A33 /* MusicServicesTableViewCell.xib in Resources */,
-				F8B9472720979C44004F1A33 /* MusicServicesViewController.xib in Resources */,
+				F8B9472320979C44004F1A33 /* MusicProvidersTableViewCell.xib in Resources */,
+				F8B9472720979C44004F1A33 /* MusicProvidersViewController.xib in Resources */,
 				F81DAE8F207CD444006B4C17 /* SearchViewController.xib in Resources */,
 				F81A05C92060284A00897738 /* RoomsViewController.xib in Resources */,
 				F81A05D02060285100897738 /* LaunchScreen.storyboard in Resources */,
@@ -1314,11 +1314,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8B9472420979C44004F1A33 /* MusicServicesViewController.swift in Sources */,
+				F8B9472420979C44004F1A33 /* MusicProvidersViewController.swift in Sources */,
 				F89A59C5207776CB0097C0AA /* TabBarViewController.swift in Sources */,
-				F8B9472620979C44004F1A33 /* MusicServiceViewModel.swift in Sources */,
+				F8B9472620979C44004F1A33 /* MusicProvidersViewModel.swift in Sources */,
 				F8B947162097992D004F1A33 /* MoreViewModel.swift in Sources */,
-				F8B9471B20979A95004F1A33 /* MusicServicesCoordinator.swift in Sources */,
+				F8B9471B20979A95004F1A33 /* MusicProvidersCoordinator.swift in Sources */,
 				F81A05C62060284A00897738 /* NowPlayingViewController.swift in Sources */,
 				F81A05C82060284A00897738 /* RoomsViewController.swift in Sources */,
 				F8CA230A207BD5C1009F15AE /* LoadingViewController.swift in Sources */,
@@ -1326,7 +1326,7 @@
 				F81DAE84207CD427006B4C17 /* MySonosViewController.swift in Sources */,
 				F81DAE98207CD468006B4C17 /* BrowseCoordinator.swift in Sources */,
 				F81DAE89207CD436006B4C17 /* BrowseViewController.swift in Sources */,
-				F8B9472520979C44004F1A33 /* MusicServicesTableViewCell.swift in Sources */,
+				F8B9472520979C44004F1A33 /* MusicProvidersTableViewCell.swift in Sources */,
 				F81DAE96207CD45E006B4C17 /* MySonosCoordinator.swift in Sources */,
 				F81DAE80207CD16D006B4C17 /* PageNavigationController.swift in Sources */,
 				F8CA2306207BD502009F15AE /* LoadingCoordinator.swift in Sources */,
@@ -1357,7 +1357,7 @@
 			files = (
 				F8627F43206BFD5200571085 /* GetTransportStateInteractor.swift in Sources */,
 				F86B3440206A8EB900979A5F /* String+Time.swift in Sources */,
-				F8B9470E209794C3004F1A33 /* GetMusicServicesInteractor.swift in Sources */,
+				F8B9470E209794C3004F1A33 /* GetMusicProvidersInteractor.swift in Sources */,
 				F81E339C20713924002E22A8 /* GetGroupProgressInteractor.swift in Sources */,
 				F87C0CBF206F8AE800098D07 /* GetTrackImageInteractor.swift in Sources */,
 				F83D21022075403C001ABC9D /* RenderingControlRepository.swift in Sources */,
@@ -1371,12 +1371,12 @@
 				F8F0FA56208A1A0C00C2E0D0 /* SetMuteNetwork.swift in Sources */,
 				F8860E7E2074D89300BF6A7E /* SpotifyTrack.swift in Sources */,
 				F8A64DF22087F432003F777E /* SetNextTrackInteractor.swift in Sources */,
-				F8B9470820979113004F1A33 /* MusicServicesRepositoryImpl.swift in Sources */,
+				F8B9470820979113004F1A33 /* MusicProvidersRepositoryImpl.swift in Sources */,
 				F8B0D8A9208258660072BAE0 /* SetPauseNetwork.swift in Sources */,
 				F8860E8F207507F500BF6A7E /* GetGroupQueueInteractor.swift in Sources */,
 				F81A05EF206028D600897738 /* Group.swift in Sources */,
 				F81A05F8206028D600897738 /* Network.swift in Sources */,
-				F8B947062097910B004F1A33 /* MusicServicesRepository.swift in Sources */,
+				F8B947062097910B004F1A33 /* MusicProvidersRepository.swift in Sources */,
 				F89807E420760D6E00AF5ECB /* SetVolumeNetwork.swift in Sources */,
 				F8F0FA58208A1A1300C2E0D0 /* GetMuteNetwork.swift in Sources */,
 				F89807E620762FE400AF5ECB /* SetVolumeInteractor.swift in Sources */,
@@ -1401,7 +1401,7 @@
 				F81A05F9206028D600897738 /* SoapNetwork.swift in Sources */,
 				F8A64DF82087F56F003F777E /* SetPreviousNetwork.swift in Sources */,
 				F81A05F4206028D600897738 /* GroupRepository.swift in Sources */,
-				F87DC3BA206A2FE80089F882 /* MusicServiceType.swift in Sources */,
+				F87DC3BA206A2FE80089F882 /* MusicService.swift in Sources */,
 				F81A05F1206028D600897738 /* GetGroupsInteractor.swift in Sources */,
 				F81A05F2206028D600897738 /* SonosInteractor.swift in Sources */,
 				F81A05F3206028D600897738 /* RoomRepository.swift in Sources */,
@@ -1413,7 +1413,7 @@
 				F8B0D8A72082585C0072BAE0 /* SetPlayNetwork.swift in Sources */,
 				F81A05E9206028D600897738 /* Interactor.swift in Sources */,
 				F8DE4763208A328F008F50FA /* SetMuteInteractor.swift in Sources */,
-				F8B9470A2097923E004F1A33 /* MusicService.swift in Sources */,
+				F8B9470A2097923E004F1A33 /* MusicProvider.swift in Sources */,
 				F8726787206A3F3B00093FF1 /* TransportState.swift in Sources */,
 				F81A05FB206028D600897738 /* SoapAction.swift in Sources */,
 				F87DC3B220696E870089F882 /* GetNowPlayingInteractor.swift in Sources */,
@@ -1437,7 +1437,7 @@
 			files = (
 				F8AA1226209B39320047EF7B /* QueueTrackFactoryTests.swift in Sources */,
 				F81E33A020721CEF002E22A8 /* GroupProgressTests.swift in Sources */,
-				F8B315C1209A018A0000335D /* MusicServicesRepositoryTests.swift in Sources */,
+				F8B315C1209A018A0000335D /* MusicProvidersRepositoryTests.swift in Sources */,
 				F89D94C920615994002B1383 /* CacheManagerTests.swift in Sources */,
 				F8726790206A4B7700093FF1 /* TransportStateTest.swift in Sources */,
 				F83D210A20754BE7001ABC9D /* FakeRenderingControlRepositoryImpl.swift in Sources */,
@@ -1455,21 +1455,21 @@
 				F8A64DFA2087F9A9003F777E /* SetPreviousInteractorTests.swift in Sources */,
 				F8A64DFC2087F9B5003F777E /* SetNextInteractorTests.swift in Sources */,
 				F897994520693D95000CF52A /* MockNetwork.swift in Sources */,
-				F8B315C7209A22BB0000335D /* GetMusicServicesInteractorTests.swift in Sources */,
+				F8B315C7209A22BB0000335D /* GetMusicProvidersInteractorTests.swift in Sources */,
 				F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */,
 				F81E33AA2072247D002E22A8 /* FakeSSDPRepositoryImpl.swift in Sources */,
 				F81E339E2072163E002E22A8 /* GetGroupProgressInteractorTests.swift in Sources */,
 				F81E33AF2072250A002E22A8 /* Mockingjay+Soap.swift in Sources */,
 				F86B3442206A91DC00979A5F /* TimeConvertTests.swift in Sources */,
 				F83D210C20754C44001ABC9D /* RenderingControlRepositoryTests.swift in Sources */,
-				F8726794206A4CE500093FF1 /* MusicServiceTypeTests.swift in Sources */,
+				F8726794206A4CE500093FF1 /* MusicServiceTests.swift in Sources */,
 				F8DE4769208B3CCF008F50FA /* RoomTests.swift in Sources */,
 				F81E33AD2072247D002E22A8 /* FakeTransportRepositoryImpl.swift in Sources */,
 				F81E33AC2072247D002E22A8 /* FakeGroupRepositoryImpl.swift in Sources */,
 				F81A062820602D7C00897738 /* RoomRepositoryTest.swift in Sources */,
 				F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */,
 				F8860E872074FF7600BF6A7E /* TrackTests.swift in Sources */,
-				F8B315C3209A20510000335D /* FakeMusicServicesRepositoryImpl.swift in Sources */,
+				F8B315C3209A20510000335D /* FakeMusicProvidersRepositoryImpl.swift in Sources */,
 				F872678E206A48D300093FF1 /* GetNowPlayingInteractorTests.swift in Sources */,
 				F8860E9120750B9300BF6A7E /* ContentDirectoryRepositoryTests.swift in Sources */,
 				F81A062E206034FF00897738 /* RepositoryInjectionTest.swift in Sources */,

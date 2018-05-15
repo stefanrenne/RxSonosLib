@@ -39,15 +39,15 @@ open class SonosInteractor {
         return shared.allGroups.asObserver()
     }
     
-    static public func getAllMusicServices() -> Observable<[MusicService]> {
+    static public func getAllMusicProviders() -> Observable<[MusicProvider]> {
         return shared
             .allGroups
             .asObserver()
             .filter({ $0.count > 0 })
             .take(1)
-            .flatMap { (groups) -> Observable<[MusicService]> in
-                return GetMusicServicesInteractor(musicServicesRepository: RepositoryInjection.provideMusicServicesRepository())
-                    .get(values: GetMusicServicesValues(room: groups.first?.master))
+            .flatMap { (groups) -> Observable<[MusicProvider]> in
+                return GetMusicProvidersInteractor(musicProvidersRepository: RepositoryInjection.provideMusicProvidersRepository())
+                    .get(values: GetMusicProvidersValues(room: groups.first?.master))
         }   
     }
     
@@ -67,14 +67,14 @@ open class SonosInteractor {
             .get(values: GetGroupQueueValues(group: group))
     }
     
-    static public func getTransportState(_ group: Group) -> Observable<(TransportState, MusicServiceType)> {
+    static public func getTransportState(_ group: Group) -> Observable<(TransportState, MusicService)> {
         let stateObservable = GetTransportStateInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: GetTransportStateValues(group: group))
         
         let serviceObservable = SonosInteractor
             .getTrack(group)
-            .map({ (track) -> MusicServiceType in
-                return track?.service ?? MusicServiceType.unknown
+            .map({ (track) -> MusicService in
+                return track?.service ?? MusicService.unknown
             })
             .distinctUntilChanged()
         

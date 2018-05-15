@@ -1,5 +1,5 @@
 //
-//  MusicServicesRepositoryImpl.swift
+//  MusicProvidersRepositoryImpl.swift
 //  RxSonosLib
 //
 //  Created by Stefan Renne on 30/04/2018.
@@ -10,9 +10,9 @@ import Foundation
 import RxSwift
 import AEXML
 
-class MusicServicesRepositoryImpl: MusicServicesRepository {
+class MusicProvidersRepositoryImpl: MusicProvidersRepository {
     
-    func getMusicServices(for room: Room) -> Observable<[MusicService]> {
+    func getMusicProviders(for room: Room) -> Observable<[MusicProvider]> {
         return GetAvailableServicesNetwork(room: room)
             .executeSoapRequest()
             .map(self.mapDataToMusicServices())
@@ -20,23 +20,15 @@ class MusicServicesRepositoryImpl: MusicServicesRepository {
     
 }
 
-fileprivate extension MusicServicesRepositoryImpl {
-    func mapDataToMusicServices() -> (([String: String]) -> [MusicService]) {
+fileprivate extension MusicProvidersRepositoryImpl {
+    func mapDataToMusicServices() -> (([String: String]) -> [MusicProvider]) {
         return { data in
-            guard let xml = AEXMLDocument.create(data["AvailableServiceDescriptorList"]),
-                  let availableServices = data["AvailableServiceTypeList"]?
-                    .split(separator: ",")
-                    .map({ String($0) }) else {
-                return []
-            }
-            
-            return xml["Services"]
-                .children
-                .compactMap(self.mapService(allowedServices: availableServices))
+            let xml = AEXMLDocument.create(data["AvailableServiceDescriptorList"])
+            return xml?["Services"].children.compactMap(self.mapService()) ?? []
         }
     }
     
-    func mapService(allowedServices: [String]) -> ((AEXMLElement) -> MusicService?) {
+    func mapService() -> ((AEXMLElement) -> MusicProvider?) {
         return { element in
             guard let idString = element.attributes["Id"],
                   let id = Int(idString),
@@ -67,11 +59,8 @@ fileprivate extension MusicServicesRepositoryImpl {
                 strings = Presentation(uri: presentationStringsUri, version: presentationStringsVersion)
             }
             
-            let service = MusicService(id: id, name: name, uri: secureUri, type: type, policy: policy, map: presentationMap, strings: strings)
+            let service = MusicProvider(id: id, name: name, uri: secureUri, type: type, policy: policy, map: presentationMap, strings: strings)
             
-            guard allowedServices.contains("\(service.externalId)") else {
-                return nil
-            }
             return service
             
         }

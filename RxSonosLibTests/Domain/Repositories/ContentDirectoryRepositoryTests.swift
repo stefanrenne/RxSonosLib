@@ -32,7 +32,7 @@ class ContentDirectoryRepositoryTests: XCTestCase {
         XCTAssertEqual(queue.count, 5)
         
         let track1 = queue[0] as! SpotifyTrack
-        XCTAssertEqual(track1.service, .spotify)
+        XCTAssertEqual(track1.service.sid, 9)
         XCTAssertEqual(track1.queueItem, 1)
         XCTAssertEqual(track1.duration, 236)
         XCTAssertEqual(track1.uri, "x-sonos-spotify:spotify%3atrack%3a0Vh1sTeybmGy8Kxl2vw0Ye?sid=9&flags=8224&sn=1")
@@ -43,7 +43,7 @@ class ContentDirectoryRepositoryTests: XCTestCase {
         XCTAssertEqual(track1.description(), [TrackDescription.title: "Time Is Running Out - (Live) Explicit Version", TrackDescription.artist: "Papa Roach", TrackDescription.album: "Time For Annihilation: On the Record & On the Road"])
         
         let track2 = queue[1] as! SpotifyTrack
-        XCTAssertEqual(track2.service, .spotify)
+        XCTAssertEqual(track2.service.sid, 9)
         XCTAssertEqual(track2.queueItem, 2)
         XCTAssertEqual(track2.duration, 146)
         XCTAssertEqual(track2.uri, "x-sonos-spotify:spotify%3atrack%3a6sZbp8aerVAFH9wr6yRU4f?sid=9&flags=8224&sn=1")
@@ -54,7 +54,7 @@ class ContentDirectoryRepositoryTests: XCTestCase {
         XCTAssertEqual(track2.description(), [TrackDescription.title: "The Finger", TrackDescription.artist: "Danko Jones", TrackDescription.album: "Sleep Is The Enemy"])
         
         let track3 = queue[2] as! SpotifyTrack
-        XCTAssertEqual(track3.service, .spotify)
+        XCTAssertEqual(track3.service.sid, 9)
         XCTAssertEqual(track3.queueItem, 3)
         XCTAssertEqual(track3.duration, 197)
         XCTAssertEqual(track3.uri, "x-sonos-spotify:spotify%3atrack%3a2cTvamkNzLsIWrSHHW8yzy?sid=9&flags=8224&sn=1")
@@ -65,9 +65,7 @@ class ContentDirectoryRepositoryTests: XCTestCase {
         XCTAssertEqual(track3.description(), [TrackDescription.title: "Christ Copyright", TrackDescription.artist: "Nothing More", TrackDescription.album: "Nothing More"])
         
         let track4 = queue[3] as! SpotifyTrack
-        XCTAssertEqual(track4.service, .spotify)
-        XCTAssertEqual(track4.queueItem, 4)
-        XCTAssertEqual(track4.service, .spotify)
+        XCTAssertEqual(track4.service.sid, 9)
         XCTAssertEqual(track4.queueItem, 4)
         XCTAssertEqual(track4.duration, 218)
         XCTAssertEqual(track4.uri, "x-sonos-spotify:spotify%3atrack%3a2cZXlLwkRmDww37tbEygXl?sid=9&flags=8224&sn=1")
@@ -78,9 +76,7 @@ class ContentDirectoryRepositoryTests: XCTestCase {
         XCTAssertEqual(track4.description(), [TrackDescription.title: "Keys To The Kingdom", TrackDescription.artist: "Linkin Park", TrackDescription.album: "The Hunting Party"])
         
         let track5 = queue[4] as! SpotifyTrack
-        XCTAssertEqual(track5.service, .spotify)
-        XCTAssertEqual(track5.queueItem, 5)
-        XCTAssertEqual(track5.service, .spotify)
+        XCTAssertEqual(track5.service.sid, 9)
         XCTAssertEqual(track5.queueItem, 5)
         XCTAssertEqual(track5.duration, 232)
         XCTAssertEqual(track5.uri, "x-sonos-spotify:spotify%3atrack%3a3mJXMEOZGSmq1RfQw4y1qN?sid=9&flags=8224&sn=1")

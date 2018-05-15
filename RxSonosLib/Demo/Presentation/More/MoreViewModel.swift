@@ -9,7 +9,7 @@
 import UIKit
 
 enum MoreType {
-    case musicservices
+    case musicproviders
 }
 
 class MoreViewModel {
@@ -22,7 +22,7 @@ class MoreViewModel {
     
     var title: String {
         switch type {
-        case .musicservices:
+        case .musicproviders:
             return "Musicservices"
         }
     }

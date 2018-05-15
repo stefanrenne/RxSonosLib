@@ -21,7 +21,7 @@ extension XCTestCase {
         RepositoryInjection.shared.roomRepository = FakeRoomRepositoryImpl()
         RepositoryInjection.shared.ssdpRepository = FakeSSDPRepositoryImpl()
         RepositoryInjection.shared.transportRepository = FakeTransportRepositoryImpl()
-        RepositoryInjection.shared.musicServicesRepository = FakeMusicServicesRepositoryImpl()
+        RepositoryInjection.shared.musicProvidersRepository = FakeMusicProvidersRepositoryImpl()
         SonosInteractor.shared.allGroups.onNext(groupRepository.allGroups)
         SonosInteractor.shared.activeGroup.onNext(groupRepository.allGroups.first)
     }
@@ -33,7 +33,7 @@ extension XCTestCase {
         RepositoryInjection.shared.roomRepository = RoomRepositoryImpl()
         RepositoryInjection.shared.ssdpRepository = SSDPRepositoryImpl()
         RepositoryInjection.shared.transportRepository = TransportRepositoryImpl()
-        RepositoryInjection.shared.musicServicesRepository = MusicServicesRepositoryImpl()
+        RepositoryInjection.shared.musicProvidersRepository = MusicProvidersRepositoryImpl()
     }
     
     /* Groups */

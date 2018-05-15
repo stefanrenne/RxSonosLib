@@ -39,8 +39,8 @@ extension MoreCoordinator: MoreRouter {
     
     func didSelect(type: MoreType) {
         switch type {
-        case .musicservices:
-            MusicServicesCoordinator(masterRouter: self.masterRouter).start()
+        case .musicproviders:
+            MusicProvidersCoordinator(masterRouter: self.masterRouter).start()
         }
     }
     

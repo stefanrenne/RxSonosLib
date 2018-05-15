@@ -8,22 +8,50 @@
 
 import Foundation
 
-struct NowPlayingTrackFactory {
+class NowPlayingTrackFactory {
     
-    static func create(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) -> Track? {
-        switch positionInfo["TrackURI"]?.musicServiceFromUrl() {
-            case .some(.spotify):
-                return NowPlayingTrackFactory.createSpotifyTrack(room: room, positionInfo: positionInfo, mediaInfo: mediaInfo)
-            case .some(.tunein):
-                return NowPlayingTrackFactory.createTuneinTrack(room: room, positionInfo: positionInfo, mediaInfo: mediaInfo)
-            case .some(.tv):
-                return NowPlayingTrackFactory.createTVTrack(room: room, positionInfo: positionInfo, mediaInfo: mediaInfo)
-            default:
-                return nil
+    private let room: URL
+    private let positionInfo: [String: String]
+    private let mediaInfo: [String: String]
+    private var type: MusicService = .unknown
+    
+    init(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) {
+        self.room = room
+        self.positionInfo = positionInfo
+        self.mediaInfo = mediaInfo
+        self.determineMusicService()
+    }
+    
+    private func determineMusicService() {
+        
+        if let url1 = mediaInfo["CurrentURI"], MusicService.map(url: url1) != MusicService.unknown {
+            self.type = MusicService.map(url: url1)
+        }
+        
+        if let url2 = positionInfo["TrackURI"], MusicService.map(url: url2) != MusicService.unknown {
+            self.type = MusicService.map(url: url2)
         }
     }
     
-    fileprivate static func createSpotifyTrack(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) -> SpotifyTrack? {
+    func create() -> Track? {
+        //TODO: Refactor
+        
+        if self.type.sid == 9 {
+            return createSpotifyTrack()
+        }
+        
+        if self.type.sid == 254 {
+            return createTuneinTrack()
+        }
+        
+        if self.type == .tv {
+            return createTVTrack()
+        }
+        
+        return nil
+    }
+    
+    private func createSpotifyTrack() -> SpotifyTrack? {
         let trackMeta = positionInfo["TrackMetaData"]?.mapMetaItem()
         
         guard let duration = positionInfo["TrackDuration"]?.timeToSeconds(),
@@ -40,7 +68,7 @@ struct NowPlayingTrackFactory {
         return SpotifyTrack(queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, title: title, artist: artist, album: album)
     }
     
-    fileprivate static func createTuneinTrack(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) -> TuneinTrack? {
+    private func createTuneinTrack() -> TuneinTrack? {
         let trackMeta = positionInfo["TrackMetaData"]?.mapMetaItem()
         let currentURIMetaData = mediaInfo["CurrentURIMetaData"]?.mapMetaItem()
         let information = trackMeta?["streamContent"]?.nilIfEmpty()
@@ -58,7 +86,7 @@ struct NowPlayingTrackFactory {
         return TuneinTrack(queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, title: title, information: information)
     }
     
-    fileprivate static func createTVTrack(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) -> TVTrack? {
+    private func createTVTrack() -> TVTrack? {
         
         guard let queueItemString = positionInfo["Track"],
             let queueItem = Int(queueItemString),

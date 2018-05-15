@@ -26,7 +26,7 @@ extension TransportState {
         return state
     }
     
-    public func actionState(for musicService: MusicServiceType) -> TransportState {
+    public func actionState(for musicService: MusicService) -> TransportState {
         switch self {
         case .paused, .stopped:
             return TransportState.playing
