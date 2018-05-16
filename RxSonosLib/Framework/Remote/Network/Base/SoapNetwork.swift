@@ -48,7 +48,8 @@ class SoapNetwork: Network {
     }
     
     override func executeRequest() -> Observable<Data> {
-        fatalError("Use executeSoapRequest() on subclasses of SoapNetwork")
+        /* Use executeSoapRequest() on subclasses of SoapNetwork */
+        return Observable<Data>.error(NSError.sonosLibInvalidImplementationError())
     }
     
     internal func openEnvelope() -> ((Data) throws -> [String:String]) {

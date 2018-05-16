@@ -67,18 +67,9 @@ open class SonosInteractor {
             .get(values: GetGroupQueueValues(group: group))
     }
     
-    static public func getTransportState(_ group: Group) -> Observable<(TransportState, MusicService)> {
-        let stateObservable = GetTransportStateInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+    static public func getTransportState(_ group: Group) -> Observable<TransportState> {
+        return GetTransportStateInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: GetTransportStateValues(group: group))
-        
-        let serviceObservable = SonosInteractor
-            .getTrack(group)
-            .map({ (track) -> MusicService in
-                return track?.service ?? MusicService.unknown
-            })
-            .distinctUntilChanged()
-        
-        return Observable.combineLatest(stateObservable, serviceObservable, resultSelector: ({ ($0, $1) }))
     }
     
     static public func setTransport(state: TransportState, for group: Group) -> Observable<TransportState> {

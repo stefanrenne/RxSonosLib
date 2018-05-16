@@ -14,17 +14,6 @@ public enum MusicService {
     case unknown
 }
 
-extension MusicService {
-    public var isStreamingService: Bool {
-        switch self {
-        case .tv:
-            return true
-        default:
-            return false
-        }
-    }
-}
-
 extension MusicService: Equatable {
     
     private var rawValue: Int {

@@ -32,6 +32,7 @@ class MusicProvidersRepositoryTests: XCTestCase {
         
         let service1 = services[0]
         XCTAssertEqual(service1.id, 270)
+        XCTAssertEqual(service1.externalId, 69127)
         XCTAssertEqual(service1.name, "Relisten")
         XCTAssertEqual(service1.uri.absoluteString, "https://sonos.relisten.net/mp3")
         XCTAssertEqual(service1.type, .soundLab)
@@ -43,6 +44,7 @@ class MusicProvidersRepositoryTests: XCTestCase {
         
         let service2 = services[1]
         XCTAssertEqual(service2.id, 262)
+        XCTAssertEqual(service2.externalId, 67079)
         XCTAssertEqual(service2.name, "My Cloud Home")
         XCTAssertEqual(service2.uri.absoluteString, "https://sonos.mycloud.com/musicservice")
         XCTAssertEqual(service2.type, .musicService)
@@ -54,6 +56,7 @@ class MusicProvidersRepositoryTests: XCTestCase {
         
         let service3 = services[4]
         XCTAssertEqual(service3.id, 212)
+        XCTAssertEqual(service3.externalId, 54279)
         XCTAssertEqual(service3.name, "Plex")
         XCTAssertEqual(service3.uri.absoluteString, "https://sonos.plex.tv/v2/soap")
         XCTAssertEqual(service3.type, .soundLab)
@@ -65,6 +68,7 @@ class MusicProvidersRepositoryTests: XCTestCase {
         
         let service4 = services[10]
         XCTAssertEqual(service4.id, 9)
+        XCTAssertEqual(service4.externalId, 2311)
         XCTAssertEqual(service4.name, "Spotify")
         XCTAssertEqual(service4.uri.absoluteString, "https://spotify-v4.ws.sonos.com/smapi")
         XCTAssertEqual(service4.type, .musicService)

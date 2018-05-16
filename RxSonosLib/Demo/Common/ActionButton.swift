@@ -12,7 +12,7 @@ import RxSonosLib
 
 @IBDesignable class ActionButton: UIButton {
     
-    let data: BehaviorSubject<(TransportState, MusicService)> = BehaviorSubject(value: (.transitioning, .unknown))
+    let data: BehaviorSubject<TransportState> = BehaviorSubject(value: .transitioning)
     private let disposeBag = DisposeBag()
     
     override init(frame: CGRect) {
@@ -28,8 +28,8 @@ import RxSonosLib
     private func setup() {
         data
             .asObserver()
-            .subscribe(onNext: { [weak self] (state, service) in
-                switch state.actionState(for: service) {
+            .subscribe(onNext: { [weak self] state in
+                switch state.reverseState() {
                 case .playing, .transitioning:
                     self?.setImage(UIImage(named: "icon_play_large"), for: .normal)
                 case .paused:
@@ -43,11 +43,9 @@ import RxSonosLib
             .rx
             .controlEvent(UIControlEvents.touchUpInside)
             .map({ [weak self] _ in
-                guard let data = try self?.data.value() else { return (TransportState.transitioning, MusicService.unknown) }
-                let state = data.0
-                let service = data.1
-                let newState = state.actionState(for: service)
-                return (newState, service)
+                guard let state = try self?.data.value() else { return TransportState.transitioning }
+                let newState = state.reverseState()
+                return newState
             })
             .subscribe(data)
             .disposed(by: disposeBag)

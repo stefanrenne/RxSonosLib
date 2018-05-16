@@ -101,8 +101,7 @@ class GroupTests: XCTestCase {
     func testItCanGetTheTransportState() {
         let group = Observable.just(firstGroup())
         let result = try! group.getTransportState().toBlocking().first()!
-        XCTAssertEqual(result.0, TransportState.paused)
-        XCTAssertEqual(result.1, MusicService.musicProvider(sid: 9, flags: nil, sn: nil))
+        XCTAssertEqual(result, TransportState.paused)
     }
     
     func testItCanSetTheTransportState() {

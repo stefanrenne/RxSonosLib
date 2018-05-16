@@ -9,9 +9,7 @@
 import Foundation
 import RxSwift
 
-class RequestValues {
-    
-}
+class RequestValues { }
 
 protocol Interactor {
     associatedtype T: RequestValues
@@ -40,11 +38,5 @@ extension Interactor {
             
             return Disposables.create([interval])
         })
-    }
-    
-    func addTimer<T>(_ period: RxTimeInterval) -> (([T]) throws -> Observable<[T]>) {
-        return { object in
-            return self.createTimer(period).map({ _ in return object })
-        }
     }
 }

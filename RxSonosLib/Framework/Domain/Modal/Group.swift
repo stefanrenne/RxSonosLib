@@ -84,7 +84,6 @@ extension ObservableType where E == Group {
                     .activeTrack
                     .asObserver()
             })
-            .distinctUntilChanged()
     }
     
     public func getImage() -> Observable<Data?> {
@@ -115,17 +114,13 @@ extension ObservableType where E == Group {
             .flatMap({ (group) -> Observable<[Track]> in
                 return SonosInteractor.getQueue(group)
             })
-            .distinctUntilChanged()
     }
     
-    public func getTransportState() -> Observable<(TransportState, MusicService)> {
+    public func getTransportState() -> Observable<TransportState> {
         return
             self
-            .flatMap({ (group) -> Observable<(TransportState, MusicService)> in
+            .flatMap({ (group) -> Observable<TransportState> in
                 return SonosInteractor.getTransportState(group)
-            })
-            .distinctUntilChanged({ (lhs, rhs) -> Bool in
-                return lhs.0 == rhs.0 && lhs.1 == rhs.1
             })
     }
     
@@ -144,7 +139,6 @@ extension ObservableType where E == Group {
             .flatMap({ (group) -> Observable<Int> in
                 return SonosInteractor.getVolume(group)
             })
-            .distinctUntilChanged()
     }
     
     public func set(volume: Int) -> Observable<Int> {

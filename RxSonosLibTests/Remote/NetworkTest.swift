@@ -29,6 +29,12 @@ class NetworkTest: XCTestCase {
         }
     }
     
+    func testSoapCallsCantUseExetureRequest() {
+        XCTAssertThrowsError(try SoapNetwork(room: firstRoom(), action: SoapAction.getVolume).executeRequest().toBlocking().toArray()) { error in
+            XCTAssertEqual(error.localizedDescription, NSError.sonosLibInvalidImplementationError().localizedDescription)
+        }
+    }
+    
     func testCreateRequestNeedsToBeOverwrittenUnlessIfThereIsCachedData() {
         let key = "randomKey"
         let data = "random".data(using: .utf8)!

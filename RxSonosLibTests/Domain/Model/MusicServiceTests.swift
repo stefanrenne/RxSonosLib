@@ -27,13 +27,5 @@ class MusicServiceTests: XCTestCase {
     func testItCanParseTVMusicServices() {
         XCTAssertEqual(MusicService.map(url: "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif"), MusicService.tv)
     }
-
-    //TODO: Refactor
-    /*func testItCanDetectAStreamService() {
-        XCTAssertTrue(MusicService.tv.isStreamingService)
-        XCTAssertTrue(MusicService.tunein.isStreamingService)
-        XCTAssertFalse(MusicService.unknown.isStreamingService)
-        XCTAssertFalse(MusicService.spotify.isStreamingService)
-    }*/
  
 }
