@@ -12,7 +12,7 @@ import RxSSDP
 
 class GetRoomsValues: RequestValues { }
 
-class GetRoomsInteractor<T: GetRoomsValues>: Interactor {
+class GetRoomsInteractor<R: GetRoomsValues>: Interactor {
     
     private let ssdpRepository: SSDPRepository
     private let roomRepository: RoomRepository

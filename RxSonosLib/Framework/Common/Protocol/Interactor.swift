@@ -12,16 +12,16 @@ import RxSwift
 class RequestValues { }
 
 protocol Interactor {
-    associatedtype T: RequestValues
+    associatedtype R: RequestValues
     associatedtype U
     
-    func buildInteractorObservable(requestValues: T?) -> Observable<U>
-    func get(values: T?) -> Observable<U>
+    func buildInteractorObservable(requestValues: R?) -> Observable<U>
+    func get(values: R?) -> Observable<U>
 }
 
 extension Interactor {
     
-    func get(values: T? = nil) -> Observable<U> {
+    func get(values: R? = nil) -> Observable<U> {
         return buildInteractorObservable(requestValues: values)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
             .observeOn(MainScheduler.instance)

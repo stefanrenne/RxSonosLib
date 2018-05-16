@@ -62,7 +62,7 @@ open class SonosInteractor {
             .get(values: GetGroupProgressValues(group: group))
     }
     
-    static public func getQueue(_ group: Group) -> Observable<[Track]> {
+    static public func getQueue(_ group: Group) -> Observable<[MusicProviderTrack]> {
         return GetGroupQueueInteractor(contentDirectoryRepository: RepositoryInjection.provideContentDirectoryRepository())
             .get(values: GetGroupQueueValues(group: group))
     }

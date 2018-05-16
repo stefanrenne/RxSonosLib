@@ -17,7 +17,7 @@ class GetNowPlayingValues: RequestValues {
     }
 }
 
-class GetNowPlayingInteractor<T: GetNowPlayingValues>: Interactor {
+class GetNowPlayingInteractor<R: GetNowPlayingValues>: Interactor {
     
     let transportRepository: TransportRepository
     
@@ -33,7 +33,10 @@ class GetNowPlayingInteractor<T: GetNowPlayingValues>: Interactor {
         
         return createTimer(SonosSettings.shared.renewNowPlayingTimer)
             .flatMap(self.mapToTrack(for: masterRoom))
-            .distinctUntilChanged({ $0 == $1 })
+            .distinctUntilChanged({ lhs, rhs in
+                guard let lhs = lhs, let rhs = rhs, lhs.uri == rhs.uri else { return false }
+                return true
+            })
     }
     
     fileprivate func mapToTrack(for masterRoom: Room) -> ((Int) -> Observable<Track?>) {

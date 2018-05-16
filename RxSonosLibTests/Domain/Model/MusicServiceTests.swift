@@ -12,8 +12,8 @@ import XCTest
 class MusicServiceTests: XCTestCase {
     
     func testItCanParseUnkownMusicServices() {
-        XCTAssertEqual(MusicService.map(url: ""), MusicService.unknown)
-        XCTAssertEqual(MusicService.map(url: "random"), MusicService.unknown)
+        XCTAssertNil(MusicService.map(url: ""))
+        XCTAssertNil(MusicService.map(url: "random"))
     }
     
     func testItCanParseSpotifyMusicServices() {

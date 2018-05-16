@@ -11,7 +11,6 @@ import Foundation
 public enum MusicService {
     case musicProvider(sid: Int, flags: Int?, sn: Int?)
     case tv
-    case unknown
 }
 
 extension MusicService: Equatable {
@@ -22,8 +21,6 @@ extension MusicService: Equatable {
             return sid
         case .tv:
             return 9999
-        case .unknown:
-            return 0
         }
     }
     
@@ -44,7 +41,25 @@ extension MusicService {
         }
     }
     
-    static func map(url: String) -> MusicService {
+    var flags: Int? {
+        switch self {
+        case .musicProvider(_, let flags, _):
+            return flags
+        default:
+            return nil
+        }
+    }
+    
+    var sn: Int? {
+        switch self {
+        case .musicProvider(_, _, let sn):
+            return sn
+        default:
+            return nil
+        }
+    }
+    
+    static func map(url: String) -> MusicService? {
         
         let urlComponents = URLComponents(string: url)
         if let sid = urlComponents?.queryItems?["sid"]?.int {
@@ -53,12 +68,10 @@ extension MusicService {
             return MusicService.musicProvider(sid: sid, flags: flags, sn: sn)
         }
         
-        let service = url.match(with: "([a-zA-Z0-9-]+):")?.first
-        switch service {
-        case .some("x-sonos-htastream"):
-            return .tv
-        default:
-            return .unknown
+        if let service = url.match(with: "([a-zA-Z0-9-]+):")?.first, service == "x-sonos-htastream" {
+            return MusicService.tv
         }
+        
+        return nil
     }
 }

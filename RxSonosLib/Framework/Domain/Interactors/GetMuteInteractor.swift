@@ -17,7 +17,7 @@ class GetMuteValues: RequestValues {
     }
 }
 
-class GetMuteInteractor<T: GetMuteValues>: Interactor {
+class GetMuteInteractor<R: GetMuteValues>: Interactor {
     
     let renderingControlRepository: RenderingControlRepository
     

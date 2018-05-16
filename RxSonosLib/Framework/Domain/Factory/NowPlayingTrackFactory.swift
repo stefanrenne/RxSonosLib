@@ -13,77 +13,41 @@ class NowPlayingTrackFactory {
     private let room: URL
     private let positionInfo: [String: String]
     private let mediaInfo: [String: String]
-    private var type: MusicService = .unknown
+    
+    private let trackMeta: [String: String]?
+    private let currentURIMetaData: [String: String]?
     
     init(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) {
         self.room = room
         self.positionInfo = positionInfo
         self.mediaInfo = mediaInfo
-        self.determineMusicService()
-    }
-    
-    private func determineMusicService() {
-        
-        if let url1 = mediaInfo["CurrentURI"], MusicService.map(url: url1) != MusicService.unknown {
-            self.type = MusicService.map(url: url1)
-        }
-        
-        if let url2 = positionInfo["TrackURI"], MusicService.map(url: url2) != MusicService.unknown {
-            self.type = MusicService.map(url: url2)
-        }
+        self.trackMeta = positionInfo["TrackMetaData"]?.mapMetaItem()
+        self.currentURIMetaData = mediaInfo["CurrentURIMetaData"]?.mapMetaItem()
     }
     
     func create() -> Track? {
-        //TODO: Refactor
+        guard let (uri, type) = getMusicService() else { return nil }
         
-        if self.type.sid == 9 {
-            return createSpotifyTrack()
-        }
-        
-        if self.type.sid == 254 {
-            return createTuneinTrack()
-        }
-        
-        if self.type == .tv {
+        if type == .tv {
             return createTVTrack()
         }
         
-        return nil
+        return createTrack(uri: uri, type: type)
     }
     
-    private func createSpotifyTrack() -> SpotifyTrack? {
-        let trackMeta = positionInfo["TrackMetaData"]?.mapMetaItem()
+    private func createTrack(uri: String?, type: MusicService) -> MusicProviderTrack? {
         
         guard let duration = positionInfo["TrackDuration"]?.timeToSeconds(),
             let queueItemString = positionInfo["Track"],
+            let sid = type.sid,
             let queueItem = Int(queueItemString),
-            let uri = positionInfo["TrackURI"],
-            let title = trackMeta?["title"],
-            let artist = trackMeta?["creator"],
-            let album = trackMeta?["album"],
-            let imageUri = URL(string: room.absoluteString + "/getaa?s=1&u=" + uri) else {
+            let uri = uri,
+            let imageUri = URL(string: room.absoluteString + "/getaa?s=1&u=" + uri),
+            let description = getDescription() else {
                 return nil
         }
         
-        return SpotifyTrack(queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, title: title, artist: artist, album: album)
-    }
-    
-    private func createTuneinTrack() -> TuneinTrack? {
-        let trackMeta = positionInfo["TrackMetaData"]?.mapMetaItem()
-        let currentURIMetaData = mediaInfo["CurrentURIMetaData"]?.mapMetaItem()
-        let information = trackMeta?["streamContent"]?.nilIfEmpty()
-        
-        guard let duration = positionInfo["TrackDuration"]?.timeToSeconds(),
-            let queueItemString = positionInfo["Track"],
-            let queueItem = Int(queueItemString),
-            let uri = positionInfo["TrackURI"],
-            let streamUri = mediaInfo["CurrentURI"],
-            let title = currentURIMetaData?["title"],
-            let imageUri = URL(string: room.absoluteString + "/getaa?s=1&u=" + streamUri) else {
-                return nil
-        }
-        
-        return TuneinTrack(queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, title: title, information: information)
+        return MusicProviderTrack(sid: sid, flags: type.flags, sn: type.sn, queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description)
     }
     
     private func createTVTrack() -> TVTrack? {
@@ -94,5 +58,35 @@ class NowPlayingTrackFactory {
                 return nil
         }
         return TVTrack(queueItem: queueItem, uri: uri)
+    }
+    
+    private func getMusicService() -> (url: String, service: MusicService)? {
+        if let url = mediaInfo["CurrentURI"], let service = MusicService.map(url: url) {
+            return (url, service)
+        }
+        
+        if let url = positionInfo["TrackURI"], let service = MusicService.map(url: url) {
+            return (url, service)
+        }
+        return nil
+    }
+    
+    private func getDescription() -> [TrackDescription: String]? {
+        guard let title = currentURIMetaData?["title"] ?? trackMeta?["title"] else { return nil }
+        var description = [TrackDescription.title: title]
+        
+        if let artist = trackMeta?["creator"] {
+            description[TrackDescription.artist] = artist
+        }
+        
+        if let album = trackMeta?["album"] {
+            description[TrackDescription.album] = album
+        }
+        
+        if let information = trackMeta?["streamContent"]?.nilIfEmpty() {
+            description[TrackDescription.information] = information
+        }
+        
+        return description
     }
 }

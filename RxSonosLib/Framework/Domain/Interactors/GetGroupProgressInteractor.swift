@@ -17,7 +17,7 @@ class GetGroupProgressValues: RequestValues {
     }
 }
 
-class GetGroupProgressInteractor<T: GetGroupProgressValues>: Interactor {
+class GetGroupProgressInteractor<R: GetGroupProgressValues>: Interactor {
     
     let transportRepository: TransportRepository
     

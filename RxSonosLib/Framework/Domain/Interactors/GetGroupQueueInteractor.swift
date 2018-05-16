@@ -17,7 +17,7 @@ class GetGroupQueueValues: RequestValues {
     }
 }
 
-class GetGroupQueueInteractor<T: GetGroupQueueValues>: Interactor {
+class GetGroupQueueInteractor<R: GetGroupQueueValues>: Interactor {
     
     let contentDirectoryRepository: ContentDirectoryRepository
     
@@ -25,7 +25,7 @@ class GetGroupQueueInteractor<T: GetGroupQueueValues>: Interactor {
         self.contentDirectoryRepository = contentDirectoryRepository
     }
     
-    func buildInteractorObservable(requestValues: GetGroupQueueValues?) -> Observable<[Track]> {
+    func buildInteractorObservable(requestValues: GetGroupQueueValues?) -> Observable<[MusicProviderTrack]> {
         
         guard let masterRoom = requestValues?.group.master else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())
@@ -33,10 +33,10 @@ class GetGroupQueueInteractor<T: GetGroupQueueValues>: Interactor {
         
         return createTimer(SonosSettings.shared.renewGroupQueueTimer)
             .flatMap(self.mapToQueue(for: masterRoom))
-            .distinctUntilChanged({ $0 == $1 })
+            .distinctUntilChanged()
     }
     
-    fileprivate func mapToQueue(for masterRoom: Room) -> ((Int) -> Observable<[Track]>) {
+    fileprivate func mapToQueue(for masterRoom: Room) -> ((Int) -> Observable<[MusicProviderTrack]>) {
         return { _ in
             return self.contentDirectoryRepository
                 .getQueue(for: masterRoom)

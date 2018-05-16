@@ -111,8 +111,7 @@
 		F87DC3B8206974920089F882 /* GetTransportInfoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B3206974490089F882 /* GetTransportInfoNetwork.swift */; };
 		F87DC3BA206A2FE80089F882 /* MusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC3B9206A2FE80089F882 /* MusicService.swift */; };
 		F8860E7C2074D74100BF6A7E /* String+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E7B2074D74100BF6A7E /* String+Empty.swift */; };
-		F8860E7E2074D89300BF6A7E /* SpotifyTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E7D2074D89300BF6A7E /* SpotifyTrack.swift */; };
-		F8860E802074D8A800BF6A7E /* TuneinTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E7F2074D8A800BF6A7E /* TuneinTrack.swift */; };
+		F8860E7E2074D89300BF6A7E /* MusicProviderTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E7D2074D89300BF6A7E /* MusicProviderTrack.swift */; };
 		F8860E822074D8BE00BF6A7E /* TVTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E812074D8BE00BF6A7E /* TVTrack.swift */; };
 		F8860E852074F6BC00BF6A7E /* NowPlayingTrackFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E842074F6BC00BF6A7E /* NowPlayingTrackFactory.swift */; };
 		F8860E872074FF7600BF6A7E /* TrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E862074FF7600BF6A7E /* TrackTests.swift */; };
@@ -322,8 +321,7 @@
 		F881C5842049CCDC00E3F523 /* RoomsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsTableViewCell.swift; sourceTree = "<group>"; };
 		F881C5852049CCDC00E3F523 /* RoomsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoomsTableViewCell.xib; sourceTree = "<group>"; };
 		F8860E7B2074D74100BF6A7E /* String+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Empty.swift"; sourceTree = "<group>"; };
-		F8860E7D2074D89300BF6A7E /* SpotifyTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyTrack.swift; sourceTree = "<group>"; };
-		F8860E7F2074D8A800BF6A7E /* TuneinTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuneinTrack.swift; sourceTree = "<group>"; };
+		F8860E7D2074D89300BF6A7E /* MusicProviderTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicProviderTrack.swift; sourceTree = "<group>"; };
 		F8860E812074D8BE00BF6A7E /* TVTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTrack.swift; sourceTree = "<group>"; };
 		F8860E842074F6BC00BF6A7E /* NowPlayingTrackFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingTrackFactory.swift; sourceTree = "<group>"; };
 		F8860E862074FF7600BF6A7E /* TrackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTests.swift; sourceTree = "<group>"; };
@@ -804,8 +802,7 @@
 				F87DC3B9206A2FE80089F882 /* MusicService.swift */,
 				F8726786206A3F3B00093FF1 /* TransportState.swift */,
 				F81E3399207135B2002E22A8 /* GroupProgress.swift */,
-				F8860E7D2074D89300BF6A7E /* SpotifyTrack.swift */,
-				F8860E7F2074D8A800BF6A7E /* TuneinTrack.swift */,
+				F8860E7D2074D89300BF6A7E /* MusicProviderTrack.swift */,
 				F8860E812074D8BE00BF6A7E /* TVTrack.swift */,
 				F8B947092097923E004F1A33 /* MusicProvider.swift */,
 			);
@@ -1361,7 +1358,6 @@
 				F81E339C20713924002E22A8 /* GetGroupProgressInteractor.swift in Sources */,
 				F87C0CBF206F8AE800098D07 /* GetTrackImageInteractor.swift in Sources */,
 				F83D21022075403C001ABC9D /* RenderingControlRepository.swift in Sources */,
-				F8860E802074D8A800BF6A7E /* TuneinTrack.swift in Sources */,
 				F81A05ED206028D600897738 /* SSDPDevice.swift in Sources */,
 				F81A05E8206028D600897738 /* AEXMLDocument+Create.swift in Sources */,
 				F81E339A207135B2002E22A8 /* GroupProgress.swift in Sources */,
@@ -1369,7 +1365,7 @@
 				F8860E822074D8BE00BF6A7E /* TVTrack.swift in Sources */,
 				F81A05F7206028D600897738 /* RepositoryInjection.swift in Sources */,
 				F8F0FA56208A1A0C00C2E0D0 /* SetMuteNetwork.swift in Sources */,
-				F8860E7E2074D89300BF6A7E /* SpotifyTrack.swift in Sources */,
+				F8860E7E2074D89300BF6A7E /* MusicProviderTrack.swift in Sources */,
 				F8A64DF22087F432003F777E /* SetNextTrackInteractor.swift in Sources */,
 				F8B9470820979113004F1A33 /* MusicProvidersRepositoryImpl.swift in Sources */,
 				F8B0D8A9208258660072BAE0 /* SetPauseNetwork.swift in Sources */,

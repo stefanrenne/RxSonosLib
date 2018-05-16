@@ -19,7 +19,7 @@ class GetGroupsValues: RequestValues {
     
 }
 
-class GetGroupsInteractor<T: GetGroupsValues>: Interactor {
+class GetGroupsInteractor<R: GetGroupsValues>: Interactor {
     
     private let groupRepository: GroupRepository
     

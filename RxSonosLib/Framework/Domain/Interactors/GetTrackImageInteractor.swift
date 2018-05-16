@@ -17,7 +17,7 @@ class GetTrackImageValues: RequestValues {
     }
 }
 
-class GetTrackImageInteractor<T: GetTrackImageValues>: Interactor {
+class GetTrackImageInteractor<R: GetTrackImageValues>: Interactor {
     
     let transportRepository: TransportRepository
     

@@ -17,7 +17,7 @@ class GetMusicProvidersValues: RequestValues {
     }
 }
 
-class GetMusicProvidersInteractor<T: GetMusicProvidersValues>: Interactor {
+class GetMusicProvidersInteractor<R: GetMusicProvidersValues>: Interactor {
     
     let musicProvidersRepository: MusicProvidersRepository
     

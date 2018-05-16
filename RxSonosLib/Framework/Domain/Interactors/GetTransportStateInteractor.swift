@@ -17,7 +17,7 @@ class GetTransportStateValues: RequestValues {
     }
 }
 
-class GetTransportStateInteractor<T: GetTransportStateValues>: Interactor {
+class GetTransportStateInteractor<R: GetTransportStateValues>: Interactor {
     
     let transportRepository: TransportRepository
     
