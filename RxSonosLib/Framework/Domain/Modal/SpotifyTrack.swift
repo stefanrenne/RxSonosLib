@@ -42,8 +42,7 @@ class SpotifyTrack: Track, TrackImage {
         self.artist = artist
         self.album = album
         self.imageUri = imageUri
-        let service = MusicService.musicProvider(sid: 9, flags: nil, sn: nil) //TODO: update
-        super.init(service: service, queueItem: queueItem, duration: duration, uri: uri, title: title)
+        super.init(queueItem: queueItem, duration: duration, uri: uri, title: title)
     }
     
 }

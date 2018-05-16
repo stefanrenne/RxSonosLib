@@ -37,7 +37,6 @@ class TuneinTrack: Track, TrackImage {
     internal init(queueItem: Int, duration: UInt = 0, uri: String, imageUri: URL, title: String, information: String? = nil) {
         self.information = information
         self.imageUri = imageUri
-        let service = MusicService.musicProvider(sid: 254, flags: nil, sn: nil) //TODO: update
-        super.init(service: service, queueItem: queueItem, duration: duration, uri: uri, title: title)
+        super.init(queueItem: queueItem, duration: duration, uri: uri, title: title)
     }
 }

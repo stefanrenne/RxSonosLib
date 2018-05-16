@@ -18,7 +18,6 @@ class QueueTrackFactoryTests: XCTestCase {
 
         let result = QueueTrackFactory.create(room: firstRoom().ip, queueItem: 1, data: data)
         let track = result as! SpotifyTrack
-        XCTAssertEqual(track.service.sid, 9)
         XCTAssertEqual(track.queueItem, 1)
         XCTAssertEqual(track.duration, 236)
         XCTAssertEqual(track.uri, "x-sonos-spotify:spotify%3atrack%3a0Vh1sTeybmGy8Kxl2vw0Ye?sid=9&flags=8224&sn=1")

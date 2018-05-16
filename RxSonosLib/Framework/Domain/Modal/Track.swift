@@ -63,11 +63,6 @@ internal protocol TrackImage {
 open class Track {
     
     /**
-     * Type of track, example: spotify, tunein, tv
-     */
-    public let service: MusicService
-    
-    /**
      * Number item in the queue
      */
     public let queueItem: Int
@@ -105,8 +100,7 @@ open class Track {
             .sorted(by: { $0 < $1 })
     }
     
-    init(service: MusicService, queueItem: Int, duration: UInt, uri: String, title: String) {
-        self.service = service
+    init(queueItem: Int, duration: UInt, uri: String, title: String) {
         self.queueItem = queueItem
         self.duration = duration
         self.uri = uri

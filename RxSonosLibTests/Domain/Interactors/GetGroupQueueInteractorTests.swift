@@ -24,7 +24,6 @@ class GetGroupQueueInteractorTests: XCTestCase {
         XCTAssertEqual(queue.count, 2)
         
         let track1 = queue[0] as! SpotifyTrack
-        XCTAssertEqual(track1.service.sid, 9)
         XCTAssertEqual(track1.queueItem, 1)
         XCTAssertEqual(track1.duration, 265)
         XCTAssertEqual(track1.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
@@ -35,7 +34,6 @@ class GetGroupQueueInteractorTests: XCTestCase {
         XCTAssertEqual(track1.description(), [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
         
         let track2 = queue[1] as! SpotifyTrack
-        XCTAssertEqual(track2.service.sid, 9)
         XCTAssertEqual(track2.queueItem, 2)
         XCTAssertEqual(track2.duration, 197)
         XCTAssertEqual(track2.uri, "x-sonos-spotify:spotify%3atrack%3a2cTvamkNzLsIWrSHHW8yzy?sid=9&flags=8224&sn=1")

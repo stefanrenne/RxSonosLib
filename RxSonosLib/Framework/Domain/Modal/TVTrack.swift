@@ -11,7 +11,7 @@ import Foundation
 class TVTrack: Track {
     
     internal init(queueItem: Int, uri: String) {
-        super.init(service: .tv, queueItem: queueItem, duration: 0, uri: uri, title: "TV")
+        super.init(queueItem: queueItem, duration: 0, uri: uri, title: "TV")
     }
     
 }

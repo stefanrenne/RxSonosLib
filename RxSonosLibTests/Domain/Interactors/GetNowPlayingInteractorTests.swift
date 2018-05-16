@@ -21,7 +21,6 @@ class GetNowPlayingInteractorTests: XCTestCase {
             .toBlocking(
             ).first()! as! SpotifyTrack
         
-        XCTAssertEqual(track.service.sid, 9)
         XCTAssertEqual(track.queueItem, 7)
         XCTAssertEqual(track.duration, 265)
         XCTAssertEqual(track.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
