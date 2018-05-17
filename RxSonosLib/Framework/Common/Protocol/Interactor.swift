@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class RequestValues { }
+protocol RequestValues { }
 
 protocol Interactor {
     associatedtype R: RequestValues
