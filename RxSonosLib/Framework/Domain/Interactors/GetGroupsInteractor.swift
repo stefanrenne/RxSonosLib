@@ -34,7 +34,7 @@ class GetGroupsInteractor<R: GetGroupsValues>: Interactor {
         
         return createTimer(SonosSettings.shared.renewGroupsTimer)
             .flatMap(mapRoomsToGroups(roomSubject: roomSubject))
-            .distinctUntilChanged({ $0 == $1 })
+            .distinctUntilChanged()
     }
     
     /* Groups */
