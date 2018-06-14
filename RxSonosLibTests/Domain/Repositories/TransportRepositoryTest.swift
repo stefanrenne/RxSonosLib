@@ -39,9 +39,11 @@ class TransportRepositoryTest: XCTestCase {
         let track = try! transportRepository
             .getNowPlaying(for: firstRoom())
             .toBlocking()
-            .first()! as! SpotifyTrack
+            .first()! as! MusicProviderTrack
         
-        XCTAssertEqual(track.service, .spotify)
+        XCTAssertEqual(track.providerId, 9)
+        XCTAssertEqual(track.flags, 8224)
+        XCTAssertEqual(track.sn, 1)
         XCTAssertEqual(track.queueItem, 7)
         XCTAssertEqual(track.duration, 265)
         XCTAssertEqual(track.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
@@ -49,7 +51,8 @@ class TransportRepositoryTest: XCTestCase {
         XCTAssertEqual(track.title, "Before I Die")
         XCTAssertEqual(track.artist, "Papa Roach")
         XCTAssertEqual(track.album, "The Connection")
-        XCTAssertEqual(track.description(), [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
+        XCTAssertNil(track.information)
+        XCTAssertEqual(track.description, [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
     }
     
     func testItCanGetTVNowPlayingTrack() {
@@ -62,12 +65,14 @@ class TransportRepositoryTest: XCTestCase {
             .toBlocking()
             .first()! as! TVTrack
         
-        XCTAssertEqual(track.service, .tv)
         XCTAssertEqual(track.queueItem, 1)
         XCTAssertEqual(track.duration, 0)
         XCTAssertEqual(track.uri, "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif")
-        XCTAssertEqual(track.title, "TV")
-        XCTAssertEqual(track.description(), [TrackDescription.title: "TV"])
+        XCTAssertNil(track.title)
+        XCTAssertNil(track.artist)
+        XCTAssertNil(track.album)
+        XCTAssertNil(track.information)
+        XCTAssertEqual(track.description, [:])
     }
     
     func testItCanGetTuneinNowPlayingTrack() {
@@ -78,16 +83,17 @@ class TransportRepositoryTest: XCTestCase {
         let track = try! transportRepository
             .getNowPlaying(for: firstRoom())
             .toBlocking()
-            .first()! as! TuneinTrack
+            .first()! as! MusicProviderTrack
         
-        XCTAssertEqual(track.service, .tunein)
         XCTAssertEqual(track.queueItem, 1)
         XCTAssertEqual(track.duration, 0)
-        XCTAssertEqual(track.uri, "x-rincon-mp3radio://http://20863.live.streamtheworld.com:80/RADIO538.mp3?tdtok=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImZTeXA4In0.eyJpc3MiOiJ0aXNydiIsInN1YiI6IjIxMDY0IiwiaWF0IjoxNTIyNDQzMDQ5LCJ0ZC1yZWciOmZhbHNlfQ.kvTa2wxGb7-Rs7TjFjeRmPlzrkMnZGwDyBdyrru0Wbs")
+        XCTAssertEqual(track.uri, "x-sonosapi-stream:s6712?sid=254&flags=32")
         XCTAssertEqual(track.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonosapi-stream:s6712?sid=254&flags=32")
         XCTAssertEqual(track.title, "538")
+        XCTAssertNil(track.album)
+        XCTAssertNil(track.artist)
         XCTAssertEqual(track.information, "DUA LIPA - IDGAF")
-        XCTAssertEqual(track.description(), [TrackDescription.title: "538", TrackDescription.information: "DUA LIPA - IDGAF"])
+        XCTAssertEqual(track.description, [TrackDescription.title: "538", TrackDescription.information: "DUA LIPA - IDGAF"])
     }
     
     func testItCanGetTheTransportState() {
@@ -105,11 +111,9 @@ class TransportRepositoryTest: XCTestCase {
     func testItCanGetTheImageForATrackWithAnImageUri() {
         let data = UIImagePNGRepresentation(UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!)!
         stub(everything, http(download: .content(data)))
-        
-        let track = SpotifyTrack(queueItem: 7, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: URL(string: "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")!, title: "Before I Die", artist: "Papa Roach", album: "The Connection")
-        
+                
         let imageData = try! transportRepository
-            .getImage(for: track)
+            .getImage(for: firstTrack())
             .toBlocking()
             .first()!
         

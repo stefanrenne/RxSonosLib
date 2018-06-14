@@ -9,30 +9,69 @@
 import Foundation
 
 public enum MusicService {
-    case spotify, tunein, tv, unknown
+    case musicProvider(sid: Int, flags: Int?, sn: Int?)
+    case tv
 }
 
-extension MusicService {
+extension MusicService: Equatable {
     
-    static func map(string: String?) -> MusicService {
-        switch string {
-        case "x-sonos-spotify"?:
-            return .spotify
-        case "x-rincon-mp3radio"?, "aac"?:
-            return .tunein
-        case "x-sonos-htastream"?:
-            return .tv
-        default:
-            return .unknown
+    private var rawValue: Int {
+        switch self {
+        case .musicProvider(let sid, _, _):
+            return sid
+        case .tv:
+            return 9999
         }
     }
     
-    public var isStreamingService: Bool {
+    public static func ==(lhs: MusicService, rhs: MusicService) -> Bool {
+        return lhs.rawValue == rhs.rawValue
+    }
+}
+
+
+extension MusicService {
+    
+    var sid: Int? {
         switch self {
-        case .tunein, .tv:
-            return true
+        case .musicProvider(let sid, _, _):
+            return sid
         default:
-            return false
+            return nil
         }
+    }
+    
+    var flags: Int? {
+        switch self {
+        case .musicProvider(_, let flags, _):
+            return flags
+        default:
+            return nil
+        }
+    }
+    
+    var sn: Int? {
+        switch self {
+        case .musicProvider(_, _, let sn):
+            return sn
+        default:
+            return nil
+        }
+    }
+    
+    static func map(url: String) -> MusicService? {
+        
+        let urlComponents = URLComponents(string: url)
+        if let sid = urlComponents?.queryItems?["sid"]?.int {
+            let flags = urlComponents?.queryItems?["flags"]?.int
+            let sn = urlComponents?.queryItems?["sn"]?.int
+            return MusicService.musicProvider(sid: sid, flags: flags, sn: sn)
+        }
+        
+        if let service = url.match(with: "([a-zA-Z0-9-]+):")?.first, service == "x-sonos-htastream" {
+            return MusicService.tv
+        }
+        
+        return nil
     }
 }

@@ -17,7 +17,7 @@ class GetGroupProgressValues: RequestValues {
     }
 }
 
-class GetGroupProgressInteractor: BaseInteractor<GetGroupProgressValues, GroupProgress> {
+class GetGroupProgressInteractor<R: GetGroupProgressValues>: Interactor {
     
     let transportRepository: TransportRepository
     
@@ -25,7 +25,7 @@ class GetGroupProgressInteractor: BaseInteractor<GetGroupProgressValues, GroupPr
         self.transportRepository = transportRepository
     }
     
-    override func buildInteractorObservable(requestValues: GetGroupProgressValues?) -> Observable<GroupProgress> {
+    func buildInteractorObservable(requestValues: GetGroupProgressValues?) -> Observable<GroupProgress> {
         
         guard let masterRoom = requestValues?.group.master else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())

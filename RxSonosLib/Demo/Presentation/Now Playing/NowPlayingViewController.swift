@@ -131,8 +131,7 @@ class NowPlayingViewController: UIViewController {
         actionButton
             .data
             .filter({ _ in return self.actionButton.isTouchInside })
-            .flatMap({ (arg) -> Observable<TransportState> in
-                let (newState, _) = arg
+            .flatMap({ (newState) -> Observable<TransportState> in
                 return SonosInteractor
                     .getActiveGroup()
                     .set(transportState: newState)

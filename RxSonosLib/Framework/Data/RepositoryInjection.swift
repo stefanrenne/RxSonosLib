@@ -46,4 +46,9 @@ class RepositoryInjection {
         return shared.renderingControlRepository
     }
     
+    internal var musicProvidersRepository: MusicProvidersRepository = MusicProvidersRepositoryImpl()
+    static public func provideMusicProvidersRepository() -> MusicProvidersRepository {
+        return shared.musicProvidersRepository
+    }
+    
 }

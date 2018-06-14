@@ -19,7 +19,7 @@ class SetVolumeValues: RequestValues {
     }
 }
 
-class SetVolumeInteractor: BaseInteractor<SetVolumeValues, Void> {
+class SetVolumeInteractor<T: SetVolumeValues>: Interactor {
     
     let renderingControlRepository: RenderingControlRepository
     
@@ -27,7 +27,7 @@ class SetVolumeInteractor: BaseInteractor<SetVolumeValues, Void> {
         self.renderingControlRepository = renderingControlRepository
     }
     
-    override func buildInteractorObservable(requestValues: SetVolumeValues?) -> Observable<Void> {
+    func buildInteractorObservable(requestValues: SetVolumeValues?) -> Observable<Void> {
         
         guard let group = requestValues?.group,
               let volume = requestValues?.volume else {

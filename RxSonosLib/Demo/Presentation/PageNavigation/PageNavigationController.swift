@@ -12,17 +12,23 @@ class PageNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationBar.isTranslucent = false
-        
-        self.navigationBar.tintColor = UIColor.white
-        self.navigationBar.barTintColor = UIColor.white
-        self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)]
-
-        self.navigationBar.setBackgroundImage(UIColor.clear.as1ptImage(), for: .default)
+        self.navigationBar.styleWhite()
         self.navigationBar.shadowImage = UIColor(red: 0.78, green: 0.78, blue: 0.78, alpha: 1.0).as1ptImage()
+        self.navigationItem.hidesBackButton = false
     }
 
+}
+
+extension UINavigationBar {
+    func styleWhite() {
+        self.isTranslucent = false
+        
+        self.tintColor = UIColor.black
+        self.barTintColor = UIColor.white
+        self.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 17)]
+        
+        self.setBackgroundImage(UIColor.clear.as1ptImage(), for: .default)
+    }
 }
 
 fileprivate extension UIColor {

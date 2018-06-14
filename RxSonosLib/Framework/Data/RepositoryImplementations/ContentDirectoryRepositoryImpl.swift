@@ -11,7 +11,7 @@ import RxSwift
 
 class ContentDirectoryRepositoryImpl: ContentDirectoryRepository {
     
-    func getQueue(for room: Room) -> Observable<[Track]> {
+    func getQueue(for room: Room) -> Observable<[MusicProviderTrack]> {
         return GetQueueNetwork(room: room)
             .executeSoapRequest()
             .map(self.mapDataToQueue(room: room))
@@ -20,7 +20,7 @@ class ContentDirectoryRepositoryImpl: ContentDirectoryRepository {
 }
 
 extension ContentDirectoryRepositoryImpl {
-    fileprivate func mapDataToQueue(room: Room) -> (([String: String]) -> [Track]) {
+    fileprivate func mapDataToQueue(room: Room) -> (([String: String]) -> [MusicProviderTrack]) {
         return { data in
             return data["Result"]?
                 .mapMetaItems()?
@@ -29,9 +29,9 @@ extension ContentDirectoryRepositoryImpl {
         }
     }
     
-    fileprivate func mapQueueItemToTrack(room: Room) -> ((Int, [String: String]) -> Track?) {
+    fileprivate func mapQueueItemToTrack(room: Room) -> ((Int, [String: String]) -> MusicProviderTrack?) {
         return { index, data in
-            return QueueTrackFactory.create(room: room.ip, queueItem: index + 1, data: data)
+            return QueueTrackFactory(room: room.ip, queueItem: index + 1, data: data).create()
         }
     }
     

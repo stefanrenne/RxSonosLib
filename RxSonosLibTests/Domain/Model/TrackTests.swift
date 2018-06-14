@@ -14,34 +14,25 @@ import RxSwift
 class TrackTests: XCTestCase {
     
     override func setUp() {
-        RepositoryInjection.shared.contentDirectoryRepository = FakeContentDirectoryRepositoryImpl()
-        RepositoryInjection.shared.groupRepository = FakeGroupRepositoryImpl()
-        RepositoryInjection.shared.renderingControlRepository = FakeRenderingControlRepositoryImpl()
-        RepositoryInjection.shared.roomRepository = FakeRoomRepositoryImpl()
-        RepositoryInjection.shared.ssdpRepository = FakeSSDPRepositoryImpl()
-        RepositoryInjection.shared.transportRepository = FakeTransportRepositoryImpl()
-        _ = SonosInteractor.shared
+        resetToFakeRepositories()
         super.setUp()
     }
     
     override func tearDown() {
-        RepositoryInjection.shared.contentDirectoryRepository = ContentDirectoryRepositoryImpl()
-        RepositoryInjection.shared.groupRepository = GroupRepositoryImpl()
-        RepositoryInjection.shared.renderingControlRepository = RenderingControlRepositoryImpl()
-        RepositoryInjection.shared.roomRepository = RoomRepositoryImpl()
-        RepositoryInjection.shared.ssdpRepository = SSDPRepositoryImpl()
-        RepositoryInjection.shared.transportRepository = TransportRepositoryImpl()
+        resetToRealRepositories()
         super.tearDown()
     }
     
     func testItCanInitATrack() {
-        let track = Track(service: .spotify, queueItem: 1, duration: 10, uri: "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif", title: "test")
-        XCTAssertEqual(track.service, .spotify)
-        XCTAssertEqual(track.duration, 10)
+        let track = TVTrack(queueItem: 1, uri: "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif")
+        XCTAssertEqual(track.duration, 0)
         XCTAssertEqual(track.queueItem, 1)
         XCTAssertEqual(track.uri, "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif")
-        XCTAssertEqual(track.title, "test")
-        XCTAssertEqual(track.description(), [TrackDescription.title: "test"])
+        XCTAssertNil(track.title)
+        XCTAssertNil(track.album)
+        XCTAssertNil(track.artist)
+        XCTAssertNil(track.information)
+        XCTAssertEqual(track.description, [:])
     }
     
     func testItCanSortTrackDescriptions() {
@@ -51,7 +42,7 @@ class TrackTests: XCTestCase {
     }
     
     func testItCanFilterTheDescription() {
-        let track = firstSpotifyTrack()
+        let track = firstTrack()
         
         XCTAssertEqual(track.description(filterd: [TrackDescription.information]), ["Before I Die", "Papa Roach", "The Connection"])
         XCTAssertEqual(track.description(filterd: [TrackDescription.title]), ["Papa Roach", "The Connection"])
@@ -60,21 +51,21 @@ class TrackTests: XCTestCase {
     }
     
     func testItCanGetJustOneDescriptionField() {
-        let track = firstSpotifyTrack()
+        let track = firstTrack()
         
-        XCTAssertEqual(track.description()[TrackDescription.title], "Before I Die")
-        XCTAssertEqual(track.description()[TrackDescription.album], "The Connection")
-        XCTAssertEqual(track.description()[TrackDescription.artist], "Papa Roach")
-        XCTAssertNil(track.description()[TrackDescription.information])
+        XCTAssertEqual(track.description[TrackDescription.title], "Before I Die")
+        XCTAssertEqual(track.description[TrackDescription.album], "The Connection")
+        XCTAssertEqual(track.description[TrackDescription.artist], "Papa Roach")
+        XCTAssertNil(track.description[TrackDescription.information])
     }
     
     func testItCanCompareTracks() {
-        XCTAssertEqual(firstSpotifyTrack(), firstSpotifyTrack())
+        XCTAssertEqual(firstTrack(), firstTrack())
     }
     
     func testItCanGetTheTrackImage() {
         let imageData = try! Observable
-            .just(firstSpotifyTrack())
+            .just(firstTrack())
             .getImage()
             .toBlocking()
             .first()!
@@ -83,10 +74,4 @@ class TrackTests: XCTestCase {
         XCTAssertEqual(imageData, expectedData)
     }
     
-}
-
-fileprivate extension TrackTests {
-    func firstSpotifyTrack() -> Track {
-        return SpotifyTrack(queueItem: 7, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: URL(string: "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")!, title: "Before I Die", artist: "Papa Roach", album: "The Connection")
-    }
 }

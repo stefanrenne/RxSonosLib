@@ -39,6 +39,18 @@ open class SonosInteractor {
         return shared.allGroups.asObserver()
     }
     
+    static public func getAllMusicProviders() -> Observable<[MusicProvider]> {
+        return shared
+            .allGroups
+            .asObserver()
+            .filter({ $0.count > 0 })
+            .take(1)
+            .flatMap { (groups) -> Observable<[MusicProvider]> in
+                return GetMusicProvidersInteractor(musicProvidersRepository: RepositoryInjection.provideMusicProvidersRepository())
+                    .get(values: GetMusicProvidersValues(room: groups.first?.master))
+        }   
+    }
+    
     /* Group */
     static public func getTrack(_ group: Group) -> Observable<Track?> {
         return GetNowPlayingInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
@@ -50,23 +62,14 @@ open class SonosInteractor {
             .get(values: GetGroupProgressValues(group: group))
     }
     
-    static public func getQueue(_ group: Group) -> Observable<[Track]> {
+    static public func getQueue(_ group: Group) -> Observable<[MusicProviderTrack]> {
         return GetGroupQueueInteractor(contentDirectoryRepository: RepositoryInjection.provideContentDirectoryRepository())
             .get(values: GetGroupQueueValues(group: group))
     }
     
-    static public func getTransportState(_ group: Group) -> Observable<(TransportState, MusicService)> {
-        let stateObservable = GetTransportStateInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
+    static public func getTransportState(_ group: Group) -> Observable<TransportState> {
+        return GetTransportStateInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: GetTransportStateValues(group: group))
-        
-        let serviceObservable = SonosInteractor
-            .getTrack(group)
-            .map({ (track) -> MusicService in
-                return track?.service ?? MusicService.unknown
-            })
-            .distinctUntilChanged()
-        
-        return Observable.combineLatest(stateObservable, serviceObservable, resultSelector: ({ ($0, $1) }))
     }
     
     static public func setTransport(state: TransportState, for group: Group) -> Observable<TransportState> {
@@ -130,7 +133,7 @@ extension SonosInteractor {
     
     private func observerGroups() {
         GetGroupsInteractor(groupRepository: RepositoryInjection.provideGroupRepository())
-            .get(values: GetGroupsValues(rooms: self.allRooms.asObserver()))
+            .get(values: GetGroupsValues(rooms: self.allRooms))
             .subscribe(self.allGroups)
             .disposed(by: disposebag)
         

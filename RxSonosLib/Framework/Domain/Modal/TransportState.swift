@@ -26,14 +26,15 @@ extension TransportState {
         return state
     }
     
-    public func actionState(for musicService: MusicService) -> TransportState {
+    public func reverseState() -> TransportState {
         switch self {
         case .paused, .stopped:
             return TransportState.playing
         case .transitioning:
             return TransportState.transitioning
         case .playing:
-            return musicService.isStreamingService ? TransportState.stopped : TransportState.paused
+            //TODO: switch between pause & stopped
+            return TransportState.stopped
         }
     }
 }

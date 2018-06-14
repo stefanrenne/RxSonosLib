@@ -49,8 +49,6 @@ extension SSDPDevice: Equatable {
     public static func ==(lhs: SSDPDevice, rhs: SSDPDevice) -> Bool {
         return lhs.usn == rhs.usn
     }
-    
-    
 }
 
 extension SSDPDevice {

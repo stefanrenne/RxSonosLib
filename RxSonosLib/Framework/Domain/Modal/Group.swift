@@ -24,7 +24,7 @@ open class Group {
     
     /// All Room names in this group
     public lazy var names: [String] = {
-        return self.rooms.map({ $0.name })
+        return Array(Set(self.rooms.map({ $0.name })))
     }()
     
     /// All Rooms in this group
@@ -84,7 +84,6 @@ extension ObservableType where E == Group {
                     .activeTrack
                     .asObserver()
             })
-            .distinctUntilChanged()
     }
     
     public func getImage() -> Observable<Data?> {
@@ -109,23 +108,19 @@ extension ObservableType where E == Group {
             .distinctUntilChanged()
     }
     
-    public func getQueue() -> Observable<[Track]> {
+    public func getQueue() -> Observable<[MusicProviderTrack]> {
         return
             self
-            .flatMap({ (group) -> Observable<[Track]> in
+            .flatMap({ (group) -> Observable<[MusicProviderTrack]> in
                 return SonosInteractor.getQueue(group)
             })
-            .distinctUntilChanged()
     }
     
-    public func getTransportState() -> Observable<(TransportState, MusicService)> {
+    public func getTransportState() -> Observable<TransportState> {
         return
             self
-            .flatMap({ (group) -> Observable<(TransportState, MusicService)> in
+            .flatMap({ (group) -> Observable<TransportState> in
                 return SonosInteractor.getTransportState(group)
-            })
-            .distinctUntilChanged({ (lhs, rhs) -> Bool in
-                return lhs.0 == rhs.0 && lhs.1 == rhs.1
             })
     }
     
@@ -144,7 +139,6 @@ extension ObservableType where E == Group {
             .flatMap({ (group) -> Observable<Int> in
                 return SonosInteractor.getVolume(group)
             })
-            .distinctUntilChanged()
     }
     
     public func set(volume: Int) -> Observable<Int> {

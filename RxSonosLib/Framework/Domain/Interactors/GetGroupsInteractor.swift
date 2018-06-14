@@ -11,38 +11,36 @@ import RxSwift
 import RxSSDP
 
 class GetGroupsValues: RequestValues {
-    let rooms: Observable<[Room]>
+    let rooms: BehaviorSubject<[Room]>
     
-    init(rooms: Observable<[Room]>) {
+    init(rooms: BehaviorSubject<[Room]>) {
         self.rooms = rooms
     }
     
 }
 
-class GetGroupsInteractor: BaseInteractor<GetGroupsValues, [Group]> {
+class GetGroupsInteractor<R: GetGroupsValues>: Interactor {
     
     private let groupRepository: GroupRepository
     
     init(groupRepository: GroupRepository) {
         self.groupRepository = groupRepository
-        
-        SSDPSettings.shared.maxBufferTime = SonosSettings.shared.searchNetworkForDevices
     }
     
-    override func buildInteractorObservable(requestValues: GetGroupsValues?) -> Observable<[Group]> {
-        guard let roomObservable = requestValues?.rooms else {
+    func buildInteractorObservable(requestValues: GetGroupsValues?) -> Observable<[Group]> {
+        guard let roomSubject = requestValues?.rooms else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
         
-        return roomObservable
-            .flatMap(addTimer(SonosSettings.shared.renewGroupsTimer))
-            .flatMap(mapRoomsToGroups())
-            .distinctUntilChanged({ $0 == $1 })
+        return createTimer(SonosSettings.shared.renewGroupsTimer)
+            .flatMap(mapRoomsToGroups(roomSubject: roomSubject))
+            .distinctUntilChanged()
     }
     
     /* Groups */
-    fileprivate func mapRoomsToGroups() -> (([Room]) throws -> Observable<[Group]>) {
-        return { rooms in
+    fileprivate func mapRoomsToGroups(roomSubject: BehaviorSubject<[Room]>) -> ((Int) throws -> Observable<[Group]>) {
+        return { _ in
+            let rooms = (try? roomSubject.value()) ?? []
             return self.groupRepository.getGroups(for: rooms)
         }
     }

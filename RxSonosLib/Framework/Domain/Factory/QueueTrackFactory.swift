@@ -10,28 +10,42 @@ import Foundation
 
 struct QueueTrackFactory {
     
-    static func create(room: URL, queueItem: Int, data: [String: String]) -> Track? {
-        
-        switch data["res"]?.musicServiceFromUrl() {
-        case .some(.spotify):
-            return QueueTrackFactory.createSpotifyTrack(room: room, queueItem: queueItem, data: data)
-        default:
-            return nil
-        }
+    private let room: URL
+    private let queueItem: Int
+    private let data: [String: String]
+    
+    init(room: URL, queueItem: Int, data: [String: String]) {
+        self.room = room
+        self.queueItem = queueItem
+        self.data = data
     }
     
-    fileprivate static func createSpotifyTrack(room: URL, queueItem: Int, data: [String: String]) -> SpotifyTrack? {
+    func create() -> MusicProviderTrack? {
         
         guard let duration = data["resduration"]?.timeToSeconds(),
             let uri = data["res"],
-            let title = data["title"],
-            let artist = data["creator"],
-            let album = data["album"],
+            let service = MusicService.map(url: uri),
+            let sid = service.sid,
+            let description = getDescription(),
             let imageUri = URL(string: room.absoluteString + "/getaa?s=1&u=" + uri) else {
                 return nil
         }
         
-        return SpotifyTrack(queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, title: title, artist: artist, album: album)
+        return MusicProviderTrack(sid: sid, flags: service.flags, sn: service.sn, queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description)
+    }
+    
+    private func getDescription() -> [TrackDescription: String]? {
+        guard let title = data["title"] else { return nil }
+        var description = [TrackDescription.title: title]
+        
+        if let artist = data["creator"] {
+            description[TrackDescription.artist] = artist
+        }
+        if let album = data["album"] {
+            description[TrackDescription.album] = album
+        }
+        
+        return description
     }
     
 }

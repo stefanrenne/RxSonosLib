@@ -17,7 +17,7 @@ class SetPreviousTrackValues: RequestValues {
     }
 }
 
-class SetPreviousTrackInteractor: BaseInteractor<SetPreviousTrackValues, Void> {
+class SetPreviousTrackInteractor<T: SetPreviousTrackValues>: Interactor {
     
     let transportRepository: TransportRepository
     
@@ -25,7 +25,7 @@ class SetPreviousTrackInteractor: BaseInteractor<SetPreviousTrackValues, Void> {
         self.transportRepository = transportRepository
     }
     
-    override func buildInteractorObservable(requestValues: SetPreviousTrackValues?) -> Observable<Void> {
+    func buildInteractorObservable(requestValues: SetPreviousTrackValues?) -> Observable<Void> {
         
         guard let group = requestValues?.group else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())

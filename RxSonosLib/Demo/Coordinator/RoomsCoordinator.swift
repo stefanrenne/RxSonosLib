@@ -10,19 +10,21 @@ import UIKit
 import RxSonosLib
 
 protocol RoomsRouter {
-    func continueToNowPlaying()
+    func continueTo(group: Group)
 }
 
-class RoomsCoordinator: BaseCoordinator {
+class RoomsCoordinator: Coordinator {
     
-    private let tabbarRouter: TabBarRouter
-    init(navigationController: UINavigationController?, tabbarRouter: TabBarRouter) {
-        self.tabbarRouter = tabbarRouter
-        super.init(navigationController: navigationController)
+    
+    private weak var navigationController: UINavigationController?
+    private let masterRouter: MasterRouter
+    init(navigationController: UINavigationController?, masterRouter: MasterRouter) {
+        self.navigationController = navigationController
+        self.masterRouter = masterRouter
     }
     
     private let viewController = RoomsViewController()
-    override func setup() -> UIViewController {
+    func setup() -> UIViewController {
         viewController.router = self
         return viewController
     }
@@ -36,8 +38,8 @@ class RoomsCoordinator: BaseCoordinator {
 
 extension RoomsCoordinator: RoomsRouter {
     
-    func continueToNowPlaying() {
-        self.tabbarRouter.continueToNowPlaying()
+    func continueTo(group: Group) {
+        masterRouter.continueTo(group: group)
     }
     
 }

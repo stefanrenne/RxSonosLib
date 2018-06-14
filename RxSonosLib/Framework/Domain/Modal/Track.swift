@@ -60,42 +60,32 @@ internal protocol TrackImage {
 /**
  * Every item in the queue is a `Track`
  */
-open class Track {
-    
-    /**
-     * Type of track, example: spotify, tunein, tv
-     */
-    public let service: MusicService
-    
+public protocol Track {
     /**
      * Number item in the queue
      */
-    public let queueItem: Int
+    var queueItem: Int { get }
     
     /**
      * Track duration time in seconds, example: 264 for 0:04:24
      */
-    public let duration: UInt
+    var duration: UInt { get }
     
     /**
      * track url
      */
-    public let uri: String
-    
-    /**
-     * track title
-     */
-    public let title: String
+    var uri: String { get }
     
     /**
      * collection of all Tracks description items
      */
-    public func description() -> [TrackDescription: String] {
-        return [TrackDescription.title: self.title]
-    }
+    var description: [TrackDescription: String] { get }
+}
+
+extension Track {
     
     public func description(filterd: [TrackDescription]) -> [String] {
-        return self.description()
+        return self.description
             .compactMap({ (key, value) -> String? in
                 if filterd.contains(key) {
                     return nil
@@ -104,21 +94,27 @@ open class Track {
             })
             .sorted(by: { $0 < $1 })
     }
+        
+    /**
+     * track title
+     */
+    public var title: String? { return description[TrackDescription.title] }
     
-    init(service: MusicService, queueItem: Int, duration: UInt, uri: String, title: String) {
-        self.service = service
-        self.queueItem = queueItem
-        self.duration = duration
-        self.uri = uri
-        self.title = title
-    }
+    /**
+     * track artist
+     */
+    public var artist: String? { return description[TrackDescription.artist] }
     
-}
-
-extension Track: Equatable {
-    public static func ==(lhs: Track, rhs: Track) -> Bool {
-        return lhs.uri == rhs.uri
-    }
+    /**
+     * track album
+     */
+    public var album: String? { return description[TrackDescription.album] }
+    
+    /**
+     * track information
+     */
+    public var information: String? { return description[TrackDescription.information] }
+    
 }
 
 extension ObservableType where E == Track {

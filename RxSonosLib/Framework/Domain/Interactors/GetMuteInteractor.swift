@@ -17,7 +17,7 @@ class GetMuteValues: RequestValues {
     }
 }
 
-class GetMuteInteractor: BaseInteractor<GetMuteValues, Bool> {
+class GetMuteInteractor<R: GetMuteValues>: Interactor {
     
     let renderingControlRepository: RenderingControlRepository
     
@@ -25,7 +25,7 @@ class GetMuteInteractor: BaseInteractor<GetMuteValues, Bool> {
         self.renderingControlRepository = renderingControlRepository
     }
     
-    override func buildInteractorObservable(requestValues: GetMuteValues?) -> Observable<Bool> {
+    func buildInteractorObservable(requestValues: GetMuteValues?) -> Observable<Bool> {
         
         guard let room = requestValues?.room else {
                 return Observable.error(NSError.sonosLibInvalidImplementationError())

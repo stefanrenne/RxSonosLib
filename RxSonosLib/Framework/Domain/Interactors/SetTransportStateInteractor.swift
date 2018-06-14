@@ -19,7 +19,7 @@ class SetTransportStateValues: RequestValues {
     }
 }
 
-class SetTransportStateInteractor: BaseInteractor<SetTransportStateValues, Void> {
+class SetTransportStateInteractor<T: SetTransportStateValues>: Interactor {
     
     let renderingControlRepository: RenderingControlRepository
     
@@ -27,7 +27,7 @@ class SetTransportStateInteractor: BaseInteractor<SetTransportStateValues, Void>
         self.renderingControlRepository = renderingControlRepository
     }
     
-    override func buildInteractorObservable(requestValues: SetTransportStateValues?) -> Observable<Void> {
+    func buildInteractorObservable(requestValues: SetTransportStateValues?) -> Observable<Void> {
         
         guard let group = requestValues?.group,
               let state = requestValues?.state else {

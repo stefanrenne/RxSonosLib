@@ -10,9 +10,6 @@ import UIKit
 import RxSonosLib
 
 protocol TabBarRouter {
-    func continueToNowPlaying()
-    func closeNowPlaying()
-    func continueToQueue()
     func continueToMySonos()
     func continueToBrowse()
     func continueToRooms()
@@ -20,23 +17,32 @@ protocol TabBarRouter {
     func continueToMore()
 }
 
-protocol TabBarActions {
-    func didLoad()
+protocol MasterRouter {
+    func present(_ viewController: UIViewController)
+    func dismiss()
+    func closeNowPlaying()
+    func continueTo(group: Group)
 }
 
-class TabBarCoordinator: BaseCoordinator {
+protocol TabBarActions {
+    func didLoad()
+    func didUpdateActiveGroup()
+}
+
+class TabBarCoordinator: Coordinator {
     
     fileprivate var contentCoordinator: PageNavigationCoordinator?
     fileprivate var groupCoordinator: NowPlayingCoordinator?
+    private weak var navigationController: UINavigationController?
     
-    override init(navigationController: UINavigationController? = nil) {
-        super.init(navigationController: navigationController)
+    init(navigationController: UINavigationController? = nil) {
+        self.navigationController = navigationController
         self.viewController.actions = self
         self.viewController.router = self
     }
     
     fileprivate let viewController = TabBarViewController()
-    override func setup() -> UIViewController {
+    func setup() -> UIViewController {
         return viewController
     }
     
@@ -49,29 +55,21 @@ class TabBarCoordinator: BaseCoordinator {
 
 extension TabBarCoordinator: TabBarActions {
     func didLoad() {
-        let nowPlayingCoordinator = NowPlayingCoordinator(tabBarRouter: self)
+        let nowPlayingCoordinator = NowPlayingCoordinator(masterRouter: self)
         self.viewController.fullNowPlayingView.load(view: nowPlayingCoordinator.setup().view)
         self.groupCoordinator = nowPlayingCoordinator
         
-        let contentCoordinator = PageNavigationCoordinator(tabbarRouter: self)
+        let contentCoordinator = PageNavigationCoordinator(masterRouter: self)
         self.viewController.contentView.load(view: contentCoordinator.setup().view)
         self.contentCoordinator = contentCoordinator
+    }
+    
+    func didUpdateActiveGroup() {
+        viewController.nowPlayingAction(collapse: false)
     }
 }
 
 extension TabBarCoordinator: TabBarRouter {
-    
-    func continueToNowPlaying() {
-        viewController.nowPlayingAction(collapse: false)
-    }
-    
-    func closeNowPlaying() {
-        viewController.nowPlayingAction(collapse: true)
-    }
-    
-    func continueToQueue() {
-        QueueCoordinator(navigationController: navigationController).start()
-    }
     
     func continueToMySonos() {
         self.contentCoordinator?.continueToMySonos()
@@ -93,6 +91,24 @@ extension TabBarCoordinator: TabBarRouter {
         self.contentCoordinator?.continueToMore()
     }
     
+}
+
+extension TabBarCoordinator: MasterRouter {
+    func present(_ viewController: UIViewController) {
+        self.navigationController?.present(viewController, animated: true, completion: nil)
+    }
+    
+    func dismiss() {
+        self.navigationController?.topViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func closeNowPlaying() {
+        viewController.nowPlayingAction(collapse: true)
+    }
+    
+    func continueTo(group: Group) {
+        viewController.nowPlayingAction(collapse: false)
+    }
 }
 
 fileprivate extension UIView {

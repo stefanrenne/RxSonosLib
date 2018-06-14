@@ -13,9 +13,14 @@ protocol QueueRouter {
     func close()
 }
 
-class QueueCoordinator: BaseCoordinator {
+class QueueCoordinator: Coordinator {
     
-    override func setup() -> UIViewController {
+    private let masterRouter: MasterRouter
+    init(masterRouter: MasterRouter) {
+        self.masterRouter = masterRouter
+    }
+    
+    func setup() -> UIViewController {
         let viewController = QueueViewController()
         viewController.router = self
         return viewController
@@ -23,13 +28,13 @@ class QueueCoordinator: BaseCoordinator {
     
     func start() {
         let viewController = self.setup()
-        self.navigationController?.topViewController?.present(viewController, animated: true, completion: nil)
+        masterRouter.present(viewController)
     }
     
 }
 
 extension QueueCoordinator: QueueRouter {
     func close() {
-        self.navigationController?.topViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
+        masterRouter.dismiss()
     }
 }

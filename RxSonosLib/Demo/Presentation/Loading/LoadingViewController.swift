@@ -23,6 +23,8 @@ class LoadingViewController: UIViewController {
     fileprivate func setupAllRoomsObservable() {
         SonosInteractor
             .getAllGroups()
+            .filter({ $0.count > 0 })
+            .take(1)
             .subscribe(onNext: { [weak self] (groups) in
                 if groups.count > 0 {
                     self?.router.continueToMySonos()

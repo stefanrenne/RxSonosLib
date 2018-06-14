@@ -14,23 +14,12 @@ import RxSwift
 class GroupTests: XCTestCase {
     
     override func setUp() {
-        RepositoryInjection.shared.contentDirectoryRepository = FakeContentDirectoryRepositoryImpl()
-        RepositoryInjection.shared.groupRepository = FakeGroupRepositoryImpl()
-        RepositoryInjection.shared.renderingControlRepository = FakeRenderingControlRepositoryImpl()
-        RepositoryInjection.shared.roomRepository = FakeRoomRepositoryImpl()
-        RepositoryInjection.shared.ssdpRepository = FakeSSDPRepositoryImpl()
-        RepositoryInjection.shared.transportRepository = FakeTransportRepositoryImpl()
-        _ = SonosInteractor.shared
+        resetToFakeRepositories()
         super.setUp()
     }
     
     override func tearDown() {
-        RepositoryInjection.shared.contentDirectoryRepository = ContentDirectoryRepositoryImpl()
-        RepositoryInjection.shared.groupRepository = GroupRepositoryImpl()
-        RepositoryInjection.shared.renderingControlRepository = RenderingControlRepositoryImpl()
-        RepositoryInjection.shared.roomRepository = RoomRepositoryImpl()
-        RepositoryInjection.shared.ssdpRepository = SSDPRepositoryImpl()
-        RepositoryInjection.shared.transportRepository = TransportRepositoryImpl()
+        resetToRealRepositories()
         super.tearDown()
     }
     
@@ -85,9 +74,11 @@ class GroupTests: XCTestCase {
             .getTrack()
             .skip(1)
             .toBlocking()
-            .first()! as! SpotifyTrack
+            .first()! as! MusicProviderTrack
         
-        XCTAssertEqual(track.service, .spotify)
+        XCTAssertEqual(track.providerId, 9)
+        XCTAssertNil(track.flags)
+        XCTAssertNil(track.sn)
         XCTAssertEqual(track.queueItem, 7)
         XCTAssertEqual(track.duration, 265)
         XCTAssertEqual(track.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
@@ -95,7 +86,8 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(track.title, "Before I Die")
         XCTAssertEqual(track.artist, "Papa Roach")
         XCTAssertEqual(track.album, "The Connection")
-        XCTAssertEqual(track.description(), [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
+        XCTAssertNil(track.information)
+        XCTAssertEqual(track.description, [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
     }
     
     func testItCanGetTheImage() {
@@ -112,8 +104,7 @@ class GroupTests: XCTestCase {
     func testItCanGetTheTransportState() {
         let group = Observable.just(firstGroup())
         let result = try! group.getTransportState().toBlocking().first()!
-        XCTAssertEqual(result.0, TransportState.paused)
-        XCTAssertEqual(result.1, MusicService.spotify)
+        XCTAssertEqual(result, TransportState.paused)
     }
     
     func testItCanSetTheTransportState() {
@@ -170,10 +161,6 @@ class GroupTests: XCTestCase {
     }
     
     func testItCanGetTheMute() {
-        let mock = RepositoryInjection.shared.renderingControlRepository as! FakeRenderingControlRepositoryImpl
-        mock.numberSetMuteCalls = 0
-        mock.numberGetMuteCalls = 0
-        
         let group = Observable.just(secondGroup())
         let muted = try! group
             .getMute()
@@ -181,8 +168,6 @@ class GroupTests: XCTestCase {
             .first()!
         
         XCTAssertEqual(muted, [true, true])
-        XCTAssertEqual(mock.numberGetMuteCalls, 2)
-        XCTAssertEqual(mock.numberSetMuteCalls, 0)
     }
     
     func testItCanSetTheMute() {
@@ -223,8 +208,10 @@ class GroupTests: XCTestCase {
         
         XCTAssertEqual(queue.count, 2)
         
-        let track1 = queue[0] as! SpotifyTrack
-        XCTAssertEqual(track1.service, .spotify)
+        let track1 = queue[0]
+        XCTAssertEqual(track1.providerId, 9)
+        XCTAssertNil(track1.flags)
+        XCTAssertNil(track1.sn)
         XCTAssertEqual(track1.queueItem, 1)
         XCTAssertEqual(track1.duration, 265)
         XCTAssertEqual(track1.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
@@ -232,10 +219,13 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(track1.title, "Before I Die")
         XCTAssertEqual(track1.artist, "Papa Roach")
         XCTAssertEqual(track1.album, "The Connection")
-        XCTAssertEqual(track1.description(), [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
+        XCTAssertNil(track1.information)
+        XCTAssertEqual(track1.description, [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
         
-        let track2 = queue[1] as! SpotifyTrack
-        XCTAssertEqual(track2.service, .spotify)
+        let track2 = queue[1]
+        XCTAssertEqual(track2.providerId, 9)
+        XCTAssertNil(track2.flags)
+        XCTAssertNil(track2.sn)
         XCTAssertEqual(track2.queueItem, 2)
         XCTAssertEqual(track2.duration, 197)
         XCTAssertEqual(track2.uri, "x-sonos-spotify:spotify%3atrack%3a2cTvamkNzLsIWrSHHW8yzy?sid=9&flags=8224&sn=1")
@@ -243,7 +233,12 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(track2.title, "Christ Copyright")
         XCTAssertEqual(track2.artist, "Nothing More")
         XCTAssertEqual(track2.album, "Nothing More")
-        XCTAssertEqual(track2.description(), [TrackDescription.title: "Christ Copyright", TrackDescription.artist: "Nothing More", TrackDescription.album: "Nothing More"])
+        XCTAssertNil(track2.information)
+        XCTAssertEqual(track2.description, [TrackDescription.title: "Christ Copyright", TrackDescription.artist: "Nothing More", TrackDescription.album: "Nothing More"])
+    }
+    
+    func testItCanGetTheNames() {
+        XCTAssertEqual(secondGroup().names, ["Living"])
     }
     
     

@@ -11,7 +11,7 @@ import Mockingjay
 @testable import RxSonosLib
 
 
-public func soap(room: Room? = nil, call: SoapSoapAction) -> (_ request: URLRequest) -> Bool {
+public func soap(room: Room? = nil, call: SoapAction) -> (_ request: URLRequest) -> Bool {
     return { (request: URLRequest) in
         
         let ipMatch = (room != nil) ? request.url?.absoluteString.baseUrl() == room?.ip.absoluteString : true
@@ -54,6 +54,6 @@ public func xml(_ response: String, status: Int = 200, headers: [String:String] 
 
 extension String {
     func encodeString() -> String {
-        return self.replacingOccurrences(of: "<", with: "&lt;").replacingOccurrences(of: ">", with: "&gt;").replacingOccurrences(of: "\"", with: "&quot;")
+        return self.replacingOccurrences(of: "&", with: "&amp;").replacingOccurrences(of: "<", with: "&lt;").replacingOccurrences(of: ">", with: "&gt;").replacingOccurrences(of: "\"", with: "&quot;")
     }
 }

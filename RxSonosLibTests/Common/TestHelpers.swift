@@ -7,9 +7,34 @@
 //
 
 import XCTest
+import RxSSDP
 @testable import RxSonosLib
 
 extension XCTestCase {
+    
+    /* Reset Repositories */
+    func resetToFakeRepositories() {
+        RepositoryInjection.shared.contentDirectoryRepository = FakeContentDirectoryRepositoryImpl()
+        let groupRepository = FakeGroupRepositoryImpl()
+        RepositoryInjection.shared.groupRepository = groupRepository
+        RepositoryInjection.shared.renderingControlRepository = FakeRenderingControlRepositoryImpl()
+        RepositoryInjection.shared.roomRepository = FakeRoomRepositoryImpl()
+        RepositoryInjection.shared.ssdpRepository = FakeSSDPRepositoryImpl()
+        RepositoryInjection.shared.transportRepository = FakeTransportRepositoryImpl()
+        RepositoryInjection.shared.musicProvidersRepository = FakeMusicProvidersRepositoryImpl()
+        SonosInteractor.shared.allGroups.onNext(groupRepository.allGroups)
+        SonosInteractor.shared.activeGroup.onNext(groupRepository.allGroups.first)
+    }
+    
+    func resetToRealRepositories() {
+        RepositoryInjection.shared.contentDirectoryRepository = ContentDirectoryRepositoryImpl()
+        RepositoryInjection.shared.groupRepository = GroupRepositoryImpl()
+        RepositoryInjection.shared.renderingControlRepository = RenderingControlRepositoryImpl()
+        RepositoryInjection.shared.roomRepository = RoomRepositoryImpl()
+        RepositoryInjection.shared.ssdpRepository = SSDPRepositoryImpl()
+        RepositoryInjection.shared.transportRepository = TransportRepositoryImpl()
+        RepositoryInjection.shared.musicProvidersRepository = MusicProvidersRepositoryImpl()
+    }
     
     /* Groups */
     func firstGroup() -> Group {
@@ -53,5 +78,10 @@ extension XCTestCase {
     /* Description */
     func firstDescription() -> DeviceDescription {
         return DeviceDescription(name: "Living", modalNumber: "S9", modalName: "Sonos PLAYBAR", modalIcon: "/img/icon-S9.png", serialNumber: "00-00-00-00-00-01:A", softwareVersion: "34.7-34220", hardwareVersion: "1.8.3.7-2")
+    }
+    
+    /* Tracks */
+    func firstTrack() -> MusicProviderTrack {
+        return MusicProviderTrack(sid: 9, flags: nil, sn: nil, queueItem: 1, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: URL(string: "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")!, description: [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
     }
 }

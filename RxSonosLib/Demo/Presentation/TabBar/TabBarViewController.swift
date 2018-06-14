@@ -40,11 +40,6 @@ class TabBarViewController: UIViewController {
         tabBar.invalidateIntrinsicContentSize()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        router?.continueToNowPlaying()
-    }
-    
     @IBAction func expandAction(_ sender: UIButton) {
         self.nowPlayingAction(collapse: false)
     }
@@ -90,6 +85,7 @@ class TabBarViewController: UIViewController {
         SonosInteractor
             .getActiveGroup()
             .subscribe(onNext: { [weak self] (group) in
+                self?.actions?.didUpdateActiveGroup()
                 self?.nowPlayingDescriptionLabel.text = group.name
             })
             .disposed(by: disposeBag)
@@ -120,10 +116,10 @@ class TabBarViewController: UIViewController {
         actionButton
             .data
             .filter({ _ in return self.actionButton.isTouchInside })
-            .flatMap({ (data) -> Observable<TransportState> in
+            .flatMap({ (state) -> Observable<TransportState> in
                 return SonosInteractor
                     .getActiveGroup()
-                    .set(transportState: data.0)
+                    .set(transportState: state)
             })
             .subscribe(onError: { (error) in
                 print(error.localizedDescription)

@@ -16,7 +16,7 @@ class TrackViewModel {
         self.track = track
     }
     
-    lazy var trackTitle: String = {
+    lazy var trackTitle: String? = {
         return track.title
     }()
     
@@ -32,7 +32,7 @@ class TrackViewModel {
     }()
     
     lazy var trackArtists: String? = {
-        return track.description()[TrackDescription.artist]
+        return track.artist
     }()
     
     lazy var trackDescription: NSAttributedString = {

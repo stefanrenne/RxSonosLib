@@ -12,7 +12,7 @@ import RxSSDP
 
 class GetRoomsValues: RequestValues { }
 
-class GetRoomsInteractor: BaseInteractor<GetRoomsValues, [Room]> {
+class GetRoomsInteractor<R: GetRoomsValues>: Interactor {
     
     private let ssdpRepository: SSDPRepository
     private let roomRepository: RoomRepository
@@ -24,32 +24,35 @@ class GetRoomsInteractor: BaseInteractor<GetRoomsValues, [Room]> {
         SSDPSettings.shared.maxBufferTime = SonosSettings.shared.searchNetworkForDevices
     }
     
-    override func buildInteractorObservable(requestValues: GetRoomsValues?) -> Observable<[Room]> {
+    func buildInteractorObservable(requestValues: GetRoomsValues?) -> Observable<[Room]> {
         
-        return searchNetworkForDevices()
-            .distinctUntilChanged({ $0 == $1 })
+        return
+            createTimer(SonosSettings.shared.renewNetworkDevicesTimer)
+            .flatMap(searchNetworkForDevices())
+            .distinctUntilChanged({ $0.count == $1.count })
             .flatMap(mapDevicesToSonosRooms())
     }
     
     /* SSDP */
-    fileprivate func searchNetworkForDevices() -> Observable<[SSDPResponse]> {
-        
-        return Observable<[SSDPResponse]>.create({ (observer) -> Disposable in
-            
-            if let responses: [[String: String]] = CacheManager.shared.getObject(for: CacheKey.ssdpCacheKey.rawValue) {
-                observer.onNext(responses.map({ SSDPResponse(data: $0) }))
-            }
-            
-            let ssdpDisposable = self.ssdpRepository
-                .scan(broadcastAddresses: ["239.255.255.250", "255.255.255.255"], searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
-                .do(onNext: { (responses) in
-                    CacheManager.shared.set(object: responses.map({ $0.responseDictionary }), for: CacheKey.ssdpCacheKey.rawValue)
-                })
-                .subscribe(observer)
-            
-            return Disposables.create([ssdpDisposable])
-        })
+    fileprivate func searchNetworkForDevices() -> ((Int) -> Observable<[SSDPResponse]>) {
+        return { _ in
+            return Observable<[SSDPResponse]>.create({ (observer) -> Disposable in
+                
+                if let responses: [[String: String]] = CacheManager.shared.getObject(for: CacheKey.ssdpCacheKey.rawValue) {
+                    observer.onNext(responses.map({ SSDPResponse(data: $0) }))
+                }
+                
+                let ssdpDisposable = self.ssdpRepository
+                    .scan(broadcastAddresses: ["239.255.255.250", "255.255.255.255"], searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
+                    .do(onNext: { (responses) in
+                        CacheManager.shared.set(object: responses.map({ $0.responseDictionary }), for: CacheKey.ssdpCacheKey.rawValue)
+                    })
+                    .subscribe(observer)
+                
+                return Disposables.create([ssdpDisposable])
+            })
             .subscribeOn(MainScheduler.instance)
+        }
     }
     
     /* Rooms */

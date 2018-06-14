@@ -13,9 +13,9 @@ import AEXML
 class SoapNetwork: Network {
     
     let room: Room
-    let call: SoapSoapAction
+    let call: SoapAction
     
-    init(room: Room, action: SoapSoapAction) {
+    init(room: Room, action: SoapAction) {
         self.room = room
         self.call = action
         super.init()
@@ -48,7 +48,8 @@ class SoapNetwork: Network {
     }
     
     override func executeRequest() -> Observable<Data> {
-        fatalError("Use executeSoapRequest() on subclasses of SoapNetwork")
+        /* Use executeSoapRequest() on subclasses of SoapNetwork */
+        return Observable<Data>.error(NSError.sonosLibInvalidImplementationError())
     }
     
     internal func openEnvelope() -> ((Data) throws -> [String:String]) {
