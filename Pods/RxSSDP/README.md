@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/RxSSDP.svg?style=flat)](http://cocoapods.org/pods/RxSSDP)
 [![Platform](https://img.shields.io/cocoapods/p/RxSSDP.svg?style=flat)](http://cocoapods.org/pods/RxSSDP)
 
-An Reactive SSDP client with buffering written in Swift, based on [SwiftSSDPClient](https://github.com/mhmiles/SwiftSSDPClient)
+A clean reactive SSDP client, based on [UDPBroadcastConnection](https://github.com/gunterhager/UDPBroadcastConnection)
 
 ## Usage
 
@@ -18,7 +18,7 @@ let repository: SSDPRepository = SSDPRepositoryImpl()
 2) Scan the network
 
 ```
-repository.scan(broadcastAddress: "255.255.255.255", searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
+repository.scan(searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
 ```
 
 3) Subscribe for changes
@@ -31,7 +31,7 @@ Inspect [SSDPSettings.swift](RxSSDP/SSDPSettings.swift), this class contains all
 ## Cocoapods
 
 ```
-pod 'RxSSDP', '~> 4.0'
+pod 'RxSSDP', '~> 4.1'
 ```
 
 

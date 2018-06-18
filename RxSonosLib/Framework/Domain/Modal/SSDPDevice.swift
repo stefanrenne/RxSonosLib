@@ -72,14 +72,13 @@ extension SSDPDevice {
     }
     
     class func map(_ response: SSDPResponse) -> SSDPDevice? {
-        let data = response.responseDictionary
         
-        guard let usn: String = data["USN"],
-            let server: String = data["SERVER"],
-            let ext: String = data["EXT"],
-            let st: String = data["ST"],
-            let locationString: String = data["LOCATION"],
-            let cacheControl: String = data["CACHE-CONTROL"],
+        guard let usn: String = response.data["USN"],
+            let server: String = response.data["SERVER"],
+            let ext: String = response.data["EXT"],
+            let st: String = response.data["ST"],
+            let locationString: String = response.data["LOCATION"],
+            let cacheControl: String = response.data["CACHE-CONTROL"],
             let ipString = locationString.baseUrl(),
             let locationSuffix = locationString.urlSuffix(),
             let ip = URL(string: ipString) else {
@@ -87,11 +86,11 @@ extension SSDPDevice {
         }
         
         let uuid: String? = usn.extractUUID()
-        let wifiMode: String? = data["X-RINCON-WIFIMODE"]
-        let variant: String? = data["X-RINCON-VARIANT"]
-        let household: String? = data["X-RINCON-HOUSEHOLD"]
-        let bootseq: String? = data["X-RINCON-BOOTSEQ"]
-        let proxy: String? = data["X-RINCON-PROXY"]
+        let wifiMode: String? = response.data["X-RINCON-WIFIMODE"]
+        let variant: String? = response.data["X-RINCON-VARIANT"]
+        let household: String? = response.data["X-RINCON-HOUSEHOLD"]
+        let bootseq: String? = response.data["X-RINCON-BOOTSEQ"]
+        let proxy: String? = response.data["X-RINCON-PROXY"]
         
         return SSDPDevice(ip: ip, usn: usn, server: server, ext: ext, st: st, location: locationSuffix, cacheControl: cacheControl, uuid: uuid, wifiMode: wifiMode, variant: variant, household: household, bootseq: bootseq, proxy: proxy)
     }

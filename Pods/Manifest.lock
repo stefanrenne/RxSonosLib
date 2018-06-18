@@ -1,6 +1,5 @@
 PODS:
   - AEXML (4.3.0)
-  - CocoaAsyncSocket (7.6.3)
   - Mockingjay (2.0.1):
     - Mockingjay/Core (= 2.0.1)
     - Mockingjay/XCTest (= 2.0.1)
@@ -12,10 +11,8 @@ PODS:
     - RxSwift (~> 4.0)
   - RxCocoa (4.2.0):
     - RxSwift (~> 4.0)
-  - RxSSDP (4.1.4):
-    - CocoaAsyncSocket (~> 7.6)
-    - RxCocoa (~> 4.0)
-    - RxSwift (~> 4.0)
+  - RxSSDP (4.1.8):
+    - RxSwift (~> 4.2)
   - RxSwift (4.2.0)
   - URITemplate (2.0.3)
 
@@ -30,7 +27,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AEXML
-    - CocoaAsyncSocket
     - Mockingjay
     - RxBlocking
     - RxCocoa
@@ -40,11 +36,10 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AEXML: bae92c01e0da64132fd72f748721cda07466032b
-  CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   Mockingjay: 11a621880d2887f1775bdcf824341eb68f218450
   RxBlocking: e339d8a6e752e25ade95ff858466c55436668f59
   RxCocoa: 0b54909c902e1e581212a03e690bbd94032d8baa
-  RxSSDP: b7f5df33c98d05eacb1d0c2ab4020ea74c34ca57
+  RxSSDP: 26c960945c07b33ebdc6ac2e2b4bc44fe1199dc9
   RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
   URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
 

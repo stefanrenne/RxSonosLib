@@ -1,6 +1,6 @@
 //
 //  RxSSDPClient.swift
-//  Sample App
+//  RxSSDP
 //
 //  Created by Stefan Renne on 17/03/2018.
 //  Copyright © 2018 Uberweb. All rights reserved.
@@ -8,64 +8,49 @@
 
 import Foundation
 import RxSwift
-import CocoaAsyncSocket
 
-class RxSSDPClient: NSObject {
+class RxSSDPClient {
     
-    let broadcastAddress: String
-    let searchTarget: String
     let port: UInt16
+    let method: String
+    let request: [String: String]
     
-    init(broadcastAddress: String, searchTarget: String, port: UInt16 = 1900) {
-        self.broadcastAddress = broadcastAddress
-        self.searchTarget = searchTarget
+    init(method: String = "M-SEARCH", searchTarget: String, port: UInt16 = 1900) {
         self.port = port
+        self.method = method
+        self.request = [
+            "MAN": "\"ssdp:discover\"",
+            "MX": "3",
+            "ST": searchTarget
+        ]
     }
     
+    private var broadcastData: Data? {
+        return request.reduce(into: "\(method) * HTTP/1.1\r\n") { (result, row) in
+            result.append("\(row.key): \(row.value)\r\n")
+        }.data(using: .utf8)
+    }
+    
+    private var broadcastConnection: UDPBroadcastConnection!
     func discover() -> Observable<SSDPResponse> {
         
-        let socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: .main)
-        let delegate = RxGCDAsyncUdpSocketDelegateProxy(parentObject: socket)
-        socket.setDelegate(delegate)
-        
         return Observable<SSDPResponse>.create({ (observable) -> Disposable in
-            
-            var disposables = [Disposable]()
-            let receiveResponseObserver = delegate
-                .didReceiveResponsePublishSubject
-                .asObserver()
-                .subscribe(onNext: { (response) in
+            self.broadcastConnection = UDPBroadcastConnection(port: self.port) { (ipAddress: String, port: Int, response: [UInt8]) -> Void in
+                
+                if let message = String(bytes: response, encoding: .utf8),
+                   let response = SSDPMessageParser(message: message).parse() {
+                    
                     observable.onNext(response)
-                }, onError: { (error) in
-                    observable.onError(error)
-                })
-            disposables.append(receiveResponseObserver)
-            
-            let didCloseObserver = delegate
-                .didClosePublishSubject
-                .asObserver()
-                .subscribe(onNext: {
-                    observable.onCompleted()
-                }, onError: { (error) in
-                    observable.onError(error)
-                    observable.onCompleted()
-                })
-            disposables.append(didCloseObserver)
-            
-            do {
-                try socket.enableBroadcast(true)
-                let message = SSDPRequest(searchTarget: self.searchTarget, broadcastAddress: self.broadcastAddress, port: self.port)
-                socket.send(message.data, toHost: self.broadcastAddress, port: self.port, withTimeout: -1, tag: 0)
-                try socket.beginReceiving()
-            } catch {
-                observable.onError(error)
+                }
+                
             }
             
+            if let broadcast = self.broadcastData {
+                self.broadcastConnection.sendBroadcast(broadcast)
+            }
             
-            return Disposables.create(disposables)
+            return Disposables.create()
         })
-        .observeOn(MainScheduler.asyncInstance)
+
     }
 }
-
-extension RxSSDPClient: GCDAsyncUdpSocketDelegate { }

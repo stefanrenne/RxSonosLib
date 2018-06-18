@@ -42,16 +42,14 @@ class GetRoomsInteractor<R: GetRoomsValues>: Interactor {
                     observer.onNext(responses.map({ SSDPResponse(data: $0) }))
                 }
                 
-                let ssdpDisposable = self.ssdpRepository
-                    .scan(broadcastAddresses: ["239.255.255.250", "255.255.255.255"], searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
+                let ssdpDisposable = self.ssdpRepository.scan(searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
                     .do(onNext: { (responses) in
-                        CacheManager.shared.set(object: responses.map({ $0.responseDictionary }), for: CacheKey.ssdpCacheKey.rawValue)
+                        CacheManager.shared.set(object: responses.map({ $0.data }), for: CacheKey.ssdpCacheKey.rawValue)
                     })
                     .subscribe(observer)
                 
                 return Disposables.create([ssdpDisposable])
             })
-            .subscribeOn(MainScheduler.instance)
         }
     }
     
