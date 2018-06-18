@@ -22,11 +22,11 @@ class SSDPRepositoryTest: XCTestCase {
         
         let ssdpRepository: SSDPRepository = FakeSSDPRepositoryImpl()
         
-        let response = try! ssdpRepository.scan(broadcastAddress: "239.255.255.250", searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
+        let response = try! ssdpRepository.scan(searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
             .toBlocking()
             .single()
         
-        XCTAssertEqual(response.first!.responseDictionary, ["USN": "uuid:RINCON_000001::urn:schemas-upnp-org:device:ZonePlayer:1", "SERVER": "Linux UPnP/1.0 Sonos/34.7-34220 (ZPS9)", "EXT": "", "ST":  "urn:schemas-upnp-org:device:ZonePlayer:1", "LOCATION": "http://192.168.3.14:1400/xml/device_description.xml", "CACHE-CONTROL": "max-age = 1800", "X-RINCON-WIFIMODE": "0", "X-RINCON-VARIANT": "0", "X-RINCON-HOUSEHOLD": "SONOS_HOUSEHOLD_1", "X-RINCON-BOOTSEQ": "81"])
+        XCTAssertEqual(response.first!.data, ["USN": "uuid:RINCON_000001::urn:schemas-upnp-org:device:ZonePlayer:1", "SERVER": "Linux UPnP/1.0 Sonos/34.7-34220 (ZPS9)", "EXT": "", "ST":  "urn:schemas-upnp-org:device:ZonePlayer:1", "LOCATION": "http://192.168.3.14:1400/xml/device_description.xml", "CACHE-CONTROL": "max-age = 1800", "X-RINCON-WIFIMODE": "0", "X-RINCON-VARIANT": "0", "X-RINCON-HOUSEHOLD": "SONOS_HOUSEHOLD_1", "X-RINCON-BOOTSEQ": "81"])
     }
     
     func testItCanMapSSDPResponsesToDevices() {

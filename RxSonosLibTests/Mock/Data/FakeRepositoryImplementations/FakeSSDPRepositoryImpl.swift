@@ -12,11 +12,8 @@ import RxSwift
 import RxSSDP
 
 class FakeSSDPRepositoryImpl: SSDPRepository {
-    func scan(broadcastAddress: String, searchTarget: String) -> Observable<[SSDPResponse]> {
-        return Observable.just(FakeSSDPRepositoryImpl.dummyDevices())
-    }
     
-    func scan(broadcastAddresses: [String], searchTarget: String) -> Observable<[SSDPResponse]> {
+    func scan(searchTarget: String) -> Observable<[SSDPResponse]> {
         return Observable.just(FakeSSDPRepositoryImpl.dummyDevices())
     }
     
