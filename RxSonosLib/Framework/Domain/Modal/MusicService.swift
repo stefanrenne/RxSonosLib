@@ -40,6 +40,8 @@ extension MusicService {
         switch self {
         case .musicProvider(let sid, _, _):
             return sid
+        case .library:
+            return 9998
         default:
             return nil
         }
