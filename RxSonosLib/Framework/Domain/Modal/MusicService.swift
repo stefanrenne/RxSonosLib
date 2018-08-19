@@ -11,7 +11,6 @@ import Foundation
 public enum MusicService {
     case musicProvider(sid: Int, flags: Int?, sn: Int?)
     case tv
-    case library
 }
 
 extension MusicService: Equatable {
@@ -22,8 +21,6 @@ extension MusicService: Equatable {
             return sid
         case .tv:
             return 9999
-        case .library:
-            return 9998
         }
 
     }
@@ -40,8 +37,6 @@ extension MusicService {
         switch self {
         case .musicProvider(let sid, _, _):
             return sid
-        case .library:
-            return 9998
         default:
             return nil
         }
@@ -77,8 +72,8 @@ extension MusicService {
         if let service = url.match(with: "([a-zA-Z0-9-]+):")?.first, service == "x-sonos-htastream" {
             return MusicService.tv
         }
-        if let service = url.match(with: "([a-zA-Z0-9-]+):")?.first, service == "x-rincon-queue" {
-            return MusicService.library
+        if let service = url.match(with: "([a-zA-Z0-9-]+):")?.first, service == "x-file-cifs" {
+            return MusicService.musicProvider(sid: 9998, flags: nil, sn: nil)
         }
         
         return nil
