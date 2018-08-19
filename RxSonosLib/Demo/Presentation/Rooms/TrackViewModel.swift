@@ -35,10 +35,6 @@ class TrackViewModel {
         return track.artist
     }()
     
-    lazy var trackAlbum: String? = {
-        return track.album
-    }()
-    
     lazy var trackDescription: NSAttributedString = {
         return track.description(filterd: [TrackDescription.title])
             .joined(separator: "  ●  ", attrs: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 8), NSAttributedStringKey.baselineOffset: 2])
