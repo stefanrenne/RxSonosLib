@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TVTrack: Track {
+open class TVTrack: Track {
     
     /**
      * Number item in the queue
