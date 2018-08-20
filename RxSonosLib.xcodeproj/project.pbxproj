@@ -135,6 +135,7 @@
 		F89A59C5207776CB0097C0AA /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89A59C3207776CB0097C0AA /* TabBarViewController.swift */; };
 		F89A59C6207776CB0097C0AA /* TabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F89A59C4207776CB0097C0AA /* TabBarViewController.xib */; };
 		F89D94C920615994002B1383 /* CacheManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89D94C820615994002B1383 /* CacheManagerTests.swift */; };
+		F8A584B8212B5A530041D1ED /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = F8A584B7212B5A460041D1ED /* .swiftlint.yml */; };
 		F8A64DF22087F432003F777E /* SetNextTrackInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A64DF12087F432003F777E /* SetNextTrackInteractor.swift */; };
 		F8A64DF42087F43D003F777E /* SetPreviousTrackInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A64DF32087F43D003F777E /* SetPreviousTrackInteractor.swift */; };
 		F8A64DF62087F565003F777E /* SetNextNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A64DF52087F565003F777E /* SetNextNetwork.swift */; };
@@ -345,6 +346,7 @@
 		F89A59C3207776CB0097C0AA /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		F89A59C4207776CB0097C0AA /* TabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarViewController.xib; sourceTree = "<group>"; };
 		F89D94C820615994002B1383 /* CacheManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManagerTests.swift; sourceTree = "<group>"; };
+		F8A584B7212B5A460041D1ED /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		F8A64DF12087F432003F777E /* SetNextTrackInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNextTrackInteractor.swift; sourceTree = "<group>"; };
 		F8A64DF32087F43D003F777E /* SetPreviousTrackInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPreviousTrackInteractor.swift; sourceTree = "<group>"; };
 		F8A64DF52087F565003F777E /* SetNextNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNextNetwork.swift; sourceTree = "<group>"; };
@@ -853,6 +855,7 @@
 		F83FED0B1F97CD4B004DF663 = {
 			isa = PBXGroup;
 			children = (
+				F8A584B7212B5A460041D1ED /* .swiftlint.yml */,
 				F825F41E2048178C006A7B73 /* Demo */,
 				F83FED161F97CD4B004DF663 /* RxSonosLib */,
 				F8F56153205C3EC500E28533 /* RxSonosLibTests */,
@@ -1075,6 +1078,7 @@
 				F81A05D32060289A00897738 /* Frameworks */,
 				F81A05D42060289A00897738 /* Headers */,
 				F81A05D52060289A00897738 /* Resources */,
+				F8A584B6212B591A0041D1ED /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -1178,6 +1182,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8A584B8212B5A530041D1ED /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1299,6 +1304,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F8A584B6212B591A0041D1ED /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which ${PODS_ROOT}/SwiftLint/swiftlint >/dev/null; then\n${PODS_ROOT}/SwiftLint/swiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

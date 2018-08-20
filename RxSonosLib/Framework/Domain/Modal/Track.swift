@@ -38,7 +38,7 @@ extension TrackDescription: Comparable {
         return lhs.intValue < rhs.intValue
     }
     
-    public static func ==(lhs: TrackDescription, rhs: TrackDescription) -> Bool {
+    public static func == (lhs: TrackDescription, rhs: TrackDescription) -> Bool {
         return lhs.intValue == rhs.intValue
     }
 }

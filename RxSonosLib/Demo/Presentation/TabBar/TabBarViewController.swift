@@ -70,15 +70,15 @@ class TabBarViewController: UIViewController {
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] (item) in
                 switch item.tag {
-                    case 1: self?.router?.continueToMySonos(); break
-                    case 2: self?.router?.continueToBrowse(); break
-                    case 3: self?.router?.continueToRooms(); break
-                    case 4: self?.router?.continueToSearch(); break
-                    case 5: self?.router?.continueToMore(); break
-                    default: break
+                case 1: self?.router?.continueToMySonos()
+                case 2: self?.router?.continueToBrowse()
+                case 3: self?.router?.continueToRooms()
+                case 4: self?.router?.continueToSearch()
+                case 5: self?.router?.continueToMore()
+                default: break
                 }
-        })
-        .disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
     }
     
     fileprivate func setupActiveGroupObservable() {

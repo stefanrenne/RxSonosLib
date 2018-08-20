@@ -31,7 +31,6 @@ class QueueTrackFactoryTests: XCTestCase {
         XCTAssertEqual(track!.description, [TrackDescription.title: "Time Is Running Out - (Live) Explicit Version", TrackDescription.artist: "Papa Roach", TrackDescription.album: "Time For Annihilation: On the Record & On the Road"])
     }
     
-    
     func testItCanCreateSpotifyTrackWithoutData() {
         let data = ["res": "x-sonos-spotify:spotify%3atrack%3a0Vh1sTeybmGy8Kxl2vw0Ye?sid=9&flags=8224&sn=1"]
         

@@ -22,7 +22,6 @@ class RoomRepositoryTest: XCTestCase {
     }
     
     func testItCanCreateARoom() {
-    
         
         var description = "<device>"
             description += "<deviceType>urn:schemas-upnp-org:device:ZonePlayer:1</deviceType>"
@@ -57,7 +56,6 @@ class RoomRepositoryTest: XCTestCase {
             .getRoom(device: firstDevice())!
             .toBlocking()
             .single()
-        
         
             XCTAssertEqual(room.uuid, "RINCON_000001")
             XCTAssertEqual(room.hasProxy, false)

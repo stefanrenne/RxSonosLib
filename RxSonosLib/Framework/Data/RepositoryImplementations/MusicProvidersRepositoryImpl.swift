@@ -42,7 +42,6 @@ fileprivate extension MusicProvidersRepositoryImpl {
                 return nil
             }
             
-            
             var presentationMap: Presentation?
             if let presentationMapVersionString = element["Presentation"]["PresentationMap"].attributes["Version"],
                 let presentationMapVersion = Int(presentationMapVersionString),

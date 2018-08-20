@@ -18,8 +18,8 @@ class GetTransportStateInteractorTests: XCTestCase {
     func testItCanGetTheCurrentState() {
         let interactor = GetTransportStateInteractor(transportRepository: transportRepository)
         let state = try! interactor.get(values: GetTransportStateValues(group: firstGroup()))
-            .toBlocking(
-            ).first()!
+            .toBlocking()
+            .first()!
         
         XCTAssertEqual(state, TransportState.paused)
     }

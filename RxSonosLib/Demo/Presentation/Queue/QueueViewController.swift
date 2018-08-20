@@ -35,7 +35,7 @@ class QueueViewController: UIViewController {
             .do(onNext: { [weak self] (tracks) in
                 self?.queueLabel.text = "\(tracks.count) tracks"
             })
-            .bind(to: tableView.rx.items(cellIdentifier: QueueTableViewCell.identifier, cellType: QueueTableViewCell.self)) { (row, track, cell) in
+            .bind(to: tableView.rx.items(cellIdentifier: QueueTableViewCell.identifier, cellType: QueueTableViewCell.self)) { (_, track, cell) in
                 cell.model = TrackViewModel(track: track)
             }
             .disposed(by: disposeBag)

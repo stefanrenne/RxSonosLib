@@ -18,8 +18,8 @@ class GetNowPlayingInteractorTests: XCTestCase {
     func testItCanGetTheCurrentTrack() {
         let interactor = GetNowPlayingInteractor(transportRepository: transportRepository)
         let track = try! interactor.get(values: GetNowPlayingValues(group: firstGroup()))
-            .toBlocking(
-            ).first()! as! MusicProviderTrack
+            .toBlocking()
+            .first()! as! MusicProviderTrack
         
         XCTAssertEqual(track.providerId, 9)
         XCTAssertNil(track.flags)

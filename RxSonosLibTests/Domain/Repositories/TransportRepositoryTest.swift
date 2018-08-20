@@ -16,7 +16,6 @@ class TransportRepositoryTest: XCTestCase {
     
     let transportRepository: TransportRepository = TransportRepositoryImpl()
     
-    
     func testItCantGetTheNowPlayingTrack() {
         
         stub(soap(call: .transportInfo), soapXml(""))
@@ -116,7 +115,6 @@ class TransportRepositoryTest: XCTestCase {
             .getImage(for: firstTrack())
             .toBlocking()
             .first()!
-        
         
         XCTAssertEqual(imageData, data)
     }

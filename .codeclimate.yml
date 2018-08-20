@@ -1,5 +1,5 @@
 plugins:
-  tailor:
+  swiftlint:
     enabled: true
 exclude_patterns:
 - "Pods/"

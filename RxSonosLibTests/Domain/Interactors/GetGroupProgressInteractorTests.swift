@@ -18,8 +18,8 @@ class GetGroupProgressInteractorTests: XCTestCase {
     func testItCanGetTheCurrentProgress() {
         let interactor = GetGroupProgressInteractor(transportRepository: transportRepository)
         let progress = try! interactor.get(values: GetGroupProgressValues(group: firstGroup()))
-            .toBlocking(
-            ).first()!
+            .toBlocking()
+            .first()!
         
         XCTAssertEqual(progress.time, 30)
         XCTAssertEqual(progress.timeString, "0:30")

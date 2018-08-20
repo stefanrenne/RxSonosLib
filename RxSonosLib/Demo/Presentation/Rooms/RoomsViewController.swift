@@ -31,7 +31,7 @@ class RoomsViewController: UIViewController {
         
         SonosInteractor
             .getAllGroups()
-            .bind(to: table.rx.items(cellIdentifier: RoomsTableViewCell.identifier, cellType: RoomsTableViewCell.self)) { (row, group, cell) in
+            .bind(to: table.rx.items(cellIdentifier: RoomsTableViewCell.identifier, cellType: RoomsTableViewCell.self)) { (_, group, cell) in
                 cell.group = group
             }
             .disposed(by: disposeBag)

@@ -20,9 +20,9 @@ extension AEXMLDocument {
         return try? AEXMLDocument(xml: cleanString)
     }
     
-    func mapMetaItems() -> [[String:String]] {
+    func mapMetaItems() -> [[String: String]] {
         return self["DIDL-Lite"].children.map { (item) -> [String: String] in
-            return item.children.reduce(into: [String:String](), { (dict, row) in
+            return item.children.reduce(into: [String: String](), { (dict, row) in
                 dict[row.name] = row.string
                 row.attributes.forEach({ (key, value) in
                     dict["\(row.name)\(key)"] = value
@@ -33,10 +33,10 @@ extension AEXMLDocument {
 }
 
 extension String {
-    func mapMetaItem() -> [String:String]? {
+    func mapMetaItem() -> [String: String]? {
         return AEXMLDocument.create(self)?.mapMetaItems().first
     }
-    func mapMetaItems() -> [[String:String]]? {
+    func mapMetaItems() -> [[String: String]]? {
         return AEXMLDocument.create(self)?.mapMetaItems()
     }
 }
@@ -48,7 +48,7 @@ fileprivate extension String {
     }
     
     fileprivate func replace(pattern: String, with template: String) -> String {
-        guard let regex = try? NSRegularExpression(pattern: pattern, options:.caseInsensitive) else {
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) else {
             return self
         }
         return regex.stringByReplacingMatches(in: self, options: [], range: NSRange(0..<self.count), withTemplate: template)

@@ -1,0 +1,11 @@
+disabled_rules:
+- force_try
+- trailing_whitespace
+- todo
+- line_length
+- identifier_name
+- type_name
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+- RxSonosLibTests
+- Pods

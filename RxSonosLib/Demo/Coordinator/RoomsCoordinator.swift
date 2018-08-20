@@ -15,7 +15,6 @@ protocol RoomsRouter {
 
 class RoomsCoordinator: Coordinator {
     
-    
     private weak var navigationController: UINavigationController?
     private let masterRouter: MasterRouter
     init(navigationController: UINavigationController?, masterRouter: MasterRouter) {

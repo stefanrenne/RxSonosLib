@@ -35,14 +35,14 @@ class SetTransportStateInteractor<T: SetTransportStateValues>: Interactor {
         }
         
         switch state {
-            case .playing:
-                return self.renderingControlRepository.setPlay(group: group)
-            case .paused:
-                return self.renderingControlRepository.setPause(group: group)
-            case .stopped:
-                return self.renderingControlRepository.setStop(group: group)
-            case .transitioning:
-                return Observable.error(NSError.sonosLibInvalidImplementationError())
+        case .playing:
+            return self.renderingControlRepository.setPlay(group: group)
+        case .paused:
+            return self.renderingControlRepository.setPause(group: group)
+        case .stopped:
+            return self.renderingControlRepository.setStop(group: group)
+        case .transitioning:
+            return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
     }
 }

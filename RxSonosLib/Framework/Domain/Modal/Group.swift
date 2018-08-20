@@ -45,13 +45,13 @@ open class Group {
 }
 
 extension Group: Equatable {
-    public static func ==(lhs: Group, rhs: Group) -> Bool {
+    public static func == (lhs: Group, rhs: Group) -> Bool {
         
         return lhs.master == rhs.master && lhs.slaves.sorted(by: sortRooms()) == rhs.slaves.sorted(by: sortRooms())
     }
 }
 
-fileprivate func sortRooms() -> ((Room, Room) -> Bool) {
+private func sortRooms() -> ((Room, Room) -> Bool) {
     return { room1, room2 in
         room1.uuid > room2.uuid
     }

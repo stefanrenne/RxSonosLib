@@ -14,6 +14,7 @@ target 'RxSonosLib' do
   pod 'RxCocoa', '~> 4.1'
   pod 'RxSSDP', '~> 4.1'
   pod 'AEXML', '~> 4.2'
+  pod 'SwiftLint'
 
   target 'RxSonosLibTests' do
     inherit! :search_paths

@@ -14,4 +14,3 @@ protocol RoomRepository {
     func getRoom(device: SSDPDevice) -> Observable<Room>?
     
 }
-

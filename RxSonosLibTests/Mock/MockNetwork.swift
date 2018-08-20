@@ -10,7 +10,7 @@ import Foundation
 @testable import RxSonosLib
 
 class MockNetwork: Network {
-    
+
     override func createRequest() -> URLRequest? {
         return URLRequest(url: URL(string: "https://www.google.nl")!)
     }

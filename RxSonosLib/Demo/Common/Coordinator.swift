@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol Coordinator{
+protocol Coordinator {
     func setup() -> UIViewController
 }
