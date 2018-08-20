@@ -1,0 +1,28 @@
+disabled_rules:
+- force_try
+- trailing_whitespace
+- void_return
+- todo
+- line_length
+- function_body_length
+- unused_optional_binding
+- unused_closure_parameter
+- implicit_getter
+- closure_parameter_position
+- identifier_name
+- cyclomatic_complexity
+- type_name
+- type_body_length
+- force_cast
+- syntactic_sugar
+- for_where
+- shorthand_operator
+- large_tuple
+- file_length
+- function_parameter_count
+- notification_center_detachment
+- generic_type_name
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+- RxSonosLibTests/Mock
+- Pods
