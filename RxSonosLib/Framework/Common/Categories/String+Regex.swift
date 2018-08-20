@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 extension String {
     
     func extractUUID() -> String? {
@@ -40,9 +39,7 @@ extension String {
 
 extension Array where Element == URLQueryItem {
     subscript(key: String) -> String? {
-        get {
-            return filter({ $0.name == key }).first?.value
-        }
+        return filter({ $0.name == key }).first?.value
     }
 }
 

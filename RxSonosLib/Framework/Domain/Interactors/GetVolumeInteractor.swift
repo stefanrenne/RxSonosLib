@@ -17,7 +17,6 @@ class GetVolumeValues: RequestValues {
     }
 }
 
-
 class GetVolumeInteractor<R: GetVolumeValues>: Interactor {
     
     let renderingControlRepository: RenderingControlRepository

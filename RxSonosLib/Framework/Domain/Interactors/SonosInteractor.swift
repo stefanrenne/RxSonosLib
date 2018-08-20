@@ -146,11 +146,9 @@ extension SonosInteractor {
                 }
                 
                 if !groups.contains(active) {
-                    for group in groups {
-                        if group.master == active.master {
-                            self.setActive(group: group)
-                            return
-                        }
+                    for group in groups where group.master == active.master {
+                        self.setActive(group: group)
+                        return
                     }
                     self.setActive(group: groups.first)
                     return

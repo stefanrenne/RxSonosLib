@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public enum TransportState: String {
     case transitioning = "TRANSITIONING"
     case playing = "PLAYING"

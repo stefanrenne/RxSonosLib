@@ -32,7 +32,7 @@ class MoreViewController: UIViewController {
         
         Observable
             .just(moreItems)
-            .bind(to: table.rx.items(cellIdentifier: MoreTableViewCell.identifier, cellType: MoreTableViewCell.self)) { (row, type, cell) in
+            .bind(to: table.rx.items(cellIdentifier: MoreTableViewCell.identifier, cellType: MoreTableViewCell.self)) { (_, type, cell) in
                 cell.model = MoreViewModel(type: type)
             }
             .disposed(by: disposeBag)

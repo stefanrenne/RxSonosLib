@@ -46,4 +46,3 @@ class GetNowPlayingInteractor<R: GetNowPlayingValues>: Interactor {
         }
     }
 }
-

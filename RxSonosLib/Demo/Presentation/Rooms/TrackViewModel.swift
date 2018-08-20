@@ -46,7 +46,6 @@ class TrackViewModel {
     }()
 }
 
-
 extension Array where Element == String {
     public func joined(separator: String, attrs: [NSAttributedStringKey: Any]) -> NSAttributedString {
         let mutableString = NSMutableAttributedString()

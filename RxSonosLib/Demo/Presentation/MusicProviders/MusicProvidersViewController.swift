@@ -34,7 +34,7 @@ class MusicProvidersViewController: UIViewController {
         
         SonosInteractor
             .getAllMusicProviders()
-            .bind(to: table.rx.items(cellIdentifier: MusicProvidersTableViewCell.identifier, cellType: MusicProvidersTableViewCell.self)) { (row, service, cell) in
+            .bind(to: table.rx.items(cellIdentifier: MusicProvidersTableViewCell.identifier, cellType: MusicProvidersTableViewCell.self)) { (_, service, cell) in
                 cell.model = MusicProviderViewModel(service: service)
             }
             .disposed(by: disposeBag)

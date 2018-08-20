@@ -24,11 +24,10 @@ extension MusicService: Equatable {
         }
     }
     
-    public static func ==(lhs: MusicService, rhs: MusicService) -> Bool {
+    public static func == (lhs: MusicService, rhs: MusicService) -> Bool {
         return lhs.rawValue == rhs.rawValue
     }
 }
-
 
 extension MusicService {
     

@@ -18,8 +18,8 @@ class GetTrackImageInteractorTests: XCTestCase {
     func testItCanGetTheCurrentImage() {
         let interactor = GetTrackImageInteractor(transportRepository: transportRepository)
         let imageData = try! interactor.get(values: GetTrackImageValues(track: firstTrack()))
-            .toBlocking(
-            ).first()!
+            .toBlocking()
+            .first()!
         
         let expectedData = UIImagePNGRepresentation(UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!)
         XCTAssertEqual(imageData, expectedData)

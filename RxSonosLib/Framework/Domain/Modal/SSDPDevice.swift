@@ -46,7 +46,7 @@ open class SSDPDevice {
 }
 
 extension SSDPDevice: Equatable {
-    public static func ==(lhs: SSDPDevice, rhs: SSDPDevice) -> Bool {
+    public static func == (lhs: SSDPDevice, rhs: SSDPDevice) -> Bool {
         return lhs.usn == rhs.usn
     }
 }

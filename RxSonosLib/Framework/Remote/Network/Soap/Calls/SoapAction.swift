@@ -10,7 +10,6 @@ import Foundation
 
 enum SoapAction {
     
-    
     /* Transport */
 //    case changeTrack(number: Int), seekTime(time: String)
 //    case removeTrackFromQueue(number: Int), removeAllTracksFromQueue, addTrackToQueueEnd(uri: String), addTrackToQueuePlayNext(uri: String), setQueue(uri: String), setAVTransportURI(uri: String), becomeCoordinatorOfStandaloneGroup
@@ -36,7 +35,6 @@ enum SoapAction {
     
     /* SystemProperties */
 //    case getCustomerID, getRoomSerial
-    
     
     var service: SonosSoapService {
         switch self {

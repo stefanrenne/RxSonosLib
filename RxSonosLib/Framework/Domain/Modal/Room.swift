@@ -78,7 +78,7 @@ extension ObservableType where E == Room {
 }
 
 extension Room: Equatable {
-    public static func ==(lhs: Room, rhs: Room) -> Bool {
+    public static func == (lhs: Room, rhs: Room) -> Bool {
         return lhs.uuid == rhs.uuid
     }
 }

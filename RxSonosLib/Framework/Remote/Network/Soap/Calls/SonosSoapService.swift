@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 enum SonosSoapService {
     case group, transport, contentDirectory, renderingControl, music
 //    case alarm, groupRenderingControl, connectionManager, queue, deviceProperties, systemProperties, musicProvider

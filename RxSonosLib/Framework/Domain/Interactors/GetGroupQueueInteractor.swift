@@ -43,5 +43,3 @@ class GetGroupQueueInteractor<R: GetGroupQueueValues>: Interactor {
         }
     }
 }
-
-

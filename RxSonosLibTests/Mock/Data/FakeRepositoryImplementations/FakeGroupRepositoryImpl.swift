@@ -37,7 +37,7 @@ class FakeGroupRepositoryImpl: GroupRepository {
          */
         
         /* Type: Playbar */
-        let livingDevice = SSDPDevice.map(SSDPResponse(data: ["USN": "uuid:RINCON_000001::urn:schemas-upnp-org:device:ZonePlayer:1", "SERVER": "Linux UPnP/1.0 Sonos/34.7-34220 (ZPS9)", "EXT": "", "ST":  "urn:schemas-upnp-org:device:ZonePlayer:1", "LOCATION": "http://192.168.3.14:1400/xml/device_description.xml", "CACHE-CONTROL": "max-age = 1800", "X-RINCON-WIFIMODE": "0", "X-RINCON-VARIANT": "0", "X-RINCON-HOUSEHOLD": "SONOS_HOUSEHOLD_1", "X-RINCON-BOOTSEQ": "81"]))!
+        let livingDevice = SSDPDevice.map(SSDPResponse(data: ["USN": "uuid:RINCON_000001::urn:schemas-upnp-org:device:ZonePlayer:1", "SERVER": "Linux UPnP/1.0 Sonos/34.7-34220 (ZPS9)", "EXT": "", "ST": "urn:schemas-upnp-org:device:ZonePlayer:1", "LOCATION": "http://192.168.3.14:1400/xml/device_description.xml", "CACHE-CONTROL": "max-age = 1800", "X-RINCON-WIFIMODE": "0", "X-RINCON-VARIANT": "0", "X-RINCON-HOUSEHOLD": "SONOS_HOUSEHOLD_1", "X-RINCON-BOOTSEQ": "81"]))!
         let livingDescription = DeviceDescription(name: "Living", modalNumber: "S9", modalName: "Sonos PLAYBAR", modalIcon: "/img/icon-S9.png", serialNumber: "00-00-00-00-00-01:A", softwareVersion: "34.7-34220", hardwareVersion: "1.8.3.7-2")
         let livingRoom = Room(ssdpDevice: livingDevice, deviceDescription: livingDescription)
         groups.append(Group(master: livingRoom, slaves: []))

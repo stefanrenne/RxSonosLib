@@ -42,7 +42,7 @@ class SoapNetwork: Network {
         return "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\" s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\"><s:Body>\(bodyString)</s:Body></s:Envelope>"
     }
     
-    func executeSoapRequest() -> Observable<[String:String]> {
+    func executeSoapRequest() -> Observable<[String: String]> {
         return super.executeRequest()
             .map(self.openEnvelope())
     }
@@ -52,12 +52,12 @@ class SoapNetwork: Network {
         return Observable<Data>.error(NSError.sonosLibInvalidImplementationError())
     }
     
-    internal func openEnvelope() -> ((Data) throws -> [String:String]) {
+    internal func openEnvelope() -> ((Data) throws -> [String: String]) {
         return { data in
             let xml = AEXMLDocument.create(data)
             let element = xml?["Envelope"]["Body"]["\(self.call.action)Response"]
             
-            var soapData: [String:String] = [:]
+            var soapData: [String: String] = [:]
             element?.children.forEach({ (row) in
                 soapData[row.name] = row.string
             })

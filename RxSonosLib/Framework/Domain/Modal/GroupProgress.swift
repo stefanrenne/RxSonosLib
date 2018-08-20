@@ -63,7 +63,7 @@ open class GroupProgress {
 }
 
 extension GroupProgress: Equatable {
-    public static func ==(lhs: GroupProgress, rhs: GroupProgress) -> Bool {
+    public static func == (lhs: GroupProgress, rhs: GroupProgress) -> Bool {
         return lhs.time == rhs.time && lhs.duration == rhs.duration
     }
 }

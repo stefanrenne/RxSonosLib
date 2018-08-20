@@ -241,5 +241,4 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(secondGroup().names, ["Living"])
     }
     
-    
 }

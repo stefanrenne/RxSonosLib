@@ -18,8 +18,8 @@ class GetGroupQueueInteractorTests: XCTestCase {
     func testItCanGetTheCurrentQueue() {
         let interactor = GetGroupQueueInteractor(contentDirectoryRepository: contentDirectoryRepository)
         let queue = try! interactor.get(values: GetGroupQueueValues(group: firstGroup()))
-            .toBlocking(
-            ).first()!
+            .toBlocking()
+            .first()!
         
         XCTAssertEqual(queue.count, 2)
         
