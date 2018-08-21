@@ -18,7 +18,7 @@ before_script:
 before_install:
   - gem install activesupport -N
   - gem install slather --no-rdoc
-  - pod repo install > /dev/null
+  - pod repo update > /dev/null
 script:
   - ./Pods/SwiftLint/swiftlint
   - set -o pipefail
