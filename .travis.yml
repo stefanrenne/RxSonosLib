@@ -18,8 +18,9 @@ before_script:
 before_install:
   - gem install activesupport -N
   - gem install slather --no-rdoc
-  - pod repo update > /dev/null
+  - pod repo install > /dev/null
 script:
+  - ./Pods/SwiftLint/swiftlint
   - set -o pipefail
   - xcodebuild -version
   - xcodebuild -showsdks

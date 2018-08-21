@@ -146,8 +146,8 @@ extension SonosInteractor {
                 }
                 
                 if !groups.contains(active) {
-                    for group in groups where group.master == active.master {
-                        self.setActive(group: group)
+                    if let firstGroupWithSameMasterRoom = groups.filter({ $0.master == active.master }).first {
+                        self.setActive(group: firstGroupWithSameMasterRoom)
                         return
                     }
                     self.setActive(group: groups.first)
