@@ -1,6 +1,6 @@
 language: objective-c
 os: osx
-osx_image: xcode9.3beta
+osx_image: xcode9.4
 cache: cocoapods
 env:
   global:
@@ -10,7 +10,7 @@ env:
   - SCHEME=RxSonosLib
   - CC_TEST_REPORTER_ID=5332094259e2b828a20d61a227b30295e535380c07b6ab5f097b59e80b9c9c73
   matrix:
-    - DESTINATION="OS=11.2,name=iPhone X"
+    - DESTINATION="OS=11.4,name=iPhone X"
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-darwin-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
@@ -20,6 +20,7 @@ before_install:
   - gem install slather --no-rdoc
   - pod repo update > /dev/null
 script:
+  - ./Pods/SwiftLint/swiftlint
   - set -o pipefail
   - xcodebuild -version
   - xcodebuild -showsdks
