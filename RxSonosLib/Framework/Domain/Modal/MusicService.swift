@@ -39,8 +39,6 @@ extension MusicService {
         switch self {
         case .musicProvider(let sid, _, _):
             return sid
-        case .library:
-            return 9998
         default:
             return nil
         }
@@ -73,11 +71,12 @@ extension MusicService {
             return MusicService.musicProvider(sid: sid, flags: flags, sn: sn)
         }
         
-        if let service = url.match(with: "([a-zA-Z0-9-]+):")?.first, service == "x-sonos-htastream" {
+        if let service = url.match(with: "([a-zA-Z0-9-]+):")?.first {
+            if service == "x-sonos-htastream" {
             return MusicService.tv
-        }
-        if let service = url.match(with: "([a-zA-Z0-9-]+):")?.first, service == "x-file-cifs" {
-            return MusicService.library
+            } else if service == "x-file-cifs" {
+                return MusicService.library
+            }
         }
         
         return nil
