@@ -30,9 +30,25 @@ class NowPlayingTrackFactory {
         
         if type == .tv {
             return createTVTrack()
+        } else if type == .library {
+            return createLibraryTrack(uri: uri)
+        } else {
+             return createTrack(uri: uri, type: type)
+        }
+    }
+    
+    private func createLibraryTrack(uri: String?) -> LibraryTrack? {
+        
+        guard let duration = positionInfo["TrackDuration"]?.timeToSeconds(),
+            let queueItemString = positionInfo["Track"],
+            let queueItem = Int(queueItemString),
+            let uri = uri,
+            let imageUri = URL(string: room.absoluteString + "/getaa?u=" + uri.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!),
+            let description = getDescription() else {
+                return nil
         }
         
-        return createTrack(uri: uri, type: type)
+        return LibraryTrack(queueItem: queueItem, duration: duration, uri: uri, imageUri: imageUri, description: description)
     }
     
     private func createTrack(uri: String?, type: MusicService) -> MusicProviderTrack? {

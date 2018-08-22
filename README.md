@@ -15,7 +15,7 @@ Features:
 - [x] GET SSDP devices on the current network
 - [x] MAP SSDP devices into Sonos Rooms
 - [x] MAP Sonos Rooms into Sonos Groups + renew
-- [x] GET now playing track per room (supports Spotify, Tunein & TV) + renew
+- [x] GET now playing track per room (supports Spotify, Tunein, Library & TV) + renew
 - [x] DOWNLOAD track image
 - [x] GET group progress + renew
 - [x] GET group queue

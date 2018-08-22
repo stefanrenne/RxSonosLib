@@ -95,6 +95,27 @@ class TransportRepositoryTest: XCTestCase {
         XCTAssertEqual(track.description, [TrackDescription.title: "538", TrackDescription.information: "DUA LIPA - IDGAF"])
     }
     
+    func testItCanGetLibraryNowPlayingTrack() {
+        
+        stub(soap(call: .mediaInfo), soapXml(getLibraryMediaInfoResponse()))
+        stub(soap(call: .positionInfo), soapXml(getLibraryPositionInfoResponse()))
+        
+        let track = try! transportRepository
+            .getNowPlaying(for: firstRoom())
+            .toBlocking()
+            .first()! as! LibraryTrack
+        
+        XCTAssertEqual(track.queueItem, 1)
+        XCTAssertEqual(track.duration, 45)
+        XCTAssertEqual(track.uri, "x-file-cifs://Stefan-MacBook/Music/iTunes/iTunes%20Media/Music/Sample%20Audio.mp3")
+        XCTAssertEqual(track.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?u=x-file-cifs%3A%2F%2FStefan-MacBook%2FMusic%2FiTunes%2FiTunes%2520Media%2FMusic%2FSample%2520Audio.mp3")
+        XCTAssertEqual(track.title, "Perfect")
+        XCTAssertEqual(track.album, "Divide")
+        XCTAssertEqual(track.artist, "Ed Sheeran")
+        XCTAssertNil(track.information)
+        XCTAssertEqual(track.description, [TrackDescription.title: "Perfect", TrackDescription.artist: "Ed Sheeran", TrackDescription.album: "Divide"])
+    }
+    
     func testItCanGetTheTransportState() {
         
         stub(soap(call: .transportInfo), soapXml(getTransportInfoResponse()))
@@ -197,6 +218,14 @@ fileprivate extension TransportRepositoryTest {
     
     func getTuneinPositionInfoResponse() -> String {
         return "<Track>1</Track><TrackDuration>0:00:00</TrackDuration><TrackMetaData>&lt;DIDL-Lite xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:upnp=&quot;urn:schemas-upnp-org:metadata-1-0/upnp/&quot; xmlns:r=&quot;urn:schemas-rinconnetworks-com:metadata-1-0/&quot; xmlns=&quot;urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/&quot;&gt;&lt;item id=&quot;-1&quot; parentID=&quot;-1&quot; restricted=&quot;true&quot;&gt;&lt;res protocolInfo=&quot;x-rincon-mp3radio:*:*:*&quot;&gt;x-rincon-mp3radio://http://20863.live.streamtheworld.com:80/RADIO538.mp3?tdtok=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImZTeXA4In0.eyJpc3MiOiJ0aXNydiIsInN1YiI6IjIxMDY0IiwiaWF0IjoxNTIyNDQzMDQ5LCJ0ZC1yZWciOmZhbHNlfQ.kvTa2wxGb7-Rs7TjFjeRmPlzrkMnZGwDyBdyrru0Wbs&lt;/res&gt;&lt;r:streamContent&gt;DUA LIPA - IDGAF&lt;/r:streamContent&gt;&lt;dc:title&gt;RADIO538.mp3?tdtok=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImZTeXA4In0.eyJpc3MiOiJ0aXNydiIsInN1YiI6IjIxMDY0IiwiaWF0IjoxNTIyNDQzMDQ5LCJ0ZC1yZWciOmZhbHNlfQ.kvTa2wxGb7-Rs7TjFjeRmPlzrkMnZGwDyBdyrru0Wbs&lt;/dc:title&gt;&lt;upnp:class&gt;object.item&lt;/upnp:class&gt;&lt;/item&gt;&lt;/DIDL-Lite&gt;</TrackMetaData><TrackURI>x-rincon-mp3radio://http://20863.live.streamtheworld.com:80/RADIO538.mp3?tdtok=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6ImZTeXA4In0.eyJpc3MiOiJ0aXNydiIsInN1YiI6IjIxMDY0IiwiaWF0IjoxNTIyNDQzMDQ5LCJ0ZC1yZWciOmZhbHNlfQ.kvTa2wxGb7-Rs7TjFjeRmPlzrkMnZGwDyBdyrru0Wbs</TrackURI><RelTime>0:01:54</RelTime><AbsTime>NOT_IMPLEMENTED</AbsTime><RelCount>2147483647</RelCount><AbsCount>2147483647</AbsCount>"
+    }
+    
+    func getLibraryMediaInfoResponse() -> String {
+        return "<NrTracks>1</NrTracks><MediaDuration>NOT_IMPLEMENTED</MediaDuration><CurrentURI>x-rincon-queue:RINCON_000E58B4AE9601400#0</CurrentURI><CurrentURIMetaData></CurrentURIMetaData><NextURI></NextURI><NextURIMetaData></NextURIMetaData><PlayMedium>NETWORK</PlayMedium><RecordMedium>NOT_IMPLEMENTED</RecordMedium><WriteStatus>NOT_IMPLEMENTED</WriteStatus>"
+    }
+    
+    func getLibraryPositionInfoResponse() -> String {
+        return "<Track>1</Track><TrackDuration>0:00:45</TrackDuration><TrackMetaData>&lt;DIDL-Lite xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:upnp=&quot;urn:schemas-upnp-org:metadata-1-0/upnp/&quot; xmlns:r=&quot;urn:schemas-rinconnetworks-com:metadata-1-0/&quot; xmlns=&quot;urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/&quot;&gt;&lt;item id=&quot;-1&quot; parentID=&quot;-1&quot; restricted=&quot;true&quot;&gt;&lt;res protocolInfo=&quot;x-file-cifs:*:audio/mpeg:*&quot; duration=&quot;0:00:45&quot;&gt;x-file-cifs://Stefan-MacBook/Music/iTunes/iTunes%20Media/Music/Sample%20Audio.mp3&lt;/res&gt;&lt;r:streamContent&gt;&lt;/r:streamContent&gt;&lt;dc:title&gt;Perfect&lt;/dc:title&gt;&lt;upnp:class&gt;object.item.audioItem.musicTrack&lt;/upnp:class&gt;&lt;dc:creator&gt;Ed Sheeran&lt;/dc:creator&gt;&lt;upnp:album&gt;Divide&lt;/upnp:album&gt;&lt;r:albumArtist&gt;Sample&lt;/r:albumArtist&gt;&lt;/item&gt;&lt;/DIDL-Lite&gt;</TrackMetaData><TrackURI>x-file-cifs://Stefan-MacBook/Music/iTunes/iTunes%20Media/Music/Sample%20Audio.mp3</TrackURI><RelTime>0:00:38</RelTime><AbsTime>NOT_IMPLEMENTED</AbsTime><RelCount>2147483647</RelCount><AbsCount>2147483647</AbsCount>"
     }
     
 }
