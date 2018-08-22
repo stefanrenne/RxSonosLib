@@ -107,13 +107,13 @@ class TransportRepositoryTest: XCTestCase {
         
         XCTAssertEqual(track.queueItem, 1)
         XCTAssertEqual(track.duration, 45)
-        XCTAssertEqual(track.uri, "x-file-cifs://Stefan-MacBook/Music/iTunes/iTunes%20Media/Music/Sample/Sample/Sample%20Audio.mp3")
+        XCTAssertEqual(track.uri, "x-file-cifs://Stefan-MacBook/Music/iTunes/iTunes%20Media/Music/Sample%20Audio.mp3")
         XCTAssertEqual(track.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?u=x-file-cifs%3A%2F%2FStefan-MacBook%2FMusic%2FiTunes%2FiTunes%2520Media%2FMusic%2FSample%2FSample%2FSample%2520Audio.mp3")
-        XCTAssertEqual(track.title, "Sample Title")
-        XCTAssertEqual(track.album, "Sample Album")
-        XCTAssertEqual(track.artist, "Sample Artist")
+        XCTAssertEqual(track.title, "Perfect")
+        XCTAssertEqual(track.album, "Divide")
+        XCTAssertEqual(track.artist, "Ed Sheeran")
         XCTAssertNil(track.information)
-        XCTAssertEqual(track.description, [TrackDescription.title: "Sample Title", TrackDescription.artist: "Sample Artist", TrackDescription.album: "Sample Album"])
+        XCTAssertEqual(track.description, [TrackDescription.title: "Perfect", TrackDescription.artist: "Ed Sheeran", TrackDescription.album: "Divide"])
     }
     
     func testItCanGetTheTransportState() {
@@ -225,7 +225,7 @@ fileprivate extension TransportRepositoryTest {
     }
     
     func getLibraryPositionInfoResponse() -> String {
-        return "<Track>1</Track><TrackDuration>0:00:45</TrackDuration><TrackMetaData>&lt;DIDL-Lite xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:upnp=&quot;urn:schemas-upnp-org:metadata-1-0/upnp/&quot; xmlns:r=&quot;urn:schemas-rinconnetworks-com:metadata-1-0/&quot; xmlns=&quot;urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/&quot;&gt;&lt;item id=&quot;-1&quot; parentID=&quot;-1&quot; restricted=&quot;true&quot;&gt;&lt;res protocolInfo=&quot;x-file-cifs:*:audio/mpeg:*&quot; duration=&quot;0:00:45&quot;&gt;x-file-cifs://Stefan-MacBook/Music/iTunes/iTunes%20Media/Music/Sample/Sample/Sample%20Audio.mp3&lt;/res&gt;&lt;r:streamContent&gt;&lt;/r:streamContent&gt;&lt;dc:title&gt;Sample Title&lt;/dc:title&gt;&lt;upnp:class&gt;object.item.audioItem.musicTrack&lt;/upnp:class&gt;&lt;dc:creator&gt;Sample Artist&lt;/dc:creator&gt;&lt;upnp:album&gt;Sample Album&lt;/upnp:album&gt;&lt;r:albumArtist&gt;Sample&lt;/r:albumArtist&gt;&lt;/item&gt;&lt;/DIDL-Lite&gt;</TrackMetaData><TrackURI>x-file-cifs://Stefan-MacBook/Music/iTunes/iTunes%20Media/Music/Sample/Sample/Sample%20Audio.mp3</TrackURI><RelTime>0:00:38</RelTime><AbsTime>NOT_IMPLEMENTED</AbsTime><RelCount>2147483647</RelCount><AbsCount>2147483647</AbsCount>"
+        return "<Track>1</Track><TrackDuration>0:00:45</TrackDuration><TrackMetaData>&lt;DIDL-Lite xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; xmlns:upnp=&quot;urn:schemas-upnp-org:metadata-1-0/upnp/&quot; xmlns:r=&quot;urn:schemas-rinconnetworks-com:metadata-1-0/&quot; xmlns=&quot;urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/&quot;&gt;&lt;item id=&quot;-1&quot; parentID=&quot;-1&quot; restricted=&quot;true&quot;&gt;&lt;res protocolInfo=&quot;x-file-cifs:*:audio/mpeg:*&quot; duration=&quot;0:00:45&quot;&gt;x-file-cifs://Stefan-MacBook/Music/iTunes/iTunes%20Media/Music/Sample%20Audio.mp3&lt;/res&gt;&lt;r:streamContent&gt;&lt;/r:streamContent&gt;&lt;dc:title&gt;Perfect&lt;/dc:title&gt;&lt;upnp:class&gt;object.item.audioItem.musicTrack&lt;/upnp:class&gt;&lt;dc:creator&gt;Ed Sheeran&lt;/dc:creator&gt;&lt;upnp:album&gt;Divide&lt;/upnp:album&gt;&lt;r:albumArtist&gt;Sample&lt;/r:albumArtist&gt;&lt;/item&gt;&lt;/DIDL-Lite&gt;</TrackMetaData><TrackURI>x-file-cifs://Stefan-MacBook/Music/iTunes/iTunes%20Media/Music/Sample%20Audio.mp3</TrackURI><RelTime>0:00:38</RelTime><AbsTime>NOT_IMPLEMENTED</AbsTime><RelCount>2147483647</RelCount><AbsCount>2147483647</AbsCount>"
     }
     
 }
