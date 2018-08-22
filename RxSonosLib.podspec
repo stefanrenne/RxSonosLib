@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name                   = 'RxSonosLib'
-  spec.version                = '0.8.0'
+  spec.version                = '0.8.1'
   spec.license                = { :type => 'Apache-2.0' }
   spec.homepage               = 'https://github.com/stefanrenne/RxSonosLib'
   spec.authors                = { 'Stefan Renne' => 'info@stefanrenne.nl' }
