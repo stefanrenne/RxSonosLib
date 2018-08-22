@@ -108,7 +108,7 @@ class TransportRepositoryTest: XCTestCase {
         XCTAssertEqual(track.queueItem, 1)
         XCTAssertEqual(track.duration, 45)
         XCTAssertEqual(track.uri, "x-file-cifs://Stefan-MacBook/Music/iTunes/iTunes%20Media/Music/Sample%20Audio.mp3")
-        XCTAssertEqual(track.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?u=x-file-cifs%3A%2F%2FStefan-MacBook%2FMusic%2FiTunes%2FiTunes%2520Media%2FMusic%2FSample%2FSample%2FSample%2520Audio.mp3")
+        XCTAssertEqual(track.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?u=x-file-cifs%3A%2F%2FStefan-MacBook%2FMusic%2FiTunes%2FiTunes%2520Media%2FMusic%2FSample%2520Audio.mp3")
         XCTAssertEqual(track.title, "Perfect")
         XCTAssertEqual(track.album, "Divide")
         XCTAssertEqual(track.artist, "Ed Sheeran")
