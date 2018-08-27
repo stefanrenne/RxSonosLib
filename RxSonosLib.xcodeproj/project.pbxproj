@@ -126,8 +126,6 @@
 		F8860E972075157400BF6A7E /* GetGroupQueueInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E962075157400BF6A7E /* GetGroupQueueInteractorTests.swift */; };
 		F8860E9C207516F400BF6A7E /* QueueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E98207516F000BF6A7E /* QueueTableViewCell.swift */; };
 		F8860E9D207516FC00BF6A7E /* QueueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8860E99207516F000BF6A7E /* QueueTableViewCell.xib */; };
-		F8979942206939D1000CF52A /* NetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8979941206939D1000CF52A /* NetworkTest.swift */; };
-		F897994520693D95000CF52A /* MockNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897994420693D95000CF52A /* MockNetwork.swift */; };
 		F8979947206944A6000CF52A /* GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8979946206944A6000CF52A /* GroupTests.swift */; };
 		F89807E420760D6E00AF5ECB /* SetVolumeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89807E320760D6E00AF5ECB /* SetVolumeNetwork.swift */; };
 		F89807E620762FE400AF5ECB /* SetVolumeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89807E520762FE400AF5ECB /* SetVolumeInteractor.swift */; };
@@ -338,8 +336,6 @@
 		F8860E962075157400BF6A7E /* GetGroupQueueInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupQueueInteractorTests.swift; sourceTree = "<group>"; };
 		F8860E98207516F000BF6A7E /* QueueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTableViewCell.swift; sourceTree = "<group>"; };
 		F8860E99207516F000BF6A7E /* QueueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueueTableViewCell.xib; sourceTree = "<group>"; };
-		F8979941206939D1000CF52A /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
-		F897994420693D95000CF52A /* MockNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetwork.swift; sourceTree = "<group>"; };
 		F8979946206944A6000CF52A /* GroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTests.swift; sourceTree = "<group>"; };
 		F89807E320760D6E00AF5ECB /* SetVolumeNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetVolumeNetwork.swift; sourceTree = "<group>"; };
 		F89807E520762FE400AF5ECB /* SetVolumeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetVolumeInteractor.swift; sourceTree = "<group>"; };
@@ -622,7 +618,6 @@
 		F81E33B52072254B002E22A8 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
-				F8979941206939D1000CF52A /* NetworkTest.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -904,7 +899,6 @@
 			isa = PBXGroup;
 			children = (
 				F81E33A12072247C002E22A8 /* Data */,
-				F897994420693D95000CF52A /* MockNetwork.swift */,
 				F81E33AE2072250A002E22A8 /* Mockingjay+Soap.swift */,
 			);
 			path = Mock;
@@ -1469,7 +1463,6 @@
 				F8627F45206BFFE500571085 /* GetTransportStateInteractorTests.swift in Sources */,
 				F8A64DFA2087F9A9003F777E /* SetPreviousInteractorTests.swift in Sources */,
 				F8A64DFC2087F9B5003F777E /* SetNextInteractorTests.swift in Sources */,
-				F897994520693D95000CF52A /* MockNetwork.swift in Sources */,
 				F8B315C7209A22BB0000335D /* GetMusicProvidersInteractorTests.swift in Sources */,
 				F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */,
 				F81E33AA2072247D002E22A8 /* FakeSSDPRepositoryImpl.swift in Sources */,
@@ -1490,7 +1483,6 @@
 				F81A062E206034FF00897738 /* RepositoryInjectionTest.swift in Sources */,
 				F89807E82076318200AF5ECB /* SetVolumeInteractorTests.swift in Sources */,
 				F81A062C206031F300897738 /* XMLTest.swift in Sources */,
-				F8979942206939D1000CF52A /* NetworkTest.swift in Sources */,
 				F8860E95207514BE00BF6A7E /* FakeContentDirectoryRepositoryImpl.swift in Sources */,
 				F81A062720602D7A00897738 /* GroupRepositoryTest.swift in Sources */,
 			);

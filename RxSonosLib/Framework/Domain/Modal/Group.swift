@@ -124,13 +124,14 @@ extension ObservableType where E == Group {
             })
     }
     
-    public func set(transportState: TransportState) -> Observable<TransportState> {
+    public func set(transportState: TransportState) -> Completable {
         return
             self
             .take(1)
-            .flatMap({ (group) -> Observable<TransportState> in
-                return SonosInteractor.setTransport(state: transportState, for: group)
+            .flatMap({ (group) -> Observable<Never> in
+                return SonosInteractor.setTransport(state: transportState, for: group).asObservable()
             })
+            .asCompletable()
     }
     
     public func getVolume() -> Observable<Int> {
@@ -141,31 +142,34 @@ extension ObservableType where E == Group {
             })
     }
     
-    public func set(volume: Int) -> Observable<Int> {
+    public func set(volume: Int) -> Completable {
         return
             self
             .take(1)
-            .flatMap({ (group) -> Observable<Int> in
-                return SonosInteractor.set(volume: volume, for: group)
+            .flatMap({ (group) -> Observable<Never> in
+                return SonosInteractor.set(volume: volume, for: group).asObservable()
             })
+            .asCompletable()
     }
     
-    public func setNextTrack() -> Observable<Void> {
+    public func setNextTrack() -> Completable {
         return
             self
             .take(1)
-            .flatMap({ (group) -> Observable<Void> in
-                return SonosInteractor.setNextTrack(group)
+            .flatMap({ (group) ->  Observable<Never> in
+                return SonosInteractor.setNextTrack(group).asObservable()
             })
+            .asCompletable()
     }
     
-    public func setPreviousTrack() -> Observable<Void> {
+    public func setPreviousTrack() -> Completable {
         return
             self
             .take(1)
-            .flatMap({ (group) -> Observable<Void> in
-                return SonosInteractor.setPreviousTrack(group)
+            .flatMap({ (group) -> Observable<Never> in
+                return SonosInteractor.setPreviousTrack(group).asObservable()
             })
+            .asCompletable()
     }
     
     public func getMute() -> Observable<[Bool]> {
@@ -176,7 +180,7 @@ extension ObservableType where E == Group {
             .getMute()
     }
     
-    public func set(mute enabled: Bool) -> Observable<[Bool]> {
+    public func set(mute enabled: Bool) -> Completable {
         return
             self
             .take(1)

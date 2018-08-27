@@ -17,9 +17,9 @@ class GetNowPlayingValues: RequestValues {
     }
 }
 
-class GetNowPlayingInteractor<R: GetNowPlayingValues>: Interactor {
+class GetNowPlayingInteractor: Interactor {
     
-    let transportRepository: TransportRepository
+    private let transportRepository: TransportRepository
     
     init(transportRepository: TransportRepository) {
         self.transportRepository = transportRepository
@@ -39,10 +39,11 @@ class GetNowPlayingInteractor<R: GetNowPlayingValues>: Interactor {
             })
     }
     
-    fileprivate func mapToTrack(for masterRoom: Room) -> ((Int) -> Observable<Track?>) {
+    private func mapToTrack(for masterRoom: Room) -> ((Int) -> Observable<Track?>) {
         return { _ in
             return self.transportRepository
                 .getNowPlaying(for: masterRoom)
+                .asObservable()
         }
     }
 }

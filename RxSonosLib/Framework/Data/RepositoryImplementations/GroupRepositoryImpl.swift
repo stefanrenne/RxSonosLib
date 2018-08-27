@@ -12,11 +12,11 @@ import AEXML
 
 class GroupRepositoryImpl: GroupRepository {
     
-    func getGroups(for rooms: [Room]) -> Observable<[Group]> {
-        guard let firstRoom = rooms.first else { return Observable<[Group]>.just([]) }
+    func getGroups(for rooms: [Room]) -> Single<[Group]> {
+        guard let firstRoom = rooms.first else { return Single<[Group]>.just([]) }
         
         return GetGroupsNetwork(room: firstRoom)
-            .executeSoapRequest()
+            .executeRequest()
             .map(self.mapGroupDataToGroups(rooms: rooms))
     }
     

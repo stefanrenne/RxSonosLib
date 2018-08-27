@@ -36,16 +36,16 @@ extension ObservableType where E == [Room] {
             })
     }
     
-    public func set(mute enabled: Bool) -> Observable<[Bool]> {
+    public func set(mute enabled: Bool) -> Completable {
         return
             self
-            .take(1)
-            .foreachRoom(perform: { (room) -> Observable<Bool> in
-                return SonosInteractor.set(mute: enabled, for: room)
-            })
+                .take(1)
+                .foreachRoom(perform: { (room) -> Completable in
+                    return SonosInteractor.set(mute: enabled, for: room)
+                })
     }
     
-    internal func foreachRoom<T>(perform: @escaping ((_: Room) -> (Observable<T>))) -> Observable<[T]> {
+    internal func foreachRoom<T>(perform: @escaping ((Room) -> (Observable<T>))) -> Observable<[T]> {
         return
             self
             .flatMap({ (rooms) -> Observable<[T]> in
@@ -54,6 +54,18 @@ extension ObservableType where E == [Room] {
                 })
                 return Observable.zip(collection)
             })
+    }
+    
+    internal func foreachRoom(perform: @escaping ((Room) -> (Completable))) -> Completable {
+        return
+            self
+                .flatMap({ (rooms) -> Observable<Never> in
+                    let events = rooms.map({ (room) -> Completable in
+                        return perform(room)
+                    })
+                    return Completable.merge(events).asObservable()
+                })
+                .asCompletable()
     }
     
 }
@@ -67,13 +79,14 @@ extension ObservableType where E == Room {
             })
     }
     
-    public func set(mute enabled: Bool) -> Observable<Bool> {
+    public func set(mute enabled: Bool) -> Completable {
         return
             self
             .take(1)
-            .flatMap({ (room) -> Observable<Bool> in
-                return SonosInteractor.set(mute: enabled, for: room)
+            .flatMap({ (room) -> Observable<Never> in
+                return SonosInteractor.set(mute: enabled, for: room).asObservable()
             })
+            .asCompletable()
     }
 }
 

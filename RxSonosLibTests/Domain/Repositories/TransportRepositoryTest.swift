@@ -149,7 +149,7 @@ class TransportRepositoryTest: XCTestCase {
         let image = try! transportRepository
             .getImage(for: track)
             .toBlocking()
-            .first()!
+            .first()
         
         XCTAssertNil(image)
     }

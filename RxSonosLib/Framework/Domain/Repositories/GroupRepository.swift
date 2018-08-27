@@ -11,6 +11,6 @@ import RxSwift
 
 protocol GroupRepository {
     
-    func getGroups(for rooms: [Room]) -> Observable<[Group]>
+    func getGroups(for rooms: [Room]) -> Single<[Group]>
     
 }

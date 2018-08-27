@@ -18,10 +18,9 @@ class SoapNetwork: Network {
     init(room: Room, action: SoapAction) {
         self.room = room
         self.call = action
-        super.init()
     }
     
-    override func createRequest() -> URLRequest? {
+    internal var request: URLRequest {
         let url = self.room.ip.appendingPathComponent(self.call.service.controllUrl)
         var request = URLRequest(url: url)
         request.setValue(self.room.userAgent, forHTTPHeaderField: "User-Agent")
@@ -42,14 +41,9 @@ class SoapNetwork: Network {
         return "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\" s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\"><s:Body>\(bodyString)</s:Body></s:Envelope>"
     }
     
-    func executeSoapRequest() -> Observable<[String: String]> {
-        return super.executeRequest()
+    func executeRequest() -> Single<[String: String]> {
+        return perform(request: request)
             .map(self.openEnvelope())
-    }
-    
-    override func executeRequest() -> Observable<Data> {
-        /* Use executeSoapRequest() on subclasses of SoapNetwork */
-        return Observable<Data>.error(NSError.sonosLibInvalidImplementationError())
     }
     
     internal func openEnvelope() -> ((Data) throws -> [String: String]) {

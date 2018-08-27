@@ -12,10 +12,10 @@ import RxSwift
 
 class FakeRoomRepositoryImpl: RoomRepository {
     
-    func getRoom(device: SSDPDevice) -> Observable<Room>? {
+    func getRoom(device: SSDPDevice) -> Single<Room>? {
         let description = FakeRoomRepositoryImpl.getDescription(for: device)
         let room = Room(ssdpDevice: device, deviceDescription: description)
-        return Observable.just(room)
+        return Single.just(room)
     }
     
 }

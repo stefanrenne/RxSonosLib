@@ -19,7 +19,7 @@ class GetGroupsValues: RequestValues {
     
 }
 
-class GetGroupsInteractor<R: GetGroupsValues>: Interactor {
+class GetGroupsInteractor: Interactor {
     
     private let groupRepository: GroupRepository
     
@@ -41,7 +41,9 @@ class GetGroupsInteractor<R: GetGroupsValues>: Interactor {
     fileprivate func mapRoomsToGroups(roomSubject: BehaviorSubject<[Room]>) -> ((Int) throws -> Observable<[Group]>) {
         return { _ in
             let rooms = (try? roomSubject.value()) ?? []
-            return self.groupRepository.getGroups(for: rooms)
+            return self.groupRepository
+                .getGroups(for: rooms)
+                .asObservable()
         }
     }
 }

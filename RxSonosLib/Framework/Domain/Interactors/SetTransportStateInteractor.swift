@@ -19,15 +19,15 @@ class SetTransportStateValues: RequestValues {
     }
 }
 
-class SetTransportStateInteractor<T: SetTransportStateValues>: Interactor {
+class SetTransportStateInteractor: Interactor {
     
-    let renderingControlRepository: RenderingControlRepository
+    private let renderingControlRepository: RenderingControlRepository
     
     init(renderingControlRepository: RenderingControlRepository) {
         self.renderingControlRepository = renderingControlRepository
     }
     
-    func buildInteractorObservable(requestValues: SetTransportStateValues?) -> Observable<Void> {
+    func buildInteractorObservable(requestValues: SetTransportStateValues?) -> Observable<Never> {
         
         guard let group = requestValues?.group,
               let state = requestValues?.state else {
@@ -36,11 +36,11 @@ class SetTransportStateInteractor<T: SetTransportStateValues>: Interactor {
         
         switch state {
         case .playing:
-            return self.renderingControlRepository.setPlay(group: group)
+            return self.renderingControlRepository.setPlay(group: group).asObservable()
         case .paused:
-            return self.renderingControlRepository.setPause(group: group)
+            return self.renderingControlRepository.setPause(group: group).asObservable()
         case .stopped:
-            return self.renderingControlRepository.setStop(group: group)
+            return self.renderingControlRepository.setStop(group: group).asObservable()
         case .transitioning:
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }

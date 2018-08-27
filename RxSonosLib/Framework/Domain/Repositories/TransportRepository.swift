@@ -11,16 +11,16 @@ import RxSwift
 
 protocol TransportRepository {
     
-    func getNowPlaying(for room: Room) -> Observable<Track?>
+    func getNowPlaying(for room: Room) -> Single<Track?>
     
-    func getNowPlayingProgress(for room: Room) -> Observable<GroupProgress>
+    func getNowPlayingProgress(for room: Room) -> Single<GroupProgress>
     
-    func getTransportState(for room: Room) -> Observable<TransportState>
+    func getTransportState(for room: Room) -> Single<TransportState>
     
-    func getImage(for track: Track) -> Observable<Data?>
+    func getImage(for track: Track) -> Maybe<Data>
     
-    func setNextTrack(for room: Room) -> Observable<Void>
+    func setNextTrack(for room: Room) -> Completable
     
-    func setPreviousTrack(for room: Room) -> Observable<Void>
+    func setPreviousTrack(for room: Room) -> Completable
     
 }

@@ -11,6 +11,6 @@ import RxSwift
 
 protocol RoomRepository {
     
-    func getRoom(device: SSDPDevice) -> Observable<Room>?
+    func getRoom(device: SSDPDevice) -> Single<Room>?
     
 }

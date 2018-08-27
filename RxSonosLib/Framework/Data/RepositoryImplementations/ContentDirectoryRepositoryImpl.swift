@@ -11,9 +11,9 @@ import RxSwift
 
 class ContentDirectoryRepositoryImpl: ContentDirectoryRepository {
     
-    func getQueue(for room: Room) -> Observable<[MusicProviderTrack]> {
+    func getQueue(for room: Room) -> Single<[MusicProviderTrack]> {
         return GetQueueNetwork(room: room)
-            .executeSoapRequest()
+            .executeRequest()
             .map(self.mapDataToQueue(room: room))
     }
     

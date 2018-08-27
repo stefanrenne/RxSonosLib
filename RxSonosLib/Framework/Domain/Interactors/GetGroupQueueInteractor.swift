@@ -17,9 +17,9 @@ class GetGroupQueueValues: RequestValues {
     }
 }
 
-class GetGroupQueueInteractor<R: GetGroupQueueValues>: Interactor {
+class GetGroupQueueInteractor: Interactor {
     
-    let contentDirectoryRepository: ContentDirectoryRepository
+    private let contentDirectoryRepository: ContentDirectoryRepository
     
     init(contentDirectoryRepository: ContentDirectoryRepository) {
         self.contentDirectoryRepository = contentDirectoryRepository
@@ -40,6 +40,7 @@ class GetGroupQueueInteractor<R: GetGroupQueueValues>: Interactor {
         return { _ in
             return self.contentDirectoryRepository
                 .getQueue(for: masterRoom)
+                .asObservable()
         }
     }
 }

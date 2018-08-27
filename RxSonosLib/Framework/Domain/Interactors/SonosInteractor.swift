@@ -72,20 +72,22 @@ open class SonosInteractor {
             .get(values: GetTransportStateValues(group: group))
     }
     
-    static public func setTransport(state: TransportState, for group: Group) -> Observable<TransportState> {
+    static public func setTransport(state: TransportState, for group: Group) -> Completable {
         return SetTransportStateInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
             .get(values: SetTransportStateValues(group: group, state: state))
-            .map({ _ in return state })
+            .asCompletable()
     }
     
-    static public func setNextTrack(_ group: Group) -> Observable<Void> {
+    static public func setNextTrack(_ group: Group) -> Completable {
         return SetNextTrackInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: SetNextTrackValues(group: group))
+            .asCompletable()
     }
     
-    static public func setPreviousTrack(_ group: Group) -> Observable<Void> {
+    static public func setPreviousTrack(_ group: Group) -> Completable {
         return SetPreviousTrackInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: SetPreviousTrackValues(group: group))
+            .asCompletable()
     }
     
     static public func getVolume(_ group: Group) -> Observable<Int> {
@@ -93,10 +95,10 @@ open class SonosInteractor {
             .get(values: GetVolumeValues(group: group))
     }
     
-    static public func set(volume: Int, for group: Group) -> Observable<Int> {
+    static public func set(volume: Int, for group: Group) -> Completable {
         return SetVolumeInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
             .get(values: SetVolumeValues(group: group, volume: volume))
-            .map({ _ in return volume })
+            .asCompletable()
     }
     
     /* Room */
@@ -105,10 +107,10 @@ open class SonosInteractor {
             .get(values: GetMuteValues(room: room))
     }
     
-    static public func set(mute enabled: Bool, for room: Room) -> Observable<Bool> {
+    static public func set(mute enabled: Bool, for room: Room) -> Completable {
         return SetMuteInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
             .get(values: SetMuteValues(room: room, enabled: enabled))
-            .map({ _ in return enabled })
+            .asCompletable()
     }
     
     /* Track */

@@ -17,20 +17,22 @@ class SetPreviousTrackValues: RequestValues {
     }
 }
 
-class SetPreviousTrackInteractor<T: SetPreviousTrackValues>: Interactor {
+class SetPreviousTrackInteractor: Interactor {
     
-    let transportRepository: TransportRepository
+    private let transportRepository: TransportRepository
     
     init(transportRepository: TransportRepository) {
         self.transportRepository = transportRepository
     }
     
-    func buildInteractorObservable(requestValues: SetPreviousTrackValues?) -> Observable<Void> {
+    func buildInteractorObservable(requestValues: SetPreviousTrackValues?) -> Observable<Never> {
         
         guard let group = requestValues?.group else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
         
-        return transportRepository.setPreviousTrack(for: group.master)
+        return transportRepository
+            .setPreviousTrack(for: group.master)
+            .asObservable()
     }
 }

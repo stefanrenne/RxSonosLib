@@ -17,9 +17,9 @@ class GetGroupProgressValues: RequestValues {
     }
 }
 
-class GetGroupProgressInteractor<R: GetGroupProgressValues>: Interactor {
+class GetGroupProgressInteractor: Interactor {
     
-    let transportRepository: TransportRepository
+    private let transportRepository: TransportRepository
     
     init(transportRepository: TransportRepository) {
         self.transportRepository = transportRepository
@@ -40,6 +40,7 @@ class GetGroupProgressInteractor<R: GetGroupProgressValues>: Interactor {
         return { _ in
             return self.transportRepository
                 .getNowPlayingProgress(for: masterRoom)
+                .asObservable()
         }
     }
 }

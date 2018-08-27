@@ -12,9 +12,9 @@ import AEXML
 
 class MusicProvidersRepositoryImpl: MusicProvidersRepository {
     
-    func getMusicProviders(for room: Room) -> Observable<[MusicProvider]> {
+    func getMusicProviders(for room: Room) -> Single<[MusicProvider]> {
         return GetAvailableServicesNetwork(room: room)
-            .executeSoapRequest()
+            .executeRequest()
             .map(self.mapDataToMusicServices())
     }
     

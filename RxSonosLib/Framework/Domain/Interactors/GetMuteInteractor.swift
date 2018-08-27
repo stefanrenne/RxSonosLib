@@ -17,9 +17,9 @@ class GetMuteValues: RequestValues {
     }
 }
 
-class GetMuteInteractor<R: GetMuteValues>: Interactor {
+class GetMuteInteractor: Interactor {
     
-    let renderingControlRepository: RenderingControlRepository
+    private let renderingControlRepository: RenderingControlRepository
     
     init(renderingControlRepository: RenderingControlRepository) {
         self.renderingControlRepository = renderingControlRepository
@@ -36,10 +36,11 @@ class GetMuteInteractor<R: GetMuteValues>: Interactor {
             .distinctUntilChanged()
     }
     
-    fileprivate func mapToMute(for room: Room) -> ((Int) -> Observable<Bool>) {
+    private func mapToMute(for room: Room) -> ((Int) -> Observable<Bool>) {
         return { _ in
             return self.renderingControlRepository
                 .getMute(room: room)
+                .asObservable()
         }
     }
 }

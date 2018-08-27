@@ -7,18 +7,18 @@
 //
 
 import Foundation
+import RxSwift
 
 class DownloadNetwork: Network {
     
-    let location: URL
+    internal let request: URLRequest
     
-    init(location: URL, cacheKey: String? = nil) {
-        self.location = location
-        super.init(cacheKey: cacheKey)
+    init(location: URL) {
+        request = URLRequest(url: location)
     }
     
-    override func createRequest() -> URLRequest? {
-        return URLRequest(url: self.location)
+    func executeRequest() -> Single<Data> {
+        return perform(request: request)
     }
     
 }

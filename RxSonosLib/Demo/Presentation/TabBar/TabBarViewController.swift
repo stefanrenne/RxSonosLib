@@ -116,7 +116,7 @@ class TabBarViewController: UIViewController {
         actionButton
             .data
             .filter({ _ in return self.actionButton.isTouchInside })
-            .flatMap({ (state) -> Observable<TransportState> in
+            .flatMap({ (state) -> Completable in
                 return SonosInteractor
                     .getActiveGroup()
                     .set(transportState: state)

@@ -14,7 +14,7 @@ class FakeMusicProvidersRepositoryImpl: MusicProvidersRepository {
     
     var getMusicProvidersCount = 0
     
-    func getMusicProviders(for room: Room) -> Observable<[MusicProvider]> {
+    func getMusicProviders(for room: Room) -> Single<[MusicProvider]> {
         
         getMusicProvidersCount += 1
         
@@ -28,7 +28,7 @@ class FakeMusicProvidersRepositoryImpl: MusicProvidersRepository {
         
         services.append(MusicProvider(id: 9, name: "Spotify", uri: URL(string: "https://spotify-v4.ws.sonos.com/smapi")!, type: .musicService, policy: .appLink, map: Presentation(uri: URL(string: "http://sonos-pmap.ws.sonos.com/spotify_pmap.18.xml")!, version: 22), strings: Presentation(uri: URL(string: "http://spotify.cdn.sonos-ws-us.com/strings.24.xml")!, version: 25)))
         
-        return Observable.just(services)
+        return Single.just(services)
     }
     
 }

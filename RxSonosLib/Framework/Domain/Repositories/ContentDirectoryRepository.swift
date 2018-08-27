@@ -11,6 +11,6 @@ import RxSwift
 
 protocol ContentDirectoryRepository {
     
-    func getQueue(for room: Room) -> Observable<[MusicProviderTrack]>
+    func getQueue(for room: Room) -> Single<[MusicProviderTrack]>
     
 }

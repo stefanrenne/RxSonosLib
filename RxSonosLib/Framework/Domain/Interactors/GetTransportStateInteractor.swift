@@ -17,9 +17,9 @@ class GetTransportStateValues: RequestValues {
     }
 }
 
-class GetTransportStateInteractor<R: GetTransportStateValues>: Interactor {
+class GetTransportStateInteractor: Interactor {
     
-    let transportRepository: TransportRepository
+    private let transportRepository: TransportRepository
     
     init(transportRepository: TransportRepository) {
         self.transportRepository = transportRepository
@@ -40,6 +40,7 @@ class GetTransportStateInteractor<R: GetTransportStateValues>: Interactor {
         return { _ in
             return self.transportRepository
                 .getTransportState(for: masterRoom)
+                .asObservable()
         }
     }
 }
