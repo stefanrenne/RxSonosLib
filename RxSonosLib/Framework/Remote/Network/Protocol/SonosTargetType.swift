@@ -12,7 +12,7 @@ protocol SonosTargetType {
     
     var controllUrl: String { get }
     
-    var eventUrl: String { get }
+//    var eventUrl: String { get }
     
     var schema: String { get }
     

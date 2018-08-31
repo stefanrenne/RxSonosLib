@@ -8,17 +8,17 @@
 
 import Foundation
 
-enum DevicePropertiesTarget: SonosTargetType {
+/*enum DevicePropertiesTarget: SonosTargetType {
     
-//    case getHouseholdID
-//    case getZoneInfo
+    case getHouseholdID
+    case getZoneInfo
     
     var action: String {
         switch self {
-//        case .getHouseholdID:
-//            return "GetHouseholdID"
-//        case .getZoneInfo:
-//            return "GetZoneInfo"
+        case .getHouseholdID:
+            return "GetHouseholdID"
+        case .getZoneInfo:
+            return "GetZoneInfo"
         }
     }
     
@@ -40,4 +40,4 @@ enum DevicePropertiesTarget: SonosTargetType {
     var schema: String {
         return "urn:schemas-upnp-org:service:DeviceProperties:1"
     }
-}
+}*/

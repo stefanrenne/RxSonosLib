@@ -11,14 +11,8 @@ import RxSwift
 
 class DownloadNetwork: Network {
     
-    private let request: URLRequest
-    
-    init(location: URL) {
-        request = URLRequest(url: location)
-    }
-    
-    func executeRequest() -> Single<Data> {
-        return perform(request: request)
+    func request(download location: URL) -> Single<Data> {
+        return perform(request: URLRequest(url: location))
     }
     
 }

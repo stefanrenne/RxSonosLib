@@ -8,24 +8,24 @@
 
 import Foundation
 
-enum SystemPropertiesTarget: SonosTargetType {
+/*enum SystemPropertiesTarget: SonosTargetType {
     
-//    case getCustomerID
-//    case getRoomSerial
+    case getCustomerID
+    case getRoomSerial
     
     var action: String {
         switch self {
-//        case .getCustomerID, .getRoomSerial:
-//            return "GetString"
+        case .getCustomerID, .getRoomSerial:
+            return "GetString"
         }
     }
     
     var arguments: String? {
         switch self {
-//        case .getCustomerID:
-//            return "<VariableName>R_CustomerID</VariableName>"
-//        case .getRoomSerial:
-//            return "<VariableName>R_TrialZPSerial</VariableName>"
+        case .getCustomerID:
+            return "<VariableName>R_CustomerID</VariableName>"
+        case .getRoomSerial:
+            return "<VariableName>R_TrialZPSerial</VariableName>"
         }
     }
     
@@ -40,4 +40,4 @@ enum SystemPropertiesTarget: SonosTargetType {
     var schema: String {
         return "urn:schemas-upnp-org:service:SystemProperties:1"
     }
-}
+}*/

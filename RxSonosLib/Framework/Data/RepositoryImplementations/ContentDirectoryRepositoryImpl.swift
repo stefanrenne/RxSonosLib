@@ -11,9 +11,11 @@ import RxSwift
 
 class ContentDirectoryRepositoryImpl: ContentDirectoryRepository {
     
+    private let network = LocalNetwork<ContentDirectoryTarget>()
+    
     func getQueue(for room: Room) -> Single<[MusicProviderTrack]> {
-        return LocalNetwork(room: room, action: ContentDirectoryTarget.browse)
-            .executeRequest()
+        return network
+            .request(.browse, on: room)
             .map(self.mapDataToQueue(room: room))
     }
     

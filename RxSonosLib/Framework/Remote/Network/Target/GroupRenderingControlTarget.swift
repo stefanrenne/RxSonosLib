@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum GroupRenderingControlTarget: SonosTargetType {
+/*enum GroupRenderingControlTarget: SonosTargetType {
     
     var action: String {
         switch self {
@@ -33,4 +33,4 @@ enum GroupRenderingControlTarget: SonosTargetType {
     var schema: String {
         return "urn:schemas-upnp-org:service:GroupRenderingControl:1"
     }
-}
+}*/

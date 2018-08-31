@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum QueueTarget: SonosTargetType {
+/*enum QueueTarget: SonosTargetType {
     
     var action: String {
         switch self {
@@ -33,4 +33,4 @@ enum QueueTarget: SonosTargetType {
     var schema: String {
         return "urn:schemas-sonos-com:service:Queue:1"
     }
-}
+}*/

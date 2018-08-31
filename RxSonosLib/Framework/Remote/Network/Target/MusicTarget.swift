@@ -35,9 +35,9 @@ enum MusicTarget: SonosTargetType {
         return "/MusicServices/Control"
     }
     
-    var eventUrl: String {
-        return "/MusicServices/Event"
-    }
+//    var eventUrl: String {
+//        return "/MusicServices/Event"
+//    }
     
     var schema: String {
         return "urn:schemas-upnp-org:service:MusicServices:1"

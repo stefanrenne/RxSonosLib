@@ -37,9 +37,9 @@ enum ContentDirectoryTarget: SonosTargetType {
         return "/MediaServer/ContentDirectory/Control"
     }
     
-    var eventUrl: String {
-        return "/MediaServer/ContentDirectory/Event"
-    }
+//    var eventUrl: String {
+//        return "/MediaServer/ContentDirectory/Event"
+//    }
     
     var schema: String {
         return "urn:schemas-upnp-org:service:ContentDirectory:1"

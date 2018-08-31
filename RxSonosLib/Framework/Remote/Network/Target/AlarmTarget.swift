@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum AlarmTarget: SonosTargetType {
+/*enum AlarmTarget: SonosTargetType {
     
     var action: String {
         switch self {
@@ -33,4 +33,4 @@ enum AlarmTarget: SonosTargetType {
     var schema: String {
         return "urn:schemas-upnp-org:service:AlarmClock:1"
     }
-}
+}*/

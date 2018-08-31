@@ -88,9 +88,9 @@ enum TransportTarget: SonosTargetType {
         return "/MediaRenderer/AVTransport/Control"
     }
     
-    var eventUrl: String {
-        return "/MediaRenderer/AVTransport/Event"
-    }
+//    var eventUrl: String {
+//        return "/MediaRenderer/AVTransport/Event"
+//    }
     
     var schema: String {
         return "urn:schemas-upnp-org:service:AVTransport:1"

@@ -12,6 +12,8 @@ import AEXML
 
 class RoomRepositoryImpl: RoomRepository {
     
+    private let network = DownloadNetwork()
+    
     func getRoom(device: SSDPDevice) -> Single<Room>? {
         guard device.isSonosDevice else { return nil }
 
@@ -21,8 +23,8 @@ class RoomRepositoryImpl: RoomRepository {
         }
         
         let locationUrl = device.ip.appendingPathComponent(device.location)
-        return DownloadNetwork(location: locationUrl)
-            .executeRequest()
+        return network
+            .request(download: locationUrl)
             .do(onSuccess: { (data) in
                 CacheManager.shared.set(data, for: device.usn)
             })

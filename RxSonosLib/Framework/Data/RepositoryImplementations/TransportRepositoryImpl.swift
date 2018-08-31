@@ -11,27 +11,28 @@ import RxSwift
 
 class TransportRepositoryImpl: TransportRepository {
     
+    private let network = LocalNetwork<TransportTarget>()
+    
     func getNowPlaying(for room: Room) -> Single<Track?> {
         
-        let positionInfoNetwork = LocalNetwork(room: room, action: TransportTarget.positionInfo).executeRequest()
-        let mediaInfoNetwork = LocalNetwork(room: room, action: TransportTarget.mediaInfo).executeRequest()
+        let positionInfoNetwork = network.request(.positionInfo, on: room)
+        let mediaInfoNetwork = network.request(.mediaInfo, on: room)
         
         return Single.zip(positionInfoNetwork, mediaInfoNetwork, resultSelector: self.mapDataToNowPlaying(for: room))
     }
     
     func getNowPlayingProgress(for room: Room) -> Single<GroupProgress> {
-        return LocalNetwork(room: room, action: TransportTarget.positionInfo)
-            .executeRequest()
+        return network.request(.positionInfo, on: room)
             .map(self.mapPositionInfoDataToProgress())
     }
     
     func getTransportState(for room: Room) -> Single<TransportState> {
-        return LocalNetwork(room: room, action: TransportTarget.transportInfo)
-            .executeRequest()
+        return network.request(.transportInfo, on: room)
             .map(mapTransportDataToState())
     }
     
     func getImage(for track: Track) -> Maybe<Data> {
+        let downloadNetwork = DownloadNetwork()
         guard let imageUri = (track as? TrackImage)?.imageUri else {
             return Maybe.empty()
         }
@@ -40,8 +41,8 @@ class TransportRepositoryImpl: TransportRepository {
             return Maybe.just(cachedImage)
         }
         
-        return DownloadNetwork(location: imageUri)
-            .executeRequest()
+        return downloadNetwork
+            .request(download: imageUri)
             .do(onSuccess: { (data) in
                 CacheManager.shared.set(data, for: track.uri)
             })
@@ -49,32 +50,27 @@ class TransportRepositoryImpl: TransportRepository {
     }
     
     func setNextTrack(for room: Room) -> Completable {
-        return LocalNetwork(room: room, action: TransportTarget.next)
-            .executeRequest()
+        return network.request(.next, on: room)
             .asCompletable()
     }
     
     func setPreviousTrack(for room: Room) -> Completable {
-        return LocalNetwork(room: room, action: TransportTarget.previous)
-            .executeRequest()
+        return network.request(.previous, on: room)
             .asCompletable()
     }
     
     func setPlay(group: Group) -> Completable {
-        return LocalNetwork(room: group.master, action: TransportTarget.play)
-            .executeRequest()
+        return network.request(.play, on: group.master)
             .asCompletable()
     }
     
     func setPause(group: Group) -> Completable {
-        return LocalNetwork(room: group.master, action: TransportTarget.pause)
-            .executeRequest()
+        return network.request(.pause, on: group.master)
             .asCompletable()
     }
     
     func setStop(group: Group) -> Completable {
-        return LocalNetwork(room: group.master, action: TransportTarget.stop)
-            .executeRequest()
+        return network.request(.stop, on: group.master)
             .asCompletable()
     }
 }

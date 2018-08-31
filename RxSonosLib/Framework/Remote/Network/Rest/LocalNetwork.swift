@@ -10,38 +10,27 @@ import Foundation
 import RxSwift
 import AEXML
 
-class LocalNetwork: Network {
+class LocalNetwork<Target: SonosTargetType>: Network {
     
-    let room: Room
-    let target: SonosTargetType
-    
-    init(room: Room, action: SonosTargetType) {
-        self.room = room
-        self.target = action
+    func request(_ action: Target, on room: Room) -> Single<[String: String]> {
+        let url = room.ip.appendingPathComponent(action.controllUrl)
+        var urlRequest = URLRequest(url: url)
+        urlRequest.setValue(room.userAgent, forHTTPHeaderField: "User-Agent")
+        urlRequest.setValue("text/xml; charset=\"utf-8\"", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("gzip", forHTTPHeaderField: "Accept-Encoding")
+        urlRequest.setValue("en-US", forHTTPHeaderField: "Accept-Language")
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("\"\(action.soapAction)\"", forHTTPHeaderField: "SOAPACTION")
+        urlRequest.httpBody = action.requestBody.data(using: .utf8)
+        
+        return perform(request: urlRequest)
+            .map(self.openEnvelope(for: action))
     }
     
-    internal var request: URLRequest {
-        let url = self.room.ip.appendingPathComponent(target.controllUrl)
-        var request = URLRequest(url: url)
-        request.setValue(self.room.userAgent, forHTTPHeaderField: "User-Agent")
-        request.setValue("text/xml; charset=\"utf-8\"", forHTTPHeaderField: "Content-Type")
-        request.setValue("gzip", forHTTPHeaderField: "Accept-Encoding")
-        request.setValue("en-US", forHTTPHeaderField: "Accept-Language")
-        request.httpMethod = "POST"
-        request.setValue("\"\(target.soapAction)\"", forHTTPHeaderField: "SOAPACTION")
-        request.httpBody = target.requestBody.data(using: .utf8)
-        return request
-    }
-    
-    func executeRequest() -> Single<[String: String]> {
-        return perform(request: request)
-            .map(self.openEnvelope())
-    }
-    
-    internal func openEnvelope() -> ((Data) throws -> [String: String]) {
+    internal func openEnvelope(for target: Target) -> ((Data) throws -> [String: String]) {
         return { data in
             let xml = AEXMLDocument.create(data)
-            let element = xml?["Envelope"]["Body"]["\(self.target.action)Response"]
+            let element = xml?["Envelope"]["Body"]["\(target.action)Response"]
             
             var soapData: [String: String] = [:]
             element?.children.forEach({ (row) in

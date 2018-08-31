@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ConnectionManagerTarget: SonosTargetType {
+/*enum ConnectionManagerTarget: SonosTargetType {
     
     var action: String {
         switch self {
@@ -33,4 +33,4 @@ enum ConnectionManagerTarget: SonosTargetType {
     var schema: String {
         return "urn:schemas-upnp-org:service:ConnectionManager:1"
     }
-}
+}*/

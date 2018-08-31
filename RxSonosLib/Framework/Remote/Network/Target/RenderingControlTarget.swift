@@ -44,9 +44,9 @@ enum RenderingControlTarget: SonosTargetType {
         return "/MediaRenderer/RenderingControl/Control"
     }
     
-    var eventUrl: String {
-        return "/MediaRenderer/RenderingControl/Event"
-    }
+//    var eventUrl: String {
+//        return "/MediaRenderer/RenderingControl/Event"
+//    }
     
     var schema: String {
         return "urn:schemas-upnp-org:service:RenderingControl:1"

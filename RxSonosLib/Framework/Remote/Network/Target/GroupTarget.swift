@@ -33,9 +33,9 @@ enum GroupTarget: SonosTargetType {
         return "/ZoneGroupTopology/Control"
     }
     
-    var eventUrl: String {
-        return "/ZoneGroupTopology/Event"
-    }
+//    var eventUrl: String {
+//        return "/ZoneGroupTopology/Event"
+//    }
     
     var schema: String {
         return "urn:schemas-upnp-org:service:ZoneGroupTopology:1"
