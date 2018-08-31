@@ -17,9 +17,9 @@ class GetVolumeValues: RequestValues {
     }
 }
 
-class GetVolumeInteractor<R: GetVolumeValues>: Interactor {
+class GetVolumeInteractor: Interactor {
     
-    let renderingControlRepository: RenderingControlRepository
+    private let renderingControlRepository: RenderingControlRepository
     
     init(renderingControlRepository: RenderingControlRepository) {
         self.renderingControlRepository = renderingControlRepository
@@ -40,6 +40,7 @@ class GetVolumeInteractor<R: GetVolumeValues>: Interactor {
         return { _ in
             return self.renderingControlRepository
                 .getVolume(for: group)
+                .asObservable()
         }
     }
 }

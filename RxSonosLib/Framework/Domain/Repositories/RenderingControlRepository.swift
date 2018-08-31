@@ -11,22 +11,16 @@ import RxSwift
 
 protocol RenderingControlRepository {
     
-    func getVolume(for room: Room) -> Observable<Int>
+    func getVolume(for room: Room) -> Single<Int>
     
-    func getVolume(for group: Group) -> Observable<Int>
+    func getVolume(for group: Group) -> Single<Int>
     
-    func set(volume: Int, for room: Room) -> Observable<Void>
+    func set(volume: Int, for room: Room) -> Completable
     
-    func set(volume: Int, for group: Group) -> Observable<Void>
+    func set(volume: Int, for group: Group) -> Completable
     
-    func setPlay(group: Group) -> Observable<Void>
+    func setMute(room: Room, enabled: Bool) -> Completable
     
-    func setPause(group: Group) -> Observable<Void>
-    
-    func setStop(group: Group) -> Observable<Void>
-    
-    func setMute(room: Room, enabled: Bool) -> Observable<Void>
-    
-    func getMute(room: Room) -> Observable<Bool>
+    func getMute(room: Room) -> Single<Bool>
     
 }

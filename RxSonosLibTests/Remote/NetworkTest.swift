@@ -12,105 +12,43 @@ import Mockingjay
 
 class NetworkTest: XCTestCase {
     
-    override func setUp() {
-        CacheManager.shared.deleteAll()
-        stub(everything, http(404))
-    }
+    private let request = URLRequest(url: URL(string: "https://www.google.com")!)
     
     func testItCanProcess404Errors() {
-        XCTAssertThrowsError(try MockNetwork().executeRequest().toBlocking().toArray()) { error in
+        stub(everything, http(404))
+        XCTAssertThrowsError(try MockNetwork().perform(request: request).toBlocking().toArray()) { error in
             XCTAssertEqual(error.localizedDescription, NSError.sonosLibUnknownUrlError().localizedDescription)
-        }
-    }
-    
-    func testCreateRequestNeedsToBeOverwritten() {
-        XCTAssertThrowsError(try Network().executeRequest().toBlocking().toArray()) { error in
-            XCTAssertEqual(error.localizedDescription, NSError.sonosLibNoDataError().localizedDescription)
-        }
-    }
-    
-    func testSoapCallsCantUseExetureRequest() {
-        XCTAssertThrowsError(try SoapNetwork(room: firstRoom(), action: SoapAction.getVolume).executeRequest().toBlocking().toArray()) { error in
-            XCTAssertEqual(error.localizedDescription, NSError.sonosLibInvalidImplementationError().localizedDescription)
-        }
-    }
-    
-    func testCreateRequestNeedsToBeOverwrittenUnlessIfThereIsCachedData() {
-        let key = "randomKey"
-        let data = "random".data(using: .utf8)!
-        CacheManager.shared.set(data, for: key)
-        
-        let resultData = try? Network(cacheKey: key)
-            .executeRequest()
-            .toBlocking()
-            .single()
-        XCTAssertEqual(resultData, data)
-    }
-    
-    func testItCanProcessHTTPErrors() {
-        let error = NSError(domain: "randomdomain", code: 9001, userInfo: ["message": "it's over 9000!"])
-        stub(everything, failure(error))
-            
-        XCTAssertThrowsError(try MockNetwork().executeRequest().toBlocking().toArray()) { resultError in
-            XCTAssertEqual(resultError.localizedDescription, error.localizedDescription)
         }
     }
     
     func testItCanProcessEmptyResponses() {
         stub(everything, http(200))
         
-        XCTAssertThrowsError(try MockNetwork().executeRequest().toBlocking().toArray()) { resultError in
-            XCTAssertEqual(resultError.localizedDescription, NSError.sonosLibInvalidDataError().localizedDescription)
+        XCTAssertThrowsError(try MockNetwork().perform(request: request).toBlocking().toArray()) { error in
+            XCTAssertEqual(error.localizedDescription, NSError.sonosLibInvalidDataError().localizedDescription)
         }
     }
     
-    func testResponsesAreReturnedOnceWhenThereIsNoCache() {
+    func testItCanProcessHTTPErrors() {
+        let stubbedError = NSError(domain: "randomdomain", code: 9001, userInfo: ["message": "it's over 9000!"])
+        stub(everything, failure(stubbedError))
         
-        let key = "randomKey"
-        let httpData = "httpData".data(using: .utf8)!
-        
-        stub(everything, http(download: .content(httpData)))
-        
-        let resultData = try? MockNetwork(cacheKey: key)
-            .executeRequest()
-            .toBlocking()
-            .toArray()
-        
-        XCTAssertEqual(resultData!, [httpData])
+        XCTAssertThrowsError(try MockNetwork().perform(request: request).toBlocking().toArray()) { error in
+            XCTAssertEqual(error.localizedDescription, stubbedError.localizedDescription)
+        }
     }
     
-    func testResponsesAreReturnedMultipleTimesWhenTheyAreDifferentFromCache() {
+    func testItCanProcessResponseData() {
+        let stubbedData = "random".data(using: .utf8)!
         
-        let key = "randomKey"
-        let cacheData = "cacheData".data(using: .utf8)!
-        CacheManager.shared.set(cacheData, for: key)
+        stub(everything, http(download: .content(stubbedData)))
         
-        let httpData = "httpData".data(using: .utf8)!
-        
-        stub(everything, http(download: .content(httpData)))
-        
-        let resultData = try? MockNetwork(cacheKey: key)
-            .executeRequest()
+        let result = try? MockNetwork()
+            .perform(request: request)
             .toBlocking()
-            .toArray()
+            .single()
         
-        XCTAssertEqual(resultData!, [cacheData, httpData])
-    }
-    
-    func testResponsesAreReturnedOnceWhenTheyAreDifferentFromCache() {
-        
-        let key = "randomKey"
-        let data = "random".data(using: .utf8)!
-        CacheManager.shared.set(data, for: key)
-        
-        stub(everything, http(download: .content(data)))
-        
-        let resultData = try? MockNetwork(cacheKey: key)
-            .executeRequest()
-            .toBlocking()
-            .toArray()
-        
-        XCTAssertEqual(resultData!, [data])
+        XCTAssertEqual(result, stubbedData)
     }
     
 }

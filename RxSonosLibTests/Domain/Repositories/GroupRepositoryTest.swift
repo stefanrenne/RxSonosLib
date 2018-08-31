@@ -40,7 +40,7 @@ class GroupRepositoryTest: XCTestCase {
                 response += "</ZoneGroup>".encodeString()
             response += "</ZoneGroups>".encodeString()
         response += "</ZoneGroupState>"
-        stub(soap(call: .state), soapXml(response))
+        stub(soap(call: GroupTarget.state), soapXml(response))
         
         let groups = try! groupRepository
             .getGroups(for: self.getRooms())
@@ -73,7 +73,7 @@ class GroupRepositoryTest: XCTestCase {
                 response += "</ZoneGroup>".encodeString()
             response += "</ZoneGroups>".encodeString()
         response += "</ZoneGroupState>"
-        stub(soap(call: .state), soapXml(response))
+        stub(soap(call: GroupTarget.state), soapXml(response))
         
         let groups = try! groupRepository
             .getGroups(for: [])
@@ -95,14 +95,14 @@ fileprivate extension GroupRepositoryTest {
             .toBlocking()
             .single()
     }
-    fileprivate func mapSSDPToRooms() -> (([SSDPResponse]) throws -> Observable<[Room]>) {
+    fileprivate func mapSSDPToRooms() -> (([SSDPResponse]) throws -> Single<[Room]>) {
         return { ssdpDevices in
             let collection = ssdpDevices.compactMap(self.mapSSDPToRoom())
-            return Observable.zip(collection)
+            return Single.zip(collection)
         }
     }
     
-    fileprivate func mapSSDPToRoom() -> ((SSDPResponse) -> Observable<Room>?) {
+    fileprivate func mapSSDPToRoom() -> ((SSDPResponse) -> Single<Room>?) {
         return { response in
             guard let device = SSDPDevice.map(response) else { return nil }
             return self.roomRepository.getRoom(device: device)

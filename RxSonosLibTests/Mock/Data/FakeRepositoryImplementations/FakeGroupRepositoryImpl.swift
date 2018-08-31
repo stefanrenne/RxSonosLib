@@ -18,11 +18,11 @@ class FakeGroupRepositoryImpl: GroupRepository {
         self.returnNoGroups = returnNoGroups
     }
     
-    func getGroups(for rooms: [Room]) -> Observable<[Group]> {
+    func getGroups(for rooms: [Room]) -> Single<[Group]> {
         if returnNoGroups {
-            return Observable<[Group]>.just([])
+            return Single<[Group]>.just([])
         } else {
-            return Observable<[Group]>.just(allGroups)
+            return Single<[Group]>.just(allGroups)
         }
     }
     

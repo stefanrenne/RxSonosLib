@@ -108,13 +108,12 @@ class GroupTests: XCTestCase {
     }
     
     func testItCanSetTheTransportState() {
-        let mock = RepositoryInjection.shared.renderingControlRepository as! FakeRenderingControlRepositoryImpl
+        let mock = RepositoryInjection.shared.transportRepository as! FakeTransportRepositoryImpl
         let group = Observable.just(secondGroup())
-        let newState = try! group.set(transportState: .playing)
-            .map({ _ in return mock.activeState })
+        _ = group.set(transportState: .playing)
             .toBlocking()
-            .first()!
-        XCTAssertEqual(newState, TransportState.playing)
+            .materialize()
+        XCTAssertEqual(mock.activeState, TransportState.playing)
         
     }
     
@@ -127,11 +126,10 @@ class GroupTests: XCTestCase {
     func testItCanSetTheVolume() {
         let mock = RepositoryInjection.shared.renderingControlRepository as! FakeRenderingControlRepositoryImpl
         let group = Observable.just(secondGroup())
-        let newVolume = try! group.set(volume: 22)
-            .map({ _ in return mock.lastVolume })
+        _ = group.set(volume: 22)
             .toBlocking()
-            .first()!
-        XCTAssertEqual(newVolume, 22)
+            .materialize()
+        XCTAssertEqual(mock.lastVolume, 22)
     }
     
     func testItCanSetTheNextTrack() {
@@ -139,12 +137,12 @@ class GroupTests: XCTestCase {
         mock.nextTrackCounter = 0
         
         let group = Observable.just(secondGroup())
-        let counter = try! group
+        _ = group
             .setNextTrack()
-            .map({ return mock.nextTrackCounter })
             .toBlocking()
-            .first()!
-        XCTAssertEqual(counter, 1)
+            .materialize()
+        
+        XCTAssertEqual(mock.nextTrackCounter , 1)
     }
     
     func testItCanSetThePreviousTrack() {
@@ -152,12 +150,12 @@ class GroupTests: XCTestCase {
         mock.previousTrackCounter = 0
         
         let group = Observable.just(secondGroup())
-        let counter = try! group
+        _ = group
             .setPreviousTrack()
-            .map({ return mock.previousTrackCounter })
             .toBlocking()
-            .first()!
-        XCTAssertEqual(counter, 1)
+            .materialize()
+        
+        XCTAssertEqual(mock.previousTrackCounter, 1)
     }
     
     func testItCanGetTheMute() {
@@ -176,14 +174,12 @@ class GroupTests: XCTestCase {
         mock.numberGetMuteCalls = 0
         
         let group = Observable.just(secondGroup())
-        let counter = try! group
+        _ = group
             .set(mute: true)
-            .map({ _ in
-                return mock.numberSetMuteCalls
-            })
             .toBlocking()
-            .first()!
-        XCTAssertEqual(counter, 2)
+            .materialize()
+        
+        XCTAssertEqual(mock.numberSetMuteCalls, 2)
         XCTAssertEqual(mock.numberGetMuteCalls, 0)
     }
     

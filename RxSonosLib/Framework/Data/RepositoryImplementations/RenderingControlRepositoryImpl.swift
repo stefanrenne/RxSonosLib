@@ -11,55 +11,39 @@ import RxSwift
 
 class RenderingControlRepositoryImpl: RenderingControlRepository {
     
-    func getVolume(for room: Room) -> Observable<Int> {
-        return GetVolumeNetwork(room: room)
-            .executeSoapRequest()
+    private let network = LocalNetwork<RenderingControlTarget>()
+    
+    func getVolume(for room: Room) -> Single<Int> {
+        return network
+            .request(.getVolume, on: room)
             .map(self.mapDataToVolume())
     }
     
-    func getVolume(for group: Group) -> Observable<Int> {
+    func getVolume(for group: Group) -> Single<Int> {
         let roomObservables = ([group.master] + group.slaves).map(self.mapRoomToVolume())
-        return Observable.zip(roomObservables, self.zipRoomVolumes())
+        return Single.zip(roomObservables, self.zipRoomVolumes())
     }
     
-    func set(volume: Int, for room: Room) -> Observable<Void> {
-        return SetVolumeNetwork(room: room, volume: volume)
-            .executeSoapRequest()
-            .toVoid()
+    func set(volume: Int, for room: Room) -> Completable {
+        return network
+            .request(.setVolume(volume), on: room)
+            .asCompletable()
     }
     
-    func set(volume: Int, for group: Group) -> Observable<Void> {
-        let roomObservables = ([group.master] + group.slaves).map({ set(volume: volume, for: $0) })
-        return Observable.zip(roomObservables).toVoid()
+    func set(volume: Int, for group: Group) -> Completable {
+        let roomObservables = ([group.master] + group.slaves).map({ network.request(.setVolume(volume), on: $0) })
+        return Single.zip(roomObservables).asCompletable()
     }
     
-    func setPlay(group: Group) -> Observable<Void> {
-        return SetPlayNetwork(room: group.master)
-            .executeSoapRequest()
-            .toVoid()
+    func setMute(room: Room, enabled: Bool) -> Completable {
+        return network
+            .request(.setMute(enabled), on: room)
+            .asCompletable()
     }
     
-    func setPause(group: Group) -> Observable<Void> {
-        return SetPauseNetwork(room: group.master)
-            .executeSoapRequest()
-            .toVoid()
-    }
-    
-    func setStop(group: Group) -> Observable<Void> {
-        return SetStopNetwork(room: group.master)
-            .executeSoapRequest()
-            .toVoid()
-    }
-    
-    func setMute(room: Room, enabled: Bool) -> Observable<Void> {
-        return SetMuteNetwork(room: room, enabled: enabled)
-            .executeSoapRequest()
-            .toVoid()
-    }
-    
-    func getMute(room: Room) -> Observable<Bool> {
-        return GetMuteNetwork(room: room)
-            .executeSoapRequest()
+    func getMute(room: Room) -> Single<Bool> {
+        return network
+            .request(.getMute, on: room)
             .map(self.mapDataToMute())
     }
     
@@ -76,7 +60,7 @@ extension RenderingControlRepositoryImpl {
         }
     }
     
-    fileprivate func mapRoomToVolume() -> ((Room) -> Observable<Int>) {
+    fileprivate func mapRoomToVolume() -> ((Room) -> Single<Int>) {
         return { room in
             return self.getVolume(for: room)
         }

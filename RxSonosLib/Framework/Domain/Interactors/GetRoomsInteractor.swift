@@ -12,7 +12,7 @@ import RxSSDP
 
 class GetRoomsValues: RequestValues { }
 
-class GetRoomsInteractor<R: GetRoomsValues>: Interactor {
+class GetRoomsInteractor: Interactor {
     
     private let ssdpRepository: SSDPRepository
     private let roomRepository: RoomRepository
@@ -34,7 +34,7 @@ class GetRoomsInteractor<R: GetRoomsValues>: Interactor {
     }
     
     /* SSDP */
-    fileprivate func searchNetworkForDevices() -> ((Int) -> Observable<[SSDPResponse]>) {
+    private func searchNetworkForDevices() -> ((Int) -> Observable<[SSDPResponse]>) {
         return { _ in
             return Observable<[SSDPResponse]>.create({ (observer) -> Disposable in
                 
@@ -54,14 +54,14 @@ class GetRoomsInteractor<R: GetRoomsValues>: Interactor {
     }
     
     /* Rooms */
-    fileprivate func mapDevicesToSonosRooms() -> (([SSDPResponse]) throws -> Observable<[Room]>) {
+    private func mapDevicesToSonosRooms() -> (([SSDPResponse]) throws -> Observable<[Room]>) {
         return { ssdpDevices in
             let collection = ssdpDevices.compactMap(self.mapSSDPToSonosRoom())
-            return Observable.zip(collection)
+            return Single.zip(collection).asObservable()
         }
     }
     
-    fileprivate func mapSSDPToSonosRoom() -> ((SSDPResponse) -> Observable<Room>?) {
+    private func mapSSDPToSonosRoom() -> ((SSDPResponse) -> Single<Room>?) {
         return { response in
             guard let device = SSDPDevice.map(response) else { return nil }
             return self.roomRepository.getRoom(device: device)

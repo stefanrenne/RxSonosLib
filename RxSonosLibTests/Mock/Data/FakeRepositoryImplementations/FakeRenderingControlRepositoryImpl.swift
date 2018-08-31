@@ -12,50 +12,34 @@ import RxSwift
 
 class FakeRenderingControlRepositoryImpl: RenderingControlRepository {
     
-    func getVolume(for room: Room) -> Observable<Int> {
-        return Observable.just(30)
+    func getVolume(for room: Room) -> Single<Int> {
+        return Single.just(30)
     }
     
-    func getVolume(for group: Group) -> Observable<Int> {
-        return Observable.just(70)
+    func getVolume(for group: Group) -> Single<Int> {
+        return Single.just(70)
     }
     
-    func set(volume: Int, for room: Room) -> Observable<Void> {
-        return Observable.just(())
+    func set(volume: Int, for room: Room) -> Completable {
+        return Completable.empty()
     }
     
     var lastVolume: Int?
-    func set(volume: Int, for group: Group) -> Observable<Void> {
+    func set(volume: Int, for group: Group) -> Completable {
         self.lastVolume = volume
-        return Observable.just(())
-    }
-    
-    var activeState: TransportState?
-    func setPlay(group: Group) -> Observable<Void> {
-        activeState = TransportState.playing
-        return Observable.just(())
-    }
-    
-    func setPause(group: Group) -> Observable<Void> {
-        activeState = TransportState.paused
-        return Observable.just(())
-    }
-    
-    func setStop(group: Group) -> Observable<Void> {
-        activeState = TransportState.stopped
-        return Observable.just(())
+        return Completable.empty()
     }
     
     var numberSetMuteCalls = 0
-    func setMute(room: Room, enabled: Bool) -> Observable<Void> {
+    func setMute(room: Room, enabled: Bool) -> Completable {
         numberSetMuteCalls += 1
-        return Observable.just(())
+        return Completable.empty()
     }
     
     var numberGetMuteCalls = 0
-    func getMute(room: Room) -> Observable<Bool> {
+    func getMute(room: Room) -> Single<Bool> {
         numberGetMuteCalls += 1
-        return Observable.just(true)
+        return Single.just(true)
     }
     
 }

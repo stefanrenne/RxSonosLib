@@ -9,13 +9,4 @@
 import Foundation
 @testable import RxSonosLib
 
-class MockNetwork: Network {
-
-    override func createRequest() -> URLRequest? {
-        return URLRequest(url: URL(string: "https://www.google.nl")!)
-    }
-    
-    override func shouldPerformRequest(hasCache: Bool) -> Bool {
-        return true
-    }
-}
+class MockNetwork: Network { }

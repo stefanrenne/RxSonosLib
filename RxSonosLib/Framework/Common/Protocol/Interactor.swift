@@ -13,19 +13,13 @@ protocol RequestValues { }
 
 protocol Interactor {
     associatedtype R: RequestValues
-    associatedtype U
+    associatedtype E
     
-    func buildInteractorObservable(requestValues: R?) -> Observable<U>
-    func get(values: R?) -> Observable<U>
+    func buildInteractorObservable(requestValues: R?) -> Observable<E>
+    func get(values: R?) -> Observable<E>
 }
 
 extension Interactor {
-    
-    func get(values: R? = nil) -> Observable<U> {
-        return buildInteractorObservable(requestValues: values)
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
-            .observeOn(MainScheduler.instance)
-    }
     
     func createTimer(_ period: RxTimeInterval) -> Observable<Int> {
         return Observable<Int>.create({ (observer) -> Disposable in
@@ -38,5 +32,11 @@ extension Interactor {
             
             return Disposables.create([interval])
         })
+    }
+    
+    func get(values: R? = nil) -> Observable<E> {
+        return buildInteractorObservable(requestValues: values)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+            .observeOn(MainScheduler.instance)
     }
 }

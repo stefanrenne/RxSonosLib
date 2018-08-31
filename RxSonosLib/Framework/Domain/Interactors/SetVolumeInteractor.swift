@@ -19,21 +19,23 @@ class SetVolumeValues: RequestValues {
     }
 }
 
-class SetVolumeInteractor<T: SetVolumeValues>: Interactor {
+class SetVolumeInteractor: Interactor {
     
-    let renderingControlRepository: RenderingControlRepository
+    private let renderingControlRepository: RenderingControlRepository
     
     init(renderingControlRepository: RenderingControlRepository) {
         self.renderingControlRepository = renderingControlRepository
     }
     
-    func buildInteractorObservable(requestValues: SetVolumeValues?) -> Observable<Void> {
+    func buildInteractorObservable(requestValues: SetVolumeValues?) -> Observable<Never> {
         
         guard let group = requestValues?.group,
               let volume = requestValues?.volume else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
         
-        return self.renderingControlRepository.set(volume: volume, for: group)
+        return renderingControlRepository
+            .set(volume: volume, for: group)
+            .asObservable()
     }
 }

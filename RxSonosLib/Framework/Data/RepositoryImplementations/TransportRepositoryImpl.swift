@@ -11,43 +11,67 @@ import RxSwift
 
 class TransportRepositoryImpl: TransportRepository {
     
-    func getNowPlaying(for room: Room) -> Observable<Track?> {
+    private let network = LocalNetwork<TransportTarget>()
+    
+    func getNowPlaying(for room: Room) -> Single<Track?> {
         
-        let positionInfoNetwork = GetPositionInfoNetwork(room: room).executeSoapRequest()
-        let mediaInfoNetwork = GetMediaInfoNetwork(room: room).executeSoapRequest()
+        let positionInfoNetwork = network.request(.positionInfo, on: room)
+        let mediaInfoNetwork = network.request(.mediaInfo, on: room)
         
-        return Observable.zip(positionInfoNetwork, mediaInfoNetwork, resultSelector: self.mapDataToNowPlaying(for: room))
+        return Single.zip(positionInfoNetwork, mediaInfoNetwork, resultSelector: self.mapDataToNowPlaying(for: room))
     }
     
-    func getNowPlayingProgress(for room: Room) -> Observable<GroupProgress> {
-        return GetPositionInfoNetwork(room: room)
-            .executeSoapRequest()
+    func getNowPlayingProgress(for room: Room) -> Single<GroupProgress> {
+        return network.request(.positionInfo, on: room)
             .map(self.mapPositionInfoDataToProgress())
     }
     
-    func getTransportState(for room: Room) -> Observable<TransportState> {
-        return GetTransportInfoNetwork(room: room)
-            .executeSoapRequest()
+    func getTransportState(for room: Room) -> Single<TransportState> {
+        return network.request(.transportInfo, on: room)
             .map(mapTransportDataToState())
     }
     
-    func getImage(for track: Track) -> Observable<Data?> {
-        guard let imageUri = (track as? TrackImage)?.imageUri else { return Observable<Data?>.just(nil) }
-        return DownloadNetwork(location: imageUri, cacheKey: track.uri)
-            .executeRequest()
-            .map({ $0 })
+    func getImage(for track: Track) -> Maybe<Data> {
+        let downloadNetwork = DownloadNetwork()
+        guard let imageUri = (track as? TrackImage)?.imageUri else {
+            return Maybe.empty()
+        }
+            
+        if let cachedImage = CacheManager.shared.get(for: track.uri) {
+            return Maybe.just(cachedImage)
+        }
+        
+        return downloadNetwork
+            .request(download: imageUri)
+            .do(onSuccess: { (data) in
+                CacheManager.shared.set(data, for: track.uri)
+            })
+            .asMaybe()
     }
     
-    func setNextTrack(for room: Room) -> Observable<Void> {
-        return SetNextNetwork(room: room)
-            .executeSoapRequest()
-            .toVoid()
+    func setNextTrack(for room: Room) -> Completable {
+        return network.request(.next, on: room)
+            .asCompletable()
     }
     
-    func setPreviousTrack(for room: Room) -> Observable<Void> {
-        return SetPreviousNetwork(room: room)
-            .executeSoapRequest()
-            .toVoid()
+    func setPreviousTrack(for room: Room) -> Completable {
+        return network.request(.previous, on: room)
+            .asCompletable()
+    }
+    
+    func setPlay(group: Group) -> Completable {
+        return network.request(.play, on: group.master)
+            .asCompletable()
+    }
+    
+    func setPause(group: Group) -> Completable {
+        return network.request(.pause, on: group.master)
+            .asCompletable()
+    }
+    
+    func setStop(group: Group) -> Completable {
+        return network.request(.stop, on: group.master)
+            .asCompletable()
     }
 }
 

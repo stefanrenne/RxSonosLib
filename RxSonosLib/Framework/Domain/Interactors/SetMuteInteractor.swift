@@ -19,21 +19,23 @@ class SetMuteValues: RequestValues {
     }
 }
 
-class SetMuteInteractor<T: SetMuteValues>: Interactor {
+class SetMuteInteractor: Interactor {
     
-    let renderingControlRepository: RenderingControlRepository
+    private let renderingControlRepository: RenderingControlRepository
     
     init(renderingControlRepository: RenderingControlRepository) {
         self.renderingControlRepository = renderingControlRepository
     }
     
-    func buildInteractorObservable(requestValues: SetMuteValues?) -> Observable<Void> {
+    func buildInteractorObservable(requestValues: SetMuteValues?) -> Observable<Never> {
         
         guard let room = requestValues?.room,
               let enabled = requestValues?.enabled else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
         
-        return renderingControlRepository.setMute(room: room, enabled: enabled)
+        return renderingControlRepository
+            .setMute(room: room, enabled: enabled)
+            .asObservable()
     }
 }

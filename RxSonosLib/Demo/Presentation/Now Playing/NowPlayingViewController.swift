@@ -82,7 +82,7 @@ class NowPlayingViewController: UIViewController {
             .throttle(0.5, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .filter({ _ in return self.volumeSlider.isTouchInside })
-            .flatMap({ (newVolume) -> Observable<Int> in
+            .flatMap({ (newVolume) -> Completable in
                 return SonosInteractor
                     .getActiveGroup()
                     .set(volume: Int(newVolume * 100.0))
@@ -109,7 +109,7 @@ class NowPlayingViewController: UIViewController {
             .map({ (_) -> Bool in
                 return !self.muteButton.isSelected
             })
-            .flatMap({ [weak self] (isMuted) -> Observable<[Bool]> in
+            .flatMap({ [weak self] (isMuted) -> Completable in
                 self?.muteButton.isSelected = isMuted
                 return SonosInteractor
                     .getActiveGroup()
@@ -131,7 +131,7 @@ class NowPlayingViewController: UIViewController {
         actionButton
             .data
             .filter({ _ in return self.actionButton.isTouchInside })
-            .flatMap({ (newState) -> Observable<TransportState> in
+            .flatMap({ (newState) -> Completable in
                 return SonosInteractor
                     .getActiveGroup()
                     .set(transportState: newState)

@@ -17,9 +17,9 @@ class GetMusicProvidersValues: RequestValues {
     }
 }
 
-class GetMusicProvidersInteractor<R: GetMusicProvidersValues>: Interactor {
+class GetMusicProvidersInteractor: Interactor {
     
-    let musicProvidersRepository: MusicProvidersRepository
+    private let musicProvidersRepository: MusicProvidersRepository
     
     init(musicProvidersRepository: MusicProvidersRepository) {
         self.musicProvidersRepository = musicProvidersRepository
@@ -31,7 +31,9 @@ class GetMusicProvidersInteractor<R: GetMusicProvidersValues>: Interactor {
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
         
-        return musicProvidersRepository.getMusicProviders(for: room)
+        return musicProvidersRepository
+            .getMusicProviders(for: room)
+            .asObservable()
     }
     
 }

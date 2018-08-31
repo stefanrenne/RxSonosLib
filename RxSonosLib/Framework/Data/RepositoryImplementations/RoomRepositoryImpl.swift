@@ -12,12 +12,22 @@ import AEXML
 
 class RoomRepositoryImpl: RoomRepository {
     
-    func getRoom(device: SSDPDevice) -> Observable<Room>? {
+    private let network = DownloadNetwork()
+    
+    func getRoom(device: SSDPDevice) -> Single<Room>? {
         guard device.isSonosDevice else { return nil }
+
+        if let cache = CacheManager.shared.get(for: device.usn) {
+            return Single.just(cache)
+                .map(self.mapDataToRoom(device: device))
+        }
         
         let locationUrl = device.ip.appendingPathComponent(device.location)
-        return DownloadNetwork(location: locationUrl, cacheKey: device.usn)
-            .executeRequest()
+        return network
+            .request(download: locationUrl)
+            .do(onSuccess: { (data) in
+                CacheManager.shared.set(data, for: device.usn)
+            })
             .map(self.mapDataToRoom(device: device))
     }
     

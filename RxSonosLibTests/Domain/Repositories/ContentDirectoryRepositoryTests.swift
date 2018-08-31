@@ -22,7 +22,7 @@ class ContentDirectoryRepositoryTests: XCTestCase {
     
     func testItCanGetAQueue() {
         
-        stub(soap(call: .browse), soapXml(getBrowseResponse()))
+        stub(soap(call: ContentDirectoryTarget.browse), soapXml(getBrowseResponse()))
         
         let queue = try! contentDirectoryRepository
             .getQueue(for: firstRoom())

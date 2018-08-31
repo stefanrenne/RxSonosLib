@@ -17,20 +17,21 @@ class SetNextTrackValues: RequestValues {
     }
 }
 
-class SetNextTrackInteractor<T: SetNextTrackValues>: Interactor {
+class SetNextTrackInteractor: Interactor {
     
-    let transportRepository: TransportRepository
+    private let transportRepository: TransportRepository
     
     init(transportRepository: TransportRepository) {
         self.transportRepository = transportRepository
     }
     
-    func buildInteractorObservable(requestValues: SetNextTrackValues?) -> Observable<Void> {
-        
+    func buildInteractorObservable(requestValues: SetNextTrackValues?) -> Observable<Never> {
         guard let group = requestValues?.group else {
-                return Observable.error(NSError.sonosLibInvalidImplementationError())
+            return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
         
-        return transportRepository.setNextTrack(for: group.master)
+        return transportRepository
+            .setNextTrack(for: group.master)
+            .asObservable()
     }
 }

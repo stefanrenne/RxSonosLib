@@ -17,9 +17,9 @@ class GetTrackImageValues: RequestValues {
     }
 }
 
-class GetTrackImageInteractor<R: GetTrackImageValues>: Interactor {
+class GetTrackImageInteractor: Interactor {
     
-    let transportRepository: TransportRepository
+    private let transportRepository: TransportRepository
     
     init(transportRepository: TransportRepository) {
         self.transportRepository = transportRepository
@@ -31,7 +31,19 @@ class GetTrackImageInteractor<R: GetTrackImageValues>: Interactor {
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }
         
-        return self.transportRepository
-            .getImage(for: track)
+        return Observable<Data?>.create({ (observable) -> Disposable in
+            return self.transportRepository
+                .getImage(for: track)
+                .subscribe(onSuccess: { (data) in
+                    observable.onNext(data)
+                    observable.onCompleted()
+                }, onError: { (error) in
+                    observable.onError(error)
+                }, onCompleted: {
+                    observable.onNext(nil)
+                    observable.onCompleted()
+                })
+        })
+        
     }
 }
