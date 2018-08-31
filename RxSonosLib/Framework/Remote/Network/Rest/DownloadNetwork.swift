@@ -11,7 +11,7 @@ import RxSwift
 
 class DownloadNetwork: Network {
     
-    internal let request: URLRequest
+    private let request: URLRequest
     
     init(location: URL) {
         request = URLRequest(url: location)

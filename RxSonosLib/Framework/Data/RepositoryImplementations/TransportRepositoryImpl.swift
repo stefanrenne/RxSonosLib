@@ -13,20 +13,20 @@ class TransportRepositoryImpl: TransportRepository {
     
     func getNowPlaying(for room: Room) -> Single<Track?> {
         
-        let positionInfoNetwork = GetPositionInfoNetwork(room: room).executeRequest()
-        let mediaInfoNetwork = GetMediaInfoNetwork(room: room).executeRequest()
+        let positionInfoNetwork = LocalNetwork(room: room, action: .positionInfo).executeRequest()
+        let mediaInfoNetwork = LocalNetwork(room: room, action: .mediaInfo).executeRequest()
         
         return Single.zip(positionInfoNetwork, mediaInfoNetwork, resultSelector: self.mapDataToNowPlaying(for: room))
     }
     
     func getNowPlayingProgress(for room: Room) -> Single<GroupProgress> {
-        return GetPositionInfoNetwork(room: room)
+        return LocalNetwork(room: room, action: .positionInfo)
             .executeRequest()
             .map(self.mapPositionInfoDataToProgress())
     }
     
     func getTransportState(for room: Room) -> Single<TransportState> {
-        return GetTransportInfoNetwork(room: room)
+        return LocalNetwork(room: room, action: .transportInfo)
             .executeRequest()
             .map(mapTransportDataToState())
     }
@@ -49,13 +49,13 @@ class TransportRepositoryImpl: TransportRepository {
     }
     
     func setNextTrack(for room: Room) -> Completable {
-        return SetNextNetwork(room: room)
+        return LocalNetwork(room: room, action: .next)
             .executeRequest()
             .asCompletable()
     }
     
     func setPreviousTrack(for room: Room) -> Completable {
-        return SetPreviousNetwork(room: room)
+        return LocalNetwork(room: room, action: .previous)
             .executeRequest()
             .asCompletable()
     }

@@ -1,5 +1,5 @@
 //
-//  SoapNetwork.swift
+//  LocalNetwork.swift
 //  RxSonosLib
 //
 //  Created by Stefan Renne on 12/03/2018.
@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import AEXML
 
-class SoapNetwork: Network {
+class LocalNetwork: Network {
     
     let room: Room
     let call: SoapAction

@@ -15,7 +15,7 @@ class GroupRepositoryImpl: GroupRepository {
     func getGroups(for rooms: [Room]) -> Single<[Group]> {
         guard let firstRoom = rooms.first else { return Single<[Group]>.just([]) }
         
-        return GetGroupsNetwork(room: firstRoom)
+        return LocalNetwork(room: firstRoom, action: .state)
             .executeRequest()
             .map(self.mapGroupDataToGroups(rooms: rooms))
     }
