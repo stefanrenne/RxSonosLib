@@ -42,4 +42,20 @@ class FakeTransportRepositoryImpl: TransportRepository {
         return Completable.empty()
     }
     
+    var activeState: TransportState?
+    func setPlay(group: Group) -> Completable {
+        activeState = TransportState.playing
+        return Completable.empty()
+    }
+    
+    func setPause(group: Group) -> Completable {
+        activeState = TransportState.paused
+        return Completable.empty()
+    }
+    
+    func setStop(group: Group) -> Completable {
+        activeState = TransportState.stopped
+        return Completable.empty()
+    }
+    
 }

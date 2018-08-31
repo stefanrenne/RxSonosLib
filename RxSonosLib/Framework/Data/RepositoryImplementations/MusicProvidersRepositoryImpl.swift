@@ -13,7 +13,7 @@ import AEXML
 class MusicProvidersRepositoryImpl: MusicProvidersRepository {
     
     func getMusicProviders(for room: Room) -> Single<[MusicProvider]> {
-        return LocalNetwork(room: room, action: .listAvailableServices)
+        return LocalNetwork(room: room, action: MusicTarget.listAvailableServices)
             .executeRequest()
             .map(self.mapDataToMusicServices())
     }

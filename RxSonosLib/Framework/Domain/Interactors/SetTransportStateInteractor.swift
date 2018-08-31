@@ -21,10 +21,10 @@ class SetTransportStateValues: RequestValues {
 
 class SetTransportStateInteractor: Interactor {
     
-    private let renderingControlRepository: RenderingControlRepository
+    private let transportRepository: TransportRepository
     
-    init(renderingControlRepository: RenderingControlRepository) {
-        self.renderingControlRepository = renderingControlRepository
+    init(transportRepository: TransportRepository) {
+        self.transportRepository = transportRepository
     }
     
     func buildInteractorObservable(requestValues: SetTransportStateValues?) -> Observable<Never> {
@@ -36,11 +36,11 @@ class SetTransportStateInteractor: Interactor {
         
         switch state {
         case .playing:
-            return self.renderingControlRepository.setPlay(group: group).asObservable()
+            return transportRepository.setPlay(group: group).asObservable()
         case .paused:
-            return self.renderingControlRepository.setPause(group: group).asObservable()
+            return transportRepository.setPause(group: group).asObservable()
         case .stopped:
-            return self.renderingControlRepository.setStop(group: group).asObservable()
+            return transportRepository.setStop(group: group).asObservable()
         case .transitioning:
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }

@@ -13,43 +13,43 @@ import RxBlocking
 
 class SetTransportStateInteractorTests: XCTestCase {
     
-    let renderingControlRepository: FakeRenderingControlRepositoryImpl = FakeRenderingControlRepositoryImpl()
+    let transportRepository: FakeTransportRepositoryImpl = FakeTransportRepositoryImpl()
     
     func testItCanSetTheCurrentStateToPlay() {
-        let interactor = SetTransportStateInteractor(renderingControlRepository: renderingControlRepository)
+        let interactor = SetTransportStateInteractor(transportRepository: transportRepository)
         
         XCTAssertNoThrow(try interactor
             .get(values: SetTransportStateValues(group: firstGroup(), state: TransportState.playing))
             .toBlocking()
             .toArray())
         
-        XCTAssertEqual(renderingControlRepository.activeState, TransportState.playing)
+        XCTAssertEqual(transportRepository.activeState, TransportState.playing)
     }
     
     func testItCanSetTheCurrentStateToPaused() {
-        let interactor = SetTransportStateInteractor(renderingControlRepository: renderingControlRepository)
+        let interactor = SetTransportStateInteractor(transportRepository: transportRepository)
         
         XCTAssertNoThrow(try interactor
             .get(values: SetTransportStateValues(group: firstGroup(), state: TransportState.paused))
             .toBlocking()
             .toArray())
         
-        XCTAssertEqual(renderingControlRepository.activeState, TransportState.paused)
+        XCTAssertEqual(transportRepository.activeState, TransportState.paused)
     }
     
     func testItCanSetTheCurrentStateToStop() {
-        let interactor = SetTransportStateInteractor(renderingControlRepository: renderingControlRepository)
+        let interactor = SetTransportStateInteractor(transportRepository: transportRepository)
         
         XCTAssertNoThrow(try interactor
             .get(values: SetTransportStateValues(group: firstGroup(), state: TransportState.stopped))
             .toBlocking()
             .toArray())
         
-        XCTAssertEqual(renderingControlRepository.activeState, TransportState.stopped)
+        XCTAssertEqual(transportRepository.activeState, TransportState.stopped)
     }
     
     func testItCantSetTheCurrentStateToTransitioning() {
-        let interactor = SetTransportStateInteractor(renderingControlRepository: renderingControlRepository)
+        let interactor = SetTransportStateInteractor(transportRepository: transportRepository)
         
         XCTAssertThrowsError(try interactor
             .get(values: SetTransportStateValues(group: firstGroup(), state: TransportState.transitioning))
@@ -60,7 +60,7 @@ class SetTransportStateInteractorTests: XCTestCase {
     }
     
     func testItCantSetTheCurrentStateWithoutVolumeValues() {
-        let interactor = SetTransportStateInteractor(renderingControlRepository: renderingControlRepository)
+        let interactor = SetTransportStateInteractor(transportRepository: transportRepository)
         
         XCTAssertThrowsError(try interactor.get().toBlocking().toArray()) { error in
             XCTAssertEqual(error.localizedDescription, NSError.sonosLibInvalidImplementationError().localizedDescription)

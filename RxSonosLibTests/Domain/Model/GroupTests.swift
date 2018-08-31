@@ -108,7 +108,7 @@ class GroupTests: XCTestCase {
     }
     
     func testItCanSetTheTransportState() {
-        let mock = RepositoryInjection.shared.renderingControlRepository as! FakeRenderingControlRepositoryImpl
+        let mock = RepositoryInjection.shared.transportRepository as! FakeTransportRepositoryImpl
         let group = Observable.just(secondGroup())
         _ = group.set(transportState: .playing)
             .toBlocking()

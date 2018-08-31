@@ -12,7 +12,7 @@ import RxSwift
 class RenderingControlRepositoryImpl: RenderingControlRepository {
     
     func getVolume(for room: Room) -> Single<Int> {
-        return LocalNetwork(room: room, action: .getVolume)
+        return LocalNetwork(room: room, action: RenderingControlTarget.getVolume)
             .executeRequest()
             .map(self.mapDataToVolume())
     }
@@ -23,42 +23,24 @@ class RenderingControlRepositoryImpl: RenderingControlRepository {
     }
     
     func set(volume: Int, for room: Room) -> Completable {
-        return LocalNetwork(room: room, action: .setVolume(volume))
+        return LocalNetwork(room: room, action: RenderingControlTarget.setVolume(volume))
             .executeRequest()
             .asCompletable()
     }
     
     func set(volume: Int, for group: Group) -> Completable {
-        let roomObservables = ([group.master] + group.slaves).map({ LocalNetwork(room: $0, action: .setVolume(volume)).executeRequest() })
+        let roomObservables = ([group.master] + group.slaves).map({ LocalNetwork(room: $0, action: RenderingControlTarget.setVolume(volume)).executeRequest() })
         return Single.zip(roomObservables).asCompletable()
     }
     
-    func setPlay(group: Group) -> Completable {
-        return LocalNetwork(room: group.master, action: .play)
-            .executeRequest()
-            .asCompletable()
-    }
-    
-    func setPause(group: Group) -> Completable {
-        return LocalNetwork(room: group.master, action: .pause)
-            .executeRequest()
-            .asCompletable()
-    }
-    
-    func setStop(group: Group) -> Completable {
-        return LocalNetwork(room: group.master, action: .stop)
-            .executeRequest()
-            .asCompletable()
-    }
-    
     func setMute(room: Room, enabled: Bool) -> Completable {
-        return LocalNetwork(room: room, action: .setMute(enabled))
+        return LocalNetwork(room: room, action: RenderingControlTarget.setMute(enabled))
             .executeRequest()
             .asCompletable()
     }
     
     func getMute(room: Room) -> Single<Bool> {
-        return LocalNetwork(room: room, action: .getMute)
+        return LocalNetwork(room: room, action: RenderingControlTarget.getMute)
             .executeRequest()
             .map(self.mapDataToMute())
     }

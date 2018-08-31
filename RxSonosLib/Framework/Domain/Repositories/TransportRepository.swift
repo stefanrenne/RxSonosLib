@@ -23,4 +23,10 @@ protocol TransportRepository {
     
     func setPreviousTrack(for room: Room) -> Completable
     
+    func setPlay(group: Group) -> Completable
+    
+    func setPause(group: Group) -> Completable
+    
+    func setStop(group: Group) -> Completable
+    
 }

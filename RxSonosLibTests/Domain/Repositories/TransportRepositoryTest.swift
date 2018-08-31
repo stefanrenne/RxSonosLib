@@ -18,9 +18,9 @@ class TransportRepositoryTest: XCTestCase {
     
     func testItCantGetTheNowPlayingTrack() {
         
-        stub(soap(call: .transportInfo), soapXml(""))
-        stub(soap(call: .mediaInfo), soapXml(""))
-        stub(soap(call: .positionInfo), soapXml(""))
+        stub(soap(call: TransportTarget.transportInfo), soapXml(""))
+        stub(soap(call: TransportTarget.mediaInfo), soapXml(""))
+        stub(soap(call: TransportTarget.positionInfo), soapXml(""))
         
         let track = try! transportRepository
             .getNowPlaying(for: firstRoom())
@@ -32,8 +32,8 @@ class TransportRepositoryTest: XCTestCase {
     
     func testItCanGetSpotifyNowPlayingTrack() {
         
-        stub(soap(call: .mediaInfo), soapXml(getSpotifyMediaInfoResponse()))
-        stub(soap(call: .positionInfo), soapXml(getSpotifyPositionInfoResponse()))
+        stub(soap(call: TransportTarget.mediaInfo), soapXml(getSpotifyMediaInfoResponse()))
+        stub(soap(call: TransportTarget.positionInfo), soapXml(getSpotifyPositionInfoResponse()))
         
         let track = try! transportRepository
             .getNowPlaying(for: firstRoom())
@@ -56,8 +56,8 @@ class TransportRepositoryTest: XCTestCase {
     
     func testItCanGetTVNowPlayingTrack() {
         
-        stub(soap(call: .mediaInfo), soapXml(getTVMediaInfoResponse()))
-        stub(soap(call: .positionInfo), soapXml(getTVPositionInfoResponse()))
+        stub(soap(call: TransportTarget.mediaInfo), soapXml(getTVMediaInfoResponse()))
+        stub(soap(call: TransportTarget.positionInfo), soapXml(getTVPositionInfoResponse()))
         
         let track = try! transportRepository
             .getNowPlaying(for: firstRoom())
@@ -76,8 +76,8 @@ class TransportRepositoryTest: XCTestCase {
     
     func testItCanGetTuneinNowPlayingTrack() {
         
-        stub(soap(call: .mediaInfo), soapXml(getTuneinMediaInfoResponse()))
-        stub(soap(call: .positionInfo), soapXml(getTuneinPositionInfoResponse()))
+        stub(soap(call: TransportTarget.mediaInfo), soapXml(getTuneinMediaInfoResponse()))
+        stub(soap(call: TransportTarget.positionInfo), soapXml(getTuneinPositionInfoResponse()))
         
         let track = try! transportRepository
             .getNowPlaying(for: firstRoom())
@@ -97,8 +97,8 @@ class TransportRepositoryTest: XCTestCase {
     
     func testItCanGetLibraryNowPlayingTrack() {
         
-        stub(soap(call: .mediaInfo), soapXml(getLibraryMediaInfoResponse()))
-        stub(soap(call: .positionInfo), soapXml(getLibraryPositionInfoResponse()))
+        stub(soap(call: TransportTarget.mediaInfo), soapXml(getLibraryMediaInfoResponse()))
+        stub(soap(call: TransportTarget.positionInfo), soapXml(getLibraryPositionInfoResponse()))
         
         let track = try! transportRepository
             .getNowPlaying(for: firstRoom())
@@ -118,7 +118,7 @@ class TransportRepositoryTest: XCTestCase {
     
     func testItCanGetTheTransportState() {
         
-        stub(soap(call: .transportInfo), soapXml(getTransportInfoResponse()))
+        stub(soap(call: TransportTarget.transportInfo), soapXml(getTransportInfoResponse()))
         
         let state = try! transportRepository
             .getTransportState(for: firstRoom())
@@ -156,7 +156,7 @@ class TransportRepositoryTest: XCTestCase {
     
     func testItCanGetTheCurrentGroupProgress() {
         
-        stub(soap(call: .positionInfo), soapXml(getSpotifyPositionInfoResponse()))
+        stub(soap(call: TransportTarget.positionInfo), soapXml(getSpotifyPositionInfoResponse()))
         
         let progress = try! transportRepository
             .getNowPlayingProgress(for: firstRoom())
@@ -172,7 +172,7 @@ class TransportRepositoryTest: XCTestCase {
     }
     
     func testItCanSetTheNextTrack() {
-        stub(soap(call: .next), soapXml(""))
+        stub(soap(call: TransportTarget.next), soapXml(""))
         
         XCTAssertNoThrow(try transportRepository
             .setNextTrack(for: firstRoom())
@@ -181,10 +181,40 @@ class TransportRepositoryTest: XCTestCase {
     }
     
     func testItCanSetThePreviousTrack() {
-        stub(soap(call: .previous), soapXml(""))
+        stub(soap(call: TransportTarget.previous), soapXml(""))
         
         XCTAssertNoThrow(try transportRepository
             .setPreviousTrack(for: firstRoom())
+            .toBlocking()
+            .toArray())
+    }
+    
+    func testItCanPlayTheActiveGroupTrack() {
+        
+        stub(soap(call: TransportTarget.play), soapXml(""))
+        
+        XCTAssertNoThrow(try transportRepository
+            .setPlay(group: secondGroup())
+            .toBlocking()
+            .toArray())
+    }
+    
+    func testItCanPauseTheActiveGroupTrack() {
+        
+        stub(soap(call: TransportTarget.pause), soapXml(""))
+        
+        XCTAssertNoThrow(try transportRepository
+            .setPause(group: secondGroup())
+            .toBlocking()
+            .toArray())
+    }
+    
+    func testItCanStopTheActiveGroupTrack() {
+        
+        stub(soap(call: TransportTarget.stop), soapXml(""))
+        
+        XCTAssertNoThrow(try transportRepository
+            .setStop(group: secondGroup())
             .toBlocking()
             .toArray())
     }

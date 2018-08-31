@@ -73,7 +73,7 @@ open class SonosInteractor {
     }
     
     static public func setTransport(state: TransportState, for group: Group) -> Completable {
-        return SetTransportStateInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
+        return SetTransportStateInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: SetTransportStateValues(group: group, state: state))
             .asCompletable()
     }

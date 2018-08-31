@@ -13,20 +13,20 @@ class TransportRepositoryImpl: TransportRepository {
     
     func getNowPlaying(for room: Room) -> Single<Track?> {
         
-        let positionInfoNetwork = LocalNetwork(room: room, action: .positionInfo).executeRequest()
-        let mediaInfoNetwork = LocalNetwork(room: room, action: .mediaInfo).executeRequest()
+        let positionInfoNetwork = LocalNetwork(room: room, action: TransportTarget.positionInfo).executeRequest()
+        let mediaInfoNetwork = LocalNetwork(room: room, action: TransportTarget.mediaInfo).executeRequest()
         
         return Single.zip(positionInfoNetwork, mediaInfoNetwork, resultSelector: self.mapDataToNowPlaying(for: room))
     }
     
     func getNowPlayingProgress(for room: Room) -> Single<GroupProgress> {
-        return LocalNetwork(room: room, action: .positionInfo)
+        return LocalNetwork(room: room, action: TransportTarget.positionInfo)
             .executeRequest()
             .map(self.mapPositionInfoDataToProgress())
     }
     
     func getTransportState(for room: Room) -> Single<TransportState> {
-        return LocalNetwork(room: room, action: .transportInfo)
+        return LocalNetwork(room: room, action: TransportTarget.transportInfo)
             .executeRequest()
             .map(mapTransportDataToState())
     }
@@ -49,13 +49,31 @@ class TransportRepositoryImpl: TransportRepository {
     }
     
     func setNextTrack(for room: Room) -> Completable {
-        return LocalNetwork(room: room, action: .next)
+        return LocalNetwork(room: room, action: TransportTarget.next)
             .executeRequest()
             .asCompletable()
     }
     
     func setPreviousTrack(for room: Room) -> Completable {
-        return LocalNetwork(room: room, action: .previous)
+        return LocalNetwork(room: room, action: TransportTarget.previous)
+            .executeRequest()
+            .asCompletable()
+    }
+    
+    func setPlay(group: Group) -> Completable {
+        return LocalNetwork(room: group.master, action: TransportTarget.play)
+            .executeRequest()
+            .asCompletable()
+    }
+    
+    func setPause(group: Group) -> Completable {
+        return LocalNetwork(room: group.master, action: TransportTarget.pause)
+            .executeRequest()
+            .asCompletable()
+    }
+    
+    func setStop(group: Group) -> Completable {
+        return LocalNetwork(room: group.master, action: TransportTarget.stop)
             .executeRequest()
             .asCompletable()
     }

@@ -11,14 +11,14 @@ import Mockingjay
 @testable import RxSonosLib
 
 
-public func soap(room: Room? = nil, call: SoapAction) -> (_ request: URLRequest) -> Bool {
+public func soap(room: Room? = nil, call: SonosTargetType) -> (_ request: URLRequest) -> Bool {
     return { (request: URLRequest) in
         
         let ipMatch = (room != nil) ? request.url?.absoluteString.baseUrl() == room?.ip.absoluteString : true
         let soapActionMatch = request.allHTTPHeaderFields?["SOAPACTION"]?.replacingOccurrences(of: "\"", with: "") == call.soapAction
         
         if soapActionMatch && ipMatch {
-            return Mockingjay.uri(call.service.controllUrl)(request)
+            return Mockingjay.uri(call.controllUrl)(request)
         }
         
         return false

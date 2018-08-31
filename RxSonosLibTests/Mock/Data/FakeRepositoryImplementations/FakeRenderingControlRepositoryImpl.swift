@@ -30,22 +30,6 @@ class FakeRenderingControlRepositoryImpl: RenderingControlRepository {
         return Completable.empty()
     }
     
-    var activeState: TransportState?
-    func setPlay(group: Group) -> Completable {
-        activeState = TransportState.playing
-        return Completable.empty()
-    }
-    
-    func setPause(group: Group) -> Completable {
-        activeState = TransportState.paused
-        return Completable.empty()
-    }
-    
-    func setStop(group: Group) -> Completable {
-        activeState = TransportState.stopped
-        return Completable.empty()
-    }
-    
     var numberSetMuteCalls = 0
     func setMute(room: Room, enabled: Bool) -> Completable {
         numberSetMuteCalls += 1
