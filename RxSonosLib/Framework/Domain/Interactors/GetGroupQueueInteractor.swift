@@ -9,15 +9,13 @@
 import Foundation
 import RxSwift
 
-class GetGroupQueueValues: RequestValues {
+struct GetGroupQueueValues: RequestValues {
     let group: Group
-    
-    init(group: Group) {
-        self.group = group
-    }
 }
 
-class GetGroupQueueInteractor: Interactor {
+class GetGroupQueueInteractor: ObservableInteractor {
+    
+    var requestValues: GetGroupQueueValues?
     
     private let contentDirectoryRepository: ContentDirectoryRepository
     
@@ -25,7 +23,7 @@ class GetGroupQueueInteractor: Interactor {
         self.contentDirectoryRepository = contentDirectoryRepository
     }
     
-    func buildInteractorObservable(requestValues: GetGroupQueueValues?) -> Observable<[MusicProviderTrack]> {
+    func buildInteractorObservable(values: GetGroupQueueValues?) -> Observable<[MusicProviderTrack]> {
         
         guard let masterRoom = requestValues?.group.master else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())

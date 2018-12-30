@@ -10,16 +10,13 @@ import Foundation
 import RxSwift
 import RxSSDP
 
-class GetGroupsValues: RequestValues {
+struct GetGroupsValues: RequestValues {
     let rooms: BehaviorSubject<[Room]>
-    
-    init(rooms: BehaviorSubject<[Room]>) {
-        self.rooms = rooms
-    }
-    
 }
 
-class GetGroupsInteractor: Interactor {
+class GetGroupsInteractor: ObservableInteractor {
+    
+    var requestValues: GetGroupsValues?
     
     private let groupRepository: GroupRepository
     
@@ -27,7 +24,7 @@ class GetGroupsInteractor: Interactor {
         self.groupRepository = groupRepository
     }
     
-    func buildInteractorObservable(requestValues: GetGroupsValues?) -> Observable<[Group]> {
+    func buildInteractorObservable(values: GetGroupsValues?) -> Observable<[Group]> {
         guard let roomSubject = requestValues?.rooms else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())
         }

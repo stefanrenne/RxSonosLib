@@ -92,6 +92,9 @@
 		F81E33AC2072247D002E22A8 /* FakeGroupRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E33A72072247C002E22A8 /* FakeGroupRepositoryImpl.swift */; };
 		F81E33AD2072247D002E22A8 /* FakeTransportRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E33A82072247C002E22A8 /* FakeTransportRepositoryImpl.swift */; };
 		F81E33AF2072250A002E22A8 /* Mockingjay+Soap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E33AE2072250A002E22A8 /* Mockingjay+Soap.swift */; };
+		F827069321D9683000DB4656 /* SingleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827068F21D9682100DB4656 /* SingleInteractor.swift */; };
+		F827069421D9683200DB4656 /* CompletableInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827069121D9682900DB4656 /* CompletableInteractor.swift */; };
+		F827069621D9684000DB4656 /* ObservableInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827069521D9684000DB4656 /* ObservableInteractor.swift */; };
 		F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */; };
 		F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAE20616239004DB497 /* SonosInteractorTests.swift */; };
 		F827E4E4212D55810019ADFD /* LibraryTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827E4E3212D55810019ADFD /* LibraryTrack.swift */; };
@@ -298,6 +301,9 @@
 		F825F4A620482BA9006A7B73 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		F825F4AE20482DDE006A7B73 /* RoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		F825F4AF20482DDE006A7B73 /* RoomsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoomsViewController.xib; sourceTree = "<group>"; };
+		F827068F21D9682100DB4656 /* SingleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleInteractor.swift; sourceTree = "<group>"; };
+		F827069121D9682900DB4656 /* CompletableInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletableInteractor.swift; sourceTree = "<group>"; };
+		F827069521D9684000DB4656 /* ObservableInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableInteractor.swift; sourceTree = "<group>"; };
 		F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupsInteractorTests.swift; sourceTree = "<group>"; };
 		F827DAAE20616239004DB497 /* SonosInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosInteractorTests.swift; sourceTree = "<group>"; };
 		F827E4E3212D55810019ADFD /* LibraryTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTrack.swift; sourceTree = "<group>"; };
@@ -836,6 +842,9 @@
 			isa = PBXGroup;
 			children = (
 				F825F49F204829F5006A7B73 /* Interactor.swift */,
+				F827068F21D9682100DB4656 /* SingleInteractor.swift */,
+				F827069121D9682900DB4656 /* CompletableInteractor.swift */,
+				F827069521D9684000DB4656 /* ObservableInteractor.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1355,6 +1364,7 @@
 				F8181C5A21394BA500C8DE52 /* TransportTarget.swift in Sources */,
 				F81A05E8206028D600897738 /* AEXMLDocument+Create.swift in Sources */,
 				F81E339A207135B2002E22A8 /* GroupProgress.swift in Sources */,
+				F827069621D9684000DB4656 /* ObservableInteractor.swift in Sources */,
 				F8D0BB8C207E5B5A00BBEFB8 /* SonosSettings.swift in Sources */,
 				F8181C5621394A9600C8DE52 /* SonosTargetType.swift in Sources */,
 				F8860E822074D8BE00BF6A7E /* TVTrack.swift in Sources */,
@@ -1386,6 +1396,8 @@
 				F81A05F9206028D600897738 /* LocalNetwork.swift in Sources */,
 				F81A05F4206028D600897738 /* GroupRepository.swift in Sources */,
 				F8181C6721394D6000C8DE52 /* ConnectionManagerTarget.swift in Sources */,
+				F827069421D9683200DB4656 /* CompletableInteractor.swift in Sources */,
+				F827069321D9683000DB4656 /* SingleInteractor.swift in Sources */,
 				F87DC3BA206A2FE80089F882 /* MusicService.swift in Sources */,
 				F81A05F1206028D600897738 /* GetGroupsInteractor.swift in Sources */,
 				F81A05F2206028D600897738 /* SonosInteractor.swift in Sources */,

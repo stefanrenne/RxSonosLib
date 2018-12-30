@@ -9,17 +9,14 @@
 import Foundation
 import RxSwift
 
-class SetVolumeValues: RequestValues {
+struct SetVolumeValues: RequestValues {
     let group: Group
     let volume: Int
-    
-    init(group: Group, volume: Int) {
-        self.group = group
-        self.volume = volume
-    }
 }
 
-class SetVolumeInteractor: Interactor {
+class SetVolumeInteractor: CompletableInteractor {
+    
+    var requestValues: SetVolumeValues?
     
     private let renderingControlRepository: RenderingControlRepository
     
@@ -27,15 +24,13 @@ class SetVolumeInteractor: Interactor {
         self.renderingControlRepository = renderingControlRepository
     }
     
-    func buildInteractorObservable(requestValues: SetVolumeValues?) -> Observable<Never> {
-        
+    func buildInteractorObservable(values: SetVolumeValues?) -> Completable {
         guard let group = requestValues?.group,
               let volume = requestValues?.volume else {
-            return Observable.error(NSError.sonosLibInvalidImplementationError())
+            return Completable.error(NSError.sonosLibInvalidImplementationError())
         }
         
         return renderingControlRepository
             .set(volume: volume, for: group)
-            .asObservable()
     }
 }

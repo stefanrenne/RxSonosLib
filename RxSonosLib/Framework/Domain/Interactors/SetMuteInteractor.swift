@@ -9,17 +9,14 @@
 import Foundation
 import RxSwift
 
-class SetMuteValues: RequestValues {
+struct SetMuteValues: RequestValues {
     let room: Room
     let enabled: Bool
-    
-    init(room: Room, enabled: Bool) {
-        self.room = room
-        self.enabled = enabled
-    }
 }
 
-class SetMuteInteractor: Interactor {
+class SetMuteInteractor: CompletableInteractor {
+    
+    var requestValues: SetMuteValues?
     
     private let renderingControlRepository: RenderingControlRepository
     
@@ -27,15 +24,14 @@ class SetMuteInteractor: Interactor {
         self.renderingControlRepository = renderingControlRepository
     }
     
-    func buildInteractorObservable(requestValues: SetMuteValues?) -> Observable<Never> {
+    func buildInteractorObservable(values: SetMuteValues?) -> Completable {
         
         guard let room = requestValues?.room,
               let enabled = requestValues?.enabled else {
-            return Observable.error(NSError.sonosLibInvalidImplementationError())
+            return Completable.error(NSError.sonosLibInvalidImplementationError())
         }
         
         return renderingControlRepository
             .setMute(room: room, enabled: enabled)
-            .asObservable()
     }
 }

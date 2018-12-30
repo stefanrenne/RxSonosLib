@@ -9,15 +9,13 @@
 import Foundation
 import RxSwift
 
-class GetMusicProvidersValues: RequestValues {
+struct GetMusicProvidersValues: RequestValues {
     let room: Room?
-    
-    init(room: Room?) {
-        self.room = room
-    }
 }
 
-class GetMusicProvidersInteractor: Interactor {
+class GetMusicProvidersInteractor: SingleInteractor {
+    
+    var requestValues: GetMusicProvidersValues?
     
     private let musicProvidersRepository: MusicProvidersRepository
     
@@ -25,15 +23,13 @@ class GetMusicProvidersInteractor: Interactor {
         self.musicProvidersRepository = musicProvidersRepository
     }
     
-    func buildInteractorObservable(requestValues: GetMusicProvidersValues?) -> Observable<[MusicProvider]> {
-        
+    func buildInteractorObservable(values: GetMusicProvidersValues?) -> Single<[MusicProvider]> {
         guard let room = requestValues?.room else {
-            return Observable.error(NSError.sonosLibInvalidImplementationError())
+            return Single.error(NSError.sonosLibInvalidImplementationError())
         }
         
         return musicProvidersRepository
             .getMusicProviders(for: room)
-            .asObservable()
     }
     
 }

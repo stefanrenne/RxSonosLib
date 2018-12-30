@@ -9,15 +9,13 @@
 import Foundation
 import RxSwift
 
-class GetTrackImageValues: RequestValues {
+struct GetTrackImageValues: RequestValues {
     let track: Track
-    
-    init(track: Track) {
-        self.track = track
-    }
 }
 
-class GetTrackImageInteractor: Interactor {
+class GetTrackImageInteractor: ObservableInteractor {
+    
+    var requestValues: GetTrackImageValues?
     
     private let transportRepository: TransportRepository
     
@@ -25,7 +23,7 @@ class GetTrackImageInteractor: Interactor {
         self.transportRepository = transportRepository
     }
     
-    func buildInteractorObservable(requestValues: GetTrackImageValues?) -> Observable<Data?> {
+    func buildInteractorObservable(values: GetTrackImageValues?) -> Observable<Data?> {
         
         guard let track = requestValues?.track else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())

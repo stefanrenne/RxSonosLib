@@ -34,6 +34,7 @@ class MusicProvidersViewController: UIViewController {
         
         SonosInteractor
             .getAllMusicProviders()
+            .asObservable()
             .bind(to: table.rx.items(cellIdentifier: MusicProvidersTableViewCell.identifier, cellType: MusicProvidersTableViewCell.self)) { (_, service, cell) in
                 cell.model = MusicProviderViewModel(service: service)
             }

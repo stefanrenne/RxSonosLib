@@ -9,15 +9,13 @@
 import Foundation
 import RxSwift
 
-class GetTransportStateValues: RequestValues {
+struct GetTransportStateValues: RequestValues {
     let group: Group
-    
-    init(group: Group) {
-        self.group = group
-    }
 }
 
-class GetTransportStateInteractor: Interactor {
+class GetTransportStateInteractor: ObservableInteractor {
+    
+    var requestValues: GetTransportStateValues?
     
     private let transportRepository: TransportRepository
     
@@ -25,7 +23,7 @@ class GetTransportStateInteractor: Interactor {
         self.transportRepository = transportRepository
     }
     
-    func buildInteractorObservable(requestValues: GetTransportStateValues?) -> Observable<TransportState> {
+    func buildInteractorObservable(values: GetTransportStateValues?) -> Observable<TransportState> {
         
         guard let masterRoom = requestValues?.group.master else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())

@@ -9,15 +9,13 @@
 import Foundation
 import RxSwift
 
-class GetNowPlayingValues: RequestValues {
+struct GetNowPlayingValues: RequestValues {
     let group: Group
-    
-    init(group: Group) {
-        self.group = group
-    }
 }
 
-class GetNowPlayingInteractor: Interactor {
+class GetNowPlayingInteractor: ObservableInteractor {
+    
+    var requestValues: GetNowPlayingValues?
     
     private let transportRepository: TransportRepository
     
@@ -25,7 +23,7 @@ class GetNowPlayingInteractor: Interactor {
         self.transportRepository = transportRepository
     }
     
-    func buildInteractorObservable(requestValues: GetNowPlayingValues?) -> Observable<Track?> {
+    func buildInteractorObservable(values: GetNowPlayingValues?) -> Observable<Track?> {
         
         guard let masterRoom = requestValues?.group.master else {
             return Observable.error(NSError.sonosLibInvalidImplementationError())

@@ -9,15 +9,13 @@
 import Foundation
 import RxSwift
 
-class GetMuteValues: RequestValues {
+struct GetMuteValues: RequestValues {
     let room: Room
-    
-    init(room: Room) {
-        self.room = room
-    }
 }
 
-class GetMuteInteractor: Interactor {
+class GetMuteInteractor: ObservableInteractor {
+    
+    var requestValues: GetMuteValues?
     
     private let renderingControlRepository: RenderingControlRepository
     
@@ -25,7 +23,7 @@ class GetMuteInteractor: Interactor {
         self.renderingControlRepository = renderingControlRepository
     }
     
-    func buildInteractorObservable(requestValues: GetMuteValues?) -> Observable<Bool> {
+    func buildInteractorObservable(values: GetMuteValues?) -> Observable<Bool> {
         
         guard let room = requestValues?.room else {
                 return Observable.error(NSError.sonosLibInvalidImplementationError())
