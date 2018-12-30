@@ -26,7 +26,7 @@ class GetNowPlayingInteractor: ObservableInteractor {
     func buildInteractorObservable(values: GetNowPlayingValues?) -> Observable<Track?> {
         
         guard let masterRoom = requestValues?.group.master else {
-            return Observable.error(NSError.sonosLibInvalidImplementationError())
+            return Observable.error(SonosError.invalidImplementation)
         }
         
         return createTimer(SonosSettings.shared.renewNowPlayingTimer)

@@ -34,13 +34,13 @@ class SSDPMessageParser {
             let unicodeScalars = self.scanner.string.unicodeScalars
             let index = unicodeScalars.index(unicodeScalars.startIndex, offsetBy: self.scanner.scanLocation)
             
-            if CharacterSet.newlines.contains(unicodeScalars[index]) {
+            if unicodeScalars.count <= index.encodedOffset || CharacterSet.newlines.contains(unicodeScalars[index]) {
                 valueBuffer = ""
             } else {
                 valueBuffer = self.scanLine()
             }
             
-            if let keyBuffer = keyBuffer as String?, let valueBuffer = valueBuffer {
+            if let keyBuffer = keyBuffer as String?, let valueBuffer = valueBuffer, keyBuffer.count > 0 {
                 message[keyBuffer] = valueBuffer
             }
         }

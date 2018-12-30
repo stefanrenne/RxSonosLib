@@ -25,12 +25,12 @@ extension Network {
                     
                     guard let statusCode = (response as? HTTPURLResponse)?.statusCode,
                         statusCode == 200 || statusCode == 204 else {
-                            event(.error(NSError.sonosLibUnknownUrlError()))
+                            event(.error(SonosError.unknownUrl))
                             return
                     }
                     
                     guard let data = data, data.count > 0 else {
-                        event(.error(NSError.sonosLibInvalidDataError()))
+                        event(.error(SonosError.invalidData))
                         return
                     }
                     

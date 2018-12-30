@@ -26,7 +26,7 @@ class GetVolumeInteractor: ObservableInteractor {
     func buildInteractorObservable(values: GetVolumeValues?) -> Observable<Int> {
         
         guard let group = requestValues?.group else {
-            return Observable.error(NSError.sonosLibInvalidImplementationError())
+            return Observable.error(SonosError.invalidImplementation)
         }
         
         return createTimer(SonosSettings.shared.renewGroupVolumeTimer)

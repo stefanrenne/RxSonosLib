@@ -28,7 +28,7 @@ class SetTransportStateInteractor: CompletableInteractor {
         
         guard let group = requestValues?.group,
               let state = requestValues?.state else {
-                return Completable.error(NSError.sonosLibInvalidImplementationError())
+                return Completable.error(SonosError.invalidImplementation)
         }
         
         switch state {
@@ -39,7 +39,7 @@ class SetTransportStateInteractor: CompletableInteractor {
         case .stopped:
             return transportRepository.setStop(group: group)
         case .transitioning:
-            return Completable.error(NSError.sonosLibInvalidImplementationError())
+            return Completable.error(SonosError.invalidImplementation)
         }
     }
 }

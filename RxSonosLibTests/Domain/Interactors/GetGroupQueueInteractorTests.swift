@@ -56,7 +56,7 @@ class GetGroupQueueInteractorTests: XCTestCase {
         let interactor = GetGroupQueueInteractor(contentDirectoryRepository: contentDirectoryRepository)
         
         XCTAssertThrowsError(try interactor.get().toBlocking().toArray()) { error in
-            XCTAssertEqual(error.localizedDescription, NSError.sonosLibInvalidImplementationError().localizedDescription)
+            XCTAssertEqual(error.localizedDescription, SonosError.invalidImplementation.localizedDescription)
         }
     }
     

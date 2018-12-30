@@ -26,7 +26,7 @@ class GetMuteInteractor: ObservableInteractor {
     func buildInteractorObservable(values: GetMuteValues?) -> Observable<Bool> {
         
         guard let room = requestValues?.room else {
-                return Observable.error(NSError.sonosLibInvalidImplementationError())
+                return Observable.error(SonosError.invalidImplementation)
         }
         
         return createTimer(SonosSettings.shared.renewRoomMuteTimer)

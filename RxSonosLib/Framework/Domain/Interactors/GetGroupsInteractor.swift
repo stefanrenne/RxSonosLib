@@ -25,19 +25,18 @@ class GetGroupsInteractor: ObservableInteractor {
     }
     
     func buildInteractorObservable(values: GetGroupsValues?) -> Observable<[Group]> {
-        guard let roomSubject = requestValues?.rooms else {
-            return Observable.error(NSError.sonosLibInvalidImplementationError())
-        }
-        
         return createTimer(SonosSettings.shared.renewGroupsTimer)
-            .flatMap(mapRoomsToGroups(roomSubject: roomSubject))
+            .flatMap(mapRoomsToGroups(roomSubject: requestValues?.rooms))
             .distinctUntilChanged()
     }
     
     /* Groups */
-    fileprivate func mapRoomsToGroups(roomSubject: BehaviorSubject<[Room]>) -> ((Int) throws -> Observable<[Group]>) {
+    fileprivate func mapRoomsToGroups(roomSubject: BehaviorSubject<[Room]>?) -> ((Int) throws -> Observable<[Group]>) {
         return { _ in
-            let rooms = (try? roomSubject.value()) ?? []
+            guard let rooms = try roomSubject?.value() else {
+                return Observable.just([])
+            }
+            
             return self.groupRepository
                 .getGroups(for: rooms)
                 .asObservable()

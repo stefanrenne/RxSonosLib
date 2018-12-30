@@ -28,7 +28,7 @@ class GetTransportStateInteractorTests: XCTestCase {
         let interactor = GetTransportStateInteractor(transportRepository: transportRepository)
         
         XCTAssertThrowsError(try interactor.get().toBlocking().toArray()) { error in
-            XCTAssertEqual(error.localizedDescription, NSError.sonosLibInvalidImplementationError().localizedDescription)
+            XCTAssertEqual(error.localizedDescription, SonosError.invalidImplementation.localizedDescription)
         }
     }
     

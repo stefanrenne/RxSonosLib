@@ -28,7 +28,7 @@ class SetMuteInteractor: CompletableInteractor {
         
         guard let room = requestValues?.room,
               let enabled = requestValues?.enabled else {
-            return Completable.error(NSError.sonosLibInvalidImplementationError())
+            return Completable.error(SonosError.invalidImplementation)
         }
         
         return renderingControlRepository

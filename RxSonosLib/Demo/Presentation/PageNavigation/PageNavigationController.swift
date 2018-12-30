@@ -25,7 +25,7 @@ extension UINavigationBar {
         
         self.tintColor = UIColor.black
         self.barTintColor = UIColor.white
-        self.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 17)]
+        self.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)]
         
         self.setBackgroundImage(UIColor.clear.as1ptImage(), for: .default)
     }

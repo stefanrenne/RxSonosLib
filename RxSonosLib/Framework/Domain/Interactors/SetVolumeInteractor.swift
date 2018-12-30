@@ -27,7 +27,7 @@ class SetVolumeInteractor: CompletableInteractor {
     func buildInteractorObservable(values: SetVolumeValues?) -> Completable {
         guard let group = requestValues?.group,
               let volume = requestValues?.volume else {
-            return Completable.error(NSError.sonosLibInvalidImplementationError())
+            return Completable.error(SonosError.invalidImplementation)
         }
         
         return renderingControlRepository

@@ -25,7 +25,7 @@ class GetMusicProvidersInteractor: SingleInteractor {
     
     func buildInteractorObservable(values: GetMusicProvidersValues?) -> Single<[MusicProvider]> {
         guard let room = requestValues?.room else {
-            return Single.error(NSError.sonosLibInvalidImplementationError())
+            return Single.error(SonosError.invalidImplementation)
         }
         
         return musicProvidersRepository

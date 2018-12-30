@@ -12,8 +12,8 @@ Pod::Spec.new do |spec|
   spec.osx.deployment_target  = '10.12'
   spec.requires_arc           = true
   spec.source_files           = 'RxSonosLib/Framework/**/*.swift'
-  spec.dependency             'RxSwift', '~> 4.1'
-  spec.dependency             'RxCocoa', '~> 4.1'
-  spec.dependency             'RxSSDP', '~> 4.1'
-  spec.dependency             'AEXML', '~> 4.2'
+  spec.dependency             'RxSwift', '~> 4.4'
+  spec.dependency             'RxCocoa', '~> 4.4'
+  spec.dependency             'RxSSDP', '~> 4.2'
+  spec.dependency             'AEXML', '~> 4.3'
 end

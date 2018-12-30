@@ -76,7 +76,7 @@ extension RenderingControlRepositoryImpl {
         return { data in
             guard let muteString = data["CurrentMute"],
                   let mute = Int(muteString) else {
-                    throw NSError.sonosLibNoDataError()
+                    throw SonosError.noData
             }
             return (mute == 1)
         }

@@ -26,7 +26,7 @@ class SetPreviousTrackInteractor: CompletableInteractor {
     func buildInteractorObservable(values: SetPreviousTrackValues?) -> Completable {
         
         guard let group = requestValues?.group else {
-            return Completable.error(NSError.sonosLibInvalidImplementationError())
+            return Completable.error(SonosError.invalidImplementation)
         }
         
         return transportRepository

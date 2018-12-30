@@ -26,7 +26,7 @@ class GetGroupProgressInteractor: ObservableInteractor {
     func buildInteractorObservable(values: GetGroupProgressValues?) -> Observable<GroupProgress> {
         
         guard let masterRoom = requestValues?.group.master else {
-            return Observable.error(NSError.sonosLibInvalidImplementationError())
+            return Observable.error(SonosError.invalidImplementation)
         }
         
         return createTimer(SonosSettings.shared.renewGroupTrackProgressTimer)

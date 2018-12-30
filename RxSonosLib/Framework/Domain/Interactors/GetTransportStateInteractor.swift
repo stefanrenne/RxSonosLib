@@ -26,7 +26,7 @@ class GetTransportStateInteractor: ObservableInteractor {
     func buildInteractorObservable(values: GetTransportStateValues?) -> Observable<TransportState> {
         
         guard let masterRoom = requestValues?.group.master else {
-            return Observable.error(NSError.sonosLibInvalidImplementationError())
+            return Observable.error(SonosError.invalidImplementation)
         }
         
         return createTimer(SonosSettings.shared.renewGroupTransportStateTimer)

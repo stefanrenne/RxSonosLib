@@ -55,7 +55,7 @@ class SetTransportStateInteractorTests: XCTestCase {
             .get(values: SetTransportStateValues(group: firstGroup(), state: TransportState.transitioning))
             .toBlocking()
             .toArray()) { error in
-            XCTAssertEqual(error.localizedDescription, NSError.sonosLibInvalidImplementationError().localizedDescription)
+            XCTAssertEqual(error.localizedDescription, SonosError.invalidImplementation.localizedDescription)
         }
     }
     
@@ -63,7 +63,7 @@ class SetTransportStateInteractorTests: XCTestCase {
         let interactor = SetTransportStateInteractor(transportRepository: transportRepository)
         
         XCTAssertThrowsError(try interactor.get().toBlocking().toArray()) { error in
-            XCTAssertEqual(error.localizedDescription, NSError.sonosLibInvalidImplementationError().localizedDescription)
+            XCTAssertEqual(error.localizedDescription, SonosError.invalidImplementation.localizedDescription)
         }
     }
     
