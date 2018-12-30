@@ -17,7 +17,9 @@ class GetMusicProvidersValues: RequestValues {
     }
 }
 
-class GetMusicProvidersInteractor: Interactor {
+class GetMusicProvidersInteractor: SingleInteractor {
+    
+    typealias T = GetMusicProvidersValues
     
     private let musicProvidersRepository: MusicProvidersRepository
     
@@ -25,15 +27,13 @@ class GetMusicProvidersInteractor: Interactor {
         self.musicProvidersRepository = musicProvidersRepository
     }
     
-    func buildInteractorObservable(requestValues: GetMusicProvidersValues?) -> Observable<[MusicProvider]> {
-        
-        guard let room = requestValues?.room else {
-            return Observable.error(NSError.sonosLibInvalidImplementationError())
+    func buildInteractorObservable(values: GetMusicProvidersValues?) -> Single<[MusicProvider]> {
+        guard let room = values?.room else {
+            return Single.error(SonosError.invalidImplementation)
         }
         
         return musicProvidersRepository
             .getMusicProviders(for: room)
-            .asObservable()
     }
     
 }

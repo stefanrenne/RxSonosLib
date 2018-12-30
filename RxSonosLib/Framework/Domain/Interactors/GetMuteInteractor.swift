@@ -17,7 +17,9 @@ class GetMuteValues: RequestValues {
     }
 }
 
-class GetMuteInteractor: Interactor {
+class GetMuteInteractor: ObservableInteractor {
+    
+    typealias T = GetMuteValues
     
     private let renderingControlRepository: RenderingControlRepository
     
@@ -25,10 +27,10 @@ class GetMuteInteractor: Interactor {
         self.renderingControlRepository = renderingControlRepository
     }
     
-    func buildInteractorObservable(requestValues: GetMuteValues?) -> Observable<Bool> {
+    func buildInteractorObservable(values: GetMuteValues?) -> Observable<Bool> {
         
-        guard let room = requestValues?.room else {
-                return Observable.error(NSError.sonosLibInvalidImplementationError())
+        guard let room = values?.room else {
+                return Observable.error(SonosError.invalidImplementation)
         }
         
         return createTimer(SonosSettings.shared.renewRoomMuteTimer)

@@ -17,7 +17,9 @@ class GetGroupProgressValues: RequestValues {
     }
 }
 
-class GetGroupProgressInteractor: Interactor {
+class GetGroupProgressInteractor: ObservableInteractor {
+    
+    typealias T = GetGroupProgressValues
     
     private let transportRepository: TransportRepository
     
@@ -25,10 +27,10 @@ class GetGroupProgressInteractor: Interactor {
         self.transportRepository = transportRepository
     }
     
-    func buildInteractorObservable(requestValues: GetGroupProgressValues?) -> Observable<GroupProgress> {
+    func buildInteractorObservable(values: GetGroupProgressValues?) -> Observable<GroupProgress> {
         
-        guard let masterRoom = requestValues?.group.master else {
-            return Observable.error(NSError.sonosLibInvalidImplementationError())
+        guard let masterRoom = values?.group.master else {
+            return Observable.error(SonosError.invalidImplementation)
         }
         
         return createTimer(SonosSettings.shared.renewGroupTrackProgressTimer)

@@ -104,7 +104,7 @@ class NowPlayingViewController: UIViewController {
         
         muteButton
             .rx
-            .controlEvent(UIControlEvents.touchUpInside)
+            .controlEvent(UIControl.Event.touchUpInside)
             .filter({ _ in return self.muteButton.isTouchInside })
             .map({ (_) -> Bool in
                 return !self.muteButton.isSelected

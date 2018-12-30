@@ -17,7 +17,9 @@ class GetVolumeValues: RequestValues {
     }
 }
 
-class GetVolumeInteractor: Interactor {
+class GetVolumeInteractor: ObservableInteractor {
+    
+    typealias T = GetVolumeValues
     
     private let renderingControlRepository: RenderingControlRepository
     
@@ -25,10 +27,10 @@ class GetVolumeInteractor: Interactor {
         self.renderingControlRepository = renderingControlRepository
     }
     
-    func buildInteractorObservable(requestValues: GetVolumeValues?) -> Observable<Int> {
+    func buildInteractorObservable(values: GetVolumeValues?) -> Observable<Int> {
         
-        guard let group = requestValues?.group else {
-            return Observable.error(NSError.sonosLibInvalidImplementationError())
+        guard let group = values?.group else {
+            return Observable.error(SonosError.invalidImplementation)
         }
         
         return createTimer(SonosSettings.shared.renewGroupVolumeTimer)

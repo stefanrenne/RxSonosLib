@@ -41,7 +41,7 @@ import RxSonosLib
         
         self
             .rx
-            .controlEvent(UIControlEvents.touchUpInside)
+            .controlEvent(UIControl.Event.touchUpInside)
             .map({ [weak self] _ in
                 guard let state = try self?.data.value() else { return TransportState.transitioning }
                 let newState = state.reverseState()

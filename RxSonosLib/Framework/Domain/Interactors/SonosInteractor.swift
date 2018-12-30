@@ -39,13 +39,13 @@ open class SonosInteractor {
         return shared.allGroups.asObserver()
     }
     
-    static public func getAllMusicProviders() -> Observable<[MusicProvider]> {
+    static public func getAllMusicProviders() -> Single<[MusicProvider]> {
         return shared
             .allGroups
-            .asObserver()
             .filter({ $0.count > 0 })
             .take(1)
-            .flatMap { (groups) -> Observable<[MusicProvider]> in
+            .asSingle()
+            .flatMap { (groups) -> Single<[MusicProvider]> in
                 return GetMusicProvidersInteractor(musicProvidersRepository: RepositoryInjection.provideMusicProvidersRepository())
                     .get(values: GetMusicProvidersValues(room: groups.first?.master))
         }   
@@ -75,19 +75,16 @@ open class SonosInteractor {
     static public func setTransport(state: TransportState, for group: Group) -> Completable {
         return SetTransportStateInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: SetTransportStateValues(group: group, state: state))
-            .asCompletable()
     }
     
     static public func setNextTrack(_ group: Group) -> Completable {
         return SetNextTrackInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: SetNextTrackValues(group: group))
-            .asCompletable()
     }
     
     static public func setPreviousTrack(_ group: Group) -> Completable {
         return SetPreviousTrackInteractor(transportRepository: RepositoryInjection.provideTransportRepository())
             .get(values: SetPreviousTrackValues(group: group))
-            .asCompletable()
     }
     
     static public func getVolume(_ group: Group) -> Observable<Int> {
@@ -98,7 +95,6 @@ open class SonosInteractor {
     static public func set(volume: Int, for group: Group) -> Completable {
         return SetVolumeInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
             .get(values: SetVolumeValues(group: group, volume: volume))
-            .asCompletable()
     }
     
     /* Room */
@@ -110,7 +106,6 @@ open class SonosInteractor {
     static public func set(mute enabled: Bool, for room: Room) -> Completable {
         return SetMuteInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository())
             .get(values: SetMuteValues(room: room, enabled: enabled))
-            .asCompletable()
     }
     
     /* Track */

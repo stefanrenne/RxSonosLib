@@ -129,7 +129,7 @@ class TransportRepositoryTest: XCTestCase {
     }
     
     func testItCanGetTheImageForATrackWithAnImageUri() {
-        let data = UIImagePNGRepresentation(UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!)!
+        let data = UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!.jpegData(compressionQuality: 1.0)!
         stub(everything, http(download: .content(data)))
                 
         let imageData = try! transportRepository
@@ -141,7 +141,7 @@ class TransportRepositoryTest: XCTestCase {
     }
     
     func testItCantGetTheImageForATrackWithoutAnImageUri() {
-        let data = UIImageJPEGRepresentation(UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!, 1.0)!
+        let data = UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!.jpegData(compressionQuality: 1.0)!
         stub(everything, http(download: .content(data)))
 
         let track = TVTrack(queueItem: 1, uri: "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif")

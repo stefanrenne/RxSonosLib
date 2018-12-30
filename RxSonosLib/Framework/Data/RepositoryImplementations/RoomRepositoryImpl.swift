@@ -41,7 +41,7 @@ fileprivate extension RoomRepositoryImpl {
                     #if DEBUG
                         print(String(data: data, encoding: .utf8)!)
                     #endif
-                    throw NSError.sonosLibNoDataError()
+                    throw SonosError.noData
             }
             return Room(ssdpDevice: device, deviceDescription: description)
         }

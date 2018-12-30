@@ -8,28 +8,13 @@
 
 import Foundation
 
-public extension NSError {
+enum SonosError: Error {
     
-    public static var sonosLibDomain: String { return "RxSonosLib" }
+    case noData
     
-    public static var sonosLibNoDataErrorCode: Int { return 4001 }
-    static func sonosLibNoDataError() -> Error {
-        return NSError(domain: sonosLibDomain, code: sonosLibNoDataErrorCode, userInfo: nil)
-    }
+    case invalidData
     
-    public static var sonosLibInvalidDataErrorCode: Int { return 4002 }
-    static func sonosLibInvalidDataError() -> Error {
-        return NSError(domain: sonosLibDomain, code: sonosLibInvalidDataErrorCode, userInfo: nil)
-    }
+    case unknownUrl
     
-    public static var sonosLibUnknownUrlErrorCode: Int { return 4003 }
-    static func sonosLibUnknownUrlError() -> Error {
-        return NSError(domain: sonosLibDomain, code: sonosLibUnknownUrlErrorCode, userInfo: nil)
-    }
-    
-    public static var sonosLibInvalidImplementationErrorCode: Int { return 4004 }
-    static func sonosLibInvalidImplementationError() -> Error {
-        return NSError(domain: sonosLibDomain, code: sonosLibInvalidImplementationErrorCode, userInfo: nil)
-    }
-    
+    case invalidImplementation
 }

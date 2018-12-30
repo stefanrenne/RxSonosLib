@@ -17,7 +17,7 @@ class NetworkTest: XCTestCase {
     func testItCanProcess404Errors() {
         stub(everything, http(404))
         XCTAssertThrowsError(try MockNetwork().perform(request: request).toBlocking().toArray()) { error in
-            XCTAssertEqual(error.localizedDescription, NSError.sonosLibUnknownUrlError().localizedDescription)
+            XCTAssertEqual(error.localizedDescription, SonosError.unknownUrl.localizedDescription)
         }
     }
     
@@ -25,7 +25,7 @@ class NetworkTest: XCTestCase {
         stub(everything, http(200))
         
         XCTAssertThrowsError(try MockNetwork().perform(request: request).toBlocking().toArray()) { error in
-            XCTAssertEqual(error.localizedDescription, NSError.sonosLibInvalidDataError().localizedDescription)
+            XCTAssertEqual(error.localizedDescription, SonosError.invalidData.localizedDescription)
         }
     }
     

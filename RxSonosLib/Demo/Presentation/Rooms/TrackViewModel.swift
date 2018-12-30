@@ -37,17 +37,17 @@ class TrackViewModel {
     
     lazy var trackDescription: NSAttributedString = {
         return track.description(filterd: [TrackDescription.title])
-            .joined(separator: "  ●  ", attrs: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 8), NSAttributedStringKey.baselineOffset: 2])
+            .joined(separator: "  ●  ", attrs: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 8), NSAttributedString.Key.baselineOffset: 2])
     }()
     
     lazy var trackGroupDescription: NSAttributedString = {
         return track.description(filterd: [TrackDescription.album])
-            .joined(separator: "  ●  ", attrs: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 8), NSAttributedStringKey.baselineOffset: 2])
+            .joined(separator: "  ●  ", attrs: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 8), NSAttributedString.Key.baselineOffset: 2])
     }()
 }
 
 extension Array where Element == String {
-    public func joined(separator: String, attrs: [NSAttributedStringKey: Any]) -> NSAttributedString {
+    public func joined(separator: String, attrs: [NSAttributedString.Key: Any]) -> NSAttributedString {
         let mutableString = NSMutableAttributedString()
         self.enumerated().forEach { (index, string) in
             mutableString.append(NSAttributedString(string: string))

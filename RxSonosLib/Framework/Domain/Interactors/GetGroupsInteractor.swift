@@ -10,16 +10,13 @@ import Foundation
 import RxSwift
 import RxSSDP
 
-class GetGroupsValues: RequestValues {
+struct GetGroupsValues: RequestValues {
     let rooms: BehaviorSubject<[Room]>
-    
-    init(rooms: BehaviorSubject<[Room]>) {
-        self.rooms = rooms
-    }
-    
 }
 
-class GetGroupsInteractor: Interactor {
+class GetGroupsInteractor: ObservableInteractor {
+    
+    typealias T = GetGroupsValues
     
     private let groupRepository: GroupRepository
     
@@ -27,20 +24,27 @@ class GetGroupsInteractor: Interactor {
         self.groupRepository = groupRepository
     }
     
-    func buildInteractorObservable(requestValues: GetGroupsValues?) -> Observable<[Group]> {
-        guard let roomSubject = requestValues?.rooms else {
-            return Observable.error(NSError.sonosLibInvalidImplementationError())
+    func buildInteractorObservable(values: GetGroupsValues?) -> Observable<[Group]> {
+        do {
+            guard let rooms = try values?.rooms.value() else {
+                throw SonosError.invalidImplementation
+            }
+            
+            return createTimer(SonosSettings.shared.renewGroupsTimer)
+                .flatMap(mapRoomsToGroups(rooms: rooms))
+                .distinctUntilChanged()
+        } catch {
+            return Observable.error(error)
         }
-        
-        return createTimer(SonosSettings.shared.renewGroupsTimer)
-            .flatMap(mapRoomsToGroups(roomSubject: roomSubject))
-            .distinctUntilChanged()
     }
     
     /* Groups */
-    fileprivate func mapRoomsToGroups(roomSubject: BehaviorSubject<[Room]>) -> ((Int) throws -> Observable<[Group]>) {
+    fileprivate func mapRoomsToGroups(rooms: [Room]) -> ((Int) throws -> Observable<[Group]>) {
         return { _ in
-            let rooms = (try? roomSubject.value()) ?? []
+            guard rooms.count > 0 else {
+                return Observable.just([])
+            }
+            
             return self.groupRepository
                 .getGroups(for: rooms)
                 .asObservable()

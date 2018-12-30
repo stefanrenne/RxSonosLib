@@ -9,15 +9,13 @@
 import Foundation
 import RxSwift
 
-class SetNextTrackValues: RequestValues {
+struct SetNextTrackValues: RequestValues {
     let group: Group
-    
-    init(group: Group) {
-        self.group = group
-    }
 }
 
-class SetNextTrackInteractor: Interactor {
+class SetNextTrackInteractor: CompletableInteractor {
+    
+    typealias T = SetNextTrackValues
     
     private let transportRepository: TransportRepository
     
@@ -25,13 +23,12 @@ class SetNextTrackInteractor: Interactor {
         self.transportRepository = transportRepository
     }
     
-    func buildInteractorObservable(requestValues: SetNextTrackValues?) -> Observable<Never> {
-        guard let group = requestValues?.group else {
-            return Observable.error(NSError.sonosLibInvalidImplementationError())
+    func buildInteractorObservable(values: SetNextTrackValues?) -> Completable {
+        guard let group = values?.group else {
+            return Completable.error(SonosError.invalidImplementation)
         }
         
         return transportRepository
             .setNextTrack(for: group.master)
-            .asObservable()
     }
 }

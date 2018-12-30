@@ -17,7 +17,9 @@ class GetNowPlayingValues: RequestValues {
     }
 }
 
-class GetNowPlayingInteractor: Interactor {
+class GetNowPlayingInteractor: ObservableInteractor {
+    
+    typealias T = GetNowPlayingValues
     
     private let transportRepository: TransportRepository
     
@@ -25,10 +27,10 @@ class GetNowPlayingInteractor: Interactor {
         self.transportRepository = transportRepository
     }
     
-    func buildInteractorObservable(requestValues: GetNowPlayingValues?) -> Observable<Track?> {
+    func buildInteractorObservable(values: GetNowPlayingValues?) -> Observable<Track?> {
         
-        guard let masterRoom = requestValues?.group.master else {
-            return Observable.error(NSError.sonosLibInvalidImplementationError())
+        guard let masterRoom = values?.group.master else {
+            return Observable.error(SonosError.invalidImplementation)
         }
         
         return createTimer(SonosSettings.shared.renewNowPlayingTimer)

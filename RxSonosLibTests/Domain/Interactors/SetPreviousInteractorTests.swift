@@ -32,7 +32,7 @@ class SetPreviousInteractorTests: XCTestCase {
         let interactor = SetPreviousTrackInteractor(transportRepository: transportRepository)
         
         XCTAssertThrowsError(try interactor.get().toBlocking().toArray()) { error in
-            XCTAssertEqual(error.localizedDescription, NSError.sonosLibInvalidImplementationError().localizedDescription)
+            XCTAssertEqual(error.localizedDescription, SonosError.invalidImplementation.localizedDescription)
         }
     }
     

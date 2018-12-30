@@ -31,7 +31,7 @@ class SetVolumeInteractorTests: XCTestCase {
         let interactor = SetVolumeInteractor(renderingControlRepository: renderingControlRepository)
         
         XCTAssertThrowsError(try interactor.get().toBlocking().toArray()) { error in
-            XCTAssertEqual(error.localizedDescription, NSError.sonosLibInvalidImplementationError().localizedDescription)
+            XCTAssertEqual(error.localizedDescription, SonosError.invalidImplementation.localizedDescription)
         }
     }
     

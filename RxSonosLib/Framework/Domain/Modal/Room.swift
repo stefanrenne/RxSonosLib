@@ -59,13 +59,14 @@ extension ObservableType where E == [Room] {
     internal func foreachRoom(perform: @escaping ((Room) -> (Completable))) -> Completable {
         return
             self
-                .flatMap({ (rooms) -> Observable<Never> in
+                .take(1)
+                .asSingle()
+                .flatMapCompletable({ (rooms) -> Completable in
                     let events = rooms.map({ (room) -> Completable in
                         return perform(room)
                     })
-                    return Completable.merge(events).asObservable()
+                    return Completable.merge(events)
                 })
-                .asCompletable()
     }
     
 }
@@ -83,10 +84,10 @@ extension ObservableType where E == Room {
         return
             self
             .take(1)
-            .flatMap({ (room) -> Observable<Never> in
-                return SonosInteractor.set(mute: enabled, for: room).asObservable()
+            .asSingle()
+            .flatMapCompletable({ (room) -> Completable in
+                return SonosInteractor.set(mute: enabled, for: room)
             })
-            .asCompletable()
     }
 }
 

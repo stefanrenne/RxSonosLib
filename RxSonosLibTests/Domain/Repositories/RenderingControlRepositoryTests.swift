@@ -92,7 +92,7 @@ class RenderingControlRepositoryTests: XCTestCase {
         stub(soap(call: RenderingControlTarget.getMute), soapXml(""))
         
         XCTAssertThrowsError(try renderingControlRepository.getMute(room: firstRoom()).toBlocking().toArray()) { error in
-            XCTAssertEqual(error.localizedDescription, NSError.sonosLibNoDataError().localizedDescription)
+            XCTAssertEqual(error.localizedDescription, SonosError.noData.localizedDescription)
         }
     }
     

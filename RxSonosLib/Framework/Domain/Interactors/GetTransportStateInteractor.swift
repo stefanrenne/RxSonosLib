@@ -17,7 +17,9 @@ class GetTransportStateValues: RequestValues {
     }
 }
 
-class GetTransportStateInteractor: Interactor {
+class GetTransportStateInteractor: ObservableInteractor {
+    
+    typealias T = GetTransportStateValues
     
     private let transportRepository: TransportRepository
     
@@ -25,10 +27,10 @@ class GetTransportStateInteractor: Interactor {
         self.transportRepository = transportRepository
     }
     
-    func buildInteractorObservable(requestValues: GetTransportStateValues?) -> Observable<TransportState> {
+    func buildInteractorObservable(values: GetTransportStateValues?) -> Observable<TransportState> {
         
-        guard let masterRoom = requestValues?.group.master else {
-            return Observable.error(NSError.sonosLibInvalidImplementationError())
+        guard let masterRoom = values?.group.master else {
+            return Observable.error(SonosError.invalidImplementation)
         }
         
         return createTimer(SonosSettings.shared.renewGroupTransportStateTimer)

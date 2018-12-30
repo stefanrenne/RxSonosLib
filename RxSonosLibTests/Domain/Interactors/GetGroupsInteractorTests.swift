@@ -44,11 +44,11 @@ class GetGroupsInteractorTests: XCTestCase {
         XCTAssertEqual(groups[4].slaves.count, 0)
     }
     
-    func testItCantGetGroupsWithoutAnRoomObsercable() {
+    func testItCantGetGroupsWithoutAnRoomObservable() {
         let interactor = GetGroupsInteractor(groupRepository: groupRepository)
         
         XCTAssertThrowsError(try interactor.get().toBlocking().toArray()) { error in
-            XCTAssertEqual(error.localizedDescription, NSError.sonosLibInvalidImplementationError().localizedDescription)
+            XCTAssertEqual(error.localizedDescription, SonosError.invalidImplementation.localizedDescription)
         }
         
     }
