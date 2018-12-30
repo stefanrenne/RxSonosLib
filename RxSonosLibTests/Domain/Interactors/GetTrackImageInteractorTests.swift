@@ -21,7 +21,7 @@ class GetTrackImageInteractorTests: XCTestCase {
             .toBlocking()
             .first()!
         
-        let expectedData = UIImagePNGRepresentation(UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!)
+        let expectedData = UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!.pngData()
         XCTAssertEqual(imageData, expectedData)
     }
     

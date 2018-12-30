@@ -26,7 +26,7 @@ class FakeTransportRepositoryImpl: TransportRepository {
     
     func getImage(for track: Track) -> Maybe<Data> {
         let image = UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!
-        let data = UIImagePNGRepresentation(image)!
+        let data = image.pngData()!
         return Maybe.just(data)
     }
     
