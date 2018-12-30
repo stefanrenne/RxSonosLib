@@ -16,7 +16,7 @@ struct SetTransportStateValues: RequestValues {
 
 class SetTransportStateInteractor: CompletableInteractor {
     
-    var requestValues: SetTransportStateValues?
+    typealias T = SetTransportStateValues
     
     private let transportRepository: TransportRepository
     
@@ -26,8 +26,8 @@ class SetTransportStateInteractor: CompletableInteractor {
     
     func buildInteractorObservable(values: SetTransportStateValues?) -> Completable {
         
-        guard let group = requestValues?.group,
-              let state = requestValues?.state else {
+        guard let group = values?.group,
+              let state = values?.state else {
                 return Completable.error(SonosError.invalidImplementation)
         }
         

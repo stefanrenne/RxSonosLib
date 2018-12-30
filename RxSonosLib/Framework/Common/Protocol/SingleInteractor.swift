@@ -27,7 +27,7 @@ extension SingleInteractor {
     }
     
     func get(values: T?) -> Single<U> {
-        return buildInteractorObservable(values: requestValues)
+        return buildInteractorObservable(values: values)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
             .observeOn(MainScheduler.instance)
     }

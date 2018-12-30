@@ -14,21 +14,3 @@ func ignoreNil<T>() -> ((T?) -> Observable<T>) {
         return object.map(Observable.just) ?? Observable.empty()
     }
 }
-
-//extension Array where Element ==  {
-//    
-//    func asCompletable() -> RxSwift.Completable {
-//        return Completable.create { (event) -> Disposable in
-//            let dispatchGroup = DispatchGroup()
-//            
-//            self.sub
-//            
-//            dispatchGroup.notify(queue: .main, execute: {
-//                event(.completed)
-//            })
-//            
-//            return Disposables.create(<#T##disposables: [Disposable]##[Disposable]#>)
-//        }
-//    }
-//    
-//}

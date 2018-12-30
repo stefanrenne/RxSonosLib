@@ -9,13 +9,17 @@
 import Foundation
 import RxSwift
 
-struct GetVolumeValues: RequestValues {
+class GetVolumeValues: RequestValues {
     let group: Group
+    
+    init(group: Group) {
+        self.group = group
+    }
 }
 
 class GetVolumeInteractor: ObservableInteractor {
     
-    var requestValues: GetVolumeValues?
+    typealias T = GetVolumeValues
     
     private let renderingControlRepository: RenderingControlRepository
     
@@ -25,7 +29,7 @@ class GetVolumeInteractor: ObservableInteractor {
     
     func buildInteractorObservable(values: GetVolumeValues?) -> Observable<Int> {
         
-        guard let group = requestValues?.group else {
+        guard let group = values?.group else {
             return Observable.error(SonosError.invalidImplementation)
         }
         

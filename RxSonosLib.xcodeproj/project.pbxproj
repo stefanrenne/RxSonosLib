@@ -95,6 +95,7 @@
 		F827069321D9683000DB4656 /* SingleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827068F21D9682100DB4656 /* SingleInteractor.swift */; };
 		F827069421D9683200DB4656 /* CompletableInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827069121D9682900DB4656 /* CompletableInteractor.swift */; };
 		F827069621D9684000DB4656 /* ObservableInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827069521D9684000DB4656 /* ObservableInteractor.swift */; };
+		F82706AC21D97E4400DB4656 /* Rx+Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82706AB21D97E4400DB4656 /* Rx+Timer.swift */; };
 		F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */; };
 		F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAE20616239004DB497 /* SonosInteractorTests.swift */; };
 		F827E4E4212D55810019ADFD /* LibraryTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827E4E3212D55810019ADFD /* LibraryTrack.swift */; };
@@ -304,6 +305,7 @@
 		F827068F21D9682100DB4656 /* SingleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleInteractor.swift; sourceTree = "<group>"; };
 		F827069121D9682900DB4656 /* CompletableInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletableInteractor.swift; sourceTree = "<group>"; };
 		F827069521D9684000DB4656 /* ObservableInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableInteractor.swift; sourceTree = "<group>"; };
+		F82706AB21D97E4400DB4656 /* Rx+Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Timer.swift"; sourceTree = "<group>"; };
 		F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupsInteractorTests.swift; sourceTree = "<group>"; };
 		F827DAAE20616239004DB497 /* SonosInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosInteractorTests.swift; sourceTree = "<group>"; };
 		F827E4E3212D55810019ADFD /* LibraryTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTrack.swift; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				F86B343F206A8EB900979A5F /* String+Time.swift */,
 				F8860E7B2074D74100BF6A7E /* String+Empty.swift */,
 				F8DE4766208A35F2008F50FA /* Rx+Helpers.swift */,
+				F82706AB21D97E4400DB4656 /* Rx+Timer.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1401,6 +1404,7 @@
 				F81A05F9206028D600897738 /* LocalNetwork.swift in Sources */,
 				F81A05F4206028D600897738 /* GroupRepository.swift in Sources */,
 				F8181C6721394D6000C8DE52 /* ConnectionManagerTarget.swift in Sources */,
+				F82706AC21D97E4400DB4656 /* Rx+Timer.swift in Sources */,
 				F827069421D9683200DB4656 /* CompletableInteractor.swift in Sources */,
 				F827069321D9683000DB4656 /* SingleInteractor.swift in Sources */,
 				F87DC3BA206A2FE80089F882 /* MusicService.swift in Sources */,

@@ -9,13 +9,17 @@
 import Foundation
 import RxSwift
 
-struct GetMusicProvidersValues: RequestValues {
+class GetMusicProvidersValues: RequestValues {
     let room: Room?
+    
+    init(room: Room?) {
+        self.room = room
+    }
 }
 
 class GetMusicProvidersInteractor: SingleInteractor {
     
-    var requestValues: GetMusicProvidersValues?
+    typealias T = GetMusicProvidersValues
     
     private let musicProvidersRepository: MusicProvidersRepository
     
@@ -24,7 +28,7 @@ class GetMusicProvidersInteractor: SingleInteractor {
     }
     
     func buildInteractorObservable(values: GetMusicProvidersValues?) -> Single<[MusicProvider]> {
-        guard let room = requestValues?.room else {
+        guard let room = values?.room else {
             return Single.error(SonosError.invalidImplementation)
         }
         

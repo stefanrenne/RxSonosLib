@@ -16,7 +16,7 @@ struct GetGroupsValues: RequestValues {
 
 class GetGroupsInteractor: ObservableInteractor {
     
-    var requestValues: GetGroupsValues?
+    typealias T = GetGroupsValues
     
     private let groupRepository: GroupRepository
     
@@ -26,7 +26,7 @@ class GetGroupsInteractor: ObservableInteractor {
     
     func buildInteractorObservable(values: GetGroupsValues?) -> Observable<[Group]> {
         return createTimer(SonosSettings.shared.renewGroupsTimer)
-            .flatMap(mapRoomsToGroups(roomSubject: requestValues?.rooms))
+            .flatMap(mapRoomsToGroups(roomSubject: values?.rooms))
             .distinctUntilChanged()
     }
     

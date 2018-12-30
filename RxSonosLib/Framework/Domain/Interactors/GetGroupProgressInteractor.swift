@@ -9,13 +9,17 @@
 import Foundation
 import RxSwift
 
-struct GetGroupProgressValues: RequestValues {
+class GetGroupProgressValues: RequestValues {
     let group: Group
+    
+    init(group: Group) {
+        self.group = group
+    }
 }
 
 class GetGroupProgressInteractor: ObservableInteractor {
     
-    var requestValues: GetGroupProgressValues?
+    typealias T = GetGroupProgressValues
     
     private let transportRepository: TransportRepository
     
@@ -25,7 +29,7 @@ class GetGroupProgressInteractor: ObservableInteractor {
     
     func buildInteractorObservable(values: GetGroupProgressValues?) -> Observable<GroupProgress> {
         
-        guard let masterRoom = requestValues?.group.master else {
+        guard let masterRoom = values?.group.master else {
             return Observable.error(SonosError.invalidImplementation)
         }
         

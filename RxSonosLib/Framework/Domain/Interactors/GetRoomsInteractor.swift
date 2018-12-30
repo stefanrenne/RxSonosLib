@@ -14,7 +14,7 @@ struct GetRoomsValues: RequestValues { }
 
 class GetRoomsInteractor: ObservableInteractor {
     
-    var requestValues: GetRoomsValues?
+    typealias T = GetRoomsValues
     
     private let ssdpRepository: SSDPRepository
     private let roomRepository: RoomRepository

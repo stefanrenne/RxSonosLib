@@ -14,5 +14,4 @@ protocol RequestValues { }
 protocol Interactor {
     
     associatedtype T: RequestValues
-    var requestValues: T? { get set }
 }

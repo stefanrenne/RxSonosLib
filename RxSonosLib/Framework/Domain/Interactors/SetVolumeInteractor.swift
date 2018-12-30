@@ -16,7 +16,7 @@ struct SetVolumeValues: RequestValues {
 
 class SetVolumeInteractor: CompletableInteractor {
     
-    var requestValues: SetVolumeValues?
+    typealias T = SetVolumeValues
     
     private let renderingControlRepository: RenderingControlRepository
     
@@ -25,8 +25,8 @@ class SetVolumeInteractor: CompletableInteractor {
     }
     
     func buildInteractorObservable(values: SetVolumeValues?) -> Completable {
-        guard let group = requestValues?.group,
-              let volume = requestValues?.volume else {
+        guard let group = values?.group,
+              let volume = values?.volume else {
             return Completable.error(SonosError.invalidImplementation)
         }
         

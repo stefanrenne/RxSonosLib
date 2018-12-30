@@ -15,7 +15,7 @@ struct SetNextTrackValues: RequestValues {
 
 class SetNextTrackInteractor: CompletableInteractor {
     
-    var requestValues: SetNextTrackValues?
+    typealias T = SetNextTrackValues
     
     private let transportRepository: TransportRepository
     
@@ -24,7 +24,7 @@ class SetNextTrackInteractor: CompletableInteractor {
     }
     
     func buildInteractorObservable(values: SetNextTrackValues?) -> Completable {
-        guard let group = requestValues?.group else {
+        guard let group = values?.group else {
             return Completable.error(SonosError.invalidImplementation)
         }
         

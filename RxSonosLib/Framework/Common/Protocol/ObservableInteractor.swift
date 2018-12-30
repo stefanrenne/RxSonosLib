@@ -27,22 +27,9 @@ extension ObservableInteractor {
     }
     
     func get(values: T?) -> Observable<U> {
-        return buildInteractorObservable(values: requestValues)
+        return buildInteractorObservable(values: values)
                 .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
                 .observeOn(MainScheduler.instance)
-    }
-    
-    func createTimer(_ period: RxTimeInterval) -> Observable<Int> {
-        return Observable<Int>.create({ (observer) -> Disposable in
-            
-            observer.onNext(0)
-            
-            let interval = Observable<Int>
-                .interval(period, scheduler: MainScheduler.instance)
-                .subscribe(observer)
-            
-            return Disposables.create([interval])
-        })
     }
     
 }
