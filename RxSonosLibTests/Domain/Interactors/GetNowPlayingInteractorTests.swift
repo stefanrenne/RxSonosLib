@@ -15,9 +15,9 @@ class GetNowPlayingInteractorTests: XCTestCase {
     
     let transportRepository: TransportRepository = FakeTransportRepositoryImpl()
     
-    func testItCanGetTheCurrentTrack() {
+    func testItCanGetTheCurrentTrack() throws {
         let interactor = GetNowPlayingInteractor(transportRepository: transportRepository)
-        let track = try! interactor.get(values: GetNowPlayingValues(group: firstGroup()))
+        let track = try interactor.get(values: GetNowPlayingValues(group: firstGroup()))
             .toBlocking()
             .first()! as! MusicProviderTrack
         

@@ -23,11 +23,11 @@ class SonosInteractorTests: XCTestCase {
         super.tearDown()
     }
     
-    func testItCanProvideTheGroupsObservable() {
+    func testItCanProvideTheGroupsObservable() throws {
         
         resetToFakeRepositories()
 
-        let groups = try! SonosInteractor
+        let groups = try SonosInteractor
             .getAllGroups()
             .toBlocking()
             .first()!
@@ -50,55 +50,55 @@ class SonosInteractorTests: XCTestCase {
         XCTAssertEqual(groups[4].slaves.count, 0)
     }
     
-    func testItCanAutomaticallySetTheActiveGroupToTheFirstFoundGroup() {
+    func testItCanAutomaticallySetTheActiveGroupToTheFirstFoundGroup() throws {
         
         resetToFakeRepositories()
         SonosInteractor.shared.activeGroup.onNext(nil)
         SonosInteractor.shared.allGroups.onNext([firstGroup(), secondGroup()])
         
-        XCTAssertEqual(try! SonosInteractor.shared.activeGroup.value()!, firstGroup())
+        XCTAssertEqual(try SonosInteractor.shared.activeGroup.value()!, firstGroup())
     }
     
-    func testItCanAutomaticallySetTheActiveGroupWhenTheOldOneDoesntExist() {
+    func testItCanAutomaticallySetTheActiveGroupWhenTheOldOneDoesntExist() throws {
         
         resetToFakeRepositories()
         SonosInteractor.shared.activeGroup.onNext(firstGroup())
         SonosInteractor.shared.allGroups.onNext([thirdGroup()])
         
-        XCTAssertEqual(try! SonosInteractor.shared.activeGroup.value()!, thirdGroup())
+        XCTAssertEqual(try SonosInteractor.shared.activeGroup.value()!, thirdGroup())
     }
     
-    func testItCanGetTheActiveGroup() {
+    func testItCanGetTheActiveGroup() throws {
         
         resetToFakeRepositories()
         SonosInteractor.shared.allGroups.onNext([firstGroup(), secondGroup()])
         SonosInteractor.shared.activeGroup.onNext(firstGroup())
         
-        XCTAssertEqual(try! SonosInteractor.getActiveGroup().toBlocking().first(), firstGroup())
+        XCTAssertEqual(try SonosInteractor.getActiveGroup().toBlocking().first(), firstGroup())
         
         SonosInteractor.shared.activeGroup.onNext(secondGroup())
-        XCTAssertEqual(try! SonosInteractor.getActiveGroup().toBlocking().first(), secondGroup())
+        XCTAssertEqual(try SonosInteractor.getActiveGroup().toBlocking().first(), secondGroup())
     }
     
-    func testItCanSetTheActiveGroup() {
+    func testItCanSetTheActiveGroup() throws {
         
         resetToFakeRepositories()
         SonosInteractor.shared.allGroups.onNext([firstGroup(), secondGroup()])
         SonosInteractor.shared.activeGroup.onNext(firstGroup())
         
-        XCTAssertEqual(try! SonosInteractor.shared.activeGroup.value()!, firstGroup())
+        XCTAssertEqual(try SonosInteractor.shared.activeGroup.value()!, firstGroup())
         
         SonosInteractor.setActive(group: secondGroup())
-        XCTAssertEqual(try! SonosInteractor.shared.activeGroup.value()!, secondGroup())   
+        XCTAssertEqual(try SonosInteractor.shared.activeGroup.value()!, secondGroup())
     }
     
-    func testItCanGetAllMusicProviders() {
+    func testItCanGetAllMusicProviders() throws {
         
         resetToFakeRepositories()
         let musicProvidersRepository = RepositoryInjection.shared.musicProvidersRepository as! FakeMusicProvidersRepositoryImpl
         XCTAssertEqual(musicProvidersRepository.getMusicProvidersCount, 0)
         
-        let musicServices = try! SonosInteractor
+        let musicServices = try SonosInteractor
             .getAllMusicProviders()
             .toBlocking()
             .first()!

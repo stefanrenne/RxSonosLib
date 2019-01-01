@@ -20,11 +20,11 @@ class ContentDirectoryRepositoryTests: XCTestCase {
         CacheManager.shared.deleteAll()
     }
     
-    func testItCanGetAQueue() {
+    func testItCanGetAQueue() throws {
         
         stub(soap(call: ContentDirectoryTarget.browse), soapXml(getBrowseResponse()))
         
-        let queue = try! contentDirectoryRepository
+        let queue = try contentDirectoryRepository
             .getQueue(for: firstRoom())
             .toBlocking()
             .first()!

@@ -15,9 +15,9 @@ class GetGroupProgressInteractorTests: XCTestCase {
     
     let transportRepository: TransportRepository = FakeTransportRepositoryImpl()
     
-    func testItCanGetTheCurrentProgress() {
+    func testItCanGetTheCurrentProgress() throws {
         let interactor = GetGroupProgressInteractor(transportRepository: transportRepository)
-        let progress = try! interactor.get(values: GetGroupProgressValues(group: firstGroup()))
+        let progress = try interactor.get(values: GetGroupProgressValues(group: firstGroup()))
             .toBlocking()
             .first()!
         

@@ -63,8 +63,8 @@ class TrackTests: XCTestCase {
         XCTAssertEqual(firstTrack(), firstTrack())
     }
     
-    func testItCanGetTheTrackImage() {
-        let imageData = try! Observable
+    func testItCanGetTheTrackImage() throws {
+        let imageData = try Observable
             .just(firstTrack())
             .getImage()
             .toBlocking()

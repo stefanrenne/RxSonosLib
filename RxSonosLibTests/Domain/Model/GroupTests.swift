@@ -68,9 +68,9 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(group.name, "Living")
     }
     
-    func testItCanGetTheActiveTrack() {
+    func testItCanGetTheActiveTrack() throws {
         let group = Observable.just(firstGroup())
-        let track = try! group
+        let track = try group
             .getTrack()
             .skip(1)
             .toBlocking()
@@ -90,9 +90,9 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(track.description, [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
     }
     
-    func testItCanGetTheImage() {
+    func testItCanGetTheImage() throws {
         let group = Observable.just(firstGroup())
-        let imageData = try! group
+        let imageData = try group
             .getImage()
             .toBlocking()
             .first()!
@@ -101,9 +101,9 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(imageData, expectedData)
     }
     
-    func testItCanGetTheTransportState() {
+    func testItCanGetTheTransportState() throws {
         let group = Observable.just(firstGroup())
-        let result = try! group.getTransportState().toBlocking().first()!
+        let result = try group.getTransportState().toBlocking().first()!
         XCTAssertEqual(result, TransportState.paused)
     }
     
@@ -117,9 +117,9 @@ class GroupTests: XCTestCase {
         
     }
     
-    func testItCanGetTheVolume() {
+    func testItCanGetTheVolume() throws {
         let group = Observable.just(secondGroup())
-        let volume = try! group.getVolume().toBlocking().first()!
+        let volume = try group.getVolume().toBlocking().first()!
         XCTAssertEqual(volume, 70)
     }
     
@@ -158,9 +158,9 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(mock.previousTrackCounter, 1)
     }
     
-    func testItCanGetTheMute() {
+    func testItCanGetTheMute() throws {
         let group = Observable.just(secondGroup())
-        let muted = try! group
+        let muted = try group
             .getMute()
             .toBlocking()
             .first()!
@@ -183,9 +183,9 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(mock.numberGetMuteCalls, 0)
     }
     
-    func testItCanGetTheProgress() {
+    func testItCanGetTheProgress() throws {
         let group = Observable.just(secondGroup())
-        let progress = try! group
+        let progress = try group
             .getProgress()
             .toBlocking()
             .first()!
@@ -194,10 +194,10 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(progress.duration, 60)
     }
     
-    func testItCanGetTheQueue() {
+    func testItCanGetTheQueue() throws {
         let group = Observable.just(secondGroup())
         
-        let queue = try! group
+        let queue = try group
             .getQueue()
             .toBlocking()
             .first()!

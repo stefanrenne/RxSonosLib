@@ -18,11 +18,11 @@ class SSDPRepositoryTest: XCTestCase {
         CacheManager.shared.deleteAll()
     }
     
-    func testItCanSearchForAnDevice() {
+    func testItCanSearchForAnDevice() throws {
         
         let ssdpRepository: SSDPRepository = FakeSSDPRepositoryImpl()
         
-        let response = try! ssdpRepository.scan(searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
+        let response = try ssdpRepository.scan(searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
             .toBlocking()
             .single()
         

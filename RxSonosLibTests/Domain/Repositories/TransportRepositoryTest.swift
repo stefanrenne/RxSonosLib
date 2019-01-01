@@ -16,13 +16,13 @@ class TransportRepositoryTest: XCTestCase {
     
     let transportRepository: TransportRepository = TransportRepositoryImpl()
     
-    func testItCantGetTheNowPlayingTrack() {
+    func testItCantGetTheNowPlayingTrack() throws {
         
         stub(soap(call: TransportTarget.transportInfo), soapXml(""))
         stub(soap(call: TransportTarget.mediaInfo), soapXml(""))
         stub(soap(call: TransportTarget.positionInfo), soapXml(""))
         
-        let track = try! transportRepository
+        let track = try transportRepository
             .getNowPlaying(for: firstRoom())
             .toBlocking()
             .first()!
@@ -30,12 +30,12 @@ class TransportRepositoryTest: XCTestCase {
         XCTAssertNil(track)
     }
     
-    func testItCanGetSpotifyNowPlayingTrack() {
+    func testItCanGetSpotifyNowPlayingTrack() throws {
         
         stub(soap(call: TransportTarget.mediaInfo), soapXml(getSpotifyMediaInfoResponse()))
         stub(soap(call: TransportTarget.positionInfo), soapXml(getSpotifyPositionInfoResponse()))
         
-        let track = try! transportRepository
+        let track = try transportRepository
             .getNowPlaying(for: firstRoom())
             .toBlocking()
             .first()! as! MusicProviderTrack
@@ -54,12 +54,12 @@ class TransportRepositoryTest: XCTestCase {
         XCTAssertEqual(track.description, [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
     }
     
-    func testItCanGetTVNowPlayingTrack() {
+    func testItCanGetTVNowPlayingTrack() throws {
         
         stub(soap(call: TransportTarget.mediaInfo), soapXml(getTVMediaInfoResponse()))
         stub(soap(call: TransportTarget.positionInfo), soapXml(getTVPositionInfoResponse()))
         
-        let track = try! transportRepository
+        let track = try transportRepository
             .getNowPlaying(for: firstRoom())
             .toBlocking()
             .first()! as! TVTrack
@@ -74,12 +74,12 @@ class TransportRepositoryTest: XCTestCase {
         XCTAssertEqual(track.description, [:])
     }
     
-    func testItCanGetTuneinNowPlayingTrack() {
+    func testItCanGetTuneinNowPlayingTrack() throws {
         
         stub(soap(call: TransportTarget.mediaInfo), soapXml(getTuneinMediaInfoResponse()))
         stub(soap(call: TransportTarget.positionInfo), soapXml(getTuneinPositionInfoResponse()))
         
-        let track = try! transportRepository
+        let track = try transportRepository
             .getNowPlaying(for: firstRoom())
             .toBlocking()
             .first()! as! MusicProviderTrack
@@ -95,12 +95,12 @@ class TransportRepositoryTest: XCTestCase {
         XCTAssertEqual(track.description, [TrackDescription.title: "538", TrackDescription.information: "DUA LIPA - IDGAF"])
     }
     
-    func testItCanGetLibraryNowPlayingTrack() {
+    func testItCanGetLibraryNowPlayingTrack() throws {
         
         stub(soap(call: TransportTarget.mediaInfo), soapXml(getLibraryMediaInfoResponse()))
         stub(soap(call: TransportTarget.positionInfo), soapXml(getLibraryPositionInfoResponse()))
         
-        let track = try! transportRepository
+        let track = try transportRepository
             .getNowPlaying(for: firstRoom())
             .toBlocking()
             .first()! as! LibraryTrack
@@ -116,11 +116,11 @@ class TransportRepositoryTest: XCTestCase {
         XCTAssertEqual(track.description, [TrackDescription.title: "Perfect", TrackDescription.artist: "Ed Sheeran", TrackDescription.album: "Divide"])
     }
     
-    func testItCanGetTheTransportState() {
+    func testItCanGetTheTransportState() throws {
         
         stub(soap(call: TransportTarget.transportInfo), soapXml(getTransportInfoResponse()))
         
-        let state = try! transportRepository
+        let state = try transportRepository
             .getTransportState(for: firstRoom())
             .toBlocking()
             .first()!
@@ -128,11 +128,11 @@ class TransportRepositoryTest: XCTestCase {
         XCTAssertEqual(state, .paused)
     }
     
-    func testItCanGetTheImageForATrackWithAnImageUri() {
+    func testItCanGetTheImageForATrackWithAnImageUri() throws {
         let data = UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!.jpegData(compressionQuality: 1.0)!
         stub(everything, http(download: .content(data)))
                 
-        let imageData = try! transportRepository
+        let imageData = try transportRepository
             .getImage(for: firstTrack())
             .toBlocking()
             .first()!
@@ -140,13 +140,13 @@ class TransportRepositoryTest: XCTestCase {
         XCTAssertEqual(imageData, data)
     }
     
-    func testItCantGetTheImageForATrackWithoutAnImageUri() {
+    func testItCantGetTheImageForATrackWithoutAnImageUri() throws {
         let data = UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!.jpegData(compressionQuality: 1.0)!
         stub(everything, http(download: .content(data)))
 
         let track = TVTrack(queueItem: 1, uri: "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif")
         
-        let image = try! transportRepository
+        let image = try transportRepository
             .getImage(for: track)
             .toBlocking()
             .first()
@@ -154,11 +154,11 @@ class TransportRepositoryTest: XCTestCase {
         XCTAssertNil(image)
     }
     
-    func testItCanGetTheCurrentGroupProgress() {
+    func testItCanGetTheCurrentGroupProgress() throws {
         
         stub(soap(call: TransportTarget.positionInfo), soapXml(getSpotifyPositionInfoResponse()))
         
-        let progress = try! transportRepository
+        let progress = try transportRepository
             .getNowPlayingProgress(for: firstRoom())
             .toBlocking()
             .first()!

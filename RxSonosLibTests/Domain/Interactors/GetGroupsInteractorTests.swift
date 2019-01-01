@@ -18,11 +18,11 @@ class GetGroupsInteractorTests: XCTestCase {
     let roomRepository: RoomRepository = FakeRoomRepositoryImpl()
     let groupRepository: GroupRepository = FakeGroupRepositoryImpl()
     
-    func testItCanGetGroups() {
+    func testItCanGetGroups() throws {
         let rooms = FakeRoomRepositoryImpl.dummyDevices()
         let interactor = GetGroupsInteractor(groupRepository: groupRepository)
         
-        let groups = try! interactor.get(values: GetGroupsValues(rooms: rooms))
+        let groups = try interactor.get(values: GetGroupsValues(rooms: rooms))
             .toBlocking()
             .first()!
         

@@ -15,9 +15,9 @@ class GetVolumeInteractorTests: XCTestCase {
     
     let renderingControlRepository: RenderingControlRepository = FakeRenderingControlRepositoryImpl()
     
-    func testItCanGetTheCurrentVolume() {
+    func testItCanGetTheCurrentVolume() throws {
         let interactor = GetVolumeInteractor(renderingControlRepository: renderingControlRepository)
-        let volume = try! interactor.get(values: GetVolumeValues(group: firstGroup()))
+        let volume = try interactor.get(values: GetVolumeValues(group: firstGroup()))
             .toBlocking()
             .first()!
         

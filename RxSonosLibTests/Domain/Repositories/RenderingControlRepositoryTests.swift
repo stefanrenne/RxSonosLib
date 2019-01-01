@@ -20,11 +20,11 @@ class RenderingControlRepositoryTests: XCTestCase {
         CacheManager.shared.deleteAll()
     }
     
-    func testItCanGetTheVolume() {
+    func testItCanGetTheVolume() throws {
         
         stub(soap(call: RenderingControlTarget.getVolume), soapXml("<CurrentVolume>44</CurrentVolume>"))
         
-        let volume = try! renderingControlRepository
+        let volume = try renderingControlRepository
             .getVolume(for: firstRoom())
             .toBlocking()
             .first()!
@@ -32,11 +32,11 @@ class RenderingControlRepositoryTests: XCTestCase {
         XCTAssertEqual(volume, 44)
     }
     
-    func testItCanGetADefaultVolume() {
+    func testItCanGetADefaultVolume() throws {
         
         stub(soap(call: RenderingControlTarget.getVolume), soapXml(""))
         
-        let volume = try! renderingControlRepository
+        let volume = try renderingControlRepository
             .getVolume(for: firstRoom())
             .toBlocking()
             .first()!
@@ -44,12 +44,12 @@ class RenderingControlRepositoryTests: XCTestCase {
         XCTAssertEqual(volume, 0)
     }
     
-    func testItCanGetTheAverageGroupVolume() {
+    func testItCanGetTheAverageGroupVolume() throws {
         
         stub(soap(room: firstRoom(), call: RenderingControlTarget.getVolume), soapXml("<CurrentVolume>60</CurrentVolume>"))
         stub(soap(room: secondRoom(), call: RenderingControlTarget.getVolume), soapXml("<CurrentVolume>20</CurrentVolume>"))
         
-        let volume = try! renderingControlRepository
+        let volume = try renderingControlRepository
             .getVolume(for: secondGroup())
             .toBlocking()
             .first()!
@@ -96,11 +96,11 @@ class RenderingControlRepositoryTests: XCTestCase {
         }
     }
     
-    func testItCanGetUnMutedStateOfARoom() {
+    func testItCanGetUnMutedStateOfARoom() throws {
         
         stub(soap(call: RenderingControlTarget.getMute), soapXml("<CurrentMute>0</CurrentMute>"))
         
-        let mute = try! renderingControlRepository
+        let mute = try renderingControlRepository
             .getMute(room: firstRoom())
             .toBlocking()
             .first()!
@@ -108,11 +108,11 @@ class RenderingControlRepositoryTests: XCTestCase {
         XCTAssertFalse(mute)
     }
     
-    func testItCanGetMutedStateOfARoom() {
+    func testItCanGetMutedStateOfARoom() throws {
         
         stub(soap(call: RenderingControlTarget.getMute), soapXml("<CurrentMute>1</CurrentMute>"))
         
-        let mute = try! renderingControlRepository
+        let mute = try renderingControlRepository
             .getMute(room: firstRoom())
             .toBlocking()
             .first()!

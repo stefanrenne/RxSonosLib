@@ -15,9 +15,9 @@ class GetTrackImageInteractorTests: XCTestCase {
     
     let transportRepository: TransportRepository = FakeTransportRepositoryImpl()
     
-    func testItCanGetTheCurrentImage() {
+    func testItCanGetTheCurrentImage() throws {
         let interactor = GetTrackImageInteractor(transportRepository: transportRepository)
-        let imageData = try! interactor.get(values: GetTrackImageValues(track: firstTrack()))
+        let imageData = try interactor.get(values: GetTrackImageValues(track: firstTrack()))
             .toBlocking()
             .first()!
         

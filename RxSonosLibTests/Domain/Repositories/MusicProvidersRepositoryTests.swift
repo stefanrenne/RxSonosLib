@@ -20,10 +20,10 @@ class MusicProvidersRepositoryTests: XCTestCase {
         CacheManager.shared.deleteAll()
     }
     
-    func testItCanGetTheMusicServices() {
+    func testItCanGetTheMusicServices() throws {
         stub(soap(call: MusicTarget.listAvailableServices), soapXml("<AvailableServiceDescriptorList>\(descriptorList.encodeString())</AvailableServiceDescriptorList><AvailableServiceListVersion>RINCON_000E58B4AE9601400:834</AvailableServiceListVersion><AvailableServiceTypeList>\(typeList.encodeString())</AvailableServiceTypeList>"))
         
-        let services = try! musicProvidersRepository
+        let services = try musicProvidersRepository
             .getMusicProviders(for: firstRoom())
             .toBlocking()
             .first()!
@@ -80,10 +80,10 @@ class MusicProvidersRepositoryTests: XCTestCase {
         
     }
     
-    func testItCantGetMusicServicesWhenTheResponseIsInvalid() {
+    func testItCantGetMusicServicesWhenTheResponseIsInvalid() throws {
         stub(soap(call: MusicTarget.listAvailableServices), soapXml(""))
         
-        let services = try! musicProvidersRepository
+        let services = try musicProvidersRepository
             .getMusicProviders(for: firstRoom())
             .toBlocking()
             .first()!

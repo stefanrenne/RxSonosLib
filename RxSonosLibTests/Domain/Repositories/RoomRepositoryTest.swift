@@ -95,13 +95,13 @@ class RoomRepositoryTest: XCTestCase {
         }
     }
     
-    func testItCanCompareRooms() {
+    func testItCanCompareRooms() throws {
         let roomRepository: RoomRepository = FakeRoomRepositoryImpl()
-        let room1 = try! roomRepository.getRoom(device: firstDevice())!.toBlocking().single()
+        let room1 = try roomRepository.getRoom(device: firstDevice())!.toBlocking().single()
         
-        let room1duplicate = try! roomRepository.getRoom(device: firstDevice())!.toBlocking().single()
+        let room1duplicate = try roomRepository.getRoom(device: firstDevice())!.toBlocking().single()
         
-        let room2 = try! roomRepository.getRoom(device: SSDPDevice(ip: URL(string: "http://192.168.3.26:1400")!, usn: "uuid:RINCON_000002::urn:schemas-upnp-org:device:ZonePlayer:1", server: "Linux UPnP/1.0 Sonos/34.7-34220 (ZPS9)", ext: "", st: "urn:schemas-upnp-org:device:ZonePlayer:1", location: "/xml/device_description.xml", cacheControl: "max-age = 1800", uuid: "RINCON_000002", wifiMode: "0", variant: "0", household: "SONOS_HOUSEHOLD_1", bootseq: "81", proxy: "RINCON_000001"))!.toBlocking().single()
+        let room2 = try roomRepository.getRoom(device: SSDPDevice(ip: URL(string: "http://192.168.3.26:1400")!, usn: "uuid:RINCON_000002::urn:schemas-upnp-org:device:ZonePlayer:1", server: "Linux UPnP/1.0 Sonos/34.7-34220 (ZPS9)", ext: "", st: "urn:schemas-upnp-org:device:ZonePlayer:1", location: "/xml/device_description.xml", cacheControl: "max-age = 1800", uuid: "RINCON_000002", wifiMode: "0", variant: "0", household: "SONOS_HOUSEHOLD_1", bootseq: "81", proxy: "RINCON_000001"))!.toBlocking().single()
         
         XCTAssertEqual(room1, room1duplicate)
         XCTAssertNotEqual(room1, room2)

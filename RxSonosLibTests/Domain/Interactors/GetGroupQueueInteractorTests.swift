@@ -15,9 +15,9 @@ class GetGroupQueueInteractorTests: XCTestCase {
     
     let contentDirectoryRepository: ContentDirectoryRepository = FakeContentDirectoryRepositoryImpl()
     
-    func testItCanGetTheCurrentQueue() {
+    func testItCanGetTheCurrentQueue() throws {
         let interactor = GetGroupQueueInteractor(contentDirectoryRepository: contentDirectoryRepository)
-        let queue = try! interactor.get(values: GetGroupQueueValues(group: firstGroup()))
+        let queue = try interactor.get(values: GetGroupQueueValues(group: firstGroup()))
             .toBlocking()
             .first()!
         

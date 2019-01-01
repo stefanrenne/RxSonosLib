@@ -23,7 +23,7 @@ class GroupRepositoryTest: XCTestCase {
         CacheManager.shared.deleteAll()
     }
     
-    func testItCanGetGroups() {
+    func testItCanGetGroups() throws {
         
         var response = "<ZoneGroupState>"
             response += "<ZoneGroups>".encodeString()
@@ -42,7 +42,7 @@ class GroupRepositoryTest: XCTestCase {
         response += "</ZoneGroupState>"
         stub(soap(call: GroupTarget.state), soapXml(response))
         
-        let groups = try! groupRepository
+        let groups = try groupRepository
             .getGroups(for: self.getRooms())
             .toBlocking()
             .single()
@@ -56,7 +56,7 @@ class GroupRepositoryTest: XCTestCase {
         XCTAssertEqual(groups[0].slaves[3].uuid, "RINCON_000008")
     }
     
-    func testItCanNotPerformTheRequestWhenThereAreNoRooms() {
+    func testItCanNotPerformTheRequestWhenThereAreNoRooms() throws {
         
         var response = "<ZoneGroupState>"
             response += "<ZoneGroups>".encodeString()
@@ -75,7 +75,7 @@ class GroupRepositoryTest: XCTestCase {
         response += "</ZoneGroupState>"
         stub(soap(call: GroupTarget.state), soapXml(response))
         
-        let groups = try! groupRepository
+        let groups = try groupRepository
             .getGroups(for: [])
             .toBlocking()
             .single()
@@ -88,8 +88,8 @@ class GroupRepositoryTest: XCTestCase {
 fileprivate extension GroupRepositoryTest {
     
     /* Rooms */
-    fileprivate func getRooms() -> [Room] {
-        return try! ssdpRepository
+    fileprivate func getRooms() throws -> [Room] {
+        return try ssdpRepository
             .scan(searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
             .flatMap(mapSSDPToRooms())
             .toBlocking()

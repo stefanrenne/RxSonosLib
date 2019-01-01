@@ -23,13 +23,13 @@ class RoomTests: XCTestCase {
         super.tearDown()
     }
     
-    func testItCanGetTheMute() {
+    func testItCanGetTheMute() throws {
         let mock = RepositoryInjection.shared.renderingControlRepository as! FakeRenderingControlRepositoryImpl
         mock.numberSetMuteCalls = 0
         mock.numberGetMuteCalls = 0
         
         let room = firstRoom()
-        let muted = try! Observable
+        let muted = try Observable
             .just(room)
             .getMute()
             .toBlocking()
