@@ -9,12 +9,8 @@
 import Foundation
 import RxSwift
 
-class GetMusicProvidersValues: RequestValues {
+struct GetMusicProvidersValues: RequestValues {
     let room: Room?
-    
-    init(room: Room?) {
-        self.room = room
-    }
 }
 
 class GetMusicProvidersInteractor: SingleInteractor {

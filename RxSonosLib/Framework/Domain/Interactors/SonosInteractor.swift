@@ -129,8 +129,13 @@ extension SonosInteractor {
     }
     
     private func observerGroups() {
-        GetGroupsInteractor(groupRepository: RepositoryInjection.provideGroupRepository())
-            .get(values: GetGroupsValues(rooms: self.allRooms))
+        createTimer(SonosSettings.shared.renewGroupsTimer)
+            .flatMap({ [unowned self] _ -> Observable<[Group]> in
+                let rooms = try self.allRooms.value()
+                return GetGroupsInteractor(groupRepository: RepositoryInjection.provideGroupRepository())
+                    .get(values: GetGroupsValues(rooms: rooms))
+                    .asObservable()
+            })
             .subscribe(self.allGroups)
             .disposed(by: disposebag)
         
