@@ -21,8 +21,8 @@ open class SonosInteractor {
         self.observerGroups()
     }
     
-    static public func setActive(group: Group) {
-        let all = try! shared.allGroups.value()
+    static public func setActive(group: Group) throws {
+        let all = try shared.allGroups.value()
         if all.contains(group) {
             shared.setActive(group: group)
         }
@@ -118,7 +118,12 @@ open class SonosInteractor {
 
 extension SonosInteractor {
     private func activeGroupValue() -> Group? {
-        return try! self.activeGroup.value()
+        do {
+            return try activeGroup.value()
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
     }
     
     private func observerRooms() {
@@ -160,8 +165,7 @@ extension SonosInteractor {
     }
     
     private func setActive(group: Group?) {
-        if self.activeGroupValue() != group {
-            self.activeGroup.onNext(group)
-        }
+        guard activeGroupValue() != group else { return }
+        activeGroup.onNext(group)
     }
 }

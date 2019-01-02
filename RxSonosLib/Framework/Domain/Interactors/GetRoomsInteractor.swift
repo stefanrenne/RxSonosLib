@@ -58,14 +58,14 @@ class GetRoomsInteractor: ObservableInteractor {
     /* Rooms */
     private func mapDevicesToSonosRooms() -> (([SSDPResponse]) throws -> Observable<[Room]>) {
         return { ssdpDevices in
-            let collection = ssdpDevices.compactMap(self.mapSSDPToSonosRoom())
+            let collection = try ssdpDevices.compactMap(self.mapSSDPToSonosRoom())
             return Single.zip(collection).asObservable()
         }
     }
     
-    private func mapSSDPToSonosRoom() -> ((SSDPResponse) -> Single<Room>?) {
+    private func mapSSDPToSonosRoom() -> ((SSDPResponse) throws -> Single<Room>?) {
         return { response in
-            guard let device = SSDPDevice.map(response) else { return nil }
+            guard let device = try SSDPDevice.map(response) else { return nil }
             return self.roomRepository.getRoom(device: device)
         }
     }

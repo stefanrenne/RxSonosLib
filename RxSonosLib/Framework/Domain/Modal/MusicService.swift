@@ -62,7 +62,7 @@ extension MusicService {
         }
     }
     
-    static func map(url: String) -> MusicService? {
+    static func map(url: String) throws -> MusicService? {
         
         let urlComponents = URLComponents(string: url)
         if let sid = urlComponents?.queryItems?["sid"]?.int {
@@ -71,7 +71,7 @@ extension MusicService {
             return MusicService.musicProvider(sid: sid, flags: flags, sn: sn)
         }
         
-        if let service = url.match(with: "([a-zA-Z0-9-]+):")?.first {
+        if let service = try url.match(with: "([a-zA-Z0-9-]+):")?.first {
             if service == "x-sonos-htastream" {
             return MusicService.tv
             } else if service == "x-file-cifs" {

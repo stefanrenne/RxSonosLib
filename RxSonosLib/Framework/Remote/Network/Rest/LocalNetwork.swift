@@ -29,7 +29,7 @@ class LocalNetwork<Target: SonosTargetType>: Network {
     
     internal func openEnvelope(for target: Target) -> ((Data) throws -> [String: String]) {
         return { data in
-            let xml = AEXMLDocument.create(data)
+            let xml = try AEXMLDocument.create(data)
             let element = xml?["Envelope"]["Body"]["\(target.action)Response"]
             
             var soapData: [String: String] = [:]

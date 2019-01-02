@@ -10,11 +10,11 @@ import Foundation
 import Mockingjay
 @testable import RxSonosLib
 
-
 public func soap(room: Room? = nil, call: SonosTargetType) -> (_ request: URLRequest) -> Bool {
     return { (request: URLRequest) in
         
-        let ipMatch = (room != nil) ? request.url?.absoluteString.baseUrl() == room?.ip.absoluteString : true
+        let baseUrl = try? request.url?.absoluteString.baseUrl() ?? ""
+        let ipMatch = (room != nil) ? baseUrl == room?.ip.absoluteString : true
         let soapActionMatch = request.allHTTPHeaderFields?["SOAPACTION"]?.replacingOccurrences(of: "\"", with: "") == call.soapAction
         
         if soapActionMatch && ipMatch {
@@ -25,7 +25,7 @@ public func soap(room: Room? = nil, call: SonosTargetType) -> (_ request: URLReq
     }
 }
 
-public func soapXml(_ response: String, status: Int = 200, headers: [String:String] = [:]) -> (_ request: URLRequest) -> Response {
+public func soapXml(_ response: String, status: Int = 200, headers: [String: String] = [:]) -> (_ request: URLRequest) -> Response {
     return { (request: URLRequest) in
         
         let soapAction = request.allHTTPHeaderFields!["SOAPACTION"]!.replacingOccurrences(of: "\"", with: "").components(separatedBy: "#")
@@ -45,7 +45,7 @@ public func soapXml(_ response: String, status: Int = 200, headers: [String:Stri
     }
 }
 
-public func xml(_ response: String, status: Int = 200, headers: [String:String] = [:]) -> (_ request: URLRequest) -> Response {
+public func xml(_ response: String, status: Int = 200, headers: [String: String] = [:]) -> (_ request: URLRequest) -> Response {
     return { (request: URLRequest) in
         let xml = ("<?xml version=\"1.0\" encoding=\"UTF-8\"?><root xmlns=\"urn:schemas-upnp-org:device-1-0\">" + response + "</root>")
         return http(status, headers: headers, download: .content(xml.data(using: .utf8)!))(request)

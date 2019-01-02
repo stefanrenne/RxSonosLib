@@ -41,8 +41,10 @@ class RoomsViewController: UIViewController {
         table
             .rx
             .modelSelected(Group.self)
+            .do(onNext: { (group) in
+                try SonosInteractor.setActive(group: group)
+            })
             .subscribe(onNext: { [weak self] (group) in
-                SonosInteractor.setActive(group: group)
                 self?.router?.continueTo(group: group)
             })
             .disposed(by: self.disposeBag)

@@ -10,25 +10,25 @@ import Foundation
 
 extension String {
     
-    func extractUUID() -> String? {
-        return self.match(with: "uuid:([a-zA-Z0-9_]+)")?.first
+    func extractUUID() throws -> String? {
+        return try self.match(with: "uuid:([a-zA-Z0-9_]+)")?.first
     }
     
-    func baseUrl() -> String? {
-        return self.match(with: "(https?://[0-9:.]+)")?.first
+    func baseUrl() throws -> String? {
+        return try self.match(with: "(https?://[0-9:.]+)")?.first
     }
     
-    func urlSuffix() -> String? {
-        return self.match(with: "^https?://[0-9:.]+(.*)$")?.first
+    func urlSuffix() throws -> String? {
+        return try self.match(with: "^https?://[0-9:.]+(.*)$")?.first
     }
     
-    func validateXml() -> String {
-        let regex = try! NSRegularExpression(pattern: "(\")([A-Za-z0-9-:]+=)", options: [])
+    func validateXml() throws -> String {
+        let regex = try NSRegularExpression(pattern: "(\")([A-Za-z0-9-:]+=)", options: [])
         return regex.stringByReplacingMatches(in: self, options: .withTransparentBounds, range: NSRange(location: 0, length: self.count), withTemplate: "$1 $2")
     }
     
-    func match(with pattern: String) -> [String]? {
-        let regex = try! NSRegularExpression(pattern: pattern, options: [])
+    func match(with pattern: String) throws -> [String]? {
+        let regex = try NSRegularExpression(pattern: pattern, options: [])
         return regex.matches(in: self, options: [], range: NSRange(location: 0, length: self.count)).first?.toArray(for: self)
     }
     

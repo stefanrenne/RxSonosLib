@@ -36,7 +36,7 @@ class RoomRepositoryImpl: RoomRepository {
 fileprivate extension RoomRepositoryImpl {
     fileprivate func mapDataToRoom(device: SSDPDevice) -> ((Data) throws -> Room) {
         return { data in
-            guard let xml = AEXMLDocument.create(data),
+            guard let xml = try AEXMLDocument.create(data),
                 let description = DeviceDescription.map(xml) else {
                     #if DEBUG
                         print(String(data: data, encoding: .utf8)!)

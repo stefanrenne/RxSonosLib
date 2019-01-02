@@ -78,7 +78,7 @@ class TransportRepositoryImpl: TransportRepository {
 fileprivate extension TransportRepositoryImpl {
     fileprivate func mapDataToNowPlaying(for room: Room) -> (([String: String], [String: String]) throws -> Track?) {
         return { positionInfoResult, mediaInfoResult in
-            guard let track = NowPlayingTrackFactory(room: room.ip, positionInfo: positionInfoResult, mediaInfo: mediaInfoResult).create() else {
+            guard let track = try NowPlayingTrackFactory(room: room.ip, positionInfo: positionInfoResult, mediaInfo: mediaInfoResult).create() else {
                     return nil
             }
             

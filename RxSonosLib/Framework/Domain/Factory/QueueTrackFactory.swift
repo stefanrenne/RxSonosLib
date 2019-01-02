@@ -20,11 +20,11 @@ struct QueueTrackFactory {
         self.data = data
     }
     
-    func create() -> MusicProviderTrack? {
+    func create() throws -> MusicProviderTrack? {
         
         guard let duration = data["resduration"]?.timeToSeconds(),
             let uri = data["res"],
-            let service = MusicService.map(url: uri),
+            let service = try MusicService.map(url: uri),
             let sid = service.sid,
             let description = getDescription(),
             let imageUri = URL(string: room.absoluteString + "/getaa?s=1&u=" + uri) else {

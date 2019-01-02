@@ -12,7 +12,7 @@ import AEXML
 
 class XMLTest: XCTestCase {
     
-    func testItCanParseXML() {
+    func testItCanParseXML() throws {
         var description = "<device>"
         description += "<deviceType>urn:schemas-upnp-org:device:ZonePlayer:1</deviceType>"
         description += "<friendlyName>192.168.3.14 - Sonos PLAYBAR</friendlyName>"
@@ -21,23 +21,23 @@ class XMLTest: XCTestCase {
         description += "</device>"
         let data = description.data(using: .utf8)
         
-        let xml = AEXMLDocument.create(data!)
+        let xml = try AEXMLDocument.create(data!)
         XCTAssertEqual(xml!["device"]["deviceType"].string, "urn:schemas-upnp-org:device:ZonePlayer:1")
         XCTAssertEqual(xml!["device"]["friendlyName"].string, "192.168.3.14 - Sonos PLAYBAR")
         XCTAssertEqual(xml!["device"]["manufacturer"].string, "Sonos, Inc.")
         XCTAssertEqual(xml!["device"]["modelNumber"].string, "S9")
     }
     
-    func testItCantXMLParseAnEmptyDataSet() {
-        let xml = AEXMLDocument.create(nil)
+    func testItCantXMLParseAnEmptyDataSet() throws {
+        let xml = try AEXMLDocument.create(nil)
         XCTAssertNil(xml)
     }
     
-    func testItCantParseIncorrectXML() {
+    func testItCantParseIncorrectXML() throws {
         let description = "<device>"
         let data = description.data(using: .utf8)
         
-        let xml = AEXMLDocument.create(data!)
+        let xml = try AEXMLDocument.create(data!)
         XCTAssertNil(xml)
     }
     

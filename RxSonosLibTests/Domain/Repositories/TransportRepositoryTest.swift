@@ -38,20 +38,20 @@ class TransportRepositoryTest: XCTestCase {
         let track = try transportRepository
             .getNowPlaying(for: firstRoom())
             .toBlocking()
-            .first()! as! MusicProviderTrack
+            .first() as? MusicProviderTrack
         
-        XCTAssertEqual(track.providerId, 9)
-        XCTAssertEqual(track.flags, 8224)
-        XCTAssertEqual(track.sn, 1)
-        XCTAssertEqual(track.queueItem, 7)
-        XCTAssertEqual(track.duration, 265)
-        XCTAssertEqual(track.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
-        XCTAssertEqual(track.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
-        XCTAssertEqual(track.title, "Before I Die")
-        XCTAssertEqual(track.artist, "Papa Roach")
-        XCTAssertEqual(track.album, "The Connection")
-        XCTAssertNil(track.information)
-        XCTAssertEqual(track.description, [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
+        XCTAssertEqual(track?.providerId, 9)
+        XCTAssertEqual(track?.flags, 8224)
+        XCTAssertEqual(track?.sn, 1)
+        XCTAssertEqual(track?.queueItem, 7)
+        XCTAssertEqual(track?.duration, 265)
+        XCTAssertEqual(track?.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
+        XCTAssertEqual(track?.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
+        XCTAssertEqual(track?.title, "Before I Die")
+        XCTAssertEqual(track?.artist, "Papa Roach")
+        XCTAssertEqual(track?.album, "The Connection")
+        XCTAssertNil(track?.information)
+        XCTAssertEqual(track?.description, [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
     }
     
     func testItCanGetTVNowPlayingTrack() throws {
@@ -62,16 +62,16 @@ class TransportRepositoryTest: XCTestCase {
         let track = try transportRepository
             .getNowPlaying(for: firstRoom())
             .toBlocking()
-            .first()! as! TVTrack
+            .first() as? TVTrack
         
-        XCTAssertEqual(track.queueItem, 1)
-        XCTAssertEqual(track.duration, 0)
-        XCTAssertEqual(track.uri, "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif")
-        XCTAssertNil(track.title)
-        XCTAssertNil(track.artist)
-        XCTAssertNil(track.album)
-        XCTAssertNil(track.information)
-        XCTAssertEqual(track.description, [:])
+        XCTAssertEqual(track?.queueItem, 1)
+        XCTAssertEqual(track?.duration, 0)
+        XCTAssertEqual(track?.uri, "x-sonos-htastream:RINCON_000E58B4AE9601400:spdif")
+        XCTAssertNil(track?.title)
+        XCTAssertNil(track?.artist)
+        XCTAssertNil(track?.album)
+        XCTAssertNil(track?.information)
+        XCTAssertEqual(track?.description, [:])
     }
     
     func testItCanGetTuneinNowPlayingTrack() throws {
@@ -82,17 +82,17 @@ class TransportRepositoryTest: XCTestCase {
         let track = try transportRepository
             .getNowPlaying(for: firstRoom())
             .toBlocking()
-            .first()! as! MusicProviderTrack
+            .first() as? MusicProviderTrack
         
-        XCTAssertEqual(track.queueItem, 1)
-        XCTAssertEqual(track.duration, 0)
-        XCTAssertEqual(track.uri, "x-sonosapi-stream:s6712?sid=254&flags=32")
-        XCTAssertEqual(track.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonosapi-stream:s6712?sid=254&flags=32")
-        XCTAssertEqual(track.title, "538")
-        XCTAssertNil(track.album)
-        XCTAssertNil(track.artist)
-        XCTAssertEqual(track.information, "DUA LIPA - IDGAF")
-        XCTAssertEqual(track.description, [TrackDescription.title: "538", TrackDescription.information: "DUA LIPA - IDGAF"])
+        XCTAssertEqual(track?.queueItem, 1)
+        XCTAssertEqual(track?.duration, 0)
+        XCTAssertEqual(track?.uri, "x-sonosapi-stream:s6712?sid=254&flags=32")
+        XCTAssertEqual(track?.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonosapi-stream:s6712?sid=254&flags=32")
+        XCTAssertEqual(track?.title, "538")
+        XCTAssertNil(track?.album)
+        XCTAssertNil(track?.artist)
+        XCTAssertEqual(track?.information, "DUA LIPA - IDGAF")
+        XCTAssertEqual(track?.description, [TrackDescription.title: "538", TrackDescription.information: "DUA LIPA - IDGAF"])
     }
     
     func testItCanGetLibraryNowPlayingTrack() throws {
@@ -103,17 +103,17 @@ class TransportRepositoryTest: XCTestCase {
         let track = try transportRepository
             .getNowPlaying(for: firstRoom())
             .toBlocking()
-            .first()! as! LibraryTrack
+            .first() as? LibraryTrack
         
-        XCTAssertEqual(track.queueItem, 1)
-        XCTAssertEqual(track.duration, 45)
-        XCTAssertEqual(track.uri, "x-file-cifs://Stefan-MacBook/Music/iTunes/iTunes%20Media/Music/Sample%20Audio.mp3")
-        XCTAssertEqual(track.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?u=x-file-cifs%3A%2F%2FStefan-MacBook%2FMusic%2FiTunes%2FiTunes%2520Media%2FMusic%2FSample%2520Audio.mp3")
-        XCTAssertEqual(track.title, "Perfect")
-        XCTAssertEqual(track.album, "Divide")
-        XCTAssertEqual(track.artist, "Ed Sheeran")
-        XCTAssertNil(track.information)
-        XCTAssertEqual(track.description, [TrackDescription.title: "Perfect", TrackDescription.artist: "Ed Sheeran", TrackDescription.album: "Divide"])
+        XCTAssertEqual(track?.queueItem, 1)
+        XCTAssertEqual(track?.duration, 45)
+        XCTAssertEqual(track?.uri, "x-file-cifs://Stefan-MacBook/Music/iTunes/iTunes%20Media/Music/Sample%20Audio.mp3")
+        XCTAssertEqual(track?.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?u=x-file-cifs%3A%2F%2FStefan-MacBook%2FMusic%2FiTunes%2FiTunes%2520Media%2FMusic%2FSample%2520Audio.mp3")
+        XCTAssertEqual(track?.title, "Perfect")
+        XCTAssertEqual(track?.album, "Divide")
+        XCTAssertEqual(track?.artist, "Ed Sheeran")
+        XCTAssertNil(track?.information)
+        XCTAssertEqual(track?.description, [TrackDescription.title: "Perfect", TrackDescription.artist: "Ed Sheeran", TrackDescription.album: "Divide"])
     }
     
     func testItCanGetTheTransportState() throws {

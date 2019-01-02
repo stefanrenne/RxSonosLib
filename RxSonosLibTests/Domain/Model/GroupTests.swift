@@ -30,36 +30,36 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(group1, group2)
     }
     
-    func testItCanCompareDifferentGroupsOnMaster() {
+    func testItCanCompareDifferentGroupsOnMaster() throws {
         let group1 = firstGroup()
-        let group2 = Group(master: secondRoom(), slaves: [])
+        let group2 = try Group(master: secondRoom(), slaves: [])
         
         XCTAssertNotEqual(group1, group2)
     }
     
-    func testItCanCompareGroupsWithDifferentOrderSlaves() {
-        let group1 = Group(master: firstRoom(), slaves: [secondRoom(), thirdRoom()])
-        let group2 = Group(master: firstRoom(), slaves: [thirdRoom(), secondRoom()])
+    func testItCanCompareGroupsWithDifferentOrderSlaves() throws {
+        let group1 = try Group(master: firstRoom(), slaves: [secondRoom(), thirdRoom()])
+        let group2 = try Group(master: firstRoom(), slaves: [thirdRoom(), secondRoom()])
         
         XCTAssertEqual(group1, group2)
     }
     
-    func testItCanCompareDifferentGroupsOnSlaves() {
-        let group1 = Group(master: firstRoom(), slaves: [secondRoom()])
-        let group2 = Group(master: firstRoom(), slaves: [thirdRoom()])
+    func testItCanCompareDifferentGroupsOnSlaves() throws {
+        let group1 = try Group(master: firstRoom(), slaves: [secondRoom()])
+        let group2 = try Group(master: firstRoom(), slaves: [thirdRoom()])
         
         XCTAssertNotEqual(group1, group2)
     }
     
-    func testItCanCompareDifferentGroupsOnMultipleSlaves() {
-        let group1 = Group(master: firstRoom(), slaves: [thirdRoom(), secondRoom()])
-        let group2 = Group(master: firstRoom(), slaves: [thirdRoom()])
+    func testItCanCompareDifferentGroupsOnMultipleSlaves() throws {
+        let group1 = try Group(master: firstRoom(), slaves: [thirdRoom(), secondRoom()])
+        let group2 = try Group(master: firstRoom(), slaves: [thirdRoom()])
         
         XCTAssertNotEqual(group1, group2)
     }
     
-    func testItCanGetTheGroupName() {
-        let group = Group(master: firstRoom(), slaves: [thirdRoom(), secondRoom()])
+    func testItCanGetTheGroupName() throws {
+        let group = try Group(master: firstRoom(), slaves: [thirdRoom(), secondRoom()])
         XCTAssertEqual(group.name, "Living +2")
     }
     
@@ -74,20 +74,20 @@ class GroupTests: XCTestCase {
             .getTrack()
             .skip(1)
             .toBlocking()
-            .first()! as! MusicProviderTrack
+            .first() as? MusicProviderTrack
         
-        XCTAssertEqual(track.providerId, 9)
-        XCTAssertNil(track.flags)
-        XCTAssertNil(track.sn)
-        XCTAssertEqual(track.queueItem, 7)
-        XCTAssertEqual(track.duration, 265)
-        XCTAssertEqual(track.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
-        XCTAssertEqual(track.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
-        XCTAssertEqual(track.title, "Before I Die")
-        XCTAssertEqual(track.artist, "Papa Roach")
-        XCTAssertEqual(track.album, "The Connection")
-        XCTAssertNil(track.information)
-        XCTAssertEqual(track.description, [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
+        XCTAssertEqual(track?.providerId, 9)
+        XCTAssertNil(track?.flags)
+        XCTAssertNil(track?.sn)
+        XCTAssertEqual(track?.queueItem, 7)
+        XCTAssertEqual(track?.duration, 265)
+        XCTAssertEqual(track?.uri, "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
+        XCTAssertEqual(track?.imageUri.absoluteString, "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")
+        XCTAssertEqual(track?.title, "Before I Die")
+        XCTAssertEqual(track?.artist, "Papa Roach")
+        XCTAssertEqual(track?.album, "The Connection")
+        XCTAssertNil(track?.information)
+        XCTAssertEqual(track?.description, [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
     }
     
     func testItCanGetTheImage() throws {
@@ -107,59 +107,59 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(result, TransportState.paused)
     }
     
-    func testItCanSetTheTransportState() {
-        let mock = RepositoryInjection.shared.transportRepository as! FakeTransportRepositoryImpl
-        let group = Observable.just(secondGroup())
+    func testItCanSetTheTransportState() throws {
+        let mock = RepositoryInjection.shared.transportRepository as? FakeTransportRepositoryImpl
+        let group = try Observable.just(secondGroup())
         _ = group.set(transportState: .playing)
             .toBlocking()
             .materialize()
-        XCTAssertEqual(mock.activeState, TransportState.playing)
+        XCTAssertEqual(mock?.activeState, TransportState.playing)
         
     }
     
     func testItCanGetTheVolume() throws {
-        let group = Observable.just(secondGroup())
+        let group = try Observable.just(secondGroup())
         let volume = try group.getVolume().toBlocking().first()!
         XCTAssertEqual(volume, 70)
     }
     
-    func testItCanSetTheVolume() {
-        let mock = RepositoryInjection.shared.renderingControlRepository as! FakeRenderingControlRepositoryImpl
-        let group = Observable.just(secondGroup())
+    func testItCanSetTheVolume() throws {
+        let mock = RepositoryInjection.shared.renderingControlRepository as? FakeRenderingControlRepositoryImpl
+        let group = try Observable.just(secondGroup())
         _ = group.set(volume: 22)
             .toBlocking()
             .materialize()
-        XCTAssertEqual(mock.lastVolume, 22)
+        XCTAssertEqual(mock?.lastVolume, 22)
     }
     
-    func testItCanSetTheNextTrack() {
-        let mock = RepositoryInjection.shared.transportRepository as! FakeTransportRepositoryImpl
-        mock.nextTrackCounter = 0
+    func testItCanSetTheNextTrack() throws {
+        let mock = RepositoryInjection.shared.transportRepository as? FakeTransportRepositoryImpl
+        mock?.nextTrackCounter = 0
         
-        let group = Observable.just(secondGroup())
+        let group = try Observable.just(secondGroup())
         _ = group
             .setNextTrack()
             .toBlocking()
             .materialize()
         
-        XCTAssertEqual(mock.nextTrackCounter , 1)
+        XCTAssertEqual(mock?.nextTrackCounter, 1)
     }
     
-    func testItCanSetThePreviousTrack() {
-        let mock = RepositoryInjection.shared.transportRepository as! FakeTransportRepositoryImpl
-        mock.previousTrackCounter = 0
+    func testItCanSetThePreviousTrack() throws {
+        let mock = RepositoryInjection.shared.transportRepository as? FakeTransportRepositoryImpl
+        mock?.previousTrackCounter = 0
         
-        let group = Observable.just(secondGroup())
+        let group = try Observable.just(secondGroup())
         _ = group
             .setPreviousTrack()
             .toBlocking()
             .materialize()
         
-        XCTAssertEqual(mock.previousTrackCounter, 1)
+        XCTAssertEqual(mock?.previousTrackCounter, 1)
     }
     
     func testItCanGetTheMute() throws {
-        let group = Observable.just(secondGroup())
+        let group = try Observable.just(secondGroup())
         let muted = try group
             .getMute()
             .toBlocking()
@@ -168,23 +168,23 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(muted, [true, true])
     }
     
-    func testItCanSetTheMute() {
-        let mock = RepositoryInjection.shared.renderingControlRepository as! FakeRenderingControlRepositoryImpl
-        mock.numberSetMuteCalls = 0
-        mock.numberGetMuteCalls = 0
+    func testItCanSetTheMute() throws {
+        let mock = RepositoryInjection.shared.renderingControlRepository as? FakeRenderingControlRepositoryImpl
+        mock?.numberSetMuteCalls = 0
+        mock?.numberGetMuteCalls = 0
         
-        let group = Observable.just(secondGroup())
+        let group = try Observable.just(secondGroup())
         _ = group
             .set(mute: true)
             .toBlocking()
             .materialize()
         
-        XCTAssertEqual(mock.numberSetMuteCalls, 2)
-        XCTAssertEqual(mock.numberGetMuteCalls, 0)
+        XCTAssertEqual(mock?.numberSetMuteCalls, 2)
+        XCTAssertEqual(mock?.numberGetMuteCalls, 0)
     }
     
     func testItCanGetTheProgress() throws {
-        let group = Observable.just(secondGroup())
+        let group = try Observable.just(secondGroup())
         let progress = try group
             .getProgress()
             .toBlocking()
@@ -195,7 +195,7 @@ class GroupTests: XCTestCase {
     }
     
     func testItCanGetTheQueue() throws {
-        let group = Observable.just(secondGroup())
+        let group = try Observable.just(secondGroup())
         
         let queue = try group
             .getQueue()
@@ -233,8 +233,8 @@ class GroupTests: XCTestCase {
         XCTAssertEqual(track2.description, [TrackDescription.title: "Christ Copyright", TrackDescription.artist: "Nothing More", TrackDescription.album: "Nothing More"])
     }
     
-    func testItCanGetTheNames() {
-        XCTAssertEqual(secondGroup().names, ["Living"])
+    func testItCanGetTheNames() throws {
+        XCTAssertEqual(try secondGroup().names, ["Living"])
     }
     
 }

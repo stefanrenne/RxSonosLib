@@ -10,13 +10,13 @@ import Foundation
 import AEXML
 
 extension AEXMLDocument {
-    class func create(_ data: Data) -> AEXMLDocument? {
+    class func create(_ data: Data) throws -> AEXMLDocument? {
         let string = String(data: data, encoding: .utf8)
-        return AEXMLDocument.create(string)
+        return try AEXMLDocument.create(string)
     }
     
-    class func create(_ string: String?) -> AEXMLDocument? {
-        guard let cleanString = string?.removeXmlNamespace() else { return nil }
+    class func create(_ string: String?) throws -> AEXMLDocument? {
+        guard let cleanString = try string?.removeXmlNamespace() else { return nil }
         return try? AEXMLDocument(xml: cleanString)
     }
     
@@ -33,18 +33,18 @@ extension AEXMLDocument {
 }
 
 extension String {
-    func mapMetaItem() -> [String: String]? {
-        return AEXMLDocument.create(self)?.mapMetaItems().first
+    func mapMetaItem() throws -> [String: String]? {
+        return try AEXMLDocument.create(self)?.mapMetaItems().first
     }
-    func mapMetaItems() -> [[String: String]]? {
-        return AEXMLDocument.create(self)?.mapMetaItems()
+    func mapMetaItems() throws -> [[String: String]]? {
+        return try AEXMLDocument.create(self)?.mapMetaItems()
     }
 }
 
 fileprivate extension String {
     
-    func removeXmlNamespace() -> String {
-        return self.validateXml().replace(pattern: "<([a-zA-Z]+:)", with: "<").replace(pattern: "</([a-zA-Z]+:)", with: "</")
+    func removeXmlNamespace() throws -> String {
+        return try self.validateXml().replace(pattern: "<([a-zA-Z]+:)", with: "<").replace(pattern: "</([a-zA-Z]+:)", with: "</")
     }
     
     fileprivate func replace(pattern: String, with template: String) -> String {

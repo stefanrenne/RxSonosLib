@@ -97,14 +97,14 @@ fileprivate extension GroupRepositoryTest {
     }
     fileprivate func mapSSDPToRooms() -> (([SSDPResponse]) throws -> Single<[Room]>) {
         return { ssdpDevices in
-            let collection = ssdpDevices.compactMap(self.mapSSDPToRoom())
+            let collection = try ssdpDevices.compactMap(self.mapSSDPToRoom())
             return Single.zip(collection)
         }
     }
     
-    fileprivate func mapSSDPToRoom() -> ((SSDPResponse) -> Single<Room>?) {
+    fileprivate func mapSSDPToRoom() -> ((SSDPResponse) throws -> Single<Room>?) {
         return { response in
-            guard let device = SSDPDevice.map(response) else { return nil }
+            guard let device = try SSDPDevice.map(response) else { return nil }
             return self.roomRepository.getRoom(device: device)
         }
     }

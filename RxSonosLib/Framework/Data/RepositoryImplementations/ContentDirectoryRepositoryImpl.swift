@@ -22,18 +22,18 @@ class ContentDirectoryRepositoryImpl: ContentDirectoryRepository {
 }
 
 extension ContentDirectoryRepositoryImpl {
-    fileprivate func mapDataToQueue(room: Room) -> (([String: String]) -> [MusicProviderTrack]) {
+    fileprivate func mapDataToQueue(room: Room) -> (([String: String]) throws -> [MusicProviderTrack]) {
         return { data in
-            return data["Result"]?
+            return try data["Result"]?
                 .mapMetaItems()?
                 .enumerated()
                 .compactMap(self.mapQueueItemToTrack(room: room)) ?? []
         }
     }
     
-    fileprivate func mapQueueItemToTrack(room: Room) -> ((Int, [String: String]) -> MusicProviderTrack?) {
+    fileprivate func mapQueueItemToTrack(room: Room) -> ((Int, [String: String]) throws -> MusicProviderTrack?) {
         return { index, data in
-            return QueueTrackFactory(room: room.ip, queueItem: index + 1, data: data).create()
+            return try QueueTrackFactory(room: room.ip, queueItem: index + 1, data: data).create()
         }
     }
     

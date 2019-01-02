@@ -17,16 +17,16 @@ class NowPlayingTrackFactory {
     private let trackMeta: [String: String]?
     private let currentURIMetaData: [String: String]?
     
-    init(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) {
+    init(room: URL, positionInfo: [String: String], mediaInfo: [String: String]) throws {
         self.room = room
         self.positionInfo = positionInfo
         self.mediaInfo = mediaInfo
-        self.trackMeta = positionInfo["TrackMetaData"]?.mapMetaItem()
-        self.currentURIMetaData = mediaInfo["CurrentURIMetaData"]?.mapMetaItem()
+        self.trackMeta = try positionInfo["TrackMetaData"]?.mapMetaItem()
+        self.currentURIMetaData = try mediaInfo["CurrentURIMetaData"]?.mapMetaItem()
     }
     
-    func create() -> Track? {
-        guard let (uri, type) = getMusicService() else { return nil }
+    func create() throws -> Track? {
+        guard let (uri, type) = try getMusicService() else { return nil }
         
         if type == .tv {
             return createTVTrack()
@@ -76,12 +76,12 @@ class NowPlayingTrackFactory {
         return TVTrack(queueItem: queueItem, uri: uri)
     }
     
-    private func getMusicService() -> (url: String, service: MusicService)? {
-        if let url = mediaInfo["CurrentURI"], let service = MusicService.map(url: url) {
+    private func getMusicService() throws -> (url: String, service: MusicService)? {
+        if let url = mediaInfo["CurrentURI"], let service = try MusicService.map(url: url) {
             return (url, service)
         }
         
-        if let url = positionInfo["TrackURI"], let service = MusicService.map(url: url) {
+        if let url = positionInfo["TrackURI"], let service = try MusicService.map(url: url) {
             return (url, service)
         }
         return nil

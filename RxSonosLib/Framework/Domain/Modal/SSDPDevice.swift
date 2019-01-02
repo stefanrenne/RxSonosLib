@@ -71,7 +71,7 @@ extension SSDPDevice {
         return false
     }
     
-    class func map(_ response: SSDPResponse) -> SSDPDevice? {
+    class func map(_ response: SSDPResponse) throws -> SSDPDevice? {
         
         guard let usn: String = response.data["USN"],
             let server: String = response.data["SERVER"],
@@ -79,13 +79,13 @@ extension SSDPDevice {
             let st: String = response.data["ST"],
             let locationString: String = response.data["LOCATION"],
             let cacheControl: String = response.data["CACHE-CONTROL"],
-            let ipString = locationString.baseUrl(),
-            let locationSuffix = locationString.urlSuffix(),
+            let ipString = try locationString.baseUrl(),
+            let locationSuffix = try locationString.urlSuffix(),
             let ip = URL(string: ipString) else {
                 return nil
         }
         
-        let uuid: String? = usn.extractUUID()
+        let uuid: String? = try usn.extractUUID()
         let wifiMode: String? = response.data["X-RINCON-WIFIMODE"]
         let variant: String? = response.data["X-RINCON-VARIANT"]
         let household: String? = response.data["X-RINCON-HOUSEHOLD"]

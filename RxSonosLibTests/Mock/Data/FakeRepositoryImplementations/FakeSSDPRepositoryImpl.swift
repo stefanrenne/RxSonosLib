@@ -14,17 +14,20 @@ import RxSSDP
 class FakeSSDPRepositoryImpl: SSDPRepository {
     
     func scan(searchTarget: String) -> Observable<[SSDPResponse]> {
-        return Observable.just(FakeSSDPRepositoryImpl.dummyDevices())
+        do {
+            return try Observable.just(FakeSSDPRepositoryImpl.dummyDevices())
+        } catch {
+            return Observable.error(error)
+        }
     }
     
 }
 
 extension FakeSSDPRepositoryImpl {
     
-    static func dummyDevices() -> [SSDPResponse] {
+    static func dummyDevices() throws -> [SSDPResponse] {
         
         var devices = [SSDPResponse]()
-        
         
         /*
          Room: Living Room
@@ -57,7 +60,6 @@ extension FakeSSDPRepositoryImpl {
         /* Type: PLAY:1 */
         let bathroom = SSDPResponse(data: ["USN": "uuid:RINCON_000005::urn:schemas-upnp-org:device:ZonePlayer:1", "SERVER": "Linux UPnP/1.0 Sonos/34.7-34220 (ZPS1)", "EXT": "", "ST": "urn:schemas-upnp-org:device:ZonePlayer:1", "LOCATION": "http://192.168.3.3:1400/xml/device_description.xml", "CACHE-CONTROL": "max-age = 1800", "X-RINCON-WIFIMODE": "0", "X-RINCON-VARIANT": "0", "X-RINCON-HOUSEHOLD": "SONOS_HOUSEHOLD_1", "X-RINCON-BOOTSEQ": "46"])
         devices.append(bathroom)
-        
         
         /*
          Room: Bedroom

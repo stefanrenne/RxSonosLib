@@ -47,7 +47,7 @@ class RenderingControlRepositoryTests: XCTestCase {
     func testItCanGetTheAverageGroupVolume() throws {
         
         stub(soap(room: firstRoom(), call: RenderingControlTarget.getVolume), soapXml("<CurrentVolume>60</CurrentVolume>"))
-        stub(soap(room: secondRoom(), call: RenderingControlTarget.getVolume), soapXml("<CurrentVolume>20</CurrentVolume>"))
+        stub(soap(room: try secondRoom(), call: RenderingControlTarget.getVolume), soapXml("<CurrentVolume>20</CurrentVolume>"))
         
         let volume = try renderingControlRepository
             .getVolume(for: secondGroup())

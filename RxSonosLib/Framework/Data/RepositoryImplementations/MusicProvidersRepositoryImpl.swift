@@ -23,9 +23,9 @@ class MusicProvidersRepositoryImpl: MusicProvidersRepository {
 }
 
 fileprivate extension MusicProvidersRepositoryImpl {
-    func mapDataToMusicServices() -> (([String: String]) -> [MusicProvider]) {
+    func mapDataToMusicServices() -> (([String: String]) throws -> [MusicProvider]) {
         return { data in
-            let xml = AEXMLDocument.create(data["AvailableServiceDescriptorList"])
+            let xml = try AEXMLDocument.create(data["AvailableServiceDescriptorList"])
             return xml?["Services"].children.compactMap(self.mapService()) ?? []
         }
     }

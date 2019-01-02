@@ -41,5 +41,4 @@ class FakeRenderingControlRepositoryImpl: RenderingControlRepository {
         numberGetMuteCalls += 1
         return Single.just(true)
     }
-    
 }

@@ -28,7 +28,7 @@ fileprivate extension GroupRepositoryImpl {
     
     fileprivate func mapGroupDataToGroups(rooms: [Room]) -> (([String: String]) throws -> [Group]) {
         return { results in
-            let xml = AEXMLDocument.create(results["ZoneGroupState"])
+            let xml = try AEXMLDocument.create(results["ZoneGroupState"])
             return xml?["ZoneGroups"].children.compactMap(self.mapZoneToGroup(rooms: rooms)) ?? []
         }
     }

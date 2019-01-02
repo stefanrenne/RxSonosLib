@@ -22,9 +22,9 @@ class FakeRoomRepositoryImpl: RoomRepository {
 
 extension FakeRoomRepositoryImpl {
         
-    static func dummyDevices() -> [Room] {
-        return FakeSSDPRepositoryImpl.dummyDevices().map({ (response) -> Room in
-            let device = SSDPDevice.map(response)!
+    static func dummyDevices() throws -> [Room] {
+        return try FakeSSDPRepositoryImpl.dummyDevices().map({ (response) -> Room in
+            let device = try SSDPDevice.map(response)!
             let description = FakeRoomRepositoryImpl.getDescription(for: device)
             return Room(ssdpDevice: device, deviceDescription: description)
         })
@@ -55,7 +55,6 @@ extension FakeRoomRepositoryImpl {
         case "http://192.168.3.21:1400":
             return DeviceDescription(name: "Living", modalNumber: "S1", modalName: "Sonos PLAY:1", modalIcon: "/img/icon-S1.png", serialNumber: "00-00-00-00-00-04:A", softwareVersion: "34.7-34220", hardwareVersion: "1.8.3.7-2")
             
-            
             /*
              Room: Bathroom
              Type: Mono
@@ -65,7 +64,6 @@ extension FakeRoomRepositoryImpl {
             /* Type: PLAY:1 */
         case "http://192.168.3.3:1400":
             return DeviceDescription(name: "Bathroom", modalNumber: "S1", modalName: "Sonos PLAY:1", modalIcon: "/img/icon-S1.png", serialNumber: "00-00-00-00-00-05:A", softwareVersion: "34.7-34220", hardwareVersion: "1.8.3.7-2")
-            
             
             /*
              Room: Bedroom
@@ -80,7 +78,6 @@ extension FakeRoomRepositoryImpl {
             /* Type: PLAY:1 Right */
         case "http://192.168.3.7:1400":
             return DeviceDescription(name: "Bedroom", modalNumber: "S1", modalName: "Sonos PLAY:1", modalIcon: "/img/icon-S1.png", serialNumber: "00-00-00-00-00-07:A", softwareVersion: "34.7-34220", hardwareVersion: "1.8.3.7-2")
-            
             
             /*
              Room: Kitchen

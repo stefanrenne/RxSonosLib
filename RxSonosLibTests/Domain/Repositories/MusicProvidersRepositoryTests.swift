@@ -5,6 +5,7 @@
 //  Created by Stefan Renne on 02/05/2018.
 //  Copyright © 2018 Uberweb. All rights reserved.
 //
+// swiftlint:disable function_body_length
 
 import XCTest
 import RxSwift
