@@ -13,7 +13,6 @@ Pod::Spec.new do |spec|
   spec.requires_arc           = true
   spec.source_files           = 'RxSonosLib/Framework/**/*.swift'
   spec.dependency             'RxSwift', '~> 4.4'
-  spec.dependency             'RxCocoa', '~> 4.4'
   spec.dependency             'RxSSDP', '~> 4.2'
   spec.dependency             'AEXML', '~> 4.3'
 end

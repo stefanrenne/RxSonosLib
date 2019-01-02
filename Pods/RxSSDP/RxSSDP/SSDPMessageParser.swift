@@ -23,9 +23,8 @@ class SSDPMessageParser {
             return nil
         }
         
-        var keyBuffer: NSString? = nil
-        var valueBuffer: String? = nil
-        
+        var keyBuffer: NSString?
+        var valueBuffer: String?
         
         var message = [String: String]()
         while self.scanner.scanUpTo(":", into: &keyBuffer) {
@@ -49,14 +48,14 @@ class SSDPMessageParser {
     }
     
     fileprivate func scanLine() -> String? {
-        var buffer: NSString? = nil
+        var buffer: NSString?
         scanner.scanUpToCharacters(from: CharacterSet.newlines, into: &buffer)
         
         return (buffer as String?)
     }
     
     fileprivate func advancePastColon() {
-        var string: NSString? = nil
+        var string: NSString?
         
         let characterSet = CharacterSet(charactersIn: ": ")
         scanner.scanCharacters(from: characterSet, into: &string)

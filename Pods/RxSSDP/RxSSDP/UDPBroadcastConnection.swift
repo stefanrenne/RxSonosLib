@@ -6,6 +6,7 @@
 //  Copyright © 2016 Gunter Hager. All rights reserved.
 //  Source https://github.com/gunterhager/UDPBroadcastConnection
 //
+// swiftlint:disable function_body_length
 
 import Foundation
 import Darwin
@@ -14,7 +15,6 @@ import Darwin
 
 let INADDR_ANY = in_addr(s_addr: 0)
 let INADDR_BROADCAST = in_addr(s_addr: 0xffffffff)
-
 
 /// An object representing the UDP broadcast connection. Uses a dispatch source to handle the incoming traffic on the UDP socket.
 open class UDPBroadcastConnection {
@@ -30,7 +30,6 @@ open class UDPBroadcastConnection {
     /// A dispatch source for reading data from the UDP socket.
     var responseSource: DispatchSourceRead?
     
-    
     // MARK: Initializers
     
     /**
@@ -42,11 +41,11 @@ open class UDPBroadcastConnection {
      */
     public init(port: UInt16, handler: ((_ ipAddress: String, _ port: Int, _ response: [UInt8]) -> Void)?) {
         self.address = sockaddr_in(
-            sin_len:    __uint8_t(MemoryLayout<sockaddr_in>.size),
+            sin_len: __uint8_t(MemoryLayout<sockaddr_in>.size),
             sin_family: sa_family_t(AF_INET),
-            sin_port:   UDPBroadcastConnection.htonsPort(port: port),
-            sin_addr:   INADDR_BROADCAST,
-            sin_zero:   ( 0, 0, 0, 0, 0, 0, 0, 0 )
+            sin_port: UDPBroadcastConnection.htonsPort(port: port),
+            sin_addr: INADDR_BROADCAST,
+            sin_zero: ( 0, 0, 0, 0, 0, 0, 0, 0 )
         )
         
         self.handler = handler
@@ -60,7 +59,6 @@ open class UDPBroadcastConnection {
     
     // MARK: Interface
     
-    
     /**
      Create a UDP socket for broadcasting and set up cancel and event handlers
      
@@ -73,8 +71,8 @@ open class UDPBroadcastConnection {
         guard newSocket > 0 else { return false }
         
         // Enable broadcast on socket
-        var broadcastEnable = Int32(1);
-        let ret = setsockopt(newSocket, SOL_SOCKET, SO_BROADCAST, &broadcastEnable, socklen_t(MemoryLayout<UInt32>.size));
+        var broadcastEnable = Int32(1)
+        let ret = setsockopt(newSocket, SOL_SOCKET, SO_BROADCAST, &broadcastEnable, socklen_t(MemoryLayout<UInt32>.size))
         if ret == -1 {
             debugPrint("Couldn't enable broadcast on socket")
             close(newSocket)
@@ -225,13 +223,11 @@ open class UDPBroadcastConnection {
         }
     }
     
-    
     // MARK: - Private
-    
     fileprivate func setNoSigPipe(socket: CInt) {
         // prevents crashes when blocking calls are pending and the app is paused ( via Home button )
-        var no_sig_pipe: Int32 = 1;
-        setsockopt(socket, SOL_SOCKET, SO_NOSIGPIPE, &no_sig_pipe, socklen_t(MemoryLayout<Int32>.size));
+        var no_sig_pipe: Int32 = 1
+        setsockopt(socket, SOL_SOCKET, SO_NOSIGPIPE, &no_sig_pipe, socklen_t(MemoryLayout<Int32>.size))
     }
     
     fileprivate class func htonsPort(port: in_port_t) -> in_port_t {

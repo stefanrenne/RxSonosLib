@@ -45,10 +45,10 @@ class GetRoomsInteractor: ObservableInteractor {
                 }
                 
                 let ssdpDisposable = self.ssdpRepository.scan(searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
-                    .do(onNext: { (responses) in
+                    .subscribe(onSuccess: { (responses) in
                         CacheManager.shared.set(object: responses.map({ $0.data }), for: CacheKey.ssdpCacheKey.rawValue)
+                        observer.onNext(responses)
                     })
-                    .subscribe(observer)
                 
                 return Disposables.create([ssdpDisposable])
             })

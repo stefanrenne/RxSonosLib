@@ -13,7 +13,7 @@ PODS:
     - RxSwift (~> 4.0)
   - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
-  - RxSSDP (4.2.0):
+  - RxSSDP (4.2.1):
     - RxSwift (~> 4.4)
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
@@ -47,11 +47,11 @@ SPEC CHECKSUMS:
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxBlocking: 138ad53217434444d6eeeb4fb406a45431d92e31
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
-  RxSSDP: d5c09b1d1836a286b75a45b833ae378024484088
+  RxSSDP: f1d90fa160f243e565b76db8fbaa7f98123f6678
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   SwiftLint: 47df60bdea6e7e902b193b6596db8683aafd86a3
   URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
 
-PODFILE CHECKSUM: 19e27881999182b2c25b923c594930a009f81f4d
+PODFILE CHECKSUM: 26a47169abee31079531b7b523834b849092ff45
 
 COCOAPODS: 1.5.3

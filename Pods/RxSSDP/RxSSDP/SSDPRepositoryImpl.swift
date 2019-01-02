@@ -13,10 +13,11 @@ open class SSDPRepositoryImpl: SSDPRepository {
     
     public init() { }
     
-    public func scan(searchTarget: String) -> Observable<[SSDPResponse]> {
+    public func scan(searchTarget: String) -> Single<[SSDPResponse]> {
         return RxSSDPClient(searchTarget: searchTarget)
             .discover()
             .buffer(timeSpan: SSDPSettings.shared.maxBufferTime, count: SSDPSettings.shared.maxBufferdItems, scheduler: SSDPSettings.shared.scheduler)
             .take(1)
+            .asSingle()
     }
 }

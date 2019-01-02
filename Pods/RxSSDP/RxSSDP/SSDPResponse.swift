@@ -27,7 +27,7 @@ open class SSDPResponse: Codable {
 
 extension SSDPResponse: Equatable {
     
-    public static func ==(lhs: SSDPResponse, rhs: SSDPResponse) -> Bool {
+    public static func == (lhs: SSDPResponse, rhs: SSDPResponse) -> Bool {
         return lhs.data == rhs.data
     }
 }

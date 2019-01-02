@@ -11,7 +11,6 @@ target 'RxSonosLib' do
   use_frameworks!
 
   pod 'RxSwift', '~> 4.4'
-  pod 'RxCocoa', '~> 4.4'
   pod 'RxSSDP', '~> 4.2'
   pod 'AEXML', '~> 4.3'
   pod 'SwiftLint'

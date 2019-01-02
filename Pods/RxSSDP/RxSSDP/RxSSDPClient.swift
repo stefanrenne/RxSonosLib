@@ -35,7 +35,7 @@ class RxSSDPClient {
     func discover() -> Observable<SSDPResponse> {
         
         return Observable<SSDPResponse>.create({ (observable) -> Disposable in
-            self.broadcastConnection = UDPBroadcastConnection(port: self.port) { (ipAddress: String, port: Int, response: [UInt8]) -> Void in
+            self.broadcastConnection = UDPBroadcastConnection(port: self.port) { (_: String, _: Int, response: [UInt8]) -> Void in
                 
                 if let message = String(bytes: response, encoding: .utf8)?.trimmingCharacters(in: CharacterSet.illegalCharacters).replacingOccurrences(of: "\0", with: ""),
                    let response = SSDPMessageParser(message: message).parse() {

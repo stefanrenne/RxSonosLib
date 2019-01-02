@@ -44,7 +44,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<key>License</key>
 			<string>MIT</string>
 			<key>Title</key>
-			<string>RxCocoa</string>
+			<string>RxSwift</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
@@ -62,7 +62,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<key>License</key>
 			<string>MIT</string>
 			<key>Title</key>
-			<string>RxSwift</string>
+			<string>RxCocoa</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

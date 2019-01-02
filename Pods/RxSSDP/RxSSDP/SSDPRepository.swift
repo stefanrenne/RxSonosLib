@@ -11,6 +11,6 @@ import RxSwift
 
 public protocol SSDPRepository {
     
-    func scan(searchTarget: String) -> Observable<[SSDPResponse]>
+    func scan(searchTarget: String) -> Single<[SSDPResponse]>
     
 }
