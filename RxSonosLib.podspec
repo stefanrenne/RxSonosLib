@@ -10,6 +10,7 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target  = '10.0'
   spec.tvos.deployment_target = '10.0'
   spec.osx.deployment_target  = '10.12'
+  spec.watchos.deployment_target = '4.0'
   spec.requires_arc           = true
   spec.source_files           = 'RxSonosLib/Framework/**/*.swift'
   spec.dependency             'RxSwift', '~> 4.4'
