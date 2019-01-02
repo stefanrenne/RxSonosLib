@@ -32,6 +32,7 @@ Platform:
 - [x] iOS
 - [x] MacOS
 - [x] tvOS
+- [x] WatchOS
 
 
 This library requires Swift 4.2 & RxSwift.
