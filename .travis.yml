@@ -10,7 +10,7 @@ env:
   - SCHEME=RxSonosLib
   - CC_TEST_REPORTER_ID=5332094259e2b828a20d61a227b30295e535380c07b6ab5f097b59e80b9c9c73
   matrix:
-    - DESTINATION="OS=12.1,name=iPhone XS"
+    - DESTINATION="iOS Simulator,name=iPhone XS"
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-darwin-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
