@@ -13,6 +13,10 @@ PODS:
     - RxSwift (~> 4.0)
   - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
+  - RxSonosLib (0.12.0):
+    - AEXML (~> 4.3)
+    - RxSSDP (~> 4.2)
+    - RxSwift (~> 4.4)
   - RxSSDP (4.2.1):
     - RxSwift (~> 4.4)
   - RxSwift (4.4.0):
@@ -25,6 +29,7 @@ DEPENDENCIES:
   - Mockingjay
   - RxBlocking (~> 4.4)
   - RxCocoa (~> 4.4)
+  - RxSonosLib (from `.`)
   - RxSSDP (~> 4.2)
   - RxSwift (~> 4.4)
   - SwiftLint
@@ -41,17 +46,22 @@ SPEC REPOS:
     - SwiftLint
     - URITemplate
 
+EXTERNAL SOURCES:
+  RxSonosLib:
+    :path: "."
+
 SPEC CHECKSUMS:
   AEXML: 601f41fcaa7bda7605cad153b0f43db9ec006c0f
   Mockingjay: 11a621880d2887f1775bdcf824341eb68f218450
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxBlocking: 138ad53217434444d6eeeb4fb406a45431d92e31
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxSonosLib: 59c85cc4ee9e65693baca992057b8baae7393fe6
   RxSSDP: f1d90fa160f243e565b76db8fbaa7f98123f6678
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   SwiftLint: 47df60bdea6e7e902b193b6596db8683aafd86a3
   URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
 
-PODFILE CHECKSUM: 26a47169abee31079531b7b523834b849092ff45
+PODFILE CHECKSUM: f300c97befbf3e66a55413ea5f4220d73e03b098
 
 COCOAPODS: 1.5.3

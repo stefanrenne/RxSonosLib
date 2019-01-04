@@ -25,6 +25,7 @@ end
 
 target 'Demo App' do
   use_frameworks!
+  pod 'RxSonosLib', :path => '.'
   pod 'RxSwift', '~> 4.4'
   pod 'RxCocoa', '~> 4.4'
 end

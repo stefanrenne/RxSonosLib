@@ -1,0 +1,6 @@
+framework module RxSonosLib {
+  umbrella header "RxSonosLib-umbrella.h"
+
+  export *
+  module * { export * }
+}
