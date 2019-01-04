@@ -9,7 +9,7 @@
 import Foundation
 import RxSSDP
 
-open class SSDPDevice {
+open class SSDPDevice: Codable {
     let ip: URL
     let usn: String
     let server: String

@@ -9,7 +9,7 @@
 import Foundation
 import AEXML
 
-class DeviceDescription {
+class DeviceDescription: Codable {
     
     let name: String
     let modalNumber: String

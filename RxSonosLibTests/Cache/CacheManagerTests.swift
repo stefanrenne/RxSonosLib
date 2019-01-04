@@ -82,9 +82,9 @@ class CacheManagerTests: XCTestCase {
         let key = CacheKey.trackImage
         let object = SSDPResponse(data: ["key": "value"])
         
-        try CacheManager.shared.set(object: object, for: key)
+        try? CacheManager.shared.set(object: object, for: key)
         
-        XCTAssertEqual(try CacheManager.shared.getObject(for: key), object)
+        XCTAssertEqual(CacheManager.shared.getObject(for: key), object)
     }
     
 }

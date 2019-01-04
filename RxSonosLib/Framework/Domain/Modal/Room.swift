@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-open class Room {
+open class Room: Codable {
     
     private let ssdpDevice: SSDPDevice
     private let deviceDescription: DeviceDescription

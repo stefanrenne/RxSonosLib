@@ -17,18 +17,17 @@ class RoomRepositoryImpl: RoomRepository {
     func getRoom(device: SSDPDevice) -> Single<Room>? {
         guard device.isSonosDevice else { return nil }
 
-        if let cache = CacheManager.shared.get(for: .deviceDescription, item: device.usn) {
+        if let cache: Room = CacheManager.shared.getObject(for: .room, item: device.usn) {
             return Single.just(cache)
-                .map(self.mapDataToRoom(device: device))
         }
         
         let locationUrl = device.ip.appendingPathComponent(device.location)
         return network
             .request(download: locationUrl)
-            .do(onSuccess: { (data) in
-                CacheManager.shared.set(data, for: .deviceDescription, item: device.usn)
-            })
             .map(self.mapDataToRoom(device: device))
+            .do(onSuccess: { (room) in
+                try? CacheManager.shared.set(object: room, for: .room, item: device.usn)
+            })
     }
     
 }

@@ -11,12 +11,12 @@ import RxSSDP
 
 enum CacheKey: String, CaseIterable {
     case ssdp
-    case deviceDescription
+    case room
     case trackImage
     
     var isLongCache: Bool {
         switch self {
-        case .ssdp, .deviceDescription:
+        case .ssdp, .room:
             return true
         default:
             return false
