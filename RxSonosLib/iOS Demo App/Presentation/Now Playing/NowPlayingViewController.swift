@@ -38,6 +38,10 @@ class NowPlayingViewController: UIViewController {
         self.setupImageObservable()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
     fileprivate func setupActiveGroupObservable() {
         SonosInteractor
             .getActiveGroup()

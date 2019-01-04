@@ -26,6 +26,10 @@ class RoomsViewController: UIViewController {
         self.setupCellTapHandling()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
     func setupTableViewItems() {
         table.register(UINib(nibName: String(describing: RoomsTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: RoomsTableViewCell.identifier)
         

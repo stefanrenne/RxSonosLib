@@ -17,5 +17,9 @@ class BrowseViewController: UIViewController {
         self.title = "Browse"
         
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
 
 }

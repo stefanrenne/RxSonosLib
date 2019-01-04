@@ -29,6 +29,10 @@ class MusicProvidersViewController: UIViewController {
         self.setupCloseButton()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
     func setupTableViewItems() {
         table.register(UINib(nibName: String(describing: MusicProvidersTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: MusicProvidersTableViewCell.identifier)
         

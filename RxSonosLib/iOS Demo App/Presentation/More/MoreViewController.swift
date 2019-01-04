@@ -24,6 +24,10 @@ class MoreViewController: UIViewController {
         self.setupCellTapHandling()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
     func setupTableViewItems() {
         table.register(UINib(nibName: String(describing: MoreTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: MoreTableViewCell.identifier)
         

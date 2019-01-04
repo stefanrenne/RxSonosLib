@@ -17,5 +17,9 @@ class MySonosViewController: UIViewController {
         self.title = "My Sonos"
         
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
 
 }

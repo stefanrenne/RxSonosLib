@@ -17,5 +17,9 @@ class SearchViewController: UIViewController {
         self.title = "Search"
         
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
 
 }

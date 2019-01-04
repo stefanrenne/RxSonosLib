@@ -16,8 +16,8 @@ class TabBarViewController: UIViewController {
     internal var router: TabBarRouter?
     @IBOutlet var contentView: UIView!
     @IBOutlet var nowPlayingView: UIView!
-    @IBOutlet var nowPlayingHeightConstraint: NSLayoutConstraint!
-    @IBOutlet var nowPlayingTopConstraint: NSLayoutConstraint!
+    @IBOutlet var nowPlayingHeightConstraint: NSLayoutConstraint?
+    @IBOutlet var nowPlayingTopConstraint: NSLayoutConstraint?
     @IBOutlet var fullNowPlayingView: UIView!
     @IBOutlet var compactNowPlayingView: UIView!
     @IBOutlet var nowPlayingTitleLabel: UILabel!
@@ -35,6 +35,11 @@ class TabBarViewController: UIViewController {
         self.setupTransportStateObservable()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        let collapse = nowPlayingHeightConstraint?.isActive ?? false
+        return collapse ? .default : .lightContent
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tabBar.invalidateIntrinsicContentSize()
@@ -45,16 +50,16 @@ class TabBarViewController: UIViewController {
     }
     
     internal func nowPlayingAction(collapse: Bool) {
-        nowPlayingTopConstraint.isActive = !collapse
-        nowPlayingHeightConstraint.isActive = collapse
+        nowPlayingTopConstraint?.isActive = !collapse
+        nowPlayingHeightConstraint?.isActive = collapse
         self.view.setNeedsLayout()
-        UIView.animate(withDuration: 0.4, animations: {
-            self.view.layoutIfNeeded()
-            UIApplication.shared.statusBarStyle = collapse ? .default : .lightContent
-            self.compactNowPlayingView.alpha = collapse ? 1 : 0
-            self.fullNowPlayingView.alpha = collapse ? 0 : 1
-            self.view.backgroundColor = collapse ? UIColor.white : UIColor.black
-        })
+        UIView.animate(withDuration: 0.4) { [weak self] in
+            self?.view.layoutIfNeeded()
+            self?.setNeedsStatusBarAppearanceUpdate()
+            self?.compactNowPlayingView.alpha = collapse ? 1 : 0
+            self?.fullNowPlayingView.alpha = collapse ? 0 : 1
+            self?.view.backgroundColor = collapse ? UIColor.white : UIColor.black
+        }
     }
     
     fileprivate func setupTabBar() {

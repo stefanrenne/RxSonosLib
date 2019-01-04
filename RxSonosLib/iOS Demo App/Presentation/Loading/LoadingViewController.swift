@@ -20,6 +20,10 @@ class LoadingViewController: UIViewController {
         self.setupAllRoomsObservable()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
     fileprivate func setupAllRoomsObservable() {
         SonosInteractor
             .getAllGroups()
