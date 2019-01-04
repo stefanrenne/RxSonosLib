@@ -1,6 +1,6 @@
 //
 //  SonosSettings.swift
-//  Demo App
+//  iOS Demo App
 //
 //  Created by Stefan Renne on 11/04/2018.
 //  Copyright © 2018 Uberweb. All rights reserved.

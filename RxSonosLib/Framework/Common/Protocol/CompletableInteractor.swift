@@ -1,6 +1,6 @@
 //
 //  CompletableInteractor.swift
-//  Demo App
+//  iOS Demo App
 //
 //  Created by Stefan Renne on 30/12/2018.
 //  Copyright © 2018 Uberweb. All rights reserved.

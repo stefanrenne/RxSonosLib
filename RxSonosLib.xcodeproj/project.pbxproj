@@ -7,16 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D563854E695B6C2FB19078D /* Pods_iOS_Demo_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6751D7027B4876D25FCC1F74 /* Pods_iOS_Demo_App.framework */; };
 		283CC70EF03E1014C983387D /* Pods_RxSonosLibTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6804EA9B7CF2804460685682 /* Pods_RxSonosLibTests.framework */; };
 		8963F446AC256EDACB40B3C1 /* Pods_RxSonosLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C32BC178A85F7172C04EA20 /* Pods_RxSonosLib.framework */; };
-		E2DE5E372104D8F1430E6BDB /* Pods_Demo_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C684C499ED266A1B223D44A /* Pods_Demo_App.framework */; };
 		F80034362069662500D7C0FB /* TransportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80034302069644300D7C0FB /* TransportRepository.swift */; };
 		F80034372069662900D7C0FB /* TransportRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80034322069644B00D7C0FB /* TransportRepositoryImpl.swift */; };
 		F800343D206967D000D7C0FB /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = F800343C206967D000D7C0FB /* Track.swift */; };
 		F800343F206967F000D7C0FB /* TransportRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F800343E206967F000D7C0FB /* TransportRepositoryTest.swift */; };
-		F813875320767AA600BA06AE /* QueueCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F813875220767AA600BA06AE /* QueueCoordinator.swift */; };
-		F813875920767B5700BA06AE /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F813875720767B5700BA06AE /* QueueViewController.swift */; };
-		F813875A20767B5700BA06AE /* QueueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F813875820767B5700BA06AE /* QueueViewController.xib */; };
 		F8181C5621394A9600C8DE52 /* SonosTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8181C5521394A9600C8DE52 /* SonosTargetType.swift */; };
 		F8181C5821394B7D00C8DE52 /* GroupTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8181C5721394B7D00C8DE52 /* GroupTarget.swift */; };
 		F8181C5A21394BA500C8DE52 /* TransportTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8181C5921394BA500C8DE52 /* TransportTarget.swift */; };
@@ -29,19 +26,6 @@
 		F8181C6921394D7000C8DE52 /* QueueTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8181C6821394D7000C8DE52 /* QueueTarget.swift */; };
 		F8181C6B21394D7E00C8DE52 /* DevicePropertiesTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8181C6A21394D7E00C8DE52 /* DevicePropertiesTarget.swift */; };
 		F8181C6D21394D9000C8DE52 /* SystemPropertiesTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8181C6C21394D9000C8DE52 /* SystemPropertiesTarget.swift */; };
-		F81A05BF2060284A00897738 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F46120481C61006A7B73 /* AppDelegate.swift */; };
-		F81A05C12060284A00897738 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F4A120482A46006A7B73 /* NavigationCoordinator.swift */; };
-		F81A05C22060284A00897738 /* RoomsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F49320482945006A7B73 /* RoomsCoordinator.swift */; };
-		F81A05C32060284A00897738 /* NowPlayingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C7420578D8E00AE311E /* NowPlayingCoordinator.swift */; };
-		F81A05C62060284A00897738 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C7020578D8200AE311E /* NowPlayingViewController.swift */; };
-		F81A05C72060284A00897738 /* NowPlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8BF5C7120578D8200AE311E /* NowPlayingViewController.xib */; };
-		F81A05C82060284A00897738 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F4AE20482DDE006A7B73 /* RoomsViewController.swift */; };
-		F81A05C92060284A00897738 /* RoomsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F825F4AF20482DDE006A7B73 /* RoomsViewController.xib */; };
-		F81A05CD2060284A00897738 /* RoomsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F881C5842049CCDC00E3F523 /* RoomsTableViewCell.swift */; };
-		F81A05CE2060284A00897738 /* RoomsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F881C5852049CCDC00E3F523 /* RoomsTableViewCell.xib */; };
-		F81A05CF2060284A00897738 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F825F4A620482BA9006A7B73 /* NavigationController.swift */; };
-		F81A05D02060285100897738 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F825F45F20481C61006A7B73 /* LaunchScreen.storyboard */; };
-		F81A05D12060285400897738 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F825F45E20481C61006A7B73 /* Assets.xcassets */; };
 		F81A05E4206028D600897738 /* String+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809DE88204999BA003A94A0 /* String+Regex.swift */; };
 		F81A05E5206028D600897738 /* Error+RxSonosLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F809DE7D2048408A003A94A0 /* Error+RxSonosLib.swift */; };
 		F81A05E8206028D600897738 /* AEXMLDocument+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF5C542056E37100AE311E /* AEXMLDocument+Create.swift */; };
@@ -66,20 +50,6 @@
 		F81A062920602D7F00897738 /* SSDPRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F56167205C3EE800E28533 /* SSDPRepositoryTest.swift */; };
 		F81A062C206031F300897738 /* XMLTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81A062B206031F300897738 /* XMLTest.swift */; };
 		F81A062E206034FF00897738 /* RepositoryInjectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81A062D206034FF00897738 /* RepositoryInjectionTest.swift */; };
-		F81DAE7D207CCF6F006B4C17 /* PageNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81DAE7C207CCF6F006B4C17 /* PageNavigationCoordinator.swift */; };
-		F81DAE80207CD16D006B4C17 /* PageNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81DAE7F207CD16D006B4C17 /* PageNavigationController.swift */; };
-		F81DAE84207CD427006B4C17 /* MySonosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81DAE82207CD427006B4C17 /* MySonosViewController.swift */; };
-		F81DAE85207CD427006B4C17 /* MySonosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F81DAE83207CD427006B4C17 /* MySonosViewController.xib */; };
-		F81DAE89207CD436006B4C17 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81DAE87207CD436006B4C17 /* BrowseViewController.swift */; };
-		F81DAE8A207CD436006B4C17 /* BrowseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F81DAE88207CD436006B4C17 /* BrowseViewController.xib */; };
-		F81DAE8E207CD444006B4C17 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81DAE8C207CD444006B4C17 /* SearchViewController.swift */; };
-		F81DAE8F207CD444006B4C17 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F81DAE8D207CD444006B4C17 /* SearchViewController.xib */; };
-		F81DAE93207CD451006B4C17 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81DAE91207CD451006B4C17 /* MoreViewController.swift */; };
-		F81DAE94207CD451006B4C17 /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F81DAE92207CD451006B4C17 /* MoreViewController.xib */; };
-		F81DAE96207CD45E006B4C17 /* MySonosCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81DAE95207CD45E006B4C17 /* MySonosCoordinator.swift */; };
-		F81DAE98207CD468006B4C17 /* BrowseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81DAE97207CD468006B4C17 /* BrowseCoordinator.swift */; };
-		F81DAE9A207CD473006B4C17 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81DAE99207CD473006B4C17 /* SearchCoordinator.swift */; };
-		F81DAE9C207CD47A006B4C17 /* MoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81DAE9B207CD47A006B4C17 /* MoreCoordinator.swift */; };
 		F81E339A207135B2002E22A8 /* GroupProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E3399207135B2002E22A8 /* GroupProgress.swift */; };
 		F81E339C20713924002E22A8 /* GetGroupProgressInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E339B20713924002E22A8 /* GetGroupProgressInteractor.swift */; };
 		F81E339E2072163E002E22A8 /* GetGroupProgressInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E339D2072163E002E22A8 /* GetGroupProgressInteractorTests.swift */; };
@@ -90,6 +60,56 @@
 		F81E33AC2072247D002E22A8 /* FakeGroupRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E33A72072247C002E22A8 /* FakeGroupRepositoryImpl.swift */; };
 		F81E33AD2072247D002E22A8 /* FakeTransportRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E33A82072247C002E22A8 /* FakeTransportRepositoryImpl.swift */; };
 		F81E33AF2072250A002E22A8 /* Mockingjay+Soap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E33AE2072250A002E22A8 /* Mockingjay+Soap.swift */; };
+		F8261F6821DF80FB0041BD15 /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F2621DF80FB0041BD15 /* LoadingCoordinator.swift */; };
+		F8261F6921DF80FB0041BD15 /* QueueCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F2721DF80FB0041BD15 /* QueueCoordinator.swift */; };
+		F8261F6A21DF80FB0041BD15 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F2821DF80FB0041BD15 /* TabBarCoordinator.swift */; };
+		F8261F6B21DF80FB0041BD15 /* NowPlayingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F2921DF80FB0041BD15 /* NowPlayingCoordinator.swift */; };
+		F8261F6C21DF80FB0041BD15 /* PageNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F2A21DF80FB0041BD15 /* PageNavigationCoordinator.swift */; };
+		F8261F6D21DF80FB0041BD15 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F2B21DF80FB0041BD15 /* SearchCoordinator.swift */; };
+		F8261F6E21DF80FB0041BD15 /* MusicProvidersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F2C21DF80FB0041BD15 /* MusicProvidersCoordinator.swift */; };
+		F8261F6F21DF80FB0041BD15 /* RoomsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F2D21DF80FB0041BD15 /* RoomsCoordinator.swift */; };
+		F8261F7021DF80FB0041BD15 /* MoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F2E21DF80FB0041BD15 /* MoreCoordinator.swift */; };
+		F8261F7121DF80FB0041BD15 /* BrowseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F2F21DF80FB0041BD15 /* BrowseCoordinator.swift */; };
+		F8261F7221DF80FB0041BD15 /* MySonosCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F3021DF80FB0041BD15 /* MySonosCoordinator.swift */; };
+		F8261F7321DF80FB0041BD15 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F3121DF80FB0041BD15 /* NavigationCoordinator.swift */; };
+		F8261F7421DF80FB0041BD15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8261F3321DF80FB0041BD15 /* Assets.xcassets */; };
+		F8261F7621DF80FB0041BD15 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F3621DF80FB0041BD15 /* ActionButton.swift */; };
+		F8261F7721DF80FB0041BD15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F3721DF80FB0041BD15 /* AppDelegate.swift */; };
+		F8261F7921DF80FB0041BD15 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F3921DF80FB0041BD15 /* Coordinator.swift */; };
+		F8261F7A21DF80FB0041BD15 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F3C21DF80FB0041BD15 /* NowPlayingViewController.swift */; };
+		F8261F7B21DF80FB0041BD15 /* NowPlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8261F3D21DF80FB0041BD15 /* NowPlayingViewController.xib */; };
+		F8261F7C21DF80FB0041BD15 /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8261F3F21DF80FB0041BD15 /* LoadingViewController.xib */; };
+		F8261F7D21DF80FB0041BD15 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F4021DF80FB0041BD15 /* LoadingViewController.swift */; };
+		F8261F7E21DF80FB0041BD15 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F4221DF80FB0041BD15 /* NavigationController.swift */; };
+		F8261F7F21DF80FB0041BD15 /* TabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8261F4421DF80FB0041BD15 /* TabBarViewController.xib */; };
+		F8261F8021DF80FB0041BD15 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F4521DF80FB0041BD15 /* TabBarViewController.swift */; };
+		F8261F8121DF80FB0041BD15 /* MySonosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F4721DF80FB0041BD15 /* MySonosViewController.swift */; };
+		F8261F8221DF80FB0041BD15 /* MySonosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8261F4821DF80FB0041BD15 /* MySonosViewController.xib */; };
+		F8261F8321DF80FB0041BD15 /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8261F4A21DF80FB0041BD15 /* MoreViewController.xib */; };
+		F8261F8421DF80FB0041BD15 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F4B21DF80FB0041BD15 /* MoreViewController.swift */; };
+		F8261F8521DF80FB0041BD15 /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F4C21DF80FB0041BD15 /* MoreTableViewCell.swift */; };
+		F8261F8621DF80FB0041BD15 /* MoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F4D21DF80FB0041BD15 /* MoreViewModel.swift */; };
+		F8261F8721DF80FB0041BD15 /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8261F4E21DF80FB0041BD15 /* MoreTableViewCell.xib */; };
+		F8261F8821DF80FB0041BD15 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F5021DF80FB0041BD15 /* SearchViewController.swift */; };
+		F8261F8921DF80FB0041BD15 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8261F5121DF80FB0041BD15 /* SearchViewController.xib */; };
+		F8261F8A21DF80FB0041BD15 /* MusicProvidersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8261F5321DF80FB0041BD15 /* MusicProvidersTableViewCell.xib */; };
+		F8261F8B21DF80FB0041BD15 /* MusicProvidersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F5421DF80FB0041BD15 /* MusicProvidersViewModel.swift */; };
+		F8261F8C21DF80FB0041BD15 /* MusicProvidersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8261F5521DF80FB0041BD15 /* MusicProvidersViewController.xib */; };
+		F8261F8D21DF80FB0041BD15 /* MusicProvidersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F5621DF80FB0041BD15 /* MusicProvidersViewController.swift */; };
+		F8261F8E21DF80FB0041BD15 /* MusicProvidersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F5721DF80FB0041BD15 /* MusicProvidersTableViewCell.swift */; };
+		F8261F8F21DF80FB0041BD15 /* PageNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F5921DF80FB0041BD15 /* PageNavigationController.swift */; };
+		F8261F9021DF80FB0041BD15 /* QueueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8261F5B21DF80FB0041BD15 /* QueueTableViewCell.xib */; };
+		F8261F9121DF80FB0041BD15 /* QueueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8261F5C21DF80FB0041BD15 /* QueueViewController.xib */; };
+		F8261F9221DF80FB0041BD15 /* QueueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F5D21DF80FB0041BD15 /* QueueTableViewCell.swift */; };
+		F8261F9321DF80FB0041BD15 /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F5E21DF80FB0041BD15 /* QueueViewController.swift */; };
+		F8261F9421DF80FB0041BD15 /* BrowseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8261F6021DF80FB0041BD15 /* BrowseViewController.xib */; };
+		F8261F9521DF80FB0041BD15 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F6121DF80FB0041BD15 /* BrowseViewController.swift */; };
+		F8261F9621DF80FB0041BD15 /* RoomsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F6321DF80FB0041BD15 /* RoomsTableViewCell.swift */; };
+		F8261F9721DF80FB0041BD15 /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F6421DF80FB0041BD15 /* TrackViewModel.swift */; };
+		F8261F9821DF80FB0041BD15 /* RoomsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8261F6521DF80FB0041BD15 /* RoomsViewController.xib */; };
+		F8261F9921DF80FB0041BD15 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F6621DF80FB0041BD15 /* RoomsViewController.swift */; };
+		F8261F9A21DF80FB0041BD15 /* RoomsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8261F6721DF80FB0041BD15 /* RoomsTableViewCell.xib */; };
+		F8261F9C21DF81E00041BD15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8261F3421DF80FB0041BD15 /* LaunchScreen.storyboard */; };
 		F827069321D9683000DB4656 /* SingleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827068F21D9682100DB4656 /* SingleInteractor.swift */; };
 		F827069421D9683200DB4656 /* CompletableInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827069121D9682900DB4656 /* CompletableInteractor.swift */; };
 		F827069621D9684000DB4656 /* ObservableInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827069521D9684000DB4656 /* ObservableInteractor.swift */; };
@@ -105,7 +125,6 @@
 		F83D210E20754F9C001ABC9D /* GetVolumeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D210D20754F9C001ABC9D /* GetVolumeInteractorTests.swift */; };
 		F83E367621392D800035F83C /* NetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E367521392D800035F83C /* NetworkTest.swift */; };
 		F83E367821392DD00035F83C /* MockNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E367721392DD00035F83C /* MockNetwork.swift */; };
-		F851ACD9206A63E8006FA0DC /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F851ACD8206A63E8006FA0DC /* TrackViewModel.swift */; };
 		F8627F43206BFD5200571085 /* GetTransportStateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8627F42206BFD5200571085 /* GetTransportStateInteractor.swift */; };
 		F8627F45206BFFE500571085 /* GetTransportStateInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8627F44206BFFE500571085 /* GetTransportStateInteractorTests.swift */; };
 		F86B3440206A8EB900979A5F /* String+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B343F206A8EB900979A5F /* String+Time.swift */; };
@@ -131,14 +150,9 @@
 		F8860E9320750F6600BF6A7E /* QueueTrackFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E9220750F6600BF6A7E /* QueueTrackFactory.swift */; };
 		F8860E95207514BE00BF6A7E /* FakeContentDirectoryRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E94207514BE00BF6A7E /* FakeContentDirectoryRepositoryImpl.swift */; };
 		F8860E972075157400BF6A7E /* GetGroupQueueInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E962075157400BF6A7E /* GetGroupQueueInteractorTests.swift */; };
-		F8860E9C207516F400BF6A7E /* QueueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8860E98207516F000BF6A7E /* QueueTableViewCell.swift */; };
-		F8860E9D207516FC00BF6A7E /* QueueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8860E99207516F000BF6A7E /* QueueTableViewCell.xib */; };
 		F8979947206944A6000CF52A /* GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8979946206944A6000CF52A /* GroupTests.swift */; };
 		F89807E620762FE400AF5ECB /* SetVolumeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89807E520762FE400AF5ECB /* SetVolumeInteractor.swift */; };
 		F89807E82076318200AF5ECB /* SetVolumeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89807E72076318200AF5ECB /* SetVolumeInteractorTests.swift */; };
-		F89A59C0207776B00097C0AA /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89A59BF207776B00097C0AA /* TabBarCoordinator.swift */; };
-		F89A59C5207776CB0097C0AA /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89A59C3207776CB0097C0AA /* TabBarViewController.swift */; };
-		F89A59C6207776CB0097C0AA /* TabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F89A59C4207776CB0097C0AA /* TabBarViewController.xib */; };
 		F89D94C920615994002B1383 /* CacheManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89D94C820615994002B1383 /* CacheManagerTests.swift */; };
 		F8A584B8212B5A530041D1ED /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = F8A584B7212B5A460041D1ED /* .swiftlint.yml */; };
 		F8A64DF22087F432003F777E /* SetNextTrackInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A64DF12087F432003F777E /* SetNextTrackInteractor.swift */; };
@@ -150,7 +164,6 @@
 		F8B0057320612BB900991E64 /* StringRegexTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0057220612BB900991E64 /* StringRegexTest.swift */; };
 		F8B0D8A52082562A0072BAE0 /* SetTransportStateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8A42082562A0072BAE0 /* SetTransportStateInteractor.swift */; };
 		F8B0D8AD20825AAC0072BAE0 /* SetTransportStateInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8AC20825AAC0072BAE0 /* SetTransportStateInteractorTests.swift */; };
-		F8B0D8AF2083482A0072BAE0 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0D8AE2083482A0072BAE0 /* ActionButton.swift */; };
 		F8B315C1209A018A0000335D /* MusicProvidersRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B315C0209A018A0000335D /* MusicProvidersRepositoryTests.swift */; };
 		F8B315C3209A20510000335D /* FakeMusicProvidersRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B315C2209A20510000335D /* FakeMusicProvidersRepositoryImpl.swift */; };
 		F8B315C7209A22BB0000335D /* GetMusicProvidersInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B315C6209A22BB0000335D /* GetMusicProvidersInteractorTests.swift */; };
@@ -159,19 +172,6 @@
 		F8B9470820979113004F1A33 /* MusicProvidersRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9470720979113004F1A33 /* MusicProvidersRepositoryImpl.swift */; };
 		F8B9470A2097923E004F1A33 /* MusicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B947092097923E004F1A33 /* MusicProvider.swift */; };
 		F8B9470E209794C3004F1A33 /* GetMusicProvidersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9470D209794C3004F1A33 /* GetMusicProvidersInteractor.swift */; };
-		F8B947162097992D004F1A33 /* MoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B947132097989A004F1A33 /* MoreViewModel.swift */; };
-		F8B9471720979936004F1A33 /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B94710209796FE004F1A33 /* MoreTableViewCell.xib */; };
-		F8B947182097993A004F1A33 /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9470F209796FE004F1A33 /* MoreTableViewCell.swift */; };
-		F8B9471B20979A95004F1A33 /* MusicProvidersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9471A20979A95004F1A33 /* MusicProvidersCoordinator.swift */; };
-		F8B9472320979C44004F1A33 /* MusicProvidersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B9471E20979C44004F1A33 /* MusicProvidersTableViewCell.xib */; };
-		F8B9472420979C44004F1A33 /* MusicProvidersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9471F20979C44004F1A33 /* MusicProvidersViewController.swift */; };
-		F8B9472520979C44004F1A33 /* MusicProvidersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9472020979C44004F1A33 /* MusicProvidersTableViewCell.swift */; };
-		F8B9472620979C44004F1A33 /* MusicProvidersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B9472120979C44004F1A33 /* MusicProvidersViewModel.swift */; };
-		F8B9472720979C44004F1A33 /* MusicProvidersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B9472220979C44004F1A33 /* MusicProvidersViewController.xib */; };
-		F8CA2306207BD502009F15AE /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA2305207BD502009F15AE /* LoadingCoordinator.swift */; };
-		F8CA230A207BD5C1009F15AE /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA2308207BD5C1009F15AE /* LoadingViewController.swift */; };
-		F8CA230B207BD5C1009F15AE /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8CA2309207BD5C1009F15AE /* LoadingViewController.xib */; };
-		F8CA230D207BE257009F15AE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA230C207BE257009F15AE /* Coordinator.swift */; };
 		F8D0BB8C207E5B5A00BBEFB8 /* SonosSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D0BB8A207E5AB000BBEFB8 /* SonosSettings.swift */; };
 		F8DE4763208A328F008F50FA /* SetMuteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DE4762208A328F008F50FA /* SetMuteInteractor.swift */; };
 		F8DE4765208A3297008F50FA /* GetMuteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DE4764208A3297008F50FA /* GetMuteInteractor.swift */; };
@@ -180,13 +180,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F81A05DC2060289A00897738 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F83FED0C1F97CD4B004DF663 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F81A05D62060289A00897738;
-			remoteInfo = RxSonosLib;
-		};
 		F81A061F206029AE00897738 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F83FED0C1F97CD4B004DF663 /* Project object */;
@@ -221,11 +214,14 @@
 		06359D402B46CE3A5C1C0C91 /* Pods-Demo App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo App/Pods-Demo App.debug.xcconfig"; sourceTree = "<group>"; };
 		0934A90BE0E32A61EB02E0E7 /* Pods-RxSonosLib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSonosLib.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSonosLib/Pods-RxSonosLib.release.xcconfig"; sourceTree = "<group>"; };
 		0B3953DBEDFFB898ADD6A395 /* Pods-RxSonosLibTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSonosLibTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSonosLibTests/Pods-RxSonosLibTests.debug.xcconfig"; sourceTree = "<group>"; };
+		217B67C0EB4642B3B3FB962C /* Pods-iOS Demo App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Demo App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Demo App/Pods-iOS Demo App.debug.xcconfig"; sourceTree = "<group>"; };
 		3C684C499ED266A1B223D44A /* Pods_Demo_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D5D218BCF0C0BBD25C06212 /* Pods-Demo App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo App/Pods-Demo App.release.xcconfig"; sourceTree = "<group>"; };
 		528D17599D7231DFC1F9E926 /* Pods-RxSonosLibTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSonosLibTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSonosLibTests/Pods-RxSonosLibTests.release.xcconfig"; sourceTree = "<group>"; };
+		6751D7027B4876D25FCC1F74 /* Pods_iOS_Demo_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Demo_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6804EA9B7CF2804460685682 /* Pods_RxSonosLibTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSonosLibTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C32BC178A85F7172C04EA20 /* Pods_RxSonosLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSonosLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE539630594A9549743B94A0 /* Pods-iOS Demo App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Demo App.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Demo App/Pods-iOS Demo App.release.xcconfig"; sourceTree = "<group>"; };
 		F80034302069644300D7C0FB /* TransportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportRepository.swift; sourceTree = "<group>"; };
 		F80034322069644B00D7C0FB /* TransportRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportRepositoryImpl.swift; sourceTree = "<group>"; };
 		F800343C206967D000D7C0FB /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
@@ -239,9 +235,6 @@
 		F809DE922049A1A0003A94A0 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		F809DE942049A1B0003A94A0 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		F809DE962049A918003A94A0 /* DeviceDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDescription.swift; sourceTree = "<group>"; };
-		F813875220767AA600BA06AE /* QueueCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueCoordinator.swift; sourceTree = "<group>"; };
-		F813875720767B5700BA06AE /* QueueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueViewController.swift; sourceTree = "<group>"; };
-		F813875820767B5700BA06AE /* QueueViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueueViewController.xib; sourceTree = "<group>"; };
 		F8181C5521394A9600C8DE52 /* SonosTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosTargetType.swift; sourceTree = "<group>"; };
 		F8181C5721394B7D00C8DE52 /* GroupTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTarget.swift; sourceTree = "<group>"; };
 		F8181C5921394BA500C8DE52 /* TransportTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportTarget.swift; sourceTree = "<group>"; };
@@ -255,7 +248,7 @@
 		F8181C6A21394D7E00C8DE52 /* DevicePropertiesTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePropertiesTarget.swift; sourceTree = "<group>"; };
 		F8181C6C21394D9000C8DE52 /* SystemPropertiesTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemPropertiesTarget.swift; sourceTree = "<group>"; };
 		F818EA512056DD2C005D4F45 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
-		F81A05A92060280A00897738 /* Demo App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F81A05A92060280A00897738 /* iOS Demo App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Demo App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F81A05D72060289A00897738 /* RxSonosLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSonosLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F81A06002060291D00897738 /* RxSonosLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RxSonosLib.h; path = RxSonosLib/Framework/RxSonosLib.h; sourceTree = SOURCE_ROOT; };
 		F81A06012060291D00897738 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RxSonosLib/Framework/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -263,20 +256,6 @@
 		F81A0624206029C300897738 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F81A062B206031F300897738 /* XMLTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLTest.swift; sourceTree = "<group>"; };
 		F81A062D206034FF00897738 /* RepositoryInjectionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryInjectionTest.swift; sourceTree = "<group>"; };
-		F81DAE7C207CCF6F006B4C17 /* PageNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageNavigationCoordinator.swift; sourceTree = "<group>"; };
-		F81DAE7F207CD16D006B4C17 /* PageNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageNavigationController.swift; sourceTree = "<group>"; };
-		F81DAE82207CD427006B4C17 /* MySonosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySonosViewController.swift; sourceTree = "<group>"; };
-		F81DAE83207CD427006B4C17 /* MySonosViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MySonosViewController.xib; sourceTree = "<group>"; };
-		F81DAE87207CD436006B4C17 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
-		F81DAE88207CD436006B4C17 /* BrowseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseViewController.xib; sourceTree = "<group>"; };
-		F81DAE8C207CD444006B4C17 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		F81DAE8D207CD444006B4C17 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
-		F81DAE91207CD451006B4C17 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
-		F81DAE92207CD451006B4C17 /* MoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
-		F81DAE95207CD45E006B4C17 /* MySonosCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySonosCoordinator.swift; sourceTree = "<group>"; };
-		F81DAE97207CD468006B4C17 /* BrowseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseCoordinator.swift; sourceTree = "<group>"; };
-		F81DAE99207CD473006B4C17 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
-		F81DAE9B207CD47A006B4C17 /* MoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCoordinator.swift; sourceTree = "<group>"; };
 		F81E3399207135B2002E22A8 /* GroupProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupProgress.swift; sourceTree = "<group>"; };
 		F81E339B20713924002E22A8 /* GetGroupProgressInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupProgressInteractor.swift; sourceTree = "<group>"; };
 		F81E339D2072163E002E22A8 /* GetGroupProgressInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupProgressInteractorTests.swift; sourceTree = "<group>"; };
@@ -287,18 +266,60 @@
 		F81E33A72072247C002E22A8 /* FakeGroupRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeGroupRepositoryImpl.swift; sourceTree = "<group>"; };
 		F81E33A82072247C002E22A8 /* FakeTransportRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeTransportRepositoryImpl.swift; sourceTree = "<group>"; };
 		F81E33AE2072250A002E22A8 /* Mockingjay+Soap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mockingjay+Soap.swift"; sourceTree = "<group>"; };
-		F825F45E20481C61006A7B73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F825F46020481C61006A7B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F825F46120481C61006A7B73 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F825F46F20481C71006A7B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F825F47020481CC7006A7B73 /* RepositoryInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryInjection.swift; sourceTree = "<group>"; };
 		F825F477204820BD006A7B73 /* SSDPDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSDPDevice.swift; sourceTree = "<group>"; };
-		F825F49320482945006A7B73 /* RoomsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsCoordinator.swift; sourceTree = "<group>"; };
 		F825F49F204829F5006A7B73 /* Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
-		F825F4A120482A46006A7B73 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
-		F825F4A620482BA9006A7B73 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		F825F4AE20482DDE006A7B73 /* RoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
-		F825F4AF20482DDE006A7B73 /* RoomsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoomsViewController.xib; sourceTree = "<group>"; };
+		F8261F2621DF80FB0041BD15 /* LoadingCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCoordinator.swift; sourceTree = "<group>"; };
+		F8261F2721DF80FB0041BD15 /* QueueCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueCoordinator.swift; sourceTree = "<group>"; };
+		F8261F2821DF80FB0041BD15 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		F8261F2921DF80FB0041BD15 /* NowPlayingCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingCoordinator.swift; sourceTree = "<group>"; };
+		F8261F2A21DF80FB0041BD15 /* PageNavigationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageNavigationCoordinator.swift; sourceTree = "<group>"; };
+		F8261F2B21DF80FB0041BD15 /* SearchCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		F8261F2C21DF80FB0041BD15 /* MusicProvidersCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicProvidersCoordinator.swift; sourceTree = "<group>"; };
+		F8261F2D21DF80FB0041BD15 /* RoomsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsCoordinator.swift; sourceTree = "<group>"; };
+		F8261F2E21DF80FB0041BD15 /* MoreCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreCoordinator.swift; sourceTree = "<group>"; };
+		F8261F2F21DF80FB0041BD15 /* BrowseCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseCoordinator.swift; sourceTree = "<group>"; };
+		F8261F3021DF80FB0041BD15 /* MySonosCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySonosCoordinator.swift; sourceTree = "<group>"; };
+		F8261F3121DF80FB0041BD15 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
+		F8261F3321DF80FB0041BD15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F8261F3521DF80FB0041BD15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F8261F3621DF80FB0041BD15 /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		F8261F3721DF80FB0041BD15 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F8261F3821DF80FB0041BD15 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8261F3921DF80FB0041BD15 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		F8261F3C21DF80FB0041BD15 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
+		F8261F3D21DF80FB0041BD15 /* NowPlayingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NowPlayingViewController.xib; sourceTree = "<group>"; };
+		F8261F3F21DF80FB0041BD15 /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
+		F8261F4021DF80FB0041BD15 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		F8261F4221DF80FB0041BD15 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		F8261F4421DF80FB0041BD15 /* TabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabBarViewController.xib; sourceTree = "<group>"; };
+		F8261F4521DF80FB0041BD15 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		F8261F4721DF80FB0041BD15 /* MySonosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySonosViewController.swift; sourceTree = "<group>"; };
+		F8261F4821DF80FB0041BD15 /* MySonosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MySonosViewController.xib; sourceTree = "<group>"; };
+		F8261F4A21DF80FB0041BD15 /* MoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
+		F8261F4B21DF80FB0041BD15 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		F8261F4C21DF80FB0041BD15 /* MoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
+		F8261F4D21DF80FB0041BD15 /* MoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewModel.swift; sourceTree = "<group>"; };
+		F8261F4E21DF80FB0041BD15 /* MoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreTableViewCell.xib; sourceTree = "<group>"; };
+		F8261F5021DF80FB0041BD15 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		F8261F5121DF80FB0041BD15 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		F8261F5321DF80FB0041BD15 /* MusicProvidersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicProvidersTableViewCell.xib; sourceTree = "<group>"; };
+		F8261F5421DF80FB0041BD15 /* MusicProvidersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicProvidersViewModel.swift; sourceTree = "<group>"; };
+		F8261F5521DF80FB0041BD15 /* MusicProvidersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicProvidersViewController.xib; sourceTree = "<group>"; };
+		F8261F5621DF80FB0041BD15 /* MusicProvidersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicProvidersViewController.swift; sourceTree = "<group>"; };
+		F8261F5721DF80FB0041BD15 /* MusicProvidersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicProvidersTableViewCell.swift; sourceTree = "<group>"; };
+		F8261F5921DF80FB0041BD15 /* PageNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageNavigationController.swift; sourceTree = "<group>"; };
+		F8261F5B21DF80FB0041BD15 /* QueueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QueueTableViewCell.xib; sourceTree = "<group>"; };
+		F8261F5C21DF80FB0041BD15 /* QueueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QueueViewController.xib; sourceTree = "<group>"; };
+		F8261F5D21DF80FB0041BD15 /* QueueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueTableViewCell.swift; sourceTree = "<group>"; };
+		F8261F5E21DF80FB0041BD15 /* QueueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueViewController.swift; sourceTree = "<group>"; };
+		F8261F6021DF80FB0041BD15 /* BrowseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrowseViewController.xib; sourceTree = "<group>"; };
+		F8261F6121DF80FB0041BD15 /* BrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
+		F8261F6321DF80FB0041BD15 /* RoomsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsTableViewCell.swift; sourceTree = "<group>"; };
+		F8261F6421DF80FB0041BD15 /* TrackViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackViewModel.swift; sourceTree = "<group>"; };
+		F8261F6521DF80FB0041BD15 /* RoomsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomsViewController.xib; sourceTree = "<group>"; };
+		F8261F6621DF80FB0041BD15 /* RoomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
+		F8261F6721DF80FB0041BD15 /* RoomsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomsTableViewCell.xib; sourceTree = "<group>"; };
 		F827068F21D9682100DB4656 /* SingleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleInteractor.swift; sourceTree = "<group>"; };
 		F827069121D9682900DB4656 /* CompletableInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletableInteractor.swift; sourceTree = "<group>"; };
 		F827069521D9684000DB4656 /* ObservableInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableInteractor.swift; sourceTree = "<group>"; };
@@ -314,7 +335,6 @@
 		F83D210D20754F9C001ABC9D /* GetVolumeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVolumeInteractorTests.swift; sourceTree = "<group>"; };
 		F83E367521392D800035F83C /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
 		F83E367721392DD00035F83C /* MockNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetwork.swift; sourceTree = "<group>"; };
-		F851ACD8206A63E8006FA0DC /* TrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModel.swift; sourceTree = "<group>"; };
 		F8627F42206BFD5200571085 /* GetTransportStateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTransportStateInteractor.swift; sourceTree = "<group>"; };
 		F8627F44206BFFE500571085 /* GetTransportStateInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTransportStateInteractorTests.swift; sourceTree = "<group>"; };
 		F8694B1E205BC8670027EBCF /* SonosInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosInteractor.swift; sourceTree = "<group>"; };
@@ -330,8 +350,6 @@
 		F87DC3B020696E7E0089F882 /* GetNowPlayingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNowPlayingInteractor.swift; sourceTree = "<group>"; };
 		F87DC3B9206A2FE80089F882 /* MusicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicService.swift; sourceTree = "<group>"; };
 		F881C5802049C8E700E3F523 /* GetGroupsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupsInteractor.swift; sourceTree = "<group>"; };
-		F881C5842049CCDC00E3F523 /* RoomsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsTableViewCell.swift; sourceTree = "<group>"; };
-		F881C5852049CCDC00E3F523 /* RoomsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoomsTableViewCell.xib; sourceTree = "<group>"; };
 		F8860E7B2074D74100BF6A7E /* String+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Empty.swift"; sourceTree = "<group>"; };
 		F8860E7D2074D89300BF6A7E /* MusicProviderTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicProviderTrack.swift; sourceTree = "<group>"; };
 		F8860E812074D8BE00BF6A7E /* TVTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTrack.swift; sourceTree = "<group>"; };
@@ -344,14 +362,9 @@
 		F8860E9220750F6600BF6A7E /* QueueTrackFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTrackFactory.swift; sourceTree = "<group>"; };
 		F8860E94207514BE00BF6A7E /* FakeContentDirectoryRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeContentDirectoryRepositoryImpl.swift; sourceTree = "<group>"; };
 		F8860E962075157400BF6A7E /* GetGroupQueueInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupQueueInteractorTests.swift; sourceTree = "<group>"; };
-		F8860E98207516F000BF6A7E /* QueueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTableViewCell.swift; sourceTree = "<group>"; };
-		F8860E99207516F000BF6A7E /* QueueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QueueTableViewCell.xib; sourceTree = "<group>"; };
 		F8979946206944A6000CF52A /* GroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTests.swift; sourceTree = "<group>"; };
 		F89807E520762FE400AF5ECB /* SetVolumeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetVolumeInteractor.swift; sourceTree = "<group>"; };
 		F89807E72076318200AF5ECB /* SetVolumeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetVolumeInteractorTests.swift; sourceTree = "<group>"; };
-		F89A59BF207776B00097C0AA /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
-		F89A59C3207776CB0097C0AA /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		F89A59C4207776CB0097C0AA /* TabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarViewController.xib; sourceTree = "<group>"; };
 		F89D94C820615994002B1383 /* CacheManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManagerTests.swift; sourceTree = "<group>"; };
 		F8A584B7212B5A460041D1ED /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		F8A64DF12087F432003F777E /* SetNextTrackInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNextTrackInteractor.swift; sourceTree = "<group>"; };
@@ -363,7 +376,6 @@
 		F8B0057220612BB900991E64 /* StringRegexTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRegexTest.swift; sourceTree = "<group>"; };
 		F8B0D8A42082562A0072BAE0 /* SetTransportStateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTransportStateInteractor.swift; sourceTree = "<group>"; };
 		F8B0D8AC20825AAC0072BAE0 /* SetTransportStateInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTransportStateInteractorTests.swift; sourceTree = "<group>"; };
-		F8B0D8AE2083482A0072BAE0 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		F8B315C0209A018A0000335D /* MusicProvidersRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicProvidersRepositoryTests.swift; sourceTree = "<group>"; };
 		F8B315C2209A20510000335D /* FakeMusicProvidersRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMusicProvidersRepositoryImpl.swift; sourceTree = "<group>"; };
 		F8B315C6209A22BB0000335D /* GetMusicProvidersInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMusicProvidersInteractorTests.swift; sourceTree = "<group>"; };
@@ -372,25 +384,9 @@
 		F8B9470720979113004F1A33 /* MusicProvidersRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicProvidersRepositoryImpl.swift; sourceTree = "<group>"; };
 		F8B947092097923E004F1A33 /* MusicProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicProvider.swift; sourceTree = "<group>"; };
 		F8B9470D209794C3004F1A33 /* GetMusicProvidersInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMusicProvidersInteractor.swift; sourceTree = "<group>"; };
-		F8B9470F209796FE004F1A33 /* MoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
-		F8B94710209796FE004F1A33 /* MoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreTableViewCell.xib; sourceTree = "<group>"; };
-		F8B947132097989A004F1A33 /* MoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewModel.swift; sourceTree = "<group>"; };
-		F8B9471A20979A95004F1A33 /* MusicProvidersCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicProvidersCoordinator.swift; sourceTree = "<group>"; };
-		F8B9471E20979C44004F1A33 /* MusicProvidersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicProvidersTableViewCell.xib; sourceTree = "<group>"; };
-		F8B9471F20979C44004F1A33 /* MusicProvidersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicProvidersViewController.swift; sourceTree = "<group>"; };
-		F8B9472020979C44004F1A33 /* MusicProvidersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicProvidersTableViewCell.swift; sourceTree = "<group>"; };
-		F8B9472120979C44004F1A33 /* MusicProvidersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicProvidersViewModel.swift; sourceTree = "<group>"; };
-		F8B9472220979C44004F1A33 /* MusicProvidersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicProvidersViewController.xib; sourceTree = "<group>"; };
 		F8BF5C542056E37100AE311E /* AEXMLDocument+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AEXMLDocument+Create.swift"; sourceTree = "<group>"; };
 		F8BF5C592056FBEC00AE311E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		F8BF5C5D2056FC8200AE311E /* LocalNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetwork.swift; sourceTree = "<group>"; };
-		F8BF5C7020578D8200AE311E /* NowPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
-		F8BF5C7120578D8200AE311E /* NowPlayingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NowPlayingViewController.xib; sourceTree = "<group>"; };
-		F8BF5C7420578D8E00AE311E /* NowPlayingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingCoordinator.swift; sourceTree = "<group>"; };
-		F8CA2305207BD502009F15AE /* LoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCoordinator.swift; sourceTree = "<group>"; };
-		F8CA2308207BD5C1009F15AE /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
-		F8CA2309207BD5C1009F15AE /* LoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
-		F8CA230C207BE257009F15AE /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		F8D0BB8A207E5AB000BBEFB8 /* SonosSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosSettings.swift; sourceTree = "<group>"; };
 		F8DE4762208A328F008F50FA /* SetMuteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMuteInteractor.swift; sourceTree = "<group>"; };
 		F8DE4764208A3297008F50FA /* GetMuteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMuteInteractor.swift; sourceTree = "<group>"; };
@@ -406,7 +402,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2DE5E372104D8F1430E6BDB /* Pods_Demo_App.framework in Frameworks */,
+				0D563854E695B6C2FB19078D /* Pods_iOS_Demo_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +435,8 @@
 				528D17599D7231DFC1F9E926 /* Pods-RxSonosLibTests.release.xcconfig */,
 				06359D402B46CE3A5C1C0C91 /* Pods-Demo App.debug.xcconfig */,
 				3D5D218BCF0C0BBD25C06212 /* Pods-Demo App.release.xcconfig */,
+				217B67C0EB4642B3B3FB962C /* Pods-iOS Demo App.debug.xcconfig */,
+				CE539630594A9549743B94A0 /* Pods-iOS Demo App.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -449,6 +447,7 @@
 				9C32BC178A85F7172C04EA20 /* Pods_RxSonosLib.framework */,
 				6804EA9B7CF2804460685682 /* Pods_RxSonosLibTests.framework */,
 				3C684C499ED266A1B223D44A /* Pods_Demo_App.framework */,
+				6751D7027B4876D25FCC1F74 /* Pods_iOS_Demo_App.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -467,17 +466,6 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
-		F813875420767B1700BA06AE /* Queue */ = {
-			isa = PBXGroup;
-			children = (
-				F813875720767B5700BA06AE /* QueueViewController.swift */,
-				F813875820767B5700BA06AE /* QueueViewController.xib */,
-				F8860E98207516F000BF6A7E /* QueueTableViewCell.swift */,
-				F8860E99207516F000BF6A7E /* QueueTableViewCell.xib */,
-			);
-			path = Queue;
-			sourceTree = "<group>";
-		};
 		F8181C6121394D2D00C8DE52 /* Target */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,53 +482,6 @@
 				F8181C6C21394D9000C8DE52 /* SystemPropertiesTarget.swift */,
 			);
 			path = Target;
-			sourceTree = "<group>";
-		};
-		F81DAE7E207CD154006B4C17 /* PageNavigation */ = {
-			isa = PBXGroup;
-			children = (
-				F81DAE7F207CD16D006B4C17 /* PageNavigationController.swift */,
-			);
-			path = PageNavigation;
-			sourceTree = "<group>";
-		};
-		F81DAE81207CD414006B4C17 /* MySonos */ = {
-			isa = PBXGroup;
-			children = (
-				F81DAE82207CD427006B4C17 /* MySonosViewController.swift */,
-				F81DAE83207CD427006B4C17 /* MySonosViewController.xib */,
-			);
-			path = MySonos;
-			sourceTree = "<group>";
-		};
-		F81DAE86207CD42A006B4C17 /* Browse */ = {
-			isa = PBXGroup;
-			children = (
-				F81DAE87207CD436006B4C17 /* BrowseViewController.swift */,
-				F81DAE88207CD436006B4C17 /* BrowseViewController.xib */,
-			);
-			path = Browse;
-			sourceTree = "<group>";
-		};
-		F81DAE8B207CD43A006B4C17 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				F81DAE8C207CD444006B4C17 /* SearchViewController.swift */,
-				F81DAE8D207CD444006B4C17 /* SearchViewController.xib */,
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
-		F81DAE90207CD447006B4C17 /* More */ = {
-			isa = PBXGroup;
-			children = (
-				F81DAE91207CD451006B4C17 /* MoreViewController.swift */,
-				F81DAE92207CD451006B4C17 /* MoreViewController.xib */,
-				F8B9470F209796FE004F1A33 /* MoreTableViewCell.swift */,
-				F8B94710209796FE004F1A33 /* MoreTableViewCell.xib */,
-				F8B947132097989A004F1A33 /* MoreViewModel.swift */,
-			);
-			path = More;
 			sourceTree = "<group>";
 		};
 		F81E33A12072247C002E22A8 /* Data */ = {
@@ -659,17 +600,6 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		F825F41E2048178C006A7B73 /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-				F825F45D20481C61006A7B73 /* Common */,
-				F825F46420481C62006A7B73 /* Coordinator */,
-				F825F46620481C62006A7B73 /* Presentation */,
-			);
-			name = Demo;
-			path = RxSonosLib/Demo;
-			sourceTree = "<group>";
-		};
 		F825F44520481A59006A7B73 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -716,57 +646,6 @@
 				F825F47020481CC7006A7B73 /* RepositoryInjection.swift */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		F825F45D20481C61006A7B73 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				F825F45E20481C61006A7B73 /* Assets.xcassets */,
-				F825F45F20481C61006A7B73 /* LaunchScreen.storyboard */,
-				F825F46120481C61006A7B73 /* AppDelegate.swift */,
-				F825F46F20481C71006A7B73 /* Info.plist */,
-				F8CA230C207BE257009F15AE /* Coordinator.swift */,
-				F8B0D8AE2083482A0072BAE0 /* ActionButton.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		F825F46420481C62006A7B73 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				F825F4A120482A46006A7B73 /* NavigationCoordinator.swift */,
-				F825F49320482945006A7B73 /* RoomsCoordinator.swift */,
-				F8BF5C7420578D8E00AE311E /* NowPlayingCoordinator.swift */,
-				F813875220767AA600BA06AE /* QueueCoordinator.swift */,
-				F89A59BF207776B00097C0AA /* TabBarCoordinator.swift */,
-				F8CA2305207BD502009F15AE /* LoadingCoordinator.swift */,
-				F81DAE7C207CCF6F006B4C17 /* PageNavigationCoordinator.swift */,
-				F81DAE95207CD45E006B4C17 /* MySonosCoordinator.swift */,
-				F81DAE97207CD468006B4C17 /* BrowseCoordinator.swift */,
-				F81DAE99207CD473006B4C17 /* SearchCoordinator.swift */,
-				F81DAE9B207CD47A006B4C17 /* MoreCoordinator.swift */,
-				F8B9471A20979A95004F1A33 /* MusicProvidersCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		F825F46620481C62006A7B73 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				F8B9471920979A7E004F1A33 /* MusicProviders */,
-				F81DAE90207CD447006B4C17 /* More */,
-				F81DAE8B207CD43A006B4C17 /* Search */,
-				F81DAE86207CD42A006B4C17 /* Browse */,
-				F81DAE81207CD414006B4C17 /* MySonos */,
-				F81DAE7E207CD154006B4C17 /* PageNavigation */,
-				F8CA2307207BD5B3009F15AE /* Loading */,
-				F89A59C2207776B90097C0AA /* TabBar */,
-				F813875420767B1700BA06AE /* Queue */,
-				F8BF5C6920578D0F00AE311E /* Now Playing */,
-				F825F4A520482B82006A7B73 /* Rooms */,
-				F825F4A420482B7B006A7B73 /* Navigation */,
-			);
-			path = Presentation;
 			sourceTree = "<group>";
 		};
 		F825F47220482043006A7B73 /* Repositories */ = {
@@ -848,22 +727,181 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
-		F825F4A420482B7B006A7B73 /* Navigation */ = {
+		F8261F2421DF80FB0041BD15 /* iOS Demo App */ = {
 			isa = PBXGroup;
 			children = (
-				F825F4A620482BA9006A7B73 /* NavigationController.swift */,
+				F8261F2521DF80FB0041BD15 /* Coordinator */,
+				F8261F3221DF80FB0041BD15 /* Common */,
+				F8261F3A21DF80FB0041BD15 /* Presentation */,
+			);
+			name = "iOS Demo App";
+			path = "RxSonosLib/iOS Demo App";
+			sourceTree = "<group>";
+		};
+		F8261F2521DF80FB0041BD15 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F8261F2621DF80FB0041BD15 /* LoadingCoordinator.swift */,
+				F8261F2721DF80FB0041BD15 /* QueueCoordinator.swift */,
+				F8261F2821DF80FB0041BD15 /* TabBarCoordinator.swift */,
+				F8261F2921DF80FB0041BD15 /* NowPlayingCoordinator.swift */,
+				F8261F2A21DF80FB0041BD15 /* PageNavigationCoordinator.swift */,
+				F8261F2B21DF80FB0041BD15 /* SearchCoordinator.swift */,
+				F8261F2C21DF80FB0041BD15 /* MusicProvidersCoordinator.swift */,
+				F8261F2D21DF80FB0041BD15 /* RoomsCoordinator.swift */,
+				F8261F2E21DF80FB0041BD15 /* MoreCoordinator.swift */,
+				F8261F2F21DF80FB0041BD15 /* BrowseCoordinator.swift */,
+				F8261F3021DF80FB0041BD15 /* MySonosCoordinator.swift */,
+				F8261F3121DF80FB0041BD15 /* NavigationCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		F8261F3221DF80FB0041BD15 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F8261F3321DF80FB0041BD15 /* Assets.xcassets */,
+				F8261F3421DF80FB0041BD15 /* LaunchScreen.storyboard */,
+				F8261F3621DF80FB0041BD15 /* ActionButton.swift */,
+				F8261F3721DF80FB0041BD15 /* AppDelegate.swift */,
+				F8261F3821DF80FB0041BD15 /* Info.plist */,
+				F8261F3921DF80FB0041BD15 /* Coordinator.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F8261F3A21DF80FB0041BD15 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F8261F3B21DF80FB0041BD15 /* Now Playing */,
+				F8261F3E21DF80FB0041BD15 /* Loading */,
+				F8261F4121DF80FB0041BD15 /* Navigation */,
+				F8261F4321DF80FB0041BD15 /* TabBar */,
+				F8261F4621DF80FB0041BD15 /* MySonos */,
+				F8261F4921DF80FB0041BD15 /* More */,
+				F8261F4F21DF80FB0041BD15 /* Search */,
+				F8261F5221DF80FB0041BD15 /* MusicProviders */,
+				F8261F5821DF80FB0041BD15 /* PageNavigation */,
+				F8261F5A21DF80FB0041BD15 /* Queue */,
+				F8261F5F21DF80FB0041BD15 /* Browse */,
+				F8261F6221DF80FB0041BD15 /* Rooms */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		F8261F3B21DF80FB0041BD15 /* Now Playing */ = {
+			isa = PBXGroup;
+			children = (
+				F8261F3C21DF80FB0041BD15 /* NowPlayingViewController.swift */,
+				F8261F3D21DF80FB0041BD15 /* NowPlayingViewController.xib */,
+			);
+			path = "Now Playing";
+			sourceTree = "<group>";
+		};
+		F8261F3E21DF80FB0041BD15 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				F8261F3F21DF80FB0041BD15 /* LoadingViewController.xib */,
+				F8261F4021DF80FB0041BD15 /* LoadingViewController.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		F8261F4121DF80FB0041BD15 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				F8261F4221DF80FB0041BD15 /* NavigationController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		F825F4A520482B82006A7B73 /* Rooms */ = {
+		F8261F4321DF80FB0041BD15 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				F825F4AE20482DDE006A7B73 /* RoomsViewController.swift */,
-				F825F4AF20482DDE006A7B73 /* RoomsViewController.xib */,
-				F881C5842049CCDC00E3F523 /* RoomsTableViewCell.swift */,
-				F881C5852049CCDC00E3F523 /* RoomsTableViewCell.xib */,
-				F851ACD8206A63E8006FA0DC /* TrackViewModel.swift */,
+				F8261F4421DF80FB0041BD15 /* TabBarViewController.xib */,
+				F8261F4521DF80FB0041BD15 /* TabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		F8261F4621DF80FB0041BD15 /* MySonos */ = {
+			isa = PBXGroup;
+			children = (
+				F8261F4721DF80FB0041BD15 /* MySonosViewController.swift */,
+				F8261F4821DF80FB0041BD15 /* MySonosViewController.xib */,
+			);
+			path = MySonos;
+			sourceTree = "<group>";
+		};
+		F8261F4921DF80FB0041BD15 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				F8261F4A21DF80FB0041BD15 /* MoreViewController.xib */,
+				F8261F4B21DF80FB0041BD15 /* MoreViewController.swift */,
+				F8261F4C21DF80FB0041BD15 /* MoreTableViewCell.swift */,
+				F8261F4D21DF80FB0041BD15 /* MoreViewModel.swift */,
+				F8261F4E21DF80FB0041BD15 /* MoreTableViewCell.xib */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		F8261F4F21DF80FB0041BD15 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F8261F5021DF80FB0041BD15 /* SearchViewController.swift */,
+				F8261F5121DF80FB0041BD15 /* SearchViewController.xib */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		F8261F5221DF80FB0041BD15 /* MusicProviders */ = {
+			isa = PBXGroup;
+			children = (
+				F8261F5321DF80FB0041BD15 /* MusicProvidersTableViewCell.xib */,
+				F8261F5421DF80FB0041BD15 /* MusicProvidersViewModel.swift */,
+				F8261F5521DF80FB0041BD15 /* MusicProvidersViewController.xib */,
+				F8261F5621DF80FB0041BD15 /* MusicProvidersViewController.swift */,
+				F8261F5721DF80FB0041BD15 /* MusicProvidersTableViewCell.swift */,
+			);
+			path = MusicProviders;
+			sourceTree = "<group>";
+		};
+		F8261F5821DF80FB0041BD15 /* PageNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				F8261F5921DF80FB0041BD15 /* PageNavigationController.swift */,
+			);
+			path = PageNavigation;
+			sourceTree = "<group>";
+		};
+		F8261F5A21DF80FB0041BD15 /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				F8261F5B21DF80FB0041BD15 /* QueueTableViewCell.xib */,
+				F8261F5C21DF80FB0041BD15 /* QueueViewController.xib */,
+				F8261F5D21DF80FB0041BD15 /* QueueTableViewCell.swift */,
+				F8261F5E21DF80FB0041BD15 /* QueueViewController.swift */,
+			);
+			path = Queue;
+			sourceTree = "<group>";
+		};
+		F8261F5F21DF80FB0041BD15 /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				F8261F6021DF80FB0041BD15 /* BrowseViewController.xib */,
+				F8261F6121DF80FB0041BD15 /* BrowseViewController.swift */,
+			);
+			path = Browse;
+			sourceTree = "<group>";
+		};
+		F8261F6221DF80FB0041BD15 /* Rooms */ = {
+			isa = PBXGroup;
+			children = (
+				F8261F6321DF80FB0041BD15 /* RoomsTableViewCell.swift */,
+				F8261F6421DF80FB0041BD15 /* TrackViewModel.swift */,
+				F8261F6521DF80FB0041BD15 /* RoomsViewController.xib */,
+				F8261F6621DF80FB0041BD15 /* RoomsViewController.swift */,
+				F8261F6721DF80FB0041BD15 /* RoomsTableViewCell.xib */,
 			);
 			path = Rooms;
 			sourceTree = "<group>";
@@ -872,7 +910,7 @@
 			isa = PBXGroup;
 			children = (
 				F8A584B7212B5A460041D1ED /* .swiftlint.yml */,
-				F825F41E2048178C006A7B73 /* Demo */,
+				F8261F2421DF80FB0041BD15 /* iOS Demo App */,
 				F83FED161F97CD4B004DF663 /* RxSonosLib */,
 				F8F56153205C3EC500E28533 /* RxSonosLibTests */,
 				F83FED151F97CD4B004DF663 /* Products */,
@@ -884,7 +922,7 @@
 		F83FED151F97CD4B004DF663 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F81A05A92060280A00897738 /* Demo App.app */,
+				F81A05A92060280A00897738 /* iOS Demo App.app */,
 				F81A05D72060289A00897738 /* RxSonosLib.framework */,
 				F81A0619206029AE00897738 /* RxSonosLibTests.xctest */,
 			);
@@ -923,15 +961,6 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
-		F89A59C2207776B90097C0AA /* TabBar */ = {
-			isa = PBXGroup;
-			children = (
-				F89A59C3207776CB0097C0AA /* TabBarViewController.swift */,
-				F89A59C4207776CB0097C0AA /* TabBarViewController.xib */,
-			);
-			path = TabBar;
-			sourceTree = "<group>";
-		};
 		F8A64DFD2087FCF8003F777E /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -946,18 +975,6 @@
 				F8AA1225209B39320047EF7B /* QueueTrackFactoryTests.swift */,
 			);
 			path = Factory;
-			sourceTree = "<group>";
-		};
-		F8B9471920979A7E004F1A33 /* MusicProviders */ = {
-			isa = PBXGroup;
-			children = (
-				F8B9472020979C44004F1A33 /* MusicProvidersTableViewCell.swift */,
-				F8B9471E20979C44004F1A33 /* MusicProvidersTableViewCell.xib */,
-				F8B9471F20979C44004F1A33 /* MusicProvidersViewController.swift */,
-				F8B9472220979C44004F1A33 /* MusicProvidersViewController.xib */,
-				F8B9472120979C44004F1A33 /* MusicProvidersViewModel.swift */,
-			);
-			path = MusicProviders;
 			sourceTree = "<group>";
 		};
 		F8BF5C582056FBEC00AE311E /* Network */ = {
@@ -988,24 +1005,6 @@
 			path = Rest;
 			sourceTree = "<group>";
 		};
-		F8BF5C6920578D0F00AE311E /* Now Playing */ = {
-			isa = PBXGroup;
-			children = (
-				F8BF5C7020578D8200AE311E /* NowPlayingViewController.swift */,
-				F8BF5C7120578D8200AE311E /* NowPlayingViewController.xib */,
-			);
-			path = "Now Playing";
-			sourceTree = "<group>";
-		};
-		F8CA2307207BD5B3009F15AE /* Loading */ = {
-			isa = PBXGroup;
-			children = (
-				F8CA2308207BD5C1009F15AE /* LoadingViewController.swift */,
-				F8CA2309207BD5C1009F15AE /* LoadingViewController.xib */,
-			);
-			path = Loading;
-			sourceTree = "<group>";
-		};
 		F8F56153205C3EC500E28533 /* RxSonosLibTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1033,9 +1032,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		F81A05A82060280A00897738 /* Demo App */ = {
+		F81A05A82060280A00897738 /* iOS Demo App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F81A05BA2060280A00897738 /* Build configuration list for PBXNativeTarget "Demo App" */;
+			buildConfigurationList = F81A05BA2060280A00897738 /* Build configuration list for PBXNativeTarget "iOS Demo App" */;
 			buildPhases = (
 				3E6955E32901EA0F684BC1D5 /* [CP] Check Pods Manifest.lock */,
 				F81A05A52060280A00897738 /* Sources */,
@@ -1047,11 +1046,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				F81A05DD2060289A00897738 /* PBXTargetDependency */,
 			);
-			name = "Demo App";
+			name = "iOS Demo App";
 			productName = "Demo App";
-			productReference = F81A05A92060280A00897738 /* Demo App.app */;
+			productReference = F81A05A92060280A00897738 /* iOS Demo App.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F81A05D62060289A00897738 /* RxSonosLib */ = {
@@ -1133,7 +1131,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F81A05A82060280A00897738 /* Demo App */,
+				F81A05A82060280A00897738 /* iOS Demo App */,
 				F81A05D62060289A00897738 /* RxSonosLib */,
 				F81A0618206029AE00897738 /* RxSonosLibTests */,
 			);
@@ -1145,22 +1143,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F81DAE8A207CD436006B4C17 /* BrowseViewController.xib in Resources */,
-				F8CA230B207BD5C1009F15AE /* LoadingViewController.xib in Resources */,
-				F8B9471720979936004F1A33 /* MoreTableViewCell.xib in Resources */,
-				F8B9472320979C44004F1A33 /* MusicProvidersTableViewCell.xib in Resources */,
-				F8B9472720979C44004F1A33 /* MusicProvidersViewController.xib in Resources */,
-				F81DAE8F207CD444006B4C17 /* SearchViewController.xib in Resources */,
-				F81A05C92060284A00897738 /* RoomsViewController.xib in Resources */,
-				F81A05D02060285100897738 /* LaunchScreen.storyboard in Resources */,
-				F81A05CE2060284A00897738 /* RoomsTableViewCell.xib in Resources */,
-				F81DAE94207CD451006B4C17 /* MoreViewController.xib in Resources */,
-				F8860E9D207516FC00BF6A7E /* QueueTableViewCell.xib in Resources */,
-				F81DAE85207CD427006B4C17 /* MySonosViewController.xib in Resources */,
-				F89A59C6207776CB0097C0AA /* TabBarViewController.xib in Resources */,
-				F81A05C72060284A00897738 /* NowPlayingViewController.xib in Resources */,
-				F813875A20767B5700BA06AE /* QueueViewController.xib in Resources */,
-				F81A05D12060285400897738 /* Assets.xcassets in Resources */,
+				F8261F9C21DF81E00041BD15 /* LaunchScreen.storyboard in Resources */,
+				F8261F8721DF80FB0041BD15 /* MoreTableViewCell.xib in Resources */,
+				F8261F9421DF80FB0041BD15 /* BrowseViewController.xib in Resources */,
+				F8261F7B21DF80FB0041BD15 /* NowPlayingViewController.xib in Resources */,
+				F8261F8321DF80FB0041BD15 /* MoreViewController.xib in Resources */,
+				F8261F7421DF80FB0041BD15 /* Assets.xcassets in Resources */,
+				F8261F7C21DF80FB0041BD15 /* LoadingViewController.xib in Resources */,
+				F8261F9821DF80FB0041BD15 /* RoomsViewController.xib in Resources */,
+				F8261F9021DF80FB0041BD15 /* QueueTableViewCell.xib in Resources */,
+				F8261F8221DF80FB0041BD15 /* MySonosViewController.xib in Resources */,
+				F8261F7F21DF80FB0041BD15 /* TabBarViewController.xib in Resources */,
+				F8261F8921DF80FB0041BD15 /* SearchViewController.xib in Resources */,
+				F8261F8A21DF80FB0041BD15 /* MusicProvidersTableViewCell.xib in Resources */,
+				F8261F8C21DF80FB0041BD15 /* MusicProvidersViewController.xib in Resources */,
+				F8261F9121DF80FB0041BD15 /* QueueViewController.xib in Resources */,
+				F8261F9A21DF80FB0041BD15 /* RoomsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1194,7 +1192,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Demo App-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-iOS Demo App-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1225,7 +1223,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Demo App/Pods-Demo App-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-iOS Demo App/Pods-iOS Demo App-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AEXML/AEXML.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSSDP/RxSSDP.framework",
@@ -1244,7 +1242,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Demo App/Pods-Demo App-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOS Demo App/Pods-iOS Demo App-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9D7BC8A6E6AD150B0FC2D01A /* [CP] Embed Pods Frameworks */ = {
@@ -1316,40 +1314,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8B9472420979C44004F1A33 /* MusicProvidersViewController.swift in Sources */,
-				F89A59C5207776CB0097C0AA /* TabBarViewController.swift in Sources */,
-				F8B9472620979C44004F1A33 /* MusicProvidersViewModel.swift in Sources */,
-				F8B947162097992D004F1A33 /* MoreViewModel.swift in Sources */,
-				F8B9471B20979A95004F1A33 /* MusicProvidersCoordinator.swift in Sources */,
-				F81A05C62060284A00897738 /* NowPlayingViewController.swift in Sources */,
-				F81A05C82060284A00897738 /* RoomsViewController.swift in Sources */,
-				F8CA230A207BD5C1009F15AE /* LoadingViewController.swift in Sources */,
-				F813875920767B5700BA06AE /* QueueViewController.swift in Sources */,
-				F81DAE84207CD427006B4C17 /* MySonosViewController.swift in Sources */,
-				F81DAE98207CD468006B4C17 /* BrowseCoordinator.swift in Sources */,
-				F81DAE89207CD436006B4C17 /* BrowseViewController.swift in Sources */,
-				F8B9472520979C44004F1A33 /* MusicProvidersTableViewCell.swift in Sources */,
-				F81DAE96207CD45E006B4C17 /* MySonosCoordinator.swift in Sources */,
-				F81DAE80207CD16D006B4C17 /* PageNavigationController.swift in Sources */,
-				F8CA2306207BD502009F15AE /* LoadingCoordinator.swift in Sources */,
-				F8CA230D207BE257009F15AE /* Coordinator.swift in Sources */,
-				F81A05BF2060284A00897738 /* AppDelegate.swift in Sources */,
-				F81A05CF2060284A00897738 /* NavigationController.swift in Sources */,
-				F81DAE9A207CD473006B4C17 /* SearchCoordinator.swift in Sources */,
-				F8B947182097993A004F1A33 /* MoreTableViewCell.swift in Sources */,
-				F81DAE8E207CD444006B4C17 /* SearchViewController.swift in Sources */,
-				F81A05C32060284A00897738 /* NowPlayingCoordinator.swift in Sources */,
-				F89A59C0207776B00097C0AA /* TabBarCoordinator.swift in Sources */,
-				F851ACD9206A63E8006FA0DC /* TrackViewModel.swift in Sources */,
-				F81DAE93207CD451006B4C17 /* MoreViewController.swift in Sources */,
-				F81A05C22060284A00897738 /* RoomsCoordinator.swift in Sources */,
-				F81DAE7D207CCF6F006B4C17 /* PageNavigationCoordinator.swift in Sources */,
-				F81A05C12060284A00897738 /* NavigationCoordinator.swift in Sources */,
-				F813875320767AA600BA06AE /* QueueCoordinator.swift in Sources */,
-				F81A05CD2060284A00897738 /* RoomsTableViewCell.swift in Sources */,
-				F81DAE9C207CD47A006B4C17 /* MoreCoordinator.swift in Sources */,
-				F8860E9C207516F400BF6A7E /* QueueTableViewCell.swift in Sources */,
-				F8B0D8AF2083482A0072BAE0 /* ActionButton.swift in Sources */,
+				F8261F8B21DF80FB0041BD15 /* MusicProvidersViewModel.swift in Sources */,
+				F8261F8421DF80FB0041BD15 /* MoreViewController.swift in Sources */,
+				F8261F7A21DF80FB0041BD15 /* NowPlayingViewController.swift in Sources */,
+				F8261F6C21DF80FB0041BD15 /* PageNavigationCoordinator.swift in Sources */,
+				F8261F7D21DF80FB0041BD15 /* LoadingViewController.swift in Sources */,
+				F8261F6E21DF80FB0041BD15 /* MusicProvidersCoordinator.swift in Sources */,
+				F8261F9721DF80FB0041BD15 /* TrackViewModel.swift in Sources */,
+				F8261F9621DF80FB0041BD15 /* RoomsTableViewCell.swift in Sources */,
+				F8261F7921DF80FB0041BD15 /* Coordinator.swift in Sources */,
+				F8261F8121DF80FB0041BD15 /* MySonosViewController.swift in Sources */,
+				F8261F7621DF80FB0041BD15 /* ActionButton.swift in Sources */,
+				F8261F6921DF80FB0041BD15 /* QueueCoordinator.swift in Sources */,
+				F8261F8F21DF80FB0041BD15 /* PageNavigationController.swift in Sources */,
+				F8261F7721DF80FB0041BD15 /* AppDelegate.swift in Sources */,
+				F8261F6821DF80FB0041BD15 /* LoadingCoordinator.swift in Sources */,
+				F8261F7221DF80FB0041BD15 /* MySonosCoordinator.swift in Sources */,
+				F8261F8621DF80FB0041BD15 /* MoreViewModel.swift in Sources */,
+				F8261F9921DF80FB0041BD15 /* RoomsViewController.swift in Sources */,
+				F8261F8E21DF80FB0041BD15 /* MusicProvidersTableViewCell.swift in Sources */,
+				F8261F8521DF80FB0041BD15 /* MoreTableViewCell.swift in Sources */,
+				F8261F6B21DF80FB0041BD15 /* NowPlayingCoordinator.swift in Sources */,
+				F8261F9221DF80FB0041BD15 /* QueueTableViewCell.swift in Sources */,
+				F8261F6F21DF80FB0041BD15 /* RoomsCoordinator.swift in Sources */,
+				F8261F9321DF80FB0041BD15 /* QueueViewController.swift in Sources */,
+				F8261F7121DF80FB0041BD15 /* BrowseCoordinator.swift in Sources */,
+				F8261F8021DF80FB0041BD15 /* TabBarViewController.swift in Sources */,
+				F8261F8821DF80FB0041BD15 /* SearchViewController.swift in Sources */,
+				F8261F7E21DF80FB0041BD15 /* NavigationController.swift in Sources */,
+				F8261F8D21DF80FB0041BD15 /* MusicProvidersViewController.swift in Sources */,
+				F8261F6D21DF80FB0041BD15 /* SearchCoordinator.swift in Sources */,
+				F8261F7021DF80FB0041BD15 /* MoreCoordinator.swift in Sources */,
+				F8261F7321DF80FB0041BD15 /* NavigationCoordinator.swift in Sources */,
+				F8261F9521DF80FB0041BD15 /* BrowseViewController.swift in Sources */,
+				F8261F6A21DF80FB0041BD15 /* TabBarCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1484,11 +1482,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F81A05DD2060289A00897738 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F81A05D62060289A00897738 /* RxSonosLib */;
-			targetProxy = F81A05DC2060289A00897738 /* PBXContainerItemProxy */;
-		};
 		F81A0620206029AE00897738 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F81A05D62060289A00897738 /* RxSonosLib */;
@@ -1496,16 +1489,16 @@
 		};
 		F81A062620602D3000897738 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F81A05A82060280A00897738 /* Demo App */;
+			target = F81A05A82060280A00897738 /* iOS Demo App */;
 			targetProxy = F81A062520602D3000897738 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F825F45F20481C61006A7B73 /* LaunchScreen.storyboard */ = {
+		F8261F3421DF80FB0041BD15 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F825F46020481C61006A7B73 /* Base */,
+				F8261F3521DF80FB0041BD15 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1515,12 +1508,12 @@
 /* Begin XCBuildConfiguration section */
 		F81A05B82060280A00897738 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06359D402B46CE3A5C1C0C91 /* Pods-Demo App.debug.xcconfig */;
+			baseConfigurationReference = 217B67C0EB4642B3B3FB962C /* Pods-iOS Demo App.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = RxSonosLib/Demo/Common/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RxSonosLib/iOS Demo App/Common/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uberweb.Demo-App";
@@ -1532,12 +1525,12 @@
 		};
 		F81A05B92060280A00897738 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D5D218BCF0C0BBD25C06212 /* Pods-Demo App.release.xcconfig */;
+			baseConfigurationReference = CE539630594A9549743B94A0 /* Pods-iOS Demo App.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = RxSonosLib/Demo/Common/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RxSonosLib/iOS Demo App/Common/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uberweb.Demo-App";
@@ -1747,7 +1740,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F81A05BA2060280A00897738 /* Build configuration list for PBXNativeTarget "Demo App" */ = {
+		F81A05BA2060280A00897738 /* Build configuration list for PBXNativeTarget "iOS Demo App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F81A05B82060280A00897738 /* Debug */,
