@@ -17,7 +17,7 @@ class RoomRepositoryImpl: RoomRepository {
     func getRoom(device: SSDPDevice) -> Single<Room>? {
         guard device.isSonosDevice else { return nil }
 
-        if let cache = CacheManager.shared.get(for: device.usn) {
+        if let cache = CacheManager.shared.get(for: .deviceDescription, item: device.usn) {
             return Single.just(cache)
                 .map(self.mapDataToRoom(device: device))
         }
@@ -26,7 +26,7 @@ class RoomRepositoryImpl: RoomRepository {
         return network
             .request(download: locationUrl)
             .do(onSuccess: { (data) in
-                CacheManager.shared.set(data, for: device.usn)
+                CacheManager.shared.set(data, for: .deviceDescription, item: device.usn)
             })
             .map(self.mapDataToRoom(device: device))
     }

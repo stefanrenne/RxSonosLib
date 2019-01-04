@@ -13,7 +13,7 @@ class RepositoryInjection {
     internal static let shared: RepositoryInjection = RepositoryInjection()
     
     init() {
-        CacheManager.shared.deleteAll()
+        CacheManager.shared.clear()
     }
     
     internal var ssdpRepository: SSDPRepository = SSDPRepositoryImpl()

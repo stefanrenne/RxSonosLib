@@ -17,7 +17,7 @@ class RenderingControlRepositoryTests: XCTestCase {
     let renderingControlRepository: RenderingControlRepository = RenderingControlRepositoryImpl()
     
     override func setUp() {
-        CacheManager.shared.deleteAll()
+        CacheManager.shared.clear(removeLongCache: true)
     }
     
     func testItCanGetTheVolume() throws {

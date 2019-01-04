@@ -9,61 +9,69 @@
 import Foundation
 import RxSSDP
 
-enum CacheKey: String {
-    case ssdpCacheKey
+enum CacheKey: String, CaseIterable {
+    case ssdp
+    case deviceDescription
+    case trackImage
+    
+    var isLongCache: Bool {
+        switch self {
+        case .ssdp, .deviceDescription:
+            return true
+        default:
+            return false
+        }
+    }
 }
 
 class CacheManager {
     
     static let shared = CacheManager()
     
-    fileprivate var documentPath: URL? {
+    private var documentPath: URL? {
         return URL(fileURLWithPath: NSTemporaryDirectory())
     }
     
-    fileprivate func urlForKey(_ key: String) -> URL? {
-        return self.documentPath?.appendingPathComponent(key.cleanKey)
+    private func urlForKey(_ key: CacheKey, _ item: String?) -> URL? {
+        var keyString = key.rawValue.cleanKey
+        if let item = item {
+            keyString += "-\(item.cleanKey)"
+        }
+        return documentPath?.appendingPathComponent(keyString)
     }
     
-    func set(_ data: Data?, for key: String?) {
-        guard let key = key,
-            let url = self.urlForKey(key) else { return }
-        
+    func set(_ data: Data?, for key: CacheKey, item: String? = nil) {
+        guard let url = self.urlForKey(key, item) else { return }
         FileManager.default.createFile(atPath: url.path, contents: data, attributes: nil)
     }
     
-    func set<T>(object: T, for key: String?) {
-        let data = NSKeyedArchiver.archivedData(withRootObject: object)
-        set(data, for: key)
+    func set<T: Codable>(object: T, for key: CacheKey, item: String? = nil) throws {
+        let data = try JSONEncoder().encode(object)
+        set(data, for: key, item: item)
     }
     
-    func get(for key: String?) -> Data? {
-        guard let key = key,
-            let url = self.urlForKey(key),
+    func get(for key: CacheKey, item: String? = nil) -> Data? {
+        guard let url = self.urlForKey(key, item),
             FileManager.default.fileExists(atPath: url.path) else { return nil }
         return try? Data(contentsOf: url)
     }
     
-    func getObject<T>(for key: String?) -> T? {
-        guard let data: Data = get(for: key),
-            let object: T = NSKeyedUnarchiver.unarchiveObject(with: data) as? T else { return nil }
+    func getObject<T: Codable>(for key: CacheKey, item: String? = nil) -> T? {
+        guard let data: Data = get(for: key, item: item),
+              let object: T = try? JSONDecoder().decode(T.self, from: data) else { return nil }
         return object
     }
     
-    func deleteAll() {
-        let exclude = self.longCache()
+    func clear(removeLongCache: Bool = false) {
+        let exclude = removeLongCache ? [] : CacheKey.allCases.filter({ $0.isLongCache }).map({ $0.rawValue })
         guard let documentPath = documentPath,
-            let result = try? FileManager.default.contentsOfDirectory(at: documentPath, includingPropertiesForKeys: nil) else { return }
+            let result = try? FileManager.default.contentsOfDirectory(at: documentPath, includingPropertiesForKeys: nil).filter({ !$0.lastPathComponent.has(prefix: exclude) }) else { return }
         
         result.forEach { (url) in
             if !exclude.contains(url.lastPathComponent) {
                 try? FileManager.default.removeItem(at: url)
             }
         }
-    }
-    
-    func longCache() -> [String] {
-        return [CacheKey.ssdpCacheKey.rawValue]
     }
     
 }
@@ -76,5 +84,9 @@ fileprivate extension String {
     private func removing(characters: CharacterSet) -> String {
         let components = self.components(separatedBy: characters)
         return components.joined(separator: "")
+    }
+    
+    func has(prefix: [String]) -> Bool {
+        return prefix.filter({ self.hasPrefix($0) }).count > 0
     }
 }

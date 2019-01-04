@@ -18,7 +18,7 @@ class MusicProvidersRepositoryTests: XCTestCase {
     let musicProvidersRepository: MusicProvidersRepository = MusicProvidersRepositoryImpl()
     
     override func setUp() {
-        CacheManager.shared.deleteAll()
+        CacheManager.shared.clear(removeLongCache: true)
     }
     
     func testItCanGetTheMusicServices() throws {

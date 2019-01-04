@@ -18,7 +18,7 @@ class RoomRepositoryTest: XCTestCase {
     let roomRepository: RoomRepository = RoomRepositoryImpl()
     
     override func setUp() {
-        CacheManager.shared.deleteAll()
+        CacheManager.shared.clear(removeLongCache: true)
     }
     
     func testItCanCreateARoom() {

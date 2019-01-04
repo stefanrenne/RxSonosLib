@@ -20,7 +20,7 @@ class GroupRepositoryTest: XCTestCase {
     let groupRepository: GroupRepository = GroupRepositoryImpl()
     
     override func setUp() {
-        CacheManager.shared.deleteAll()
+        CacheManager.shared.clear(removeLongCache: true)
     }
     
     func testItCanGetGroups() throws {

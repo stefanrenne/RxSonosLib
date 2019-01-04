@@ -15,10 +15,12 @@ open class SonosInteractor {
     internal let allGroups: BehaviorSubject<[Group]> = BehaviorSubject(value: [])
     internal let activeGroup: BehaviorSubject<Group?> = BehaviorSubject(value: nil)
     internal let disposebag = DisposeBag()
+    internal var renewingGroupDisposable: Disposable?
     
     init() {
         self.observerRooms()
         self.observerGroups()
+        self.startRenewingRooms()
     }
     
     static public func setActive(group: Group) throws {
@@ -127,23 +129,22 @@ extension SonosInteractor {
     }
     
     private func observerRooms() {
+        allRooms
+            .asObserver()
+            .subscribe(onNext: { [weak self] (rooms) in
+                self?.startRenewingGroups(with: rooms)
+            })
+            .disposed(by: disposebag)
+    }
+    
+    private func startRenewingRooms() {
         GetRoomsInteractor(ssdpRepository: RepositoryInjection.provideSSDPRepository(), roomRepository: RepositoryInjection.provideRoomRepository())
             .get()
-            .subscribe(self.allRooms)
+            .subscribe(allRooms)
             .disposed(by: disposebag)
     }
     
     private func observerGroups() {
-        createTimer(SonosSettings.shared.renewGroupsTimer)
-            .flatMap({ [unowned self] _ -> Observable<[Group]> in
-                let rooms = try self.allRooms.value()
-                return GetGroupsInteractor(groupRepository: RepositoryInjection.provideGroupRepository())
-                    .get(values: GetGroupsValues(rooms: rooms))
-                    .asObservable()
-            })
-            .subscribe(self.allGroups)
-            .disposed(by: disposebag)
-        
         allGroups
             .asObserver()
             .subscribe(onNext: { (groups) in
@@ -162,6 +163,19 @@ extension SonosInteractor {
                 }
             })
             .disposed(by: disposebag)
+    }
+    
+    private func startRenewingGroups(with rooms: [Room]) {
+        guard rooms.count > 0 else { return }
+        renewingGroupDisposable?.dispose()
+        
+        renewingGroupDisposable = createTimer(SonosSettings.shared.renewGroupsTimer)
+            .flatMap({ _ -> Observable<[Group]> in
+                return GetGroupsInteractor(groupRepository: RepositoryInjection.provideGroupRepository())
+                    .get(values: GetGroupsValues(rooms: rooms))
+                    .asObservable()
+            })
+            .subscribe(allGroups)
     }
     
     private func setActive(group: Group?) {

@@ -37,14 +37,14 @@ class TransportRepositoryImpl: TransportRepository {
             return Maybe.empty()
         }
             
-        if let cachedImage = CacheManager.shared.get(for: track.uri) {
+        if let cachedImage = CacheManager.shared.get(for: .trackImage, item: track.uri) {
             return Maybe.just(cachedImage)
         }
         
         return downloadNetwork
             .request(download: imageUri)
             .do(onSuccess: { (data) in
-                CacheManager.shared.set(data, for: track.uri)
+                CacheManager.shared.set(data, for: .trackImage, item: track.uri)
             })
             .asMaybe()
     }

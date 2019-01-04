@@ -15,7 +15,7 @@ import RxBlocking
 class SSDPRepositoryTest: XCTestCase {
     
     override func setUp() {
-        CacheManager.shared.deleteAll()
+        CacheManager.shared.clear(removeLongCache: true)
     }
     
     func testItCanSearchForAnDevice() throws {

@@ -40,14 +40,18 @@ class GetRoomsInteractor: ObservableInteractor {
         return { _ in
             return Observable<[SSDPResponse]>.create({ (observer) -> Disposable in
                 
-                if let responses: [[String: String]] = CacheManager.shared.getObject(for: CacheKey.ssdpCacheKey.rawValue) {
-                    observer.onNext(responses.map({ SSDPResponse(data: $0) }))
+                let cachedResponses: [SSDPResponse]? = CacheManager.shared.getObject(for: CacheKey.ssdp)
+                if let responses: [SSDPResponse] = cachedResponses {
+                    observer.onNext(responses)
                 }
                 
-                let ssdpDisposable = self.ssdpRepository.scan(searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
-                    .subscribe(onSuccess: { (responses) in
-                        CacheManager.shared.set(object: responses.map({ $0.data }), for: CacheKey.ssdpCacheKey.rawValue)
-                        observer.onNext(responses)
+                let ssdpDisposable = self
+                    .ssdpRepository
+                    .scan(searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
+                    .subscribe(onSuccess: { (response) in
+                        guard cachedResponses != response else { return }
+                        try? CacheManager.shared.set(object: response, for: CacheKey.ssdp)
+                        observer.onNext(response)
                     })
                 
                 return Disposables.create([ssdpDisposable])

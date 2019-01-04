@@ -18,7 +18,7 @@ class ContentDirectoryRepositoryTests: XCTestCase {
     let contentDirectoryRepository: ContentDirectoryRepository = ContentDirectoryRepositoryImpl()
     
     override func setUp() {
-        CacheManager.shared.deleteAll()
+        CacheManager.shared.clear(removeLongCache: true)
     }
     
     func testItCanGetAQueue() throws {
