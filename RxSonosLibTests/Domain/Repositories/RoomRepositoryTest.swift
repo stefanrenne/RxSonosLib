@@ -71,7 +71,7 @@ class RoomRepositoryTest: XCTestCase {
     func testItCanOnlyCreateARoomForASonosDevice() throws {
         stub(everything, http(404))
         
-        let hueDevice = try SSDPDevice.map(SSDPResponse(data: ["USN": "uuid:2f402f80-da50-11e1-9b23-00178809d9bf::upnp:rootdevice", "SERVER": "FreeRTOS/7.4.2 UPnP/1.0 IpBridge/1.15.0", "EXT": "", "ST": "upnp:rootdevice", "LOCATION": "http://10.0.1.2:80/description.xml", "CACHE-CONTROL": "max-age=100", "HOST": "239.255.255.250:1900", "hue-bridgeid": "001788FFFE09D9BF"]))!
+        let hueDevice = try SSDPDevice.map(SSDPResponse(data: ["USN": "uuid:2f402f80-da50-11e1-9b23-00178809d9bf::upnp:rootdevice", "SERVER": "FreeRTOS/7.4.2 UPnP/1.0 IpBridge/1.15.0", "EXT": "", "ST": "upnp:rootdevice", "LOCATION": "http://10.0.1.2:80/description.xml", "CACHE-CONTROL": "max-age=100", "HOST": "239.255.255.250:1900", "hue-bridgeid": "00100800FF000900"]))!
 
         let room = roomRepository.getRoom(device: hueDevice)
         XCTAssertNil(room)

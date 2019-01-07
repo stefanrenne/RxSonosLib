@@ -58,7 +58,7 @@ class SSDPRepositoryTest: XCTestCase {
     func testItCantDetectSonosDevices() throws {
         let livingRoomDevice = try SSDPDevice.map(SSDPResponse(data: ["USN": "uuid:RINCON_000001::urn:schemas-upnp-org:device:ZonePlayer:1", "SERVER": "Linux UPnP/1.0 Sonos/34.7-34220 (ZPS9)", "EXT": "", "ST": "urn:schemas-upnp-org:device:ZonePlayer:1", "LOCATION": "http://192.168.3.14:1400/xml/device_description.xml", "CACHE-CONTROL": "max-age = 1800", "X-RINCON-WIFIMODE": "0", "X-RINCON-VARIANT": "0", "X-RINCON-HOUSEHOLD": "SONOS_HOUSEHOLD_1", "X-RINCON-BOOTSEQ": "81"]))
         
-        let hueDevice = try SSDPDevice.map(SSDPResponse(data: ["USN": "uuid:2f402f80-da50-11e1-9b23-00178809d9bf::upnp:rootdevice", "SERVER": "FreeRTOS/7.4.2 UPnP/1.0 IpBridge/1.15.0", "EXT": "", "ST": "upnp:rootdevice", "LOCATION": "http://10.0.1.2:80/description.xml", "CACHE-CONTROL": "max-age=100", "HOST": "239.255.255.250:1900", "hue-bridgeid": "001788FFFE09D9BF"]))
+        let hueDevice = try SSDPDevice.map(SSDPResponse(data: ["USN": "uuid:2f402f80-da50-11e1-9b23-00178809d9bf::upnp:rootdevice", "SERVER": "FreeRTOS/7.4.2 UPnP/1.0 IpBridge/1.15.0", "EXT": "", "ST": "upnp:rootdevice", "LOCATION": "http://10.0.1.2:80/description.xml", "CACHE-CONTROL": "max-age=100", "HOST": "239.255.255.250:1900", "hue-bridgeid": "00100800FF000900"]))
         
         XCTAssertTrue(livingRoomDevice!.isSonosDevice)
         XCTAssertFalse(hueDevice!.isSonosDevice)
