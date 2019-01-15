@@ -72,7 +72,9 @@ open class SonosInteractor {
 
    static func getActiveGroup() -> Observable<Group>
 
-	static func getAllGroups() -> Observable<[Group]>
+   static func getAllGroups() -> Observable<[Group]>
+    
+   static func getAllMusicProviders() -> Single<[MusicProvider]>
 }
 ```
 
@@ -101,15 +103,15 @@ extension ObservableType where E == Group {
 
     func getVolume() -> Observable<Int>
 
-    func set(volume: Int) -> Observable<Int>
+    func set(volume: Int) -> Completable
 
-    func setNextTrack() -> Observable<Swift.Void>
+    func setNextTrack() -> Completable
 
-    func setPreviousTrack() -> Observable<Swift.Void>
+    func setPreviousTrack() -> Completable
 
     func getMute() -> Observable<[Bool]>
 
-    func set(mute enabled: Bool) -> Observable<[Bool]>
+    func set(mute enabled: Bool) -> Completable
 }
 ```
 
@@ -129,7 +131,7 @@ extension ObservableType where E == [Room] {
 
     func getMute() -> Observable<[Bool]>
 
-    func set(mute enabled: Bool) -> Observable<[Bool]>
+    func set(mute enabled: Bool) -> Completable
 }
 
 ```
@@ -141,7 +143,7 @@ extension ObservableType where E == Room {
 
     func getMute() -> Observable<Bool>
 
-    func set(mute enabled: Bool) -> Observable<Bool>
+    func set(mute enabled: Bool) -> Completable
 }
 ```
 
