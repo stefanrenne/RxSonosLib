@@ -25,7 +25,7 @@ Features:
 - [x] SET play/pause/stop current track
 - [x] GET group volume
 - [x] SET group volume
-- [ ] Cache household 
+- [x] Cache household 
 
 Platform:
 
