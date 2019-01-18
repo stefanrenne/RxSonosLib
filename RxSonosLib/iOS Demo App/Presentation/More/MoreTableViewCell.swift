@@ -24,6 +24,6 @@ class MoreTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.disposeBag = DisposeBag()
+        disposeBag = DisposeBag()
     }
 }

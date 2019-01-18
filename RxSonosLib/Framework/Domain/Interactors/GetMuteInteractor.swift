@@ -34,11 +34,14 @@ class GetMuteInteractor: ObservableInteractor {
         }
         
         return createTimer(SonosSettings.shared.renewRoomMuteTimer)
-            .flatMap(self.mapToMute(for: room))
+            .flatMap(mapToMute(for: room))
             .distinctUntilChanged()
     }
+}
+
+private extension GetMuteInteractor {
     
-    private func mapToMute(for room: Room) -> ((Int) -> Observable<Bool>) {
+    func mapToMute(for room: Room) -> ((Int) -> Observable<Bool>) {
         return { _ in
             return self.renderingControlRepository
                 .getMute(room: room)

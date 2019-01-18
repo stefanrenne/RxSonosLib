@@ -24,7 +24,7 @@ class RoomRepositoryImpl: RoomRepository {
         let locationUrl = device.ip.appendingPathComponent(device.location)
         return network
             .request(download: locationUrl)
-            .map(self.mapDataToRoom(device: device))
+            .map(mapDataToRoom(device: device))
             .do(onSuccess: { (room) in
                 try? CacheManager.shared.set(object: room, for: .room, item: device.usn)
             })
@@ -32,8 +32,8 @@ class RoomRepositoryImpl: RoomRepository {
     
 }
 
-fileprivate extension RoomRepositoryImpl {
-    fileprivate func mapDataToRoom(device: SSDPDevice) -> ((Data) throws -> Room) {
+private extension RoomRepositoryImpl {
+    func mapDataToRoom(device: SSDPDevice) -> ((Data) throws -> Room) {
         return { data in
             guard let xml = try AEXMLDocument.create(data),
                 let description = DeviceDescription.map(xml) else {

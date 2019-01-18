@@ -33,22 +33,22 @@ class PageNavigationCoordinator: Coordinator {
 extension PageNavigationCoordinator: PageNavigationRouter {
     
     func continueToMySonos() {
-        MySonosCoordinator(navigationController: self.viewController, masterRouter: self.masterRouter).start()
+        MySonosCoordinator(navigationController: viewController, masterRouter: masterRouter).start()
     }
     
     func continueToBrowse() {
-        BrowseCoordinator(navigationController: self.viewController, masterRouter: self.masterRouter).start()
+        BrowseCoordinator(navigationController: viewController, masterRouter: masterRouter).start()
     }
     
     func continueToRooms() {
-        RoomsCoordinator(navigationController: self.viewController, masterRouter: self.masterRouter).start()
+        RoomsCoordinator(navigationController: viewController, masterRouter: masterRouter).start()
     }
     
     func continueToSearch() {
-        SearchCoordinator(navigationController: self.viewController, masterRouter: self.masterRouter).start()
+        SearchCoordinator(navigationController: viewController, masterRouter: masterRouter).start()
     }
     
     func continueToMore() {
-        MoreCoordinator(navigationController: self.viewController, masterRouter: self.masterRouter).start()
+        MoreCoordinator(navigationController: viewController, masterRouter: masterRouter).start()
     }
 }

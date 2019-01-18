@@ -21,8 +21,8 @@ class QueueViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setupQueueTableViewItems()
-        self.setupQueueCellTapHandling()
+        setupQueueTableViewItems()
+        setupQueueCellTapHandling()
         
     }
     
@@ -30,7 +30,7 @@ class QueueViewController: UIViewController {
         return UIStatusBarStyle.lightContent
     }
     
-    fileprivate func setupQueueTableViewItems() {
+    private func setupQueueTableViewItems() {
         tableView.register(UINib(nibName: String(describing: QueueTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: QueueTableViewCell.identifier)
         
         SonosInteractor
@@ -45,9 +45,7 @@ class QueueViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    fileprivate func setupQueueCellTapHandling() {
-        
-    }
+    private func setupQueueCellTapHandling() { }
 
     @IBAction func shuffleAction(_ sender: UIButton) {
     }
@@ -56,7 +54,7 @@ class QueueViewController: UIViewController {
     }
     
     @IBAction func closeAction(_ sender: UIButton) {
-        self.router?.close()
+        router?.close()
     }
     
     @IBAction func clearAction(_ sender: UIButton) {

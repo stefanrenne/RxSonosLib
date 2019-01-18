@@ -37,21 +37,21 @@ open class GroupProgress {
      * Current track playing time in string, example: 1:30 for 90 seconds
      */
     public lazy var timeString: String = {
-        return self.time.toTimeString()
+        return time.toTimeString()
     }()
     
     /**
      * Current track duration time in string, example: 4:24 for 264 seconds
      */
     public lazy var durationString: String = {
-        return self.duration.toTimeString()
+        return duration.toTimeString()
     }()
     
     /**
      * Current track remaining time in string, example: -2:24 for 144 remaining seconds
      */
     public lazy var remainingTimeString: String = {
-        let remainingTime = self.duration - self.time
+        let remainingTime = duration - time
         guard remainingTime > 0 else { return "0:00" }
         return "-" + remainingTime.toTimeString()
     }()

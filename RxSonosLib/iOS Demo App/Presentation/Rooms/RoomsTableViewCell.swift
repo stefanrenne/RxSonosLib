@@ -36,10 +36,10 @@ class RoomsTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.disposeBag = DisposeBag()
+        disposeBag = DisposeBag()
     }
     
-    fileprivate func bindTrackObservable() {
+    private func bindTrackObservable() {
         Observable
             .just(group)
             .getTrack()
@@ -49,14 +49,14 @@ class RoomsTableViewCell: UITableViewCell {
             .disposed(by: disposeBag)
     }
     
-    fileprivate func bind(track: Track?) {
+    private func bind(track: Track?) {
         guard let track = track else {
-            self.groupDescriptionLabel.text = "[No Track]"
-            self.groupImageView.image = nil
+            groupDescriptionLabel.text = "[No Track]"
+            groupImageView.image = nil
             return
         }
         let viewModel = TrackViewModel(track: track)
-        self.groupDescriptionLabel.attributedText = viewModel.trackDescription
+        groupDescriptionLabel.attributedText = viewModel.trackDescription
         
         viewModel
             .image

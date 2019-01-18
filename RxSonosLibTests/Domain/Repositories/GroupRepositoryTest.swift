@@ -43,7 +43,7 @@ class GroupRepositoryTest: XCTestCase {
         stub(soap(call: GroupTarget.state), soapXml(response))
         
         let groups = try groupRepository
-            .getGroups(for: self.getRooms())
+            .getGroups(for: getRooms())
             .toBlocking()
             .single()
         
@@ -85,27 +85,23 @@ class GroupRepositoryTest: XCTestCase {
     
 }
 
-fileprivate extension GroupRepositoryTest {
+private extension GroupRepositoryTest {
     
     /* Rooms */
-    fileprivate func getRooms() throws -> [Room] {
+    func getRooms() throws -> [Room] {
         return try ssdpRepository
             .scan(searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
-            .flatMap(mapSSDPToRooms())
+            .flatMap(mapSSDPToRooms)
             .toBlocking()
             .single()
     }
-    fileprivate func mapSSDPToRooms() -> (([SSDPResponse]) throws -> Single<[Room]>) {
-        return { ssdpDevices in
-            let collection = try ssdpDevices.compactMap(self.mapSSDPToRoom())
-            return Single.zip(collection)
-        }
+    func mapSSDPToRooms(ssdpDevices: [SSDPResponse]) throws -> Single<[Room]> {
+        let collection = try ssdpDevices.compactMap(mapSSDPToRoom)
+        return Single.zip(collection)
     }
     
-    fileprivate func mapSSDPToRoom() -> ((SSDPResponse) throws -> Single<Room>?) {
-        return { response in
-            guard let device = try SSDPDevice.map(response) else { return nil }
-            return self.roomRepository.getRoom(device: device)
-        }
+    func mapSSDPToRoom(response: SSDPResponse) throws -> Single<Room>? {
+        guard let device = try SSDPDevice.map(response) else { return nil }
+        return roomRepository.getRoom(device: device)
     }
 }

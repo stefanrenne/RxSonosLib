@@ -19,21 +19,21 @@ class GroupRepositoryImpl: GroupRepository {
         
         return network
             .request(.state, on: firstRoom)
-            .map(self.mapGroupDataToGroups(rooms: rooms))
+            .map(mapGroupDataToGroups(rooms: rooms))
     }
     
 }
 
-fileprivate extension GroupRepositoryImpl {
+private extension GroupRepositoryImpl {
     
-    fileprivate func mapGroupDataToGroups(rooms: [Room]) -> (([String: String]) throws -> [Group]) {
+    func mapGroupDataToGroups(rooms: [Room]) -> (([String: String]) throws -> [Group]) {
         return { results in
             let xml = try AEXMLDocument.create(results["ZoneGroupState"])
             return xml?["ZoneGroups"].children.compactMap(self.mapZoneToGroup(rooms: rooms)) ?? []
         }
     }
     
-    fileprivate func mapZoneToGroup(rooms: [Room]) -> ((AEXMLElement) -> Group?) {
+    func mapZoneToGroup(rooms: [Room]) -> ((AEXMLElement) -> Group?) {
         return { zone in
             guard let coordinatorUuid = zone.attributes["Coordinator"],
                 let coordinator = rooms.filter({ $0.uuid == coordinatorUuid }).first else {
@@ -49,7 +49,7 @@ fileprivate extension GroupRepositoryImpl {
         }
     }
     
-    fileprivate func mapMembersToSlaves(coordinatorUuid: String) -> (((AEXMLElement)) -> [String]) {
+    func mapMembersToSlaves(coordinatorUuid: String) -> (((AEXMLElement)) -> [String]) {
         return { member in
             var slaves = [String]()
             if let roomUuid = member.attributes["UUID"], roomUuid != coordinatorUuid,
@@ -64,7 +64,7 @@ fileprivate extension GroupRepositoryImpl {
         }
     }
     
-    fileprivate func mapSatelliteToSlave(coordinatorUuid: String) -> (((AEXMLElement)) -> String?) {
+    func mapSatelliteToSlave(coordinatorUuid: String) -> (((AEXMLElement)) -> String?) {
         return { satellite in
             guard let satelliteUuid = satellite.attributes["UUID"],
                 satelliteUuid != coordinatorUuid,
@@ -75,7 +75,7 @@ fileprivate extension GroupRepositoryImpl {
         }
     }
     
-    fileprivate func mapUuidToRoom(rooms: [Room]) -> (((String)) -> Room?) {
+    func mapUuidToRoom(rooms: [Room]) -> (((String)) -> Room?) {
         return { uuid in
             return rooms.filter({ $0.uuid == uuid }).first
         }

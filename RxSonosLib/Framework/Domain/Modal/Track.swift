@@ -85,7 +85,7 @@ public protocol Track {
 extension Track {
     
     public func description(filterd: [TrackDescription]) -> [String] {
-        return self.description
+        return description
             .compactMap({ (key, value) -> String? in
                 if filterd.contains(key) {
                     return nil

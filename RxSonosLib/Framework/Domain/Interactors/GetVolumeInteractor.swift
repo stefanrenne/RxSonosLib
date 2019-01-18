@@ -34,11 +34,13 @@ class GetVolumeInteractor: ObservableInteractor {
         }
         
         return createTimer(SonosSettings.shared.renewGroupVolumeTimer)
-            .flatMap(self.mapToVolume(for: group))
+            .flatMap(mapToVolume(for: group))
             .distinctUntilChanged({ $0 == $1 })
     }
-    
-    fileprivate func mapToVolume(for group: Group) -> ((Int) -> Observable<Int>) {
+}
+
+private extension GetVolumeInteractor {
+    func mapToVolume(for group: Group) -> ((Int) -> Observable<Int>) {
         return { _ in
             return self.renderingControlRepository
                 .getVolume(for: group)

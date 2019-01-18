@@ -34,11 +34,14 @@ class GetGroupProgressInteractor: ObservableInteractor {
         }
         
         return createTimer(SonosSettings.shared.renewGroupTrackProgressTimer)
-            .flatMap(self.mapToProgress(for: masterRoom))
+            .flatMap(mapToProgress(for: masterRoom))
             .distinctUntilChanged({ $0 == $1 })
     }
+}
+
+private extension GetGroupProgressInteractor {
     
-    fileprivate func mapToProgress(for masterRoom: Room) -> ((Int) -> Observable<GroupProgress>) {
+    func mapToProgress(for masterRoom: Room) -> ((Int) -> Observable<GroupProgress>) {
         return { _ in
             return self.transportRepository
                 .getNowPlayingProgress(for: masterRoom)

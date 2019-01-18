@@ -16,12 +16,12 @@ class RenderingControlRepositoryImpl: RenderingControlRepository {
     func getVolume(for room: Room) -> Single<Int> {
         return network
             .request(.getVolume, on: room)
-            .map(self.mapDataToVolume())
+            .map(mapDataToVolume)
     }
     
     func getVolume(for group: Group) -> Single<Int> {
-        let roomObservables = ([group.master] + group.slaves).map(self.mapRoomToVolume())
-        return Single.zip(roomObservables, self.zipRoomVolumes())
+        let roomObservables = ([group.master] + group.slaves).map(mapRoomToVolume)
+        return Single.zip(roomObservables, zipRoomVolumes)
     }
     
     func set(volume: Int, for room: Room) -> Completable {
@@ -44,42 +44,34 @@ class RenderingControlRepositoryImpl: RenderingControlRepository {
     func getMute(room: Room) -> Single<Bool> {
         return network
             .request(.getMute, on: room)
-            .map(self.mapDataToMute())
+            .map(mapDataToMute)
     }
     
 }
 
-extension RenderingControlRepositoryImpl {
-    fileprivate func mapDataToVolume() -> (([String: String]) -> Int) {
-        return { data in
-            guard let volumeString = data["CurrentVolume"],
-                  let volume = Int(volumeString) else {
-                return 0
-            }
-            return volume
+private extension RenderingControlRepositoryImpl {
+    func mapDataToVolume(data: [String: String]) -> Int {
+        guard let volumeString = data["CurrentVolume"],
+              let volume = Int(volumeString) else {
+            return 0
         }
+        return volume
     }
     
-    fileprivate func mapRoomToVolume() -> ((Room) -> Single<Int>) {
-        return { room in
-            return self.getVolume(for: room)
-        }
+    func mapRoomToVolume(room: Room) -> Single<Int> {
+        return getVolume(for: room)
     }
     
-    fileprivate func zipRoomVolumes() -> (([Int]) -> Int) {
-        return { volumes in
-            return volumes.reduce(0, +) / volumes.count
-        }
+    func zipRoomVolumes(volumes: [Int]) -> Int {
+        return volumes.reduce(0, +) / volumes.count
     }
     
-    fileprivate func mapDataToMute() -> (([String: String]) throws -> Bool) {
-        return { data in
-            guard let muteString = data["CurrentMute"],
-                  let mute = Int(muteString) else {
-                    throw SonosError.noData
-            }
-            return (mute == 1)
+    func mapDataToMute(data: [String: String]) throws -> Bool {
+        guard let muteString = data["CurrentMute"],
+              let mute = Int(muteString) else {
+                throw SonosError.noData
         }
+        return (mute == 1)
         
     }
 }

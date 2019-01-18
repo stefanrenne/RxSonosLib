@@ -29,8 +29,8 @@ class RoomsCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = self.setup()
-        self.navigationController?.setViewControllers([viewController], animated: false)
+        let viewController = setup()
+        navigationController?.setViewControllers([viewController], animated: false)
     }
     
 }

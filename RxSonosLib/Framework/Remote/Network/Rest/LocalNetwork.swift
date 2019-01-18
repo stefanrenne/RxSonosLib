@@ -23,8 +23,7 @@ class LocalNetwork<Target: SonosTargetType>: Network {
         urlRequest.setValue("\"\(action.soapAction)\"", forHTTPHeaderField: "SOAPACTION")
         urlRequest.httpBody = action.requestBody.data(using: .utf8)
         
-        return perform(request: urlRequest)
-            .map(self.openEnvelope(for: action))
+        return perform(request: urlRequest).map(openEnvelope(for: action))
     }
     
     internal func openEnvelope(for target: Target) -> ((Data) throws -> [String: String]) {

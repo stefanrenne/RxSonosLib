@@ -30,47 +30,41 @@ class GetRoomsInteractor: ObservableInteractor {
         
         return
             createTimer(SonosSettings.shared.renewNetworkDevicesTimer)
-            .flatMap(searchNetworkForDevices())
+            .flatMap(searchNetworkForDevices)
             .distinctUntilChanged({ $0.count == $1.count })
-            .flatMap(mapDevicesToSonosRooms())
+            .flatMap(mapDevicesToSonosRooms)
     }
     
     /* SSDP */
-    private func searchNetworkForDevices() -> ((Int) -> Observable<[SSDPResponse]>) {
-        return { _ in
-            return Observable<[SSDPResponse]>.create({ (observer) -> Disposable in
-                
-                let cachedResponses: [SSDPResponse]? = CacheManager.shared.getObject(for: CacheKey.ssdp)
-                if let responses: [SSDPResponse] = cachedResponses {
-                    observer.onNext(responses)
-                }
-                
-                let ssdpDisposable = self
-                    .ssdpRepository
-                    .scan(searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
-                    .subscribe(onSuccess: { (response) in
-                        guard cachedResponses != response else { return }
-                        try? CacheManager.shared.set(object: response, for: CacheKey.ssdp)
-                        observer.onNext(response)
-                    })
-                
-                return Disposables.create([ssdpDisposable])
-            })
-        }
+    private func searchNetworkForDevices(timer: Int) -> Observable<[SSDPResponse]> {
+        return Observable<[SSDPResponse]>.create({ (observer) -> Disposable in
+            
+            let cachedResponses: [SSDPResponse]? = CacheManager.shared.getObject(for: CacheKey.ssdp)
+            if let responses: [SSDPResponse] = cachedResponses {
+                observer.onNext(responses)
+            }
+            
+            let ssdpDisposable = self
+                .ssdpRepository
+                .scan(searchTarget: "urn:schemas-upnp-org:device:ZonePlayer:1")
+                .subscribe(onSuccess: { (response) in
+                    guard cachedResponses != response else { return }
+                    try? CacheManager.shared.set(object: response, for: CacheKey.ssdp)
+                    observer.onNext(response)
+                })
+            
+            return Disposables.create([ssdpDisposable])
+        })
     }
     
     /* Rooms */
-    private func mapDevicesToSonosRooms() -> (([SSDPResponse]) throws -> Observable<[Room]>) {
-        return { ssdpDevices in
-            let collection = try ssdpDevices.compactMap(self.mapSSDPToSonosRoom())
-            return Single.zip(collection).asObservable()
-        }
+    private func mapDevicesToSonosRooms(ssdpDevices: [SSDPResponse]) throws -> Observable<[Room]> {
+        let collection = try ssdpDevices.compactMap(mapSSDPToSonosRoom)
+        return Single.zip(collection).asObservable()
     }
     
-    private func mapSSDPToSonosRoom() -> ((SSDPResponse) throws -> Single<Room>?) {
-        return { response in
-            guard let device = try SSDPDevice.map(response) else { return nil }
-            return self.roomRepository.getRoom(device: device)
-        }
+    private func mapSSDPToSonosRoom(response: SSDPResponse) throws -> Single<Room>? {
+        guard let device = try SSDPDevice.map(response) else { return nil }
+        return roomRepository.getRoom(device: device)
     }
 }

@@ -18,17 +18,17 @@ class TransportRepositoryImpl: TransportRepository {
         let positionInfoNetwork = network.request(.positionInfo, on: room)
         let mediaInfoNetwork = network.request(.mediaInfo, on: room)
         
-        return Single.zip(positionInfoNetwork, mediaInfoNetwork, resultSelector: self.mapDataToNowPlaying(for: room))
+        return Single.zip(positionInfoNetwork, mediaInfoNetwork, resultSelector: mapDataToNowPlaying(for: room))
     }
     
     func getNowPlayingProgress(for room: Room) -> Single<GroupProgress> {
         return network.request(.positionInfo, on: room)
-            .map(self.mapPositionInfoDataToProgress())
+            .map(mapPositionInfoDataToProgress)
     }
     
     func getTransportState(for room: Room) -> Single<TransportState> {
         return network.request(.transportInfo, on: room)
-            .map(mapTransportDataToState())
+            .map(mapTransportDataToState)
     }
     
     func getImage(for track: Track) -> Maybe<Data> {
@@ -75,8 +75,8 @@ class TransportRepositoryImpl: TransportRepository {
     }
 }
 
-fileprivate extension TransportRepositoryImpl {
-    fileprivate func mapDataToNowPlaying(for room: Room) -> (([String: String], [String: String]) throws -> Track?) {
+private extension TransportRepositoryImpl {
+    func mapDataToNowPlaying(for room: Room) -> (([String: String], [String: String]) throws -> Track?) {
         return { positionInfoResult, mediaInfoResult in
             guard let track = try NowPlayingTrackFactory(room: room.ip, positionInfo: positionInfoResult, mediaInfo: mediaInfoResult).create() else {
                     return nil
@@ -86,15 +86,11 @@ fileprivate extension TransportRepositoryImpl {
         }
     }
     
-    fileprivate func mapTransportDataToState() -> (([String: String]) -> TransportState) {
-        return { data in
-            return TransportState.map(string: data["CurrentTransportState"])
-        }
+    func mapTransportDataToState(data: [String: String]) -> TransportState {
+        return TransportState.map(string: data["CurrentTransportState"])
     }
     
-    fileprivate func mapPositionInfoDataToProgress() -> (([String: String]) -> GroupProgress) {
-        return { data in
-            return GroupProgress.map(positionInfo: data)
-        }
+    func mapPositionInfoDataToProgress(data: [String: String]) -> GroupProgress {
+        return GroupProgress.map(positionInfo: data)
     }
 }

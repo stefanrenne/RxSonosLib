@@ -13,18 +13,18 @@ import RxSwift
 class LoadingViewController: UIViewController {
 
     internal var router: LoadingRouter!
-    fileprivate let disposebag = DisposeBag()
+    private let disposebag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupAllRoomsObservable()
+        setupAllRoomsObservable()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
     
-    fileprivate func setupAllRoomsObservable() {
+    private func setupAllRoomsObservable() {
         SonosInteractor
             .getAllGroups()
             .filter({ $0.count > 0 })

@@ -34,11 +34,13 @@ class GetGroupQueueInteractor: ObservableInteractor {
         }
         
         return createTimer(SonosSettings.shared.renewGroupQueueTimer)
-            .flatMap(self.mapToQueue(for: masterRoom))
+            .flatMap(mapToQueue(for: masterRoom))
             .distinctUntilChanged()
     }
-    
-    fileprivate func mapToQueue(for masterRoom: Room) -> ((Int) -> Observable<[MusicProviderTrack]>) {
+}
+
+private extension GetGroupQueueInteractor {
+    func mapToQueue(for masterRoom: Room) -> ((Int) -> Observable<[MusicProviderTrack]>) {
         return { _ in
             return self.contentDirectoryRepository
                 .getQueue(for: masterRoom)

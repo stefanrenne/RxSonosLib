@@ -30,7 +30,7 @@ class MoreCoordinator: Coordinator {
     
     func start() {
         let viewController = self.setup()
-        self.navigationController?.setViewControllers([viewController], animated: false)
+        navigationController?.setViewControllers([viewController], animated: false)
     }
     
 }
@@ -40,7 +40,7 @@ extension MoreCoordinator: MoreRouter {
     func didSelect(type: MoreType) {
         switch type {
         case .musicproviders:
-            MusicProvidersCoordinator(masterRouter: self.masterRouter).start()
+            MusicProvidersCoordinator(masterRouter: masterRouter).start()
         }
     }
     

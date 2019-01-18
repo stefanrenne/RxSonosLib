@@ -18,9 +18,9 @@ open class SonosInteractor {
     internal var renewingGroupDisposable: Disposable?
     
     init() {
-        self.observerRooms()
-        self.observerGroups()
-        self.startRenewingRooms()
+        observerRooms()
+        observerGroups()
+        startRenewingRooms()
     }
     
     static public func setActive(group: Group) throws {
@@ -34,7 +34,7 @@ open class SonosInteractor {
         return shared
             .activeGroup
             .asObserver()
-            .flatMap(ignoreNil())
+            .flatMap(ignoreNil)
     }
     
     static public func getAllGroups() -> Observable<[Group]> {

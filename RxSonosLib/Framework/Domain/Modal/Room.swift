@@ -14,11 +14,11 @@ open class Room: Codable {
     private let ssdpDevice: SSDPDevice
     private let deviceDescription: DeviceDescription
     
-    var hasProxy: Bool { return self.ssdpDevice.hasProxy }
-    var name: String { return self.deviceDescription.name }
-    var ip: URL { return self.ssdpDevice.ip }
-    var uuid: String { return self.ssdpDevice.uuid! }
-    var userAgent: String { return self.ssdpDevice.server }
+    var hasProxy: Bool { return ssdpDevice.hasProxy }
+    var name: String { return deviceDescription.name }
+    var ip: URL { return ssdpDevice.ip }
+    var uuid: String { return ssdpDevice.uuid! }
+    var userAgent: String { return ssdpDevice.server }
     
     init(ssdpDevice: SSDPDevice, deviceDescription: DeviceDescription) {
         self.ssdpDevice = ssdpDevice

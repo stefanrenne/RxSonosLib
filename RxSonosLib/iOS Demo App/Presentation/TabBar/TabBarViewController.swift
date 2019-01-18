@@ -28,11 +28,11 @@ class TabBarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.actions?.didLoad()
-        self.setupTabBar()
-        self.setupActiveGroupObservable()
-        self.setupNowPlayingObservable()
-        self.setupTransportStateObservable()
+        actions?.didLoad()
+        setupTabBar()
+        setupActiveGroupObservable()
+        setupNowPlayingObservable()
+        setupTransportStateObservable()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -46,13 +46,13 @@ class TabBarViewController: UIViewController {
     }
     
     @IBAction func expandAction(_ sender: UIButton) {
-        self.nowPlayingAction(collapse: false)
+        nowPlayingAction(collapse: false)
     }
     
     internal func nowPlayingAction(collapse: Bool) {
         nowPlayingTopConstraint?.isActive = !collapse
         nowPlayingHeightConstraint?.isActive = collapse
-        self.view.setNeedsLayout()
+        view.setNeedsLayout()
         UIView.animate(withDuration: 0.4) { [weak self] in
             self?.view.layoutIfNeeded()
             self?.setNeedsStatusBarAppearanceUpdate()
@@ -62,7 +62,7 @@ class TabBarViewController: UIViewController {
         }
     }
     
-    fileprivate func setupTabBar() {
+    private func setupTabBar() {
         tabBar.selectedItem = tabBar.items?.first
         router?.continueToMySonos()
         
@@ -86,7 +86,7 @@ class TabBarViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    fileprivate func setupActiveGroupObservable() {
+    private func setupActiveGroupObservable() {
         SonosInteractor
             .getActiveGroup()
             .subscribe(onNext: { [weak self] (group) in
@@ -96,7 +96,7 @@ class TabBarViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    fileprivate func setupNowPlayingObservable() {
+    private func setupNowPlayingObservable() {
         SonosInteractor
             .getActiveGroup()
             .getTrack()
@@ -111,11 +111,11 @@ class TabBarViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    fileprivate func setupTransportStateObservable() {
+    private func setupTransportStateObservable() {
         SonosInteractor
             .getActiveGroup()
             .getTransportState()
-            .subscribe(self.actionButton.data)
+            .subscribe(actionButton.data)
             .disposed(by: disposeBag)
         
         actionButton

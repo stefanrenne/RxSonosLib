@@ -18,10 +18,10 @@ class MoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "More"
+        title = "More"
         
-        self.setupTableViewItems()
-        self.setupCellTapHandling()
+        setupTableViewItems()
+        setupCellTapHandling()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

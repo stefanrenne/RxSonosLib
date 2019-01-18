@@ -41,7 +41,7 @@ class CacheManager {
     }
     
     func set(_ data: Data?, for key: CacheKey, item: String? = nil) {
-        guard let url = self.urlForKey(key, item) else { return }
+        guard let url = urlForKey(key, item) else { return }
         FileManager.default.createFile(atPath: url.path, contents: data, attributes: nil)
     }
     
@@ -51,7 +51,7 @@ class CacheManager {
     }
     
     func get(for key: CacheKey, item: String? = nil) -> Data? {
-        guard let url = self.urlForKey(key, item),
+        guard let url = urlForKey(key, item),
             FileManager.default.fileExists(atPath: url.path) else { return nil }
         return try? Data(contentsOf: url)
     }
@@ -78,7 +78,7 @@ class CacheManager {
 
 fileprivate extension String {
     var cleanKey: String {
-        return self.removing(characters: CharacterSet(charactersIn: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567890-").inverted)
+        return removing(characters: CharacterSet(charactersIn: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567890-").inverted)
     }
     
     private func removing(characters: CharacterSet) -> String {
@@ -87,6 +87,6 @@ fileprivate extension String {
     }
     
     func has(prefix: [String]) -> Bool {
-        return prefix.filter({ self.hasPrefix($0) }).count > 0
+        return prefix.filter({ hasPrefix($0) }).count > 0
     }
 }

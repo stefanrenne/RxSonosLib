@@ -49,7 +49,7 @@ class TrackViewModel {
 extension Array where Element == String {
     public func joined(separator: String, attrs: [NSAttributedString.Key: Any]) -> NSAttributedString {
         let mutableString = NSMutableAttributedString()
-        self.enumerated().forEach { (index, string) in
+        enumerated().forEach { (index, string) in
             mutableString.append(NSAttributedString(string: string))
             if index < self.count-1 {
                 mutableString.append(NSAttributedString(string: separator, attributes: attrs))

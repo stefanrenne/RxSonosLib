@@ -220,7 +220,7 @@ class TransportRepositoryTest: XCTestCase {
     }
 }
 
-fileprivate extension TransportRepositoryTest {
+private extension TransportRepositoryTest {
     
     func getTransportInfoResponse() -> String {
         return "<CurrentTransportState>PAUSED_PLAYBACK</CurrentTransportState><CurrentTransportStatus>OK</CurrentTransportStatus><CurrentSpeed>1</CurrentSpeed>"

@@ -14,7 +14,7 @@ class BrowseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Browse"
+        title = "Browse"
         
     }
     

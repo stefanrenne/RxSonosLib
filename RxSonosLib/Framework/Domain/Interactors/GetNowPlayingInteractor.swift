@@ -34,7 +34,7 @@ class GetNowPlayingInteractor: ObservableInteractor {
         }
         
         return createTimer(SonosSettings.shared.renewNowPlayingTimer)
-            .flatMap(self.mapToTrack(for: masterRoom))
+            .flatMap(mapToTrack(for: masterRoom))
             .distinctUntilChanged({ lhs, rhs in
                 guard let lhs = lhs, let rhs = rhs, lhs.uri == rhs.uri else { return false }
                 return true

@@ -9,8 +9,6 @@
 import Foundation
 import RxSwift
 
-func ignoreNil<T>() -> ((T?) -> Observable<T>) {
-    return { object in
-        return object.map(Observable.just) ?? Observable.empty()
-    }
+func ignoreNil<T>(object: T?) -> Observable<T> {
+    return object.map(Observable.just) ?? Observable.empty()
 }

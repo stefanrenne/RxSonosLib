@@ -11,25 +11,25 @@ import Foundation
 extension String {
     
     func extractUUID() throws -> String? {
-        return try self.match(with: "uuid:([a-zA-Z0-9_]+)")?.first
+        return try match(with: "uuid:([a-zA-Z0-9_]+)")?.first
     }
     
     func baseUrl() throws -> String? {
-        return try self.match(with: "(https?://[0-9:.]+)")?.first
+        return try match(with: "(https?://[0-9:.]+)")?.first
     }
     
     func urlSuffix() throws -> String? {
-        return try self.match(with: "^https?://[0-9:.]+(.*)$")?.first
+        return try match(with: "^https?://[0-9:.]+(.*)$")?.first
     }
     
     func validateXml() throws -> String {
         let regex = try NSRegularExpression(pattern: "(\")([A-Za-z0-9-:]+=)", options: [])
-        return regex.stringByReplacingMatches(in: self, options: .withTransparentBounds, range: NSRange(location: 0, length: self.count), withTemplate: "$1 $2")
+        return regex.stringByReplacingMatches(in: self, options: .withTransparentBounds, range: NSRange(location: 0, length: count), withTemplate: "$1 $2")
     }
     
     func match(with pattern: String) throws -> [String]? {
         let regex = try NSRegularExpression(pattern: pattern, options: [])
-        return regex.matches(in: self, options: [], range: NSRange(location: 0, length: self.count)).first?.toArray(for: self)
+        return regex.matches(in: self, options: [], range: NSRange(location: 0, length: count)).first?.toArray(for: self)
     }
     
     var int: Int? {
@@ -46,8 +46,8 @@ extension Array where Element == URLQueryItem {
 extension NSTextCheckingResult {
     func toArray(for string: String) -> [String] {
         var result = [String]()
-        for index in 1..<self.numberOfRanges {
-            if let value = self.substring(for: string, index: index) {
+        for index in 1..<numberOfRanges {
+            if let value = substring(for: string, index: index) {
                 result.append(value)
             }
         }
@@ -55,8 +55,8 @@ extension NSTextCheckingResult {
     }
     
     func substring(for string: String, index: Int) -> String? {
-        guard index < self.numberOfRanges,
-            let swiftRange = self.range(at: index).toRange(for: string) else {
+        guard index < numberOfRanges,
+            let swiftRange = range(at: index).toRange(for: string) else {
             return nil
         }
         return String(string[swiftRange])

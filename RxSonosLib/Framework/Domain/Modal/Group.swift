@@ -19,17 +19,17 @@ open class Group {
     
     /// Name of the group
     public lazy var name: String = {
-        return (self.slaves.count > 0) ? "\(self.master.name) +\(self.slaves.count)" : self.master.name
+        return (slaves.count > 0) ? "\(master.name) +\(slaves.count)" : master.name
     }()
     
     /// All Room names in this group
     public lazy var names: [String] = {
-        return Array(Set(self.rooms.map({ $0.name })))
+        return Array(Set(rooms.map({ $0.name })))
     }()
     
     /// All Rooms in this group
     internal var rooms: [Room] {
-        return [self.master] + self.slaves
+        return [master] + slaves
     }
     
     /// Active Track for this Group
@@ -39,7 +39,7 @@ open class Group {
     init(master: Room, slaves: [Room]) {
         self.master = master
         self.slaves = slaves
-        self.observerActiveTrack()
+        observerActiveTrack()
     }
     
 }
@@ -47,22 +47,20 @@ open class Group {
 extension Group: Equatable {
     public static func == (lhs: Group, rhs: Group) -> Bool {
         
-        return lhs.master == rhs.master && lhs.slaves.sorted(by: sortRooms()) == rhs.slaves.sorted(by: sortRooms())
+        return lhs.master == rhs.master && lhs.slaves.sorted(by: sortRooms) == rhs.slaves.sorted(by: sortRooms)
     }
 }
 
-private func sortRooms() -> ((Room, Room) -> Bool) {
-    return { room1, room2 in
-        room1.uuid > room2.uuid
-    }
+private func sortRooms(room1: Room, room2: Room) -> Bool {
+    return room1.uuid > room2.uuid
 }
 
 extension Group {
     private func observerActiveTrack() {
         SonosInteractor
             .getTrack(self)
-            .subscribe(self.activeTrack)
-            .disposed(by: self.disposebag)
+            .subscribe(activeTrack)
+            .disposed(by: disposebag)
     }
 }
 
@@ -90,7 +88,7 @@ extension ObservableType where E == Group {
         return
             self
             .getTrack()
-            .flatMap(ignoreNil())
+            .flatMap(ignoreNil)
             .flatMap({ (track) -> Observable<Data?> in
                 return Observable
                     .just(track)

@@ -20,10 +20,10 @@ class RoomsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Rooms"
+        title = "Rooms"
         
-        self.setupTableViewItems()
-        self.setupCellTapHandling()
+        setupTableViewItems()
+        setupCellTapHandling()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -51,7 +51,7 @@ class RoomsViewController: UIViewController {
             .subscribe(onNext: { [weak self] (group) in
                 self?.router?.continueTo(group: group)
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
     }
     
 }

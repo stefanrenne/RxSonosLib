@@ -27,7 +27,7 @@ class QueueCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = self.setup()
+        let viewController = setup()
         masterRouter.present(viewController)
     }
     

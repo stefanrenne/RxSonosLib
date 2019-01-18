@@ -23,10 +23,10 @@ class MusicProvidersViewController: UIViewController {
         super.viewDidLoad()
         navigationBar.topItem?.title = "MusicProviders"
         
-        self.setupNavigationBar()
-        self.setupTableViewItems()
-        self.setupCellTapHandling()
-        self.setupCloseButton()
+        setupNavigationBar()
+        setupTableViewItems()
+        setupCellTapHandling()
+        setupCloseButton()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

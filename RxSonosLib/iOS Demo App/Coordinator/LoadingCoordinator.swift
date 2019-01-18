@@ -26,14 +26,14 @@ class LoadingCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = self.setup()
-        self.navigationController?.setViewControllers([viewController], animated: false)
+        let viewController = setup()
+        navigationController?.setViewControllers([viewController], animated: false)
     }
     
 }
 
 extension LoadingCoordinator: LoadingRouter {
     func continueToMySonos() {
-        TabBarCoordinator(navigationController: self.navigationController).start()
+        TabBarCoordinator(navigationController: navigationController).start()
     }
 }

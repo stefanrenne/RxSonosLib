@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     func nilIfEmpty() -> String? {
-        if self.isEmpty {
+        if isEmpty {
             return nil
         }
         return self

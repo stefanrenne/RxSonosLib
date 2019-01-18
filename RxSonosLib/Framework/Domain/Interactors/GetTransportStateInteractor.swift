@@ -34,11 +34,14 @@ class GetTransportStateInteractor: ObservableInteractor {
         }
         
         return createTimer(SonosSettings.shared.renewGroupTransportStateTimer)
-            .flatMap(self.mapToTransportState(for: masterRoom))
+            .flatMap(mapToTransportState(for: masterRoom))
             .distinctUntilChanged({ $0.rawValue == $1.rawValue })
     }
+}
+
+private extension GetTransportStateInteractor {
     
-    fileprivate func mapToTransportState(for masterRoom: Room) -> ((Int) -> Observable<TransportState>) {
+    func mapToTransportState(for masterRoom: Room) -> ((Int) -> Observable<TransportState>) {
         return { _ in
             return self.transportRepository
                 .getTransportState(for: masterRoom)

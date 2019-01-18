@@ -14,7 +14,7 @@ class MySonosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "My Sonos"
+        title = "My Sonos"
         
     }
     

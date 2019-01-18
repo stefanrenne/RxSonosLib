@@ -14,7 +14,7 @@ import RxBlocking
 class SonosInteractorTests: XCTestCase {
     
     override func setUp() {
-        self.resetToFakeRepositories()
+        resetToFakeRepositories()
         super.setUp()
     }
     

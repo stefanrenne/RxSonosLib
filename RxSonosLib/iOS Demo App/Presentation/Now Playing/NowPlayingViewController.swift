@@ -29,20 +29,20 @@ class NowPlayingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupActiveGroupObservable()
-        self.setupNowPlayingObservable()
-        self.setupVolumeObservables()
-        self.setupMuteObservable()
-        self.setupTransportStateObservable()
-        self.setupGroupProgressObservable()
-        self.setupImageObservable()
+        setupActiveGroupObservable()
+        setupNowPlayingObservable()
+        setupVolumeObservables()
+        setupMuteObservable()
+        setupTransportStateObservable()
+        setupGroupProgressObservable()
+        setupImageObservable()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
     
-    fileprivate func setupActiveGroupObservable() {
+    private func setupActiveGroupObservable() {
         SonosInteractor
             .getActiveGroup()
             .subscribe(onNext: { [weak self] (group) in
@@ -51,8 +51,8 @@ class NowPlayingViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    fileprivate func setupNowPlayingObservable() {
-        self.resetTrack()
+    private func setupNowPlayingObservable() {
+        resetTrack()
         
         SonosInteractor
             .getActiveGroup()
@@ -70,7 +70,7 @@ class NowPlayingViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    fileprivate func setupVolumeObservables() {
+    private func setupVolumeObservables() {
         SonosInteractor
             .getActiveGroup()
             .getVolume()
@@ -97,7 +97,7 @@ class NowPlayingViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    fileprivate func setupMuteObservable() {
+    private func setupMuteObservable() {
         SonosInteractor
             .getActiveGroup()
             .getMute()
@@ -125,11 +125,11 @@ class NowPlayingViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    fileprivate func setupTransportStateObservable() {
+    private func setupTransportStateObservable() {
         SonosInteractor
          .getActiveGroup()
          .getTransportState()
-         .subscribe(self.actionButton.data)
+         .subscribe(actionButton.data)
          .disposed(by: disposeBag)
         
         actionButton
@@ -146,7 +146,7 @@ class NowPlayingViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    fileprivate func setupGroupProgressObservable() {
+    private func setupGroupProgressObservable() {
         SonosInteractor
             .getActiveGroup()
             .getProgress()
@@ -158,7 +158,7 @@ class NowPlayingViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    fileprivate func setupImageObservable() {
+    private func setupImageObservable() {
         SonosInteractor
             .getActiveGroup()
             .getImage()
@@ -171,13 +171,13 @@ class NowPlayingViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    fileprivate func resetTrack() {
-        self.groupTrackTitle.text = ""
-        self.groupTrackDescription.text = ""
-        self.progressTime.text = nil
-        self.remainingTime.text = nil
-        self.progressView.progress = 0
-        self.groupImageView.image = nil
+    private func resetTrack() {
+        groupTrackTitle.text = ""
+        groupTrackDescription.text = ""
+        progressTime.text = nil
+        remainingTime.text = nil
+        progressView.progress = 0
+        groupImageView.image = nil
     }
     
     @IBAction func closeAction(_ sender: UIButton) {
@@ -185,7 +185,7 @@ class NowPlayingViewController: UIViewController {
     }
     
     @IBAction func queueAction(_ sender: UIButton) {
-        self.router?.continueToQueue()
+        router?.continueToQueue()
     }
     
     @IBAction func previousAction(_ sender: UIButton) {

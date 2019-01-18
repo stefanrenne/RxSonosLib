@@ -25,10 +25,10 @@ class QueueTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.disposeBag = DisposeBag()
+        disposeBag = DisposeBag()
     }
     
-    fileprivate func bindObservables() {
+    private func bindObservables() {
         
         queueTitleLabel.text = model?.trackTitle
         queueDescriptionLabel.text = model?.trackArtists

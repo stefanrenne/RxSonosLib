@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     func timeToSeconds() -> UInt {
-        let components = self.split(separator: ":")
+        let components = split(separator: ":")
         
         var seconds = UInt(components[components.count-1]) ?? 0
         
