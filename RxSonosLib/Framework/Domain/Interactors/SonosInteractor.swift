@@ -10,7 +10,6 @@ import Foundation
 import RxSwift
 
 open class SonosInteractor {
-    internal static let shared: SonosInteractor = SonosInteractor()
     internal let allRooms: BehaviorSubject<[Room]> = BehaviorSubject(value: [])
     internal let allGroups: BehaviorSubject<[Group]> = BehaviorSubject(value: [])
     internal let activeGroup: BehaviorSubject<Group?> = BehaviorSubject(value: nil)
@@ -41,7 +40,7 @@ open class SonosInteractor {
         return shared.allGroups.asObserver()
     }
     
-    internal lazy var getMusicProvidersInteractor: GetMusicProvidersInteractor = { GetMusicProvidersInteractor(musicProvidersRepository: RepositoryInjection.provideMusicProvidersRepository()) }()
+    internal lazy var getMusicProvidersInteractor: GetMusicProvidersInteractor = { GetMusicProvidersInteractor(musicProvidersRepository: Injection.provideMusicProvidersRepository()) }()
     static public func getAllMusicProviders() -> Single<[MusicProvider]> {
         return shared
             .allGroups
@@ -53,13 +52,13 @@ open class SonosInteractor {
             }
     }
     
-    internal lazy var getAlarmsInteractor: GetAlarmsInteractor = { GetAlarmsInteractor(alarmRepository: RepositoryInjection.provideAlarmRepository()) }()
+    internal lazy var getAlarmsInteractor: GetAlarmsInteractor = { GetAlarmsInteractor(alarmRepository: Injection.provideAlarmRepository()) }()
     static public func getAllAlarms() -> Single<[Alarm]> {
         return shared.getAlarmsInteractor.get()
     }
     
     /* Group */
-    internal lazy var getGroupsInteractor: GetGroupsInteractor = { GetGroupsInteractor(groupRepository: RepositoryInjection.provideGroupRepository()) }()
+    internal lazy var getGroupsInteractor: GetGroupsInteractor = { GetGroupsInteractor(groupRepository: Injection.provideGroupRepository()) }()
     private func startRenewingGroups(with rooms: [Room]) {
         guard rooms.count > 0 else { return }
         renewingGroupDisposable?.dispose()
@@ -73,53 +72,53 @@ open class SonosInteractor {
             .subscribe(allGroups)
     }
     
-    internal lazy var getNowPlayingInteractor: GetNowPlayingInteractor = { GetNowPlayingInteractor(transportRepository: RepositoryInjection.provideTransportRepository()) }()
+    internal lazy var getNowPlayingInteractor: GetNowPlayingInteractor = { GetNowPlayingInteractor(transportRepository: Injection.provideTransportRepository()) }()
     static public func getTrack(_ group: Group) -> Observable<Track?> {
         return shared.getNowPlayingInteractor.get(values: GetNowPlayingValues(group: group))
     }
     
-    internal lazy var getGroupProgressInteractor: GetGroupProgressInteractor = { GetGroupProgressInteractor(transportRepository: RepositoryInjection.provideTransportRepository()) }()
+    internal lazy var getGroupProgressInteractor: GetGroupProgressInteractor = { GetGroupProgressInteractor(transportRepository: Injection.provideTransportRepository()) }()
     static public func getProgress(_ group: Group) -> Observable<GroupProgress> {
         return shared.getGroupProgressInteractor.get(values: GetGroupProgressValues(group: group))
     }
     
-    internal lazy var getGroupQueueInteractor: GetGroupQueueInteractor = { GetGroupQueueInteractor(contentDirectoryRepository: RepositoryInjection.provideContentDirectoryRepository()) }()
+    internal lazy var getGroupQueueInteractor: GetGroupQueueInteractor = { GetGroupQueueInteractor(contentDirectoryRepository: Injection.provideContentDirectoryRepository()) }()
     static public func getQueue(_ group: Group) -> Observable<[MusicProviderTrack]> {
         return shared.getGroupQueueInteractor.get(values: GetGroupQueueValues(group: group))
     }
     
-    internal lazy var getTransportStateInteractor: GetTransportStateInteractor = { GetTransportStateInteractor(transportRepository: RepositoryInjection.provideTransportRepository()) }()
+    internal lazy var getTransportStateInteractor: GetTransportStateInteractor = { GetTransportStateInteractor(transportRepository: Injection.provideTransportRepository()) }()
     static public func getTransportState(_ group: Group) -> Observable<TransportState> {
         return shared.getTransportStateInteractor.get(values: GetTransportStateValues(group: group))
     }
     
-    internal lazy var setTransportStateInteractor: SetTransportStateInteractor = { SetTransportStateInteractor(transportRepository: RepositoryInjection.provideTransportRepository()) }()
+    internal lazy var setTransportStateInteractor: SetTransportStateInteractor = { SetTransportStateInteractor(transportRepository: Injection.provideTransportRepository()) }()
     static public func setTransport(state: TransportState, for group: Group) -> Completable {
         return shared.setTransportStateInteractor.get(values: SetTransportStateValues(group: group, state: state))
     }
     
-    internal lazy var setNextTrackInteractor: SetNextTrackInteractor = { SetNextTrackInteractor(transportRepository: RepositoryInjection.provideTransportRepository()) }()
+    internal lazy var setNextTrackInteractor: SetNextTrackInteractor = { SetNextTrackInteractor(transportRepository: Injection.provideTransportRepository()) }()
     static public func setNextTrack(_ group: Group) -> Completable {
         return shared.setNextTrackInteractor.get(values: SetNextTrackValues(group: group))
     }
     
-    internal lazy var setPreviousTrackInteractor: SetPreviousTrackInteractor = { SetPreviousTrackInteractor(transportRepository: RepositoryInjection.provideTransportRepository()) }()
+    internal lazy var setPreviousTrackInteractor: SetPreviousTrackInteractor = { SetPreviousTrackInteractor(transportRepository: Injection.provideTransportRepository()) }()
     static public func setPreviousTrack(_ group: Group) -> Completable {
         return shared.setPreviousTrackInteractor.get(values: SetPreviousTrackValues(group: group))
     }
     
-    internal lazy var getVolumeInteractor: GetVolumeInteractor = { GetVolumeInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository()) }()
+    internal lazy var getVolumeInteractor: GetVolumeInteractor = { GetVolumeInteractor(renderingControlRepository: Injection.provideRenderingControlRepository()) }()
     static public func getVolume(_ group: Group) -> Observable<Int> {
         return shared.getVolumeInteractor.get(values: GetVolumeValues(group: group))
     }
     
-    internal lazy var setVolumeInteractor: SetVolumeInteractor = { SetVolumeInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository()) }()
+    internal lazy var setVolumeInteractor: SetVolumeInteractor = { SetVolumeInteractor(renderingControlRepository: Injection.provideRenderingControlRepository()) }()
     static public func set(volume: Int, for group: Group) -> Completable {
         return shared.setVolumeInteractor.get(values: SetVolumeValues(group: group, volume: volume))
     }
     
     /* Room */
-    internal lazy var getRoomsInteractor: GetRoomsInteractor = { GetRoomsInteractor(ssdpRepository: RepositoryInjection.provideSSDPRepository(), roomRepository: RepositoryInjection.provideRoomRepository()) }()
+    internal lazy var getRoomsInteractor: GetRoomsInteractor = { GetRoomsInteractor(ssdpRepository: Injection.provideSSDPRepository(), roomRepository: Injection.provideRoomRepository()) }()
     private func startRenewingRooms() {
         getRoomsInteractor
             .get()
@@ -130,18 +129,18 @@ open class SonosInteractor {
             .disposed(by: disposebag)
     }
     
-    internal lazy var getMuteInteractor: GetMuteInteractor = { GetMuteInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository()) }()
+    internal lazy var getMuteInteractor: GetMuteInteractor = { GetMuteInteractor(renderingControlRepository: Injection.provideRenderingControlRepository()) }()
     static public func getMute(for room: Room) -> Observable<Bool> {
         return shared.getMuteInteractor.get(values: GetMuteValues(room: room))
     }
     
-    internal lazy var setMuteInteractor: SetMuteInteractor = { SetMuteInteractor(renderingControlRepository: RepositoryInjection.provideRenderingControlRepository()) }()
+    internal lazy var setMuteInteractor: SetMuteInteractor = { SetMuteInteractor(renderingControlRepository: Injection.provideRenderingControlRepository()) }()
     static public func set(mute enabled: Bool, for room: Room) -> Completable {
         return shared.setMuteInteractor.get(values: SetMuteValues(room: room, enabled: enabled))
     }
     
     /* Track */
-    internal lazy var getTrackImageInteractor: GetTrackImageInteractor = { GetTrackImageInteractor(transportRepository: RepositoryInjection.provideTransportRepository()) }()
+    internal lazy var getTrackImageInteractor: GetTrackImageInteractor = { GetTrackImageInteractor(transportRepository: Injection.provideTransportRepository()) }()
     static public func getTrackImage(_ track: Track) -> Observable<Data?> {
         return shared.getTrackImageInteractor.get(values: GetTrackImageValues(track: track))
     }
@@ -149,7 +148,11 @@ open class SonosInteractor {
 }
 
 extension SonosInteractor {
-    private func activeGroupValue() -> Group? {
+    internal static var shared: SonosInteractor {
+        return Injection.provideSonosInteractor()
+    }
+    
+    internal func activeGroupValue() -> Group? {
         do {
             return try activeGroup.value()
         } catch {

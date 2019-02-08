@@ -19,8 +19,8 @@ class RoomTests: XCTestCase {
     }
     
     override func tearDown() {
-        resetToRealRepositories()
         super.tearDown()
+        resetToRealRepositories()
     }
     
     func testItCanGetTheMute() throws {

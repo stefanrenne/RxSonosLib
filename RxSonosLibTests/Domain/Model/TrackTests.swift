@@ -19,8 +19,8 @@ class TrackTests: XCTestCase {
     }
     
     override func tearDown() {
-        resetToRealRepositories()
         super.tearDown()
+        resetToRealRepositories()
     }
     
     func testItCanInitATrack() {

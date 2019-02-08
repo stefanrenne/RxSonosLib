@@ -14,32 +14,35 @@ extension XCTestCase {
     
     /* Reset Repositories */
     func resetToFakeRepositories() {
-        RepositoryInjection.shared.contentDirectoryRepository = FakeContentDirectoryRepositoryImpl()
-        RepositoryInjection.shared.groupRepository = FakeGroupRepositoryImpl()
-        RepositoryInjection.shared.renderingControlRepository = FakeRenderingControlRepositoryImpl()
-        RepositoryInjection.shared.roomRepository = FakeRoomRepositoryImpl()
-        RepositoryInjection.shared.ssdpRepository = FakeSSDPRepositoryImpl()
-        RepositoryInjection.shared.transportRepository = FakeTransportRepositoryImpl()
-        RepositoryInjection.shared.musicProvidersRepository = FakeMusicProvidersRepositoryImpl()
-        RepositoryInjection.shared.alarmRepository = FakeAlarmRepositoryImpl()
+        let sonosIntector = SonosInteractor()
+        Injection.shared.sonosInteractor = sonosIntector
+        Injection.shared.contentDirectoryRepository = FakeContentDirectoryRepositoryImpl()
+        Injection.shared.groupRepository = FakeGroupRepositoryImpl()
+        Injection.shared.renderingControlRepository = FakeRenderingControlRepositoryImpl()
+        Injection.shared.roomRepository = FakeRoomRepositoryImpl()
+        Injection.shared.ssdpRepository = FakeSSDPRepositoryImpl()
+        Injection.shared.transportRepository = FakeTransportRepositoryImpl()
+        Injection.shared.musicProvidersRepository = FakeMusicProvidersRepositoryImpl()
+        Injection.shared.alarmRepository = FakeAlarmRepositoryImpl()
         
         let allGroups = (try? FakeGroupRepositoryImpl.allGroups()) ?? []
-        SonosInteractor.shared.allGroups.onNext(allGroups)
-        SonosInteractor.shared.activeGroup.onNext(allGroups.first)
+        sonosIntector.allGroups.onNext(allGroups)
+        sonosIntector.activeGroup.onNext(allGroups.first)
         
         let allRooms = (try? FakeRoomRepositoryImpl.allRooms()) ?? []
-        SonosInteractor.shared.getAlarmsInteractor.requestValues = GetAlarmsValues(room: allRooms.first)
+        sonosIntector.getAlarmsInteractor.requestValues = GetAlarmsValues(room: allRooms.first)
     }
     
     func resetToRealRepositories() {
-        RepositoryInjection.shared.contentDirectoryRepository = ContentDirectoryRepositoryImpl()
-        RepositoryInjection.shared.groupRepository = GroupRepositoryImpl()
-        RepositoryInjection.shared.renderingControlRepository = RenderingControlRepositoryImpl()
-        RepositoryInjection.shared.roomRepository = RoomRepositoryImpl()
-        RepositoryInjection.shared.ssdpRepository = SSDPRepositoryImpl()
-        RepositoryInjection.shared.transportRepository = TransportRepositoryImpl()
-        RepositoryInjection.shared.musicProvidersRepository = MusicProvidersRepositoryImpl()
-        RepositoryInjection.shared.alarmRepository = AlarmRepositoryImpl()
+        Injection.shared.sonosInteractor = SonosInteractor()
+        Injection.shared.contentDirectoryRepository = ContentDirectoryRepositoryImpl()
+        Injection.shared.groupRepository = GroupRepositoryImpl()
+        Injection.shared.renderingControlRepository = RenderingControlRepositoryImpl()
+        Injection.shared.roomRepository = RoomRepositoryImpl()
+        Injection.shared.ssdpRepository = SSDPRepositoryImpl()
+        Injection.shared.transportRepository = TransportRepositoryImpl()
+        Injection.shared.musicProvidersRepository = MusicProvidersRepositoryImpl()
+        Injection.shared.alarmRepository = AlarmRepositoryImpl()
     }
     
     /* Groups */

@@ -19,14 +19,11 @@ class SonosInteractorTests: XCTestCase {
     }
     
     override func tearDown() {
-        resetToRealRepositories()
         super.tearDown()
+        resetToRealRepositories()
     }
     
     func testItCanProvideTheGroupsObservable() throws {
-        
-        resetToFakeRepositories()
-
         let groups = try SonosInteractor
             .getAllGroups()
             .toBlocking()
@@ -51,8 +48,6 @@ class SonosInteractorTests: XCTestCase {
     }
     
     func testItCanAutomaticallySetTheActiveGroupToTheFirstFoundGroup() throws {
-        
-        resetToFakeRepositories()
         SonosInteractor.shared.activeGroup.onNext(nil)
         try SonosInteractor.shared.allGroups.onNext([firstGroup(), secondGroup()])
         
@@ -60,8 +55,6 @@ class SonosInteractorTests: XCTestCase {
     }
     
     func testItCanAutomaticallySetTheActiveGroupWhenTheOldOneDoesntExist() throws {
-        
-        resetToFakeRepositories()
         SonosInteractor.shared.activeGroup.onNext(firstGroup())
         try SonosInteractor.shared.allGroups.onNext([thirdGroup()])
         
@@ -69,8 +62,6 @@ class SonosInteractorTests: XCTestCase {
     }
     
     func testItCanGetTheActiveGroup() throws {
-        
-        resetToFakeRepositories()
         try SonosInteractor.shared.allGroups.onNext([firstGroup(), secondGroup()])
         SonosInteractor.shared.activeGroup.onNext(firstGroup())
         
@@ -81,8 +72,6 @@ class SonosInteractorTests: XCTestCase {
     }
     
     func testItCanSetTheActiveGroup() throws {
-        
-        resetToFakeRepositories()
         try SonosInteractor.shared.allGroups.onNext([firstGroup(), secondGroup()])
         SonosInteractor.shared.activeGroup.onNext(firstGroup())
         
@@ -93,9 +82,7 @@ class SonosInteractorTests: XCTestCase {
     }
     
     func testItCanGetAllMusicProviders() throws {
-        
-        resetToFakeRepositories()
-        let musicProvidersRepository = RepositoryInjection.shared.musicProvidersRepository as? FakeMusicProvidersRepositoryImpl
+        let musicProvidersRepository = Injection.shared.musicProvidersRepository as? FakeMusicProvidersRepositoryImpl
         XCTAssertNotNil(musicProvidersRepository)
         XCTAssertEqual(musicProvidersRepository?.getMusicProvidersCount.value, 0)
         
@@ -108,15 +95,23 @@ class SonosInteractorTests: XCTestCase {
     }
     
     func testItCanGetAllAlarms() throws {
-
-        resetToFakeRepositories()
-        
         let alarms = try SonosInteractor
             .getAllAlarms()
             .toBlocking()
             .first()!
         XCTAssertEqual(alarms.count, 1)
+    }
+    
+    func testItCanGetTheActiveGroupValue() {
+        SonosInteractor.shared.activeGroup.onNext(nil)
+        XCTAssertNil(SonosInteractor.shared.activeGroupValue())
         
+        let newGroup = firstGroup()
+        SonosInteractor.shared.activeGroup.onNext(newGroup)
+        XCTAssertEqual(SonosInteractor.shared.activeGroupValue(), newGroup)
+        
+        SonosInteractor.shared.activeGroup.onError(SonosError.noData)
+        XCTAssertNil(SonosInteractor.shared.activeGroupValue())
     }
     
 }

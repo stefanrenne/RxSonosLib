@@ -19,8 +19,8 @@ class GroupTests: XCTestCase {
     }
     
     override func tearDown() {
-        resetToRealRepositories()
         super.tearDown()
+        resetToRealRepositories()
     }
     
     func testItCanCompareGroupsOnMaster() {
@@ -108,7 +108,7 @@ class GroupTests: XCTestCase {
     }
     
     func testItCanSetTheTransportState() throws {
-        let mock = RepositoryInjection.shared.transportRepository as? FakeTransportRepositoryImpl
+        let mock = Injection.shared.transportRepository as? FakeTransportRepositoryImpl
         XCTAssertNotNil(mock)
         let group = try Observable.just(secondGroup())
         _ = group.set(transportState: .playing)
@@ -125,7 +125,7 @@ class GroupTests: XCTestCase {
     }
     
     func testItCanSetTheVolume() throws {
-        let mock = RepositoryInjection.shared.renderingControlRepository as? FakeRenderingControlRepositoryImpl
+        let mock = Injection.shared.renderingControlRepository as? FakeRenderingControlRepositoryImpl
         XCTAssertNotNil(mock)
         let group = try Observable.just(secondGroup())
         _ = group.set(volume: 22)
@@ -135,7 +135,7 @@ class GroupTests: XCTestCase {
     }
     
     func testItCanSetTheNextTrack() throws {
-        let mock = RepositoryInjection.shared.transportRepository as? FakeTransportRepositoryImpl
+        let mock = Injection.shared.transportRepository as? FakeTransportRepositoryImpl
         XCTAssertNotNil(mock)
         mock?.nextTrackCounter.reset()
         
@@ -149,7 +149,7 @@ class GroupTests: XCTestCase {
     }
     
     func testItCanSetThePreviousTrack() throws {
-        let mock = RepositoryInjection.shared.transportRepository as? FakeTransportRepositoryImpl
+        let mock = Injection.shared.transportRepository as? FakeTransportRepositoryImpl
         XCTAssertNotNil(mock)
         mock?.previousTrackCounter.reset()
         
@@ -173,7 +173,7 @@ class GroupTests: XCTestCase {
     }
     
     func testItCanSetTheMute() throws {
-        let mock = RepositoryInjection.shared.renderingControlRepository as? FakeRenderingControlRepositoryImpl
+        let mock = Injection.shared.renderingControlRepository as? FakeRenderingControlRepositoryImpl
         XCTAssertNotNil(mock)
         mock?.numberSetMuteCalls.reset()
         mock?.numberGetMuteCalls.reset()
