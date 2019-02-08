@@ -122,6 +122,9 @@
 		F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAE20616239004DB497 /* SonosInteractorTests.swift */; };
 		F827E4E4212D55810019ADFD /* LibraryTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827E4E3212D55810019ADFD /* LibraryTrack.swift */; };
 		F82A4901220D835700A97794 /* AlarmRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A4900220D835700A97794 /* AlarmRepositoryTests.swift */; };
+		F82A4903220D950A00A97794 /* GetAlarmsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A4902220D950A00A97794 /* GetAlarmsInteractor.swift */; };
+		F82A4905220DBD8300A97794 /* AtomicInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A4904220DBD8300A97794 /* AtomicInteger.swift */; };
+		F82A4907220DBFC200A97794 /* GetAlarmsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A4906220DBFC200A97794 /* GetAlarmsInteractorTests.swift */; };
 		F83D21022075403C001ABC9D /* RenderingControlRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D21012075403C001ABC9D /* RenderingControlRepository.swift */; };
 		F83D2104207540A6001ABC9D /* RenderingControlRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D2103207540A6001ABC9D /* RenderingControlRepositoryImpl.swift */; };
 		F83D21082075446E001ABC9D /* GetVolumeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D21072075446E001ABC9D /* GetVolumeInteractor.swift */; };
@@ -337,6 +340,9 @@
 		F827DAAE20616239004DB497 /* SonosInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosInteractorTests.swift; sourceTree = "<group>"; };
 		F827E4E3212D55810019ADFD /* LibraryTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTrack.swift; sourceTree = "<group>"; };
 		F82A4900220D835700A97794 /* AlarmRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRepositoryTests.swift; sourceTree = "<group>"; };
+		F82A4902220D950A00A97794 /* GetAlarmsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAlarmsInteractor.swift; sourceTree = "<group>"; };
+		F82A4904220DBD8300A97794 /* AtomicInteger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomicInteger.swift; sourceTree = "<group>"; };
+		F82A4906220DBFC200A97794 /* GetAlarmsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAlarmsInteractorTests.swift; sourceTree = "<group>"; };
 		F83D21012075403C001ABC9D /* RenderingControlRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingControlRepository.swift; sourceTree = "<group>"; };
 		F83D2103207540A6001ABC9D /* RenderingControlRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingControlRepositoryImpl.swift; sourceTree = "<group>"; };
 		F83D21072075446E001ABC9D /* GetVolumeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVolumeInteractor.swift; sourceTree = "<group>"; };
@@ -566,6 +572,7 @@
 				F8A64DF92087F9A9003F777E /* SetPreviousInteractorTests.swift */,
 				F8A64DFB2087F9B5003F777E /* SetNextInteractorTests.swift */,
 				F8B315C6209A22BB0000335D /* GetMusicProvidersInteractorTests.swift */,
+				F82A4906220DBFC200A97794 /* GetAlarmsInteractorTests.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -692,6 +699,7 @@
 				F8DE4762208A328F008F50FA /* SetMuteInteractor.swift */,
 				F8DE4764208A3297008F50FA /* GetMuteInteractor.swift */,
 				F8B947022096F5D3004F1A33 /* GetRoomsInteractor.swift */,
+				F82A4902220D950A00A97794 /* GetAlarmsInteractor.swift */,
 				F8B9470D209794C3004F1A33 /* GetMusicProvidersInteractor.swift */,
 			);
 			path = Interactors;
@@ -980,6 +988,7 @@
 			isa = PBXGroup;
 			children = (
 				F8A64DFE2087FD07003F777E /* TestHelpers.swift */,
+				F82A4904220DBD8300A97794 /* AtomicInteger.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1388,6 +1397,7 @@
 				F8860E822074D8BE00BF6A7E /* TVTrack.swift in Sources */,
 				F8181C6B21394D7E00C8DE52 /* DevicePropertiesTarget.swift in Sources */,
 				F8181C6521394D5200C8DE52 /* GroupRenderingControlTarget.swift in Sources */,
+				F82A4903220D950A00A97794 /* GetAlarmsInteractor.swift in Sources */,
 				F81A05F7206028D600897738 /* RepositoryInjection.swift in Sources */,
 				F8181C6921394D7000C8DE52 /* QueueTarget.swift in Sources */,
 				F8860E7E2074D89300BF6A7E /* MusicProviderTrack.swift in Sources */,
@@ -1468,6 +1478,7 @@
 				F81A062920602D7F00897738 /* SSDPRepositoryTest.swift in Sources */,
 				F800343F206967F000D7C0FB /* TransportRepositoryTest.swift in Sources */,
 				F8B0057320612BB900991E64 /* StringRegexTest.swift in Sources */,
+				F82A4907220DBFC200A97794 /* GetAlarmsInteractorTests.swift in Sources */,
 				F8627F45206BFFE500571085 /* GetTransportStateInteractorTests.swift in Sources */,
 				F8A64DFA2087F9A9003F777E /* SetPreviousInteractorTests.swift in Sources */,
 				F8A64DFC2087F9B5003F777E /* SetNextInteractorTests.swift in Sources */,
@@ -1496,6 +1507,7 @@
 				F81A062C206031F300897738 /* XMLTest.swift in Sources */,
 				F8860E95207514BE00BF6A7E /* FakeContentDirectoryRepositoryImpl.swift in Sources */,
 				F81A062720602D7A00897738 /* GroupRepositoryTest.swift in Sources */,
+				F82A4905220DBD8300A97794 /* AtomicInteger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

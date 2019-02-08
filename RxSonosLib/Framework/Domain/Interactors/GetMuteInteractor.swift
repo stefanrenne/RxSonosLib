@@ -19,7 +19,7 @@ class GetMuteValues: RequestValues {
 
 class GetMuteInteractor: ObservableInteractor {
     
-    typealias T = GetMuteValues
+    var requestValues: GetMuteValues?
     
     private let renderingControlRepository: RenderingControlRepository
     
@@ -27,7 +27,7 @@ class GetMuteInteractor: ObservableInteractor {
         self.renderingControlRepository = renderingControlRepository
     }
     
-    func buildInteractorObservable(values: GetMuteValues?) -> Observable<Bool> {
+    func setup(values: GetMuteValues?) -> Observable<Bool> {
         
         guard let room = values?.room else {
                 return Observable.error(SonosError.invalidImplementation)

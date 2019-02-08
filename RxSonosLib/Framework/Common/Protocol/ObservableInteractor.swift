@@ -15,21 +15,23 @@ protocol ObservableInteractor: Interactor {
     
     func get() -> Observable<U>
     
-    func get(values: T?) -> Observable<U>
+    mutating func get(values: T?) -> Observable<U>
     
-    func buildInteractorObservable(values: T?) -> Observable<U>
+    func setup(values: T?) -> Observable<U>
 }
 
 extension ObservableInteractor {
     
     func get() -> Observable<U> {
-        return get(values: nil)
+        return Observable.just(requestValues)
+            .flatMap(setup)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+            .observeOn(MainScheduler.instance)
     }
     
-    func get(values: T?) -> Observable<U> {
-        return buildInteractorObservable(values: values)
-                .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
-                .observeOn(MainScheduler.instance)
+    mutating func get(values: T?) -> Observable<U> {
+        self.requestValues = values
+        return get()
     }
     
 }

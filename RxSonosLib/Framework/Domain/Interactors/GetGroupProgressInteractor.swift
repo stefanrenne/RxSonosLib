@@ -19,7 +19,7 @@ class GetGroupProgressValues: RequestValues {
 
 class GetGroupProgressInteractor: ObservableInteractor {
     
-    typealias T = GetGroupProgressValues
+    var requestValues: GetGroupProgressValues?
     
     private let transportRepository: TransportRepository
     
@@ -27,7 +27,7 @@ class GetGroupProgressInteractor: ObservableInteractor {
         self.transportRepository = transportRepository
     }
     
-    func buildInteractorObservable(values: GetGroupProgressValues?) -> Observable<GroupProgress> {
+    func setup(values: GetGroupProgressValues?) -> Observable<GroupProgress> {
         
         guard let masterRoom = values?.group.master else {
             return Observable.error(SonosError.invalidImplementation)

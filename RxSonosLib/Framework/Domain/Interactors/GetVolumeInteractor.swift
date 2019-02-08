@@ -19,7 +19,7 @@ class GetVolumeValues: RequestValues {
 
 class GetVolumeInteractor: ObservableInteractor {
     
-    typealias T = GetVolumeValues
+    var requestValues: GetVolumeValues?
     
     private let renderingControlRepository: RenderingControlRepository
     
@@ -27,7 +27,7 @@ class GetVolumeInteractor: ObservableInteractor {
         self.renderingControlRepository = renderingControlRepository
     }
     
-    func buildInteractorObservable(values: GetVolumeValues?) -> Observable<Int> {
+    func setup(values: GetVolumeValues?) -> Observable<Int> {
         
         guard let group = values?.group else {
             return Observable.error(SonosError.invalidImplementation)

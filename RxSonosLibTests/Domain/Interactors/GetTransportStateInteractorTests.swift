@@ -17,7 +17,9 @@ class GetTransportStateInteractorTests: XCTestCase {
    
     func testItCanGetTheCurrentState() throws {
         let interactor = GetTransportStateInteractor(transportRepository: transportRepository)
-        let state = try interactor.get(values: GetTransportStateValues(group: firstGroup()))
+        interactor.requestValues = GetTransportStateValues(group: firstGroup())
+        let state = try interactor
+            .get()
             .toBlocking()
             .first()!
         

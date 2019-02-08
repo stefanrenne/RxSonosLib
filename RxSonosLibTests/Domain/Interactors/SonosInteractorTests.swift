@@ -96,14 +96,26 @@ class SonosInteractorTests: XCTestCase {
         
         resetToFakeRepositories()
         let musicProvidersRepository = RepositoryInjection.shared.musicProvidersRepository as? FakeMusicProvidersRepositoryImpl
-        XCTAssertEqual(musicProvidersRepository?.getMusicProvidersCount, 0)
+        XCTAssertNotNil(musicProvidersRepository)
+        XCTAssertEqual(musicProvidersRepository?.getMusicProvidersCount.value, 0)
         
         let musicServices = try SonosInteractor
             .getAllMusicProviders()
             .toBlocking()
             .first()!
         XCTAssertEqual(musicServices.count, 4)
-        XCTAssertEqual(musicProvidersRepository?.getMusicProvidersCount, 1)
+        XCTAssertEqual(musicProvidersRepository?.getMusicProvidersCount.value, 1)
+    }
+    
+    func testItCanGetAllAlarms() throws {
+
+        resetToFakeRepositories()
+        
+        let alarms = try SonosInteractor
+            .getAllAlarms()
+            .toBlocking()
+            .first()!
+        XCTAssertEqual(alarms.count, 1)
         
     }
     

@@ -15,21 +15,23 @@ protocol SingleInteractor: Interactor {
     
     func get() -> Single<U>
     
-    func get(values: T?) -> Single<U>
+    mutating func get(values: T?) -> Single<U>
     
-    func buildInteractorObservable(values: T?) -> Single<U>
+    func setup(values: T?) -> Single<U>
 }
 
 extension SingleInteractor {
     
     func get() -> Single<U> {
-        return get(values: nil)
-    }
-    
-    func get(values: T?) -> Single<U> {
-        return buildInteractorObservable(values: values)
+        return Single.just(requestValues)
+            .flatMap(setup)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
             .observeOn(MainScheduler.instance)
+    }
+    
+    mutating func get(values: T?) -> Single<U> {
+        self.requestValues = values
+        return get()
     }
     
 }

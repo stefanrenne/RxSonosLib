@@ -24,10 +24,6 @@ class RoomTests: XCTestCase {
     }
     
     func testItCanGetTheMute() throws {
-        let mock = RepositoryInjection.shared.renderingControlRepository as? FakeRenderingControlRepositoryImpl
-        mock?.numberSetMuteCalls = 0
-        mock?.numberGetMuteCalls = 0
-        
         let room = firstRoom()
         let muted = try Observable
             .just(room)
@@ -36,24 +32,15 @@ class RoomTests: XCTestCase {
             .first()!
         
         XCTAssertTrue(muted)
-        XCTAssertEqual(mock?.numberSetMuteCalls, 0)
-        XCTAssertEqual(mock?.numberGetMuteCalls, 1)
     }
     
     func testItSanGetTheMute() {
-        let mock = RepositoryInjection.shared.renderingControlRepository as? FakeRenderingControlRepositoryImpl
-        mock?.numberSetMuteCalls = 0
-        mock?.numberGetMuteCalls = 0
-        
         let room = firstRoom()
-        _ = Observable
+        XCTAssertNoThrow(try Observable
             .just(room)
             .set(mute: true)
             .toBlocking()
-            .materialize()
-        
-        XCTAssertEqual(mock?.numberSetMuteCalls, 1)
-        XCTAssertEqual(mock?.numberGetMuteCalls, 0)
+            .toArray())
     }
     
 }

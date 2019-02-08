@@ -15,7 +15,7 @@ class FakeSSDPRepositoryImpl: SSDPRepository {
     
     func scan(searchTarget: String) -> Single<[SSDPResponse]> {
         do {
-            return try Single.just(FakeSSDPRepositoryImpl.dummyDevices())
+            return try Single.just(FakeSSDPRepositoryImpl.allRooms())
         } catch {
             return Single.error(error)
         }
@@ -25,7 +25,7 @@ class FakeSSDPRepositoryImpl: SSDPRepository {
 
 extension FakeSSDPRepositoryImpl {
     
-    static func dummyDevices() throws -> [SSDPResponse] {
+    static func allRooms() throws -> [SSDPResponse] {
         
         var devices = [SSDPResponse]()
         

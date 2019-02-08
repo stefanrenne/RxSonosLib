@@ -16,7 +16,7 @@ struct SetTransportStateValues: RequestValues {
 
 class SetTransportStateInteractor: CompletableInteractor {
     
-    typealias T = SetTransportStateValues
+    var requestValues: SetTransportStateValues?
     
     private let transportRepository: TransportRepository
     
@@ -24,7 +24,7 @@ class SetTransportStateInteractor: CompletableInteractor {
         self.transportRepository = transportRepository
     }
     
-    func buildInteractorObservable(values: SetTransportStateValues?) -> Completable {
+    func setup(values: SetTransportStateValues?) -> Completable {
         
         guard let group = values?.group,
               let state = values?.state else {

@@ -15,7 +15,7 @@ struct GetMusicProvidersValues: RequestValues {
 
 class GetMusicProvidersInteractor: SingleInteractor {
     
-    typealias T = GetMusicProvidersValues
+    var requestValues: GetMusicProvidersValues?
     
     private let musicProvidersRepository: MusicProvidersRepository
     
@@ -23,7 +23,7 @@ class GetMusicProvidersInteractor: SingleInteractor {
         self.musicProvidersRepository = musicProvidersRepository
     }
     
-    func buildInteractorObservable(values: GetMusicProvidersValues?) -> Single<[MusicProvider]> {
+    func setup(values: GetMusicProvidersValues?) -> Single<[MusicProvider]> {
         guard let room = values?.room else {
             return Single.error(SonosError.invalidImplementation)
         }

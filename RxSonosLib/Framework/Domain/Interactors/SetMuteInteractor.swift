@@ -16,7 +16,7 @@ struct SetMuteValues: RequestValues {
 
 class SetMuteInteractor: CompletableInteractor {
     
-    typealias T = SetMuteValues
+    var requestValues: SetMuteValues?
     
     private let renderingControlRepository: RenderingControlRepository
     
@@ -24,7 +24,7 @@ class SetMuteInteractor: CompletableInteractor {
         self.renderingControlRepository = renderingControlRepository
     }
     
-    func buildInteractorObservable(values: SetMuteValues?) -> Completable {
+    func setup(values: SetMuteValues?) -> Completable {
         
         guard let room = values?.room,
               let enabled = values?.enabled else {

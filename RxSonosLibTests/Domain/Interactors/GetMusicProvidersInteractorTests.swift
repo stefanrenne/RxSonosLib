@@ -16,14 +16,15 @@ class GetMusicProvidersInteractorTests: XCTestCase {
     let musicProvidersRepository: FakeMusicProvidersRepositoryImpl = FakeMusicProvidersRepositoryImpl()
     
     func testItCanGetTheMusicProviders() {
-        XCTAssertEqual(musicProvidersRepository.getMusicProvidersCount, 0)
+        XCTAssertEqual(musicProvidersRepository.getMusicProvidersCount.value, 0)
         let interactor = GetMusicProvidersInteractor(musicProvidersRepository: musicProvidersRepository)
+        interactor.requestValues = GetMusicProvidersValues(room: firstRoom())
         
         XCTAssertNoThrow(try interactor
-            .get(values: GetMusicProvidersValues(room: firstRoom()))
+            .get()
             .toBlocking()
             .toArray())
-        XCTAssertEqual(musicProvidersRepository.getMusicProvidersCount, 1)
+        XCTAssertEqual(musicProvidersRepository.getMusicProvidersCount.value, 1)
     }
     
     func testItCantGetTheMusicProvidersWithoutVolumeValues() {

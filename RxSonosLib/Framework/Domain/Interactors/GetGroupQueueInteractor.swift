@@ -19,7 +19,7 @@ class GetGroupQueueValues: RequestValues {
 
 class GetGroupQueueInteractor: ObservableInteractor {
     
-    typealias T = GetGroupQueueValues
+    var requestValues: GetGroupQueueValues?
     
     private let contentDirectoryRepository: ContentDirectoryRepository
     
@@ -27,7 +27,7 @@ class GetGroupQueueInteractor: ObservableInteractor {
         self.contentDirectoryRepository = contentDirectoryRepository
     }
     
-    func buildInteractorObservable(values: GetGroupQueueValues?) -> Observable<[MusicProviderTrack]> {
+    func setup(values: GetGroupQueueValues?) -> Observable<[MusicProviderTrack]> {
         
         guard let masterRoom = values?.group.master else {
             return Observable.error(SonosError.invalidImplementation)

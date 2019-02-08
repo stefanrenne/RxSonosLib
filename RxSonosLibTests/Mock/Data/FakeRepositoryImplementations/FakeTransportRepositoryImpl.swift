@@ -30,15 +30,15 @@ class FakeTransportRepositoryImpl: TransportRepository {
         return Maybe.just(data)
     }
     
-    var nextTrackCounter = 0
+    let nextTrackCounter = AtomicInteger()
     func setNextTrack(for room: Room) -> Completable {
-        nextTrackCounter += 1
+        nextTrackCounter.increment()
         return Completable.empty()
     }
     
-    var previousTrackCounter = 0
+    let previousTrackCounter = AtomicInteger()
     func setPreviousTrack(for room: Room) -> Completable {
-        previousTrackCounter += 1
+        previousTrackCounter.increment()
         return Completable.empty()
     }
     

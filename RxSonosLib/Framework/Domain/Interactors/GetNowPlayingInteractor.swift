@@ -19,7 +19,7 @@ class GetNowPlayingValues: RequestValues {
 
 class GetNowPlayingInteractor: ObservableInteractor {
     
-    typealias T = GetNowPlayingValues
+    var requestValues: GetNowPlayingValues?
     
     private let transportRepository: TransportRepository
     
@@ -27,7 +27,7 @@ class GetNowPlayingInteractor: ObservableInteractor {
         self.transportRepository = transportRepository
     }
     
-    func buildInteractorObservable(values: GetNowPlayingValues?) -> Observable<Track?> {
+    func setup(values: GetNowPlayingValues?) -> Observable<Track?> {
         
         guard let masterRoom = values?.group.master else {
             return Observable.error(SonosError.invalidImplementation)

@@ -13,21 +13,23 @@ protocol CompletableInteractor: Interactor {
     
     func get() -> Completable
     
-    func get(values: T?) -> Completable
+    mutating func get(values: T?) -> Completable
     
-    func buildInteractorObservable(values: T?) -> Completable
+    func setup(values: T?) -> Completable
 }
 
 extension CompletableInteractor {
     
     func get() -> Completable {
-        return get(values: nil)
-    }
-    
-    func get(values: T?) -> Completable {
-        return buildInteractorObservable(values: values)
+        return Single.just(requestValues)
+            .flatMapCompletable(setup)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
             .observeOn(MainScheduler.instance)
+    }
+    
+    mutating func get(values: T?) -> Completable {
+        self.requestValues = values
+        return get()
     }
     
 }

@@ -20,14 +20,16 @@ class FakeGroupRepositoryImpl: GroupRepository {
     
     func getGroups(for rooms: [Room]) -> Single<[Group]> {
         do {
-            let groups = returnNoGroups ? [] : try allGroups()
+            let groups = returnNoGroups ? [] : try FakeGroupRepositoryImpl.allGroups()
             return Single<[Group]>.just(groups)
         } catch {
             return Single.error(error)
         }
     }
-    
-    func allGroups() throws -> [Group] {
+}
+
+extension FakeGroupRepositoryImpl {
+    static func allGroups() throws -> [Group] {
         var groups = [Group]()
         
         /*

@@ -16,7 +16,7 @@ struct GetGroupsValues: RequestValues {
 
 class GetGroupsInteractor: SingleInteractor {
     
-    typealias T = GetGroupsValues
+    var requestValues: GetGroupsValues?
     
     private let groupRepository: GroupRepository
     
@@ -24,7 +24,7 @@ class GetGroupsInteractor: SingleInteractor {
         self.groupRepository = groupRepository
     }
     
-    func buildInteractorObservable(values: GetGroupsValues?) -> Single<[Group]> {
+    func setup(values: GetGroupsValues?) -> Single<[Group]> {
         guard let rooms = values?.rooms else {
             return Single.error(SonosError.invalidImplementation)
         }

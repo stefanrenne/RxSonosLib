@@ -12,11 +12,11 @@ import RxSwift
 
 class FakeMusicProvidersRepositoryImpl: MusicProvidersRepository {
     
-    var getMusicProvidersCount = 0
+    let getMusicProvidersCount = AtomicInteger()
     
     func getMusicProviders(for room: Room) -> Single<[MusicProvider]> {
         
-        getMusicProvidersCount += 1
+        getMusicProvidersCount.increment()
         
         var services = [MusicProvider]()
         

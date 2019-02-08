@@ -16,16 +16,17 @@ class SetNextInteractorTests: XCTestCase {
     let transportRepository: FakeTransportRepositoryImpl = FakeTransportRepositoryImpl()
     
     func testItCanSetTheNextTrack() {
-        XCTAssertEqual(transportRepository.nextTrackCounter, 0)
-        XCTAssertEqual(transportRepository.previousTrackCounter, 0)
+        XCTAssertEqual(transportRepository.nextTrackCounter.value, 0)
+        XCTAssertEqual(transportRepository.previousTrackCounter.value, 0)
         let interactor = SetNextTrackInteractor(transportRepository: transportRepository)
+        interactor.requestValues = SetNextTrackValues(group: firstGroup())
         
         XCTAssertNoThrow(try interactor
-            .get(values: SetNextTrackValues(group: firstGroup()))
+            .get()
             .toBlocking()
             .toArray())
-        XCTAssertEqual(transportRepository.nextTrackCounter, 1)
-        XCTAssertEqual(transportRepository.previousTrackCounter, 0)
+        XCTAssertEqual(transportRepository.nextTrackCounter.value, 1)
+        XCTAssertEqual(transportRepository.previousTrackCounter.value, 0)
     }
     
     func testItCantSetTheNextTrackWithoutVolumeValues() {

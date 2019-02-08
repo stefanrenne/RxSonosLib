@@ -19,7 +19,7 @@ class GetTrackImageValues: RequestValues {
 
 class GetTrackImageInteractor: ObservableInteractor {
     
-    typealias T = GetTrackImageValues
+    var requestValues: GetTrackImageValues?
     
     private let transportRepository: TransportRepository
     
@@ -27,7 +27,7 @@ class GetTrackImageInteractor: ObservableInteractor {
         self.transportRepository = transportRepository
     }
     
-    func buildInteractorObservable(values: GetTrackImageValues?) -> Observable<Data?> {
+    func setup(values: GetTrackImageValues?) -> Observable<Data?> {
         
         guard let track = values?.track else {
             return Observable.error(SonosError.invalidImplementation)

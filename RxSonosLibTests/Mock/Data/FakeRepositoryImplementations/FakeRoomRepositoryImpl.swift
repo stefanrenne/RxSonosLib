@@ -22,8 +22,8 @@ class FakeRoomRepositoryImpl: RoomRepository {
 
 extension FakeRoomRepositoryImpl {
         
-    static func dummyDevices() throws -> [Room] {
-        return try FakeSSDPRepositoryImpl.dummyDevices().map({ (response) -> Room in
+    static func allRooms() throws -> [Room] {
+        return try FakeSSDPRepositoryImpl.allRooms().map({ (response) -> Room in
             let device = try SSDPDevice.map(response)!
             let description = FakeRoomRepositoryImpl.getDescription(for: device)
             return Room(ssdpDevice: device, deviceDescription: description)

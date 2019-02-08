@@ -30,15 +30,15 @@ class FakeRenderingControlRepositoryImpl: RenderingControlRepository {
         return Completable.empty()
     }
     
-    var numberSetMuteCalls = 0
+    let numberSetMuteCalls = AtomicInteger()
     func setMute(room: Room, enabled: Bool) -> Completable {
-        numberSetMuteCalls += 1
+        numberSetMuteCalls.increment()
         return Completable.empty()
     }
     
-    var numberGetMuteCalls = 0
+    let numberGetMuteCalls = AtomicInteger()
     func getMute(room: Room) -> Single<Bool> {
-        numberGetMuteCalls += 1
+        numberGetMuteCalls.increment()
         return Single.just(true)
     }
 }

@@ -19,7 +19,7 @@ class GetTransportStateValues: RequestValues {
 
 class GetTransportStateInteractor: ObservableInteractor {
     
-    typealias T = GetTransportStateValues
+    var requestValues: GetTransportStateValues?
     
     private let transportRepository: TransportRepository
     
@@ -27,7 +27,7 @@ class GetTransportStateInteractor: ObservableInteractor {
         self.transportRepository = transportRepository
     }
     
-    func buildInteractorObservable(values: GetTransportStateValues?) -> Observable<TransportState> {
+    func setup(values: GetTransportStateValues?) -> Observable<TransportState> {
         
         guard let masterRoom = values?.group.master else {
             return Observable.error(SonosError.invalidImplementation)

@@ -17,9 +17,10 @@ class SetTransportStateInteractorTests: XCTestCase {
     
     func testItCanSetTheCurrentStateToPlay() {
         let interactor = SetTransportStateInteractor(transportRepository: transportRepository)
+        interactor.requestValues = SetTransportStateValues(group: firstGroup(), state: TransportState.playing)
         
         XCTAssertNoThrow(try interactor
-            .get(values: SetTransportStateValues(group: firstGroup(), state: TransportState.playing))
+            .get()
             .toBlocking()
             .toArray())
         
@@ -28,9 +29,10 @@ class SetTransportStateInteractorTests: XCTestCase {
     
     func testItCanSetTheCurrentStateToPaused() {
         let interactor = SetTransportStateInteractor(transportRepository: transportRepository)
+        interactor.requestValues = SetTransportStateValues(group: firstGroup(), state: TransportState.paused)
         
         XCTAssertNoThrow(try interactor
-            .get(values: SetTransportStateValues(group: firstGroup(), state: TransportState.paused))
+            .get()
             .toBlocking()
             .toArray())
         
@@ -39,9 +41,10 @@ class SetTransportStateInteractorTests: XCTestCase {
     
     func testItCanSetTheCurrentStateToStop() {
         let interactor = SetTransportStateInteractor(transportRepository: transportRepository)
+        interactor.requestValues = SetTransportStateValues(group: firstGroup(), state: TransportState.stopped)
         
         XCTAssertNoThrow(try interactor
-            .get(values: SetTransportStateValues(group: firstGroup(), state: TransportState.stopped))
+            .get()
             .toBlocking()
             .toArray())
         
@@ -50,9 +53,10 @@ class SetTransportStateInteractorTests: XCTestCase {
     
     func testItCantSetTheCurrentStateToTransitioning() {
         let interactor = SetTransportStateInteractor(transportRepository: transportRepository)
+        interactor.requestValues = SetTransportStateValues(group: firstGroup(), state: TransportState.transitioning)
         
         XCTAssertThrowsError(try interactor
-            .get(values: SetTransportStateValues(group: firstGroup(), state: TransportState.transitioning))
+            .get()
             .toBlocking()
             .toArray()) { error in
             XCTAssertEqual(error.localizedDescription, SonosError.invalidImplementation.localizedDescription)

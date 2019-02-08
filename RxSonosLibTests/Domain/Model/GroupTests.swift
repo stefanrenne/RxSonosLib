@@ -72,7 +72,7 @@ class GroupTests: XCTestCase {
         let group = Observable.just(firstGroup())
         let track = try group
             .getTrack()
-            .skip(1)
+            .filter({ $0 != nil })
             .toBlocking()
             .first() as? MusicProviderTrack
         
@@ -109,6 +109,7 @@ class GroupTests: XCTestCase {
     
     func testItCanSetTheTransportState() throws {
         let mock = RepositoryInjection.shared.transportRepository as? FakeTransportRepositoryImpl
+        XCTAssertNotNil(mock)
         let group = try Observable.just(secondGroup())
         _ = group.set(transportState: .playing)
             .toBlocking()
@@ -125,6 +126,7 @@ class GroupTests: XCTestCase {
     
     func testItCanSetTheVolume() throws {
         let mock = RepositoryInjection.shared.renderingControlRepository as? FakeRenderingControlRepositoryImpl
+        XCTAssertNotNil(mock)
         let group = try Observable.just(secondGroup())
         _ = group.set(volume: 22)
             .toBlocking()
@@ -134,7 +136,8 @@ class GroupTests: XCTestCase {
     
     func testItCanSetTheNextTrack() throws {
         let mock = RepositoryInjection.shared.transportRepository as? FakeTransportRepositoryImpl
-        mock?.nextTrackCounter = 0
+        XCTAssertNotNil(mock)
+        mock?.nextTrackCounter.reset()
         
         let group = try Observable.just(secondGroup())
         _ = group
@@ -142,12 +145,13 @@ class GroupTests: XCTestCase {
             .toBlocking()
             .materialize()
         
-        XCTAssertEqual(mock?.nextTrackCounter, 1)
+        XCTAssertEqual(mock?.nextTrackCounter.value, 1)
     }
     
     func testItCanSetThePreviousTrack() throws {
         let mock = RepositoryInjection.shared.transportRepository as? FakeTransportRepositoryImpl
-        mock?.previousTrackCounter = 0
+        XCTAssertNotNil(mock)
+        mock?.previousTrackCounter.reset()
         
         let group = try Observable.just(secondGroup())
         _ = group
@@ -155,7 +159,7 @@ class GroupTests: XCTestCase {
             .toBlocking()
             .materialize()
         
-        XCTAssertEqual(mock?.previousTrackCounter, 1)
+        XCTAssertEqual(mock?.previousTrackCounter.value, 1)
     }
     
     func testItCanGetTheMute() throws {
@@ -170,8 +174,9 @@ class GroupTests: XCTestCase {
     
     func testItCanSetTheMute() throws {
         let mock = RepositoryInjection.shared.renderingControlRepository as? FakeRenderingControlRepositoryImpl
-        mock?.numberSetMuteCalls = 0
-        mock?.numberGetMuteCalls = 0
+        XCTAssertNotNil(mock)
+        mock?.numberSetMuteCalls.reset()
+        mock?.numberGetMuteCalls.reset()
         
         let group = try Observable.just(secondGroup())
         _ = group
@@ -179,8 +184,8 @@ class GroupTests: XCTestCase {
             .toBlocking()
             .materialize()
         
-        XCTAssertEqual(mock?.numberSetMuteCalls, 2)
-        XCTAssertEqual(mock?.numberGetMuteCalls, 0)
+        XCTAssertEqual(mock?.numberSetMuteCalls.value, 2)
+        XCTAssertEqual(mock?.numberGetMuteCalls.value, 0)
     }
     
     func testItCanGetTheProgress() throws {

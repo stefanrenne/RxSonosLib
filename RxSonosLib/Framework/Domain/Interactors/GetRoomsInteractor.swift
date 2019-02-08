@@ -14,7 +14,7 @@ struct GetRoomsValues: RequestValues { }
 
 class GetRoomsInteractor: ObservableInteractor {
     
-    typealias T = GetRoomsValues
+    var requestValues: GetRoomsValues?
     
     private let ssdpRepository: SSDPRepository
     private let roomRepository: RoomRepository
@@ -26,7 +26,7 @@ class GetRoomsInteractor: ObservableInteractor {
         SSDPSettings.shared.maxBufferTime = SonosSettings.shared.searchNetworkForDevices
     }
     
-    func buildInteractorObservable(values: GetRoomsValues?) -> Observable<[Room]> {
+    func setup(values: GetRoomsValues?) -> Observable<[Room]> {
         
         return
             createTimer(SonosSettings.shared.renewNetworkDevicesTimer)

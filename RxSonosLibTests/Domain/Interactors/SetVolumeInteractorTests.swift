@@ -18,9 +18,10 @@ class SetVolumeInteractorTests: XCTestCase {
     func testItCanSetTheCurrentVolume() {
         XCTAssertNil(renderingControlRepository.lastVolume)
         let interactor = SetVolumeInteractor(renderingControlRepository: renderingControlRepository)
+        interactor.requestValues = SetVolumeValues(group: firstGroup(), volume: 40)
         
         XCTAssertNoThrow(try interactor
-            .get(values: SetVolumeValues(group: firstGroup(), volume: 40))
+            .get()
             .toBlocking()
             .toArray())
         
