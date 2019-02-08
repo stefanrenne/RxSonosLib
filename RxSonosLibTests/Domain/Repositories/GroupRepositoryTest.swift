@@ -15,9 +15,9 @@ import Mockingjay
 
 class GroupRepositoryTest: XCTestCase {
     
-    let ssdpRepository: SSDPRepository = FakeSSDPRepositoryImpl()
-    let roomRepository: RoomRepository = FakeRoomRepositoryImpl()
-    let groupRepository: GroupRepository = GroupRepositoryImpl()
+    private let ssdpRepository: SSDPRepository = FakeSSDPRepositoryImpl()
+    private let roomRepository: RoomRepository = FakeRoomRepositoryImpl()
+    private let groupRepository: GroupRepository = GroupRepositoryImpl()
     
     override func setUp() {
         CacheManager.shared.clear(removeLongCache: true)

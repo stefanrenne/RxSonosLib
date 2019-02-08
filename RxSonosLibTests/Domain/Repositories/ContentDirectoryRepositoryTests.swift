@@ -15,7 +15,7 @@ import Mockingjay
 
 class ContentDirectoryRepositoryTests: XCTestCase {
     
-    let contentDirectoryRepository: ContentDirectoryRepository = ContentDirectoryRepositoryImpl()
+    private let contentDirectoryRepository: ContentDirectoryRepository = ContentDirectoryRepositoryImpl()
     
     override func setUp() {
         CacheManager.shared.clear(removeLongCache: true)

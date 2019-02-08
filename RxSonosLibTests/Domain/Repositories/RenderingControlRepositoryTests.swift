@@ -14,7 +14,7 @@ import Mockingjay
 
 class RenderingControlRepositoryTests: XCTestCase {
     
-    let renderingControlRepository: RenderingControlRepository = RenderingControlRepositoryImpl()
+    private let renderingControlRepository: RenderingControlRepository = RenderingControlRepositoryImpl()
     
     override func setUp() {
         CacheManager.shared.clear(removeLongCache: true)
@@ -63,6 +63,16 @@ class RenderingControlRepositoryTests: XCTestCase {
         
         XCTAssertNoThrow(try renderingControlRepository
             .set(volume: 30, for: secondGroup())
+            .toBlocking()
+            .toArray())
+    }
+    
+    func testItCanSetTheRoomVolume() {
+        
+        stub(soap(call: RenderingControlTarget.setVolume(0)), soapXml(""))
+        
+        XCTAssertNoThrow(try renderingControlRepository
+            .set(volume: 30, for: firstRoom())
             .toBlocking()
             .toArray())
     }

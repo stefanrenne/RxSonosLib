@@ -86,4 +86,8 @@ extension XCTestCase {
     func firstTrack() -> MusicProviderTrack {
         return MusicProviderTrack(sid: 9, flags: nil, sn: nil, queueItem: 1, duration: 265, uri: "x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1", imageUri: URL(string: "http://192.168.3.14:1400/getaa?s=1&u=x-sonos-spotify:spotify%3atrack%3a2MUy4hpwlwAaHV5mYHgMzd?sid=9&flags=8224&sn=1")!, description: [TrackDescription.title: "Before I Die", TrackDescription.artist: "Papa Roach", TrackDescription.album: "The Connection"])
     }
+    
+    func secondTrack() -> MusicProviderTrack {
+        return MusicProviderTrack(sid: 10, flags: nil, sn: nil, queueItem: 1, duration: 265, uri: "x-sonosapi-stream:s6712?sid=254&flags=32", imageUri: URL(string: "http://192.168.3.14:1400/getaa?s=1&u=x-sonosapi-stream:s6712?sid=254&flags=32")!, description: [TrackDescription.title: "538", TrackDescription.information: "DUA LIPA - IDGAF"])
+    }
 }

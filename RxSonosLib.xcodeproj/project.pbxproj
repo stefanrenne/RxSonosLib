@@ -60,6 +60,10 @@
 		F81E33AC2072247D002E22A8 /* FakeGroupRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E33A72072247C002E22A8 /* FakeGroupRepositoryImpl.swift */; };
 		F81E33AD2072247D002E22A8 /* FakeTransportRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E33A82072247C002E22A8 /* FakeTransportRepositoryImpl.swift */; };
 		F81E33AF2072250A002E22A8 /* Mockingjay+Soap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E33AE2072250A002E22A8 /* Mockingjay+Soap.swift */; };
+		F8210A1B220D7DF1003A1D18 /* AlarmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8210A1A220D7DF1003A1D18 /* AlarmRepository.swift */; };
+		F8210A1D220D7E1F003A1D18 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8210A1C220D7E1F003A1D18 /* Alarm.swift */; };
+		F8210A1F220D7E62003A1D18 /* AlarmRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8210A1E220D7E62003A1D18 /* AlarmRepositoryImpl.swift */; };
+		F8210A21220D7F7B003A1D18 /* FakeAlarmRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8210A20220D7F7B003A1D18 /* FakeAlarmRepositoryImpl.swift */; };
 		F8261F6821DF80FB0041BD15 /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F2621DF80FB0041BD15 /* LoadingCoordinator.swift */; };
 		F8261F6921DF80FB0041BD15 /* QueueCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F2721DF80FB0041BD15 /* QueueCoordinator.swift */; };
 		F8261F6A21DF80FB0041BD15 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8261F2821DF80FB0041BD15 /* TabBarCoordinator.swift */; };
@@ -117,6 +121,7 @@
 		F827DAAD2061606A004DB497 /* GetGroupsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */; };
 		F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827DAAE20616239004DB497 /* SonosInteractorTests.swift */; };
 		F827E4E4212D55810019ADFD /* LibraryTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827E4E3212D55810019ADFD /* LibraryTrack.swift */; };
+		F82A4901220D835700A97794 /* AlarmRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82A4900220D835700A97794 /* AlarmRepositoryTests.swift */; };
 		F83D21022075403C001ABC9D /* RenderingControlRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D21012075403C001ABC9D /* RenderingControlRepository.swift */; };
 		F83D2104207540A6001ABC9D /* RenderingControlRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D2103207540A6001ABC9D /* RenderingControlRepositoryImpl.swift */; };
 		F83D21082075446E001ABC9D /* GetVolumeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D21072075446E001ABC9D /* GetVolumeInteractor.swift */; };
@@ -266,6 +271,10 @@
 		F81E33A72072247C002E22A8 /* FakeGroupRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeGroupRepositoryImpl.swift; sourceTree = "<group>"; };
 		F81E33A82072247C002E22A8 /* FakeTransportRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeTransportRepositoryImpl.swift; sourceTree = "<group>"; };
 		F81E33AE2072250A002E22A8 /* Mockingjay+Soap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mockingjay+Soap.swift"; sourceTree = "<group>"; };
+		F8210A1A220D7DF1003A1D18 /* AlarmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRepository.swift; sourceTree = "<group>"; };
+		F8210A1C220D7E1F003A1D18 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		F8210A1E220D7E62003A1D18 /* AlarmRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRepositoryImpl.swift; sourceTree = "<group>"; };
+		F8210A20220D7F7B003A1D18 /* FakeAlarmRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAlarmRepositoryImpl.swift; sourceTree = "<group>"; };
 		F825F47020481CC7006A7B73 /* RepositoryInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryInjection.swift; sourceTree = "<group>"; };
 		F825F477204820BD006A7B73 /* SSDPDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSDPDevice.swift; sourceTree = "<group>"; };
 		F825F49F204829F5006A7B73 /* Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
@@ -327,6 +336,7 @@
 		F827DAAC2061606A004DB497 /* GetGroupsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroupsInteractorTests.swift; sourceTree = "<group>"; };
 		F827DAAE20616239004DB497 /* SonosInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosInteractorTests.swift; sourceTree = "<group>"; };
 		F827E4E3212D55810019ADFD /* LibraryTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTrack.swift; sourceTree = "<group>"; };
+		F82A4900220D835700A97794 /* AlarmRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmRepositoryTests.swift; sourceTree = "<group>"; };
 		F83D21012075403C001ABC9D /* RenderingControlRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingControlRepository.swift; sourceTree = "<group>"; };
 		F83D2103207540A6001ABC9D /* RenderingControlRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingControlRepositoryImpl.swift; sourceTree = "<group>"; };
 		F83D21072075446E001ABC9D /* GetVolumeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVolumeInteractor.swift; sourceTree = "<group>"; };
@@ -511,6 +521,7 @@
 				F8860E94207514BE00BF6A7E /* FakeContentDirectoryRepositoryImpl.swift */,
 				F83D210920754BE7001ABC9D /* FakeRenderingControlRepositoryImpl.swift */,
 				F8B315C2209A20510000335D /* FakeMusicProvidersRepositoryImpl.swift */,
+				F8210A20220D7F7B003A1D18 /* FakeAlarmRepositoryImpl.swift */,
 			);
 			path = FakeRepositoryImplementations;
 			sourceTree = "<group>";
@@ -596,6 +607,7 @@
 				F8860E9020750B9300BF6A7E /* ContentDirectoryRepositoryTests.swift */,
 				F83D210B20754C44001ABC9D /* RenderingControlRepositoryTests.swift */,
 				F8B315C0209A018A0000335D /* MusicProvidersRepositoryTests.swift */,
+				F82A4900220D835700A97794 /* AlarmRepositoryTests.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -657,6 +669,7 @@
 				F8860E8A207506BE00BF6A7E /* ContentDirectoryRepository.swift */,
 				F83D21012075403C001ABC9D /* RenderingControlRepository.swift */,
 				F8B947052097910B004F1A33 /* MusicProvidersRepository.swift */,
+				F8210A1A220D7DF1003A1D18 /* AlarmRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -699,6 +712,7 @@
 				F8860E812074D8BE00BF6A7E /* TVTrack.swift */,
 				F8B947092097923E004F1A33 /* MusicProvider.swift */,
 				F827E4E3212D55810019ADFD /* LibraryTrack.swift */,
+				F8210A1C220D7E1F003A1D18 /* Alarm.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -712,6 +726,7 @@
 				F8860E8C2075071F00BF6A7E /* ContentDirectoryRepositoryImpl.swift */,
 				F83D2103207540A6001ABC9D /* RenderingControlRepositoryImpl.swift */,
 				F8B9470720979113004F1A33 /* MusicProvidersRepositoryImpl.swift */,
+				F8210A1E220D7E62003A1D18 /* AlarmRepositoryImpl.swift */,
 			);
 			path = RepositoryImplementations;
 			sourceTree = "<group>";
@@ -1368,6 +1383,7 @@
 				F81E339A207135B2002E22A8 /* GroupProgress.swift in Sources */,
 				F827069621D9684000DB4656 /* ObservableInteractor.swift in Sources */,
 				F8D0BB8C207E5B5A00BBEFB8 /* SonosSettings.swift in Sources */,
+				F8210A1B220D7DF1003A1D18 /* AlarmRepository.swift in Sources */,
 				F8181C5621394A9600C8DE52 /* SonosTargetType.swift in Sources */,
 				F8860E822074D8BE00BF6A7E /* TVTrack.swift in Sources */,
 				F8181C6B21394D7E00C8DE52 /* DevicePropertiesTarget.swift in Sources */,
@@ -1397,6 +1413,7 @@
 				F80034362069662500D7C0FB /* TransportRepository.swift in Sources */,
 				F81A05F9206028D600897738 /* LocalNetwork.swift in Sources */,
 				F81A05F4206028D600897738 /* GroupRepository.swift in Sources */,
+				F8210A1F220D7E62003A1D18 /* AlarmRepositoryImpl.swift in Sources */,
 				F8181C6721394D6000C8DE52 /* ConnectionManagerTarget.swift in Sources */,
 				F82706AC21D97E4400DB4656 /* Rx+Timer.swift in Sources */,
 				F827069421D9683200DB4656 /* CompletableInteractor.swift in Sources */,
@@ -1410,6 +1427,7 @@
 				F8B0D8A52082562A0072BAE0 /* SetTransportStateInteractor.swift in Sources */,
 				F8181C6D21394D9000C8DE52 /* SystemPropertiesTarget.swift in Sources */,
 				F81A05F5206028D600897738 /* RoomRepositoryImpl.swift in Sources */,
+				F8210A1D220D7E1F003A1D18 /* Alarm.swift in Sources */,
 				F8DE4765208A3297008F50FA /* GetMuteInteractor.swift in Sources */,
 				F81A05E9206028D600897738 /* Interactor.swift in Sources */,
 				F827E4E4212D55810019ADFD /* LibraryTrack.swift in Sources */,
@@ -1437,6 +1455,7 @@
 				F81E33A020721CEF002E22A8 /* GroupProgressTests.swift in Sources */,
 				F8B315C1209A018A0000335D /* MusicProvidersRepositoryTests.swift in Sources */,
 				F89D94C920615994002B1383 /* CacheManagerTests.swift in Sources */,
+				F8210A21220D7F7B003A1D18 /* FakeAlarmRepositoryImpl.swift in Sources */,
 				F8726790206A4B7700093FF1 /* TransportStateTest.swift in Sources */,
 				F83D210A20754BE7001ABC9D /* FakeRenderingControlRepositoryImpl.swift in Sources */,
 				F8979947206944A6000CF52A /* GroupTests.swift in Sources */,
@@ -1465,6 +1484,7 @@
 				F83E367621392D800035F83C /* NetworkTest.swift in Sources */,
 				F81E33AD2072247D002E22A8 /* FakeTransportRepositoryImpl.swift in Sources */,
 				F81E33AC2072247D002E22A8 /* FakeGroupRepositoryImpl.swift in Sources */,
+				F82A4901220D835700A97794 /* AlarmRepositoryTests.swift in Sources */,
 				F81A062820602D7C00897738 /* RoomRepositoryTest.swift in Sources */,
 				F827DAAF20616239004DB497 /* SonosInteractorTests.swift in Sources */,
 				F8860E872074FF7600BF6A7E /* TrackTests.swift in Sources */,

@@ -15,7 +15,7 @@ import Mockingjay
 
 class RoomRepositoryTest: XCTestCase {
     
-    let roomRepository: RoomRepository = RoomRepositoryImpl()
+    private let roomRepository: RoomRepository = RoomRepositoryImpl()
     
     override func setUp() {
         CacheManager.shared.clear(removeLongCache: true)

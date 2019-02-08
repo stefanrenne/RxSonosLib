@@ -46,6 +46,11 @@ class RepositoryInjection {
         return shared.renderingControlRepository
     }
     
+    internal var alarmRepository: AlarmRepository = AlarmRepositoryImpl()
+    static public func provideAlarmRepository() -> AlarmRepository {
+        return shared.alarmRepository
+    }
+    
     internal var musicProvidersRepository: MusicProvidersRepository = MusicProvidersRepositoryImpl()
     static public func provideMusicProvidersRepository() -> MusicProvidersRepository {
         return shared.musicProvidersRepository

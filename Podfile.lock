@@ -13,7 +13,7 @@ PODS:
     - RxSwift (~> 4.0)
   - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
-  - RxSonosLib (0.12.0):
+  - RxSonosLib (0.13.0):
     - AEXML (~> 4.3)
     - RxSSDP (~> 4.2)
     - RxSwift (~> 4.4)
@@ -21,7 +21,7 @@ PODS:
     - RxSwift (~> 4.4)
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
-  - SwiftLint (0.29.2)
+  - SwiftLint (0.30.1)
   - URITemplate (2.0.3)
 
 DEPENDENCIES:
@@ -56,10 +56,10 @@ SPEC CHECKSUMS:
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxBlocking: 138ad53217434444d6eeeb4fb406a45431d92e31
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
-  RxSonosLib: 59c85cc4ee9e65693baca992057b8baae7393fe6
+  RxSonosLib: 72787a962320bb9773324c705e3755f8cfbe97e9
   RxSSDP: f1d90fa160f243e565b76db8fbaa7f98123f6678
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
-  SwiftLint: 47df60bdea6e7e902b193b6596db8683aafd86a3
+  SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
   URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
 
 PODFILE CHECKSUM: 2db6ef2e7a4bb6424823edb73343626723d17fd5

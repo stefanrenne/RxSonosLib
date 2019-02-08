@@ -15,7 +15,7 @@ import Mockingjay
 
 class MusicProvidersRepositoryTests: XCTestCase {
     
-    let musicProvidersRepository: MusicProvidersRepository = MusicProvidersRepositoryImpl()
+    private let musicProvidersRepository: MusicProvidersRepository = MusicProvidersRepositoryImpl()
     
     override func setUp() {
         CacheManager.shared.clear(removeLongCache: true)

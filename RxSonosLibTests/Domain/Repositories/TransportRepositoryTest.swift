@@ -14,7 +14,7 @@ import Mockingjay
 
 class TransportRepositoryTest: XCTestCase {
     
-    let transportRepository: TransportRepository = TransportRepositoryImpl()
+    private let transportRepository: TransportRepository = TransportRepositoryImpl()
     
     func testItCantGetTheNowPlayingTrack() throws {
         
@@ -138,6 +138,21 @@ class TransportRepositoryTest: XCTestCase {
             .first()!
         
         XCTAssertEqual(imageData, data)
+    }
+    
+    func testItCanGetCachedImageForATrackWithAnImageUri() throws {
+        stub(everything, http(404))
+        let data = UIImage(named: "papa-roach-the-connection.jpg", in: Bundle(for: type(of: self)), compatibleWith: nil)!.jpegData(compressionQuality: 1.0)!
+        let track = secondTrack()
+        CacheManager.shared.set(data, for: .trackImage, item: track.uri)
+        
+        let imageData = try transportRepository
+            .getImage(for: track)
+            .toBlocking()
+            .first()!
+        
+        XCTAssertEqual(imageData, data)
+        
     }
     
     func testItCantGetTheImageForATrackWithoutAnImageUri() throws {
