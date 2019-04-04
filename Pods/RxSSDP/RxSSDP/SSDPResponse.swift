@@ -8,20 +8,26 @@
 
 import Foundation
 
-open class SSDPResponse: Codable {
+public struct SSDPResponse: Codable {
+    private let data: [String: String]
     
-    public let data: [String: String]
-    public init(data: [String: String]) {
+    init(data: [String: String]) {
         self.data = data
     }
     
-    required public init?(coder aDecoder: NSCoder) {
-        guard let data = aDecoder.decodeObject(forKey: "data") as? [String: String] else { return nil }
-        self.data = data
+    public subscript(index: String) -> String? {
+        return data[index]
+    }
+}
+
+extension SSDPResponse: CustomStringConvertible, CustomDebugStringConvertible {
+    
+    public var description: String {
+        return data.description
     }
     
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(self.data, forKey: "data")
+    public var debugDescription: String {
+        return data.debugDescription
     }
 }
 
@@ -35,23 +41,23 @@ extension SSDPResponse: Equatable {
 extension SSDPResponse {
     
     public var host: String? {
-        return data["HOST"]
+        return self["HOST"]
     }
     
     public var searchTarget: String? {
-        return data["ST"]
+        return self["ST"]
     }
     
     public var location: String? {
-        return data["LOCATION"]
+        return self["LOCATION"]
     }
     
     public var server: String? {
-        return data["SERVER"]
+        return self["SERVER"]
     }
     
     public var uniqueServiceName: String? {
-        return data["USN"]
+        return self["USN"]
     }
     
 }

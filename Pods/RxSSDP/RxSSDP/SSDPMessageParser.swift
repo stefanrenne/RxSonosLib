@@ -9,7 +9,7 @@
 import Foundation
 
 class SSDPMessageParser {
-    fileprivate let scanner: Scanner
+    private let scanner: Scanner
     
     init(message: String) {
         scanner = Scanner(string: message)
@@ -33,7 +33,7 @@ class SSDPMessageParser {
             let unicodeScalars = self.scanner.string.unicodeScalars
             let index = unicodeScalars.index(unicodeScalars.startIndex, offsetBy: self.scanner.scanLocation)
             
-            if unicodeScalars.count <= index.encodedOffset || CharacterSet.newlines.contains(unicodeScalars[index]) {
+            if unicodeScalars.count <= index.utf16Offset(in: self.scanner.string) || CharacterSet.newlines.contains(unicodeScalars[index]) {
                 valueBuffer = ""
             } else {
                 valueBuffer = self.scanLine()
@@ -47,14 +47,14 @@ class SSDPMessageParser {
         return SSDPResponse(data: message)
     }
     
-    fileprivate func scanLine() -> String? {
+    private func scanLine() -> String? {
         var buffer: NSString?
         scanner.scanUpToCharacters(from: CharacterSet.newlines, into: &buffer)
         
         return (buffer as String?)
     }
     
-    fileprivate func advancePastColon() {
+    private func advancePastColon() {
         var string: NSString?
         
         let characterSet = CharacterSet(charactersIn: ": ")

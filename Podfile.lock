@@ -1,5 +1,5 @@
 PODS:
-  - AEXML (4.3.3)
+  - AEXML (4.4.0)
   - Mockingjay (2.0.1):
     - Mockingjay/Core (= 2.0.1)
     - Mockingjay/XCTest (= 2.0.1)
@@ -7,38 +7,34 @@ PODS:
     - URITemplate (~> 2.0)
   - Mockingjay/XCTest (2.0.1):
     - Mockingjay/Core
-  - RxAtomic (4.4.0)
-  - RxBlocking (4.4.0):
-    - RxAtomic (~> 4.4)
-    - RxSwift (~> 4.0)
-  - RxCocoa (4.4.0):
-    - RxSwift (~> 4.0)
-  - RxSonosLib (0.12.0):
-    - AEXML (~> 4.3)
-    - RxSSDP (~> 4.2)
-    - RxSwift (~> 4.4)
-  - RxSSDP (4.2.1):
-    - RxSwift (~> 4.4)
-  - RxSwift (4.4.0):
-    - RxAtomic (~> 4.4)
-  - SwiftLint (0.29.2)
+  - RxBlocking (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSonosLib (0.14.0):
+    - AEXML (~> 4.4)
+    - RxSSDP (~> 5.0)
+    - RxSwift (~> 4.5)
+  - RxSSDP (5.0.1):
+    - RxSwift (~> 4.5)
+  - RxSwift (4.5.0)
+  - SwiftLint (0.31.0)
   - URITemplate (2.0.3)
 
 DEPENDENCIES:
-  - AEXML (~> 4.3)
+  - AEXML (~> 4.4)
   - Mockingjay
-  - RxBlocking (~> 4.4)
-  - RxCocoa (~> 4.4)
+  - RxBlocking (~> 4.5)
+  - RxCocoa (~> 4.5)
   - RxSonosLib (from `.`)
-  - RxSSDP (~> 4.2)
-  - RxSwift (~> 4.4)
+  - RxSSDP (~> 5.0)
+  - RxSwift (~> 4.5)
   - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AEXML
     - Mockingjay
-    - RxAtomic
     - RxBlocking
     - RxCocoa
     - RxSSDP
@@ -51,17 +47,16 @@ EXTERNAL SOURCES:
     :path: "."
 
 SPEC CHECKSUMS:
-  AEXML: 601f41fcaa7bda7605cad153b0f43db9ec006c0f
+  AEXML: 16fb739dfb3809e91ebf9e9dc391482c3a6aaebf
   Mockingjay: 11a621880d2887f1775bdcf824341eb68f218450
-  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
-  RxBlocking: 138ad53217434444d6eeeb4fb406a45431d92e31
-  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
-  RxSonosLib: 59c85cc4ee9e65693baca992057b8baae7393fe6
-  RxSSDP: f1d90fa160f243e565b76db8fbaa7f98123f6678
-  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
-  SwiftLint: 47df60bdea6e7e902b193b6596db8683aafd86a3
+  RxBlocking: 79413e4d916f44bb3e113c5b2cc059e36fe58910
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSonosLib: 1288458844f30a1bd06f4f055a51612ceff9bfc6
+  RxSSDP: f4b5cdfd3a169cb38066557e25aed0f64f6e0325
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
 
-PODFILE CHECKSUM: 2db6ef2e7a4bb6424823edb73343626723d17fd5
+PODFILE CHECKSUM: 953e36f0e7ce4b314389b1ec36425ae2362c4327
 
 COCOAPODS: 1.5.3

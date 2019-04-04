@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
   spec.authors                = { 'Stefan Renne' => 'info@stefanrenne.nl' }
   spec.summary                = 'RxSwift library that simplifies interacting with Sonos Devices'
   spec.source                 = { :git => 'https://github.com/stefanrenne/RxSonosLib.git', :tag => spec.version.to_s }
-  spec.swift_version          = '4.2'
+  spec.swift_version          = '5.0'
   spec.ios.deployment_target  = '10.0'
   spec.tvos.deployment_target = '10.0'
   spec.osx.deployment_target  = '10.12'
