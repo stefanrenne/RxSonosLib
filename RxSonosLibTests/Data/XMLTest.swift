@@ -28,6 +28,12 @@ class XMLTest: XCTestCase {
         XCTAssertEqual(xml!["device"]["modelNumber"].string, "S9")
     }
     
+    func testItCanParseEmptyXml() throws {
+        let description = "<root><ZoneGroups><ZoneGroup Coordinator=\"RINCON_000001\" ID=\"RINCON_000001:314\"><ZoneGroupMember UUID=\"RINCON_000006\"/><ZoneGroupMember UUID=\"RINCON_000007\" Invisible=\"1\"/><ZoneGroupMember UUID=\"RINCON_000005\"/><ZoneGroupMember UUID=\"RINCON_000001\"><Satellite UUID=\"RINCON_000002\" Invisible=\"1\"/><Satellite UUID=\"RINCON_000003\" Invisible=\"1\"/><Satellite UUID=\"RINCON_000004\"/></ZoneGroupMember><ZoneGroupMember UUID=\"RINCON_000008\"/></ZoneGroup></ZoneGroups><VanishedDevices /></root>"
+        let xml = try AEXMLDocument.create(description)
+        XCTAssertNotNil(xml)
+    }
+    
     func testItCantXMLParseAnEmptyDataSet() throws {
         let xml = try AEXMLDocument.create(nil)
         XCTAssertNil(xml)

@@ -31,7 +31,7 @@ class DeviceDescription: Codable {
 }
 
 extension DeviceDescription {
-    class func map(_ xml: AEXMLDocument) -> DeviceDescription? {
+    class func map(_ xml: AEXMLElement) -> DeviceDescription? {
         guard let name = xml["root"]["device"]["roomName"].value,
             let modalNumber = xml["root"]["device"]["modelNumber"].value,
             let modalName = xml["root"]["device"]["modelName"].value,

@@ -10,15 +10,19 @@ import Foundation
 import AEXML
 
 extension AEXMLDocument {
-    class func create(_ data: Data) throws -> AEXMLDocument? {
-        let string = String(data: data, encoding: .utf8)
-        return try AEXMLDocument.create(string)
+    class func create(_ data: Data) throws -> AEXMLElement? {
+        guard let cleanString = try String(data: data, encoding: .utf8)?.removeXmlNamespace() else { return nil }
+        return try AEXMLDocument(xml: cleanString)
     }
     
-    class func create(_ string: String?) throws -> AEXMLDocument? {
+    class func create(_ string: String?) throws -> AEXMLElement? {
         guard let cleanString = try string?.removeXmlNamespace() else { return nil }
-        return try? AEXMLDocument(xml: cleanString)
+        let xml = try? AEXMLDocument(xml: "<root>" + cleanString + "</root>")
+        return xml?["root"]
     }
+}
+
+extension AEXMLElement {
     
     func mapMetaItems() -> [[String: String]] {
         return self["DIDL-Lite"].children.map { (item) -> [String: String] in

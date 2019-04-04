@@ -21,7 +21,7 @@ class RoomRepositoryTest: XCTestCase {
         CacheManager.shared.clear(removeLongCache: true)
     }
     
-    func testItCanCreateARoom() {
+    func testItCanCreateARoom() throws {
         
         var description = "<device>"
             description += "<deviceType>urn:schemas-upnp-org:device:ZonePlayer:1</deviceType>"
@@ -51,7 +51,6 @@ class RoomRepositoryTest: XCTestCase {
         
         stub(uri("/xml/device_description.xml"), xml(description))
         
-        do {
         let room = try roomRepository
             .getRoom(device: firstDevice())!
             .toBlocking()
@@ -62,10 +61,6 @@ class RoomRepositoryTest: XCTestCase {
             XCTAssertEqual(room.ip.absoluteString, "http://192.168.3.14:1400")
             XCTAssertEqual(room.name, "Living")
             XCTAssertEqual(room.userAgent, "Linux UPnP/1.0 Sonos/34.7-34220 (ZPS9)")
-        
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
     }
     
     func testItCanOnlyCreateARoomForASonosDevice() throws {

@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name                   = 'RxSonosLib'
-  spec.version                = '0.13.0'
+  spec.version                = '0.14.0'
   spec.license                = { :type => 'Apache-2.0' }
   spec.homepage               = 'https://github.com/stefanrenne/RxSonosLib'
   spec.authors                = { 'Stefan Renne' => 'info@stefanrenne.nl' }
@@ -13,7 +13,7 @@ Pod::Spec.new do |spec|
   spec.watchos.deployment_target = '4.0'
   spec.requires_arc           = true
   spec.source_files           = 'RxSonosLib/Framework/**/*.swift'
-  spec.dependency             'RxSwift', '~> 4.4'
-  spec.dependency             'RxSSDP', '~> 4.2'
-  spec.dependency             'AEXML', '~> 4.3'
+  spec.dependency             'RxSwift', '~> 4.5'
+  spec.dependency             'RxSSDP', '~> 5.0'
+  spec.dependency             'AEXML', '~> 4.4'
 end

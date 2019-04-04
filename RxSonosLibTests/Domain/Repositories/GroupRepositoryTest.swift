@@ -39,6 +39,7 @@ class GroupRepositoryTest: XCTestCase {
                     response += "<ZoneGroupMember UUID=\"RINCON_000008\"/>".encodeString()
                 response += "</ZoneGroup>".encodeString()
             response += "</ZoneGroups>".encodeString()
+            response += "<VanishedDevices />".encodeString()
         response += "</ZoneGroupState>"
         stub(soap(call: GroupTarget.state), soapXml(response))
         
@@ -72,6 +73,7 @@ class GroupRepositoryTest: XCTestCase {
                     response += "<ZoneGroupMember UUID=\"RINCON_000008\"/>".encodeString()
                 response += "</ZoneGroup>".encodeString()
             response += "</ZoneGroups>".encodeString()
+            response += "<VanishedDevices />".encodeString()
         response += "</ZoneGroupState>"
         stub(soap(call: GroupTarget.state), soapXml(response))
         
