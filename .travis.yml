@@ -14,8 +14,10 @@ env:
     - EXPANDED_PROVISIONING_PROFILE=""
   matrix:
     - DESTINATION="platform=iOS Simulator,name=iPhone XS"
-
+  
 install:
+  - gem install activesupport -N
+  - gem install slather
   - git config --add diff.renamelimit 0
   - pod install --repo-update
 
@@ -26,10 +28,6 @@ jobs:
         - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-darwin-amd64 > ./cc-test-reporter
         - chmod +x ./cc-test-reporter
         - ./cc-test-reporter before-build
-      before_install:
-        - gem install activesupport -N
-        - gem install slather --no-rdoc
-        - pod repo update > /dev/null
       script:
         - ./Pods/SwiftLint/swiftlint
         - set -o pipefail
