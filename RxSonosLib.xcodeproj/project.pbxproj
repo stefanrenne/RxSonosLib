@@ -187,13 +187,6 @@
 			remoteGlobalIDString = F81A05D62060289A00897738;
 			remoteInfo = RxSonosLib;
 		};
-		F81A062520602D3000897738 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F83FED0C1F97CD4B004DF663 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F81A05A82060280A00897738;
-			remoteInfo = "Demo App";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1086,7 +1079,6 @@
 			);
 			dependencies = (
 				F81A0620206029AE00897738 /* PBXTargetDependency */,
-				F81A062620602D3000897738 /* PBXTargetDependency */,
 			);
 			name = RxSonosLibTests;
 			productName = RxSonosLibTests;
@@ -1484,11 +1476,6 @@
 			isa = PBXTargetDependency;
 			target = F81A05D62060289A00897738 /* RxSonosLib */;
 			targetProxy = F81A061F206029AE00897738 /* PBXContainerItemProxy */;
-		};
-		F81A062620602D3000897738 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F81A05A82060280A00897738 /* iOS Demo App */;
-			targetProxy = F81A062520602D3000897738 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
