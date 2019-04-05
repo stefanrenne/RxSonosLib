@@ -74,7 +74,7 @@ class RoomRepositoryTest: XCTestCase {
     
     func testItCantMapInvalidXMLDescriptionFiles() {
         
-        stub(uri("/xml/device_description.xml"), xml("<device>"))
+        stub(uri("/xml/device_description.xml"), xml("<device />"))
         
         XCTAssertThrowsError(try roomRepository.getRoom(device: firstDevice())!.toBlocking().toArray()) { error in
             XCTAssertEqual(error.localizedDescription, SonosError.noData.localizedDescription)

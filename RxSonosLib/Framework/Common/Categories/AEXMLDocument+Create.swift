@@ -12,7 +12,7 @@ import AEXML
 extension AEXMLDocument {
     class func create(_ data: Data) throws -> AEXMLElement? {
         guard let cleanString = try String(data: data, encoding: .utf8)?.removeXmlNamespace() else { return nil }
-        return try AEXMLDocument(xml: cleanString)
+        return try? AEXMLDocument(xml: cleanString)
     }
     
     class func create(_ string: String?) throws -> AEXMLElement? {

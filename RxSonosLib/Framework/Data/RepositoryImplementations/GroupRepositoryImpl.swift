@@ -29,7 +29,7 @@ private extension GroupRepositoryImpl {
     func mapGroupDataToGroups(rooms: [Room]) -> (([String: String]) throws -> [Group]) {
         return { results in
             let xml = try AEXMLDocument.create(results["ZoneGroupState"])
-            return xml?["ZoneGroups"].children.compactMap(self.mapZoneToGroup(rooms: rooms)) ?? []
+            return xml?["ZoneGroupState"]["ZoneGroups"].children.compactMap(self.mapZoneToGroup(rooms: rooms)) ?? []
         }
     }
     

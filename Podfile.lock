@@ -15,7 +15,7 @@ PODS:
     - AEXML (~> 4.4)
     - RxSSDP (~> 5.0)
     - RxSwift (~> 4.5)
-  - RxSSDP (5.0.1):
+  - RxSSDP (5.0.2):
     - RxSwift (~> 4.5)
   - RxSwift (4.5.0)
   - SwiftLint (0.31.0)
@@ -52,11 +52,11 @@ SPEC CHECKSUMS:
   RxBlocking: 79413e4d916f44bb3e113c5b2cc059e36fe58910
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxSonosLib: 1288458844f30a1bd06f4f055a51612ceff9bfc6
-  RxSSDP: f4b5cdfd3a169cb38066557e25aed0f64f6e0325
+  RxSSDP: 662ce91a7ca8b340faf40f04590d608ac62b40df
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
 
-PODFILE CHECKSUM: 953e36f0e7ce4b314389b1ec36425ae2362c4327
+PODFILE CHECKSUM: 263e89d852a9bcf86ac51c47f5194375e66d32a9
 
 COCOAPODS: 1.5.3

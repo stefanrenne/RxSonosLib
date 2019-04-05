@@ -11,7 +11,7 @@ import Foundation
 public struct SSDPResponse: Codable {
     private let data: [String: String]
     
-    init(data: [String: String]) {
+    public init(data: [String: String]) {
         self.data = data
     }
     

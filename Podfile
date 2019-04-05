@@ -29,3 +29,15 @@ target 'iOS Demo App' do
   pod 'RxSwift', '~> 4.5'
   pod 'RxCocoa', '~> 4.5'
 end
+
+# Disable Code Coverage for Pods projects
+# Disable Dsym Generation in Mock Config for faster test build
+post_install do |installer_representation|
+  installer_representation.pods_project.targets.each do |target|
+    if ["Mockingjay", "URITemplate"].include? target.name
+      target.build_configurations.each do |config|
+        config.build_settings['SWIFT_VERSION'] = "4.2"
+      end
+    end
+  end
+end

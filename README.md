@@ -1,5 +1,6 @@
 # RxSonosLib
-[![Swift 4.2](https://img.shields.io/badge/swift-4.2-orange.svg?style=flat)](https://swift.org)
+
+[![Swift 5.0](https://img.shields.io/badge/swift-5.0-orange.svg?style=flat)](https://swift.org)
 [![Travis Badge](https://api.travis-ci.org/stefanrenne/RxSonosLib.svg?branch=master)](https://travis-ci.org/stefanrenne/RxSonosLib)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/445e34c7de447fb011ec/test_coverage)](https://codeclimate.com/github/stefanrenne/RxSonosLib/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/445e34c7de447fb011ec/maintainability)](https://codeclimate.com/github/stefanrenne/RxSonosLib/maintainability)
@@ -35,10 +36,16 @@ Platform:
 - [x] WatchOS
 
 
-This library requires Swift 4.2 & RxSwift.
+This library requires Swift 5.0 & RxSwift.
 
 ## Background Info
 The first version of this project started as a way to understand Sonos better. This version is here to help me improve my RxSwift knowledge.
+
+## Cocoapods
+
+```
+pod 'RxSonosLib', '~> 0.14'
+```
 
 ## Usage
 
