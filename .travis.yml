@@ -1,7 +1,6 @@
 language: objective-c
 os: osx
 osx_image: xcode10.2
-cache: cocoapods
 env:
   global:
     - LC_CTYPE=en_US.UTF-8
