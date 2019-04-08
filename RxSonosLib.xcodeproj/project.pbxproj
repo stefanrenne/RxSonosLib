@@ -1507,7 +1507,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 555D193622C7D6EABA3C049E /* Pods-iOS Demo App.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "$(SRCROOT)/RxSonosLib/iOS Demo App/Common/Info.plist";
@@ -1524,7 +1523,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9BF6AF0215CC3AAC24DA22DF /* Pods-iOS Demo App.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "$(SRCROOT)/RxSonosLib/iOS Demo App/Common/Info.plist";
@@ -1591,7 +1589,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0740F6AF987AA968A7332CFA /* Pods-RxSonosLibTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RxSonosLibTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1607,7 +1604,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B227B7F7727BC927FC34A8A6 /* Pods-RxSonosLibTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RxSonosLibTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

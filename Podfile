@@ -1,6 +1,3 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
-
 # Comment this line if you're not using Swift and don't want to use dynamic frameworks
 use_frameworks!
 
@@ -8,8 +5,8 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'RxSonosLib' do
-  use_frameworks!
-
+  platform :ios, '10.0'
+  
   pod 'RxSwift', '~> 4.5'
   pod 'RxSSDP', '~> 5.0'
   pod 'AEXML', '~> 4.4'
@@ -17,6 +14,7 @@ target 'RxSonosLib' do
 
   target 'RxSonosLibTests' do
     inherit! :search_paths
+
     pod 'Mockingjay'
     pod 'RxBlocking', '~> 4.5'
   end
@@ -24,7 +22,8 @@ target 'RxSonosLib' do
 end
 
 target 'iOS Demo App' do
-  use_frameworks!
+  platform :ios, '10.0'
+
   pod 'RxSonosLib', :path => '.'
   pod 'RxSwift', '~> 4.5'
   pod 'RxCocoa', '~> 4.5'
