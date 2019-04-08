@@ -17,7 +17,7 @@ before_script:
   - ./cc-test-reporter before-build
 before_install:
   - gem install activesupport -N
-  - gem install slather --no-rdoc
+  - gem install slather
   - pod repo update > /dev/null
 script:
   - ./Pods/SwiftLint/swiftlint
