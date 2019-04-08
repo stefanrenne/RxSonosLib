@@ -9,23 +9,36 @@ env:
     - WORKSPACE=RxSonosLib.xcworkspace
     - SCHEME=RxSonosLib
     - CC_TEST_REPORTER_ID=5332094259e2b828a20d61a227b30295e535380c07b6ab5f097b59e80b9c9c73
+    - EXPANDED_CODE_SIGN_IDENTITY=""
+    - EXPANDED_CODE_SIGN_IDENTITY_NAME=""
+    - EXPANDED_PROVISIONING_PROFILE=""
   matrix:
-      - DESTINATION="platform=iOS Simulator,name=iPhone XS"
-before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-darwin-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
-before_install:
+    - DESTINATION="platform=iOS Simulator,name=iPhone XS"
+  
+install:
   - gem install activesupport -N
   - gem install slather
+  - git config --add diff.renamelimit 0
   - pod repo update > /dev/null
-script:
-  - ./Pods/SwiftLint/swiftlint
-  - set -o pipefail
-  - xcodebuild -version
-  - xcodebuild -showsdks
-  - xcodebuild clean -workspace "$WORKSPACE" -scheme "$SCHEME" | xcpretty
-  - xcodebuild test -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" | xcpretty
-after_script:
-  - slather
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+jobs:
+  include:
+    - stage: test
+      before_script:
+        - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-darwin-amd64 > ./cc-test-reporter
+        - chmod +x ./cc-test-reporter
+        - ./cc-test-reporter before-build
+      script:
+        - ./Pods/SwiftLint/swiftlint
+        - set -o pipefail
+        - xcodebuild -version
+        - xcodebuild -showsdks
+        - xcodebuild clean -workspace "$WORKSPACE" -scheme "$SCHEME" | xcpretty
+        - xcodebuild test -workspace "$WORKSPACE" -scheme "$SCHEME" -destination "$DESTINATION" | xcpretty
+      after_script:
+        - slather
+        - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+    - stage: deploy
+      if: tag IS present
+      script:
+        - pod trunk push --allow-warnings
